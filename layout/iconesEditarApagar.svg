@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Creator: CorelDRAW -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docbase="/home/uira/culturadigital/estudiolivre/layout"
+   sodipodi:docname="iconesEditarApagar.svg"
+   inkscape:version="0.41+0.42pre1"
+   sodipodi:version="0.32"
+   id="svg2"
+   viewBox="0 0 210 297"
+   style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+   height="297mm"
+   width="210mm"
+   xml:space="preserve"><metadata
+   id="metadata31"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><sodipodi:namedview
+   inkscape:current-layer="svg2"
+   inkscape:window-y="160"
+   inkscape:window-x="160"
+   inkscape:cy="493.90751"
+   inkscape:cx="158.38728"
+   inkscape:zoom="1.0000000"
+   inkscape:guide-bbox="true"
+   showguides="true"
+   id="base"
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1.0"
+   inkscape:pageopacity="0.0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="796"
+   inkscape:window-height="513" />
+ <defs
+   id="defs4">
+  <style
+   id="style6"
+   type="text/css">
+   
+    .str2 {stroke:#1F1A17;stroke-width:0.049;stroke-linejoin:bevel}
+    .str0 {stroke:#1F1A17;stroke-width:0.098}
+    .str1 {stroke:#1F1A17;stroke-width:0.098;stroke-linejoin:bevel}
+    .fil2 {fill:none}
+    .fil1 {fill:#1F1A17}
+    .fil0 {fill:white}
+   
+  </style>
+ 
+  <metadata
+   id="CorelCorpID_0Corel-Layer" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ </defs>
+ <g
+   inkscape:export-ydpi="90.000000"
+   inkscape:export-xdpi="90.000000"
+   inkscape:export-filename="/home/uira/culturadigital/estudiolivre/src/styles/estudiolivre/iEdit.png"
+   transform="matrix(0.849420,0.000000,0.000000,0.983425,5.042423,0.550767)"
+   id="g2066"><path
+     style="fill:#ffffff;stroke:#1f1a17;stroke-width:0.28222224;stroke-miterlimit:4.0000000;stroke-dasharray:none"
+     id="path10"
+     d="M 39.130200,148.84300 L 39.646300,149.16080 C 39.702400,149.19540 39.776100,149.17810 39.810700,149.12170 L 40.398800,148.16780 C 40.433400,148.11130 40.415700,148.03760 40.359600,148.00300 L 39.843500,147.68520 C 39.787400,147.65060 39.713700,147.66820 39.679100,147.72430 L 39.091000,148.67860 C 39.056500,148.73470 39.074100,148.80840 39.130200,148.84300 L 39.130200,148.84300 z "
+     class="fil0 str0" /><polygon
+     style="fill:#ffffff;stroke:#1f1a17;stroke-width:0.28222224;stroke-miterlimit:4.0000000;stroke-dasharray:none"
+     id="polygon12"
+     points="37.679200,150.97000 38.398500,151.41300 40.133900,148.59700 39.414200,148.15400 37.679200,150.97000 "
+     class="fil0 str0" /><polygon
+     style="fill:#ffffff;stroke:#1f1a17;stroke-width:0.28222224;stroke-miterlimit:4.0000000;stroke-dasharray:none"
+     id="polygon14"
+     points="39.317500,148.31100 40.037200,148.75400 40.191400,148.50400 39.471700,148.06000 39.317500,148.31100 "
+     class="fil0 str0" /><polygon
+     style="fill:#ffffff;stroke:#1f1a17;stroke-width:0.28222224;stroke-miterlimit:4.0000000;stroke-dasharray:none"
+     id="polygon16"
+     points="37.397400,152.28100 37.913100,151.83500 38.429200,151.38900 38.068000,151.17600 37.707100,150.96400 37.552200,151.62200 37.397400,152.28100 "
+     class="fil0 str0" /><polygon
+     style="fill:#1f1a17;stroke:#1f1a17;stroke-width:0.28222224;stroke-miterlimit:4.0000000;stroke-dasharray:none"
+     id="polygon18"
+     points="37.376200,152.28600 37.566300,152.10900 37.756800,151.93200 37.634800,151.86100 37.512700,151.78900 37.444300,152.03800 37.376200,152.28600 "
+     class="fil1 str0" /></g><g
+   inkscape:export-ydpi="90.000000"
+   inkscape:export-xdpi="90.000000"
+   inkscape:export-filename="/home/uira/culturadigital/estudiolivre/src/styles/estudiolivre/iDelete.png"
+   transform="translate(-6.036419,-2.451955)"
+   id="g2073"><path
+     style="fill:none;stroke:#1f1a17;stroke-width:0.27916563;stroke-linejoin:bevel;stroke-miterlimit:4.0000000;stroke-dasharray:none"
+     id="path20"
+     d="M 37.493594,158.64051 L 37.709679,161.52697 C 38.982352,162.00404 39.590945,161.83517 40.665801,161.59238 L 40.882179,158.57480 L 37.493594,158.64051 z "
+     class="fil2 str1" /><path
+     style="fill:none;stroke:#1f1a17;stroke-width:0.27916563;stroke-linejoin:bevel;stroke-miterlimit:4.0000000;stroke-dasharray:none"
+     id="path22"
+     d="M 38.646991,161.53719 C 38.110491,159.98208 37.871938,158.83472 38.502999,158.87609 C 38.813841,159.62841 38.746925,160.57433 38.646991,161.53719 z "
+     class="fil2 str2" /><path
+     style="fill:none;stroke:#1f1a17;stroke-width:0.27916563;stroke-linejoin:bevel;stroke-miterlimit:4.0000000;stroke-dasharray:none"
+     id="path24"
+     d="M 39.595048,161.52918 C 40.089933,159.97406 40.309828,158.82671 39.728098,158.86768 C 39.440995,159.61999 39.502733,160.56622 39.595048,161.52918 z "
+     class="fil2 str2" /><path
+     style="fill:none;stroke:#1f1a17;stroke-width:0.27916563;stroke-linejoin:bevel;stroke-miterlimit:4.0000000;stroke-dasharray:none"
+     id="path26"
+     d="M 37.501116,158.84985 C 37.287864,158.62579 37.342276,158.35194 37.357124,158.07489 C 38.538850,157.90141 39.756330,157.86926 40.937665,158.03783 C 41.063487,158.20210 41.034181,158.50639 40.866061,158.79436"
+     class="fil2 str1" /><polygon
+     style="fill:none;stroke:#1f1a17;stroke-width:0.28222224;stroke-linejoin:bevel;stroke-miterlimit:4.0000000;stroke-dasharray:none"
+     id="polygon28"
+     points="38.461300,154.91600 38.627100,154.56600 39.437500,154.58400 39.622000,154.89800 39.400800,154.89800 39.308700,154.71400 38.756300,154.71400 38.645500,154.89800 38.461300,154.91600 "
+     class="fil2 str1"
+     transform="matrix(0.976875,0.000000,0.000000,1.001619,1.008573,2.778663)" /></g>
+</svg>

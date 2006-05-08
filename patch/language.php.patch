@@ -1,0 +1,15 @@
+--- /home/webpublisher/tiki/lang/pt-br/language.php	2006-03-07 14:58:29.000000000 -0300
++++ lang/pt-br/language.php	2006-03-28 13:18:06.000000000 -0300
+@@ -44,6 +44,12 @@
+ // ### Please remove manually!
+ // ### N.B. Legitimate strings may be marked// ### as unused!
+ // ### Please see http://tikiwiki.org/tiki-index.php?page=UnusedWords for further info
++
++// ################################ ESTUDIO LIVRE HACK #######################
++"since_last_visit_new" => "Últimas Alterações",
++"who_is_there" => "amigos online",
++// ################################ ESTUDIO LIVRE HACK END ###################
++
+ "categorize" => "categorizar",
+ "Set prefs" => "Definir prefs",
+ "creation date" => "data de criação",

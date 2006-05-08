@@ -1,0 +1,52 @@
+--- /home/nano/src/tiki/lib/tikilib.php	2006-03-22 16:48:02.000000000 -0300
++++ lib/tikilib.php	2006-03-31 18:12:43.000000000 -0300
+@@ -4698,6 +4698,8 @@
+ 		$data = preg_replace("/===([^\=]+)===/", "<span style=\"text-decoration:underline;\">$1</span>", $data);
+ 		// Center text
+ 		$data = preg_replace("/::(.+?)::/", "<div align=\"center\">$1</div>", $data);
++		// ESTUDIOLIVRE HACK - wiki template
++		$this->getWikiTemplate($data);
+ 	}
+ 
+     // definitively put out the protected words ))protectedWord((
+@@ -5529,6 +5531,40 @@
+ 
+ 	return $data;
+     }
++		    
++    function getWikiTemplate(&$data) {
++      global $templateStack;      
++      $template = array();
++      $matches = array();
++      
++      preg_match_all("/(?s)\{\{(.*?)(?:\|(.*?))?\}\}/", $data, $template);
++
++      if($template) {      
++	
++	for($j=0; $j<sizeof($template[0]); $j++) {
++	  
++	  if(isset($templateStack[$template[1][$j]])) {
++	    global $smarty;
++	    $smarty->assign('msg', tra("ha!, queria me pegar em um loop infinito ein?"));
++	    $smarty->display("error.tpl");
++	    die;
++	  }
++   
++	  $templateStack[$template[1][$j]] = true;
++	  $info = $this->get_page_info($template[1][$j]);
++	  $pdata = $this->parse_data($info["data"],$info["is_html"]);
++	  $templateStack[$template[1][$j]] = false;
++	  if(isset($template[2][$j])){
++	    preg_match_all("/(?s)(.+?)\=(.+?)(?:\||$)/", $template[2][$j], $matches);
++	  
++	    for($i=0; $i<sizeof($matches[0]); $i++){
++	      $pdata = preg_replace("/" . trim($matches[1][$i]) . "/", trim($matches[2][$i]), $pdata);
++	    }
++	  }
++	  $data = preg_replace("/(?s)\{\{(.*?)\}\}/", trim($pdata), $data, 1);
++	}
++      }
++    }
+ 
+     function parse_smileys($data) {
+ 	global $feature_smileys;
