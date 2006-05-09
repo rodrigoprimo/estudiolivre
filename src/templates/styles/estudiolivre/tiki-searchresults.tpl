@@ -9,40 +9,39 @@
 
 {if !( $searchStyle eq "menu" )}
 
-  {* {tr}Search in{/tr}:<br/> *}
-  {* <a class="linkbut" href="tiki-searchresults.php?highlight={$words}&amp;where=pages">{tr}All{/tr}</a> *}
-
   <div id="searchOptionsCont">
 
-    {if $feature_wiki eq 'y'}
-     <a class="linkbut" href="tiki-searchresults.php?highlight={$words}&amp;where=wikis">{tr}Wiki{/tr}</a>
+    <a class="linkbut{if $where eq 'pages'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=pages">{tr}All{/tr}</a>
+
+    {if $feature_wiki eq 'y'} 
+     <a class="linkbut{if $where eq 'wikis'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=wikis">{tr}Wiki{/tr}</a>
     {/if}
     
     {*if $feature_galleries eq 'y'}
-     <a class="linkbut selected" href="tiki-searchresults.php?highlight={$words}&amp;where=galleries">{tr}galleries{/tr}</a>
+     <a class="linkbut{if $where eq 'galleries'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=galleries">{tr}galleries{/tr}</a>
 
-     <a class="linkbut" href="tiki-searchresults.php?highlight={$words}&amp;where=images">{tr}images{/tr}</a>
+     <a class="linkbut{if $where eq 'images'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=images">{tr}images{/tr}</a>
     {/if*}
     
     {if $feature_file_galleries eq 'y'}
-     <a class="linkbut" href="tiki-searchresults.php?highlight={$words}&amp;where=files">{tr}files{/tr}</a>
+     <a class="linkbut{if $where eq 'files'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=files">{tr}files{/tr}</a>
     {/if}
     {if $feature_forums eq 'y'}
-     <a class="linkbut selected" href="tiki-searchresults.php?highlight={$words}&amp;where=forums">{tr}forums{/tr}</a>
+     <a class="linkbut{if $where eq 'forums'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=forums">{tr}forums{/tr}</a>
     {/if}
     {if $feature_faqs eq 'y'}
-     <a class="linkbut" href="tiki-searchresults.php?highlight={$words}&amp;where=faqs">{tr}faqs{/tr}</a>
+     <a class="linkbut{if $where eq 'faqs'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=faqs">{tr}faqs{/tr}</a>
     {/if}
     {if $feature_blogs eq 'y'}
-     <a class="linkbut" href="tiki-searchresults.php?highlight={$words}&amp;where=blogs">{tr}blogs{/tr}</a>
-     <a class="linkbut" href="tiki-searchresults.php?highlight={$words}&amp;where=posts">{tr}blog posts{/tr}</a>
+     <a class="linkbut{if $where eq 'blogs'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=blogs">{tr}blogs{/tr}</a>
+     <a class="linkbut{if $where eq 'posts'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=posts">{tr}blog posts{/tr}</a>
     {/if}
     {if $feature_directory eq 'y'}
-     <a class="linkbut" href="tiki-searchresults.php?highlight={$words}&amp;where=directory">{tr}directory{/tr}</a>
+     <a class="linkbut{if $where eq 'directory'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=directory">{tr}directory{/tr}</a>
     {/if}
 
     {if $feature_articles eq 'y'}
-     <a class="linkbut" href="tiki-searchresults.php?highlight={$words}&amp;where=articles">{tr}articles{/tr}</a>
+     <a class="linkbut{if $where eq 'articles'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=articles">{tr}articles{/tr}</a>
     {/if}
   </div>
 
