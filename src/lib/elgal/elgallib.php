@@ -75,7 +75,6 @@ class ELGalLib extends TikiLib {
     
   function list_all_uploads($tipos = array(), $offset = 0, $maxRecords = -1, $sort_mode = 'data_publicacao_desc', $find = '', $filters = array()) {
       global $user;
-      
       if ($find) {
 	  $mid = " where (a.`titulo` like ? or a.`descricao` like ?) ";
 	  $bindvals=array('%'.$find.'%','%'.$find.'%');
@@ -91,7 +90,7 @@ class ELGalLib extends TikiLib {
 			$bindvals[] = $tipo;
 		}
 		//1 eh valor impossivel, hackzinho pra nao ter que fazer regexp pra fechar o in
-		$mid .= '1) ';
+		$mid .= '"0") ';
       }
 
       foreach ($filters as $key => $value) {
@@ -107,7 +106,6 @@ class ELGalLib extends TikiLib {
       }
 
       $query = "select a.*, a.`titulo` as nomeArquivo, l.`subTipo` licenca, `link_imagem`, `link_human_readable` $tables $mid and a.`licencaId`=l.`licencaId` and `publicado`=1 order by ".$this->convert_sortmode($sort_mode);
-
       $result = $this->query($query,$bindvals,$maxRecords,$offset);
     
       if ($result) {
