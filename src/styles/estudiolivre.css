@@ -237,14 +237,14 @@ img {
 	border-right: 2px solid #ff8200;
 }
 #tiki-midVideo {
-	border-top: 5px solid #ff0400;
-	border-bottom: 5px solid #ff0400;
-	border-right: 2px solid #ff0400;
+	border-top: 5px solid #ff8f88;
+	border-bottom: 5px solid #ff8f88;
+	border-right: 2px solid #ff8f88;
 }
 #tiki-midGraf {
-	border-top: 5px solid #8742c9;
-	border-bottom: 5px solid #8742c9;
-	border-right: 2px solid #8742c9;
+	border-top: 5px solid #b7a4d3;
+	border-bottom: 5px solid #b7a4d3;
+	border-right: 2px solid #b7a4d3;
 }
 #tiki-midAcervo {
 	border-top: 5px solid #91cd6d;
@@ -295,12 +295,12 @@ img {
 	border-left:20px solid #ff8200;
 }
 #localMenu li.selectedGraf {
-	background-color:#8742c9;
-	border-left:20px solid #8742c9;
+	background-color:#b7a4d3/*8742c9*/;
+	border-left:20px solid #b7a4d3;
 }
 #localMenu li.selectedVideo {
-	background-color:#ff0400;
-	border-left:20px solid #ff0400;
+	background-color:#ff8f88/*ff0400*/;
+	border-left:20px solid #ff8f88;
 }
 
 /* El gallery home */
@@ -425,9 +425,11 @@ img {
 #gTags {
 	width:100%;
 	display:block;
-	background:#ebf6e4;
+	background:#eff8e9;
 	position:absolute;
+	padding:2px 0px 3px 10px;
 	bottom:-15px;
+	color:#
 }
 
 #gNameAuthor {

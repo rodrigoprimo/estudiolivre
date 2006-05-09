@@ -62,7 +62,7 @@
     </div>
     
     <div id="gTags">
-    tag1 tag2 tag3
+      <a href="#">tag1</a>, <a href="#">tag2</a>, <a href="#">tag3</a>, <a href="#">tag4</a>, <a href="#">tag5</a>...
     </div>
   </div>
   

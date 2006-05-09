@@ -143,7 +143,12 @@
      <hr>
     
     <div id="moduleLastChanges">
-      Ultimas Alterações <a href="#">[+]</a>
+      <a href="tiki-lastchanges.php?days=0">Ultimas Alterações</a> <a href="#" onClick="toggle('moduleLastChangesMore')" onFocus="this.blur()">[+]</a>
+      <div id='moduleLastChangesMore' style="display:none;">
+      	{foreach from=$modLastModif item='page'}
+	  <a href="tiki-index.php?page={$page.pageName}">{$page.pageName}</a> {$page.user}<br/>
+	{/foreach}
+      </div>
     </div>
     
     <hr>
