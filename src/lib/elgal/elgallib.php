@@ -73,7 +73,7 @@ class ELGalLib extends TikiLib {
     }
   }
     
-  function list_all_uploads($tipo = false, $offset = 0, $maxRecords = -1, $sort_mode = 'data_publicacao_desc', $find = '', $filters = array()) {
+  function list_all_uploads($tipos = array(), $offset = 0, $maxRecords = -1, $sort_mode = 'data_publicacao_desc', $find = '', $filters = array()) {
       global $user;
       
       if ($find) {
@@ -84,9 +84,14 @@ class ELGalLib extends TikiLib {
 	  $bindvals=array();
       }
 
-      if ($tipo) {
-	  $mid .= ' and a.`tipo` = ? ';
-	  $bindvals[] = $tipo;
+      if ($tipos) {
+	  $mid .= ' and a.`tipo` in (';
+		foreach($tipos as $tipo) {
+			$mid .= '?,';
+			$bindvals[] = $tipo;
+		}
+		//1 eh valor impossivel, hackzinho pra nao ter que fazer regexp pra fechar o in
+		$mid .= '1) ';
       }
 
       foreach ($filters as $key => $value) {
