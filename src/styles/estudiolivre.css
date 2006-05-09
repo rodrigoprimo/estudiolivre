@@ -330,16 +330,18 @@ img {
 	 float:left
 }
 
-#buttonActive {
+.buttonActive {
 	float:left;
 	height:20px;
 	background-image:url(estudiolivre/bMidActive.png);
+	cursor: pointer;
 }
 
-#buttonInactive {
+.buttonInactive {
 	float:left;
 	height:20px;
 	background-image:url(estudiolivre/bMidInac.png);
+	cursor: pointer;	
 }
 
 #rightContainerTop {
