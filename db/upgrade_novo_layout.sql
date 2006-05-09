@@ -1,0 +1,1 @@
+delete from tiki_theme_control_categs;
