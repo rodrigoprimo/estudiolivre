@@ -19,7 +19,7 @@
         <li><a href="#">pessoas</a></li>
       </ul>
       <input id="searchField" name="highlight" size="15" type="text" accesskey="s" value="Buscar" onFocus="this.value=''" /><input class="submit" type="image" name="search" src="styles/estudiolivre/bSearch.png">
-      <a class="searchMore" href="#">mais opções de busca <span>+</span></a>
+      <a class="searchMore" href="tiki-searchresults.php">mais opções de busca <span>+</span></a>
     </form>
   </div>
 </div>
