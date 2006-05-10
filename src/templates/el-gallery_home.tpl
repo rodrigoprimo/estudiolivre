@@ -16,22 +16,22 @@
     <ul id="listFiltersButtons">
     
       <img id="listFilterImg0" alt="" src="styles/estudiolivre/bLeftAct.png" />
-      <li id="listFilterBut0" class="buttonActive" onClick="toggleFilter(this, 1)">
-	  audio
+      <li id="listFilterBut0" class="buttonActive" onClick="toggleFilter(this, 0, 'Audio')">
+	  áudio
       </li>
       
       <img id="listFilterImg1" alt="" src="styles/estudiolivre/bAct2Act.png" />
-      <li id="listFilterBut1" class="buttonActive" onClick="toggleFilter(this, 2)">
+      <li id="listFilterBut1" class="buttonActive" onClick="toggleFilter(this, 1, 'Imagem')">
 	  gráfico
       </li>
       
       <img id="listFilterImg2" alt="" src="styles/estudiolivre/bAct2Act.png" />
-      <li id="listFilterBut2" class="buttonActive" onClick="toggleFilter(this, 3)">
+      <li id="listFilterBut2" class="buttonActive" onClick="toggleFilter(this, 2, 'Video')">
 	  vídeo
       </li>
       
       <img id="listFilterImg3" alt="" src="styles/estudiolivre/bAct2Inac.png" />
-      <li id="listFilterBut3" class="buttonInactive" onClick="toggleFilter(this, 4)">
+      <li id="listFilterBut3" class="buttonInactive" onClick="toggleFilter(this, 3, 'Texto')">
 	  texto
       </li>
       
@@ -66,7 +66,7 @@
 </div>
 <!-- List Options End -->
 <div id="gListCont">
-{foreach from=$all item=p}
+{foreach from=$arquivos item=p}
   {include file="el-gallery_list_item.tpl" arquivo=$p}
 {/foreach}
 </div>

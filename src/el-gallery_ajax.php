@@ -35,25 +35,20 @@ function vota($arquivoId, $nota) {
     return $objResponse;
 } 
 
-function get_files($tipo, $offset, $maxRecords, $sort_mode, $find, $filters) {
+function get_files($tipos, $offset, $maxRecords, $sort_mode, $find, $filters) {
     global $elgallib, $smarty;
 
     $objResponse = new xajaxResponse();
 
-    $files = $elgallib->list_all_uploads($tipo, $offset, $maxRecords, $sort_mode, $find, $filters);
+    $files = $elgallib->list_all_uploads($tipos, $offset, $maxRecords, $sort_mode, $find, $filters);
     $smarty->assign_by_ref('arquivos',$files);
     $smarty->assign('maxRecords', $maxRecords);
-    $smarty->assign('tipo', $tipo);
     $smarty->assign('offset', $offset);
-    $smarty->assign('total', $elgallib->count_all_uploads($tipo));
 
-    $objResponse->addAssign("content-".$tipo,
-			    "innerHTML",
-			    $smarty->fetch("el-gallery_section.tpl"));
+    $objResponse->addAssign("gListCont", "innerHTML", $smarty->fetch("el-gallery_section.tpl"));
     $objResponse->addScript("acervoCache('$tipo', $offset, $maxRecords, '$sort_mode', '$find', '$filters')");
     
     return $objResponse;
-
 }
 
 ?>
