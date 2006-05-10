@@ -1,18 +1,9 @@
 <div id="sideContent">
   {if $category eq "Áudio"}
-    <img src="styles/estudiolivre/logoAudio.png">
-  {elseif $category eq "Gráfico"}
-    <img src="styles/estudiolivre/logoGrafi.png">
-  {elseif $category eq "Vídeo"}
-    <img src="styles/estudiolivre/logoVideo.png">
-  {elseif $style eq "estudiolivre_biblio.css"}
-    <img src="styles/estudiolivre/logoAcervo.png">
-  {/if}
-
-<div id="localMenu">
-<ul>
   {********AUDIO*********}
-  {if $category eq "Áudio"}
+    <a href="tiki-index.php?page=Áudio"><img src="styles/estudiolivre/logoAudio.png"></a>
+	<div id="localMenu">
+	<ul>
     {if $page eq "Softwares de Edição de Áudio"}
        <li class="selectedAudio">softwares</li>
     {else}
@@ -36,9 +27,13 @@
     {else}
         <li><a href="tiki-index.php?page=Links+de+%C3%81udio">links</a></li>
     {/if}
-
-  {*********GRAFICO********}
+	</ul>
+	</div>
   {elseif $category eq "Gráfico"}
+  {*********GRAFICO********}
+    <a href=""><img src="styles/estudiolivre/logoGrafi.png"></a>
+	<div id="localMenu">
+	<ul>
     {if $page eq "Softwares de Gráfico"}
        <li class="selectedGraf">softwares</li>
     {else}
@@ -62,10 +57,13 @@
     {else}
        <li><a href="tiki-index.php?page=Links de Gráfico">links</a></li>
     {/if}
-
-
-  {*********VIDEO********}
+	</ul>
+	</div>
   {elseif $category eq "Vídeo"}
+  {*********VIDEO********}
+    <a href=""><img src="styles/estudiolivre/logoVideo.png"></a>
+	<div id="localMenu">
+	<ul>
     {if $page eq "Softwares de Vídeo"}
        <li class="selectedVideo">softwares</li>
     {else}
@@ -89,25 +87,23 @@
     {else}
        <li><a href="tiki-index.php?page=Links de Vídeo">links</a></li>
     {/if}
-    
-
-  {*********ACERVO********}
+	</ul>
+	</div>
   {elseif $style eq "estudiolivre_biblio.css"}
-    {if $current_location eq "el-gallery_home.php"}
-      <li class="selectedAcervo">home</li>
-    {else}
-      <li><a href="el-gallery_home">home</a></li>
-    {/if}
-
+  {*********ACERVO********}
+    <a href=""><img src="styles/estudiolivre/logoAcervo.png"></a>
+	<div id="localMenu">
+	<ul>
     {if $current_location eq "el-gallery_upload.php"}
-      <li class="selectedAcervo">compartilhe</li>
+      <li class="selectedAcervo">compartilhe sua obra</li>
     {else}
-         <li><a href="el-gallery_upload.php">compartilhe</a></li>
+         <li><a href="el-gallery_upload.php">compartilhe sua obra</a></li>
     {/if}
-
+    
+     <li><a href="tiki-view_forum.php?forumId=16">sobre o acervo</a></li>
+	</ul>
+	</div>
   {/if}
-</ul>
-</div>
 
 
 <div id="userMenu">

@@ -250,6 +250,7 @@ img {
 	border-top: 5px solid #91cd6d;
 	border-bottom: 5px solid #91cd6d;
 	border-right: 2px solid #91cd6d;
+	padding: 0px 0px 0px 0px;
 }
 
 #tiki-mid .wikitext {
