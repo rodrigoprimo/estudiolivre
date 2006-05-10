@@ -392,7 +392,7 @@ img {
 }
 
 #gListItem * {
-	eborder:1px solid black;
+	/*border:1px solid black;*/
 }
 
 
@@ -594,12 +594,12 @@ DIV.gUpIcon {
 #gUpList {
 	position:relative;
 	left:3px;
-	eborder:1px solid red;
+	/*border:1px solid red;*/
 	text-align:left;
 }
 
 #gUpList IMG {
-	eborder:1px solid grey;
+	/*border:1px solid grey;*/
 	position:relative;
 	top:4px;
 }
