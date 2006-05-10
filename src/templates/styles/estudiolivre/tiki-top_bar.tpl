@@ -12,14 +12,15 @@
   <script language="JavaScript" src="lib/elgal/busca.js"></script>
 
   <div id="search">
-    <form class="searchForm" method="get" action="tiki-searchresults.php" >
+    <form id='form-busca' class="searchForm" method="get" action="tiki-searchresults.php" >
       <input type="hidden" name="where" value="pages">
       <ul class="searchOptions">
         <li id="busca-wiki" class=""><a onclick="marcaBusca('wiki')">wiki</a></li>
         <li id="busca-acervo" class=""><a onclick="marcaBusca('acervo')">acervo</a></li>
+        <li id="busca-forum" class=""><a onclick="marcaBusca('forum')">f&oacute;rum</a></li>
       </ul>
       <input id="searchField" name="highlight" size="15" type="text" accesskey="s" value="Buscar" onFocus="this.value=''" /><input class="submit" type="image" name="search" src="styles/estudiolivre/bSearch.png">
-      <a class="searchMore" href="tiki-searchresults.php">mais opções de busca <span>+</span></a>
+{*      <a class="searchMore" href="tiki-searchresults.php">mais opções de busca <span>+</span></a> *}
     </form>
   </div>
 </div>

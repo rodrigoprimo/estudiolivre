@@ -11,24 +11,30 @@
 
   <div id="searchOptionsCont">
 
+{*
     <a class="linkbut{if $where eq 'pages'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=pages">{tr}All{/tr}</a>
+*}
 
     {if $feature_wiki eq 'y'} 
-     <a class="linkbut{if $where eq 'wikis'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=wikis">{tr}Wiki{/tr}</a>
+     <a class="linkbut{if $where eq 'wikis'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=wikis">{tr}wiki{/tr}</a>
     {/if}
-    
-    {*if $feature_galleries eq 'y'}
+
+     <a class="linkbut{if $where eq 'wikis'} selected{/if}" href="el-gallery_search.php?highlight={$words}">acervo</a>
+{*    
+    {if $feature_galleries eq 'y'}
      <a class="linkbut{if $where eq 'galleries'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=galleries">{tr}galleries{/tr}</a>
 
      <a class="linkbut{if $where eq 'images'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=images">{tr}images{/tr}</a>
-    {/if*}
+    {/if}
     
     {if $feature_file_galleries eq 'y'}
      <a class="linkbut{if $where eq 'files'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=files">{tr}files{/tr}</a>
     {/if}
+*}
     {if $feature_forums eq 'y'}
      <a class="linkbut{if $where eq 'forums'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=forums">{tr}forums{/tr}</a>
     {/if}
+{*
     {if $feature_faqs eq 'y'}
      <a class="linkbut{if $where eq 'faqs'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=faqs">{tr}faqs{/tr}</a>
     {/if}
@@ -43,6 +49,7 @@
     {if $feature_articles eq 'y'}
      <a class="linkbut{if $where eq 'articles'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=articles">{tr}articles{/tr}</a>
     {/if}
+*}
   </div>
 
 {/if}
