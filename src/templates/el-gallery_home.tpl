@@ -1,5 +1,6 @@
 <!-- el-gallery_home.tpl begin -->
 
+{$xajax_js}
 <script language="JavaScript" src="lib/elgal/el_home.js"></script>
 
 <!-- Feature Wiki Begin -->

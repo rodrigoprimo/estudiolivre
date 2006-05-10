@@ -1,6 +1,9 @@
-<?
+<?php
+
 require_once("tiki-setup.php");
 require_once("lib/elgal/elgallib.php");
+
+require_once("el-gallery_ajax.php");
 
 $smarty->assign('style', 'estudiolivre_biblio.css');
 

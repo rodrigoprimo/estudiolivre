@@ -1,25 +1,39 @@
 var status = new Array('Act', 'Act', 'Act', 'Inac');
 var tipos = new Array('Audio', 'Video', 'Imagem')
+var acervo_cache = new Array();
 
 function arrayContains(obj) {
 	for(var i = 0; i < this.length; i++)
 		if(this[i] == obj) return i;
-	return false;
+	return -1;
 }
 
 function arrayRemove(obj) {
 	var i = this.contains(obj);
-	if(i)
-		this[i] = this.pop();
+	if(i >= 0)
+		this.splice(i,1);
 }
 
 function arrayAdd(obj) {
-	if(!this.contains(obj)) this.push(obj);
+	if(this.contains(obj) < 0) this.push(obj);
 }
 
 Array.prototype.contains = arrayContains;
 Array.prototype.remove = arrayRemove;
 Array.prototype.add = arrayAdd;
+
+function acervoCache(tipos, offset, maxRecords, sort_mode, find, filters) {
+    acervo_cache[tipos+offset+maxRecords+sort_mode+find+filters] = document.getElementById('gListCont').innerHTML;
+}
+
+function el_get_files(tipos, offset, maxRecords, sort_mode, find, filters) {
+    if(acervo_cache[tipos+offset+maxRecords+sort_mode+find+filters]) {
+		document.getElementById('gListCont').innerHTML = acervo_cache[tipos+offset+maxRecords+sort_mode+find+filters];
+    }
+    else {
+		xajax_get_files(tipos, offset, maxRecords, sort_mode, find, filters);
+    }
+}
 
 function toggleFilter(button, position, tipo) {
 	var stat;
@@ -49,7 +63,7 @@ function toggleFilter(button, position, tipo) {
 			break;
 	}
 	
-	xajax_get_files(tipos, 0, 5, 'data_publicacao_desc', '', '');
-	//el_get_files(tipos, 0, 5, 'data_publicacao_desc','','');
+	xajax_get_files(tipos, 0, 5, 'data_publicacao_desc', '', new Array());
+	//el_get_files(tipos, 0, 5, 'data_publicacao_desc','', new Array());
 	
 }
