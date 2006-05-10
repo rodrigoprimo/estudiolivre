@@ -8,7 +8,7 @@ $xajax = new xajax();
 
 $xajax->statusMessagesOff();
 $xajax->waitCursorOn();
-$xajax->debugOn();
+$xajax->debugOff();
 $xajax->setLogFile("/tmp/xajax.log");
 /*
 $xajax->registerPreFunction('xajax_pre_loading');
