@@ -1,3 +1,5 @@
+/* esse arquivo ta zuado, to comentando tudo pra ver se alguma coisa para de funcionar - asa
+ * 
 var selected = null;
 var thumbUp = true;
 
@@ -34,3 +36,4 @@ function toggleThumbUp() {
 	thumbUp = true;
     }
 }
+*/
