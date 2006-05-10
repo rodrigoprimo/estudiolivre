@@ -63,7 +63,9 @@ function toggleFilter(button, position, tipo) {
 			break;
 	}
 	
-	xajax_get_files(tipos, 0, 5, 'data_publicacao_desc', '', new Array());
+	xajax_get_files(tipos, 0, 5, 'data_publicacao_desc', '');
 	//el_get_files(tipos, 0, 5, 'data_publicacao_desc','', new Array());
 	
 }
+
+xajax_get_files(tipos, 0, 5, 'data_publicacao_desc', '');

@@ -120,13 +120,18 @@ class ELGalLib extends TikiLib {
       }
   }
 
-  function count_all_uploads($tipo = false, $user = false) {
+  function count_all_uploads($tipos = array(), $user = false) {
       $query = "select count(*) from `el_arquivo` where publicado=1";
       $bindvals = array();
 
-      if ($tipo) {
-	  $query .= " and `tipo`=?";
-	  $bindvals[] = $tipo;
+	  if ($tipos) {
+	  $query .= ' and `tipo` in (';
+		foreach($tipos as $tipo) {
+			$query .= '?,';
+			$bindvals[] = $tipo;
+		}
+		//1 eh valor impossivel, hackzinho pra nao ter que fazer regexp pra fechar o in
+		$query .= '"0") ';
       }
 
       if ($user) {

@@ -1,8 +1,5 @@
 <!-- el-gallery_home.tpl begin -->
 
-{$xajax_js}
-<script language="JavaScript" src="lib/elgal/el_home.js"></script>
-
 <!-- Feature Wiki Begin -->
 <div id="gHomeWiki" {if $tiki_p_edit eq 'y'} ondblclick="location.href='tiki-editpage.php?page=destak'"{/if}>
   {$destak}
@@ -53,24 +50,16 @@
       </select>
     </div>
     <div  id="listNav">
-      <a href="#">&laquo;</a>
-      <a href="#">&lt;</a>
-      <a href="#">1</a>,
-      <a href="#">2</a>,
-      <span class="selected">3</span>
-      ...
-      <a href="#">12</a>
-      <a href="#">&gt;</a>
-      <a href="#">&raquo;</a>
     </div>
   </div>
 </div>
 <!-- List Options End -->
 <div id="gListCont">
-{foreach from=$arquivos item=p}
-  {include file="el-gallery_list_item.tpl" arquivo=$p}
-{/foreach}
 </div>
+
+{$xajax_js}
+<script language="JavaScript" src="lib/elgal/el_home.js"></script>
+
 <!-- el-gallery_home.tpl end -->
 
 {$search_url}

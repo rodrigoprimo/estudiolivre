@@ -8,7 +8,7 @@ $xajax = new xajax();
 
 $xajax->statusMessagesOff();
 $xajax->waitCursorOn();
-$xajax->debugOff();
+$xajax->debugOn();
 $xajax->setLogFile("/tmp/xajax.log");
 /*
 $xajax->registerPreFunction('xajax_pre_loading');
@@ -34,17 +34,25 @@ function vota($arquivoId, $nota) {
     return $objResponse;
 } 
 
-function get_files($tipos, $offset, $maxRecords, $sort_mode, $find, $filters) {
+function get_files($tipos, $offset, $maxRecords, $sort_mode, $find, $filters = array()) {
     global $elgallib, $smarty;
 
     $objResponse = new xajaxResponse();
+	$total = $elgallib->count_all_uploads($tipos);
 
     $files = $elgallib->list_all_uploads($tipos, $offset, $maxRecords, $sort_mode, $find, $filters);
     $smarty->assign_by_ref('arquivos',$files);
     $smarty->assign('maxRecords', $maxRecords);
     $smarty->assign('offset', $offset);
+	$smarty->assign('sort_mode', $sort_mode);
+	$smarty->assign('total', $total);
+	$smarty->assign('find', $find);
+	$smarty->assign('filters', $filters);
+	$smarty->assign('page', ($offset/$maxRecords)+1);
+	$smarty->assign('lastPage', ceil($total/$maxRecords));
 
     $objResponse->addAssign("gListCont", "innerHTML", $smarty->fetch("el-gallery_section.tpl"));
+    $objResponse->addAssign("listNav", "innerHTML", $smarty->fetch("el-gallery_pagination.tpl"));
     //$objResponse->addScript("acervoCache('$tiposHr', $offset, $maxRecords, '$sort_mode', '$find', '$filtersHr')");
     
     return $objResponse;
