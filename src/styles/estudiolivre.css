@@ -13,7 +13,7 @@ body {
 	padding: 5px 10px 5px 10px;
 	font-family: BitStream Vera Sans, Verdana;
 	font-size:12px;
-	/* Este degradê tah funcionando marromeno
+	/* Este degradÃª tah funcionando marromeno
 	background-image:url(estudiolivre/bgGradient.png);
 	background-repeat:repeat-x;
 	background-position: bottom;*/
@@ -799,5 +799,33 @@ A.gUpmore {
 	text-align:center;
 }
 
-/* footer */
+/* user page */
 
+#userPage {
+	border: 1px solid #00f;
+}
+
+#uName {
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+#uContactKarmaAccount {
+}
+	
+#uContact {
+	float:left;
+}
+
+#uKarmaThumb {
+	float:left;
+	border-left:2px solid grey;
+	border-right:2px solid grey;
+}
+
+#uAccountInfo {
+	float:left;
+}
+
+/* footer */
