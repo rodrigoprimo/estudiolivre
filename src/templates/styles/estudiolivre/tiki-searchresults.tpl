@@ -100,11 +100,11 @@
 
 {if $words}
 
-	{tr}Found{/tr} "{$words}" {tr}in{/tr} {$cant_results} {$where2}
-	
-	
 	{if !($searchNoResults) }
+	{if $results}
+	{tr}Found{/tr} "{$words}" {tr}in{/tr} {$cant_results} {$where2}
 	<br /><br />
+	{/if}
 	{section  name=search loop=$results}
 	<a href="{$results[search].href}&amp;highlight={$words}" class="wiki">{$results[search].pageName|strip_tags}</a> ({tr}Hits{/tr}: {$results[search].hits})
 	{if $feature_search_fulltext eq 'y'}
@@ -132,7 +132,7 @@
 	    {if $prev_offset >= 0}
 	      [<a class="linkbut" href="tiki-searchresults.php?where={$where}&amp;highlight={$words}&amp;offset={$prev_offset}">{tr}prev{/tr}</a>]&nbsp;
 	    {/if}
-	  {tr}Page{/tr}: {$actual_page}/{$cant_pages}
+	  {if $cant_pages>0}{tr}Page{/tr}: {$actual_page}/{$cant_pages}{/if}
 	  {if $next_offset >= 0}
 	    &nbsp;[<a class="linkbut" href="tiki-searchresults.php?where={$where}&amp;highlight={$words}&amp;offset={$next_offset}">{tr}next{/tr}</a>]
 	  {/if}
