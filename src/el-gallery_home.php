@@ -14,6 +14,19 @@ $smarty->assign_by_ref('destak', $pdata);
 $avatar = $tikilib->get_user_avatar($user);
 $smarty->assign('avatar', $avatar);
 
+if(isset($_COOKIE['sortMode'])) {
+	$smarty->assign('sortMode', $_COOKIE['sortMode']);
+}
+if(isset($_COOKIE['sortDirection'])) {
+	if($_COOKIE['sortDirection'] == '_desc')
+		$smarty->assign('sortDirection', 'Down');
+	else
+		$smarty->assign('sortDirection', 'Up');
+	
+} else {
+	$smarty->assign('sortDirection', 'Down');	
+}
+
 $smarty->assign('new_files', $elgallib->new_files($user));
 $smarty->assign('arquivos',$elgallib->list_all_uploads(false, 0, 5));
 $smarty->assign('user_uploads', $elgallib->count_all_uploads(false,$user));

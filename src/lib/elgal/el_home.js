@@ -1,6 +1,8 @@
 var status = new Array('Inac','Inac','Inac','Inac');
 var tipos = new Array();
 var acervo_cache = new Array();
+var sortMode = 'data_publicacao';
+var sortDirection = '_desc'
 
 function arrayContains(obj) {
 	for(var i = 0; i < this.length; i++)
@@ -41,7 +43,14 @@ function initButtons() {
 		}
 	}
 	
-	xajax_get_files(tipos, 0, 5, 'data_publicacao_desc', '');
+	if(getCookie('sortMode')) {
+		sortMode = getCookie('sortMode');
+	}
+	if(getCookie('sortDirection')) {
+		sortDirection = getCookie('sortDirection');
+	}
+	
+	xajax_get_files(tipos, 0, 5, sortMode+sortDirection, '');
 	
 }
 
@@ -62,7 +71,7 @@ function toggleFilter(button, position, tipo) {
 	
 	setButton(button, position, tipo);
 	
-	xajax_get_files(tipos, 0, 5, 'data_publicacao_desc', '');
+	xajax_get_files(tipos, 0, 5, sortMode+sortDirection, '');
 	//el_get_files(tipos, 0, 5, 'data_publicacao_desc','', new Array());
 	
 }
@@ -96,4 +105,22 @@ function setButton(button, position, tipo) {
 			document.getElementById('listFilterImg'+next).src = 'styles/estudiolivre/b'+stat+'2'+status[next]+'.png';
 			break;
 	}
+}
+
+function toggleSortArrow(img) {
+	if (sortDirection == '_desc') {
+		sortDirection = '_asc';
+		img.src = 'styles/estudiolivre/sortArrowUp.png';
+	} else {
+		sortDirection = '_desc';
+		img.src = 'styles/estudiolivre/sortArrowDown.png';
+	}
+	setCookie('sortDirection', sortDirection);
+	xajax_get_files(tipos, 0, 5, sortMode+sortDirection, '');
+}
+
+function setSortMode(sel) {
+	sortMode = sel.value;
+	setCookie('sortMode', sortMode);
+	xajax_get_files(tipos, 0, 5, sortMode+sortDirection, '');
 }

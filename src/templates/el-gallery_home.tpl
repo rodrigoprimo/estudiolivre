@@ -45,11 +45,12 @@
   
   <div id="rightContainerTop">
     <div id="listOrder">
-      <a href="#"><img alt="" src="styles/estudiolivre/sortArrowDown.png" /></a>
-      <select style="decoration:none">
-        <option>Data</option>
-	<option>Estrelas</option>
-	<option>Downloads</option>
+      <img alt="" onClick="toggleSortArrow(this)" src="styles/estudiolivre/sortArrow{$sortDirection}.png" />
+      <select style="decoration:none" onChange="setSortMode(this)">
+        <option value="data_publicacao" {if $sortMode eq 'data_publicacao'}selected{/if}>Data</option>
+		<option value="rating" {if $sortMode eq 'rating'}selected{/if}>Estrelas</option>
+		<option value="hits" {if $sortMode eq 'hits'}selected{/if}>Downloads</option>
+		<option value="titulo" {if $sortMode eq 'titulo'}selected{/if}>Título</option>
       </select>
     </div>
     <div  id="listNav">
