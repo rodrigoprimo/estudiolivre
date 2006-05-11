@@ -1,4 +1,4 @@
-drop table `el_tipos_arquivos`;
+drop table `el_tipos_arquivo`;
 CREATE TABLE `el_tipos_arquivo` (
 	`tipoId` int(11) NOT NULL auto_increment,
 	`nome` varchar(64) default NULL,
@@ -7,15 +7,10 @@ CREATE TABLE `el_tipos_arquivo` (
 
 INSERT INTO `el_tipos_arquivo` VALUES (1,'Video',NULL),(2,'Audio',NULL),(3,'Imagem',NULL),(4,'Texto',NULL);
 
-INSERT INTO `users_grouppermissions` VALUES ('Registered','el_p_uload_files','');
-
-INSERT INTO `users_permissions` VALUES ('el_p_upload_files','Subir arquivos na galeria do Estúdio Livre','basic','estudiolivre');
-
-insert into users_permissions values('el_p_upload_files','Subir arquivos na galeria do Estdio Livre','basic','estudiolivre');
-
 drop table `el_arquivo`;
 create table `el_arquivo` (
        arquivoId int4 primary key auto_increment,
+       idFisico varchar(150), key(idFisico),
        tipo varchar(10) not null, key(tipo),
        user varchar(40) not null, key(user),
        licencaId int4 not null, key(licencaId),
@@ -27,7 +22,7 @@ create table `el_arquivo` (
        arquivo varchar(150) not null, key(arquivo),
        formato varchar(32) not null, key(formato), 
        tamanho int(40), key(tamanho),
-       descricao text, key(descricao),
+       descricao text, fulltext key(descricao),
        produtora varchar(100), key(produtora),
        contato varchar(100), key(contato),
        iSampled varchar(255), key(iSampled),
@@ -36,8 +31,7 @@ create table `el_arquivo` (
        rating tinyint not null, key(rating),
        palavrasChave varchar(255), key(palavrasChave),
        hits int4 not null,
-       thumbnail mediumblob,
-       idFisico varchar(150)
+       thumbnail mediumblob
 );
 
 drop table `el_arquivo_audio`;
@@ -49,8 +43,8 @@ create table `el_arquivo_audio` (
         sampleRate int not null, key(sampleRate),
         bitRate int not null, key(bitRate),
         genero varchar(50), key(genero), 
-        letra text, key(letra),
-        fichaTecnica text, key(fichaTecnica),
+        letra text, fulltext key(letra),
+        fichaTecnica text, fulltext key(fichaTecnica),
         album varchar(64) null
 );
 
@@ -65,7 +59,7 @@ create table `el_arquivo_video` (
        idiomaVideo varchar(20), key(idiomaVideo),
        legendas bool not null default 0, key(legendas),
        idiomaLegenda varchar(20), key(idiomaLegenda),
-       fichaTecnica text, key(fichaTecnica)
+       fichaTecnica text, fulltext key(fichaTecnica)
 );
 
 drop table `el_arquivo_imagem`;
@@ -73,7 +67,7 @@ create table `el_arquivo_imagem` (
        arquivoId int4 primary key,
        tamanhoImagemX int not null, key(tamanhoImagemX),
        tamanhoImagemY int not null, key(tamanhoImagemY),
-       dpi int not null, key(dpi),
+       dpi int not null, key(dpi)
 );
 
 #criacao tabela de licenças
