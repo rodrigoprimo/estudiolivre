@@ -9,6 +9,8 @@ if( !defined( 'PLUGINS_DIR' ) ) {
 	define('PLUGINS_DIR', 'lib/wiki-plugins');
 }
 
+require_once("lib/freetag/freetaglib.php");
+
 class ELGalLib extends TikiLib {
 
   var $valid_fields = array("album","thumbnail","licencaId","titulo","tipo","user","autor","donoCopyright","descricao","produtora","contato","siteRelacionado","iSampled","sampledMe","rating","duracao","tipoDoAudio","bpm","sampleRate","bitRate","genero","letra","fichaTecnica","tamanhoImagemX","tamanhoImagemY","temAudio","temCor","idiomaVideo","legendas","idiomaLegenda","dpi");
@@ -112,7 +114,9 @@ class ELGalLib extends TikiLib {
     
       if ($result) {
 		  $ret = array();
+		  global $freetaglib;
 		  while ($row = $result->fetchRow()) {
+		  	  $row['tags'] = $freetaglib->get_tags_on_object($row['arquivoId'], 'acervo');
 		      $ret[] = $row;
 		  }
 		  return $ret;
@@ -152,7 +156,9 @@ class ELGalLib extends TikiLib {
     $cant = $this->getOne($query_cant, array($user));
     $data = array();
     $result = $this->query($query, $bindvals);
+    global $freetaglib;
     while ($row = $result->fetchRow()) {
+      $row['tags'] = $freetaglib->get_tags_on_object($row['arquivoId'], 'acervo');		      
       $data[] = $row;
     }
     

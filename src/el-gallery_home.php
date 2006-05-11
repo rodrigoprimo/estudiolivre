@@ -5,6 +5,7 @@ require_once("lib/elgal/elgallib.php");
 
 require_once("el-gallery_ajax.php");
 
+//TODO mudar isso pra categories pra solucionar o problema das cores
 $smarty->assign('style', 'estudiolivre_biblio.css');
 
 $info = $tikilib->get_page_info('destak');
@@ -27,9 +28,9 @@ if(isset($_COOKIE['sortDirection'])) {
 	$smarty->assign('sortDirection', 'Down');	
 }
 
-$smarty->assign('new_files', $elgallib->new_files($user));
-$smarty->assign('arquivos',$elgallib->list_all_uploads(false, 0, 5));
-$smarty->assign('user_uploads', $elgallib->count_all_uploads(false,$user));
+//$smarty->assign('new_files', $elgallib->new_files($user));
+//$smarty->assign('arquivos',$elgallib->list_all_uploads(array('Video'), 0, 5));
+//$smarty->assign('user_uploads', $elgallib->count_all_uploads(false,$user));
 $smarty->assign('mid', 'el-gallery_home.tpl');
 $smarty->display('tiki.tpl');
 

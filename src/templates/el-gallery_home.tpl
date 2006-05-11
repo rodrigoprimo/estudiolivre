@@ -60,7 +60,7 @@
 <!-- List Options End -->
 <div id="gListCont">
 </div>
-
+{debug}
 <script language="JavaScript">initButtons()</script>
 
 

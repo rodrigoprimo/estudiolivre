@@ -62,7 +62,11 @@
     </div>
     
     <div id="gTags">
-      <a href="#">tag1</a>, <a href="#">tag2</a>, <a href="#">tag3</a>, <a href="#">tag4</a>, <a href="#">tag5</a>...
+    {foreach from=$arquivo.tags.data item=t}
+      <a href="tiki-browse_freetags.php?tag={$t.tag}">{$t.tag}</a> 
+    {foreachelse}
+      &nbsp;
+    {/foreach}
     </div>
   </div>
   

@@ -29,7 +29,6 @@ create table `el_arquivo` (
        sampledMe varchar(255), key(sampledMe),
        siteRelacionado varchar(255), key(siteRelacionado),
        rating tinyint not null, key(rating),
-       palavrasChave varchar(255), key(palavrasChave),
        hits int4 not null,
        thumbnail mediumblob
 );
