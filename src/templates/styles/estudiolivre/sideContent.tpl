@@ -31,7 +31,7 @@
 	</div>
   {elseif $category eq "Gráfico"}
   {*********GRAFICO********}
-    <a href=""><img src="styles/estudiolivre/logoGrafi.png"></a>
+    <a href="tiki-index.php?page=Gráfico"><img src="styles/estudiolivre/logoGrafi.png"></a>
 	<div id="localMenu">
 	<ul>
     {if $page eq "Softwares de Gráfico"}
@@ -61,7 +61,7 @@
 	</div>
   {elseif $category eq "Vídeo"}
   {*********VIDEO********}
-    <a href=""><img src="styles/estudiolivre/logoVideo.png"></a>
+    <a href="tiki-index.php?page=Vídeo"><img src="styles/estudiolivre/logoVideo.png"></a>
 	<div id="localMenu">
 	<ul>
     {if $page eq "Softwares de Vídeo"}
@@ -91,7 +91,7 @@
 	</div>
   {elseif $style eq "estudiolivre_biblio.css"}
   {*********ACERVO********}
-    <a href=""><img src="styles/estudiolivre/logoAcervo.png"></a>
+    <a href="el-gallery_home.php"><img src="styles/estudiolivre/logoAcervo.png"></a>
 	<div id="localMenu">
 	<ul>
     {if $current_location eq "el-gallery_upload.php"}
