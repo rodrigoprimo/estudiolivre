@@ -7,27 +7,31 @@
     </div>
     
     <div id="uContactKarmaAccount">
-      <div id="uContact">
-        <span class="uContactItem">{*tr}Real Name{/tr*}{$realName}</span>
-        <br />
-        <span class="uContactItem">{*tr}Real Name{/tr*}{$realName}</span>
-        <br />
-        <span class="uContactItem">{*tr}Real Name{/tr*}{$realName}</span>
-        <br />
-        <span class="uContactItem">{*tr}Real Name{/tr*}{$realName}</span>
+      <div id="uContact" class="uContactInfoCont">
+        <span class="uContactItem">Nome do Usuário</span>
+		<br />
+        <span class="uContactItem">email@email.com</span>
+		<br />
+        <span class="uContactItem"><a href="#">www.paginadocara.com</a></span>
+		<br />
+        <span class="uContactItem">Localizado em: São Paulo</span>
       </div>
 
-      <div id="uKarmaThumb">
+      <div id="uKarmaThumb" class="uContactInfoCont">
 		<div id="uKarma">
-		  <img src="" alt="" title="">karma
+		  <img class="uKarmaImg" src="styles/estudiolivre/iKarma.png">
+		  <img class="uKarmaImg" class="uKarmaImg" src="styles/estudiolivre/iKarma.png">
+		  <img class="uKarmaImg" src="styles/estudiolivre/iKarmaInactive.png">
+		  <img class="uKarmaImg" src="styles/estudiolivre/iKarmaInactive.png">
+		  <img class="uKarmaImg" src="styles/estudiolivre/iKarmaInactive.png">
 		</div>
 		<div id="uThumb">
-		  <img src="tiki-show_user_avatar.php?user={$user}" alt="" title="">
+		  <img id="uThumbImg" src="tiki-show_user_avatar.php?user={$user}" alt="" title="">
 		</div>
       </div>
 
-      <div id="uAccountInfo">
-        <span class="uContactItem">Membro desde ()</span>
+      <div id="uAccountInfo" class="uContactInfoCont">
+        <span class="uContactItem">Membro desde 02/10/2000</span>
         <br />
         <span class="uContactItem"><a href="#">Contribuições Recentes</a></span>
 
@@ -38,24 +42,23 @@
         <span class="uContactItem"><a href="#">Minha Licença Padrão (X)</a></span>
       </div>  
     </div>
-<br />
     <br />
-    <div id="uGallery">
-      <div id="uGalleryTitle">
-        Meus arquivos na minha galeriazinha... - feed
+    <div id="uGallery" class="uMainContainer">
+      <div id="uGalleryTitle" class="uMainTitle">
+        <h1>Gakeria pessoal</h1><h2> - feed</h2>
       </div>
-      <div id="uGalleryItems">
+      <div id="uGalleryItems" class="uMainItemContainer">
 		[include lista acervo]
       </div>
     </div>
-    <div id="uBlog">
-      <div id="uBlogTitle">
-        Blog - feed
+    <div id="uBlog" class="uMainContainer">
+      <div id="uBlogTitle" class="uMainTitle">
+        <h1>Blog</h1><h2> - feed</h2>
       </div>
-      <div id="uBlogItems">
+      <div id="uBlogItems" class="uMainItemContainer">
         <div class="uBlogItem">
           <div id="uBlogItemTitle">
-            <h1> Titulo Post</h1> - 29 do Tanto de 18etanto
+            <h1>Titulo Post</h1> - 29 do Tanto de 18etanto
           </div>
           <div id="uBlogItemText">
             Meu blog eh muito legal e eu gosto muito de postar nele e eu no sei escrever e eu
@@ -80,57 +83,56 @@
       </div>
     </div>
     <br />
-    <div id="uMsgs">
-      <div id="uMsgsTitle">
-        Recados - feed
+    <div id="uMsgs" class="uMainContainer">
+      <div id="uMsgsTitle" class="uMainTitle">
+        <h1>Recados</h1><h2> - feed</h2>
       </div>
-      <div id="uMsgItems">
-        <div id="uMsgItem">
+      <div id="uMsgItems" class="uMainItemContainer">
+        <div class="uMsgItem">
           <div class="uMsgAvatar">
-            <img alt="" title="" src="">
+            <img alt="" title="" src="tiki-show_user_avatar.php?user=criscabello">
           </div>
           
-          <div id="uMsgTxt">
-            <a href="#">rhwinter</a>: deposita aquela grana...
+          <div class="uMsgTxt">
+            <a href="#">cris</a>: deposita aquela grana...
           </div>
           
-          <div id="uMsgDate">
+          <div class="uMsgDate">
             16:25 - 26 de outubro de 2005
           </div>
-          <div id="uMsgDel">
+          <div class="uMsgDel">
             Delete
           </div>
         </div>
-        <div id="uMsgItem">
+        <div class="uMsgItem">
           <div class="uMsgAvatar">
-            <img alt="" title="" src="">
+            <img alt="" title="" src="tiki-show_user_avatar.php?user=nano">
           </div>
           
-          <div id="uMsgTxt">
-            <a href="#">uira</a>: Manquelas merdas...
+          <div class="uMsgTxt">
+            <a href="#">nano</a>: Manda aquelas merdas...
           </div>
           
-          <div id="uMsgDate">
+          <div class="uMsgDate">
             15:25 - 26 de outubro de 2005
           </div>
-          <div id="uMsgDel">
+          <div class="uMsgDel">
             Delete
           </div>
         </div>
       </div>
     </div>
     <br />
-    <div id="uWiki">
-    	<div id="uWikiTitle">Wiki do cara
+    <div id="uWiki" class="uMainContainer">
+    	<div id="uWikiTitle" class="uMainTitle"><h1>Wiki do cara</h1>
     	</div>
     	<div id="uWikiMid">
     	Texto do wiki do cara
         </div>
     </div>
   </div>
-</div>
 
-teste uira
+{*=============================================
 
 <h1><a class="pagetitle" href="tiki-user_information.php?view_user={$userwatch}">{tr}User Information{/tr}</a></h1>
 <hr>
@@ -158,7 +160,9 @@ teste uira
 <hr>
 
 <hr>
+*}
   {* Custom fields *}
+  {*
   {section name=ir loop=$customfields}
     {tr}{$customfields[ir].prefName}{/tr}: {$customfields[ir].value}
   {/section}
@@ -199,7 +203,7 @@ teste uira
 <hr>
 
 <hr>
-
+*}
 </div>
 
 

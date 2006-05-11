@@ -709,8 +709,6 @@ A.gUpButton:hover {
 	font-weight:bold;
 }
 
-
-
 #gUpRight {
 	overflow:hidden;
 }
@@ -799,33 +797,111 @@ A.gUpmore {
 	text-align:center;
 }
 
-/* user page */
+/* User Page */
 
 #userPage {
-	border: 1px solid #00f;
+	/*border: 1px solid #00f;
+	margin:5px;*/
 }
 
 #uName {
 	text-align: center;
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: bold;
+	margin-top:10px;
+	margin-bottom:10px;
 }
 
 #uContactKarmaAccount {
+	float:none;
+	overflow:hidden;
 }
-	
-#uContact {
+
+.uContactInfoCont {
+	margin:2px;
+	padding:5px;
 	float:left;
-}
+	width:30%;
+	text-align:center;
+}	
 
 #uKarmaThumb {
-	float:left;
-	border-left:2px solid grey;
 	border-right:2px solid grey;
+	border-left:2px solid grey;
 }
 
-#uAccountInfo {
+#uKarma {
+	margin-top:-5px;
+	margin-bottom:10px;
+}
+
+.uKarmaImg {
+	margin-left:2px;
+}	
+
+#uThumbImg {
+	height:90px;
+}	
+	
+.uContactItem {
+	display:block;
+	padding-bottom:0px;
+}	
+
+.uMainContainer {
+	border-top: 3px solid grey;
+	/*margin-bottom: 5px;*/
+	width:100%;
+	/*padding:5px;*/
+}
+
+.uMainTitle {
+	margin:0 0 5px 0;
+}
+
+.uMainTitle h1 {
+	display: inline;
+	font-size:16px;
+	font-weight: bold;
+}
+
+.uMainTitle h2 {
+	display: inline;
+	font-size:12px;
+	color: grey;
+}
+
+.uMainItemContainer {
+	margin-left:5px;
+}	
+
+.uBlogItem {
+	margin-bottom: 10px;
+	border-bottom: 1px solid grey;
+}
+
+#uBlogItemTitle h1 {
+	font-size:12px;
+	display:inline;
+}
+
+#uBlogItemText {
+	margin-left:10px;
+}
+
+#uBlogItemBottom{
+	text-align:right;
+}
+.uMsgItem{
+	margin-top:5px;
+}	
+
+.uMsgDate .uMsgDel .uMsgAvatar .uMsgTxt{
 	float:left;
+}
+
+.uMsgAvatar{
+	margin-right:5px;
 }
 
 /* footer */
