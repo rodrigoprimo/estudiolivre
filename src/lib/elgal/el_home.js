@@ -1,5 +1,5 @@
-var status = new Array('Act', 'Act', 'Act', 'Inac');
-var tipos = new Array('Audio', 'Video', 'Imagem')
+var status = new Array('Inac','Inac','Inac','Inac');
+var tipos = new Array();
 var acervo_cache = new Array();
 
 function arrayContains(obj) {
@@ -22,7 +22,30 @@ Array.prototype.contains = arrayContains;
 Array.prototype.remove = arrayRemove;
 Array.prototype.add = arrayAdd;
 
-function acervoCache(tipos, offset, maxRecords, sort_mode, find, filters) {
+function initButtons() {
+	
+	var hasCookie = false;
+	var localTipos = new Array('Audio', 'Imagem', 'Video', 'Texto');
+	
+	for(var i = 0; i < localTipos.length; i++) {
+		if(getCookie(localTipos[i])) {
+			if(getCookie(localTipos[i]) == '1') {
+				setButton(document.getElementById('listFilterBut'+i), i, localTipos[i]);
+			}
+			hasCookie = true;
+		}
+	}
+	if(!hasCookie) {
+		for(var i = 0; i < localTipos.length; i++) {
+			setButton(document.getElementById('listFilterBut'+i), i, localTipos[i]);
+		}
+	}
+	
+	xajax_get_files(tipos, 0, 5, 'data_publicacao_desc', '');
+	
+}
+
+function acervoCache(tipos,offet, maxRecords, sort_mode, find, filters) {
     acervo_cache[tipos+offset+maxRecords+sort_mode+find+filters] = document.getElementById('gListCont').innerHTML;
 }
 
@@ -36,15 +59,26 @@ function el_get_files(tipos, offset, maxRecords, sort_mode, find, filters) {
 }
 
 function toggleFilter(button, position, tipo) {
+	
+	setButton(button, position, tipo);
+	
+	xajax_get_files(tipos, 0, 5, 'data_publicacao_desc', '');
+	//el_get_files(tipos, 0, 5, 'data_publicacao_desc','', new Array());
+	
+}
+
+function setButton(button, position, tipo) {
 	var stat;
 	if(button.className == 'buttonActive') {
 		button.className = 'buttonInactive';
 		stat = 'Inac';
 		tipos.remove(tipo);
+		setCookie(tipo, 0);
 	} else {
 		button.className = 'buttonActive';
 		stat = 'Act';
 		tipos.add(tipo);
+		setCookie(tipo, 1);
 	}
 	status[position] = stat;
 	switch(position) {
@@ -62,10 +96,4 @@ function toggleFilter(button, position, tipo) {
 			document.getElementById('listFilterImg'+next).src = 'styles/estudiolivre/b'+stat+'2'+status[next]+'.png';
 			break;
 	}
-	
-	xajax_get_files(tipos, 0, 5, 'data_publicacao_desc', '');
-	//el_get_files(tipos, 0, 5, 'data_publicacao_desc','', new Array());
-	
 }
-
-xajax_get_files(tipos, 0, 5, 'data_publicacao_desc', '');

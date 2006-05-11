@@ -76,47 +76,48 @@ class ELGalLib extends TikiLib {
   function list_all_uploads($tipos = array(), $offset = 0, $maxRecords = -1, $sort_mode = 'data_publicacao_desc', $find = '', $filters = array()) {
       global $user;
       if ($find) {
-	  $mid = " where (a.`titulo` like ? or a.`descricao` like ?) ";
-	  $bindvals=array('%'.$find.'%','%'.$find.'%');
+		  $mid = " where (a.`titulo` like ? or a.`descricao` like ?) ";
+		  $bindvals=array('%'.$find.'%','%'.$find.'%');
       } else {
-	  $mid = " where 1=1 ";
-	  $bindvals=array();
+		  $mid = " where 1=1 ";
+		  $bindvals=array();
       }
 
       if ($tipos) {
-	  $mid .= ' and a.`tipo` in (';
+	    $mid .= ' and a.`tipo` in (';
 		foreach($tipos as $tipo) {
 			$mid .= '?,';
 			$bindvals[] = $tipo;
 		}
 		//1 eh valor impossivel, hackzinho pra nao ter que fazer regexp pra fechar o in
 		$mid .= '"0") ';
+      } else {
+		return array();
       }
 
       foreach ($filters as $key => $value) {
-	$mid .= " and `$key` like ? ";
-	$bindvals[] = '%'.$value.'%';
+		$mid .= " and `$key` like ? ";
+		$bindvals[] = '%'.$value.'%';
       }
 
       if (!$user) {
-	$tables = " from `el_arquivo` a, `el_licenca` l ";
+		$tables = " from `el_arquivo` a, `el_licenca` l ";
       } else {
-	$tables = ", ur.`rating` as user_rating from `el_arquivo` a,`el_licenca` l left join `el_arquivo_rating` ur on ur.`arquivoId` = a.`arquivoId` and ur.`user`=? ";
-	$bindvals = array_merge(array($user),$bindvals);
+		$tables = ", ur.`rating` as user_rating from `el_arquivo` a,`el_licenca` l left join `el_arquivo_rating` ur on ur.`arquivoId` = a.`arquivoId` and ur.`user`=? ";
+		$bindvals = array_merge(array($user),$bindvals);
       }
 
       $query = "select a.*, a.`titulo` as nomeArquivo, l.`subTipo` licenca, `link_imagem`, `link_human_readable` $tables $mid and a.`licencaId`=l.`licencaId` and `publicado`=1 order by ".$this->convert_sortmode($sort_mode);
       $result = $this->query($query,$bindvals,$maxRecords,$offset);
     
       if ($result) {
-	  $ret = array();
-	  while ($row = $result->fetchRow()) {
-	      $ret[] = $row;
-	  }
-	  return $ret;
-      }
-      else {
-	  return false;
+		  $ret = array();
+		  while ($row = $result->fetchRow()) {
+		      $ret[] = $row;
+		  }
+		  return $ret;
+      } else {
+		  return false;
       }
   }
 
@@ -125,18 +126,20 @@ class ELGalLib extends TikiLib {
       $bindvals = array();
 
 	  if ($tipos) {
-	  $query .= ' and `tipo` in (';
+	    $query .= ' and `tipo` in (';
 		foreach($tipos as $tipo) {
 			$query .= '?,';
 			$bindvals[] = $tipo;
 		}
 		//1 eh valor impossivel, hackzinho pra nao ter que fazer regexp pra fechar o in
 		$query .= '"0") ';
+      } else {
+      	return 0;
       }
 
       if ($user) {
-	  $query .= " and `user`=?";
-	  $bindvals[] = $user;
+		  $query .= " and `user`=?";
+		  $bindvals[] = $user;
       }
 
       return $this->getOne($query, $bindvals);

@@ -1,5 +1,8 @@
 <!-- el-gallery_home.tpl begin -->
 
+{$xajax_js}
+<script language="JavaScript" src="lib/elgal/el_home.js"></script>
+
 <!-- Feature Wiki Begin -->
 <div id="gHomeWiki" {if $tiki_p_edit eq 'y'} ondblclick="location.href='tiki-editpage.php?page=destak'"{/if}>
   {$destak}
@@ -13,22 +16,22 @@
   
     <ul id="listFiltersButtons">
     
-      <img id="listFilterImg0" alt="" src="styles/estudiolivre/bLeftAct.png" />
-      <li id="listFilterBut0" class="buttonActive" onClick="toggleFilter(this, 0, 'Audio')">
+      <img id="listFilterImg0" alt="" src="styles/estudiolivre/bLeftInac.png" />
+      <li id="listFilterBut0" class="buttonInactive" onClick="toggleFilter(this, 0, 'Audio')">
 	  áudio
       </li>
       
-      <img id="listFilterImg1" alt="" src="styles/estudiolivre/bAct2Act.png" />
-      <li id="listFilterBut1" class="buttonActive" onClick="toggleFilter(this, 1, 'Imagem')">
+      <img id="listFilterImg1" alt="" src="styles/estudiolivre/bInac2Inac.png" />
+      <li id="listFilterBut1" class="buttonInactive" onClick="toggleFilter(this, 1, 'Imagem')">
 	  gráfico
       </li>
       
-      <img id="listFilterImg2" alt="" src="styles/estudiolivre/bAct2Act.png" />
-      <li id="listFilterBut2" class="buttonActive" onClick="toggleFilter(this, 2, 'Video')">
+      <img id="listFilterImg2" alt="" src="styles/estudiolivre/bInac2Inac.png" />
+      <li id="listFilterBut2" class="buttonInactive" onClick="toggleFilter(this, 2, 'Video')">
 	  vídeo
       </li>
       
-      <img id="listFilterImg3" alt="" src="styles/estudiolivre/bAct2Inac.png" />
+      <img id="listFilterImg3" alt="" src="styles/estudiolivre/bInac2Inac.png" />
       <li id="listFilterBut3" class="buttonInactive" onClick="toggleFilter(this, 3, 'Texto')">
 	  texto
       </li>
@@ -57,8 +60,8 @@
 <div id="gListCont">
 </div>
 
-{$xajax_js}
-<script language="JavaScript" src="lib/elgal/el_home.js"></script>
+<script language="JavaScript">initButtons()</script>
+
 
 <!-- el-gallery_home.tpl end -->
 

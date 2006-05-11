@@ -53,6 +53,7 @@ function get_files($tipos, $offset, $maxRecords, $sort_mode, $find, $filters = a
 
     $objResponse->addAssign("gListCont", "innerHTML", $smarty->fetch("el-gallery_section.tpl"));
     $objResponse->addAssign("listNav", "innerHTML", $smarty->fetch("el-gallery_pagination.tpl"));
+    $objResponse->addScript("nd()");
     //$objResponse->addScript("acervoCache('$tiposHr', $offset, $maxRecords, '$sort_mode', '$find', '$filtersHr')");
     
     return $objResponse;
