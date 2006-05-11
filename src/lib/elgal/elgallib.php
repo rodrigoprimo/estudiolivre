@@ -10,6 +10,8 @@ if( !defined( 'PLUGINS_DIR' ) ) {
 }
 
 require_once("lib/freetag/freetaglib.php");
+require_once("lib/commentslib.php");
+$commentslib = new Comments($dbTiki);
 
 class ELGalLib extends TikiLib {
 
@@ -114,8 +116,9 @@ class ELGalLib extends TikiLib {
     
       if ($result) {
 		  $ret = array();
-		  global $freetaglib;
+		  global $freetaglib, $commentslib;
 		  while ($row = $result->fetchRow()) {
+		  	  $row['commentsCount'] = $commentslib->count_comments('arquivo:' . $row['arquivoId']);
 		  	  $row['tags'] = $freetaglib->get_tags_on_object($row['arquivoId'], 'acervo');
 		      $ret[] = $row;
 		  }

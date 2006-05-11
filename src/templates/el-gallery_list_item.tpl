@@ -54,7 +54,7 @@
 	    <img alt="{$arquivo.rating} estrelas" src="styles/estudiolivre/star{math equation="round(x)" x=$arquivo.rating|default:"blk"}.png">
 	  </div>
 	  <div id="gComments">
-	    comentario
+	    <a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view#comments">{$arquivo.commentsCount} comentário{if $arquivo.commentsCount != 1}s{/if}</a>
 	  </div>
         </div>
       </div>
