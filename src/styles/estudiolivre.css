@@ -121,9 +121,14 @@ img {
 	padding: 0px 2px 1px 2px;
 }
 
+.searchOptions li a {
+	cursor:pointer;
+}
+
 .searchOptions li.selected a {
 	color: black;
 	background-color:#bebebe;
+	cursor:pointer;
 }
 
 .searchMore {
@@ -140,11 +145,33 @@ img {
 	background-color:#ebebeb;
 }
 
+
 /* Search Result */
 
-#searchResults {
+#searchContainer {
 	padding: 5px 0px 0px 0px;
 	text-align:center;
+}
+
+#searchResults {
+	text-align:left;	
+}
+
+.searchNoResults {
+	text-align:center;
+}
+
+.searchResultItemLink {
+	font-size:14px;
+	color:grey;
+}
+
+.searchResultItemLink:hover {
+
+}
+
+#searchResults .searchdesc {
+	margin-left:10px;
 }
 
 #searchOptionsCont {

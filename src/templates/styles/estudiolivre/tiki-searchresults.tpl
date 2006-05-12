@@ -1,5 +1,5 @@
 <!-- tiki-searchresults.tpl begin -->
-<div id="searchResults">
+<div id="searchContainer">
 
 
 {*if !( $searchNoResults ) }
@@ -96,49 +96,60 @@
 
 </form>
 
-<br />
 
 {if $words}
-
 	{if !($searchNoResults) }
-	{if $results}
-	{tr}Found{/tr} "{$words}" {tr}in{/tr} {$cant_results} {$where2}
-	<br /><br />
-	{/if}
-	{section  name=search loop=$results}
-	<a href="{$results[search].href}&amp;highlight={$words}" class="wiki">{$results[search].pageName|strip_tags}</a> ({tr}Hits{/tr}: {$results[search].hits})
-	{if $feature_search_fulltext eq 'y'}
-		{if $results[search].relevance <= 0}
-			&nbsp;({tr}Simple search{/tr})
-		{else}
-			&nbsp;({tr}Relevance{/tr}: {$results[search].relevance})
+		{if $results}
+			{tr}Found{/tr} "{$words}" {tr}in{/tr} {$cant_results} {$where2}
+			<br /><br />
 		{/if}
-	{/if}
-	{if $results[search].type > ''}
-	&nbsp;({$results[search].type})
-	{/if}
-	
-	<br />
-	<div class="searchdesc">{$results[search].data|strip_tags}</div>
-	<div class="searchdate">{tr}Last modification date{/tr}: {$results[search].lastModif|tiki_long_datetime}</div><br />
-	
-	{sectionelse}
-	{tr}No pages matched the search criteria{/tr}
-	{/section}
-	
-	
-	<div align="center">
-	  <div class="mini">
+		<div id="searchResults">
+			{section  name=search loop=$results}
+			<div class="searchResultItem">
+				<a href="{$results[search].href}&amp;highlight={$words}" class="searchResultItemLink" title="{if $feature_search_fulltext eq 'y'}{if $results[search].relevance <= 0}({tr}Simple search{/tr}){else}{tr}Relevance{/tr}: {$results[search].relevance}{/if}{/if} - {tr}Hits{/tr}: {$results[search].hits}">
+					{$results[search].pageName|strip_tags}
+				</a>
+				{if $results[search].type > ''}
+					<span class="searchType">
+						({$results[search].type})
+					</span>
+				{/if}				
+				<br />
+				<div class="searchdesc">
+					{$results[search].data|strip_tags}
+				</div>
+				{*<div class="searchdate">
+					{tr}Last modification date{/tr}: {$results[search].lastModif|tiki_long_datetime}
+				</div>*}
+				<br />
+			</div>
+			{sectionelse}
+			<div id="searchNoResults">
+				{tr}No pages matched the search criteria{/tr}
+			</div>
+			{/section}
+		</div>
+		<div align="center">
+		<div class="mini">
 	    {if $prev_offset >= 0}
-	      [<a class="linkbut" href="tiki-searchresults.php?where={$where}&amp;highlight={$words}&amp;offset={$prev_offset}">{tr}prev{/tr}</a>]&nbsp;
+	      [<a class="linkbut"
+	      	  href="tiki-searchresults.php?where={$where}&amp;highlight={$words}&amp;offset={$prev_offset}">
+	      	  {tr}prev{/tr}
+	      	  </a>]
+	       &nbsp;
 	    {/if}
-	  {if $cant_pages>0}{tr}Page{/tr}: {$actual_page}/{$cant_pages}{/if}
-	  {if $next_offset >= 0}
-	    &nbsp;[<a class="linkbut" href="tiki-searchresults.php?where={$where}&amp;highlight={$words}&amp;offset={$next_offset}">{tr}next{/tr}</a>]
-	  {/if}
-	  </div>
-	</div>
+	{if $cant_pages>0}
+		{tr}Page{/tr}: {$actual_page}/{$cant_pages}
 	{/if}
+	{if $next_offset >= 0}
+		&nbsp;[<a class="linkbut"
+				    href="tiki-searchresults.php?where={$where}&amp;highlight={$words}&amp;offset={$next_offset}">
+				    {tr}next{/tr}
+				</a>]
+	{/if}
+		</div>
+	</div>
+{/if}
 
 {/if}
 
