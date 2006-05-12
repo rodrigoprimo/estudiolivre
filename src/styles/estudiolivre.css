@@ -836,11 +836,11 @@ A.gUpmore {
 	font-size: 18px;
 	font-weight: bold;
 	margin-top:10px;
-	margin-bottom:10px;
 }
 
 #uContactKarmaAccount {
 	overflow:hidden;
+	margin:10px 0px 10px 0px;
 }
 
 .uContactInfoCont {
@@ -874,13 +874,15 @@ A.gUpmore {
 }	
 
 .uMainContainer {
-	border-top: 3px solid grey;
 	width:100%;
 	margin-bottom:10px;
 }
 
 .uMainTitle {
+	padding-top: 3px;
 	margin:0 0 5px 0;
+	/*background-color:#c2c2be;*/
+	border-top: 2px solid #c2c2be;
 }
 
 .uMainTitle h1 {
@@ -896,8 +898,21 @@ A.gUpmore {
 }
 
 .uMainItemContainer {
-	margin-left:5px;
+	margin-left:10px;
 }	
+
+.uRssCont{
+	float:right;
+	filter:alpha(opacity=40);
+	-moz-opacity:.40;
+	opacity:.40;	
+}
+
+.uRssCont:hover{
+	filter:alpha(opacity=100);
+	-moz-opacity:1.0;
+	opacity:1.0;	
+}
 
 .uBlogItem {
 	margin-top: 10px;

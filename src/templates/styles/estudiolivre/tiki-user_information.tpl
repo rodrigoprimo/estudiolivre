@@ -44,7 +44,14 @@
     </div>
     <div id="uGallery" class="uMainContainer">
       <div id="uGalleryTitle" class="uMainTitle">
-        <h1>Gakeria pessoal</h1><h2> - feed</h2>
+        <a class="uRssCont" href="#"><img src="styles/estudiolivre/iRss.png"></a>
+        <a href="#" onClick="javascript:flip('uGalleryItems'); return false;">
+          <img src="styles/estudiolivre/iArrowGreyDown.png">
+        </a>
+        &nbsp;
+        <h1>
+          <a href="#">Galeria pessoal</a>
+        </h1>
       </div>
       <div id="uGalleryItems" class="uMainItemContainer">
 		[include lista acervo]
@@ -52,12 +59,19 @@
     </div>
     <div id="uBlog" class="uMainContainer">
       <div id="uBlogTitle" class="uMainTitle">
-        <h1>Blog</h1><h2> - feed</h2>
+        <a class="uRssCont" href="#"><img src="styles/estudiolivre/iRss.png"></a>
+        <a href="#" onClick="javascript:flip('uBlogItems'); return false;">
+          <img src="styles/estudiolivre/iArrowGreyDown.png">
+        </a>
+        &nbsp;
+        <h1>
+          <a href="#">Blog</a>
+        </h1>
       </div>
       <div id="uBlogItems" class="uMainItemContainer">
         <div class="uBlogItem">
           <div id="uBlogItemTitle">
-            <h1>Titulo Post</h1> - 29 do Tanto de 18etanto
+            <h1>Titulo Post</h1> - 29 de Abril de 2005
           </div>
           <div id="uBlogItemText">
             Meu blog eh muito legal e eu gosto muito de postar nele e eu no sei escrever e eu
@@ -83,7 +97,12 @@
     </div>
     <div id="uMsgs" class="uMainContainer">
       <div id="uMsgsTitle" class="uMainTitle">
-        <h1>Recados</h1><h2> - feed</h2>
+        <a class="uRssCont" href="#"><img src="styles/estudiolivre/iRss.png"></a>
+        <a href="#" onClick="javascript:flip('uMsgItems'); return false;">
+          <img src="styles/estudiolivre/iArrowGreyDown.png">
+        </a>
+        &nbsp;
+        <h1><a href="#">Recados</a></h1>
       </div>
       <div id="uMsgItems" class="uMainItemContainer">
         
@@ -135,8 +154,7 @@
           </div>
         </div>
         <hr>
-        <div id="uMsgSend">
-          
+        <div id="uMsgSend">         
           <input type="submit" name="" value="enviar" label="enviar" id="uMsgSendSubmit">
           <input type="text" id="uMsgSendInput">
         </div>
@@ -144,7 +162,15 @@
       </div>
     </div>
     <div id="uWiki" class="uMainContainer">
-    	<div id="uWikiTitle" class="uMainTitle"><h1>Wiki do cara</h1>
+    	<div id="uWikiTitle" class="uMainTitle">
+    		<a class="uRssCont" href="#"><img src="styles/estudiolivre/iRss.png"></a>
+    		<a href="#" onClick="javascript:flip('uWikiMid'); return false;">
+              <img src="styles/estudiolivre/iArrowGreyDown.png">
+        	</a>
+        	&nbsp;
+    		<h1>
+    		  <a href="#" title="Wiki de ???">Wiki do cara</a>
+    		</h1>
     	</div>
     	<div id="uWikiMid">
     	Texto do wiki do cara
