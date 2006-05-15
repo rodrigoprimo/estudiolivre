@@ -2,14 +2,16 @@
 
   <div id="gLicenseThumbContainer">
     <div id="gLicense">
-     <img src="styles/estudiolivre/iLicense.png">
+     <img src="styles/estudiolivre/{$arquivo.linkImagem}">
     </div>
     <div id="gThumb">
+	  <a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view">
       {if sizeof($arquivo.thumbnail)}
-        <a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view">
-	  <img height="50" src="el-download.php?arquivo={$arquivo.arquivoId}&thumbnail=1">
-	</a>
+	  <img height="51" src="el-download.php?arquivo={$arquivo.arquivoId}&thumbnail=1">
+	  {else}
+	  <img height="51" src="styles/estudiolivre/iThumb{$arquivo.tipo}.png">
       {/if}
+      </a>
     </div>
   </div>
 
@@ -34,19 +36,19 @@
       
       <div id="gDownloadRating">
         <div id="gDownloadPlay">
-
           <div id="gDownload">
-	    <a href="#">
-	      <img alt="" src="styles/estudiolivre/iDownload.png">
-	    </a>
-	  </div>
+	  		<span class="gDownloadCount">{$arquivo.hits}</span>
+		    <a href="#">
+		      <img alt="" src="styles/estudiolivre/iDownload.png">
+		    </a>
+		  </div>
 
-	  <div id="gPlay">
-	    <a href="#">
-	      <img alt="" src="styles/estudiolivre/iPlay.png">
-	    </a>
-	  </div>
-
+		  <div id="gPlay">
+		  	<span class="gStreamCount">--</span>
+		    <a href="#">
+		      <img alt="" src="styles/estudiolivre/iPlay.png">
+		    </a>
+		  </div>
         </div>
       
         <div id="gRatingComments">
@@ -54,7 +56,11 @@
 	    <img alt="{$arquivo.rating} estrelas" src="styles/estudiolivre/star{math equation="round(x)" x=$arquivo.rating|default:"blk"}.png">
 	  </div>
 	  <div id="gComments">
-	    <a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view#comments">{$arquivo.commentsCount} comentário{if $arquivo.commentsCount != 1}s{/if}</a>
+	    {if $arquivo.commentsCount == 0}
+	    	<a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view#comments" title="seja o primeiro a comentar sobre esse arquivo">nenhum comentário
+	    {else}
+	    	<a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view#comments" title="clique para ver os comentários">{$arquivo.commentsCount} comentário{if $arquivo.commentsCount != 1}s{/if}
+	    {/if}</a>
 	  </div>
         </div>
       </div>

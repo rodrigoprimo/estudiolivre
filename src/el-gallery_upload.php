@@ -9,11 +9,12 @@ if (!$user) {
   die;
 }
 
-if ($el_p_upload_files != 'y') {
-    $smarty->assign('msg', tra("Permission denied you cannot upload files"));
-    $smarty->display("error.tpl");
-    die;
-}
+// comentado a pedido do NANO
+//if ($el_p_upload_files != 'y') {
+//    $smarty->assign('msg', tra("Permission denied you cannot upload files"));
+//    $smarty->display("error.tpl");
+//    die;
+//}
 
 include_once("freetag_list.php");
 
