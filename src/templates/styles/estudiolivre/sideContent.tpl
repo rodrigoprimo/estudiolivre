@@ -140,17 +140,27 @@
     
     <div id="moduleLastChanges">
       <a href="tiki-lastchanges.php?days=0">Ultimas Alterações</a> <a href="#" onClick="toggle('moduleLastChangesMore')" onFocus="this.blur()">[+]</a>
-      <div id='moduleLastChangesMore' style="display:none;">
+      <div id='moduleLastChangesMore' style="display:none;padding-left:5px">
       	{foreach from=$modLastModif item='page'}
-	  <a href="tiki-index.php?page={$page.pageName}">{$page.pageName}</a> {$page.user}<br/>
-	{/foreach}
+			<a href="tiki-index.php?page={$page.pageName}" title="editado por: {$page.user}">{$page.pageName}</a><br/>
+     	{/foreach}
       </div>
     </div>
     
     <hr>
-    
-    <div id="moduleLastChanges">
-      Amigos <a href="#">[+]</a>
+    <div id="moduleWhoIsThere">
+    {if sizeof($online_users) > 1}
+      Usuários Online <a href="#" onClick="toggle('moduleWhoIsThereMore')" onFocus="this.blur()">[+]</a>
+      <div id='moduleWhoIsThereMore' style="display:none;padding-left:5px">
+		{foreach from=$online_users item='onlineUser'}
+		  {if $onlineUser.user neq $user}
+		    <a href="tiki-user_information.php?view_user=$onlineUser.user">{$onlineUser.user}</a><br/>
+		  {/if}
+		{/foreach}
+      </div>
+    {else}
+    	Não há usuários online
+    {/if}
     </div>
     
   </div>
