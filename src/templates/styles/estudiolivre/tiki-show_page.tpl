@@ -1,26 +1,46 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.2 2006-05-09 19:36:34 lfagundes Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.3 2006-05-15 23:57:14 rhwinter Exp $ *}
+<script language="JavaScript" src="lib/js/contextualMenu.js"></script>
 
-{breadcrumbs type="trail" loc="page" crumbs=$crumbs}{breadcrumbs type="pagetitle" loc="page" crumbs=$crumbs}
+<!-- menu contextual -->
+<div id="menu" style="position: absolute; display: none;" onmouseout="hideMenu(event)"  onclick="forceHideMenu(event)">
+	<img class="menu" id="menuImgedit" src="styles/estudiolivre/iEditWiki.png" usemap="editMap"><img class="menu" id="menuImgprint" src="styles/estudiolivre/iPrintWiki.png" usemap="printMap"><br class="menu"><img class="menu" id="menuImgwiki3d" src="styles/estudiolivre/iWiki3d.png" usemap="wiki3dMap">
+</div>
+<map class="menu" name="editMap"><area class="menu" shape="poly" coords="12,56,16,47,22,38,29,30,35,24,44,19,54,15,51,3,40,7,29,14,19,21,12,29,7,39,3,51" href="tiki-editpage.php?page={$page|escape:"url"}" onmouseover="hoverSubMenu('edit')" onmouseout="outSubMenu('edit')" onClick="forceHideMenu(event)">
+</map>
+<map class="menu" name="printMap"><area class="menu" shape="poly" coords="12,0,10,12,18,14,30,20,42,29,48,35,52,42,57,52,60,63,62,73,73,73,73,63,73,51,66,38,58,24,47,16,27,3,19,0,16,0" href="tiki-print.php?page={$page|escape:"url"}" onmouseover="hoverSubMenu('print')" onmouseout="outSubMenu('print')" onClick="forceHideMenu(event)">
+</map>
+<map class="menu" name="wiki3dMap"><area class="menu" shape="poly" coords="8,6,11,15,14,22,19,28,23,36,30,46,42,54,52,57,63,60,59,73,51,72,40,68,26,62,14,48,7,37,4,29,0,19,0,7" href="javascript:wiki3d_open('{$page|escape}',{$wiki_3d_width}, {$wiki_3d_height})" onmouseover="hoverSubMenu('wiki3d')" onmouseout="outSubMenu('wiki3d')" onClick="forceHideMenu(event)">
+</map>
 
-<div class="wikitopline">
-<table><tr>
-<td style="vertical-align:top;">
+
+{breadcrumbs type="trail" loc="page" crumbs=$crumbs}
+{if $feature_page_title eq 'y'}
+	{breadcrumbs type="pagetitle" loc="page" crumbs=$crumbs}
+{/if}
+
+<div class="wikitopline" style="text-align:right;padding-top:5px">
+
+<!--table width=100%><tr>
+<td style="vertical-align:top;"-->
 {if $feature_wiki_pageid eq 'y'}
 	<small><a class="link" href="tiki-index.php?page_id={$page_id}">{tr}page id{/tr}: {$page_id}</a></small>
 {/if}
 {breadcrumbs type="desc" loc="page" crumbs=$crumbs}
 {if $cached_page eq 'y'}<small>({tr}cached{/tr})</small>{/if}
-</td>
+<!--/td-->
 {if $is_categorized eq 'y' and $feature_categories eq 'y' and $feature_categorypath eq 'y'}
-	<td style="vertical-align:top;width:100px;">{$display_catpath}</td>
+	<!--td style="vertical-align:top;width:100px;"-->
+	{$display_catpath}
+	<!--/td-->
 {/if}
+
 {if $print_page ne 'y'}
-	<td style="text-align:right;width:142px;wrap:nowrap">
+	<!--td style="text-align:right;width:142px;wrap:nowrap"-->
 	{if !$lock and ($tiki_p_edit eq 'y' or $page|lower eq 'sandbox') and $beingEdited ne 'y'}
 		<a title="{tr}edit{/tr}" href="tiki-editpage.php?page={$page|escape:"url"}"><img src="img/icons/edit.gif" border="0"  width="20" height="16" alt="{tr}edit{/tr}" /></a>
 	{/if}       
 	{if $wiki_feature_3d eq 'y'}
-		<a title="{tr}3d browser{/tr}" href="javascript:wiki3d_open('{$page|escape}',{$wiki_3d_width}, {$wiki_3d_height})">3D</a>
+		<a title="{tr}3d browser{/tr}" href="javascript:wiki3d_open('{$page|escape}',{$wiki_3d_width}, {$wiki_3d_height})"><img src="img/icons/ico_wiki3d.gif"></a>
 	{/if}
 	{if $cached_page eq 'y'}
 		<a title="{tr}refresh{/tr}" href="tiki-index.php?page={$page|escape:"url"}&amp;refresh=1"><img src="img/icons/ico_redo.gif" border="0" height="16" width="16"  alt="{tr}refresh{/tr}"></a>
@@ -39,23 +59,23 @@
 			<a href="tiki-index.php?page={$page|escape:"url"}&amp;watch_event=wiki_page_changed&amp;watch_object={$page|escape:"url"}&amp;watch_action=remove">{html_image file='img/icons/icon_unwatch.png' border='0' alt="{tr}stop monitoring this page{/tr}" title="{tr}stop monitoring this page{/tr}"}</a>
 		{/if}
 	{/if}
-	</td>
+	<!--/td-->
 
 	{if $feature_backlinks eq 'y' and $backlinks}
-		<td style="text-align:right;width:42px;">
-		<form action="tiki-index.php" method="get">
-		<select name="page" onchange="page.form.submit()">
+		<!--td style="text-align:right;width:42px;"-->
+		<form action="tiki-index.php" method="get" style="display:inline">
+		<select name="page" onchange="page.form.submit()" style="display:inline">
 		<option>{tr}backlinks{/tr}...</option>
 		{section name=back loop=$backlinks}
 		<option value="{$backlinks[back].fromPage}">{$backlinks[back].fromPage}</option>
 		{/section}
 		</select>
 		</form>
-		</td>
+		<!--/td-->
 	{/if}
 
 	{if !$page_ref_id and count($showstructs) ne 0}
-		<td style="text-align:right;width:42px;">
+		<!--td style="text-align:right;width:42px;"-->
 		<form action="tiki-index.php" method="post">
 		<select name="page_ref_id" onchange="page_ref_id.form.submit()">
 		<option>{tr}Structures{/tr}...</option>
@@ -70,15 +90,19 @@
 		{/section}
 		</select>
 		</form>
-		</td>
+		<!--/td-->
 	{/if}
 
-	{if $feature_multilingual == 'y'}
+	{*if $feature_multilingual == 'y'}
 		{include file="translated-lang.tpl" td='y'}
-	{/if}
+	{/if*}
+
 
 {/if}{* <-- end of if $print_page ne 'y' *}
-</tr></table>
+
+
+<!--/tr></table-->
+
 </div>
 
 <div class="wikitext">

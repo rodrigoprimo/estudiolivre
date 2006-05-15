@@ -14,15 +14,15 @@
     {* Index we display a wiki page here *}
     
     {if $category eq "Áudio"}
-      <div id="tiki-midAudio">
+      <div id="tiki-midAudio" onclick="showMenu(event)">
     {elseif $category eq "Gráfico"}
-       <div id="tiki-midGraf">
+       <div id="tiki-midGraf" onclick="showMenu(event)">
     {elseif $category eq "Vídeo"}
-       <div id="tiki-midVideo">
+       <div id="tiki-midVideo" onclick="showMenu(event)">
     {elseif $style eq "estudiolivre_biblio.css"}
-        <div id="tiki-midAcervo">
+        <div id="tiki-midAcervo" onclick="showMenu(event)">
     {else}
-        <div id="tiki-mid">
+        <div id="tiki-mid" onclick="showMenu(event)">
      {/if}
 
     {include file=$mid}
