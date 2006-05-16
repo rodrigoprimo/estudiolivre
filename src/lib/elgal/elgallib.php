@@ -422,6 +422,11 @@ class ELGalLib extends TikiLib {
     $result = $this->query($query,array($id));
   }
 
+  function add_stream_hit($id) {
+    $query = "update el_arquivo set `streamHits`=`streamHits`+1 where `arquivoId`=?";
+    $result = $this->query($query,array($id));
+  }
+
   function set_id_fisico($arquivoId) {
     $id = "";
     $mes = date("m");

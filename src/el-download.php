@@ -4,7 +4,7 @@ require_once("tiki-setup_base.php");
 require_once("lib/elgal/elgallib.php");
 
 if (!isset($_REQUEST['arquivo']) || $_REQUEST['arquivo'] == 0) {
-    $smarty->assign('msg', tra("You are not logged in"));
+    $smarty->assign('msg', tra("Arquivo inexistente"));
     $smarty->display("error.tpl");
     die;
 }
@@ -24,7 +24,9 @@ if(isset($_REQUEST['action']) and $_REQUEST['action'] == 'download') {
     header("Content-Disposition: attachment; filename=\"$nome[1]\"");
     $elgallib->add_file_hit($_REQUEST['arquivo']);
 } else {
+	//assume its streaming
     header("Content-Disposition: inline; filename=\"$nome[1]\"");
+    $elgallib->add_stream_hit($_REQUEST['arquivo']);
 }
 
 $fileinfo = stat("repo/$arquivo[arquivo]");

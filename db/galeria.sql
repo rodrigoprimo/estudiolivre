@@ -30,7 +30,7 @@ create table `el_arquivo` (
        siteRelacionado varchar(255), key(siteRelacionado),
        rating tinyint not null, key(rating),
        hits int4 not null,
-       hits_stream int4 not null,
+       streamHits int4 not null,
        thumbnail mediumblob
 );
 
