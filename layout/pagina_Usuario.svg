@@ -4548,6 +4548,45 @@
      rx="6.3558288"
      ry="0.0000000"
      transform="scale(-1.000000,-1.000000)" />
+  <rect
+     transform="matrix(6.45835e-19,-1,1,2.597e-19,0,0)"
+     ry="0"
+     rx="6.3558283"
+     y="48.190456"
+     x="-610.62415"
+     height="548.55194"
+     width="2"
+     id="rect4849"
+     style="opacity:1;fill:#c2c2be;fill-opacity:1;stroke:none;stroke-width:0.07750988;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
+     inkscape:export-xdpi="90.000000"
+     inkscape:export-ydpi="90.000000" />
+  <rect
+     inkscape:export-ydpi="90.000000"
+     inkscape:export-xdpi="90.000000"
+     inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
+     style="opacity:1;fill:#f0f0ef;fill-opacity:1;stroke:none;stroke-width:0.07750988;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="rect3282"
+     width="16"
+     height="548.55194"
+     x="630.62415"
+     y="48.190456"
+     rx="6.3558283"
+     ry="0"
+     transform="matrix(8.072937e-20,1,1,-2.0776e-18,0,0)" />
+  <rect
+     inkscape:export-ydpi="90.000000"
+     inkscape:export-xdpi="90.000000"
+     inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
+     style="opacity:1;fill:#e3e3e1;fill-opacity:1;stroke:none;stroke-width:0.07750988;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="rect3278"
+     width="1"
+     height="548.55194"
+     x="-630.62415"
+     y="48.190456"
+     rx="6.3558283"
+     ry="0"
+     transform="matrix(1.29167e-18,-1,1,1.2985e-19,0,0)" />
   <path
      id="path20181"
      inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
@@ -5462,11 +5501,9 @@
        style="font-size:9px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Sans"
        xml:space="preserve"><tspan
          y="510.89301"
-         x="373.89362"
+         x="375.32623"
          id="tspan17486"
-         sodipodi:role="line"><tspan
-   id="tspan17488"
-   style="fill:#868686;fill-opacity:1">ver |</tspan> enviar</tspan></text>
+         sodipodi:role="line">ver todos | </tspan></text>
   </g>
   <g
      transform="translate(-5.539629,4.844860)"
@@ -5839,14 +5876,14 @@
      inkscape:export-xdpi="90.000000"
      inkscape:export-ydpi="90.000000">
     <text
-       sodipodi:linespacing="100.00000%"
+       sodipodi:linespacing="100%"
        id="text3474"
        y="625.92706"
-       x="79.178337"
-       style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:100.00000%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       x="96.678337"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:100%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
        xml:space="preserve"><tspan
          y="625.92706"
-         x="79.178337"
+         x="96.678337"
          id="tspan3476"
          sodipodi:role="line">Recados</tspan></text>
     <flowRoot
@@ -6057,19 +6094,19 @@
     </g>
     <text
        xml:space="preserve"
-       style="font-size:9.0000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100.00000%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Sans"
-       x="137.85765"
+       style="font-size:9px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Sans"
+       x="161.35765"
        y="625.92706"
        id="text3601"
-       sodipodi:linespacing="100.00000%"
+       sodipodi:linespacing="100%"
        inkscape:export-filename="telaUpload_versao00.png"
        inkscape:export-xdpi="150"
        inkscape:export-ydpi="150"><tspan
          sodipodi:role="line"
          id="tspan3603"
-         x="137.85765"
+         x="161.35765"
          y="625.92706"><tspan
-   style="fill:#868686;fill-opacity:1.0000000"
+   style="fill:#868686;fill-opacity:1"
    id="tspan3605">ver |</tspan> enviar</tspan></text>
     <rect
        inkscape:export-ydpi="150"
@@ -6163,6 +6200,22 @@
        inkscape:export-filename="telaUpload_versao00.png"
        inkscape:export-xdpi="150"
        inkscape:export-ydpi="150" />
+    <path
+       style="fill:#c2c2be;fill-opacity:1;stroke:none;stroke-linejoin:round;stroke-opacity:1"
+       d="M 51.717319,617.99534 C 51.575359,618.04179 51.461589,618.14928 51.407159,618.28838 C 51.352729,618.42748 51.363339,618.58363 51.436069,618.71409 L 55.467319,625.83909 C 55.555399,625.99822 55.722939,626.09698 55.904819,626.09698 C 56.086699,626.09698 56.254239,625.99822 56.342319,625.83909 L 60.373569,618.71409 C 60.448059,618.56105 60.439589,618.38063 60.351089,618.23524 C 60.262599,618.08986 60.106219,617.99946 59.936069,617.99534 L 55.904819,617.99534 L 51.873569,617.99534 C 51.821809,617.98715 51.769079,617.98715 51.717319,617.99534 z "
+       id="rect2394"
+       sodipodi:nodetypes="csccsccscccc"
+       inkscape:export-filename="/home/rhwinter/dev/cvs/estudiolivre/src/styles/estudiolivre/iArrowGreyDown.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="/home/rhwinter/dev/cvs/estudiolivre/src/styles/estudiolivre/iArrowGreyDown.png"
+       sodipodi:nodetypes="csccsccscccc"
+       id="path3274"
+       d="M 7.4205391,680.70225 C 7.2785791,680.7487 7.1648091,680.85619 7.1103791,680.99529 C 7.0559491,681.13439 7.0665591,681.29054 7.1392891,681.421 L 11.170539,688.546 C 11.258619,688.70513 11.426159,688.80389 11.608039,688.80389 C 11.789919,688.80389 11.957459,688.70513 12.045539,688.546 L 16.076789,681.421 C 16.151279,681.26796 16.142809,681.08754 16.054309,680.94215 C 15.965819,680.79677 15.809439,680.70637 15.639289,680.70225 L 11.608039,680.70225 L 7.5767891,680.70225 C 7.5250291,680.69406 7.4722991,680.69406 7.4205391,680.70225 z "
+       style="fill:#e3e3e1;fill-opacity:1;stroke:none;stroke-linejoin:round;stroke-opacity:1" />
   </g>
   <image
      y="392.00000"
@@ -6198,11 +6251,11 @@
      inkscape:export-xdpi="90.000000"
      inkscape:export-ydpi="90.000000" />
   <image
-     y="632.19489"
-     x="582"
+     y="631.19489"
+     x="579"
      xlink:href="imports/iRss.png"
      sodipodi:absref="/home/uira/culturadigital/estudiolivre/layout/imports/iRss.png"
-     width="15.098529"
+     width="15"
      height="15"
      id="image2335"
      inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
@@ -6263,18 +6316,6 @@
      y="333.20126"
      rx="0"
      ry="0"
-     inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
-     inkscape:export-xdpi="90.000000"
-     inkscape:export-ydpi="90.000000" />
-  <rect
-     ry="0"
-     rx="0"
-     y="629.81171"
-     x="580.35736"
-     height="17.893761"
-     width="18"
-     id="rect3073"
-     style="opacity:1;fill:#ffffff;fill-opacity:0.80932204;stroke:none;stroke-width:0.10896178;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
      inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
      inkscape:export-xdpi="90.000000"
      inkscape:export-ydpi="90.000000" />
@@ -6868,19 +6909,6 @@
      ry="0.0000000"
      transform="matrix(6.458352e-19,-1.000000,1.000000,2.596999e-19,0.000000,0.000000)" />
   <rect
-     transform="matrix(6.458350e-19,-1.000000,1.000000,2.597000e-19,0.000000,0.000000)"
-     ry="0.0000000"
-     rx="6.3558283"
-     y="48.190456"
-     x="-630.62415"
-     height="548.55194"
-     width="2.0000000"
-     id="rect4849"
-     style="opacity:1.0000000;fill:#c2c2be;fill-opacity:1.0000000;stroke:none;stroke-width:0.077509880;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
-     inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
-     inkscape:export-xdpi="90.000000"
-     inkscape:export-ydpi="90.000000" />
-  <rect
      style="opacity:1.0000000;fill:none;fill-opacity:0.48305085;stroke:#000000;stroke-width:0.37648714;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000"
      id="rect4892"
      width="642.99750"
@@ -6911,4 +6939,17 @@
      width="95.258324"
      height="94.636696"
      id="image4376" />
+  <rect
+     transform="matrix(1.29167e-18,-1,1,1.2985e-19,0,0)"
+     ry="0"
+     rx="6.3558283"
+     y="48.190456"
+     x="-647.62415"
+     height="548.55194"
+     width="1"
+     id="rect3280"
+     style="opacity:1;fill:#e3e3e1;fill-opacity:1;stroke:none;stroke-width:0.07750988;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
+     inkscape:export-xdpi="90.000000"
+     inkscape:export-ydpi="90.000000" />
 </svg>
