@@ -505,7 +505,7 @@ img {
 
 #gEditDelete{
 	position:absolute;
-	right:0px;
+	right:-7px;
 	margin-top:5px;
 	margin-right:2px;
 	padding:3px;

@@ -77,11 +77,11 @@
   </div>
   
   <div id="gEditDelete">
-    {if $arquivo.user eq $user}
+    {*if $arquivo.user eq $user*}
       <a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=edit"><img alt="editar" src="styles/estudiolivre/iEdit.png"></a>
       <br>
       <a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=delete"><img alt="apagar" src="styles/estudiolivre/iDelete.png"></a>
-    {/if}
+    {*/if*}
   </div>
   
    {if $user}

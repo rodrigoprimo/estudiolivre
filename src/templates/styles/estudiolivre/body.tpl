@@ -10,19 +10,21 @@
     {popup_init src="lib/overlib.js"}
   {/if}
   
-  {* Tiki main contain all page *}
-  <div id="tiki-main">
-
-    {if $feature_top_bar eq 'y'}
-        {include file="tiki-top_bar.tpl"}
-    {/if}
-    
-    {include file="content.tpl"}
-    
-    {include file="footer.tpl"}
-
-  </div>
-
+	{* Tiki main contains all page *}
+	<!-- SELO: isso é só pro teste.estudiolivre-->
+	<div style="width:760px;margin:0px auto;">
+	<img src="styles/estudiolivre/faixaTeste.png" style="position:relative; left:0px;z-index:200"/>
+	<div style="position:absolute;top:5px">
+	<!-- fim do selo -->
+		<div id="tiki-main">
+	    	{if $feature_top_bar eq 'y'}
+		        {include file="tiki-top_bar.tpl"}
+		    {/if}
+		    {include file="content.tpl"}
+		    {include file="footer.tpl"}
+		</div>
+	</div>
+	</div>
 </body>
 
 <!-- body.tpl end -->

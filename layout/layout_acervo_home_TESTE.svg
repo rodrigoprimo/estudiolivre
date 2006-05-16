@@ -10,7 +10,7 @@
    xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    sodipodi:docname="layout_acervo_home_TESTE.svg"
-   sodipodi:docbase="/home/nano/devel/estudiolivre/layout"
+   sodipodi:docbase="/home/rhwinter/dev/cvs/estudiolivre/layout"
    height="600.00000px"
    width="760.00000px"
    inkscape:version="0.43"
@@ -1554,7 +1554,7 @@
        xlink:href="#linearGradient14947"
        id="linearGradient20226"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1,2.336456e-17,-1.001337e-17,0.428571,-7.436427e-15,116.9231)"
+       gradientTransform="matrix(1,2.61672e-16,-1.121451e-16,0.428571,-1.34738e-14,116.9231)"
        x1="-105.76923"
        y1="226.15402"
        x2="-105.76924"
@@ -5968,7 +5968,7 @@
   </g>
   <g
      id="g20216"
-     transform="matrix(0.707106,-0.707107,0.707107,0.707106,-71.88483,-54.54907)">
+     transform="matrix(0.707106,-0.707107,0.707107,0.707106,-189.8848,-54.54907)">
     <rect
        ry="0.6236639"
        rx="0.6236639"
@@ -6019,4 +6019,16 @@
        id="rect20212"
        style="opacity:1;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.12584825px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible" />
   </g>
+  <rect
+     style="opacity:0;fill:#2c7e86;fill-opacity:1;stroke:none;stroke-width:1.65499997;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="rect2151"
+     width="63.535954"
+     height="61.983418"
+     x="-138.3978"
+     y="154.34477"
+     rx="0"
+     ry="0"
+     inkscape:export-filename="/home/rhwinter/dev/cvs/estudiolivre/src/styles/estudiolivre/faixaTeste.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
 </svg>
