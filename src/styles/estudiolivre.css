@@ -675,17 +675,22 @@ DIV.gUpSelected {
 	-moz-border-radius: 8px 0px 0px 8px;
 }
 
-INPUT.gUpListItemField {
+DIV.gUpListItemField {
 	height:14px;
 	width:156px;
 	padding-right:3px;
-	background-color:#f1f1f1;
 	border:1px solid #c9c9c9;
 	font-size:11px;
+	background-color:#f1f1f1;
 	text-align:right;
 }
 
-INPUT.gUpEditing {
+DIV.gUpStatus {
+	width:158px;
+	height:14px;
+}
+
+DIV.gUpEditing {
 	color:#a9a9a9;
 }
 

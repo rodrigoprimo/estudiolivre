@@ -1,6 +1,15 @@
 <?php
+
+// isso tem q vir antes. ver comentario 5 linhas abaixo.
+require_once("el-gallery_upload_ajax.php");
+
 require_once("tiki-setup.php");
 require_once("lib/elgal/elgallib.php");
+
+// isso nao fica no arquivo separado pois depende do smarty, mas se o tiki-setup for carregado
+// antes dos requests ajax, vai sobrecarregar o servidor, pois vai carregar um ambiente de 8M de memoria
+// necessarios pro tiki e inutil pra saber a informacao de status do upload
+$smarty->assign("xajax_js",$xajax->getJavascript());
 
 // Now check permissions to access this page
 if (!$user) {
@@ -188,6 +197,8 @@ if ($step == 'manage') {
 else {
   $smarty->assign('mid','el-gallery_upload_'.$step.'.tpl');
 }
+
+$smarty->assign('uploadId',rand() . '.' . time());
 
 $smarty->assign('step',$step);
 

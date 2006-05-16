@@ -1,4 +1,6 @@
 <!-- el-gallery_upload_general.tpl begin -->
+{$xajax_js}
+<script language="JavaScript" src="lib/elgal/upload.js"></script>
 
 <div id="gUpload">
   <div id="gUpLeft">
@@ -30,18 +32,29 @@
     
     <div id="gUpList">
     
-      <div class="gUpListItem">
+  	<iframe name="uploadTarget" style="display:none" onLoad="finishUpload();"></iframe>
+
+   	  <div class="gUpListItem" id="uploadMeter" style="display: none">
         <a href="#" class="gUpListEdit"><img src="styles/estudiolivre/iSelectOff.png"></a>
-	<input class="gUpListItemField gUpEditing" name="arquivo" size="12" type="text"> <a href="#"class="gUpButton">remover</a>
-	<div class="gUpListItemFieldComplete" ><div class="gUpListItemFieldCompleteInside">100%</div></div>
+	    <div class="gUpListItemFieldComplete"><div class="gUpListItemFieldCompleteInside">100%</div></div>
       </div>
-      
       
       <div class="gUpListItem gUpSelected">
-        <a href="#"class="gUpListEdit"><img src="styles/estudiolivre/iSelect.png"></a>
-	<input class="gUpListItemField gUpEditing" name="arquivo" size="12" type="text"> <a href="#"class="gUpButton">remover</a>
-	<div class="gUpListItemFieldComplete gUpEditing" ><div class="gUpListItemFieldCompleteInside gUpEditing">100%</div></div>
-      </div>
+        
+        <a href="#" onclick="upload('{$uploadId}');" class="gUpListEdit"><img src="styles/estudiolivre/iSelect.png"></a>
+    	<div id="gUpBackground" class="gUpListItemField">
+    	  <div id="gUpContent"></div>
+    	  <div id="gUpStatusBar" class="gUpStatus"></div>
+    	</div>
+    	<a href="#"class="gUpButton">procurar</a>
+    	<div style="position:relative; top:-20px; left:10px; opacity:0; z-index:10">
+          <form name="uploadForm" target="uploadTarget" action="el-gallery_upload_file.php?UPLOAD_IDENTIFIER={$uploadId}" method="post" enctype="multipart/form-data">
+  		    <input type="hidden" name="UPLOAD_IDENTIFIER" value="{$uploadId}">
+   	   	    <input type="file" name="arquivo" onChange="changeStatus(this.value);">
+   	      </form>
+   	    </div>
+   
+     </div>
       
       
       <div class="gUpListItem">
@@ -51,7 +64,7 @@
       </div>
       <div class="gUpListItem">
         <a href="#"class="gUpListEdit"><img src="styles/estudiolivre/iSelectOff.png"></a>
-	<input class="gUpListItemField" name="arquivo" size="12" type="text"> <a href="#"class="gUpButton">procurar</a>
+	<input class="gUpListItemFieldCompleteInside gUpEditing" name="arquivo" size="12" type="text"> <a href="#"class="gUpButton">procurar</a>
       </div>
       
       <div id="gUpListAddFileCont">
