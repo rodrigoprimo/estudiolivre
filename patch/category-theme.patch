@@ -1,43 +1,22 @@
---- tiki-index.php	2006-05-15 19:54:55.000000000 -0300
-+++ tiki-index.php	2006-04-24 08:26:50.000000000 -0300
-@@ -12,10 +12,6 @@
- include_once('lib/wiki/wikilib.php');
- include_once('lib/stats/statslib.php');
- 
--if ($feature_freetags == 'y') {
--	include_once('lib/freetag/freetaglib.php');
--}
--
- if ($feature_categories == 'y') {
- 	global $categlib;
- 	if (!is_object($categlib)) {
-@@ -537,18 +533,6 @@
+--- tiki-index.php	2006-04-24 08:26:50.000000000 -0300
++++ tiki-index.php	2006-05-16 10:16:58.000000000 -0300
+@@ -533,6 +537,19 @@
      include('tiki-tc.php');
  }
  
--// ESTUDIOLIVRE HACK BEGIN - associa categoria ao smarty, pra fazer theme control na mao
--$tc_categs = $categlib->get_object_categories($cat_type, $cat_objid);
--
--if (count($tc_categs)) {
--    foreach ($tc_categs as $cat) {
--	$catt=$categlib->get_category($cat);
--	$smarty->assign_by_ref('category', $catt["name"]);
--	break;
--    }
--}
--// ESTUDIOLIVRE HACK END
--
++// ESTUDIOLIVRE HACK BEGIN - associa categoria ao smarty, pra fazer theme control na mao
++$tc_categs = $categlib->get_object_categories($cat_type, $cat_objid);
++
++if (count($tc_categs)) {
++    foreach ($tc_categs as $cat) {
++	$catt=$categlib->get_category($cat);
++	$smarty->assign_by_ref('category', $catt["name"]);
++	break;
++    }
++}
++// ESTUDIOLIVRE HACK END
++
++
  // Watches
  if($feature_user_watches == 'y') {
      if($user && isset($_REQUEST['watch_event'])) {
-@@ -590,10 +574,6 @@
-     HAWTIKI_index($info);
- }
- 
--if ($feature_freetags == 'y') {     // And get the Tags for the posts
--    $tags = $freetaglib->get_tags_on_object($info['pageName'], 'wiki page');
--    $smarty->assign('freetags',$tags);
--}
- // Display category path or not (like {catpath()})
- if (isset($is_categorized) && $is_categorized) {
-     $smarty->assign('is_categorized','y');
