@@ -4,7 +4,14 @@
 
 <!-- Feature Wiki Begin -->
 <div id="gHomeWiki" {if $tiki_p_edit eq 'y'} ondblclick="location.href='tiki-editpage.php?page=destak'"{/if}>
-  {$destak}
+	<span id="gHomeWikiTitle">Destaques
+		<a onclick="javascript:flip('gHomeWikiToggle');return false;" href="#">
+			<img onclick="this.toggleImage('sortArrowDown.png');" src="styles/estudiolivre/sortArrowUp.png">
+		</a>
+	</span>
+	<div id="gHomeWikiToggle" style="display:block">
+		{$destak}
+	</div>
 </div>
 <!-- Feature Wiki End -->
 <!-- List Options Begin -->
@@ -44,7 +51,8 @@
   
   <div id="rightContainerTop">
     <div id="listOrder">
-      <img alt="" onClick="toggleSortArrow(this)" src="styles/estudiolivre/sortArrow{$sortDirection}.png" />
+      <img alt="" onClick="toggleSortArrow(this,'{if $sortDirection eq 'Up'}sortArrowDown.png{else}sortArrowUp.png{/if}')" 
+      	   src="styles/estudiolivre/sortArrow{$sortDirection}.png" />
       <select style="decoration:none" onChange="setSortMode(this)">
         <option value="data_publicacao" {if $sortMode eq 'data_publicacao'}selected{/if}>Data</option>
 		<option value="rating" {if $sortMode eq 'rating'}selected{/if}>Estrelas</option>

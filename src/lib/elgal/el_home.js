@@ -107,13 +107,36 @@ function setButton(button, position, tipo) {
 	}
 }
 
-function toggleSortArrow(img) {
+
+Image.prototype.setAlternatePath = function (image1) {
+	var imageName = this.src.replace(new RegExp(/^.*(\/|\\)/), '');
+	var path = this.src.replace(imageName, '');
+	// we get the new image
+	this['image1']=path+image1;
+	// and add the one already there
+	this['image2']= this.src;
+}
+
+
+Image.prototype.toggleImage = function (alternatePath){
+	if(!this.image1) {this.setAlternatePath(alternatePath) }
+	
+	if(this.src == this.image1){
+			this.src=this.image2;
+	}else{
+		this.src=this.image1;
+	}
+}
+
+function toggleSortArrow(img, alternate) {
+
+	img.toggleImage(alternate);
+
+	/*TODO: esse tro?o tb pode ser refatorado -> interface de cookies do estudiolivre! */
 	if (sortDirection == '_desc') {
 		sortDirection = '_asc';
-		img.src = 'styles/estudiolivre/sortArrowUp.png';
 	} else {
 		sortDirection = '_desc';
-		img.src = 'styles/estudiolivre/sortArrowDown.png';
 	}
 	setCookie('sortDirection', sortDirection);
 	xajax_get_files(tipos, 0, 5, sortMode+sortDirection, '');

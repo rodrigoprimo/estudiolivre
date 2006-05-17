@@ -234,7 +234,7 @@ img {
 	/*display:none;*/
 	/*border: 1px solid blue;*/
 	position:absolute;
-	right:9999px;
+	right:999px;
 	width:150px;
 	text-align:center;
 	height:0px;
@@ -437,6 +437,10 @@ img {
 	clear:both;
 	overflow:hidden;
 	padding: 0 10px 0px 10px;
+}
+
+#gHomeWiki SPAN {
+	float:right;	
 }
 
 #gListCont {
