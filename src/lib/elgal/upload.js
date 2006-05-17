@@ -45,5 +45,5 @@ function updateProgressMeter(uploadInfo) {
 }
 
 function changeStatus(value) {
-	document.getElementById('gUpFileName').innerHTML = value;
+	document.getElementById('gUpFileName').innerHTML = value.replace(new RegExp(/^.*(\/|\\)/), '');
 }
