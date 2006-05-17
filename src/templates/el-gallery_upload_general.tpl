@@ -34,20 +34,16 @@
     
   	<iframe name="uploadTarget" style="display:none" onLoad="finishUpload();"></iframe>
 
-   	  <div class="gUpListItem" id="uploadMeter" style="display: none">
-        <a href="#" class="gUpListEdit"><img src="styles/estudiolivre/iSelectOff.png"></a>
-	    <div class="gUpListItemFieldComplete"><div class="gUpListItemFieldCompleteInside">100%</div></div>
-      </div>
-      
       <div class="gUpListItem gUpSelected">
         
         <a href="#" onclick="upload('{$uploadId}');" class="gUpListEdit"><img src="styles/estudiolivre/iSelect.png"></a>
     	<div id="gUpBackground" class="gUpListItemField">
-    	  <div id="gUpContent"></div>
-    	  <div id="gUpStatusBar" class="gUpStatus"></div>
+    	  <div id="gUpFileName"></div>
+    	  <div id="gUpPercentContainer" class="gUpPercent"><span id="gUpPercent"></span></div>
+    	  <div class="gUpStatus" id="gUpStatusBar"></div>
     	</div>
-    	<a href="#"class="gUpButton">procurar</a>
-    	<div style="position:relative; top:-20px; left:10px; opacity:0; z-index:10">
+    	<a href="#" class="gUpButton" id="gUpButton">procurar</a>
+    	<div class="gUpForm">
           <form name="uploadForm" target="uploadTarget" action="el-gallery_upload_file.php?UPLOAD_IDENTIFIER={$uploadId}" method="post" enctype="multipart/form-data">
   		    <input type="hidden" name="UPLOAD_IDENTIFIER" value="{$uploadId}">
    	   	    <input type="file" name="arquivo" onChange="changeStatus(this.value);">

@@ -20,10 +20,10 @@
     {elseif $category eq "Vídeo"}
        <div id="tiki-midVideo" onclick="showMenu(event)">
     {elseif $style eq "estudiolivre_biblio.css"}
-        <div id="tiki-midAcervo" onclick="showMenu(event)">
+        <div id="tiki-midAcervo">
     {else}
         <div id="tiki-mid" onclick="showMenu(event)">
-     {/if}
+    {/if}
 
     {include file=$mid}
     </div>

@@ -710,6 +710,9 @@ DIV.gUpSelected {
 }
 
 DIV.gUpListItemField {
+	position:absolute;
+	top:5px;
+	left:23px;
 	height:14px;
 	width:156px;
 	padding-right:3px;
@@ -717,24 +720,44 @@ DIV.gUpListItemField {
 	font-size:11px;
 	background-color:#f1f1f1;
 	text-align:right;
+	z-index: 1;
+}
+
+DIV.gUpForm {
+	position:absolute;
+	top: 0px;
+	left: 20px;
+	opacity:0;
+	z-index:10;
 }
 
 DIV.gUpStatus {
-	width:158px;
-	height:14px;
+	position:absolute;
+	top: 0px;
+	left: 0px;
+	height: 14px;
+	/*esse width esta vinculado ao upload.js, se mudar abaixo mude la tb*/
+	width: 159px;
+	z-index: 2;
 }
 
-DIV.gUpEditing {
-	color:#a9a9a9;
+.gUpPercent {
+	position:absolute;
+	top: 0px;
+	left: 0px;
+	/*esse width esta vinculado ao upload.js, se mudar abaixo mude la tb*/
+	width: 158px;
+	text-align:center;
+	z-index: 3;
+	color:#505050;
+	font-weight: bold;
+}
+
+#gUpPercent {
+	background-color: #e1a7a4;	
 }
 
 DIV.gUpListItemFieldComplete {
-	position:absolute;
-	top:5px;
-	left:23px;
-	height:16px;
-	width:158px;
-	padding-right:3px;
 	background-image:url(estudiolivre/bgVerde70.png);
 	font-size:11px;
 	text-align:center;
@@ -744,23 +767,16 @@ DIV.gUpListItemFieldComplete {
 DIV.gUpListItemFieldCompleteInside {
 	background-image:url(estudiolivre/bgVerde70.png);
 	padding: 0px 3px 0px 3px;
-	color:#505050;
 	display:inline;
 }
 
 DIV.gUpEditing {
+	color:#a9a9a9;
 	background-image:url(estudiolivre/bgYellow70.png);
 }
 
 DIV.gUpUploading {
 	background-image:url(estudiolivre/bgRed50.png);
-	width:94px;
-}
-
-DIV.gUpUploadingInside {
-	background-image:url(estudiolivre/bgRed50.png);
-	position:absolute;
-	left:60px;
 }
 
 A.gUpButton {
