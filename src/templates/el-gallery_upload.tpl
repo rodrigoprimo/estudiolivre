@@ -7,22 +7,22 @@
     <div id="gUpIcons">
       {* Aqui terá um JS que colore o ícone selecionado e deixa os outros preto e branco *}
       <div class="gUpIcon">
-        <img alt="" src="styles/estudiolivre/iUpAudio.png"><br />
+        <img id="iconeAudio" onMouseOver="acendeTipo('Audio');" onMouseOut="apagaTipo('Audio')" onClick="selecionaTipo('Audio')" alt="" src="styles/estudiolivre/iUpAudioOff.png"><br />
         Áudio
       </div>
     
       <div class="gUpIcon">
-        <img alt="" src="styles/estudiolivre/iUpImageOff.png"><br />
+        <img id="iconeImagem" onMouseOver="acendeTipo('Imagem');" onMouseOut="apagaTipo('Imagem')" onClick="selecionaTipo('Imagem')" alt="" src="styles/estudiolivre/iUpImageOff.png"><br />
         Imagem
       </div>
     
       <div class="gUpIcon">
-        <img alt="" src="styles/estudiolivre/iUpTextOff.png"><br />
+        <img id="iconeTexto" onMouseOver="acendeTipo('Texto');" onMouseOut="apagaTipo('Texto')" onClick="selecionaTipo('Texto')" alt="" src="styles/estudiolivre/iUpTextOff.png"><br />
         Texto
       </div>
     
       <div class="gUpIcon">
-        <img alt="" src="styles/estudiolivre/iUpVideoOff.png"><br />
+        <img id="iconeVideo" onMouseOver="acendeTipo('Video');" onMouseOut="apagaTipo('Video')" onClick="selecionaTipo('Video')" alt="" src="styles/estudiolivre/iUpVideoOff.png"><br />
         Video
       </div>
     
@@ -30,13 +30,13 @@
     
     <img class="separator" src="styles/estudiolivre/separator.png">
     
-    <div id="gUpList">
+    <div id="gUpList" style="display:none">
     
   	<iframe name="uploadTarget" style="display:none" onLoad="finishUpload();"></iframe>
 
       <div class="gUpListItem gUpSelected">
         
-        <a href="#" onclick="upload('{$uploadId}');" class="gUpListEdit"><img src="styles/estudiolivre/iSelect.png"></a>
+        <a href="#" onclick="upload();" class="gUpListEdit"><img src="styles/estudiolivre/iSelect.png"></a>
     	<div id="gUpBackground" class="gUpListItemField">
     	  <div id="gUpFileName"></div>
     	  <div id="gUpPercentContainer" class="gUpPercent"><span id="gUpPercent"></span></div>
@@ -46,57 +46,39 @@
     	<div class="gUpForm">
           <form name="uploadForm" target="uploadTarget" action="el-gallery_upload_file.php?UPLOAD_IDENTIFIER={$uploadId}" method="post" enctype="multipart/form-data">
   		    <input type="hidden" name="UPLOAD_IDENTIFIER" value="{$uploadId}">
+  		    <input type="hidden" name="arquivoId" value="">
+  		    <input type="hidden" name="tipo" value="">
    	   	    <input type="file" name="arquivo" onChange="changeStatus(this.value);">
    	      </form>
    	    </div>
    
      </div>
       
-      
-      <div class="gUpListItem">
-        <a href="#"class="gUpListEdit"><img src="styles/estudiolivre/iSelectOff.png"></a>
-	<input class="gUpListItemField gUpEditing" name="arquivo" size="12" type="text"> <a href="#"class="gUpButton">cancelar</a>
-	<div class="gUpListItemFieldComplete gUpUploading" ><div class="gUpListItemFieldCompleteInside gUpUploadingInside">60%</div></div>
-      </div>
-      <div class="gUpListItem">
-        <a href="#"class="gUpListEdit"><img src="styles/estudiolivre/iSelectOff.png"></a>
-	<input class="gUpListItemFieldCompleteInside gUpEditing" name="arquivo" size="12" type="text"> <a href="#"class="gUpButton">procurar</a>
-      </div>
-      
-      <div id="gUpListAddFileCont">
-        <a href="#">Adicionar outro arquivo</a>
-      </div>
     </div>
     
-    <img class="separator" src="styles/estudiolivre/separator.png">
-    
-    <div id="gUpSet">
-      <a href="#"><img alt="" src="styles/estudiolivre/iColection.png"></a>
-    
-    </div>
     
   </div>
   
+  <form>
   <div id="gUpRight">
     <div id="gUpEditThumbTitleAuthor">
       <div id="gUpThumb">
-        <img alt="" height="60" width="60" src="el-download.php?arquivo=53&thumbnail=1" >
+        <img alt=""	height="60" width="60" src="" >
       </div>
       
       <div id="gUpTitleAuthor">
-        <div id="gUpTitle">
-	  Titulo da minha Musica PORRA!!!
-	</div>
-	<div id="gUpAuthor">
-	  Por <a href="#">Uirá Jesus</a>
-	</div>
+        {ajax_input class="gUpTitle" id="titulo" value=$arquivo.titulo default="Titulo" display="inline"}
+		<div id="gUpAuthor">
+		  Por <a href="#">{$arquivo.autor|escape|default:"Autor da obra..."}</a>
+	         <input id="input-autor" value="{$arquivo.autor|escape}" onBlur="saveField(this);">
+		</div>
       </div>
       
     </div>
     <br style="line-height:30px;">
     <div id="gUpEditDescription">
-      <span id="gUpDescription"> Essa eh a descrição da minha obra ela eh curta e pronto Essa eh a descrição da minha obra ela eh curta e pronto Essa eh a descrição da minha obra ela eh curta e pronto Essa eh a descrição da minha obra ela eh curta e pronto Essa eh a descrição da minha obra ela eh curta e pronto Essa eh a descrição da minha obra ela eh curta e pronto</span>
-    
+      <span id="gUpDescription">{$arquivo.descricao|escape|default:"Descricao da sua obra"}</span>
+         <textarea id="input-descricao" onBlur="saveField(this);">{$arquivo.descricao}</textarea>
     </div>
     
     <br style=" line-height:20px;">
@@ -160,7 +142,7 @@
     
   
   </div>
-
+  </form>
   
 </div>
 

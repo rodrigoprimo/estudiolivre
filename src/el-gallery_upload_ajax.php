@@ -10,6 +10,7 @@ $xajax->debugOff();
 $xajax->setLogFile("/tmp/xajax.log");
 
 $xajax->registerFunction('upload_info');
+$xajax->registerFunction('create_file');
 
 function upload_info($uploadId) {
 	$objResponse = new xajaxResponse();
@@ -18,5 +19,17 @@ function upload_info($uploadId) {
 	return $objResponse;
 }
 
+function create_file($tipo, $uploadId) {
+	$objResponse = new xajaxResponse();
+	global $elgallib, $user;
+	$arquivo = array();
+	$arquivo['tipo'] = $tipo;
+	$arquivo['titulo'] = $arquivo['autor'] = $arquivo['donoCopyright'] = $arquivo['descricao'] = '';
+	$arquivoId = $elgallib->create_arquivo($arquivo, $user);
+	$objResponse->addScriptCall('startUpload',$arquivoId);
+	return $objResponse;
+}
+
 $xajax->processRequests();
+
 ?>

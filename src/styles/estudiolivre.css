@@ -823,9 +823,12 @@ A.gUpButton:hover {
 	float:left;
 	margin: 0px 7px 5px 0px;
 	overflow:hidden;
+	width: 60px;
+	height: 60px;
+	border: 1px solid black;
 }
 
-#gUpTitle {
+.gUpTitle {
 	font-size:13px;
 	font-weight:bold;
 }
@@ -834,6 +837,7 @@ A.gUpButton:hover {
 	text-align:right;
 	margin-right:20px;
 	font-size:11px;
+	display: inline;
 }
 
 #gUpAuthor A {

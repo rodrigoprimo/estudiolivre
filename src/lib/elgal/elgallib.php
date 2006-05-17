@@ -195,7 +195,13 @@ class ELGalLib extends TikiLib {
     }
 
     $query = "insert into `el_arquivo` (`titulo`,`tipo`,`autor`,`donoCopyright`,`descricao`,`user`) values(?,?,?,?,?,?)";
-    $bindvals = $obrigatorio;
+    $bindvals = array();
+    
+   	$bindvals[] = $obrigatorio['titulo'];
+    $bindvals[] = $obrigatorio['tipo'];
+    $bindvals[] = $obrigatorio['autor'];
+    $bindvals[] = $obrigatorio['donoCopyright'];
+    $bindvals[] = $obrigatorio['descricao'];    
     $bindvals[] = $user;
     $result = $this->query($query, $bindvals);
 

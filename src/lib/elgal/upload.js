@@ -1,17 +1,26 @@
 var timerId = null;
+var uploadStartTimer = null;
 var uploadId;
 var uploadStarted = false;
 var originalWidth;
+var tipoSelecionado = false;
+var tipos = new Array('Audio','Video','Imagem','Texto');
 
-function upload(id) {
-	uploadId = id;
-		
+function upload() {
+	uploadId = document.uploadForm.UPLOAD_IDENTIFIER.value;
+	if (!tipoSelecionado) alert('bug');
+	xajax_create_file(tipoSelecionado, uploadId);		
+}
+
+function startUpload(arquivoId) {
+	document.uploadForm.arquivoId.value = arquivoId;
+	// TODO: checar o tipo
 	updateUploadInfo();
 	document.uploadForm.submit();
 }
 
 function updateUploadInfo() {
-	if(!uploadStarted) {
+	if (!uploadStarted) {
 		uploadStarted = true;
 		originalWidth = 159;
 		document.uploadForm.style.display = 'none';
@@ -25,7 +34,7 @@ function updateUploadInfo() {
 }
 
 function finishUpload() {
-	if(timerId) {
+	if (timerId) {
 		clearTimeout(timerId);
 		document.getElementById('gUpButton').innerHTML = 'remover';
 		document.getElementById('gUpStatusBar').className = "gUpStatus gUpEditing";
@@ -46,4 +55,37 @@ function updateProgressMeter(uploadInfo) {
 
 function changeStatus(value) {
 	document.getElementById('gUpFileName').innerHTML = value.replace(new RegExp(/^.*(\/|\\)/), '');
+	show('gUpRight');
+	uploadStartTimer = setTimeout("upload()",2000);
+	document.uploadForm.tipo.value = tipoSelecionado;
 }
+
+function acendeTipo(tipo) {
+	if (!tipoSelecionado) {
+		document.getElementById("icone" + tipo).src = "styles/estudiolivre/iUp" + tipo + ".png";
+	}
+}
+
+function apagaTipo(tipo) {
+	if (!tipoSelecionado) {
+		document.getElementById("icone" + tipo).src = "styles/estudiolivre/iUp" + tipo + "Off.png";
+	}
+}
+
+function selecionaTipo(tipo) {
+	if (tipoSelecionado && !uploadStarted) {
+		document.getElementById("icone" + tipoSelecionado).src = "styles/estudiolivre/iUp" + tipoSelecionado + "Off.png";
+	}
+	if (!uploadStarted) {
+		tipoSelecionado = tipo;
+		document.getElementById("icone" + tipo).src = "styles/estudiolivre/iUp" + tipo + ".png";
+		show('gUpList');
+	} else {
+		alert('Voc? n?o pode mudar o tipo de arquivo depois de come?ar o upload')
+	}
+}
+
+function saveField(field){
+	
+}
+
