@@ -24,7 +24,9 @@ function smarty_block_tooltip($params, $text) {
  	$clicks = $tooltiplib->get_user_clicks($tipName);
  	
  	if ($feature_tooltip == 'y' && ($clicks <= $feature_tooltip_max_clicks || !$feature_tooltip_max_clicks)) {
- 		$text = "<span onMouseover=\"overlib('".$tip."');\" onMouseout=\"nd();\" onMousedown=\"xajax_register_tooltip_click('$tipName')\" \">".$text."</span>";
+ 		// $text = "<span onMouseover=\"overlib('".$tip."');\" onMouseout=\"nd();\" onMousedown=\"xajax_register_tooltip_click('$tipName')\" \">".$text."</span>";
+ 		$text = "<span onMouseover=\"overlib('".$tip."');\" onMouseout=\"nd();\" \">".$text."</span>";
+ 		
  	}
  	
  	return $text;
