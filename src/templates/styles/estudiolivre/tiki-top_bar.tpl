@@ -40,29 +40,29 @@
   </div>
   <ul id="topMenuCubes">
 
-    <li><a href="http://xango.metareciclagem.org/"><img src="styles/estudiolivre/cubeBlue.png"></a></li>
+      <li><div class="hiddenDescript" id="metareciclagem">metareciclagem</div><a href="http://xango.metareciclagem.org/"><img src="styles/estudiolivre/cubeBlue.png"></a></li>
     {if $style eq "estudiolivre_biblio.css"}
       <li><img src="styles/estudiolivre/cubeGrey.png"></li>
     {else}
-      <li><a href="el-gallery_home.php"><img src="styles/estudiolivre/cubeGreen.png"></a></li>
+      <li><div class="hiddenDescript" id="acervolivre">acervo.livre</div><a href="el-gallery_home.php"><img src="styles/estudiolivre/cubeGreen.png"></a></li>
     {/if}
 
     {if $category eq "Áudio"}
       <li><img src="styles/estudiolivre/cubeGrey.png"></li>
     {else}
-      <li><a href="tiki-index.php?page=Áudio"><img src="styles/estudiolivre/cubeOrange.png"></a></li>
+      <li><div class="hiddenDescript" id="audiolab">áudio||lab</div><a href="tiki-index.php?page=Áudio"><img src="styles/estudiolivre/cubeOrange.png"></a></li>
     {/if}
 
     {if $category eq "Vídeo"}
       <li><img src="styles/estudiolivre/cubeGrey.png"></li>
     {else}
-      <li><a href="tiki-index.php?page=Vídeo"><img src="styles/estudiolivre/cubeRed.png"></a></li>
+      <li><div class="hiddenDescript" id="videolab">vídeo||lab</div><a href="tiki-index.php?page=Vídeo"><img src="styles/estudiolivre/cubeRed.png"></a></li>
     {/if}
     
     {if $category eq "Gráfico"}
       <li><img src="styles/estudiolivre/cubeGrey.png"></li>
     {else}
-      <li><a href="tiki-index.php?page=Gráfico"><img src="styles/estudiolivre/cubePurple.png"></a></li>
+      <li><div class="hiddenDescript" id="grafilab">grafi||lab</div><a href="tiki-index.php?page=Gráfico"><img src="styles/estudiolivre/cubePurple.png"></a></li>
     {/if}
     
   </ul>
@@ -86,9 +86,9 @@
   <div id="links">
 
     <br/>
-        <a href="tiki-index.php?page=Gráfico"><img src="styles/estudiolivre/logo_grafi_p.png"></a><br/>
-   <a href="tiki-index.php?page=Vídeo"><img src="styles/estudiolivre/logo_video_p.png"></a><br/>
-   <a href="tiki-index.php?page=Áudio"><img src="styles/estudiolivre/logo_audio_p.png"></a><br/>
+    <a href="tiki-index.php?page=Gráfico"><img src="styles/estudiolivre/logo_grafi_p.png"></a><br/>
+    <a href="tiki-index.php?page=Vídeo"><img src="styles/estudiolivre/logo_video_p.png"></a><br/>
+    <a href="tiki-index.php?page=Áudio"><img src="styles/estudiolivre/logo_audio_p.png"></a><br/>
     <a href="el-gallery_home.php"><img src="styles/estudiolivre/logo_acervo_livre_p.png"></a>
     <a href="http://xango.metareciclagem.org"><img src="styles/estudiolivre/logo_metarec_p.png"></a><br/>
   </div>

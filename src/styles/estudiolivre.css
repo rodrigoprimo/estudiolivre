@@ -230,6 +230,40 @@ img {
 	margin-top: 2px;
 }
 
+.hiddenDescript {
+	/*display:none;*/
+	/*border: 1px solid blue;*/
+	position:absolute;
+	right:9999px;
+	width:150px;
+	text-align:center;
+	height:0px;
+	overflow:show;
+	font-size:16px;
+	margin-top:-2px;
+}
+
+.hiddenDescript#metareciclagem {
+	color:#5e79ef;
+}
+.hiddenDescript#acervolivre {
+	color:#5adb6f;
+}
+.hiddenDescript#audiolab {
+	color:#ffbc43;
+}
+.hiddenDescript#videolab {
+	color:#ff5247;
+}
+.hiddenDescript#grafilab {
+	color:#8c6db9;
+}
+
+#topMenuCubes li:hover .hiddenDescript {
+	/*display:inline;*/
+	right:140px;
+}
+
 /* content */
 
 #contentBubble{
