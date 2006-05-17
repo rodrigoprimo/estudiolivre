@@ -14,7 +14,6 @@
   <div class="el-tabcontent" id="content-Texto"></div>
 </div>
 
-{$xajax_js}
 <script language="JavaScript" src="lib/elgal/el-rating.js"></script>
 <script language="JavaScript" src="lib/elgal/ui/tab.js"></script>
 <script language="JavaScript" src="lib/elgal/acervo.js"></script>

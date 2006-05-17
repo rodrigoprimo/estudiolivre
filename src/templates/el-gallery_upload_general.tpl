@@ -1,5 +1,5 @@
 <!-- el-gallery_upload_general.tpl begin -->
-{$xajax_js}
+
 <script language="JavaScript" src="lib/elgal/upload.js"></script>
 
 <div id="gUpload">

@@ -1,0 +1,11 @@
+--- tiki-setup.php	2006-02-09 21:53:26.000000000 -0200
++++ tiki-setup.php	2006-05-17 15:32:50.000000000 -0300
+@@ -1985,4 +1985,8 @@
+ 	$feature_bidi='y';
+ 	$smarty->assign('feature_bidi', $feature_bidi);
+ }
++
++// ESTUDIOLIVRE HACK BEGIN 
++require_once("el-setup.php");
++// ESTUDIOLIVRE HACK END
+ ?>

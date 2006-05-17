@@ -157,7 +157,8 @@ You are most likely wanting to modify the top of your Tiki site. Please consider
   //window.attachEvent("onload", correctPNG);
   </script>
   {/literal}
-  
+
+{$xajax_js}  
 </head>
 
 <!-- head.tpl end -->
