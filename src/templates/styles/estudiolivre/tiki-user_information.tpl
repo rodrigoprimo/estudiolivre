@@ -46,14 +46,14 @@
       <div id="uGalleryTitle" class="uMainTitle">
         <a class="uRssCont" href="#"><img src="styles/estudiolivre/iRss.png"></a>
         <a href="#" onClick="javascript:flip('uGalleryItems'); return false;">
-          <img src="styles/estudiolivre/iArrowGreyDown.png">
+          <img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
         </a>
         &nbsp;
         <h1>
           <a href="#">Galeria pessoal</a>
         </h1>
       </div>
-      <div id="uGalleryItems" class="uMainItemContainer">
+      <div id="uGalleryItems" class="uMainItemContainer" style="display:block">
 		[include lista acervo]
       </div>
     </div>
@@ -61,14 +61,14 @@
       <div id="uBlogTitle" class="uMainTitle">
         <a class="uRssCont" href="#"><img src="styles/estudiolivre/iRss.png"></a>
         <a href="#" onClick="javascript:flip('uBlogItems'); return false;">
-          <img src="styles/estudiolivre/iArrowGreyDown.png">
+        	<img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
         </a>
         &nbsp;
         <h1>
           <a href="#">Blog</a>
         </h1>
       </div>
-      <div id="uBlogItems" class="uMainItemContainer">
+      <div id="uBlogItems" class="uMainItemContainer" style="display:block">
         <div class="uBlogItem">
           <div id="uBlogItemTitle">
             <h1>Titulo Post</h1> - 29 de Abril de 2005
@@ -99,12 +99,12 @@
       <div id="uMsgsTitle" class="uMainTitle">
         <a class="uRssCont" href="#"><img src="styles/estudiolivre/iRss.png"></a>
         <a href="#" onClick="javascript:flip('uMsgItems'); return false;">
-          <img src="styles/estudiolivre/iArrowGreyDown.png">
+          <img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
         </a>
         &nbsp;
         <h1><a href="#">Recados</a></h1>
       </div>
-      <div id="uMsgItems" class="uMainItemContainer">
+      <div id="uMsgItems" class="uMainItemContainer" style="display:block">
         
         {* Item 1 *}
         <div class="uMsgItem">
@@ -165,14 +165,14 @@
     	<div id="uWikiTitle" class="uMainTitle">
     		<a class="uRssCont" href="#"><img src="styles/estudiolivre/iRss.png"></a>
     		<a href="#" onClick="javascript:flip('uWikiMid'); return false;">
-              <img src="styles/estudiolivre/iArrowGreyDown.png">
+              <img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
         	</a>
         	&nbsp;
     		<h1>
     		  <a href="#" title="Wiki de ???">Wiki do cara</a>
     		</h1>
     	</div>
-    	<div id="uWikiMid">
+    	<div id="uWikiMid" style="display:block">
     	Texto do wiki do cara
         </div>
     </div>

@@ -27,6 +27,7 @@ You are most likely wanting to modify the top of your Tiki site. Please consider
   {* --- tikiwiki block --- *}
   {php} include("lib/tiki-dynamic-js.php"); {/php}
   <script type="text/javascript" src="lib/tiki-js.js"></script>
+  <script type="text/javascript" src="lib/js/toggleImage.js"></script>
   {include file="bidi.tpl"}
   <title>
   {if $trail}{breadcrumbs type="fulltrail" loc="head" crumbs=$trail}
