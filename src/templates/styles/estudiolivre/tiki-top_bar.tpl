@@ -5,7 +5,7 @@
 <div id="topContainer">
   <div id="logo">
     <a href="/">
-      <img src="styles/estudiolivre/logoTop.png">
+      {tooltip text="Navegue para a home do EstúdioLivre"}<img src="styles/estudiolivre/logoTop.png">{/tooltip}
     </a>
   </div>
   
@@ -15,9 +15,9 @@
     <form id='form-busca' class="searchForm" method="get" action="tiki-searchresults.php" >
       <input type="hidden" name="where" value="pages">
       <ul class="searchOptions">
-        <li id="busca-wiki" class=""><a onclick="marcaBusca('wiki')">wiki</a></li>
-        <li id="busca-acervo" class=""><a onclick="marcaBusca('acervo')">acervo</a></li>
-        <li id="busca-forum" class=""><a onclick="marcaBusca('forum')">f&oacute;rum</a></li>
+        <li id="busca-wiki" class="">{tooltip text="Buscar somente nas páginas wiki"}<a onclick="marcaBusca('wiki')">wiki</a>{/tooltip}</li>
+        <li id="busca-acervo" class="">{tooltip text="Buscar no acervo do EstúdioLivre"}<a onclick="marcaBusca('acervo')">acervo</a>{/tooltip}</li>
+        <li id="busca-forum" class="">{tooltip text="Buscar nos fóruns do EstúdioLivre"}<a onclick="marcaBusca('forum')">f&oacute;rum</a>{/tooltip}</li>
       </ul>
       <input id="searchField" name="highlight" size="15" type="text" accesskey="s" value="Buscar" onFocus="this.value=''" /><input class="submit" type="image" name="search" src="styles/estudiolivre/bSearch.png">
 {*      <a class="searchMore" href="tiki-searchresults.php">mais opções de busca <span>+</span></a> *}

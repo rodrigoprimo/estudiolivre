@@ -157,8 +157,9 @@ img {
 	text-align:left;	
 }
 
-.searchNoResults {
+#searchNoResults {
 	text-align:center;
+	margin: 15px 0 15px 0;
 }
 
 .searchResultItemLink {

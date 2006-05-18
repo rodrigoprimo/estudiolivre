@@ -125,7 +125,8 @@
 			</div>
 			{sectionelse}
 			<div id="searchNoResults">
-				{tr}No pages matched the search criteria{/tr}
+				{tr}No pages matched the search criteria{/tr}<br /><br /><br />
+				{tr}Você pode colaborar criando a página{/tr} <a href="tiki-editpage.php?page={$words}">{$words}</a> {tooltip text="Nenhuma outra página do wiki levará a essa página. Assim ela estará, de certo modo, inacessível. Para resolver isso basta colocar um link para esta página em alguma outra página"}(a página será órfã){/tooltip}</a>
 			</div>
 			{/section}
 		</div>
