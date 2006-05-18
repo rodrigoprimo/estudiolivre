@@ -5,6 +5,8 @@ require_once("tiki-setup.php");
 require_once("lib/elgal/elgallib.php");
 
 if (isset($_REQUEST['arquivoId']) && isset($_FILES['arquivo']) && !empty($_FILES['arquivo']['name'])) {
+
+    $arquivoId = $_REQUEST['arquivoId'];
     
     if ($_FILES["arquivo"]["type"] == 'application/ogg' &&
 	preg_match("/^Audio|Video$/",$_REQUEST['tipo'])) {
@@ -29,18 +31,31 @@ if (isset($_REQUEST['arquivoId']) && isset($_FILES['arquivo']) && !empty($_FILES
 		else {
 		    global $userlib;
 		    $userId = $userlib->get_user_id($user);
-		    $error = $elgallib->send_file($_FILES["arquivo"],$_REQUEST['arquivoId'],$userId);
+		    $error = $elgallib->send_file($_FILES["arquivo"],$arquivoId,$userId);
 		    if ($error) {
-				$errorMsg = tra('Upload was not successful').': '.$error;
+			$errorMsg = tra('Upload was not successful').': '.$error;
 		    }
 		}
     }
     
     if ($errorMsg) {
     	echo "<script language=\"javaScript\">alert('".$errorMsg."');</script>";
-    } else {
-    	echo "<script language=\"javaScript\">alert('upload ok');</script>";
+	exit;
     }
+
+    if ($_REQUEST['tipo'] == "Video") {
+	$gif = $elgallib->create_anim_gif("repo/".$_REQUEST['arquivo']);
+	$thumbData = $gif;
+    }
+    elseif ($_REQUEST['tipo'] == "Imagem") {
+	$thumbData = $elgallib->generate_thumbnail("repo/".$_REQUEST['arquivo']);
+    } else {
+	exit;
+    }
+
+    $elgallib->edit_field($arquivoId, 'thumbnail', $thumbData);
+    echo "<script>alert(".strlen($thumbData).")</script>";exit;
+    echo "<script>parent.document.getElementById('thumbnail').src = 'el-download.php?arquivo=$arquivoId&thumbnail=1';</script>";
 }
 
 ?>

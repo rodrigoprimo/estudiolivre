@@ -165,6 +165,7 @@ else {
 }
 
 $smarty->assign('uploadId',rand() . '.' . time());
+//$smarty->assign('arquivo',array('titulo' => 'teste', 'autor' => 'Fulano', 'descricao' => 'texto texto texto'));
 
 $smarty->assign('step',$step);
 

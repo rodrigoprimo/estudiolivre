@@ -45,8 +45,7 @@
     	<a href="#" class="gUpButton" id="gUpButton">procurar</a>
     	<div class="gUpForm">
           <form name="uploadForm" target="uploadTarget" action="el-gallery_upload_file.php?UPLOAD_IDENTIFIER={$uploadId}" method="post" enctype="multipart/form-data">
-  		    <input type="hidden" name="UPLOAD_IDENTIFIER" value="{$uploadId}">
-  		    <input type="hidden" name="arquivoId" value="">
+  		    <input type="hidden" name="UPLOAD_IDENTIFIER" value="{$uploadId}">  		    <input type="hidden" name="arquivoId" value="">
   		    <input type="hidden" name="tipo" value="">
    	   	    <input type="file" name="arquivo" onChange="changeStatus(this.value);">
    	      </form>
@@ -60,25 +59,23 @@
   </div>
   
   <form>
-  <div id="gUpRight">
+  <div id="gUpRight" style="display: none">
     <div id="gUpEditThumbTitleAuthor">
       <div id="gUpThumb">
-        <img alt=""	height="60" width="60" src="" >
+        <img id="thumbnail" alt="" height="60" width="60" src="" >
       </div>
       
       <div id="gUpTitleAuthor">
         {ajax_input class="gUpTitle" id="titulo" value=$arquivo.titulo default="Titulo" display="inline"}
 		<div id="gUpAuthor">
-		  Por <a href="#">{$arquivo.autor|escape|default:"Autor da obra..."}</a>
-	         <input id="input-autor" value="{$arquivo.autor|escape}" onBlur="saveField(this);">
+		  	Por {ajax_input class="gUpAuthor" id="autor" value=$arquivo.autor default="Autor da obra" display="inline"}
 		</div>
       </div>
       
     </div>
     <br style="line-height:30px;">
     <div id="gUpEditDescription">
-      <span id="gUpDescription">{$arquivo.descricao|escape|default:"Descricao da sua obra"}</span>
-         <textarea id="input-descricao" onBlur="saveField(this);">{$arquivo.descricao}</textarea>
+	     {ajax_textarea class="gUpEditDescription" id="descricao" value=$arquivo.descricao default="Descrição da sua obra" display="block"}
     </div>
     
     <br style=" line-height:20px;">

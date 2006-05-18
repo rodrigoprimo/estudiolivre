@@ -1,6 +1,6 @@
 <?
 include_once("lib/init/initlib.php");
-require_once("tiki-setup_base.php");
+require_once("tiki-setup.php");
 require_once("lib/elgal/elgallib.php");
 
 if (!isset($_REQUEST['arquivo']) || $_REQUEST['arquivo'] == 0) {
@@ -8,7 +8,7 @@ if (!isset($_REQUEST['arquivo']) || $_REQUEST['arquivo'] == 0) {
     $smarty->display("error.tpl");
     die;
 }
-     
+
 $arquivo = $elgallib->get_file($_REQUEST['arquivo']);
 
 if(isset($_REQUEST['thumbnail'])) {
@@ -17,9 +17,10 @@ if(isset($_REQUEST['thumbnail'])) {
     exit;
 }
 
-header("Content-type: $arquivo[formato]");
+header("Content-type: ". $arquivo['formato']);
+
 preg_match("/\d+_\d+-(.+)$/", $arquivo['arquivo'], $nome);
-//$nome[1] = preg_replace("/\s/", "%20", $nome[1]);
+
 if(isset($_REQUEST['action']) and $_REQUEST['action'] == 'download') {
     header("Content-Disposition: attachment; filename=\"$nome[1]\"");
     $elgallib->add_file_hit($_REQUEST['arquivo']);

@@ -1,10 +1,15 @@
 var timerId = null;
 var uploadStartTimer = null;
+var originalWidth = 159;
 var uploadId;
 var uploadStarted = false;
 var originalWidth;
 var tipoSelecionado = false;
 var tipos = new Array('Audio','Video','Imagem','Texto');
+var arquivoId = false;
+var saveFieldCache = new Array();
+var display = new Array();
+var mudado = new Array();
 
 function upload() {
 	uploadId = document.uploadForm.UPLOAD_IDENTIFIER.value;
@@ -12,7 +17,8 @@ function upload() {
 	xajax_create_file(tipoSelecionado, uploadId);		
 }
 
-function startUpload(arquivoId) {
+function startUpload(id) {
+	arquivoId = id;
 	document.uploadForm.arquivoId.value = arquivoId;
 	// TODO: checar o tipo
 	updateUploadInfo();
@@ -22,7 +28,6 @@ function startUpload(arquivoId) {
 function updateUploadInfo() {
 	if (!uploadStarted) {
 		uploadStarted = true;
-		originalWidth = 159;
 		document.uploadForm.style.display = 'none';
 		document.getElementById('gUpButton').innerHTML = 'cancelar';
 		document.getElementById('gUpPercent').innerHTML = '0%';
@@ -36,7 +41,7 @@ function updateUploadInfo() {
 function finishUpload() {
 	if (timerId) {
 		clearTimeout(timerId);
-		document.getElementById('gUpButton').innerHTML = 'remover';
+		document.getElementById('gUpButton').innerHTML = '<span onClick="removeUpload();">remover</span>';
 		document.getElementById('gUpStatusBar').className = "gUpStatus gUpEditing";
 		document.getElementById('gUpStatusBar').style.width = originalWidth + 'px';
 		document.getElementById('gUpPercent').style.backgroundColor = '#ffe475';
@@ -54,10 +59,21 @@ function updateProgressMeter(uploadInfo) {
 }
 
 function changeStatus(value) {
-	document.getElementById('gUpFileName').innerHTML = value.replace(new RegExp(/^.*(\/|\\)/), '');
-	show('gUpRight');
-	uploadStartTimer = setTimeout("upload()",2000);
-	document.uploadForm.tipo.value = tipoSelecionado;
+    document.getElementById('gUpFileName').innerHTML = value.replace(new RegExp(/^.*(\/|\\)/), '');
+    show('gUpRight');
+    uploadStartTimer = setTimeout("upload()",500);
+    document.uploadForm.tipo.value = tipoSelecionado;
+}
+
+function removeUpload() {
+    uploadStarted = false;
+    document.uploadForm.style.display = 'block';
+    document.getElementById('gUpButton').innerHTML = 'procurar';
+    document.getElementById('gUpPercent').innerHTML = '';
+    document.getElementById('gUpStatusBar').style.width = '0px';
+    document.getElementById('gUpStatusBar').className = "gUpStatus";
+    document.getElementById('gUpFileName').innerHTML = '';
+    document.uploadForm.reset();
 }
 
 function acendeTipo(tipo) {
@@ -81,11 +97,39 @@ function selecionaTipo(tipo) {
 		document.getElementById("icone" + tipo).src = "styles/estudiolivre/iUp" + tipo + ".png";
 		show('gUpList');
 	} else {
-		alert('Voc? n?o pode mudar o tipo de arquivo depois de come?ar o upload')
+		alert('Você não pode mudar o tipo de arquivo depois de começar o upload')
 	}
 }
 
-function saveField(field){
-	
+function saveField(fieldObj){
+    field = fieldObj.id.replace(/^input-/,'');
+    value = fieldObj.value
+    if (saveFieldCache[field] == null || saveFieldCache[field] != value) {
+	xajax_save_field(arquivoId, field, value);
+	saveFieldCache[field] = value;
+    } else {
+	exibeCampo(field, value);
+    }
 }
 
+function limpaCampo(field) {
+    if (mudado[field] == null) {
+	document.getElementById('input-'+field).value = '';
+    }
+}
+
+function exibeCampo(field, value) {
+    if (value.length > 0) {
+	var showElement = document.getElementById("show-" + field);
+	showElement.style.display = display[field];
+	showElement.innerHTML = value;
+	document.getElementById("input-" + field).style.display = "none";
+    }
+}
+
+function editaCampo(field) {11
+    document.getElementById("show-"  + field).style.display = "none";
+    document.getElementById("input-" + field).style.display = display[field];
+    document.getElementById("input-" + field).focus();
+	
+}

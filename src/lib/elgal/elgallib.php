@@ -15,8 +15,9 @@ $commentslib = new Comments($dbTiki);
 
 class ELGalLib extends TikiLib {
 
-  var $valid_fields = array("album","thumbnail","licencaId","titulo","tipo","user","autor","donoCopyright","descricao","produtora","contato","siteRelacionado","iSampled","sampledMe","rating","duracao","tipoDoAudio","bpm","sampleRate","bitRate","genero","letra","fichaTecnica","tamanhoImagemX","tamanhoImagemY","temAudio","temCor","idiomaVideo","legendas","idiomaLegenda","dpi");
-
+  var $basic_fields = array("licencaId","titulo","tipo","user","autor","donoCopyright","descricao","produtora","contato","siteRelacionado","rating","thumbnail");
+  var $extension_fields = array("duracao","tipoDoAudio","bpm","sampleRate","bitRate","genero","letra","fichaTecnica","tamanhoImagemX","tamanhoImagemY","temAudio","temCor","idiomaVideo","legendas","idiomaLegenda","dpi");
+  
   function ELGalLib($db) {
     if (!$db) {
       die ("Invalid db object passed to WikiLib constructor");
@@ -237,7 +238,23 @@ class ELGalLib extends TikiLib {
     }
     
   }
-    
+  
+  function edit_field($arquivoId, $name, $value) {
+  	if (in_array($name, $this->basic_fields)) {
+  		$table = "el_arquivo";
+  	} elseif (in_array($name, $this->extension_fields)) {
+  		$arquivo = $this->get_arquivo($arquivoId);
+  		$table = "el_arquivo_" . strtolower($arquivo['tipo']); 
+  	} else {
+  		return false;
+  	}
+  	
+  	$query = "update `$table` set `$name`=? where `arquivoId`=?";
+  	return $this->query($query, array($value,$arquivoId));
+  	
+  }
+  
+  
   function get_arquivo($arquivoId) {
     $query = "select * from `el_arquivo` where `arquivoId`=?";
     $result = $this->query($query, array($arquivoId));

@@ -834,7 +834,7 @@ A.gUpButton:hover {
 	font-weight:bold;
 }
 
-#gUpAuthor {
+.gUpAuthor {
 	text-align:right;
 	margin-right:20px;
 	font-size:11px;

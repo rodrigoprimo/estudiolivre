@@ -11,6 +11,7 @@ $xajax->setLogFile("/tmp/xajax.log");
 
 $xajax->registerFunction('upload_info');
 $xajax->registerFunction('create_file');
+$xajax->registerFunction('save_field');
 
 function upload_info($uploadId) {
 	$objResponse = new xajaxResponse();
@@ -28,6 +29,26 @@ function create_file($tipo, $uploadId) {
 	$arquivoId = $elgallib->create_arquivo($arquivo, $user);
 	$objResponse->addScriptCall('startUpload',$arquivoId);
 	return $objResponse;
+}
+
+function save_field($arquivoId, $name, $value) {
+	$objResponse = new xajaxResponse();
+	global $elgallib, $user, $el_p_admin_acervo;
+	$el_p_admin_acervo = 'y';
+	$arquivo = $elgallib->get_arquivo($arquivoId);
+	if (!$user || $user != $arquivo['user'] || $el_p_admin_acervo != 'y') {
+		return false;
+	}
+	$result = $elgallib->edit_field($arquivoId, $name, $value);
+	
+	if(!$result) {
+		$objResponse->addAlert("nao foi possivel editar o campo $name");
+	} else {
+		$objResponse->addScriptCall('exibeCampo', $name, $value);
+	}
+	
+	return $objResponse;
+	
 }
 
 $xajax->processRequests();
