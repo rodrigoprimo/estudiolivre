@@ -232,16 +232,17 @@ img {
 }
 
 .hiddenDescript {
-	/*display:none;*/
+	display:none;
 	/*border: 1px solid blue;*/
 	position:absolute;
-	right:999px;
+	/*right:999px;*/
 	width:150px;
 	text-align:center;
 	height:0px;
 	overflow:show;
 	font-size:16px;
 	margin-top:-2px;
+	right:140px;
 }
 
 .hiddenDescript#metareciclagem {
@@ -261,8 +262,8 @@ img {
 }
 
 #topMenuCubes li:hover .hiddenDescript {
-	/*display:inline;*/
-	right:140px;
+	display:block;
+	/*right:140px;*/
 }
 
 /* content */
