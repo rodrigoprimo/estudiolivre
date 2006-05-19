@@ -127,7 +127,7 @@ function exibeCampo(field, value) {
     }
 }
 
-function editaCampo(field) {11
+function editaCampo(field) {
     document.getElementById("show-"  + field).style.display = "none";
     document.getElementById("input-" + field).style.display = display[field];
     document.getElementById("input-" + field).focus();
