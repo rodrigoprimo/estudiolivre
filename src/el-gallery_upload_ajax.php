@@ -33,22 +33,45 @@ function create_file($tipo, $uploadId) {
 
 function save_field($arquivoId, $name, $value) {
 	$objResponse = new xajaxResponse();
-	global $elgallib, $user, $el_p_admin_acervo;
-	$el_p_admin_acervo = 'y';
-	$arquivo = $elgallib->get_arquivo($arquivoId);
-	if (!$user || $user != $arquivo['user'] || $el_p_admin_acervo != 'y') {
-		return false;
-	}
-	$result = $elgallib->edit_field($arquivoId, $name, $value);
-	
-	if(!$result) {
-		$objResponse->addAlert("nao foi possivel editar o campo $name");
+
+	if ($name == 'tags') {
+	    tag_arquivo($arquivoId, $value);
 	} else {
+	    global $elgallib, $user, $el_p_admin_acervo;
+	    $el_p_admin_acervo = 'y';
+	    $arquivo = $elgallib->get_arquivo($arquivoId);
+	    if (!$user || $user != $arquivo['user'] || $el_p_admin_acervo != 'y') {
+		return false;
+	    }
+	    $result = $elgallib->edit_field($arquivoId, $name, $value);
+	    
+	    if(!$result) {
+		$objResponse->addAlert("nao foi possivel editar o campo $name");
+	    } else {
 		$objResponse->addScriptCall('exibeCampo', $name, $value);
+	    }
 	}
 	
 	return $objResponse;
+
+}
+
+function tag_arquivo($arquivoId, $tag_string) {
+    global $freetaglib, $elgallib;
+    if (!is_object($freetaglib)) {
+	include_once('lib/freetag/freetaglib.php');
+    }
+    
+    global $user;
+
+    $arquivo = $elgallib->get_arquivo($arquivoId);
+    
+    $href = "el-arquivo.php?arquivoId=$arquivoId";
+
+    $freetaglib->add_object('acervo', $arquivoId, $arquivo['descricao'], $arquivo['titulo'], $href);	
+    $freetaglib->update_tags($user, $arquivoId, 'acervo', $tag_string);
 	
+
 }
 
 $xajax->processRequests();

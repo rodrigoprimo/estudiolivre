@@ -24,37 +24,37 @@ if (isset($_REQUEST['arquivoId']) && isset($_FILES['arquivo']) && !empty($_FILES
 		$errorMsg = "Você deve fornecer um arquivo do tipo: ".$_REQUEST['tipo'].", e nao do tipo: ".$arq_tipo[1];
     }
     else {
-		// Were there any problems with the upload?  If so, report here.
-		if (!is_uploaded_file($_FILES["arquivo"]['tmp_name'])) {
-		    $errorMsg = tra('Upload was not successful').': '.ELGalLib::convert_error_to_string($_FILES["arquivo"]['error']);
-		} 
-		else {
-		    global $userlib;
-		    $userId = $userlib->get_user_id($user);
-		    $error = $elgallib->send_file($_FILES["arquivo"],$arquivoId,$userId);
-		    if ($error) {
-			$errorMsg = tra('Upload was not successful').': '.$error;
-		    }
-		}
+	// Were there any problems with the upload?  If so, report here.
+	if (!is_uploaded_file($_FILES["arquivo"]['tmp_name'])) {
+	    $errorMsg = tra('Upload was not successful').': '.ELGalLib::convert_error_to_string($_FILES["arquivo"]['error']);
+	} 
+	else {
+	    global $userlib;
+	    $userId = $userlib->get_user_id($user);
+	    $error = $elgallib->send_file($_FILES["arquivo"],$arquivoId,$userId);
+	    if ($error) {
+		$errorMsg = tra('Upload was not successful').': '.$error;
+	    }
+	}
     }
     
-    if ($errorMsg) {
+    if (isset($errorMsg)) {
     	echo "<script language=\"javaScript\">alert('".$errorMsg."');</script>";
 	exit;
     }
 
+    $arquivo = $elgallib->get_arquivo($arquivoId);
+
     if ($_REQUEST['tipo'] == "Video") {
-	$gif = $elgallib->create_anim_gif("repo/".$_REQUEST['arquivo']);
-	$thumbData = $gif;
+	$thumbData = $elgallib->create_anim_gif("repo/".$arquivo['arquivo']);
     }
     elseif ($_REQUEST['tipo'] == "Imagem") {
-	$thumbData = $elgallib->generate_thumbnail("repo/".$_REQUEST['arquivo']);
+	$thumbData = $elgallib->generate_thumbnail("repo/".$arquivo['arquivo']);
     } else {
 	exit;
     }
 
     $elgallib->edit_field($arquivoId, 'thumbnail', $thumbData);
-    echo "<script>alert(".strlen($thumbData).")</script>";exit;
     echo "<script>parent.document.getElementById('thumbnail').src = 'el-download.php?arquivo=$arquivoId&thumbnail=1';</script>";
 }
 

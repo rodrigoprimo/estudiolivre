@@ -241,17 +241,24 @@ class ELGalLib extends TikiLib {
   
   function edit_field($arquivoId, $name, $value) {
   	if (in_array($name, $this->basic_fields)) {
-  		$table = "el_arquivo";
+	    $table = "el_arquivo";
   	} elseif (in_array($name, $this->extension_fields)) {
-  		$arquivo = $this->get_arquivo($arquivoId);
-  		$table = "el_arquivo_" . strtolower($arquivo['tipo']); 
+	    $arquivo = $this->get_arquivo($arquivoId);
+	    $table = "el_arquivo_" . strtolower($arquivo['tipo']); 
   	} else {
-  		return false;
+	    return false;
   	}
+
+	if ($name == 'titulo') {
+	    $this->query("update `tiki_objects` set `name`=? where `itemId`=? and `type`=?",
+			 array($value, $arquivoId, 'acervo'));
+	} elseif ($name == 'descricao') {
+	    $this->query("update `tiki_objects` set `description`=? where `itemId`=? and `type`=?",
+			 array($value, $arquivoId, 'acervo'));
+	}
   	
   	$query = "update `$table` set `$name`=? where `arquivoId`=?";
   	return $this->query($query, array($value,$arquivoId));
-  	
   }
   
   
@@ -489,11 +496,11 @@ class ELGalLib extends TikiLib {
       ob_end_clean();
       
     }
+    return $data;
     global $tikilib;
     $tikilib->blob_encode($data);
     fclose($fp);
     
-    return $data;
     
   }
   
@@ -523,11 +530,10 @@ class ELGalLib extends TikiLib {
       }
       
       global $tikilib;
-      $tikilib->blob_encode($data);
+      $tikilib->blob_encodessh ($data);
       fclose($fp);
       
       return $data;
-  
   }
   
   function new_files($user) {

@@ -20,17 +20,26 @@ function smarty_function_ajax_input($params, &$smarty) {
 	$value = $params['value'];
 	$default = $params['default'];
 	$display = $params['display'];
+	$mode = $params['mode'];
+
+	if ($mode == 'edit') {
+	    $edit = 1;
+	} elseif ($mode == 'show') {
+	    $edit = 0;
+	} else {
+	    $edit = $value ? 0 : 1;
+	}
 	
 	if (!$display) $display = 'block';
 	
 	$output = '';
-	$output .= '<div id="show-'. $id .'" class="'.$class.'" style="display:' . ($value ? $display : 'none') . '" onClick="editaCampo(' . "'" . $id . "'" . ');">';
-	$output .= ($value ? $value : $default);
+	$output .= '<div id="show-'. $id .'" class="'.$class.'" style="display:' . ($edit ? 'none' : $display ) . '" onClick="editaCampo(' . "'" . $id . "'" . ');">';
+	$output .= ($edit ? $default : $value);
 	$output .= "</div>";
 	// TODO: escape value
 	$output .= '<input class="'.$class.'" id="input-'.$id.'" value="'. ($value ? $value : $default) .'" ';
 	if (!$value) { $output .= " onFocus=\"limpaCampo('$id');\" onChange=\"mudado['$id']=1;\""; }
-	$output .= " onBlur=\"saveField(this)\" style=\"display:" . ($value ? 'none' : $display) . "\">";
+	$output .= " onBlur=\"saveField(this)\" style=\"display:" . ($edit ? $display : 'none') . "\">";
 
 	$output .= '<script language="JavaScript">display["'.$id.'"] = "'.$display.'";</script>';
 	

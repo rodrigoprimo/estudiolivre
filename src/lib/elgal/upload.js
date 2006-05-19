@@ -122,7 +122,7 @@ function exibeCampo(field, value) {
     if (value.length > 0) {
 	var showElement = document.getElementById("show-" + field);
 	showElement.style.display = display[field];
-	showElement.innerHTML = value;
+	showElement.innerHTML = value.replace(new RegExp(/\n/g), '<br/>');
 	document.getElementById("input-" + field).style.display = "none";
     }
 }
