@@ -1,6 +1,7 @@
 <!-- body.tpl begin -->
-
 <body {if $user_dbl eq 'y' and $dblclickedit eq 'y' and $tiki_p_edit eq 'y'}ondblclick="location.href='tiki-editpage.php?page={$page|escape:"url"}';"{/if} {if $show_comzone eq 'y'}onload="javascript:flip('comzone');"{/if}{if $section} class="tiki_{$section}"{/if}>
+
+  {include file="el-lightbox.tpl"}
 
   {if $minical_reminders>100}
     <iframe width='0' height='0' frameborder="0" src="tiki-minical_reminders.php"></iframe>
@@ -14,7 +15,7 @@
 	
 	<div style="width:760px;margin:0px auto;">
 	<!-- SELO: isso é só pro teste.estudiolivre !-->
-	<img src="styles/estudiolivre/faixaTeste.png" style="position:absolute; top:5px;z-index:200"/>
+	<img src="styles/estudiolivre/faixaTeste.png" style="position:absolute; top:5px;z-index:5"/>
 	<div>
 	<!-- fim do selo !-->
 		<div id="tiki-main">

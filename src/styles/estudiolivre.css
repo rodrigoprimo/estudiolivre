@@ -227,6 +227,8 @@ img {
 
 #topMenuCubesContainer {
 	position:relative;	
+	width:350px;
+	float:right;
 }
 
 #topMenuCubes li {
@@ -294,7 +296,7 @@ img {
 	border-bottom: 5px solid #dadad9;
 	border-right: 2px solid #dadad9;
 	padding: 0px 10px 10px 0px;
-	-moz-border-radius: 0px 8px 8px 0px;
+	-moz-border-radius: 15px 15px 15px 15px;
 	overflow:hidden;
 }
 
@@ -432,7 +434,6 @@ img {
 }
 
 #listNav .selected {
-	/*font-size:13px;*/
 	font-weight:bold;
 }
 
@@ -440,7 +441,7 @@ img {
 
 #gHomeWiki {
 	background:#eff9ea;
-	clear:both;
+	-moz-border-radius: 8px 8px 0px 0px;
 	overflow:hidden;
 	padding: 0 10px 0px 10px;
 }

@@ -1,3 +1,5 @@
+
+
 <div id="sideContent">
   {if $category eq "Áudio"}
   {********AUDIO*********}
@@ -94,10 +96,17 @@
     <a href="el-gallery_home.php"><img src="styles/estudiolivre/logoAcervo.png"></a>
 	<div id="localMenu">
 	<ul>
-    {if $current_location eq "el-gallery_upload.php"}
-      <li class="selectedAcervo">compartilhe sua obra</li>
+    {if $current_location eq "el-gallery_upload.php"}      
+      	<li class="selectedAcervo">compartilhe sua obra, porra!</li>
     {else}
-         <li><a href="el-gallery_upload.php">compartilhe sua obra</a></li>
+    	{if $user}
+        	<li><a href="el-gallery_upload.php">compartilhe sua obra, caralho!</a></li>
+        {else}
+      		<div id="precisaLogar" style="display:none;width:100px">
+      			Aqui vai a mensagem pedindo pro cara logar
+      		</div>
+      		<li onclick="showLightbox('precisaLogar')" style="cursor:pointer"><a>compartilhe sua obra, merda!</a></li>
+        {/if}   
     {/if}
     
      <li><a href="tiki-view_forum.php?forumId=16">sobre o acervo</a></li>

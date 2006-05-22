@@ -1,0 +1,36 @@
+#lightbox{
+	position:absolute;
+	background-color:#fff;
+	padding: 10px;
+	border-bottom: 2px solid #666;
+	border-right: 2px solid #666;
+	z-index:10;
+	-moz-border-radius: 20px 20px 20px 20px;
+	display:none;
+}
+
+#closeButton{
+	position:absolute;
+	top: 5px;
+	right: 5px;
+	z-index:12;
+	cursor:pointer;
+	margin:5px;
+}
+
+#overlay{
+	position:absolute;
+	top:0; left:0;
+	background-image: url(estudiolivre/overlay.png);
+	text-align:center;
+	width:100%;
+	z-index:9;
+	display:none;
+}
+
+/* html #overlay{
+	background-color: #333;
+	back\ground-color: transparent;
+	background-image: url(blank.gif);
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="overlay.png", sizingMethod="scale");
+}*/

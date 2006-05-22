@@ -36,7 +36,7 @@
     | 
     {tooltip text="Perguntas mais freqüêntes"}<a href="tiki-list_faqs.php">faq</a>{/tooltip}
     | 
-    {tooltip text="Entre em contato - descubra os canais de contato"}<a href="tiki-index.php?page=Contato">contato</a>{/tooltip}
+    {tooltip text="Entre em contato - descubra os canais de comunicação com a comunidade"}<a href="tiki-index.php?page=Contato">contato</a>{/tooltip}
   </div>
   <div id="topMenuCubesContainer"><ul id="topMenuCubes">
 
