@@ -3,6 +3,10 @@
 // Initialization
 require_once('tiki-setup.php');
 require_once('lib/elgal/elgallib.php');
+require_once('lib/blogs/bloglib.php');
+require_once('lib/messu/messulib.php');
+require_once('lib/commentslib.php');
+$commentslib = new Comments($dbTiki);
 
 if (isset($_REQUEST['view_user'])) {
 	$userwatch = $_REQUEST['view_user'];
@@ -19,16 +23,16 @@ if (isset($_REQUEST['view_user'])) {
 
 $_REQUEST['view_user'] = $userwatch;
 
-$uploads = $elgallib->list_all_user_uploads($_REQUEST['view_user']);
+//$uploads = $elgallib->list_all_user_uploads($_REQUEST['view_user']);
 
-if ($el_p_view_pendent_files == 'y' || $_REQUEST['view_user'] == $user) {
-    $pending = $elgallib->list_pending_uploads($_REQUEST['view_user']);
-} else {
-    $pending = false;
+//$smarty->assign('myFiles',$uploads);
+$userPosts = $bloglib->list_user_posts($_REQUEST['view_user'], 0, 5);
+for($i = 0; $i < sizeof($userPosts['data']); $i++) {
+	$userPosts['data'][$i]['commentsCount'] = $commentslib->count_comments('post:' . $userPosts['data'][$i]['postId']);
 }
+$smarty->assign('userPosts', $userPosts);
 
-$smarty->assign('all',$uploads);
-$smarty->assign('pending',$pending);
+$smarty->assign('userMessages', $messulib->list_user_messages($_REQUEST['view_user'], 0, 5, 'date_desc', '', '', '', '', 'messages'));
 
 include("tiki-user_information.php");
 
