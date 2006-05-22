@@ -2,7 +2,7 @@
 
   <div id="gLicenseThumbContainer">
     <div id="gLicense">
-     <img src="styles/estudiolivre/{$arquivo.linkImagem}">
+     {tooltip text="Clique para ler a licença desse arquivo"}<img src="styles/estudiolivre/{$arquivo.linkImagem}">{/tooltip}
     </div>
     <div id="gThumb">
 	  <a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view">
@@ -20,9 +20,9 @@
       <div id="gNameAuthor">
         <div id="gName">
 	 	
-	  <a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view">
+	  {tooltip text="Clique para ir para a página do arquivo"}<a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view">
 	    {$arquivo.nomeArquivo}
-	  </a>
+	  </a>{/tooltip}
 	 
 	</div>
 	
@@ -38,53 +38,64 @@
         <div id="gDownloadPlay">
           <div id="gDownload">
 	  		<span class="gDownloadCount">{$arquivo.hits}</span>
-		    <a href="#">
+		    {tooltip text="Baixe esse arquivo"}<a href="#">
 		      <img alt="" src="styles/estudiolivre/iDownload.png">
-		    </a>
+		    </a>{/tooltip}
 		  </div>
 
 		  <div id="gPlay">
 		  	<span class="gStreamCount">--</span>
-		    <a href="#">
-		      <img alt="" src="styles/estudiolivre/iPlay.png">
-		    </a>
+		    {if $arquivo.tipo eq "Video"}
+		    	{assign var=tooltipText value="Assita esse vídeo"}
+		    {else}
+		    	{if $arquivo.tipo eq "Audio"}
+		    		{assign var=tooltipText value="Ouça essa música"}
+		    	{/if}
+		    {/if}
+		    {if tooltipText}
+		    	{tooltip text=$tooltipText}
+				    <a href="#">
+				      <img alt="" src="styles/estudiolivre/iPlay.png">
+				    </a>
+			    {/tooltip}
+		    {/if}
 		  </div>
         </div>
       
         <div id="gRatingComments">
           <div id="gRating">
-	    <img alt="{$arquivo.rating} estrelas" src="styles/estudiolivre/star{math equation="round(x)" x=$arquivo.rating|default:"blk"}.png">
+	    {tooltip text="Avaliação - entre na página do arquivo para votar"}<img alt="{$arquivo.rating} estrelas" src="styles/estudiolivre/star{math equation="round(x)" x=$arquivo.rating|default:"blk"}.png">{/tooltip}
 	  </div>
 	  <div id="gComments">
 	    {if $arquivo.commentsCount == 0}
-	    	<a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view#comments" title="seja o primeiro a comentar sobre esse arquivo">nenhum comentário
+	    	{tooltip text="Seja o primeiro a comentar sobre esse arquivo"}<a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view#comments">nenhum comentário</a>{/tooltip}
 	    {else}
-	    	<a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view#comments" title="clique para ver os comentários">{$arquivo.commentsCount} comentário{if $arquivo.commentsCount != 1}s{/if}
-	    {/if}</a>
+	    	{tooltip text="Clique para ler os comentários"}<a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view#comments">{$arquivo.commentsCount} comentário{if $arquivo.commentsCount != 1}s{/if}</a>{/tooltip}
+	    {/if}
 	  </div>
         </div>
       </div>
       
     </div>
     
-    <div id="gTags">
+    {tooltip text="Tags desse arquivo"}<div id="gTags">
     {foreach from=$arquivo.tags.data item=t}
       <a href="tiki-browse_freetags.php?tag={$t.tag}">{$t.tag}</a> 
     {foreachelse}
       &nbsp;
     {/foreach}
-    </div>
+    </div>{/tooltip}
   </div>
   
   <div id="gEditDelete">
-    {*if $arquivo.user eq $user*}
-      <a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=edit"><img alt="editar" src="styles/estudiolivre/iEdit.png"></a>
+    {if $arquivo.user eq $user}
+      {tooltip text="Editar informações do arquivo"}<a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=edit"><img alt="editar" src="styles/estudiolivre/iEdit.png"></a>{/tooltip}
       <br>
-      <a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=delete"><img alt="apagar" src="styles/estudiolivre/iDelete.png"></a>
-    {*/if*}
+      {tooltip text="Apagar esse arquivo do acervo"}<a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=delete"><img alt="apagar" src="styles/estudiolivre/iDelete.png"></a>{/tooltip}
+    {/if}
   </div>
   
-   {if $user}
+   {* if $user}
    {section name=rating start=1 loop=6 step=1}
        {if $arquivo.user_rating && $arquivo.user_rating >= $smarty.section.rating.index}
          <img id="rt-{$arquivo.arquivoId}-{$smarty.section.rating.index}" src="styles/estudiolivre/rt_{$arquivo.user_rating}.png" border="0" onClick="acervoVota({$arquivo.arquivoId},{$smarty.section.rating.index})">
@@ -92,7 +103,7 @@
          <img id="rt-{$arquivo.arquivoId}-{$smarty.section.rating.index}" src="styles/estudiolivre/rt_blk.png" border="0" onClick="acervoVota({$arquivo.arquivoId},{$smarty.section.rating.index})">
        {/if}
    {/section}<br />
-   {/if}
+   {/if *}
   
 </div>
 

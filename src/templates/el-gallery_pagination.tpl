@@ -2,10 +2,10 @@
 
 {if $total > $maxRecords}
 	{if $page-2 > 1}
-		<a href="#" onClick="xajax_get_files(tipos, 0, {$maxRecords}, '{$sort_mode}', '{$find}')">&laquo;</a>
+		{tooltip text="Primeira página"}<a href="#" onClick="xajax_get_files(tipos, 0, {$maxRecords}, '{$sort_mode}', '{$find}')">&laquo;</a>{/tooltip}
 	{/if}
 	{if $page > 1}
-		<a href="#" onClick="xajax_get_files(tipos, {$offset-$maxRecords}, {$maxRecords}, '{$sort_mode}', '{$find}')">&lt;</a>
+		{tooltip text="Página anterior"}<a href="#" onClick="xajax_get_files(tipos, {$offset-$maxRecords}, {$maxRecords}, '{$sort_mode}', '{$find}')">&lt;</a>{/tooltip}
 	{/if}
 	{if $page-2 > 0}
 		<a href="#" onClick="xajax_get_files(tipos, {$offset-2*$maxRecords}, {$maxRecords}, '{$sort_mode}', '{$find}')">{$page-2}</a>
@@ -21,10 +21,10 @@
 		<a href="#" onClick="xajax_get_files(tipos, {$offset+2*$maxRecords}, {$maxRecords}, '{$sort_mode}', '{$find}')">{$page+2}</a>
 	{/if}				
 	{if $page < $lastPage}
-		<a href="#" onClick="xajax_get_files(tipos, {$offset+$maxRecords}, {$maxRecords}, '{$sort_mode}', '{$find}')">&gt;</a>
+		{tooltip text="Próxima página"}<a href="#" onClick="xajax_get_files(tipos, {$offset+$maxRecords}, {$maxRecords}, '{$sort_mode}', '{$find}')">&gt;</a>{/tooltip}
 	{/if}
 	{if $page+2 < $lastPage}
-		<a href="#" onClick="xajax_get_files(tipos, {$maxRecords*$lastPage-$maxRecords}, {$maxRecords}, '{$sort_mode}', '{$find}')">&raquo;</a>
+		{tooltip text="Última página"}<a href="#" onClick="xajax_get_files(tipos, {$maxRecords*$lastPage-$maxRecords}, {$maxRecords}, '{$sort_mode}', '{$find}')">&raquo;</a>{/tooltip}
 	{/if}
 {/if}
 

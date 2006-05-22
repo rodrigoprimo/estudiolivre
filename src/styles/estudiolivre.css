@@ -225,6 +225,10 @@ img {
 	display:inline;
 }
 
+#topMenuCubesContainer {
+	position:relative;	
+}
+
 #topMenuCubes li {
 	float:right;
 	margin-right: 8px;
@@ -441,7 +445,7 @@ img {
 	padding: 0 10px 0px 10px;
 }
 
-#gHomeWiki SPAN {
+#gHomeWikiTitle {
 	float:right;	
 }
 
