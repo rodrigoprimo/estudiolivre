@@ -1,4 +1,4 @@
-{debug}<!-- tiki-user_information.tpl begin -->
+<!-- tiki-user_information.tpl begin -->
 
 <div id="userPage">
   <div id="uGeneralInfo">
