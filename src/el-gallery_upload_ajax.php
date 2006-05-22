@@ -13,10 +13,10 @@ $xajax->registerFunction('upload_info');
 $xajax->registerFunction('create_file');
 $xajax->registerFunction('save_field');
 
-function upload_info($uploadId) {
+function upload_info($uploadId, $callback = 'updateProgressMeter') {
 	$objResponse = new xajaxResponse();
 	$uploadInfo = upload_progress_meter_get_info($uploadId);
-	$objResponse->addScriptCall('updateProgressMeter',$uploadInfo);
+	$objResponse->addScriptCall($callback,$uploadInfo);
 	return $objResponse;
 }
 

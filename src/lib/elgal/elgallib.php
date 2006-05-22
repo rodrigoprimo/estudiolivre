@@ -363,16 +363,13 @@ class ELGalLib extends TikiLib {
     return $tipos;
   }
   
-  function send_file($file,$arquivoId,$userId) {
-#$destination = '/noe/data/vhost/estudiolivre.piolho.org/htdocs/repo/';
-# assim eh melhor pois independe do dir ;P
+  function save_file($file,$arquivoId,$user) {
     $destination = "repo/";
     $data = $this->get_arquivo($arquivoId);
-    $query = "update `el_arquivo` set `arquivo`=?,`formato`=?,`tamanho`=?,`publicado`=?,`data_publicacao`=? where `arquivoId`=?";
-    $bindvals[] = $arquivoId.'_'.$userId.'-'.$file['name'];
+    $query = "update `el_arquivo` set `arquivo`=?,`formato`=?,`tamanho`=?,`data_publicacao`=? where `arquivoId`=?";
+    $bindvals[] = $arquivoId.'_'.$user.'-'.$file['name'];
     $bindvals[] = $file['type'];
     $bindvals[] = $file['size'];
-    $bindvals[] = 1;
     $bindvals[] = time();
     $bindvals[] = $arquivoId;
 
@@ -386,13 +383,34 @@ class ELGalLib extends TikiLib {
         $query = "update `el_arquivo` set `idFisico`=? where `arquivoId`=?";
         $bindvals = array($this->set_id_fisico($arquivoId),$arquivoId);
         $this->query($query,$bindvals);
-      // rolooooowww
-      return FALSE;
+	// rolooooowww
+	return FALSE;
     }
     else {
       // deu pau
       return "impossivel mover o arquivo para: ".$destination;
     }
+  }
+
+  function save_thumb($fileBlob,$arquivoId,$user) {
+      $destination = "repo/";
+      
+      $arquivo = $this->get_arquivo($arquivoId);
+
+      $fileName = 'thumb_' . $arquivo['arquivo'];
+      $path = $destination.$fileName;
+      $fp = fopen($path, "w");
+      if (!$fp) {
+	  return "Impossivel gravar arquivo!";
+      }
+      fwrite($fp, $fileBlob);
+      fclose($fp);
+      
+      $query = "update `el_arquivo` set `thumbnail`=? where `arquivoId`=?";
+      $bindvals = array($fileName,$arquivoId);
+      $this->query($query,$bindvals);
+      // rolooooowww
+      return FALSE;
   }
 
   function _update_arquivo($dados, $tabela, $id) {

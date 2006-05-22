@@ -31,7 +31,7 @@ if (isset($_REQUEST['arquivoId']) && isset($_FILES['arquivo']) && !empty($_FILES
 	else {
 	    global $userlib;
 	    $userId = $userlib->get_user_id($user);
-	    $error = $elgallib->send_file($_FILES["arquivo"],$arquivoId,$userId);
+	    $error = $elgallib->save_file($_FILES["arquivo"],$arquivoId,$userId);
 	    if ($error) {
 		$errorMsg = tra('Upload was not successful').': '.$error;
 	    }
@@ -54,8 +54,9 @@ if (isset($_REQUEST['arquivoId']) && isset($_FILES['arquivo']) && !empty($_FILES
 	exit;
     }
 
-    $elgallib->edit_field($arquivoId, 'thumbnail', $thumbData);
-    echo "<script>parent.document.getElementById('thumbnail').src = 'el-download.php?arquivo=$arquivoId&thumbnail=1';</script>";
+    $elgallib->save_thumb($thumbData, $arquivoId, $user);
+    $arquivo = $elgallib->get_arquivo($arquivoId);
+    echo "<script>parent.document.getElementById('thumbnail').src = 'repo/".$arquivo['thumbnail']."?rand=".rand()."';</script>";
 }
 
 ?>

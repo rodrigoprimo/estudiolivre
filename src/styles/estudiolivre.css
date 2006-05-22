@@ -838,6 +838,31 @@ A.gUpButton:hover {
 	width: 60px;
 	height: 60px;
 	border: 1px solid black;
+	position: relative;
+}
+
+#gUpThumbImgForm {
+	position: relative;
+}
+
+#gUpThumbForm {
+	position: absolute;
+	left: -175px;
+	top: 0px;
+	clip: rect( 0px, 255px, 62px, 175px);
+	z-index: 20;
+	opacity: 0;
+}
+
+.gUpThumbFormButton {
+	height: 62px;
+}
+
+#gUpThumbStatus {
+	font-size: 14px;
+	margin-top: 23px;
+	width: 60px;
+	text-align: center;
 }
 
 INPUT.gUpEdit {

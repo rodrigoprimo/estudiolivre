@@ -1,8 +1,11 @@
 var timerId = null;
+var thumbTimerId = null;
 var uploadStartTimer = null;
 var originalWidth = 159;
 var uploadId;
+var thumbUpId;
 var uploadStarted = false;
+var upThumbStarted = false;
 var originalWidth;
 var tipoSelecionado = false;
 var tipos = new Array('Audio','Video','Imagem','Texto');
@@ -10,6 +13,7 @@ var arquivoId = false;
 var saveFieldCache = new Array();
 var display = new Array();
 var mudado = new Array();
+
 
 function upload() {
 	uploadId = document.uploadForm.UPLOAD_IDENTIFIER.value;
@@ -20,6 +24,7 @@ function upload() {
 function startUpload(id) {
 	arquivoId = id;
 	document.uploadForm.arquivoId.value = arquivoId;
+	document.thumbForm.arquivoId.value = arquivoId;
 	// TODO: checar o tipo
 	updateUploadInfo();
 	document.uploadForm.submit();
@@ -131,5 +136,41 @@ function editaCampo(field) {
     document.getElementById("show-"  + field).style.display = "none";
     document.getElementById("input-" + field).style.display = display[field];
     document.getElementById("input-" + field).focus();
-	
 }
+
+function changeThumbStatus() {
+    thumbUpId = document.thumbForm.UPLOAD_IDENTIFIER.value;
+    document.thumbForm.submit();
+    updateThumbUpInfo();
+}
+
+function updateThumbUpInfo() {
+	if (!upThumbStarted) {
+		upThumbStarted = true;
+		hide('thumbnail');
+		show('gUpThumbStatus');
+		hide('gUpThumbForm');
+		document.getElementById('gUpThumbStatus').innerHTML = '0%';
+	}
+	xajax_upload_info(thumbUpId, 'updateThumbProgressMeter');
+	thumbTimerId = setTimeout('updateThumbUpInfo()',1000);
+}
+
+function finishUpThumb() {
+	if (thumbTimerId) {
+		clearTimeout(thumbTimerId);
+	}
+	upThumbStarted = false;
+	show('thumbnail');
+	show('gUpThumbForm');
+	hide('gUpThumbStatus');
+}
+
+function updateThumbProgressMeter(uploadInfo) {
+    var normalized = uploadInfo['bytes_uploaded'] / uploadInfo['bytes_total'];
+    var percent = Math.ceil(100 * normalized);
+    if (percent) {
+	document.getElementById('gUpThumbStatus').innerHTML = percent + '%';	
+    }	
+}
+

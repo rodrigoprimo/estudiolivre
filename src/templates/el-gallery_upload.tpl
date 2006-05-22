@@ -1,6 +1,7 @@
 <!-- el-gallery_upload_general.tpl begin -->
 
 <script language="JavaScript" src="lib/elgal/upload.js"></script>
+<script language="JavaScript" src="lib/js/freetags.js"></script>
 
 <div id="gUpload">
   <div id="gUpLeft">
@@ -57,42 +58,46 @@
     
     
   </div>
-  
-  <form>
-  <div id="gUpRight" style="display: none">
-    <div id="gUpEditThumbTitleAuthor">
-      <div id="gUpThumb">
-        <img id="thumbnail" alt="" height="60" width="60" src="" >
-      </div>
 
-      <div id="gUpTitleAuthor">
+  <div id="gUpRight" style="display: none">
+    <div id="gUpThumbImgForm"
+      <div id="gUpThumb">
+	<div id="gUpThumbImg">
+	  <img id="thumbnail" alt="" height="60" width="60" src="">
+	  <div id="gUpThumbStatus"></div>
+	</div>
+      </div>
+      <div id="gUpThumbForm">
+  	<iframe name="thumbUpTarget" style="display:none" onLoad="finishUpThumb();"></iframe>
+        <form action="el-gallery_upload_thumb.php?UPLOAD_IDENTIFIER=thumb.{$uploadId}" method="post" enctype="multipart/form-data" name="thumbForm" target="thumbUpTarget">
+	  <input type="hidden" name="UPLOAD_IDENTIFIER" value="thumb.{$uploadId}">
+	  <input type="hidden" name="arquivoId" value="">
+	  <input type="file" name="thumb" onChange="changeThumbStatus()" class="gUpThumbFormButton">
+        </form>
+      </div>
+    </div>
+
+    <form>  
+
+    <div id="gUpTitleAuthor">
         {ajax_input class="gUpTitle gUpEdit" id="titulo" value=$arquivo.titulo default="Titulo" display="inline"}
 		<div id="gUpAuthor">
 		  	Por {ajax_input class="gUpAuthor gUpEdit" id="autor" value=$online_user.realName default="Autor da obra" display="inline" mode="edit"}
 		</div>
-      </div>
-      
     </div>
+      
     <br style="line-height:30px;">
     <div id="gUpDescription">
 	     {ajax_textarea class="gUpEditDescription" id="descricao" value=$arquivo.descricao default="Descrição da sua obra" display="block"}
     </div>
     
     <br style=" line-height:20px;">
-    
+
     <div id="gUpEditTags">
       {if $feature_freetags eq 'y' && $tiki_p_freetags_tag eq 'y'}
         <span>Tags</span>
 	{* O ideal eh que tenha suggest aqui nesse campo *}
-	{ajax_input class="freetags" id="tags" value="$taglist"}<br>
-	  <script language="JavaScript">
-	    {literal}
-	      function addTag(tag) {
-	      el = document.getElementById('tagBox');
-	      el.value += ' ' + tag;
-	      }
-	    {/literal}
-	  </script>
+	{ajax_input class="freetags" id="tags" value="$taglist" noclear=1}<br>
 	  <div id="gUpTagSugest">
 	    {* Aqui ficam listadas as tags do usuário.
 	    Primeiro as 10 mais usadas, com um botão "exibir +" e outro "exibir todas" *}
@@ -102,7 +107,7 @@
 	      </div>
 	      <div id="gUpTagListItem">
 	        {foreach from=$tag_suggestion item=t}
-	        <a href="javascript:addTag('{$t}')">{$t}</a> 
+		  <a href="javascript:addTag('{$t}')">{$t}</a>
 	        {/foreach}
 	      </div> 
 	    </div>
@@ -134,8 +139,10 @@
     <div id="gUpSave">
        <input type="image" name="login" src="styles/estudiolivre/bSave.png" />
     </div>
+
+    </form>
+
   </div>
-  </form>
   
 </div>
 

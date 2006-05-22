@@ -13,7 +13,7 @@ $arquivo = $elgallib->get_file($_REQUEST['arquivo']);
 
 if(isset($_REQUEST['thumbnail'])) {
     header("Content-type: image/png");
-    print($arquivo['thumbnail']);
+    readfile($arquivo['thumbnail']);
     exit;
 }
 

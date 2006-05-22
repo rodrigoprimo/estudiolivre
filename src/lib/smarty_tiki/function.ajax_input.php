@@ -21,6 +21,7 @@ function smarty_function_ajax_input($params, &$smarty) {
 	$default = $params['default'];
 	$display = $params['display'];
 	$mode = $params['mode'];
+	$noclear = $params['noclear'];
 
 	if ($mode == 'edit') {
 	    $edit = 1;
@@ -38,7 +39,9 @@ function smarty_function_ajax_input($params, &$smarty) {
 	$output .= "</div>";
 	// TODO: escape value
 	$output .= '<input class="'.$class.'" id="input-'.$id.'" value="'. ($value ? $value : $default) .'" ';
-	if (!$value) { $output .= " onFocus=\"limpaCampo('$id');\" onChange=\"mudado['$id']=1;\""; }
+	if (!$value && !$noclear) { 
+	    $output .= " onFocus=\"limpaCampo('$id');\" onChange=\"mudado['$id']=1;\"";
+	}
 	$output .= " onBlur=\"saveField(this)\" style=\"display:" . ($edit ? $display : 'none') . "\">";
 
 	$output .= '<script language="JavaScript">display["'.$id.'"] = "'.$display.'";</script>';

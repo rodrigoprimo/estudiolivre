@@ -1,5 +1,5 @@
 function showMenu(e){
-	
+    if (!e) var e = window.event;
 	cancelBubble(e);
 	
 	if (typeof e.pageY == 'number'){
