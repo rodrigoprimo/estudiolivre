@@ -23,9 +23,13 @@ if (isset($_REQUEST['view_user'])) {
 
 $_REQUEST['view_user'] = $userwatch;
 
-//$uploads = $elgallib->list_all_user_uploads($_REQUEST['view_user']);
+$info = $tikilib->get_page_info("Usuário_" . $_REQUEST['view_user']);
+$pdata = $tikilib->parse_data($info["data"],$info["is_html"]);
+$smarty->assign_by_ref('userWiki', $pdata);
 
-//$smarty->assign('myFiles',$uploads);
+$uploads = $elgallib->list_all_user_uploads($_REQUEST['view_user'], 0, 5);
+$smarty->assign('arquivos',$uploads);
+
 $userPosts = $bloglib->list_user_posts($_REQUEST['view_user'], 0, 5);
 for($i = 0; $i < sizeof($userPosts['data']); $i++) {
 	$userPosts['data'][$i]['commentsCount'] = $commentslib->count_comments('post:' . $userPosts['data'][$i]['postId']);

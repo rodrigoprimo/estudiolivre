@@ -6,7 +6,7 @@ CREATE TABLE `el_tipos_arquivo` (
 	PRIMARY KEY  (`tipoId`)) ENGINE=MyISAM;
 
 INSERT INTO `el_tipos_arquivo` VALUES (1,'Video',NULL),(2,'Audio',NULL),(3,'Imagem',NULL),(4,'Texto',NULL);
-b
+
 drop table `el_arquivo`;
 create table `el_arquivo` (
        arquivoId int4 primary key auto_increment,

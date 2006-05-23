@@ -8,7 +8,7 @@ $xajax = new xajax();
 
 $xajax->statusMessagesOff();
 $xajax->waitCursorOn();
-$xajax->debugOff();
+$xajax->debugOn();
 $xajax->setLogFile("/tmp/xajax.log");
 /*
 $xajax->registerPreFunction('xajax_pre_loading');
@@ -23,6 +23,7 @@ $xajax->registerFunction("vota");
 
 $smarty->assign("xajax_js",$xajax->getJavascript());
 $xajax->processRequests();
+exit;
 
 function vota($arquivoId, $nota) {
     global $user, $elgallib;

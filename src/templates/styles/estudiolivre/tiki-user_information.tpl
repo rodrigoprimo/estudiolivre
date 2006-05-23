@@ -1,4 +1,4 @@
-<!-- tiki-user_information.tpl begin -->
+{debug}<!-- tiki-user_information.tpl begin -->
 
 <div id="userPage">
   <div id="uGeneralInfo">
@@ -54,7 +54,7 @@
         </h1>
       </div>
       <div id="uGalleryItems" class="uMainItemContainer" style="display:block">
-		[include lista acervo]
+		{include file="el-gallery_section.tpl"}
       </div>
     </div>
     <div id="uBlog" class="uMainContainer">
@@ -65,14 +65,14 @@
         </a>
         &nbsp;
         <h1>
-          <a href="#">Blog</a>
+          <a href="#">Blogs</a>
         </h1>
       </div>
       <div id="uBlogItems" class="uMainItemContainer" style="display:block">
         {foreach from=$userPosts.data item='post'}
         <div class="uBlogItem">
           <div id="uBlogItemTitle">
-            <h1>{$post.title}</h1> - {$post.created|date_format:"%d/%m/%Y"}
+            <h1>{$post.title|truncate:40}</h1> - {$post.created|date_format:"%d/%m/%Y"}
           </div>
           <div id="uBlogItemText">
             {$post.data|truncate:150} <a href="#" title="Ler mais...">(...)</a>
@@ -110,7 +110,7 @@
               {$msg.date|date_format:"%H:%M"}<br />
               {$msg.date|date_format:"%d/%m/%Y"}
             </div>
-            <a href="#">{$msg.user_from}</a>: {$msg.body}
+            <a href="el-user_information.php?view_user={$msg.user_from}">{$msg.user_from}</a>: {$msg.body}
           </div>
         </div>
         <hr>
@@ -131,11 +131,11 @@
         	</a>
         	&nbsp;
     		<h1>
-    		  <a href="#" title="Wiki de ???">Wiki do cara</a>
+    		  <a href="#" title="Wiki de {$userinfo.login}">Wiki</a>
     		</h1>
     	</div>
     	<div id="uWikiMid" style="display:block">
-    	Texto do wiki do cara
+    	{include file=tiki-show_page.tpl parsed=$userWiki}
         </div>
     </div>
   </div>

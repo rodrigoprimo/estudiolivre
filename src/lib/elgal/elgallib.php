@@ -153,21 +153,21 @@ class ELGalLib extends TikiLib {
       return $this->getOne($query, $bindvals);
   }
 
-  function list_all_user_uploads($user) {
+  function list_all_user_uploads($user, $offset = 0, $maxRecords = -1) {
     $query = "select a.*, a.`titulo` as nomeArquivo, ur.`rating` as user_rating, l.`subTipo` licenca, `linkImagem`, `linkHumanReadable` from `el_arquivo` a,`el_licenca` l left join `el_arquivo_rating` ur on ur.`arquivoId` = a.`arquivoId` and ur.`user`=? where a.`licencaId`=l.`licencaId` and a.`user`=? and `publicado` order by a.`data_publicacao` desc";
     $query_cant = "select count(*) from `el_arquivo` where `user`=? and `publicado`";
     $bindvals = array($user, $user);
     $cant = $this->getOne($query_cant, array($user));
     $data = array();
-    $result = $this->query($query, $bindvals);
-    global $freetaglib;
+    $result = $this->query($query, $bindvals, $maxRecords, $offset);
+    global $freetaglib, $commentslib;
     while ($row = $result->fetchRow()) {
-      $row['tags'] = $freetaglib->get_tags_on_object($row['arquivoId'], 'acervo');		      
+      $row['commentsCount'] = $commentslib->count_comments('arquivo:' . $row['arquivoId']);
+	  $row['tags'] = $freetaglib->get_tags_on_object($row['arquivoId'], 'acervo');		      
       $data[] = $row;
     }
     
-    return array('data' => $data,
-		 'cant' => $cant);
+    return $data;
     
   }
 

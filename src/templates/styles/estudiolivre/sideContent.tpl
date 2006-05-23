@@ -97,15 +97,15 @@
 	<div id="localMenu">
 	<ul>
     {if $current_location eq "el-gallery_upload.php"}      
-      	<li class="selectedAcervo">compartilhe sua obra, porra!</li>
+      	<li class="selectedAcervo">compartilhe sua obra</li>
     {else}
     	{if $user}
-        	<li><a href="el-gallery_upload.php">compartilhe sua obra, caralho!</a></li>
+        	<li><a href="el-gallery_upload.php">compartilhe sua obra</a></li>
         {else}
       		<div id="precisaLogar" style="display:none;width:100px">
       			Aqui vai a mensagem pedindo pro cara logar
       		</div>
-      		<li onclick="showLightbox('precisaLogar')" style="cursor:pointer"><a>compartilhe sua obra, merda!</a></li>
+      		<li onclick="showLightbox('precisaLogar')" style="cursor:pointer"><a>compartilhe sua obra</a></li>
         {/if}   
     {/if}
     
@@ -129,7 +129,7 @@
     <div id="userNameStatsKarma">
 
       <span id="uName">
-       <a href="tiki-user_information.php?view_user={$user}">{$user}</a>
+       <a href="el-user_information.php?view_user={$user}">{$user}</a>
       </span>
       <br>
       <span id="uStats">
