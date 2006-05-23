@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.3 2006-05-15 23:57:14 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.4 2006-05-23 18:54:36 rhwinter Exp $ *}
 <script language="JavaScript" src="lib/js/contextualMenu.js"></script>
 
 <!-- menu contextual -->
@@ -18,64 +18,97 @@
 	{breadcrumbs type="pagetitle" loc="page" crumbs=$crumbs}
 {/if}
 
-<div class="wikitopline" style="text-align:right;padding-top:5px">
+<div class="wikitopline" style="text-align:right;padding-top:5px" onclick="cancelBubble(event)">
 
-<!--table width=100%><tr>
-<td style="vertical-align:top;"-->
-{if $feature_wiki_pageid eq 'y'}
-	<small><a class="link" href="tiki-index.php?page_id={$page_id}">{tr}page id{/tr}: {$page_id}</a></small>
-{/if}
-{breadcrumbs type="desc" loc="page" crumbs=$crumbs}
-{if $cached_page eq 'y'}<small>({tr}cached{/tr})</small>{/if}
-<!--/td-->
-{if $is_categorized eq 'y' and $feature_categories eq 'y' and $feature_categorypath eq 'y'}
-	<!--td style="vertical-align:top;width:100px;"-->
-	{$display_catpath}
-	<!--/td-->
-{/if}
-
-{if $print_page ne 'y'}
-	<!--td style="text-align:right;width:142px;wrap:nowrap"-->
-	{if !$lock and ($tiki_p_edit eq 'y' or $page|lower eq 'sandbox') and $beingEdited ne 'y'}
-		<a title="{tr}edit{/tr}" href="tiki-editpage.php?page={$page|escape:"url"}"><img src="img/icons/edit.gif" border="0"  width="20" height="16" alt="{tr}edit{/tr}" /></a>
-	{/if}       
-	{if $wiki_feature_3d eq 'y'}
-		<a title="{tr}3d browser{/tr}" href="javascript:wiki3d_open('{$page|escape}',{$wiki_3d_width}, {$wiki_3d_height})"><img src="img/icons/ico_wiki3d.gif"></a>
-	{/if}
-	{if $cached_page eq 'y'}
-		<a title="{tr}refresh{/tr}" href="tiki-index.php?page={$page|escape:"url"}&amp;refresh=1"><img src="img/icons/ico_redo.gif" border="0" height="16" width="16"  alt="{tr}refresh{/tr}"></a>
-	{/if}
-	<a title="{tr}print{/tr}" href="tiki-print.php?page={$page|escape:"url"}"><img src="img/icons/ico_print.gif" border="0"  width="16" height="16" alt="{tr}print{/tr}" /></a>
-	{if $feature_wiki_pdf eq 'y'}
-		<a title="{tr}create pdf{/tr}" href="tiki-config_pdf.php?{if $home_info && $home_info.page_ref_id}page_ref_id={$home_info.page_ref_id}{else}page={$page|escape:"url"}{/if}"><img src="img/icons/ico_pdf.gif" border="0"  width="16" height="16" alt="{tr}pdf{/tr}"></a>
-	{/if}
-	{if $user and $feature_notepad eq 'y' and $tiki_p_notepad eq 'y'}
-		<a title="{tr}Save to notepad{/tr}" href="tiki-index.php?page={$page|escape:"url"}&amp;savenotepad=1"><img src="img/icons/ico_save.gif" border="0"  width="16" height="16" alt="{tr}save{/tr}" /></a>
-	{/if}
-	{if $user and $feature_user_watches eq 'y'}
-		{if $user_watching_page eq 'n'}
-			<a href="tiki-index.php?page={$page|escape:"url"}&amp;watch_event=wiki_page_changed&amp;watch_object={$page|escape:"url"}&amp;watch_action=add">{html_image file='img/icons/icon_watch.png' border='0' alt="{tr}monitor this page{/tr}" title="{tr}monitor this page{/tr}"}</a>
-		{else}
-			<a href="tiki-index.php?page={$page|escape:"url"}&amp;watch_event=wiki_page_changed&amp;watch_object={$page|escape:"url"}&amp;watch_action=remove">{html_image file='img/icons/icon_unwatch.png' border='0' alt="{tr}stop monitoring this page{/tr}" title="{tr}stop monitoring this page{/tr}"}</a>
+{ if $print_page ne 'y'}
+	{if !$lock}
+		{if $tiki_p_edit eq 'y' or $page|lower eq 'sandbox'}
+			{if $beingEdited eq 'y'}
+				<span class="tabbut"><a title="{$semUser}" class="highlight" href="tiki-editpage.php?page={$page|escape:"url"}" class="tablink"><img src="styles/estudiolivre/iWikiEdit.png"></a></span>
+			{else}
+				<span class="tabbut"><a href="tiki-editpage.php?page={$page|escape:"url"}" class="tablink"><img src="styles/estudiolivre/iWikiEdit.png"></a></span>
+			{/if}
 		{/if}
 	{/if}
-	<!--/td-->
-
+	
+	{if $wiki_feature_3d eq 'y'}
+		<a title="{tr}3d browser{/tr}" href="javascript:wiki3d_open('{$page|escape}',{$wiki_3d_width}, {$wiki_3d_height})"><img src="styles/estudiolivre/iWiki3dWiki.png"></a>
+	{/if}
+	
+	<a title="{tr}print{/tr}" href="tiki-print.php?page={$page|escape:"url"}"><img src="styles/estudiolivre/iWikiPrint.png" alt="{tr}print{/tr}" /></a>
+	
+	{if $feature_wiki_pdf eq 'y'}
+		<a title="{tr}create pdf{/tr}" href="tiki-config_pdf.php?{if $home_info && $home_info.page_ref_id}page_ref_id={$home_info.page_ref_id}{else}page={$page|escape:"url"}{/if}"><img src="styles/estudiolivre/iWikiExport.png" alt="{tr}pdf{/tr}"></a>
+	{/if}
+	
+	{if $page|lower ne 'sandbox'}
+		{if $tiki_p_remove eq 'y'}
+			<span class="tabbut"><a href="tiki-removepage.php?page={$page|escape:"url"}&amp;version=last" class="tablink"><img src="styles/estudiolivre/iWikiRemove"></a></span>
+		{/if}
+		{if $tiki_p_rename eq 'y'}
+			<span class="tabbut"><a href="tiki-rename_page.php?page={$page|escape:"url"}" class="tablink"><img src="styles/estudiolivre/iWikiRename.png"></a></span>
+		{/if}
+	{/if}
+	
+	{if $page|lower ne 'sandbox'}
+		{if $lock and ($tiki_p_admin_wiki eq 'y' or ($user and ($user eq $page_user or $user eq "admin") and ($tiki_p_lock eq 'y') and ($feature_wiki_usrlock eq 'y')))}
+			<span class="tabbut"><a href="tiki-index.php?page={$page|escape:"url"}&amp;action=unlock" class="tablink"><img src="styles/estudiolivre/iWikiUnlock.png"></a></span>
+		{/if}
+		{if !$lock and ($tiki_p_admin_wiki eq 'y' or (($tiki_p_lock eq 'y') and ($feature_wiki_usrlock eq 'y')))}
+			<span class="tabbut"><a href="tiki-index.php?page={$page|escape:"url"}&amp;action=lock" class="tablink"><img src="styles/estudiolivre/iWikiLock.png"></a></span>
+		{/if}
+		{if $tiki_p_admin_wiki eq 'y'}
+			<span class="tabbut"><a href="tiki-pagepermissions.php?page={$page|escape:"url"}" class="tablink"><img src="styles/estudiolivre/iWikiPermissions.png"></a></span>
+		{/if}
+	{/if}
+	
+	{if $page|lower ne 'sandbox'}
+		{if $feature_history eq 'y' and $tiki_p_wiki_view_history eq 'y'}
+			<span class="tabbut"><a href="tiki-pagehistory.php?page={$page|escape:"url"}" class="tablink"><img src="styles/estudiolivre/iWikiHistory.png"></a></span>
+		{/if}
+	{/if}
+	
+	{if $feature_likePages eq 'y'}
+		<span class="tabbut"><a href="tiki-likepages.php?page={$page|escape:"url"}" class="tablink"><img src="styles/estudiolivre/iWikiSimilar.png"></a></span>
+	{/if}
+	
+	{if $feature_multilingual eq 'y' and $tiki_p_edit eq 'y' and !$lock}
+	     <span class="tabbut"><a href="tiki-edit_translation.php?page={$page|escape:'url'}" class="tablink"><img src="styles/estudiolivre/iWikiTranslate.png"></a></span>
+	{/if}
+	
 	{if $feature_backlinks eq 'y' and $backlinks}
-		<!--td style="text-align:right;width:42px;"-->
-		<form action="tiki-index.php" method="get" style="display:inline">
-		<select name="page" onchange="page.form.submit()" style="display:inline">
+		<img src="styles/estudiolivre/iWikiRef.png" onclick="document.getElementById('backlinksId').style.display='inline'" style="cursor:pointer">
+		<form action="tiki-index.php" method="get" style="display:none" id="backlinksId">
+		<select name="page" onchange="page.form.submit()">
 		<option>{tr}backlinks{/tr}...</option>
 		{section name=back loop=$backlinks}
 		<option value="{$backlinks[back].fromPage}">{$backlinks[back].fromPage}</option>
 		{/section}
 		</select>
 		</form>
-		<!--/td-->
 	{/if}
+	
+	{* DESNECESSARIO if !$lock and ($tiki_p_edit eq 'y' or $page|lower eq 'sandbox') and $beingEdited ne 'y'}
+		<a title="{tr}edit{/tr}" href="tiki-editpage.php?page={$page|escape:"url"}"><img src="img/icons/edit.gif" border="0"  width="20" height="16" alt="{tr}edit{/tr}" /></a>
+	{/if*}       
 
-	{if !$page_ref_id and count($showstructs) ne 0}
-		<!--td style="text-align:right;width:42px;"-->
+	{* FEATURE DESABILITADO NO EL: if $cached_page eq 'y'}
+		<a title="{tr}refresh{/tr}" href="tiki-index.php?page={$page|escape:"url"}&amp;refresh=1"><img src="img/icons/ico_redo.gif" border="0" height="16" width="16"  alt="{tr}refresh{/tr}"></a>
+	{/if*}
+
+	{* FEATURE DESABILITADO NO EL: if $user and $feature_notepad eq 'y' and $tiki_p_notepad eq 'y'}
+		<a title="{tr}Save to notepad{/tr}" href="tiki-index.php?page={$page|escape:"url"}&amp;savenotepad=1"><img src="img/icons/ico_save.gif" border="0"  width="16" height="16" alt="{tr}save{/tr}" /></a>
+	{/if *}
+	
+	{* FEATURE DESABILITADO NO EL: if $user and $feature_user_watches eq 'y'}
+		{if $user_watching_page eq 'n'}
+			<a href="tiki-index.php?page={$page|escape:"url"}&amp;watch_event=wiki_page_changed&amp;watch_object={$page|escape:"url"}&amp;watch_action=add">{html_image file='img/icons/icon_watch.png' border='0' alt="{tr}monitor this page{/tr}" title="{tr}monitor this page{/tr}"}</a>
+		{else}
+			<a href="tiki-index.php?page={$page|escape:"url"}&amp;watch_event=wiki_page_changed&amp;watch_object={$page|escape:"url"}&amp;watch_action=remove">{html_image file='img/icons/icon_unwatch.png' border='0' alt="{tr}stop monitoring this page{/tr}" title="{tr}stop monitoring this page{/tr}"}</a>
+		{/if}
+	{/if *}
+
+	{* FEATURE DESABILITADO NO EL if !$page_ref_id and count($showstructs) ne 0}
 		<form action="tiki-index.php" method="post">
 		<select name="page_ref_id" onchange="page_ref_id.form.submit()">
 		<option>{tr}Structures{/tr}...</option>
@@ -90,23 +123,59 @@
 		{/section}
 		</select>
 		</form>
-		<!--/td-->
-	{/if}
-
-	{*if $feature_multilingual == 'y'}
-		{include file="translated-lang.tpl" td='y'}
 	{/if*}
 
+	{* FEATURE DESABILITADO NO EL: if $feature_multilingual == 'y'}
+		{include file="translated-lang.tpl" td='y'}
+	{/if*}
+	
+	{* if $feature_wiki_undo eq 'y' and $canundo eq 'y'}
+		<span class="tabbut"><a href="tiki-index.php?page={$page|escape:"url"}&amp;undo=1" class="tablink">{tr}undo{/tr}</a></span>
+	{/if *}
+	
+	{* if $wiki_uses_slides eq 'y'}
+		{if $show_slideshow eq 'y'}
+			<span class="tabbut"><a href="tiki-slideshow.php?page={$page|escape:"url"}" class="tablink">{tr}slides{/tr}</a></span>
+		{elseif $structure eq 'y'}
+			<span class="tabbut"><a href="tiki-slideshow2.php?page_ref_id={$page_info.page_ref_id}" class="tablink">{tr}slides{/tr}</a></span>
+		{/if}
+	{/if *}
+	
+	{* if $tiki_p_admin_wiki eq 'y'}
+		<span class="tabbut"><a href="tiki-export_wiki_pages.php?page={$page|escape:"url"}" class="tablink">{tr}export{/tr}</a></span>
+	{/if *}
+	
+	{* if $feature_wiki_discuss eq 'y'}
+		<span class="tabbut"><a href="tiki-view_forum.php?forumId={$wiki_forum_id}&amp;comments_postComment=post&amp;comments_title={$page|escape:"url"}&amp;comments_data={"Use this thread to discuss the [tiki-index.php?page="}{$page}{"|"}{$page}{"] page."|escape:"url"}&amp;comment_topictype=n" class="tablink">{tr}discuss{/tr}</a></span>
+	{/if *}
+	
+	{* if $feature_wiki_comments eq 'y' and $tiki_p_wiki_view_comments eq 'y' and $show_page eq 'y'}
+		<span class="tabbut"><a href="#comments" onclick="javascript:flip('comzone{if $comments_show eq 'y'}open{/if}');" class="tablink">{if $comments_cant eq 0}{tr}comment{/tr}{elseif $comments_cant eq 1}1 {tr}comment{/tr}{else}{$comments_cant} {tr}comments{/tr}{/if}</a></span>
+	{/if *}
+	
+	{* if $feature_wiki_attachments eq 'y' and $tiki_p_wiki_view_attachments eq 'y' and $show_page eq 'y'}
+	<span class="tabbut"><a href="#attachments" onclick="javascript:flip('attzone{if $atts_show eq 'y'}open{/if}');" class="tablink">{if $atts_count eq 0}{tr}attach file{/tr}{elseif $atts_count eq 1}1 {tr}attachment{/tr}{else}{$atts_count} {tr}attachments{/tr}{/if}</a></span>
+	{/if *}
+	
+	
+{/if}
 
-{/if}{* <-- end of if $print_page ne 'y' *}
+{if $feature_wiki_pageid eq 'y'}
+	<small><a class="link" href="tiki-index.php?page_id={$page_id}">{tr}page id{/tr}: {$page_id}</a></small>
+{/if}
+{breadcrumbs type="desc" loc="page" crumbs=$crumbs}
+{if $cached_page eq 'y'}<small>({tr}cached{/tr})</small>{/if}
 
-
-<!--/tr></table-->
+{if $is_categorized eq 'y' and $feature_categories eq 'y' and $feature_categorypath eq 'y'}
+	{$display_catpath}
+{/if}
 
 </div>
 
 <div class="wikitext">
+
 {if $structure eq 'y'}
+
 <div class="tocnav">
 <table>
 <tr>
@@ -142,6 +211,7 @@
 		  {/if}/></a>{/if}
   </td>
   <td>
+
 {if $tiki_p_edit_structures and $tiki_p_edit_structures eq 'y' }
     <form action="tiki-editpage.php" method="post">
       <input type="hidden" name="current_page_id" value="{$page_info.page_ref_id}" />

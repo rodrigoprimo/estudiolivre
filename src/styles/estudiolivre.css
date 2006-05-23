@@ -286,6 +286,14 @@ img {
 
 /* tiki */
 
+.wikitopline {
+	margin-bottom: 5px;
+}
+
+.wikitopline img {
+	margin-left:10px;
+}
+
 #tiki-midAudio,#tiki-midVideo, #tiki-midGraf, #tiki-midAcervo, #tiki-mid {
 	float:left;
 	width:550px;
