@@ -85,12 +85,12 @@ create table `el_licenca` (
 insert into el_licenca (tipo, subTipo) values("Sampling","Sampling"),("Sampling","Sampling Plus"),("Sampling","Sampling Plus Non-Comercial"),("Atribution","Atribution"),("Atribution","Atribution Non-Comercial"),("Atribution","Atribution Non-Comercial No Derivatives"),("Atribution","Atribution Non-Comercial Share-Alike"),("Atribution","Atribution No Derivatives"),("Atribution","Atribution Share-Alike");
 
 #nano: 24/11 -> campos adicinais na el_licenca
-update el_licenca set linkImagem = 'iLicBy.png', linkHumanReadable = 'http://creativecommons.org/licenses/by/2.0/br/' where subtipo = 'Atribution';
-update el_licenca set linkImagem = 'iLicByNc.png', linkHumanReadable = 'http://creativecommons.org/licenses/by-nc/2.0/br/' where subtipo = 'Atribution Non-Comercial';
-update el_licenca set linkImagem = 'iLicByNcNd.png', linkHumanReadable = 'http://creativecommons.org/licenses/by-nc-nd/2.0/br/' where subtipo = 'Atribution Non-Comercial No Derivatives';
-update el_licenca set linkImagem = 'iLicByNcSa.png', linkHumanReadable = 'http://creativecommons.org/licenses/by-nc-sa/2.0/br/' where subtipo = 'Atribution Non-Comercial Share-Alike';
-update el_licenca set linkImagem = 'iLicBySa.png', linkHumanReadable = 'http://creativecommons.org/licenses/by-sa/2.0/br/' where subtipo = 'Atribution Share-Alike';
-update el_licenca set linkImagem = 'iLicByNd.png', linkHumanReadable = 'http://creativecommons.org/licenses/by-nd/2.0/br/' where subtipo = 'Atribution No Derivatives';
+update el_licenca set linkImagem = 'iLicBy.png', linkHumanReadable = 'http://creativecommons.org/licenses/by/2.5/br/' where subtipo = 'Atribution';
+update el_licenca set linkImagem = 'iLicByNc.png', linkHumanReadable = 'http://creativecommons.org/licenses/by-nc/2.5/br/' where subtipo = 'Atribution Non-Comercial';
+update el_licenca set linkImagem = 'iLicByNcNd.png', linkHumanReadable = 'http://creativecommons.org/licenses/by-nc-nd/2.5/br/' where subtipo = 'Atribution Non-Comercial No Derivatives';
+update el_licenca set linkImagem = 'iLicByNcSa.png', linkHumanReadable = 'http://creativecommons.org/licenses/by-nc-sa/2.5/br/' where subtipo = 'Atribution Non-Comercial Share-Alike';
+update el_licenca set linkImagem = 'iLicBySa.png', linkHumanReadable = 'http://creativecommons.org/licenses/by-sa/2.5/br/' where subtipo = 'Atribution Share-Alike';
+update el_licenca set linkImagem = 'iLicByNd.png', linkHumanReadable = 'http://creativecommons.org/licenses/by-nd/2.5/br/' where subtipo = 'Atribution No Derivatives';
 update el_licenca set linkImagem = 'iLicSampling.png', linkHumanReadable = 'http://creativecommons.org/licenses/sampling/1.0/br/' where subtipo = 'Sampling';
 update el_licenca set linkImagem = 'iLicSamplingPlus.png', linkHumanReadable = 'http://creativecommons.org/licenses/sampling+/1.0/br/' where subtipo = 'Sampling Plus';
 update el_licenca set linkImagem = 'iLicSamplingPlusNc.png', linkHumanReadable = 'http://creativecommons.org/licenses/nc-sampling+/1.0/br/' where subtipo = 'Sampling Plus Non-Comercial';
@@ -102,3 +102,13 @@ create table `el_arquivo_rating` (
 	rating tinyint(4) not null,
 	primary key (arquivoId, user));
 
+#nano 23/05/2006 - descricao das licencas
+update el_licenca set descricao = 'Permite fazer uso comercial, copiar, distribuir, exibir, executar e criar obras derivadas, desde que seja dado crédito ao autor original.' where subtipo = 'Atribution';
+update el_licenca set descricao = 'Não permite uso comercial. Você pode copiar, distribuir, exibir, executar e criar obras derivadas, desde que seja dado crédito ao autor original.' where subtipo = 'Atribution Non-Comercial';
+update el_licenca set descricao = 'Não permite uso comercial, copiar, distribuir, exibir e executar a obra, desde que seja dado crédito ao autor original e que não seja criada outra obra com base nesta.' where subtipo = 'Atribution Non-Comercial No Derivatives';
+update el_licenca set descricao = 'Não permite uso comercial, copiar, distribuir, exibir, executar e criar obras derivadas, desde que seja dado crédito ao autor original e compartilhe da mesma licença.' where subtipo = 'Atribution Non-Comercial Share-Alike';
+update el_licenca set descricao = 'Permite uso comercial, copiar, distribuir, exibir, executar e criar obras derivadas, desde que seja dado crédito ao autor original e compartilhe da mesma licença.' where subtipo = 'Atribution Share-Alike';
+update el_licenca set descricao = 'Permite uso comercial, copiar, distribuir, exibir e executar a obra, desde que seja dado crédito ao autor original e que não seja criada outra obra com base nesta.' where subtipo = 'Atribution No Derivatives';
+update el_licenca set descricao = '' where subtipo = 'Sampling';
+update el_licenca set descricao = '' where subtipo = 'Sampling Plus';
+update el_licenca set descricao = '' where subtipo = 'Sampling Plus Non-Comercial';

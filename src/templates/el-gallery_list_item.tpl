@@ -2,7 +2,7 @@
 
   <div id="gLicenseThumbContainer">
     <div id="gLicense">
-     {tooltip text="Clique para ler a licença desse arquivo"}<img src="styles/estudiolivre/{$arquivo.linkImagem}">{/tooltip}
+     {tooltip text=$arquivo.descricaoLicenca}<a href="{$arquivo.linkHumanReadable}"><img src="styles/estudiolivre/{$arquivo.linkImagem}"></a>{/tooltip}
     </div>
     <div id="gThumb">
 	  <a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view">

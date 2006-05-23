@@ -112,7 +112,7 @@ class ELGalLib extends TikiLib {
 		$bindvals = array_merge(array($user),$bindvals);
       }
 
-      $query = "select a.*, a.`titulo` as nomeArquivo, l.`subTipo` licenca, `linkImagem`, `linkHumanReadable` $tables $mid and a.`licencaId`=l.`licencaId` and `publicado`=1 order by ".$this->convert_sortmode($sort_mode);
+      $query = "select a.*, a.`titulo` as nomeArquivo, l.`descricao` descricaoLicenca, `linkImagem`, `linkHumanReadable` $tables $mid and a.`licencaId`=l.`licencaId` and `publicado`=1 order by ".$this->convert_sortmode($sort_mode);
       $result = $this->query($query,$bindvals,$maxRecords,$offset);
     
       if ($result) {
@@ -154,10 +154,8 @@ class ELGalLib extends TikiLib {
   }
 
   function list_all_user_uploads($user, $offset = 0, $maxRecords = -1) {
-    $query = "select a.*, a.`titulo` as nomeArquivo, ur.`rating` as user_rating, l.`subTipo` licenca, `linkImagem`, `linkHumanReadable` from `el_arquivo` a,`el_licenca` l left join `el_arquivo_rating` ur on ur.`arquivoId` = a.`arquivoId` and ur.`user`=? where a.`licencaId`=l.`licencaId` and a.`user`=? and `publicado` order by a.`data_publicacao` desc";
-    $query_cant = "select count(*) from `el_arquivo` where `user`=? and `publicado`";
+    $query = "select a.*, a.`titulo` as nomeArquivo, ur.`rating` as user_rating, l.`descricao` descricaoLicenca, `linkImagem`, `linkHumanReadable` from `el_arquivo` a,`el_licenca` l left join `el_arquivo_rating` ur on ur.`arquivoId` = a.`arquivoId` and ur.`user`=? where a.`licencaId`=l.`licencaId` and a.`user`=? and `publicado` order by a.`data_publicacao` desc";
     $bindvals = array($user, $user);
-    $cant = $this->getOne($query_cant, array($user));
     $data = array();
     $result = $this->query($query, $bindvals, $maxRecords, $offset);
     global $freetaglib, $commentslib;
