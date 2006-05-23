@@ -23,12 +23,19 @@ function upload_info($uploadId, $callback = 'updateProgressMeter') {
 
 function create_file($tipo, $uploadId) {
 	$objResponse = new xajaxResponse();
-	global $elgallib, $user;
+	global $elgallib, $user, $smarty;
 	$arquivo = array();
 	$arquivo['tipo'] = $tipo;
 	$arquivo['titulo'] = $arquivo['autor'] = $arquivo['donoCopyright'] = $arquivo['descricao'] = '';
 	$arquivoId = $elgallib->create_arquivo($arquivo, $user);
 	$objResponse->addScriptCall('startUpload',$arquivoId);
+	
+	if (in_array($tipo, array('Audio','Video','Imagem'))) {
+		$templateName = 'el-gallery_upload_' . $tipo . '.tpl';
+		$content = $smarty->fetch($templateName);
+		$objResponse->addAssign('gUpMoreOptionContent', 'innerHTML', $content);	
+	}
+	
 	return $objResponse;
 }
 

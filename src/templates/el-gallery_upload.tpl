@@ -92,7 +92,8 @@
     </div>
     
     <br style=" line-height:20px;">
-
+	Licenca: ...
+	
     <div id="gUpEditTags">
       {if $feature_freetags eq 'y' && $tiki_p_freetags_tag eq 'y'}
         <span>Tags</span>
@@ -127,10 +128,6 @@
       
       <div style="display:none" id="gUpMoreOptionContent">
         {include file="el-gallery_upload_metadata.tpl"}
-	<a href="#" class="gUpmore" onclick="javascript:flip('gUpLicense'); return false;">Escolher Licença para este arquivo</a>
-	<div id="gUpLicense" style="display:none">
-	 {include file="el-gallery_upload_license.tpl"}
-	</div>
       </div>
     </div>
     
