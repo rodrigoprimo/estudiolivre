@@ -26,7 +26,6 @@ function startUpload(id) {
 	arquivoId = id;
 	document.uploadForm.arquivoId.value = arquivoId;
 	document.thumbForm.arquivoId.value = arquivoId;
-	// TODO: checar o tipo
 	updateUploadInfo();
 	document.uploadForm.submit();
 }
@@ -52,6 +51,9 @@ function finishUpload() {
 		document.getElementById('gUpStatusBar').style.width = originalWidth + 'px';
 		document.getElementById('gUpPercent').style.backgroundColor = '#ffe475';
 		document.getElementById('gUpPercent').innerHTML = '100%';
+		if (thumbUpId == null) {
+			xajax_generate_thumb(arquivoId);
+		}
 	}
 }
 
@@ -69,6 +71,7 @@ function changeStatus(value) {
     show('gUpRight');
     uploadStartTimer = setTimeout("upload()",500);
     document.uploadForm.tipo.value = tipoSelecionado;
+    document.getElementById('thumbnail').src = 'styles/estudiolivre/iThumb'+tipoSelecionado+'.png';
 }
 
 function removeUpload() {

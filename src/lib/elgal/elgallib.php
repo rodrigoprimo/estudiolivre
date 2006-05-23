@@ -413,27 +413,6 @@ class ELGalLib extends TikiLib {
     }
   }
 
-  function save_thumb($fileBlob,$arquivoId,$user) {
-      $destination = "repo/";
-      
-      $arquivo = $this->get_arquivo($arquivoId);
-
-      $fileName = 'thumb_' . $arquivo['arquivo'];
-      $path = $destination.$fileName;
-      $fp = fopen($path, "w");
-      if (!$fp) {
-	  return "Impossivel gravar arquivo!";
-      }
-      fwrite($fp, $fileBlob);
-      fclose($fp);
-      
-      $query = "update `el_arquivo` set `thumbnail`=? where `arquivoId`=?";
-      $bindvals = array($fileName,$arquivoId);
-      $this->query($query,$bindvals);
-      // rolooooowww
-      return FALSE;
-  }
-
   function _update_arquivo($dados, $tabela, $id) {
 
     $query = "update `".$tabela."` set ";
@@ -512,7 +491,45 @@ class ELGalLib extends TikiLib {
     return $id;
   }
   
-  function generate_thumbnail($image) {
+  function generate_thumb($arquivoId) {	
+    global $user;
+    
+    $arquivo = $this->get_arquivo($arquivoId);
+
+    if ($arquivo['tipo'] == "Video") {
+		$thumbData = $this->create_thumb_video("repo/".$arquivo['arquivo']);
+    }
+    elseif ($arquivo['tipo'] == "Imagem") {
+		$thumbData = $this->create_thumb_imagem("repo/".$arquivo['arquivo']);
+    } else {
+		return false;
+    }
+	
+    $this->save_thumb($thumbData, $arquivoId, $user);
+  }
+  
+  function save_thumb($fileBlob,$arquivoId,$user) {
+      $destination = "repo/";
+      
+      $arquivo = $this->get_arquivo($arquivoId);
+
+      $fileName = 'thumb_' . $arquivo['arquivo'];
+      $path = $destination.$fileName;
+      $fp = fopen($path, "w");
+      if (!$fp) {
+	  return "Impossivel gravar arquivo!";
+      }
+      fwrite($fp, $fileBlob);
+      fclose($fp);
+      
+      $query = "update `el_arquivo` set `thumbnail`=? where `arquivoId`=?";
+      $bindvals = array($fileName,$arquivoId);
+      $this->query($query,$bindvals);
+      // rolooooowww
+      return FALSE;
+  }
+    
+  function create_thumb_imagem($image) {
     
     $fp = fopen($image, 'rb');
     $data = '';
@@ -543,7 +560,8 @@ class ELGalLib extends TikiLib {
     
   }
   
-  function create_anim_gif($path) {
+  
+  function create_thumb_video($path) {
      
       //first, get movie and gif info
       $movie = new ffmpeg_movie($path, 0);

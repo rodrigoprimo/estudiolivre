@@ -13,6 +13,7 @@ $xajax->setLogFile("/tmp/xajax.log");
 $xajax->registerFunction('upload_info');
 $xajax->registerFunction('create_file');
 $xajax->registerFunction('save_field');
+$xajax->registerFunction('generate_thumb');
 
 function upload_info($uploadId, $callback = 'updateProgressMeter') {
 	$objResponse = new xajaxResponse();
@@ -44,6 +45,16 @@ function create_file($tipo, $fileName, $uploadId) {
 		$objResponse->addAssign('gUpMoreOptionContent', 'innerHTML', $content);	
 	}
 	
+	return $objResponse;
+}
+
+function generate_thumb($arquivoId) {
+	//TODO permissao
+	global $elgallib;
+	$elgallib->generate_thumb($arquivoId);
+	$objResponse = new xajaxResponse();
+	$arquivo = $elgallib->get_arquivo($arquivoId);
+	$objResponse->addScript("document.getElementById('thumbnail').src = 'repo/" . $arquivo['thumbnail'] . "';");
 	return $objResponse;
 }
 
