@@ -1,6 +1,7 @@
 <?php
 
 require_once("lib/xajax/xajax.inc.php");
+require_once("dumb_progress_meter.php");
 
 $xajax = new xajax();
 
@@ -46,9 +47,9 @@ function save_field($arquivoId, $name, $value) {
 	    $result = $elgallib->edit_field($arquivoId, $name, $value);
 	    
 	    if(!$result) {
-		$objResponse->addAlert("nao foi possivel editar o campo $name");
+			$objResponse->addAlert("nao foi possivel editar o campo $name");
 	    } else {
-		$objResponse->addScriptCall('exibeCampo', $name, $value);
+			$objResponse->addScriptCall('exibeCampo', $name, $value);
 	    }
 	}
 	

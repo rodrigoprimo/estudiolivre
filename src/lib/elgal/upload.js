@@ -102,18 +102,24 @@ function selecionaTipo(tipo) {
 		document.getElementById("icone" + tipo).src = "styles/estudiolivre/iUp" + tipo + ".png";
 		show('gUpList');
 	} else {
-		alert('Você não pode mudar o tipo de arquivo depois de começar o upload')
+		alert('Voc?? n??o pode mudar o tipo de arquivo depois de come??ar o upload')
 	}
 }
 
 function saveField(fieldObj){
-    field = fieldObj.id.replace(/^input-/,'');
-    value = fieldObj.value
-    if (saveFieldCache[field] == null || saveFieldCache[field] != value) {
-	xajax_save_field(arquivoId, field, value);
-	saveFieldCache[field] = value;
+    var field = fieldObj.id.replace(/^input-/,'');
+    var value;
+    if(fieldObj.type == "checkbox") {
+    	value = (fieldObj.checked ? 1 : 0);
     } else {
-	exibeCampo(field, value);
+	    value = fieldObj.value;
+    }
+    
+    if (saveFieldCache[field] == null || saveFieldCache[field] != value) {
+		xajax_save_field(arquivoId, field, value);
+		saveFieldCache[field] = value;
+    } else {
+		exibeCampo(field, value);
     }
 }
 
