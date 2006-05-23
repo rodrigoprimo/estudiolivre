@@ -17,8 +17,9 @@ var mudado = new Array();
 
 function upload() {
 	uploadId = document.uploadForm.UPLOAD_IDENTIFIER.value;
+	var filename = document.uploadForm.arquivo.value;
 	if (!tipoSelecionado) alert('bug');
-	xajax_create_file(tipoSelecionado, uploadId);		
+	xajax_create_file(tipoSelecionado, filename, uploadId);		
 }
 
 function startUpload(id) {
@@ -102,7 +103,7 @@ function selecionaTipo(tipo) {
 		document.getElementById("icone" + tipo).src = "styles/estudiolivre/iUp" + tipo + ".png";
 		show('gUpList');
 	} else {
-		alert('Você não pode mudar o tipo de arquivo depois de começar o upload')
+		alert('Você não pode mudar o tipo de arquivo depois de começar o upload');
 	}
 }
 

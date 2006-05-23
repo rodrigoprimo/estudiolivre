@@ -168,6 +168,29 @@ class ELGalLib extends TikiLib {
     return $data;
     
   }
+  
+  function validate_filetype($tipo, $filename) {
+  	
+  	$mimeType = mime_content_type($filename);
+  	preg_match("/(.+)\/.+/", $mimeType, $arqTipo);
+  	
+  	if ($mimeType == 'application/ogg' && preg_match("/^Audio|Video$/",$tipo)) {
+		$mimeType = strtolower($tipo)."/ogg";		 
+    } 
+  	
+  	if ($arqTipo[1] == "image") {
+		$arqTipo[1] = "imagem";
+    } elseif ($arqTipo[1] == "text") {
+		$arqTipo[1] = "texto";
+    }
+    
+    if($arqTipo[1] != strtolower($tipo)) {
+		return "Você deve fornecer um arquivo do tipo: ".$tipo.", e não do tipo: ".$arqTipo[1];
+    }
+    
+    return false;
+    
+  }
 
   function list_pending_uploads($user) {
     $query = "select `arquivoId`, `user`, a.`tipo`, `pontoId`, a.`licencaId`, `publicado`, `data_publicacao`, a.`titulo` `nomeArquivo`, `arquivo`, `formato`, `tamanho`, l.`tipo` `licenca` from `el_arquivo` a left join `el_licenca` l on a.licencaId = l.licencaId where a.publicado=0 and `user`=?";

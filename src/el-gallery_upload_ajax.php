@@ -21,10 +21,18 @@ function upload_info($uploadId, $callback = 'updateProgressMeter') {
 	return $objResponse;
 }
 
-function create_file($tipo, $uploadId) {
+function create_file($tipo, $fileName, $uploadId) {
 	$objResponse = new xajaxResponse();
 	global $elgallib, $user, $smarty;
+	
 	$arquivo = array();
+	
+	$error = $elgallib->validate_filetype($tipo, $fileName);
+	if ($error) {
+		$objResponse->addAlert($error);
+		return $objResponse;
+	}
+	
 	$arquivo['tipo'] = $tipo;
 	$arquivo['titulo'] = $arquivo['autor'] = $arquivo['donoCopyright'] = $arquivo['descricao'] = '';
 	$arquivoId = $elgallib->create_arquivo($arquivo, $user);
