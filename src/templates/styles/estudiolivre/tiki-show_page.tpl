@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.4 2006-05-23 18:54:36 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.5 2006-05-23 22:26:22 rhwinter Exp $ *}
 <script language="JavaScript" src="lib/js/contextualMenu.js"></script>
 
 <!-- menu contextual -->
@@ -172,7 +172,7 @@
 
 </div>
 
-<div class="wikitext">
+<div id="wikitext">
 
 {if $structure eq 'y'}
 
