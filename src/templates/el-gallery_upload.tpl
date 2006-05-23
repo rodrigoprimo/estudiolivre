@@ -13,12 +13,12 @@
       </div>
     
       <div class="gUpIcon">
-        <img id="iconeImagem" onMouseOver="acendeTipo('Imagem');" onMouseOut="apagaTipo('Imagem')" onClick="selecionaTipo('Imagem')" alt="" src="styles/estudiolivre/iUpImageOff.png"><br />
+        <img id="iconeImagem" onMouseOver="acendeTipo('Imagem');" onMouseOut="apagaTipo('Imagem')" onClick="selecionaTipo('Imagem')" alt="" src="styles/estudiolivre/iUpImagemOff.png"><br />
         Imagem
       </div>
     
       <div class="gUpIcon">
-        <img id="iconeTexto" onMouseOver="acendeTipo('Texto');" onMouseOut="apagaTipo('Texto')" onClick="selecionaTipo('Texto')" alt="" src="styles/estudiolivre/iUpTextOff.png"><br />
+        <img id="iconeTexto" onMouseOver="acendeTipo('Texto');" onMouseOut="apagaTipo('Texto')" onClick="selecionaTipo('Texto')" alt="" src="styles/estudiolivre/iUpTextoOff.png"><br />
         Texto
       </div>
     
