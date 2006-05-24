@@ -911,11 +911,15 @@ A.gUpButton:hover {
 	position: relative;
 }
 
+#gUserThumbFormContainer {
+	position: relative;
+}
+
 #gUpThumbForm {
 	position: absolute;
 	left: -175px;
 	top: 0px;
-	clip: rect( 0px, 255px, 62px, 175px);
+	clip: rect(0px, 255px, 62px, 175px);
 	z-index: 20;
 	opacity: 0;
 }
@@ -924,11 +928,33 @@ A.gUpButton:hover {
 	height: 62px;
 }
 
+#gUserThumbForm {
+	position: absolute;
+	left: -115px;
+	top: -90px;
+	clip: rect( 0px, 255px, 90px, 155px);
+	z-index: 20;
+	opacity: 0;
+}
+
+.gUserThumbFormButton {
+	height: 90px;
+}
+
 #gUpThumbStatus {
 	font-size: 14px;
 	margin-top: 23px;
 	width: 60px;
 	text-align: center;
+}
+
+#gUserThumbStatus {
+	position: relative;
+	top: -55px;
+	left: 55px;
+	font-size: 14px;
+	display: none;
+	z-index: 5;
 }
 
 INPUT.gUpEdit {
@@ -1132,7 +1158,7 @@ A.gUpmore {
 
 #uThumbImg {
 	height:90px;
-}	
+}
 	
 .uContactItem {
 	display:block;

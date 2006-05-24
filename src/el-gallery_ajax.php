@@ -1,8 +1,6 @@
 <?php
 
-require_once("tiki-setup.php");
 require_once("lib/xajax/xajax.inc.php");
-require_once("lib/elgal/elgallib.php");
 
 $xajax = new xajax();
 
@@ -34,18 +32,19 @@ function vota($arquivoId, $nota) {
     return $objResponse;
 } 
 
-function get_files($tipos, $offset, $maxRecords, $sort_mode, $find, $filters = array()) {
+function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName, $find, $filters = array()) {
     global $elgallib, $smarty;
 
     $objResponse = new xajaxResponse();
 	$total = $elgallib->count_all_uploads($tipos);
 
-    $files = $elgallib->list_all_uploads($tipos, $offset, $maxRecords, $sort_mode, $find, $filters);
+    $files = $elgallib->list_all_uploads($tipos, $offset, $maxRecords, $sort_mode, $userName, $find, $filters);
     $smarty->assign_by_ref('arquivos',$files);
     $smarty->assign('maxRecords', $maxRecords);
     $smarty->assign('offset', $offset);
 	$smarty->assign('sort_mode', $sort_mode);
 	$smarty->assign('total', $total);
+	$smarty->assign('userName', $userName);
 	$smarty->assign('find', $find);
 	$smarty->assign('filters', $filters);
 	$smarty->assign('page', ($offset/$maxRecords)+1);

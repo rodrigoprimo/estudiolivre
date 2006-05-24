@@ -28,10 +28,24 @@
 		  <img class="uKarmaImg" src="styles/estudiolivre/iKarmaInactive.png">
 		  <img class="uKarmaImg" src="styles/estudiolivre/iKarmaInactive.png">
 		</div>
-		<div id="uThumb">
-		  <img id="uThumbImg" src="tiki-show_user_avatar.php?user={$userinfo.login}" alt="" title="">
+
+	    <div id="gUserThumb">
+		  <img id="uThumbImg" alt="" src="tiki-show_user_avatar.php?user={$userinfo.login}"/>
+		  <div id="gUserThumbStatus"></div>
 		</div>
-      </div>
+
+		<div id="gUserThumbFormContainer">
+	      <div id="gUserThumbForm">
+	        <iframe name="thumbUpTarget" style="display:none" onLoad="finishUpThumb();"></iframe>
+	        <form action="el-user_thumb.php?UPLOAD_IDENTIFIER=thumb.{$uploadId}" method="post" enctype="multipart/form-data" name="thumbForm" target="thumbUpTarget">
+		      <input type="hidden" name="UPLOAD_IDENTIFIER" value="thumb.{$uploadId}"/>
+		      <input type="hidden" name="arquivoId" value=""/>
+		      <input type="file" name="thumb" onChange="changeThumbStatus()" class="gUserThumbFormButton"/>
+	        </form>
+	      </div>
+	    </div>
+
+	  </div>
 
       <div id="uAccountInfo" class="uContactInfoCont">
         <span class="uContactItem">Membro desde {$userinfo.registrationDate|date_format:"%d/%m/%Y"}</span>
@@ -57,7 +71,8 @@
         </h1>
       </div>
       <div id="uGalleryItems" class="uMainItemContainer" style="display:block">
-		{include file="el-gallery_section.tpl"}
+      	<div id="listNav">{include file="el-gallery_pagination.tpl"}</div>
+		<div id="gListCont">{include file="el-gallery_section.tpl"}</div>
       </div>
     </div>
     <div id="uBlog" class="uMainContainer">
@@ -113,7 +128,7 @@
               {$msg.date|date_format:"%H:%M"}<br />
               {$msg.date|date_format:"%d/%m/%Y"}
             </div>
-            <a href="el-user_information.php?view_user={$msg.user_from}">{$msg.user_from}</a>: {$msg.body}
+            <a href="el-user.php?view_user={$msg.user_from}">{$msg.user_from}</a>: {$msg.body}
           </div>
         </div>
         <hr>
@@ -143,7 +158,5 @@
     </div>
   </div>
 </div>
-
-
 
 <!-- tiki-user_information.tpl end -->

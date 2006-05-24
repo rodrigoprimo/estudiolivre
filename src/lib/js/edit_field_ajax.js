@@ -1,6 +1,10 @@
 var saveFieldCache = new Array();
 var display = new Array();
 var mudado = new Array();
+var thumbTimerId = null;
+var thumbUpId;
+var upThumbStarted = false;
+
 
 function saveField(fieldObj){
     var field = fieldObj.id.replace(/^input-/,'');
@@ -38,4 +42,40 @@ function editaCampo(field) {
     document.getElementById("show-"  + field).style.display = "none";
     document.getElementById("input-" + field).style.display = display[field];
     document.getElementById("input-" + field).focus();
+}
+
+
+//TODO abstrair as funcoes de thumb pra outro js, ja que sao usadas no upload e no user...
+function changeThumbStatus() {
+    thumbUpId = document.thumbForm.UPLOAD_IDENTIFIER.value;
+    document.thumbForm.submit();
+    updateThumbUpInfo();
+}
+
+function updateThumbUpInfo() {
+	if (!upThumbStarted) {
+		upThumbStarted = true;
+		show('gUserThumbStatus');
+		hide('gUserThumbFormContainer');
+		document.getElementById('gUserThumbStatus').innerHTML = '0%';
+	}
+	xajax_upload_info(thumbUpId, 'updateThumbProgressMeter');
+	thumbTimerId = setTimeout('updateThumbUpInfo()',1000);
+}
+
+function finishUpThumb() {
+	if (thumbTimerId) {
+		clearTimeout(thumbTimerId);
+		upThumbStarted = false;
+		show('gUserThumbFormContainer');
+		hide('gUserThumbStatus');	
+	}
+}
+
+function updateThumbProgressMeter(uploadInfo) {
+    var normalized = uploadInfo['bytes_uploaded'] / uploadInfo['bytes_total'];
+    var percent = Math.ceil(100 * normalized);
+    if (percent) {
+	document.getElementById('gUserThumbStatus').innerHTML = percent + '%';	
+    }	
 }

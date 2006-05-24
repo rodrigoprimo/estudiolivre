@@ -61,7 +61,7 @@
   </div>
 
   <div id="gUpRight" style="display: none">
-    <div id="gUpThumbImgForm"
+    <div id="gUpThumbImgForm">
       <div id="gUpThumb">
 	<div id="gUpThumbImg">
 	  <img id="thumbnail" alt="" height="60" width="60" src="">
@@ -77,7 +77,6 @@
         </form>
       </div>
     </div>
-
     <form>  
 
     <div id="gUpTitleAuthor">

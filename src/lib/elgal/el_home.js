@@ -71,7 +71,7 @@ function toggleFilter(button, position, tipo) {
 	
 	setButton(button, position, tipo);
 	
-	xajax_get_files(tipos, 0, 5, sortMode+sortDirection, '');
+	xajax_get_files(tipos, 0, 5, sortMode+sortDirection);
 	//el_get_files(tipos, 0, 5, 'data_publicacao_desc','', new Array());
 	
 }
@@ -119,11 +119,11 @@ function toggleSortArrow(img, alternate) {
 		sortDirection = '_desc';
 	}
 	setCookie('sortDirection', sortDirection);
-	xajax_get_files(tipos, 0, 5, sortMode+sortDirection, '');
+	xajax_get_files(tipos, 0, 5, sortMode+sortDirection);
 }
 
 function setSortMode(sel) {
 	sortMode = sel.value;
 	setCookie('sortMode', sortMode);
-	xajax_get_files(tipos, 0, 5, sortMode+sortDirection, '');
+	xajax_get_files(tipos, 0, 5, sortMode+sortDirection);
 }

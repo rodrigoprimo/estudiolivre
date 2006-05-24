@@ -78,7 +78,7 @@ class ELGalLib extends TikiLib {
     }
   }
     
-  function list_all_uploads($tipos = array(), $offset = 0, $maxRecords = -1, $sort_mode = 'data_publicacao_desc', $find = '', $filters = array()) {
+  function list_all_uploads($tipos = array(), $offset = 0, $maxRecords = -1, $sort_mode = 'data_publicacao_desc', $userName = '', $find = '', $filters = array()) {
       global $user;
       if ($find) {
 		  $mid = " where (a.`titulo` like ? or a.`descricao` like ?) ";
@@ -86,6 +86,11 @@ class ELGalLib extends TikiLib {
       } else {
 		  $mid = " where 1=1 ";
 		  $bindvals=array();
+      }
+      
+      if ($userName) {
+      	$mid .= ' and a.`user` = ? ';
+      	$bindvals[] = $userName;
       }
 
       if ($tipos) {
@@ -153,22 +158,6 @@ class ELGalLib extends TikiLib {
       return $this->getOne($query, $bindvals);
   }
 
-  function list_all_user_uploads($user, $offset = 0, $maxRecords = -1) {
-    $query = "select a.*, a.`titulo` as nomeArquivo, ur.`rating` as user_rating, l.`descricao` descricaoLicenca, `linkImagem`, `linkHumanReadable` from `el_arquivo` a,`el_licenca` l left join `el_arquivo_rating` ur on ur.`arquivoId` = a.`arquivoId` and ur.`user`=? where a.`licencaId`=l.`licencaId` and a.`user`=? and `publicado` order by a.`data_publicacao` desc";
-    $bindvals = array($user, $user);
-    $data = array();
-    $result = $this->query($query, $bindvals, $maxRecords, $offset);
-    global $freetaglib, $commentslib;
-    while ($row = $result->fetchRow()) {
-      $row['commentsCount'] = $commentslib->count_comments('arquivo:' . $row['arquivoId']);
-	  $row['tags'] = $freetaglib->get_tags_on_object($row['arquivoId'], 'acervo');		      
-      $data[] = $row;
-    }
-    
-    return $data;
-    
-  }
-  
   function validate_filetype($tipo, $filename) {
   	
   	$mimeType = mime_content_type($filename);

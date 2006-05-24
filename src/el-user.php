@@ -31,8 +31,22 @@ $info = $tikilib->get_page_info("Usuário_" . $_REQUEST['view_user']);
 $pdata = $tikilib->parse_data($info["data"],$info["is_html"]);
 $smarty->assign_by_ref('userWiki', $pdata);
 
-$uploads = $elgallib->list_all_user_uploads($_REQUEST['view_user'], 0, 5);
-$smarty->assign('arquivos',$uploads);
+$sort_mode = 'data_publicacao_desc';
+
+$uploads = $elgallib->list_all_uploads(array('Audio', 'Video', 'Imagem', 'Texto'), 0, 5, $sort_mode, $_REQUEST['view_user']);
+$smarty->assign_by_ref('arquivos',$uploads);
+
+$total = $elgallib->count_all_uploads(array('Audio', 'Video', 'Imagem', 'Texto'), $_REQUEST['view_user']);
+
+$smarty->assign('maxRecords', 5);
+$smarty->assign('offset', 0);
+$smarty->assign('sort_mode', $sort_mode);
+$smarty->assign('total', $total);
+$smarty->assign('find', '');
+$smarty->assign('filters', array());
+$smarty->assign('page', 1);
+$smarty->assign('lastPage', ceil($total/5));
+
 
 $userPosts = $bloglib->list_user_posts($_REQUEST['view_user'], 0, 5);
 for($i = 0; $i < sizeof($userPosts['data']); $i++) {
@@ -41,6 +55,8 @@ for($i = 0; $i < sizeof($userPosts['data']); $i++) {
 $smarty->assign('userPosts', $userPosts);
 
 $smarty->assign('userMessages', $messulib->list_user_messages($_REQUEST['view_user'], 0, 5, 'date_desc', '', '', '', '', 'messages'));
+
+$smarty->assign('uploadId',rand() . '.' . time());
 
 include("tiki-user_information.php");
 

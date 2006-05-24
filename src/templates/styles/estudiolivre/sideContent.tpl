@@ -124,12 +124,12 @@
   
   <div id="userMenuContainer">
   
-  <img alt="" class="uThumb" src="tiki-show_user_avatar.php?user={$user}" >{*$avatar*}
+  <img alt="" id="uOnlineThumb" class="uThumb" src="tiki-show_user_avatar.php?user={$user}"/>
   
     <div id="userNameStatsKarma">
 
       <span id="uName">
-       <a href="el-user_information.php?view_user={$user}">{$user}</a>
+       <a href="el-user.php?view_user={$user}">{$user}</a>
       </span>
       <br>
       <span id="uStats">
