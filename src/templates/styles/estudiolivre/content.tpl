@@ -22,7 +22,7 @@
     {elseif $style eq "estudiolivre_biblio.css"}
         <div id="tiki-midAcervo">
     {else}
-        <div id="tiki-mid" onclick="showMenu(event)">
+        <div id="tiki-mid">
     {/if}
 
     {include file=$mid}

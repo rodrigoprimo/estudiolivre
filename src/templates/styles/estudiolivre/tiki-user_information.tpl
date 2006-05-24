@@ -1,4 +1,7 @@
-{debug}<!-- tiki-user_information.tpl begin -->
+<!-- tiki-user_information.tpl begin -->
+
+<script language="JavaScript" src="lib/js/user_edit.js"></script>
+<script language="JavaScript" src="lib/js/edit_field_ajax.js"></script>
 
 <div id="userPage">
   <div id="uGeneralInfo">
@@ -8,13 +11,13 @@
     
     <div id="uContactKarmaAccount">
       <div id="uContact" class="uContactInfoCont">
-        <span class="uContactItem">{$realName}</span>
+        {ajax_input id="realName" class="uContactItem" value=$realName default="Nome completo" display="block"}
 		<br />
-        <span class="uContactItem" title="{$userinfo.email}">{$userinfo.email|truncate:22:" (...)"}</span>
+        {ajax_input id="email" class="uContactItem" value=$userinfo.email default="E-mail" display="block"}
 		<br />
-        <span class="uContactItem"><a href="{$homePage}">{$homePage|truncate:22:" (...)"}</a></span>
+        {ajax_input id="homePage" class="uContactItem" value=$homePage default="Homepage" display="block"}
 		<br />
-        <span class="uContactItem">Localizado em: {$country}</span>
+        Localizado em: {ajax_input id="country" class="uContactItem" value=$country default="País" display="inline"}
       </div>
 
       <div id="uKarmaThumb" class="uContactInfoCont">

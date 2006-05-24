@@ -1,0 +1,27 @@
+--- lib/userslib.php.orig	2006-05-24 12:50:34.000000000 -0300
++++ lib/userslib.php	2006-05-24 12:45:16.000000000 -0300
+@@ -1982,6 +1982,24 @@
+ 	return $result;
+     }
+ 
++    //this function sets ione user field
++    function set_user_field($name, $value) {
++
++	global $user;
++
++	$aUserPrefs = array('realName','homePage','country');
++	if (in_array($name, $aUserPrefs)) {
++	    $bindvars = array($value, $user, $name);
++	    $query = "UPDATE `tiki_user_preferences` set `value`=? where `user`=? and `prefName`=?";
++	    $result = $this->query($query, $bindvars);
++	} else {
++	    $query = "UPDATE `users_users` set `$name`='$value' where `login`='$user'";
++	    $result = $this->query($query);
++	}
++
++	return $result;
++    }
++
+     // damian aka damosoft
+     function count_users($group) {
+         static $rv = array();

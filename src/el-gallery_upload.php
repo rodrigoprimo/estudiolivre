@@ -31,7 +31,6 @@ include_once("freetag_list.php");
 global $tikilib, $user;
 
 $smarty->assign('style', 'estudiolivre_biblio.css');
-$smarty->assign('user_uploads', $elgallib->count_all_uploads(false,$user));
 
 $avatar = $tikilib->get_user_avatar($user);
 $smarty->assign('avatar', $avatar);
