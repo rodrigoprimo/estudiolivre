@@ -10,10 +10,6 @@ var originalWidth;
 var tipoSelecionado = false;
 var tipos = new Array('Audio','Video','Imagem','Texto');
 var arquivoId = false;
-var saveFieldCache = new Array();
-var display = new Array();
-var mudado = new Array();
-
 
 function upload() {
 	uploadId = document.uploadForm.UPLOAD_IDENTIFIER.value;
@@ -110,42 +106,8 @@ function selecionaTipo(tipo) {
 	}
 }
 
-function saveField(fieldObj){
-    var field = fieldObj.id.replace(/^input-/,'');
-    var value;
-    if(fieldObj.type == "checkbox") {
-    	value = (fieldObj.checked ? 1 : 0);
-    } else {
-	    value = fieldObj.value;
-    }
-    
-    if (saveFieldCache[field] == null || saveFieldCache[field] != value) {
-		xajax_save_field(arquivoId, field, value);
-		saveFieldCache[field] = value;
-    } else {
-		exibeCampo(field, value);
-    }
-}
-
-function limpaCampo(field) {
-    if (mudado[field] == null) {
-	document.getElementById('input-'+field).value = '';
-    }
-}
-
-function exibeCampo(field, value) {
-    if (value.length > 0) {
-	var showElement = document.getElementById("show-" + field);
-	showElement.style.display = display[field];
-	showElement.innerHTML = value.replace(new RegExp(/\n/g), '<br/>');
-	document.getElementById("input-" + field).style.display = "none";
-    }
-}
-
-function editaCampo(field) {
-    document.getElementById("show-"  + field).style.display = "none";
-    document.getElementById("input-" + field).style.display = display[field];
-    document.getElementById("input-" + field).focus();
+function call_save_function(field, value) {
+	xajax_save_field(arquivoId, field, value);
 }
 
 function changeThumbStatus() {

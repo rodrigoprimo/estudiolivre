@@ -2,6 +2,7 @@
 
 <script language="JavaScript" src="lib/elgal/upload.js"></script>
 <script language="JavaScript" src="lib/js/freetags.js"></script>
+<script language="JavaScript" src="lib/js/edit_field_ajax.js"></script>
 
 <div id="gUpload">
   <div id="gUpLeft">
