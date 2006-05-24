@@ -52,7 +52,7 @@
 		    		{assign var=tooltipText value="Ouça essa música"}
 		    	{/if}
 		    {/if}
-		    {if tooltipText}
+		    {if $tooltipText}
 		    	{tooltip text=$tooltipText}
 				    <a href="#">
 				      <img alt="" src="styles/estudiolivre/iPlay.png">

@@ -1031,7 +1031,65 @@ A.gUpmore {
 	text-align:center;
 }
 
-/* User Page */
+/* ####### Página do Arquivo ####### */
+
+/*#arqCont * {
+	border:1px solid black;
+}*/
+
+#aTopCont {
+	position:relative;
+	overflow:hidden;
+}
+
+
+#aThumbRatingLic {
+	position:relative;
+	width:100px;
+	float:left;
+	text-align:center;
+}
+
+#aThumb {
+	position:relative;	
+}
+
+#aLic {
+	position:absolute;
+	bottom:0;
+	left:0px;
+	z-index:100;
+}
+
+#aNameAuthor {
+	width:80%;
+}
+
+#aNameAuthorDown {
+		
+}
+
+#aName {
+	font-size:14px;
+	font-weight:bold;
+}
+
+#aDown{
+	position:relative;
+	float:right;
+}
+
+#aMiddleCont{
+	
+}
+
+#aTags {
+	position:absolute;
+	bottom:0px;
+	margin-left:100px;
+}
+
+/* ####### User Page ####### */
 
 #userPage {
 	/*border: 1px solid #00f;
