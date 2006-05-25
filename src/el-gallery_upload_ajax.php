@@ -14,6 +14,7 @@ $xajax->registerFunction('upload_info');
 $xajax->registerFunction('create_file');
 $xajax->registerFunction('save_field');
 $xajax->registerFunction('generate_thumb');
+$xajax->registerFunction('set_arquivo_licenca');
 
 function upload_info($uploadId, $callback = 'updateProgressMeter') {
 	$objResponse = new xajaxResponse();
@@ -24,7 +25,7 @@ function upload_info($uploadId, $callback = 'updateProgressMeter') {
 
 function create_file($tipo, $fileName, $uploadId) {
 	$objResponse = new xajaxResponse();
-	global $elgallib, $user, $smarty;
+	global $elgallib, $user, $smarty, $tikilib;
 	
 	$arquivo = array();
 	
@@ -37,6 +38,11 @@ function create_file($tipo, $fileName, $uploadId) {
 	$arquivo['tipo'] = $tipo;
 	$arquivo['titulo'] = $arquivo['autor'] = $arquivo['donoCopyright'] = $arquivo['descricao'] = '';
 	$arquivoId = $elgallib->create_arquivo($arquivo, $user);
+	
+	if ($licencaId = $tikilib->get_user_preference($user, 'licencaPadrao')) {
+		$elgallib->set_licenca($arquivoId, $licencaId);
+	}
+	
 	$objResponse->addScriptCall('startUpload',$arquivoId);
 	
 	if (in_array($tipo, array('Audio','Video','Imagem'))) {
@@ -44,7 +50,7 @@ function create_file($tipo, $fileName, $uploadId) {
 		$content = $smarty->fetch($templateName);
 		$objResponse->addAssign('gUpMoreOptionContent', 'innerHTML', $content);	
 	}
-	
+			
 	return $objResponse;
 }
 
@@ -68,7 +74,7 @@ function save_field($arquivoId, $name, $value) {
 	    $el_p_admin_acervo = 'y';
 	    $arquivo = $elgallib->get_arquivo($arquivoId);
 	    if (!$user || $user != $arquivo['user'] || $el_p_admin_acervo != 'y') {
-		return false;
+			return false;
 	    }
 	    $result = $elgallib->edit_field($arquivoId, $name, $value);
 	    
@@ -99,6 +105,37 @@ function tag_arquivo($arquivoId, $tag_string) {
     $freetaglib->update_tags($user, $arquivoId, 'acervo', $tag_string);
 	
 
+}
+
+function set_arquivo_licenca ($arquivoId, $resposta1, $resposta2, $padrao = false) {
+
+    global $user, $userlib, $elgallib;
+	$el_p_admin_acervo = 'y';
+	$arquivo = $elgallib->get_arquivo($arquivoId);
+	
+	if (!$user || $user != $arquivo['user'] || $el_p_admin_acervo != 'y') {
+		return false;
+    }
+
+	$objResponse = new xajaxResponse();
+    $licencaId = $elgallib->id_licenca($resposta1, $resposta2);
+    
+    if ($padrao) {
+    	$result = $userlib->set_user_field('licencaPadrao', $licencaId);
+    	if(!$result) $objResponse->addAlert("nao foi possivel editar o campo licencaPadrao");
+    }
+    
+    $result = $elgallib->set_licenca($arquivoId, $licencaId);
+	
+    if(!$result) {
+		$objResponse->addAlert("nao foi possivel editar o campo licencaId");
+    } else {
+    	$licenca = $elgallib->get_licenca($licencaId);
+    	$objResponse->addScript("document.getElementById('uImagemLicenca').src = 'styles/estudiolivre/" . $licenca['linkImagem'] . "?rand=".rand()."';");
+    }
+	
+	return $objResponse;
+	
 }
 
 $xajax->processRequests();

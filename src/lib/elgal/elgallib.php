@@ -304,51 +304,38 @@ class ELGalLib extends TikiLib {
      2 = Não;
      3 = Sim, contanto...;
     */
-    function id_licenca($resposta1,$resposta2=false) {
-        switch($resposta1) {
-            case 1:
-                switch($resposta2) {
-                    case 1:
-                        $id_licenca = 4;
-                    break;
-                    case 2:
-                        $id_licenca = 8;
-                    break;
-                    case 3:
-                        $id_licenca = 9;
-                    break;
-                }
-		break;
-            case 2:
-                switch($resposta2) {
-                    case 1:
-                        $id_licenca = 5;
-                    break;
-                    case 2:
-                        $id_licenca = 6;
-                    break;
-                    case 3:
-                        $id_licenca = 7;
-                    break;
-                }
-		break;
-            case 3:
-                $id_licenca = 1;
-            break;
-            case 4:
-                $id_licenca = 2;
-            break;
-            case 5:
-                $id_licenca = 3;
-            break;
+    function id_licenca($resposta1, $resposta2) {
+        if($resposta1 == 1) {
+        	switch($resposta2) {
+        		case 1:
+        			$id_licenca = 6;
+        			break;
+        		case 2:
+        			$id_licenca = 5;
+        			break;
+        		case 3:
+        			$id_licenca = 7;
+        			break;
+        	}
+        } else {
+        	switch($resposta2) {
+        		case 1:
+        			$id_licenca = 8;
+        			break;
+        		case 2:
+        			$id_licenca = 4;
+        			break;
+        		case 3:
+        			$id_licenca = 9;
+        			break;
+        	}
         }
         return @$id_licenca;
     }
 
   function set_licenca($arquivoId, $licencaId) {
     $query = "update `el_arquivo` set `licencaId` = ? where `arquivoId` = $arquivoId";
-    $bindvals = array($licencaId);
-    $this->query($query,$bindvals);
+    return $this->query($query,array($licencaId));
   }
   
   function get_licencas() {
@@ -360,6 +347,12 @@ class ELGalLib extends TikiLib {
     }
     $licencas['data'] = $ret;
     return $licencas;
+  }
+  
+  function get_licenca($licencaId) {
+	$query = "select * from `el_licenca` where licencaId = $licencaId";
+    $result = $this->query($query);
+    return $result->fetchRow();
   }
   
   function get_tipos() {

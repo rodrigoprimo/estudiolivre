@@ -80,25 +80,26 @@
     <form>  
 
     <div id="gUpTitleAuthor">
-        {ajax_input class="gUpTitle gUpEdit" id="titulo" value=$arquivo.titulo default="Titulo" display="inline"}
+        {ajax_input permission=$permission class="gUpTitle gUpEdit" id="titulo" value=$arquivo.titulo default="Titulo" display="inline"}
 		<div id="gUpAuthor">
-		  	Por {ajax_input class="gUpAuthor gUpEdit" id="autor" value=$online_user.realName default="Autor da obra" display="inline" mode="edit"}
+		  	Por {ajax_input permission=$permission class="gUpAuthor gUpEdit" id="autor" value=$online_user.realName default="Autor da obra" display="inline" mode="edit"}
 		</div>
     </div>
       
     <br style="line-height:30px;">
     <div id="gUpDescription">
-	     {ajax_textarea class="gUpEditDescription" id="descricao" value=$arquivo.descricao default="Descrição da sua obra" display="block"}
+	     {ajax_textarea permission=$permission class="gUpEditDescription" id="descricao" value=$arquivo.descricao default="Descrição da sua obra" display="block"}
     </div>
     
     <br style=" line-height:20px;">
-	Licenca: ...
+	Licença: <span onClick="showLightbox('el-license')" style="cursor: pointer"><img id="uImagemLicenca" src="styles/estudiolivre/{$licenca.linkImagem}" alt="..."/></span>
+	{include file="el-gallery_license.tpl"}
 	
     <div id="gUpEditTags">
       {if $feature_freetags eq 'y' && $tiki_p_freetags_tag eq 'y'}
         <span>Tags</span>
 	{* O ideal eh que tenha suggest aqui nesse campo *}
-	{ajax_input class="freetags" id="tags" value="$taglist" noclear=1}<br>
+	{ajax_input permission=$permission class="freetags" id="tags" value="$taglist" noclear=1}<br>
 	  <div id="gUpTagSugest">
 	    {* Aqui ficam listadas as tags do usuário.
 	    Primeiro as 10 mais usadas, com um botão "exibir +" e outro "exibir todas" *}

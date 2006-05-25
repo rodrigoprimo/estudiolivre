@@ -146,3 +146,19 @@ function updateThumbProgressMeter(uploadInfo) {
     }	
 }
 
+
+//implementacao do checkLightBox para a licenca
+var resposta1 = null;
+var resposta2 = null;
+
+function checkLightbox() {
+	var padrao = false;
+	if (resposta1 && resposta2) {
+		padrao = (document.getElementById("uLicencaPadrao").checked ? 1 : 0);
+		xajax_set_arquivo_licenca(arquivoId, resposta1, resposta2, padrao);
+		return true;
+	} else {
+		alert("Você não escolheu nenhuma licença!!!");
+		return false;
+	}
+}

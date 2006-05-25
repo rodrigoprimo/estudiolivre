@@ -22,13 +22,14 @@ function upload_info($uploadId, $callback = 'updateProgressMeter') {
 }
 
 function save_field($name, $value) {
-	$objResponse = new xajaxResponse();
 
     global $user, $userlib;
-    
+
     if (!$user) {
 		return false;
     }
+
+	$objResponse = new xajaxResponse();
     
     $result = $userlib->set_user_field($name, $value);
     

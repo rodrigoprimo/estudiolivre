@@ -1,6 +1,5 @@
 <?php
 
-
 require_once("tiki-setup.php");
 require_once("lib/elgal/elgallib.php");
 
@@ -41,6 +40,15 @@ $tipo = "";
 // Array of lincenses
 $licencas = $elgallib->get_licencas();
 $smarty->assign('licencas',$licencas);
+
+// Permissao pra editar, sempre true porque eh um arquivo novo
+$smarty->assign('permission',true);
+
+// licenca padrao
+if ($licencaId = $tikilib->get_user_preference($user, 'licencaPadrao')) {
+	$licenca = $elgallib->get_licenca($licencaId);
+	$smarty->assign('licenca', $licenca);
+}
 
 $tipos = $elgallib->get_tipos();
 $smarty->assign('tipos',$tipos);

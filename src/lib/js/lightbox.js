@@ -128,12 +128,17 @@ function showLightbox(divId) {
 //
 function hideLightbox() {
 	
-	document.getElementById('overlay').style.display = 'none'; 
-	document.getElementById('lightbox').style.display = 'none';
+	//check to see if user has done whatever before he exits
+	//has to be implemented for each particular case
+	if(checkLightbox()) {
 	
-	// hide lightbox and overlay
-	var content = document.getElementById(currentLightBoxDiv);
-	//currentLightBoxDiv = null;
-	content.style.display = 'none';
-	setTimeout("document.body.appendChild(document.getElementById(currentLightBoxDiv))", 1);
+		document.getElementById('overlay').style.display = 'none'; 
+		document.getElementById('lightbox').style.display = 'none';
+	
+		// hide lightbox and overlay
+		var content = document.getElementById(currentLightBoxDiv);
+		//currentLightBoxDiv = null;
+		content.style.display = 'none';
+		setTimeout("document.body.appendChild(document.getElementById(currentLightBoxDiv))", 1);
+	}
 }
