@@ -18,8 +18,14 @@ $urlparam = "arquivoId";
 $readrepl = "el-gallery_manage.php?action=view&arquivoId=%s";
 $uniqueid = $feed;
 
+if (isset($_REQUEST['user'])) {
+	$userName = $_REQUEST['user'];
+} else {
+	$userName = '';
+}
+
 $changes = array();
-$changes["data"] = $elgallib->list_all_uploads(false, 0, 10, $dateId.'_desc');
+$changes["data"] = $elgallib->list_all_uploads(array('Audio', 'Video', 'Imagem', 'Texto'), 0, 10, $dateId.'_desc', $userName);
 
 $output = $rsslib->generate_feed($feed, $uniqueid, '', $changes, $readrepl, $urlparam, $id, $title, $titleId, $desc, $descId, $dateId, $authorId);
 

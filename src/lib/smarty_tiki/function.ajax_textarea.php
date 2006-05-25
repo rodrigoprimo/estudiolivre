@@ -22,6 +22,15 @@ function smarty_function_ajax_textarea($params, &$smarty) {
 	$display = $params['display'];
 	$mode = $params['mode'];
 	$noclear = $params['noclear'];
+	$permission = $params['permission'];
+
+	if (!$permission) {
+		$output .= '<div id="show-'. $id .'" class="'.$class.'" style="display:' . ($edit ? 'none' : $display ) . '">';
+		$output .= ($value ? $value : $default);
+		$output .= "</div>";
+		
+		return $output;	
+	}
 
 	if ($mode == 'edit') {
 	    $edit = 1;

@@ -32,11 +32,11 @@ function vota($arquivoId, $nota) {
     return $objResponse;
 } 
 
-function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName, $find, $filters = array()) {
+function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $find = '', $filters = array()) {
     global $elgallib, $smarty;
 
     $objResponse = new xajaxResponse();
-	$total = $elgallib->count_all_uploads($tipos);
+	$total = $elgallib->count_all_uploads($tipos, $userName);
 
     $files = $elgallib->list_all_uploads($tipos, $offset, $maxRecords, $sort_mode, $userName, $find, $filters);
     $smarty->assign_by_ref('arquivos',$files);

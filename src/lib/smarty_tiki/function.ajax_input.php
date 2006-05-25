@@ -5,6 +5,8 @@ if (strpos($_SERVER["SCRIPT_NAME"],basename(__FILE__)) !== false) {
   exit;
 }
 
+include_once("function.truncate.php");
+
 /*
  * Smarty plugin
  * -------------------------------------------------------------
@@ -22,7 +24,18 @@ function smarty_function_ajax_input($params, &$smarty) {
 	$display = $params['display'];
 	$mode = $params['mode'];
 	$noclear = $params['noclear'];
+	$truncate = $params['truncate'];
+	$permission = $params['permission'];
 
+ 	$trucated = truncate($value, $truncate, '(...)');
+	
+	if (!$permission) {
+		$output .= '<div id="show-'. $id .'" class="'.$class.'" style="display:' . ($edit ? 'none' : $display ) . '">';
+		$output .= ($edit ? $default : $trucated);
+		$output .= "</div>";
+		return $output;	
+	}
+	
 	if ($mode == 'edit') {
 	    $edit = 1;
 	} elseif ($mode == 'show') {
@@ -35,7 +48,7 @@ function smarty_function_ajax_input($params, &$smarty) {
 	
 	$output = '';
 	$output .= '<div id="show-'. $id .'" class="'.$class.'" style="display:' . ($edit ? 'none' : $display ) . '" onClick="editaCampo(' . "'" . $id . "'" . ');">';
-	$output .= ($edit ? $default : $value);
+	$output .= ($edit ? $default : $trucated);
 	$output .= "</div>";
 	// TODO: escape value
 	$output .= '<input class="'.$class.'" id="input-'.$id.'" value="'. ($value ? $value : $default) .'" ';

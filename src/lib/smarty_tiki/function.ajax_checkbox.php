@@ -19,7 +19,14 @@ function smarty_function_ajax_checkbox($params, &$smarty) {
 	$id = $params['id'];
 	$class = $params['class'];
 	$value = $params['value'] ? 1 : 0;
+	$permission = $params['permission'];
+	
+	if (!$permission) {
+		$output .= ($value ? $value : $default);
 		
+		return $output;	
+	}	
+	
 	$checked = $value ? "checked" : ""; 
 	 
 	return '<input type="checkbox" class="'.$class.'" id="input-'.$id.'" onClick="saveField(this);" '.$checked.'>';

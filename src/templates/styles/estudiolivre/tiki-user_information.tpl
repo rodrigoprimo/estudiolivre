@@ -11,13 +11,13 @@
     
     <div id="uContactKarmaAccount">
       <div id="uContact" class="uContactInfoCont">
-        {ajax_input id="realName" class="uContactItem" value=$realName default="Nome completo" display="block"}
+        {ajax_input permission=$permission id="realName" class="uContactItem" value=$realName default="Nome completo" display="block"}
 		<br />
-        {ajax_input id="email" class="uContactItem" value=$userinfo.email default="E-mail" display="block"}
+        {ajax_input permission=$permission id="email" class="uContactItem" value=$userinfo.email default="E-mail" display="block" truncate='25'}
 		<br />
-        {ajax_input id="homePage" class="uContactItem" value=$homePage default="Homepage" display="block"}
+        {ajax_input permission=$permission id="homePage" class="uContactItem" value=$homePage default="Homepage" display="block" truncate='25'}
 		<br />
-        Localizado em: {ajax_input id="country" class="uContactItem" value=$country default="País" display="inline"}
+        Localizado em: {ajax_input permission=$permission id="country" class="uContactItem" value=$country default="País" display="inline"}
       </div>
 
       <div id="uKarmaThumb" class="uContactInfoCont">
@@ -34,6 +34,7 @@
 		  <div id="gUserThumbStatus"></div>
 		</div>
 
+		{if $permission}
 		<div id="gUserThumbFormContainer">
 	      <div id="gUserThumbForm">
 	        <iframe name="thumbUpTarget" style="display:none" onLoad="finishUpThumb();"></iframe>
@@ -44,6 +45,7 @@
 	        </form>
 	      </div>
 	    </div>
+	    {/if}
 
 	  </div>
 
@@ -71,7 +73,7 @@
         </h1>
       </div>
       <div id="uGalleryItems" class="uMainItemContainer" style="display:block">
-      	<div id="listNav">{include file="el-gallery_pagination.tpl"}</div>
+      	<div id="listNav" class="ulistNav">{include file="el-gallery_pagination.tpl"}</div>
 		<div id="gListCont">{include file="el-gallery_section.tpl"}</div>
       </div>
     </div>

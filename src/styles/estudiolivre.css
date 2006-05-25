@@ -499,6 +499,12 @@ img {
 	font-size:12px;
 }
 
+.ulistNav {
+	position: relative;
+	top: -23px;
+	left: 270px;
+}
+
 #listNav .selected {
 	font-weight:bold;
 }
