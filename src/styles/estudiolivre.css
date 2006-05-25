@@ -503,6 +503,7 @@ img {
 	position: relative;
 	top: -23px;
 	left: 270px;
+	display: inline;
 }
 
 #listNav .selected {
