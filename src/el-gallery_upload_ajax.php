@@ -44,11 +44,23 @@ function create_file($tipo, $fileName, $uploadId) {
 	
 	if (in_array($tipo, array('Audio','Video','Imagem'))) {
 		$templateName = 'el-gallery_upload_' . $tipo . '.tpl';
+		$smarty->assign('permission', true);
 		$content = $smarty->fetch($templateName);
-		$objResponse->addAssign('gUpMoreOptionContent', 'innerHTML', $content);	
+		$objResponse->addAssign('gUpMoreOptionContent', 'innerHTML', $content);
+		$objResponse->addScript(_extractScripts($content));
 	}
 			
 	return $objResponse;
+}
+
+function _extractScripts($content) {
+	preg_match_all('/<script[^>]*>(.+?)<\/script>/', $content, $matches);
+	$script = '';
+	for ($i=0; $i<sizeof($matches[1]); $i++) {
+		$script .= $matches[1][$i];
+		$script .= ";\n"; 
+	}
+	return $script;
 }
 
 $xajax->registerFunction('generate_thumb');

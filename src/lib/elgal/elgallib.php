@@ -294,7 +294,8 @@ class ELGalLib extends TikiLib {
       $query = "select * from `$table` where arquivoId=?";
       $result = $this->query($query,array($arquivoId));
       
-      $arquivo['metadata'] = $result->fetchRow();
+      $metadata = $result->fetchRow();
+      $arquivo = array_merge($metadata, $arquivo);
     }
     return $arquivo;
   }

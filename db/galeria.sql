@@ -56,7 +56,7 @@ create table `el_arquivo_video` (
        tamanhoImagemY int not null, key(tamanhoImagemY),
        temAudio bool not null default 1, key(temAudio),
        temCor bool not null default 1, key(temCor),
-       idiomaVideo varchar(20), key(idiomaVideo),
+       idioma varchar(20), key(idiomaVideo),
        legendas bool not null default 0, key(legendas),
        idiomaLegenda varchar(20), key(idiomaLegenda),
        fichaTecnica text, fulltext key(fichaTecnica)

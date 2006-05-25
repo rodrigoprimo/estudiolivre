@@ -22,7 +22,7 @@ function smarty_function_ajax_checkbox($params, &$smarty) {
 	$permission = $params['permission'];
 	
 	if (!$permission) {
-		$output .= ($value ? $value : $default);
+		$output .= $value;
 		
 		return $output;	
 	}	
