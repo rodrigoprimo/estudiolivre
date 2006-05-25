@@ -121,16 +121,17 @@
   <div id="topMenuContainer">
     <a href="tiki-logout.php">Logout</a>
   </div>
-  
+
   <div id="userMenuContainer">
+
+	<span id="uName" style="border:1px solid ">
+		<a href="el-user.php?view_user={$user}">{$user}</a>
+	</span>
   
-  <img alt="" id="uOnlineThumb" class="uThumb" src="tiki-show_user_avatar.php?user={$user}"/>
+    <img alt="" id="uOnlineThumb" class="uThumb" src="tiki-show_user_avatar.php?user={$user}"/>
   
     <div id="userNameStatsKarma">
 
-      <span id="uName">
-       <a href="el-user.php?view_user={$user}">{$user}</a>
-      </span>
       <br>
       <span id="uStats">
         <img src="styles/estudiolivre/iOnline.png"> meu status

@@ -1,12 +1,11 @@
 <div id="arqCont">
 	<div id="aTopCont">
-		<div id="aThumbRatingLic">
+		<div id="aThumbRatingLic">		
 			<div id="aRating">
-				{tooltip text="Avaliação - entre na página do arquivo para votar"}
+				{tooltip text="Avaliação"}
 					<img alt="{$arquivo.rating} estrelas" src="styles/estudiolivre/star{math equation="round(x)" x=$arquivo.rating|default:"blk"}.png">
 				{/tooltip}
 			</div>
-		
 			<div id="aThumb">
 				<div id="aLic">
 					<img src="styles/estudiolivre/iLicSamplingPlus.png">
@@ -65,12 +64,12 @@
 					</div>
 			
 					<div id="aAuthorDate">
-						por {$arquivo.autor} em {$arquivo.data_publicacao|date_format:"%d/%m/%Y"}
+						por <a href="#">{$arquivo.autor}</a> em <i>{$arquivo.data_publicacao|date_format:"%d/%m/%Y"}</i>
 					</div>
 				</div>
 			</div>
 			<div id="aActions">
-				estrelas e fecha esse div
+				<span > <img alt="{$arquivo.rating} estrelas" src="styles/estudiolivre/star{math equation="round(x)" x=$arquivo.rating|default:"blk"}.png"> </span>
 			</div>			
 			<div id="aTags">
 				{foreach from=$freetags.data item=taginfo}
@@ -79,48 +78,86 @@
 			</div>
 		</div>
 	</div>
-	
+	<br />
 	<div id="aMiddle">
 		<div id="aComments">
-			<div id="aCommentsTitle" class="aTitle">
-				Comentarios (9)
+			<div id="aCommentsTitle" class="uMainTitle">
+				<a href="#" onClick="javascript:flip('aCommentsItemsCont'); return false;">
+					<img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
+				</a>
+				<h1>Comentarios (9)</h1>
 			</div>
-			<div id="aCommentsItemsCont" class="aItemsCont">
-				<div class="aCommentItem">
-					<div class="aCommentAvatar">
-						Foto
+			<div id="aCommentsItemsCont" class="aItemsCont" style="display:block">
+				{*foreach from=$userMessages.data item='msg'*}
+					<div class="uMsgItem">
+						<div class="uMsgAvatar">
+							<img alt="" title="" src="tiki-show_user_avatar.php?user=criscabello">
+						</div>
+						<div class="uMsgTxt">
+							<div class="uMsgDel">
+								<a href="#"><img alt="" title="Deletar Mensagem" src="styles/estudiolivre/iDelete.png"></a>
+							</div>
+							<div class="uMsgDate">
+								11:30{$msg.date|date_format:"%H:%M"}<br />
+								28/05/06{$msg.date|date_format:"%d/%m/%Y"}
+							</div>
+							<a href="el-user.php?view_user=uira">uira</a>: caralho, q musica massa...
+						</div>
 					</div>
-					<div class="aCommentTxt">
-						uira: vai tomar no cú, porra!
-					</div>
-					<div class="aCommentDate">
-						11:25<br>
-						25/05/2005
-					</div>
-					<div class="aCommentEditDel">
-						editar | Deletar
-					</div>
-				</div>
+					<hr>
+				{*/foreach*}
+				{* <div class="aCommentItem">
+						<div class="aCommentAvatar">
+							Foto
+						</div>
+						<div class="aCommentTxt">
+							uira: vai tomar no cú, porra!
+						</div>
+						<div class="aCommentDate">
+							11:25<br>
+							25/05/2005
+						</div>
+						<div class="aCommentEditDel">
+							editar | Deletar
+						</div>
+					</div> *}
 			</div>
 			<div id="aCommentSend">
-				enviar comentário + botão
+				<div id="uMsgSend">         
+					<input type="submit" name="" value="enviar" label="enviar" id="uMsgSendSubmit">
+					<input type="text" id="uMsgSendInput">
+					<br /><br /><br />
+				</div>
 			</div>
 		</div>
 		
 		<div id="aDescriptionInfo">
 			<div id="aDesc">
-				<div id="aDescTitle" class="aTitle">
-					Descrição
+				<div id="aDescTitle" class="uMainTitle">
+					<a href="#" onClick="javascript:flip('aDescCont'); return false;">
+						<img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
+					</a>					
+					<h1>Descrição</h1>
 				</div>
-				<div id="aDescCont" class="aItemsCont">
+				<div id="aDescCont" class="aItemsCont" style="display:block">
+					Caralho, esse arquivo eh muito doido. Baixa aí procê vê. 
+					Caralho, esse arquivo eh muito doido. Baixa aí procê vê.
+					Caralho, esse arquivo eh muito doido. Baixa aí procê vê.
+					Caralho, esse arquivo eh muito doido. Baixa aí procê vê.
+					Caralho, esse arquivo eh muito doido. Baixa aí procê vê.
+					Caralho, esse arquivo eh muito doido. Baixa aí procê vê.
 					Caralho, esse arquivo eh muito doido. Baixa aí procê vê.
 				</div>
 			</div>
+			<br />
 			<div id="aInfo">
-				<div id="aInfoTitle" class="aTitle">
-					Detalhes
+				<div id="aInfoTitle" class="uMainTitle">
+					<a href="#" onClick="javascript:flip('aInfoCont'); return false;">
+						<img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
+					</a>					
+					<h1>Detalhes do Arquivo</h1>
 				</div>
-				<div id="aInfoCont" class="aItemsCont">
+				<div id="aInfoCont" class="aItemsCont" style="display:block">
 					<span class="campo">Detentor dos DA:</span> {$arquivo.donoCopyright}<br/>
 					<span class="campo">Produtora:</span> {$arquivo.produtora}<br/>
 					<span class="campo">Contato:</span> {$arquivo.contato}<br/>
