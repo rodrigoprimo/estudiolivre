@@ -7079,13 +7079,13 @@
      inkscape:export-xdpi="90.000000"
      inkscape:export-filename="/home/multimidia/uiraDesign/estudiolivre/layout/PaginaArquivo.png"
      style="fill:#91cd6d;fill-opacity:1;stroke:none;stroke-width:0.40000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1"
-     d="M 612.30898,419.24734 L 612.30898,420.24734 L 583.46272,420.24734 L 519.1133,420.24734 L 490.26697,420.24734 L 490.26697,419.24734 L 519.1133,419.24734 L 583.46272,419.24734 L 612.30898,419.24734 z "
+     d="M 612.30898,419.24734 L 612.30898,420.24734 L 572.67837,420.24734 L 484.27153,420.24734 L 444.64083,420.24734 L 444.64083,419.24734 L 484.27153,419.24734 L 572.67837,419.24734 L 612.30898,419.24734 z "
      id="path11628"
      sodipodi:nodetypes="ccccccccc" />
   <path
      sodipodi:nodetypes="ccccccccc"
      id="path11630"
-     d="M 612.30898,533.24734 L 612.30898,534.24734 L 583.22636,534.24734 L 518.34967,534.24734 L 489.26697,534.24734 L 489.26697,533.24734 L 518.34967,533.24734 L 583.22636,533.24734 L 612.30898,533.24734 z "
+     d="M 612.30898,533.24734 L 612.30898,534.24734 L 572.35365,534.24734 L 483.22241,534.24734 L 443.26697,534.24734 L 443.26697,533.24734 L 483.22241,533.24734 L 572.35365,533.24734 L 612.30898,533.24734 z "
      style="fill:#91cd6d;fill-opacity:1;stroke:none;stroke-width:0.40000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1"
      inkscape:export-filename="/home/multimidia/uiraDesign/estudiolivre/layout/PaginaArquivo.png"
      inkscape:export-xdpi="90.000000"
@@ -7106,4 +7106,12 @@
      inkscape:export-filename="/home/multimidia/uiraDesign/estudiolivre/layout/PaginaArquivo.png"
      inkscape:export-xdpi="90.000000"
      inkscape:export-ydpi="90.000000" />
+  <path
+     inkscape:export-ydpi="90.000000"
+     inkscape:export-xdpi="90.000000"
+     inkscape:export-filename="/home/multimidia/uiraDesign/estudiolivre/layout/PaginaArquivo.png"
+     style="fill:#91cd6d;fill-opacity:1;stroke:none;stroke-width:0.40000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1"
+     d="M 915.30898,229.24734 L 1025.309,229.24734 L 1025.309,251.09341 L 1025.309,299.82704 L 1025.309,321.67317 L 915.30898,321.67317 L 915.30898,299.82704 L 915.30898,251.09341 L 915.30898,229.24734 z "
+     id="path2388"
+     sodipodi:nodetypes="ccccccccc" />
 </svg>
