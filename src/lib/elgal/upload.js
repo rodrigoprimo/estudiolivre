@@ -151,7 +151,7 @@ function updateThumbProgressMeter(uploadInfo) {
 var resposta1 = null;
 var resposta2 = null;
 
-function checkLightbox() {
+function checkLightboxLicenca() {
 	var padrao = false;
 	if (resposta1 && resposta2) {
 		padrao = (document.getElementById("uLicencaPadrao").checked ? 1 : 0);
@@ -162,3 +162,6 @@ function checkLightbox() {
 		return false;
 	}
 }
+
+setLightboxCheckFunction('el-license',checkLightboxLicenca);
+

@@ -10,12 +10,8 @@ $xajax->waitCursorOff();
 $xajax->debugOff();
 $xajax->setLogFile("/tmp/xajax.log");
 
-$xajax->registerFunction('upload_info');
-$xajax->registerFunction('create_file');
-$xajax->registerFunction('save_field');
-$xajax->registerFunction('generate_thumb');
-$xajax->registerFunction('set_arquivo_licenca');
 
+$xajax->registerFunction('upload_info');
 function upload_info($uploadId, $callback = 'updateProgressMeter') {
 	$objResponse = new xajaxResponse();
 	$uploadInfo = upload_progress_meter_get_info($uploadId);
@@ -23,6 +19,7 @@ function upload_info($uploadId, $callback = 'updateProgressMeter') {
 	return $objResponse;
 }
 
+$xajax->registerFunction('create_file');
 function create_file($tipo, $fileName, $uploadId) {
 	$objResponse = new xajaxResponse();
 	global $elgallib, $user, $smarty, $tikilib;
@@ -54,7 +51,9 @@ function create_file($tipo, $fileName, $uploadId) {
 	return $objResponse;
 }
 
+$xajax->registerFunction('generate_thumb');
 function generate_thumb($arquivoId) {
+
 	//TODO permissao
 	global $elgallib;
 	$elgallib->generate_thumb($arquivoId);
@@ -64,11 +63,12 @@ function generate_thumb($arquivoId) {
 	return $objResponse;
 }
 
+$xajax->registerFunction('save_field');
 function save_field($arquivoId, $name, $value) {
 	$objResponse = new xajaxResponse();
 
 	if ($name == 'tags') {
-	    tag_arquivo($arquivoId, $value);
+	    _tag_arquivo($arquivoId, $value);
 	} else {
 	    global $elgallib, $user, $el_p_admin_acervo;
 	    $el_p_admin_acervo = 'y';
@@ -89,7 +89,7 @@ function save_field($arquivoId, $name, $value) {
 
 }
 
-function tag_arquivo($arquivoId, $tag_string) {
+function _tag_arquivo($arquivoId, $tag_string) {
     global $freetaglib, $elgallib;
     if (!is_object($freetaglib)) {
 	include_once('lib/freetag/freetaglib.php');
@@ -106,7 +106,7 @@ function tag_arquivo($arquivoId, $tag_string) {
 	
 
 }
-
+$xajax->registerFunction('set_arquivo_licenca');
 function set_arquivo_licenca ($arquivoId, $resposta1, $resposta2, $padrao = false) {
 
     global $user, $userlib, $elgallib;
@@ -136,6 +136,19 @@ function set_arquivo_licenca ($arquivoId, $resposta1, $resposta2, $padrao = fals
 	
 	return $objResponse;
 	
+}
+
+$xajax->registerFunction('publish_arquivo');
+function publish_arquivo($arquivoId) {
+	global $user, $elgallib;
+	$objResponse = new xajaxResponse();
+    
+    if ($elgallib->publish_arquivo($arquivoId)) {
+    	$objResponse->addRedirect("el-gallery_manage.php?arquivoId=$arquivoId&action=view");
+    } else {
+    	$objResponse->addAlert("Não foi possível publicar o arquivo");
+    }
+    return $objResponse;
 }
 
 $xajax->processRequests();

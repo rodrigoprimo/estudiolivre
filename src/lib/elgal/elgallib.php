@@ -422,6 +422,16 @@ class ELGalLib extends TikiLib {
     $this->_update_arquivo($especificos, "el_arquivo_".$tipo, $gerais['arquivoId']);
 
   }
+  
+  function publish_arquivo($arquivoId) {
+  	global $user;
+  	
+  	// TODO permissoes mais complexas, tipo admin
+  	// TODO verificar erros
+  	$query = "update `el_arquivo` set `publicado`=1 where `arquivoId`=? and `user`=?";
+  	$result = $this->query($query, array($arquivoId, $user));
+  	return $result;
+  }
 
   function convert_error_to_string($error) {
     switch($error) {

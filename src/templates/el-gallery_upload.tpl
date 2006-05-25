@@ -135,7 +135,8 @@
      <br style="clear:both; line-height:20px;">
     
     <div id="gUpSave">
-       <input type="image" name="login" src="styles/estudiolivre/bSave.png" />
+       <input type="image" name="publicar" src="styles/estudiolivre/bSave.png" onClick="showLightbox('el-publish')"/>
+       {include file="el-gallery_publish.tpl"}
     </div>
 
     </form>

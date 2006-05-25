@@ -3,6 +3,7 @@
 */
 
 var currentLightBoxDiv = null;
+var checkFunction = new Array();
 
 //
 // getPageScroll()
@@ -130,7 +131,7 @@ function hideLightbox() {
 	
 	//check to see if user has done whatever before he exits
 	//has to be implemented for each particular case
-	if(checkLightbox()) {
+	if(checkLightbox(currentLightBoxDiv)) {
 	
 		document.getElementById('overlay').style.display = 'none'; 
 		document.getElementById('lightbox').style.display = 'none';
@@ -141,4 +142,19 @@ function hideLightbox() {
 		content.style.display = 'none';
 		setTimeout("document.body.appendChild(document.getElementById(currentLightBoxDiv))", 1);
 	}
+}
+
+//
+// setLightboxCheckFunction(divId)
+//
+function setLightboxCheckFunction(divId, func) {
+	checkFunction[divId] = func;
+}
+
+function checkLightbox(divId) {
+	var func = checkFunction[divId];
+	if (!func) {
+		return true;
+	}
+	return func();
 }
