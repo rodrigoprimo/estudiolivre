@@ -1,5 +1,5 @@
 --- lib/userslib.php.orig	2006-05-24 12:50:34.000000000 -0300
-+++ lib/userslib.php	2006-05-24 12:45:16.000000000 -0300
++++ lib/userslib.php	2006-05-25 15:08:03.000000000 -0300
 @@ -1982,6 +1982,24 @@
  	return $result;
      }
@@ -9,10 +9,10 @@
 +
 +	global $user;
 +
-+	$aUserPrefs = array('realName','homePage','country');
++	$aUserPrefs = array('realName','homePage','country', 'licencaPadrao');
 +	if (in_array($name, $aUserPrefs)) {
 +	    $bindvars = array($value, $user, $name);
-+	    $query = "UPDATE `tiki_user_preferences` set `value`=? where `user`=? and `prefName`=?";
++	    $query = "REPLACE into `tiki_user_preferences` set `value`=?, `user`=?, `prefName`=?";
 +	    $result = $this->query($query, $bindvars);
 +	} else {
 +	    $query = "UPDATE `users_users` set `$name`='$value' where `login`='$user'";
