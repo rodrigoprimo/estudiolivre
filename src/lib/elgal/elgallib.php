@@ -161,12 +161,13 @@ class ELGalLib extends TikiLib {
   function validate_filetype($tipo, $filename) {
   	
   	$mimeType = mime_content_type($filename);
-  	preg_match("/(.+)\/.+/", $mimeType, $arqTipo);
   	
   	if ($mimeType == 'application/ogg' && preg_match("/^Audio|Video$/",$tipo)) {
 		$mimeType = strtolower($tipo)."/ogg";		 
     } 
   	
+  	preg_match("/(.+)\/.+/", $mimeType, $arqTipo);
+  	  	
   	if ($arqTipo[1] == "image") {
 		$arqTipo[1] = "imagem";
     } elseif ($arqTipo[1] == "text") {
