@@ -1,0 +1,11 @@
+--- setup_smarty.php	2006-05-29 18:10:52.000000000 -0300
++++ setup_smarty.php	2006-05-29 18:12:00.000000000 -0300
+@@ -154,7 +154,7 @@
+ 		return $this->template_dir.$file.$template;
+ 	}
+ 	function display($resource_name, $cache_id=null, $compile_id = null) {
+-	        global $feature_ajax;
++	        global $feature_ajax, $ajaxlib;
+ 		if ($feature_ajax == 'y') {
+ 		    $ajaxlib->processRequests();
+ 		}
