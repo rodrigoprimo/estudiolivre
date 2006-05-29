@@ -31,17 +31,24 @@ function limpaCampo(field) {
 
 function exibeCampo(field, value) {
     if (value.length > 0) {
-	var showElement = document.getElementById("show-" + field);
-	showElement.style.display = display[field];
-	showElement.innerHTML = value.replace(new RegExp(/\n/g), '<br/>');
-	document.getElementById("input-" + field).style.display = "none";
+		var showElement = document.getElementById("show-" + field);
+		showElement.style.display = display[field];
+		showElement.innerHTML = value.replace(new RegExp(/\n/g), '<br/>');
+		document.getElementById("input-" + field).style.display = "none";
     }
+	hide('error-' + field);
+	eval('errorMsg_' + field + ' = "";');
 }
 
 function editaCampo(field) {
     document.getElementById("show-"  + field).style.display = "none";
     document.getElementById("input-" + field).style.display = display[field];
     document.getElementById("input-" + field).focus();
+}
+
+function exibeErro(campo, msg) {
+	eval('errorMsg_' + campo + ' = msg;');
+	document.getElementById('error-' + campo).style.display = 'inline';
 }
 
 

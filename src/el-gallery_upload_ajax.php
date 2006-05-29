@@ -88,10 +88,10 @@ function save_field($arquivoId, $name, $value) {
 	    if (!$user || $user != $arquivo['user'] || $el_p_admin_acervo != 'y') {
 			return false;
 	    }
-	    $result = $elgallib->edit_field($arquivoId, $name, $value);
+	    $error = $elgallib->edit_field($arquivoId, $name, $value);
 	    
-	    if(!$result) {
-			$objResponse->addAlert("nao foi possivel editar o campo $name");
+	    if($error) {
+			$objResponse->addScriptCall('exibeErro', $name, $error);
 	    } else {
 			$objResponse->addScriptCall('exibeCampo', $name, $value);
 	    }

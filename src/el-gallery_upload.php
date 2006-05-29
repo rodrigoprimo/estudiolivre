@@ -50,6 +50,8 @@ if ($licencaId = $tikilib->get_user_preference($user, 'licencaPadrao')) {
 	$smarty->assign('licenca', $licenca);
 }
 
+$smarty->assign('realName',$tikilib->get_user_preference($user, 'realName'));
+
 $tipos = $elgallib->get_tipos();
 $smarty->assign('tipos',$tipos);
 

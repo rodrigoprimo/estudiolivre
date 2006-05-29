@@ -257,7 +257,14 @@ class ELGalLib extends TikiLib {
 	    $arquivo = $this->get_arquivo($arquivoId);
 	    $table = "el_arquivo_" . strtolower($arquivo['tipo']); 
   	} else {
-	    return false;
+	    return "campo inexistente";
+  	}
+  	
+  	// verifica dados
+  	$methodName = "check_field_" . $name;
+  	if (method_exists($this, $methodName)) {
+  		$error = $this->$methodName($value);
+  		if ($error) return $error;
   	}
 
 	if ($name == 'titulo') {
@@ -269,9 +276,40 @@ class ELGalLib extends TikiLib {
 	}
   	
   	$query = "update `$table` set `$name`=? where `arquivoId`=?";
-  	return $this->query($query, array($value,$arquivoId));
+  	return $this->query($query, array($value,$arquivoId)) ? false : "bug! erro na query: $query";
   }
   
+  function check_required_field($value) {
+  	if (preg_match('/^\s*$/',$value)) {
+  		return "Campo obrigatório!";
+  	}
+  }
+  
+  function check_field_titulo($name) { return $this->check_required_field($name);  }
+  function check_field_autor($value) { return $this->check_required_field($value);  }
+  function check_field_descricao($value) { return $this->check_required_field($value);  }
+  /*
+   * 
+  function check_field_($value) { return $this->check_required_field($value);  }
+  function check_field_($value) { return $this->check_required_field($value);  }
+  function check_field_($value) { return $this->check_required_field($value);  }
+  function check_field_($value) { return $this->check_required_field($value);  }
+  */
+  
+  function check_numeric_field($value) {
+  	if (!preg_match('/^\d*$/', $value)) {
+  		return "Campo numérico!";
+  	}
+  }
+  
+  function check_field_tamanhoImagemX($value) { return $this->check_numeric_field($value); } 
+  function check_field_tamanhoImagemY($value) { return $this->check_numeric_field($value); } 
+  function check_field_dpi($value) { return $this->check_numeric_field($value); } 
+  function check_field_duracao($value) { return $this->check_numeric_field($value); } 
+  function check_field_bpm($value) { return $this->check_numeric_field($value); } 
+  function check_field_sampleRate($value) { return $this->check_numeric_field($value); } 
+  function check_field_bitRate($value) { return $this->check_numeric_field($value); } 
+   
   
   function get_arquivo($arquivoId) {
     $query = "select * from `el_arquivo` where `arquivoId`=?";

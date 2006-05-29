@@ -82,7 +82,7 @@
     <div id="gUpTitleAuthor">
         {ajax_input permission=$permission class="gUpTitle gUpEdit" id="titulo" value=$arquivo.titulo default="Titulo" display="inline"}
 		<div id="gUpAuthor">
-		  	Por {ajax_input permission=$permission class="gUpAuthor gUpEdit" id="autor" value=$online_user.realName default="Autor da obra" display="inline" mode="edit"}
+		  	Por {ajax_input permission=$permission class="gUpAuthor gUpEdit" id="autor" value=$realName default="Autor da obra" display="inline" mode="edit"}
 		</div>
     </div>
       

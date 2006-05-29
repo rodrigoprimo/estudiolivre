@@ -56,9 +56,10 @@ function smarty_function_ajax_input($params, &$smarty) {
 	    $output .= " onFocus=\"limpaCampo('$id');\" onChange=\"mudado['$id']=1;\"";
 	}
 	$output .= " onBlur=\"saveField(this)\" style=\"display:" . ($edit ? $display : 'none') . "\">";
-
-	$output .= '<script language="JavaScript">display["'.$id.'"] = "'.$display.'";</script>';
 	
+	$output .= "<img id=\"error-$id\" class=\"gUpErrorImg\" style=\"display: none\" src=\"styles/estudiolivre/errorImg.png\" onMouseover=\"overlib(errorMsg_$id);\" onMouseout=\"nd();\"> ";
+	
+	$output .= '<script language="JavaScript">display["'.$id.'"] = "'.$display.'";errorMsg_'.$id.' = "";</script>';
 		
 	return $output;	 	
 }
