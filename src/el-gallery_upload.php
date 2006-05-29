@@ -1,7 +1,12 @@
 <?php
 
-require_once("tiki-setup.php");
-require_once("lib/elgal/elgallib.php");
+if (!isset($_POST['xajax']) || $_POST['xajax'] != 'upload_info') {
+	require_once("tiki-setup.php");
+	require_once("lib/elgal/elgallib.php");
+} else {
+	$feature_ajax = 'y';
+}
+
 require_once("lib/ajax/ajaxlib.php");
 
 require_once("el-gallery_upload_ajax.php");

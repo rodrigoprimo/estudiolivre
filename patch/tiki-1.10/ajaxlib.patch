@@ -1,6 +1,6 @@
 diff -Naur lib/ajax/LICENSE.txt lib/ajax/LICENSE.txt
 --- lib/ajax/LICENSE.txt	1969-12-31 21:00:00.000000000 -0300
-+++ lib/ajax/LICENSE.txt	2006-03-20 01:45:53.000000000 -0300
++++ lib/ajax/LICENSE.txt	2006-05-29 18:47:50.000000000 -0300
 @@ -0,0 +1,504 @@
 +		  GNU LESSER GENERAL PUBLIC LICENSE
 +		       Version 2.1, February 1999
@@ -508,7 +508,7 @@ diff -Naur lib/ajax/LICENSE.txt lib/ajax/LICENSE.txt
 +
 diff -Naur lib/ajax/README.txt lib/ajax/README.txt
 --- lib/ajax/README.txt	1969-12-31 21:00:00.000000000 -0300
-+++ lib/ajax/README.txt	2006-03-20 01:45:53.000000000 -0300
++++ lib/ajax/README.txt	2006-05-29 18:47:50.000000000 -0300
 @@ -0,0 +1,104 @@
 +====================================================================
 + xajax PHP Class Library
@@ -616,8 +616,8 @@ diff -Naur lib/ajax/README.txt lib/ajax/README.txt
 +====================================================================
 diff -Naur lib/ajax/ajaxlib.php lib/ajax/ajaxlib.php
 --- lib/ajax/ajaxlib.php	1969-12-31 21:00:00.000000000 -0300
-+++ lib/ajax/ajaxlib.php	2006-05-29 18:11:26.000000000 -0300
-@@ -0,0 +1,117 @@
++++ lib/ajax/ajaxlib.php	2006-05-29 18:49:49.000000000 -0300
+@@ -0,0 +1,119 @@
 +<?php
 +// CVS: $Id$
 +//this script may only be included - so its better to die if called directly.
@@ -698,7 +698,9 @@ diff -Naur lib/ajax/ajaxlib.php lib/ajax/ajaxlib.php
 +	 */
 +	function processRequests() {
 +	    global $smarty;
-+	    $smarty->assign("xajax_js",$this->getJavascript('','lib/ajax/xajax_js/xajax.js'));
++	    if (isset($smarty)) {
++		$smarty->assign("xajax_js",$this->getJavascript('','lib/ajax/xajax_js/xajax.js'));
++	    }
 +
 +	    xajax::processRequests();
 +	}
@@ -737,7 +739,7 @@ diff -Naur lib/ajax/ajaxlib.php lib/ajax/ajaxlib.php
 +?>
 diff -Naur lib/ajax/tiki-ajax.js lib/ajax/tiki-ajax.js
 --- lib/ajax/tiki-ajax.js	1969-12-31 21:00:00.000000000 -0300
-+++ lib/ajax/tiki-ajax.js	2006-03-20 03:20:58.000000000 -0300
++++ lib/ajax/tiki-ajax.js	2006-05-29 18:47:50.000000000 -0300
 @@ -0,0 +1,15 @@
 +function loadComponent(url, template, htmlelement) {
 +    xajaxRequestUri = url;
@@ -756,7 +758,7 @@ diff -Naur lib/ajax/tiki-ajax.js lib/ajax/tiki-ajax.js
 +
 diff -Naur lib/ajax/xajax.inc.php lib/ajax/xajax.inc.php
 --- lib/ajax/xajax.inc.php	1969-12-31 21:00:00.000000000 -0300
-+++ lib/ajax/xajax.inc.php	2006-03-20 01:45:53.000000000 -0300
++++ lib/ajax/xajax.inc.php	2006-05-29 18:47:50.000000000 -0300
 @@ -0,0 +1,942 @@
 +<?php
 +///////////////////////////////////////////////////////////////////////////////
@@ -1702,7 +1704,7 @@ diff -Naur lib/ajax/xajax.inc.php lib/ajax/xajax.inc.php
 +?>
 diff -Naur lib/ajax/xajaxCompress.php lib/ajax/xajaxCompress.php
 --- lib/ajax/xajaxCompress.php	1969-12-31 21:00:00.000000000 -0300
-+++ lib/ajax/xajaxCompress.php	2006-03-20 01:45:53.000000000 -0300
++++ lib/ajax/xajaxCompress.php	2006-05-29 18:47:50.000000000 -0300
 @@ -0,0 +1,144 @@
 +<?php
 +// xajaxCompressJavascript() compresses the javascript code for more efficient delivery
@@ -1851,7 +1853,7 @@ diff -Naur lib/ajax/xajaxCompress.php lib/ajax/xajaxCompress.php
 \ No newline at end of file
 diff -Naur lib/ajax/xajaxResponse.inc.php lib/ajax/xajaxResponse.inc.php
 --- lib/ajax/xajaxResponse.inc.php	1969-12-31 21:00:00.000000000 -0300
-+++ lib/ajax/xajaxResponse.inc.php	2006-03-20 01:45:53.000000000 -0300
++++ lib/ajax/xajaxResponse.inc.php	2006-05-29 18:47:50.000000000 -0300
 @@ -0,0 +1,391 @@
 +<?php
 +///////////////////////////////////////////////////////////////////////////////
@@ -2246,7 +2248,7 @@ diff -Naur lib/ajax/xajaxResponse.inc.php lib/ajax/xajaxResponse.inc.php
 +?>
 diff -Naur lib/ajax/xajax_js/xajax.js lib/ajax/xajax_js/xajax.js
 --- lib/ajax/xajax_js/xajax.js	1969-12-31 21:00:00.000000000 -0300
-+++ lib/ajax/xajax_js/xajax.js	2006-05-29 18:20:59.000000000 -0300
++++ lib/ajax/xajax_js/xajax.js	2006-05-29 18:47:50.000000000 -0300
 @@ -0,0 +1,172 @@
 +/* xajax Javascript library :: version 0.2.4 */
 +Array.prototype.containsValue=function(valueToCheck){for(var i=0;i<this.length;i++){if(this[i]==valueToCheck)return true;}
@@ -2423,7 +2425,7 @@ diff -Naur lib/ajax/xajax_js/xajax.js lib/ajax/xajax_js/xajax.js
 \ No newline at end of file
 diff -Naur lib/ajax/xajax_js/xajax_uncompressed.js lib/ajax/xajax_js/xajax_uncompressed.js
 --- lib/ajax/xajax_js/xajax_uncompressed.js	1969-12-31 21:00:00.000000000 -0300
-+++ lib/ajax/xajax_js/xajax_uncompressed.js	2006-05-29 18:20:59.000000000 -0300
++++ lib/ajax/xajax_js/xajax_uncompressed.js	2006-05-29 18:47:50.000000000 -0300
 @@ -0,0 +1,795 @@
 +/* xajax Javascript library :: version 0.2.4 */
 +
