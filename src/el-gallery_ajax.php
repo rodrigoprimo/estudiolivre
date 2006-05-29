@@ -29,7 +29,7 @@ function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $fi
     global $elgallib, $smarty;
 
     $objResponse = new xajaxResponse();
-	$total = $elgallib->count_all_uploads($tipos, $userName);
+	$total = $elgallib->count_all_uploads($tipos, $userName, $find);
 
     $files = $elgallib->list_all_uploads($tipos, $offset, $maxRecords, $sort_mode, $userName, $find, $filters);
     $smarty->assign_by_ref('arquivos',$files);
@@ -43,6 +43,10 @@ function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $fi
 	$smarty->assign('page', ($offset/$maxRecords)+1);
 	$smarty->assign('lastPage', ceil($total/$maxRecords));
 
+	if ($find) {
+		$smarty->load_filter('output','highlight');
+		$_REQUEST['highlight'] = $find;
+	}
     $objResponse->addAssign("gListCont", "innerHTML", $smarty->fetch("el-gallery_section.tpl"));
     $objResponse->addAssign("listNav", "innerHTML", $smarty->fetch("el-gallery_pagination.tpl"));
     $objResponse->addScript("nd()");

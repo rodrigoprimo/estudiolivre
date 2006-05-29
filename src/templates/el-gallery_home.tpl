@@ -61,16 +61,15 @@
       </select>{/tooltip}
     </div>
     <div  id="listNav">
+    	{include file="el-gallery_pagination.tpl"}
     </div>
   </div>
 </div>
 <!-- List Options End -->
 <div id="gListCont">
+	{include file="el-gallery_section.tpl"}
 </div>
 
-<script language="JavaScript">initButtons()</script>
-
+<script language="JavaScript">init('{$find}')</script>
 
 <!-- el-gallery_home.tpl end -->
-
-{$search_url}

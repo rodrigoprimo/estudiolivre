@@ -13,6 +13,6 @@ function marcaBusca(name) {
 	if (selectedBusca == 'wiki' || selectedBusca == 'forum') {
 		document.getElementById('form-busca').action = 'tiki-searchresults.php';
 	} else {
-		document.getElementById('form-busca').action = 'el-gallery_search.php';
+		document.getElementById('form-busca').action = 'el-gallery_home.php';
 	}
 }

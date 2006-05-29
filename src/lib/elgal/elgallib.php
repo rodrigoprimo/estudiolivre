@@ -134,9 +134,15 @@ class ELGalLib extends TikiLib {
       }
   }
 
-  function count_all_uploads($tipos = array(), $user = false) {
+  function count_all_uploads($tipos = array(), $user = false, $find = '') {
       $query = "select count(*) from `el_arquivo` where publicado=1";
       $bindvals = array();
+
+	  if ($find) {
+		  $query .= " and (`titulo` like ? or `descricao` like ?) ";
+		  $bindvals[] = '%'.$find.'%';
+		  $bindvals[] = '%'.$find.'%';
+      }
 
 	  if ($tipos) {
 	    $query .= ' and `tipo` in (';
