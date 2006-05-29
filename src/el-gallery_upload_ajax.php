@@ -163,6 +163,20 @@ function publish_arquivo($arquivoId) {
     return $objResponse;
 }
 
+$xajax->registerFunction('check_publish');
+function check_publish($arquivoId) {
+	global $elgallib;
+	$objResponse = new xajaxResponse();
+    
+    if ($error = $elgallib->check_publish($arquivoId)) {
+    	$objResponse->addAssign("gUpErrorList", "innerHTML", nl2br($error));
+    	$objResponse->addScript("showLightbox('gUpError')");
+    } else {
+    	$objResponse->addScript("showLightbox('el-publish')");
+    }
+    return $objResponse;    
+}
+
 $xajax->processRequests();
 
 ?>

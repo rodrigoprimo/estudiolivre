@@ -10,6 +10,7 @@ var originalWidth;
 var tipoSelecionado = false;
 var tipos = new Array('Audio','Video','Imagem','Texto');
 var arquivoId = false;
+var uploadFinished = false;
 
 function upload() {
 	uploadId = document.uploadForm.UPLOAD_IDENTIFIER.value;
@@ -41,6 +42,7 @@ function updateUploadInfo() {
 
 function finishUpload() {
 	if (timerId) {
+		uploadFinished = true;
 		clearTimeout(timerId);
 		document.getElementById('gUpButton').innerHTML = '<span onClick="removeUpload();">remover</span>';
 		document.getElementById('gUpStatusBar').className = "gUpStatus gUpEditing";
@@ -72,6 +74,7 @@ function changeStatus(value) {
 
 function removeUpload() {
     uploadStarted = false;
+    uploadFinished = false;
     document.uploadForm.style.display = 'block';
     document.getElementById('gUpButton').innerHTML = 'procurar';
     document.getElementById('gUpPercent').innerHTML = '';

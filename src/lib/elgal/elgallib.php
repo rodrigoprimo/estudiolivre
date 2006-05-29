@@ -260,12 +260,8 @@ class ELGalLib extends TikiLib {
 	    return "campo inexistente";
   	}
   	
-  	// verifica dados
-  	$methodName = "check_field_" . $name;
-  	if (method_exists($this, $methodName)) {
-  		$error = $this->$methodName($value);
-  		if ($error) return $error;
-  	}
+  	$error = $this->check_field($name, $value);
+	if ($error) return $error;
 
 	if ($name == 'titulo') {
 	    $this->query("update `tiki_objects` set `name`=? where `itemId`=? and `type`=?",
@@ -277,6 +273,15 @@ class ELGalLib extends TikiLib {
   	
   	$query = "update `$table` set `$name`=? where `arquivoId`=?";
   	return $this->query($query, array($value,$arquivoId)) ? false : "bug! erro na query: $query";
+  }
+  
+  function check_field($name, $value) {
+  	// verifica dados
+  	$methodName = "check_field_" . $name;
+  	if (method_exists($this, $methodName)) {
+  		$error = $this->$methodName($value);
+  		if ($error) return $error;
+  	}
   }
   
   function check_required_field($value) {
@@ -471,6 +476,24 @@ class ELGalLib extends TikiLib {
   	$query = "update `el_arquivo` set `publicado`=1 where `arquivoId`=? and `user`=?";
   	$result = $this->query($query, array($arquivoId, $user));
   	return $result;
+  }
+
+  function check_publish($arquivoId) {
+  	$arquivo = $this->get_arquivo($arquivoId);
+  	
+  	$errorList = '';
+  	
+  	
+  	foreach ($arquivo as $key => $value) {
+  		if (!is_array($value)) {
+	  		if ($error = $this->check_field($key, $value)) {
+  				$errorList .= $error . "\n";
+  			}
+  		}
+  	}
+  	
+  	return $errorList;
+  	
   }
 
   function convert_error_to_string($error) {

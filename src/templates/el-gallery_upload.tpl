@@ -135,8 +135,7 @@
      <br style="clear:both; line-height:20px;">
     
     <div id="gUpSave">
-       <input type="image" name="publicar" src="styles/estudiolivre/bSave.png" onClick="showLightbox('el-publish')"/>
-       {include file="el-gallery_publish.tpl"}
+       <img src="styles/estudiolivre/bSave.png" onClick="xajax_check_publish(arquivoId)"/>
     </div>
 
     </form>
@@ -144,6 +143,9 @@
   </div>
   
 </div>
+
+{include file="el-gallery_publish.tpl"}
+{include file="el-gallery_error.tpl"}
 
 <!-- el-gallery_upload_general.tpl end -->
 
