@@ -1,17 +1,15 @@
 <?php
 
-require_once("lib/xajax/xajax.inc.php");
 require_once("dumb_progress_meter.php");
 
-$xajax = new xajax();
 
-$xajax->statusMessagesOff();
-$xajax->waitCursorOff();
-$xajax->debugOff();
-$xajax->setLogFile("/tmp/xajax.log");
+$ajaxlib->statusMessagesOff();
+$ajaxlib->waitCursorOff();
+$ajaxlib->debugOff();
+$ajaxlib->setLogFile("/tmp/xajax.log");
 
 
-$xajax->registerFunction('upload_info');
+$ajaxlib->registerFunction('upload_info');
 function upload_info($uploadId, $callback = 'updateProgressMeter') {
 	$objResponse = new xajaxResponse();
 	$uploadInfo = upload_progress_meter_get_info($uploadId);
@@ -19,7 +17,7 @@ function upload_info($uploadId, $callback = 'updateProgressMeter') {
 	return $objResponse;
 }
 
-$xajax->registerFunction('create_file');
+$ajaxlib->registerFunction('create_file');
 function create_file($tipo, $fileName, $uploadId) {
 	$objResponse = new xajaxResponse();
 	global $elgallib, $user, $smarty, $tikilib;
@@ -63,7 +61,7 @@ function _extractScripts($content) {
 	return $script;
 }
 
-$xajax->registerFunction('generate_thumb');
+$ajaxlib->registerFunction('generate_thumb');
 function generate_thumb($arquivoId) {
 
 	//TODO permissao
@@ -75,7 +73,7 @@ function generate_thumb($arquivoId) {
 	return $objResponse;
 }
 
-$xajax->registerFunction('save_field');
+$ajaxlib->registerFunction('save_field');
 function save_field($arquivoId, $name, $value) {
 	$objResponse = new xajaxResponse();
 
@@ -118,7 +116,7 @@ function _tag_arquivo($arquivoId, $tag_string) {
 	
 
 }
-$xajax->registerFunction('set_arquivo_licenca');
+$ajaxlib->registerFunction('set_arquivo_licenca');
 function set_arquivo_licenca ($arquivoId, $resposta1, $resposta2, $padrao = false) {
 
     global $user, $userlib, $elgallib;
@@ -150,7 +148,7 @@ function set_arquivo_licenca ($arquivoId, $resposta1, $resposta2, $padrao = fals
 	
 }
 
-$xajax->registerFunction('publish_arquivo');
+$ajaxlib->registerFunction('publish_arquivo');
 function publish_arquivo($arquivoId) {
 	global $user, $elgallib;
 	$objResponse = new xajaxResponse();
@@ -163,7 +161,7 @@ function publish_arquivo($arquivoId) {
     return $objResponse;
 }
 
-$xajax->registerFunction('check_publish');
+$ajaxlib->registerFunction('check_publish');
 function check_publish($arquivoId) {
 	global $elgallib;
 	$objResponse = new xajaxResponse();
@@ -177,6 +175,5 @@ function check_publish($arquivoId) {
     return $objResponse;    
 }
 
-$xajax->processRequests();
 
 ?>

@@ -1,0 +1,16 @@
+--- setup_smarty.php	2006-01-21 10:50:17.000000000 -0200
++++ setup_smarty.php	2006-05-29 17:53:52.000000000 -0300
+@@ -153,6 +153,13 @@
+   		}
+ 		return $this->template_dir.$file.$template;
+ 	}
++	function display($resource_name, $cache_id=null, $compile_id = null) {
++	        global $feature_ajax;
++		if ($feature_ajax == 'y') {
++		    $ajaxlib->processRequests();
++		}
++		return parent::display($resource_name, $cache_id, $compile_id);
++	}
+ }
+ 
+ $smarty = new Smarty_TikiWiki($tikidomain);

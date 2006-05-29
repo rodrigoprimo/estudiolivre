@@ -1,27 +1,19 @@
 <?php
 
-require_once("lib/xajax/xajax.inc.php");
-
-$xajax = new xajax();
-
-$xajax->statusMessagesOff();
-$xajax->waitCursorOn();
-$xajax->debugOff();
-$xajax->setLogFile("/tmp/xajax.log");
+$ajaxlib->statusMessagesOff();
+$ajaxlib->waitCursorOn();
+$ajaxlib->debugOff();
+$ajaxlib->setLogFile("/tmp/xajax.log");
 /*
-$xajax->registerPreFunction('xajax_pre_loading');
+$ajaxlib->registerPreFunction('xajax_pre_loading');
 function xajax_pre_loading() {
     $objResponse = new xajaxResponse();
     $objResponse->addAssign('elLoading','style.display','none');
     return $objResponse;
 }
 */
-$xajax->registerFunction("get_files");
-$xajax->registerFunction("vota");
 
-$smarty->assign("xajax_js",$xajax->getJavascript());
-$xajax->processRequests();
-
+$ajaxlib->registerFunction("vota");
 function vota($arquivoId, $nota) {
     global $user, $elgallib;
     $rating = round($elgallib->vote_arquivo($arquivoId, $user, $nota));
@@ -32,6 +24,7 @@ function vota($arquivoId, $nota) {
     return $objResponse;
 } 
 
+$ajaxlib->registerFunction("get_files");
 function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $find = '', $filters = array()) {
     global $elgallib, $smarty;
 

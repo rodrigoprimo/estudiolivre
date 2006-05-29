@@ -1,15 +1,13 @@
 <?php
 
-require_once("lib/xajax/xajax.inc.php");
+require_once("lib/ajax/ajaxlib.php");
 
-$xajax = new xajax();
+$ajaxlib->statusMessagesOff();
+$ajaxlib->waitCursorOff();
+$ajaxlib->debugOff();
+$ajaxlib->setLogFile("/tmp/xajax.log");
 
-$xajax->statusMessagesOff();
-$xajax->waitCursorOff();
-$xajax->debugOff();
-$xajax->setLogFile("/tmp/xajax.log");
-
-$xajax->registerFunction('register_tooltip_click');
+$ajaxlib->registerFunction('register_tooltip_click');
 
 function register_tooltip_click($tipName) {
 	global $tooltiplib;
@@ -19,9 +17,6 @@ function register_tooltip_click($tipName) {
 	return new xajaxResponse();
 }
 
-global $smarty;
-$smarty->assign('xajax_js',$xajax->getJavascript());
 
-$xajax->processRequests();
 
 ?>

@@ -3,9 +3,11 @@
 // Initialization
 require_once('tiki-setup.php');
 require_once('lib/elgal/elgallib.php');
+require_once('lib/ajax/ajaxlib.php');
 
 require_once("el-user_ajax.php");
-$smarty->assign("xajax_js",$xajax->getJavascript());
+
+$ajaxlib->processRequests();
 
 require_once('lib/blogs/bloglib.php');
 require_once('lib/messu/messulib.php');

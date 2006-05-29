@@ -1,18 +1,15 @@
 <?php
 
-require_once("lib/xajax/xajax.inc.php");
 require_once("dumb_progress_meter.php");
 
-$xajax = new xajax();
+$ajaxlib->statusMessagesOff();
+$ajaxlib->waitCursorOff();
+$ajaxlib->debugOff();
+$ajaxlib->setLogFile("/tmp/xajax.log");
 
-$xajax->statusMessagesOff();
-$xajax->waitCursorOff();
-$xajax->debugOff();
-$xajax->setLogFile("/tmp/xajax.log");
-
-$xajax->registerFunction('save_field');
-$xajax->registerFunction('upload_info');
-$xajax->registerFunction('get_files');
+$ajaxlib->registerFunction('save_field');
+$ajaxlib->registerFunction('upload_info');
+$ajaxlib->registerFunction('get_files');
 
 function upload_info($uploadId, $callback = 'updateProgressMeter') {
 	$objResponse = new xajaxResponse();
@@ -69,6 +66,5 @@ function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $fi
     return $objResponse;
 }
 
-$xajax->processRequests();
 
 ?>

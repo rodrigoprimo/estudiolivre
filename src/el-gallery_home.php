@@ -2,8 +2,10 @@
 
 require_once("tiki-setup.php");
 require_once("lib/elgal/elgallib.php");
-
+require_once("lib/ajax/ajaxlib.php");
 require_once("el-gallery_ajax.php");
+
+$ajaxlib->processRequests();
 
 //TODO mudar isso pra categories pra solucionar o problema das cores
 $smarty->assign('style', 'estudiolivre_biblio.css');
