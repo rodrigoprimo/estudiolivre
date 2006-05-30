@@ -2,7 +2,7 @@
 
   <div id="gLicenseThumbContainer">
     <div id="gLicense">
-     {tooltip text=$arquivo.descricaoLicenca}<a href="{$arquivo.linkHumanReadable}"><img src="styles/estudiolivre/{$arquivo.linkImagem}"></a>{/tooltip}
+     {tooltip name="list-descricao-licenca" text=$arquivo.descricaoLicenca}<a href="{$arquivo.linkHumanReadable}"><img src="styles/estudiolivre/{$arquivo.linkImagem}"></a>{/tooltip}
     </div>
     <div id="gThumb">
 	  <a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view">
@@ -20,7 +20,7 @@
       <div id="gNameAuthor">
         <div id="gName">
 	 	
-	  {tooltip text="Clique para ir para a página do arquivo"}<a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view">
+	  {tooltip name="list-clique-pag-arquivo" text="Clique para ir para a página do arquivo"}<a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view">
 	    {$arquivo.nomeArquivo}
 	  </a>{/tooltip}
 	 
@@ -38,7 +38,7 @@
         <div id="gDownloadPlay">
           <div id="gDownload">
 	  		<span class="gDownloadCount">{$arquivo.hits}</span>
-		    {tooltip text="Baixe esse arquivo"}<a href="#">
+		    {tooltip name="list-baixe-arquivo" text="Baixe esse arquivo"}<a href="#">
 		      <img alt="" src="styles/estudiolivre/iDownload.png">
 		    </a>{/tooltip}
 		  </div>
@@ -53,7 +53,7 @@
 		    	{/if}
 		    {/if}
 		    {if $tooltipText}
-		    	{tooltip text=$tooltipText}
+		    	{tooltip name="list-i-play" text=$tooltipText}
 				    <a href="#">
 				      <img alt="" src="styles/estudiolivre/iPlay.png">
 				    </a>
@@ -64,13 +64,13 @@
       
         <div id="gRatingComments">
           <div id="gRating">
-	    {tooltip text="Avaliação - entre na página do arquivo para votar"}<img alt="{$arquivo.rating} estrelas" src="styles/estudiolivre/star{math equation="round(x)" x=$arquivo.rating|default:"blk"}.png">{/tooltip}
+	    {tooltip name="list-avaliacao-votar" text="Avaliação - entre na página do arquivo para votar"}<img alt="{$arquivo.rating} estrelas" src="styles/estudiolivre/star{math equation="round(x)" x=$arquivo.rating|default:"blk"}.png">{/tooltip}
 	  </div>
 	  <div id="gComments">
 	    {if $arquivo.commentsCount == 0}
-	    	{tooltip text="Seja o primeiro a comentar sobre esse arquivo"}<a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view#comments">nenhum comentário</a>{/tooltip}
+	    	{tooltip name="list-primeiro-comentar" text="Seja o primeiro a comentar sobre esse arquivo"}<a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view#comments">nenhum comentário</a>{/tooltip}
 	    {else}
-	    	{tooltip text="Clique para ler os comentários"}<a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view#comments">{$arquivo.commentsCount} comentário{if $arquivo.commentsCount != 1}s{/if}</a>{/tooltip}
+	    	{tooltip name="list-ler-comentarios" text="Clique para ler os comentários"}<a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view#comments">{$arquivo.commentsCount} comentário{if $arquivo.commentsCount != 1}s{/if}</a>{/tooltip}
 	    {/if}
 	  </div>
         </div>
@@ -78,7 +78,7 @@
       
     </div>
     
-    {tooltip text="Tags desse arquivo"}<div id="gTags">
+    {tooltip name="list-tags-arquivo" text="Tags desse arquivo"}<div id="gTags">
     {foreach from=$arquivo.tags.data item=t}
       <a href="tiki-browse_freetags.php?tag={$t.tag}">{$t.tag}</a> 
     {foreachelse}
@@ -89,9 +89,9 @@
   
   <div id="gEditDelete">
     {if $arquivo.user eq $user}
-      {tooltip text="Editar informações do arquivo"}<a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=edit"><img alt="editar" src="styles/estudiolivre/iEdit.png"></a>{/tooltip}
+      {tooltip name="list-editar-informacoes-arquivo" text="Editar informações do arquivo"}<a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=edit"><img alt="editar" src="styles/estudiolivre/iEdit.png"></a>{/tooltip}
       <br>
-      {tooltip text="Apagar esse arquivo do acervo"}<a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=delete"><img alt="apagar" src="styles/estudiolivre/iDelete.png"></a>{/tooltip}
+      {tooltip name="list-apagar-arquivo-acervo" text="Apagar esse arquivo do acervo"}<a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=delete"><img alt="apagar" src="styles/estudiolivre/iDelete.png"></a>{/tooltip}
     {/if}
   </div>
   

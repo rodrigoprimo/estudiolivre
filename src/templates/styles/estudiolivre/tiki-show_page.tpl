@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.8 2006-05-25 18:05:49 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.9 2006-05-30 00:02:31 nano Exp $ *}
 <script language="JavaScript" src="lib/js/contextualMenu.js"></script>
 
 <!-- menu contextual -->
@@ -24,60 +24,60 @@
 	{if !$lock}
 		{if $tiki_p_edit eq 'y' or $page|lower eq 'sandbox'}
 			{if $beingEdited eq 'y'}
-				{tooltip text="<b>Editar</b> essa página"}<span class="tabbut"><a {*title="{$semUser}"*} class="highlight" href="tiki-editpage.php?page={$page|escape:"url"}" class="tablink"><img src="styles/estudiolivre/iWikiEdit.png"></a></span>{/tooltip}
+				{tooltip name="show-page-editar-pagina" text="<b>Editar</b> essa página"}<span class="tabbut"><a {*title="{$semUser}"*} class="highlight" href="tiki-editpage.php?page={$page|escape:"url"}" class="tablink"><img src="styles/estudiolivre/iWikiEdit.png"></a></span>{/tooltip}
 			{else}
-				{tooltip text="<b>Editar</b> essa página"}<span class="tabbut"><a href="tiki-editpage.php?page={$page|escape:"url"}" class="tablink"><img src="styles/estudiolivre/iWikiEdit.png"></a></span>{/tooltip}
+				{tooltip name="show-page-editar-pagina" text="<b>Editar</b> essa página"}<span class="tabbut"><a href="tiki-editpage.php?page={$page|escape:"url"}" class="tablink"><img src="styles/estudiolivre/iWikiEdit.png"></a></span>{/tooltip}
 			{/if}
 		{/if}
 	{/if}
 	
 	{if $wiki_feature_3d eq 'y'}
-		{tooltip text="Representação <b>tridimensional</b> do wiki"}<a {*title="{tr}3d browser{/tr}"*} href="javascript:wiki3d_open('{$page|escape}',{$wiki_3d_width}, {$wiki_3d_height})"><img src="styles/estudiolivre/iWiki3dWiki.png"></a>{/tooltip}
+		{tooltip name="show-page-representacao-3d" text="Representação <b>tridimensional</b> do wiki"}<a {*title="{tr}3d browser{/tr}"*} href="javascript:wiki3d_open('{$page|escape}',{$wiki_3d_width}, {$wiki_3d_height})"><img src="styles/estudiolivre/iWiki3dWiki.png"></a>{/tooltip}
 	{/if}
 	
-	{tooltip text="Abrir versão para <b>impressão</b>"}<a {*title="{tr}print{/tr}"*} href="tiki-print.php?page={$page|escape:"url"}"><img src="styles/estudiolivre/iWikiPrint.png" alt="{tr}print{/tr}" /></a>{/tooltip}
+	{tooltip name="show-page-abrir-impressao" text="Abrir versão para <b>impressão</b>"}<a {*title="{tr}print{/tr}"*} href="tiki-print.php?page={$page|escape:"url"}"><img src="styles/estudiolivre/iWikiPrint.png" alt="{tr}print{/tr}" /></a>{/tooltip}
 	
 	{if $feature_wiki_pdf eq 'y'}
-		{tooltip text="Criar um <b>PDF</b> dessa página"}<a {*title="{tr}create pdf{/tr}"*} href="tiki-config_pdf.php?{if $home_info && $home_info.page_ref_id}page_ref_id={$home_info.page_ref_id}{else}page={$page|escape:"url"}{/if}"><img src="styles/estudiolivre/iWikiExport.png" alt="{tr}pdf{/tr}"></a>{/tooltip}
+		{tooltip name="show-page-criar-pdf" text="Criar um <b>PDF</b> dessa página"}<a {*title="{tr}create pdf{/tr}"*} href="tiki-config_pdf.php?{if $home_info && $home_info.page_ref_id}page_ref_id={$home_info.page_ref_id}{else}page={$page|escape:"url"}{/if}"><img src="styles/estudiolivre/iWikiExport.png" alt="{tr}pdf{/tr}"></a>{/tooltip}
 	{/if}
 	
 	{if $page|lower ne 'sandbox'}
 		{if $tiki_p_remove eq 'y'}
-			{tooltip text="<b>Remover</b> essa página"}<span class="tabbut"><a href="tiki-removepage.php?page={$page|escape:"url"}&amp;version=last" class="tablink"><img src="styles/estudiolivre/iWikiRemove.png"></a></span>{/tooltip}
+			{tooltip name="show-page-remover-pagina" text="<b>Remover</b> essa página"}<span class="tabbut"><a href="tiki-removepage.php?page={$page|escape:"url"}&amp;version=last" class="tablink"><img src="styles/estudiolivre/iWikiRemove.png"></a></span>{/tooltip}
 		{/if}
 		{if $tiki_p_rename eq 'y'}
-			{tooltip text="<b>Renomear</b> página"}<span class="tabbut"><a href="tiki-rename_page.php?page={$page|escape:"url"}" class="tablink"><img src="styles/estudiolivre/iWikiRename.png"></a></span>{/tooltip}
+			{tooltip name="show-page-renomear-pagina" text="<b>Renomear</b> página"}<span class="tabbut"><a href="tiki-rename_page.php?page={$page|escape:"url"}" class="tablink"><img src="styles/estudiolivre/iWikiRename.png"></a></span>{/tooltip}
 		{/if}
 	{/if}
 	
 	{if $page|lower ne 'sandbox'}
 		{if $lock and ($tiki_p_admin_wiki eq 'y' or ($user and ($user eq $page_user or $user eq "admin") and ($tiki_p_lock eq 'y') and ($feature_wiki_usrlock eq 'y')))}
-			{tooltip text="<b>Destravar</b> a página"}<span class="tabbut"><a href="tiki-index.php?page={$page|escape:"url"}&amp;action=unlock" class="tablink"><img src="styles/estudiolivre/iWikiUnlock.png"></a></span>{/tooltip}
+			{tooltip name="show-page-observar-pagina" text="<b>Destravar</b> a página"}<span class="tabbut"><a href="tiki-index.php?page={$page|escape:"url"}&amp;action=unlock" class="tablink"><img src="styles/estudiolivre/iWikiUnlock.png"></a></span>{/tooltip}
 		{/if}
 		{if !$lock and ($tiki_p_admin_wiki eq 'y' or (($tiki_p_lock eq 'y') and ($feature_wiki_usrlock eq 'y')))}
-			{tooltip text="<b>Travar</b> essa página"}<span class="tabbut"><a href="tiki-index.php?page={$page|escape:"url"}&amp;action=lock" class="tablink"><img src="styles/estudiolivre/iWikiLock.png"></a></span>{/tooltip}
+			{tooltip name="show-page-travar-pagina" text="<b>Travar</b> essa página"}<span class="tabbut"><a href="tiki-index.php?page={$page|escape:"url"}&amp;action=lock" class="tablink"><img src="styles/estudiolivre/iWikiLock.png"></a></span>{/tooltip}
 		{/if}
 		{if $tiki_p_admin_wiki eq 'y'}
-			{tooltip text="Modificar <b>permissões</b>"}<span class="tabbut"><a href="tiki-pagepermissions.php?page={$page|escape:"url"}" class="tablink"><img src="styles/estudiolivre/iWikiPermissions.png"></a></span>{/tooltip}
+			{tooltip name="show-page-modificar-permissoes" text="Modificar <b>permissões</b>"}<span class="tabbut"><a href="tiki-pagepermissions.php?page={$page|escape:"url"}" class="tablink"><img src="styles/estudiolivre/iWikiPermissions.png"></a></span>{/tooltip}
 		{/if}
 	{/if}
 	
 	{if $page|lower ne 'sandbox'}
 		{if $feature_history eq 'y' and $tiki_p_wiki_view_history eq 'y'}
-			{tooltip text="<b>Histórico</b> de edições da página"}<span class="tabbut"><a href="tiki-pagehistory.php?page={$page|escape:"url"}" class="tablink"><img src="styles/estudiolivre/iWikiHistory.png"></a></span>{/tooltip}
+			{tooltip name="show-page-historico-edicoes" text="<b>Histórico</b> de edições da página"}<span class="tabbut"><a href="tiki-pagehistory.php?page={$page|escape:"url"}" class="tablink"><img src="styles/estudiolivre/iWikiHistory.png"></a></span>{/tooltip}
 		{/if}
 	{/if}
 	
 	{if $feature_likePages eq 'y'}
-		{tooltip text="Buscar páginas <b>similares</b>"}<span class="tabbut"><a href="tiki-likepages.php?page={$page|escape:"url"}" class="tablink"><img src="styles/estudiolivre/iWikiSimilar.png"></a></span>{/tooltip}
+		{tooltip name="show-page-buscar-similares" text="Buscar páginas <b>similares</b>"}<span class="tabbut"><a href="tiki-likepages.php?page={$page|escape:"url"}" class="tablink"><img src="styles/estudiolivre/iWikiSimilar.png"></a></span>{/tooltip}
 	{/if}
 	
 	{if $feature_multilingual eq 'y' and $tiki_p_edit eq 'y' and !$lock}
-	     {tooltip text="<b>Traduzir</b> página"}<span class="tabbut"><a href="tiki-edit_translation.php?page={$page|escape:'url'}" class="tablink"><img src="styles/estudiolivre/iWikiTranslate.png"></a></span>{/tooltip}
+	     {tooltip name="show-page-traduzir-pagina" text="<b>Traduzir</b> página"}<span class="tabbut"><a href="tiki-edit_translation.php?page={$page|escape:'url'}" class="tablink"><img src="styles/estudiolivre/iWikiTranslate.png"></a></span>{/tooltip}
 	{/if}
 	
 	{if $feature_backlinks eq 'y' and $backlinks}
-		{tooltip text="Ver as páginas que referenciam esta página. Ou seja, que possuem links que trazem cá"}<img src="styles/estudiolivre/iWikiRef.png" onclick="document.getElementById('backlinksId').style.display='inline'" style="cursor:pointer">{/tooltip}
+		{tooltip name="show-page-ver-referencias" text="Ver as páginas que referenciam esta página. Ou seja, que possuem links que trazem cá"}<img src="styles/estudiolivre/iWikiRef.png" onclick="document.getElementById('backlinksId').style.display='inline'" style="cursor:pointer">{/tooltip}
 		<form action="tiki-index.php" method="get" style="display:none" id="backlinksId">
 		<select name="page" onchange="page.form.submit()">
 		<option>{tr}páginas que citam esta:{/tr}</option>

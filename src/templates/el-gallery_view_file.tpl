@@ -2,7 +2,7 @@
 	<div id="aTopCont">
 		<div id="aThumbRatingLic">		
 			<div id="aRating">
-				{tooltip text="Avaliação"}
+				{tooltip name="view-avaliacao" text="Avaliação"}
 					<img alt="{$arquivo.rating} estrelas" src="styles/estudiolivre/star{math equation="round(x)" x=$arquivo.rating|default:"blk"}.png">
 				{/tooltip}
 			</div>
@@ -25,7 +25,7 @@
 						<span class="gDownloadCount">
 							{$arquivo.hits}
 						</span>
-						{tooltip text="Baixe esse arquivo"}
+						{tooltip name="view-baixe-arquivo" text="Baixe esse arquivo"}
 							<a href="#">
 								<img alt="" src="styles/estudiolivre/iDownload.png">
 							</a>
@@ -43,7 +43,7 @@
 							{/if}
 						{/if}
 						{if $tooltipText}
-							{tooltip text=$tooltipText}
+							{tooltip name="view-iplay-" text=$tooltipText}
 								<a href="#">
 									<img alt="" src="styles/estudiolivre/iPlay.png">
 								</a>

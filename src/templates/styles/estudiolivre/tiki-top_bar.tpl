@@ -5,7 +5,7 @@
 <div id="topContainer">
   <div id="logo">
     <a href="/">
-      {tooltip text="Navegue para a home do EstúdioLivre"}<img src="styles/estudiolivre/logoTop.png">{/tooltip}
+      {tooltip name="navegue-home" text="Navegue para a home do EstúdioLivre"}<img src="styles/estudiolivre/logoTop.png">{/tooltip}
     </a>
   </div>
   
@@ -15,9 +15,9 @@
     <form id='form-busca' class="searchForm" method="get" action="tiki-searchresults.php" {if $category eq 'gallery'}onSubmit="xajax_get_files(tipos, 0, 5, sortMode+sortDirection, '', this.highlight.value); findValue = this.highlight.value; return false;"{/if}>
       <input type="hidden" name="where" value="pages">
       <ul class="searchOptions">
-        <li id="busca-wiki" class="">{tooltip text="Buscar somente nas páginas <b>wiki</b>"}<a onclick="marcaBusca('wiki')">wiki</a>{/tooltip}</li>
-        <li id="busca-acervo" class="">{tooltip text="Buscar no <b>acervo</b> do EstúdioLivre"}<a onclick="marcaBusca('acervo')">acervo</a>{/tooltip}</li>
-        <li id="busca-forum" class="">{tooltip text="Buscar nos <b>fóruns</b> do EstúdioLivre"}<a onclick="marcaBusca('forum')">f&oacute;rum</a>{/tooltip}</li>
+        <li id="busca-wiki" class="">{tooltip name="buscar-somente" text="Buscar somente nas páginas <b>wiki</b>"}<a onclick="marcaBusca('wiki')">wiki</a>{/tooltip}</li>
+        <li id="busca-acervo" class="">{tooltip name="buscar-acervo" text="Buscar no <b>acervo</b> do EstúdioLivre"}<a onclick="marcaBusca('acervo')">acervo</a>{/tooltip}</li>
+        <li id="busca-forum" class="">{tooltip name="buscar-forum" text="Buscar nos <b>fóruns</b> do EstúdioLivre"}<a onclick="marcaBusca('forum')">f&oacute;rum</a>{/tooltip}</li>
       </ul>
       <input id="searchField" name="highlight" size="15" type="text" accesskey="s" value="Buscar" onFocus="this.value=''"/><input class="submit" type="image" name="search" src="styles/estudiolivre/bSearch.png"/>
 {*      <a class="searchMore" href="tiki-searchresults.php">mais opções de busca <span>+</span></a> *}
@@ -28,15 +28,15 @@
 
 <div id="topMenu">
   <div id="topMenuGeneral">
-    {tooltip text="Saiba o que é o EstúdioLivre"}<a href="tiki-index.php?page=O+que+%C3%A9">sobre</a>{/tooltip}
+    {tooltip name="saiba-estudiolivre" text="Saiba o que é o EstúdioLivre"}<a href="tiki-index.php?page=O+que+%C3%A9">sobre</a>{/tooltip}
     | 
-  	{tooltip text="Fórum de discussões - tire suas dúvidas aqui"}<a href="tiki-forums.php">fórum</a>{/tooltip}
+  	{tooltip name="forum-discussoes" text="Fórum de discussões - tire suas dúvidas aqui"}<a href="tiki-forums.php">fórum</a>{/tooltip}
     | 
-    {tooltip text="Veja a lista de pessoas que fazem parte da comunidade"}<a href="tiki-list_users.php">usuários</a>{/tooltip}
+    {tooltip name="lista-comunidade" text="Veja a lista de pessoas que fazem parte da comunidade"}<a href="tiki-list_users.php">usuários</a>{/tooltip}
     | 
-    {tooltip text="Perguntas mais freqüêntes"}<a href="tiki-list_faqs.php">faq</a>{/tooltip}
+    {tooltip name="perguntas-frequentes" text="Perguntas mais freqüêntes"}<a href="tiki-list_faqs.php">faq</a>{/tooltip}
     | 
-    {tooltip text="Entre em contato - descubra os canais de comunicação com a comunidade"}<a href="tiki-index.php?page=Contato">contato</a>{/tooltip}
+    {tooltip name="entre-contato" text="Entre em contato - descubra os canais de comunicação com a comunidade"}<a href="tiki-index.php?page=Contato">contato</a>{/tooltip}
   </div>
   <div id="topMenuCubesContainer"><ul id="topMenuCubes">
 

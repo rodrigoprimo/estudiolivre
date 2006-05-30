@@ -2,7 +2,7 @@
 
 {if $total > $maxRecords}
 	{if $page-2 > 1}
-		{tooltip text="Primeira página"}<a href="#" onClick="xajax_get_files(tipos, 0, {$maxRecords}, '{$sort_mode}', '{$userName}', '{$find}')">&laquo;</a>{/tooltip}
+		{tooltip name="pagination-primeira-pagina" text="Primeira página"}<a href="#" onClick="xajax_get_files(tipos, 0, {$maxRecords}, '{$sort_mode}', '{$userName}', '{$find}')">&laquo;</a>{/tooltip}
 	{/if}
 	{if $page > 1}
 		{tooltip text="Página anterior"}<a href="#" onClick="xajax_get_files(tipos, {$offset-$maxRecords}, {$maxRecords}, '{$sort_mode}', '{$userName}', '{$find}')">&lt;</a>{/tooltip}
