@@ -10,10 +10,10 @@
    xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    sodipodi:docname="layout_acervo_upload.svg"
-   sodipodi:docbase="/home/rhwinter/dev/cvs/estudiolivre/layout"
+   sodipodi:docbase="/home/nano/devel/eclipse_workspace/estudiolivre/layout"
    height="660.00000px"
    width="840.00000px"
-   inkscape:version="0.43"
+   inkscape:version="0.42"
    sodipodi:version="0.32"
    id="svg1393"
    version="1.0">
@@ -2240,8 +2240,8 @@
   </defs>
   <sodipodi:namedview
      inkscape:current-layer="svg1393"
-     inkscape:window-y="48"
-     inkscape:window-x="-64"
+     inkscape:window-y="93"
+     inkscape:window-x="776"
      inkscape:guide-bbox="true"
      showguides="false"
      id="base"
@@ -2251,10 +2251,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:window-width="1598"
-     inkscape:window-height="1128"
-     inkscape:zoom="2.8284271"
-     inkscape:cx="1140.3329"
-     inkscape:cy="-180.79581">
+     inkscape:window-height="900"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="163.64291"
+     inkscape:cy="415.91017">
     <sodipodi:guide
        id="guide3788"
        position="753.00000"
@@ -4648,8 +4648,8 @@
            x="-1858"
            style="font-size:11.000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100.00000%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Sans"
            xml:space="preserve"><tspan
-             y="201"
-             x="-1858"
+             y="201.00000"
+             x="-1858.0000"
              id="tspan20307"
              sodipodi:role="line">Não mostrar mais</tspan></text>
       </g>
@@ -4685,7 +4685,7 @@
              sodipodi:role="line"
              id="tspan20323"
              x="-1889.6215"
-             y="175.6675">SIM</tspan></text>
+             y="175.66750">SIM</tspan></text>
       </g>
       <g
          id="g20378"
@@ -4830,7 +4830,7 @@
        sodipodi:role="line"
        id="tspan8273"
        x="187.60695"
-       y="-787.5957">Hovers dessa sessão</tspan></text>
+       y="-787.59570">Hovers dessa sessão</tspan></text>
   <g
      transform="translate(2744.479,-36.88288)"
      id="g21019">
@@ -4885,7 +4885,7 @@
        inkscape:export-ydpi="150"><tspan
          sodipodi:role="line"
          id="tspan21035"
-         x="-1655.673"
+         x="-1655.6730"
          y="128.86217">[?]</tspan></text>
   </g>
   <g
@@ -4913,7 +4913,7 @@
          sodipodi:role="line"
          id="tspan21043"
          x="-1810.8488"
-         y="100.5">Jesuisim Porã</tspan></text>
+         y="100.50000">Jesuisim Porã</tspan></text>
     <path
        style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.1056061px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000"
        d="M -1764.4375,88.110220 L -1764.4375,103.38978"
@@ -4929,7 +4929,7 @@
        style="font-size:11.000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100.00000%;writing-mode:lr-tb;text-anchor:middle;fill:#adadad;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Sans"
        xml:space="preserve"><tspan
          y="99.280518"
-         x="-1655.673"
+         x="-1655.6730"
          id="tspan21050"
          sodipodi:role="line">[?]</tspan></text>
   </g>
@@ -5237,7 +5237,7 @@
        sodipodi:linespacing="100.00000%"
        xml:space="preserve"><tspan
          sodipodi:role="line"
-         y="135.9471"
+         y="135.94710"
          x="709.57062"
          id="tspan19323">acervo.livre</tspan></text>
   </g>
@@ -5787,7 +5787,7 @@
      inkscape:export-filename="telaUpload_versao00.png"
      inkscape:export-xdpi="150"
      inkscape:export-ydpi="150"><tspan
-       x="769.7652"
+       x="769.76520"
        sodipodi:role="line"
        y="418.53601"
        id="tspan19701">Uirá Jesus </tspan></text>
@@ -5837,7 +5837,7 @@
        style="font-size:10.000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:130.00000%;writing-mode:lr-tb;text-anchor:start;fill:#c2c2be;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
        xml:space="preserve"><tspan
          y="370.39706"
-         x="651"
+         x="651.00000"
          id="tspan20189"
          sodipodi:role="line">set status here</tspan></text>
   </g>
@@ -5867,7 +5867,7 @@
        x="-1844.7859"
        style="font-size:11.000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100.00000%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Sans"
        xml:space="preserve"><tspan
-         y="196.6882"
+         y="196.68820"
          x="-1844.7859"
          id="tspan5906"
          sodipodi:role="line">Álbum [?]</tspan></text>
@@ -5878,7 +5878,7 @@
        x="-1771.7532"
        style="font-size:11.000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100.00000%;writing-mode:lr-tb;text-anchor:middle;fill:#ababab;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Sans"
        xml:space="preserve"><tspan
-         y="196.6882"
+         y="196.68820"
          x="-1771.7532"
          id="tspan5910"
          sodipodi:role="line">Faixas [?]</tspan></text>
@@ -5936,7 +5936,7 @@
        x="-2010.4532"
        style="font-size:9.0000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100.00000%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Sans"
        xml:space="preserve"><tspan
-         y="215.9203"
+         y="215.92030"
          x="-2010.4532"
          id="tspan5940"
          sodipodi:role="line">Remover</tspan></text>
@@ -5974,8 +5974,8 @@
        sodipodi:linespacing="100.00000%"><tspan
          sodipodi:role="line"
          id="tspan5956"
-         x="-1718"
-         y="73">Procurar...</tspan></text>
+         x="-1718.0000"
+         y="73.000000">Procurar...</tspan></text>
   </g>
   <use
      x="0.0000000"
@@ -6049,7 +6049,7 @@
        style="font-size:9.0000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100.00000%;writing-mode:lr-tb;text-anchor:middle;fill:#a7a7a7;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Sans"
        xml:space="preserve"><tspan
          y="280.66458"
-         x="-1564.592"
+         x="-1564.5920"
          id="tspan6026"
          sodipodi:role="line">álbum de áudio</tspan></text>
   </g>
@@ -6132,7 +6132,7 @@
      inkscape:export-ydpi="150"><tspan
        sodipodi:role="line"
        id="tspan6182"
-       x="716.2948"
+       x="716.29480"
        y="479.05661"><tspan
    style="fill:#868686;fill-opacity:1.0000000"
    id="tspan6184">ver |</tspan> enviar</tspan></text>
@@ -6149,7 +6149,7 @@
        sodipodi:role="line"
        id="tspan6233"
        x="153.18994"
-       y="401.3793">e/uira/arquivos/Albumfuck/uira.ogg</tspan></text>
+       y="401.37930">e/uira/arquivos/Albumfuck/uira.ogg</tspan></text>
   <rect
      ry="0.0000000"
      rx="2.3784947"
@@ -6172,7 +6172,7 @@
      inkscape:export-filename="telaUpload_versao00.png"
      inkscape:export-xdpi="150"
      inkscape:export-ydpi="150"><tspan
-       y="452.3793"
+       y="452.37930"
        x="153.18994"
        id="tspan6237"
        sodipodi:role="line">/uira/arquivos/Albumfuck/uira2.ogg</tspan></text>
@@ -6239,7 +6239,7 @@
          sodipodi:role="line"
          id="tspan6293"
          x="-2010.4532"
-         y="215.9203">Cancelar</tspan></text>
+         y="215.92030">Cancelar</tspan></text>
   </g>
   <rect
      style="opacity:1.0000000;fill:#91cd6d;fill-opacity:1.0000000;stroke:none;stroke-width:0.31000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
@@ -6323,20 +6323,22 @@
        inkscape:export-ydpi="150"
        inkscape:export-xdpi="150"
        inkscape:export-filename="telaUpload_versao00.png"
-       sodipodi:linespacing="100.00000%"
+       sodipodi:linespacing="125.00000%"
        id="text6314"
        y="77.843727"
        x="-1853.0728"
-       style="font-size:21.323881px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100.00000%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Sans"
+       style="font-size:21.323881px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Sans"
        xml:space="preserve"><tspan
          y="77.843727"
          x="-1853.0728"
-         id="tspan6316"
-         sodipodi:role="line">Musica do mano</tspan><tspan
-         y="99.167608"
+         sodipodi:role="line"
+         id="tspan20923"
+         style="font-size:16.000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;font-family:Sans">Musica do mano que </tspan><tspan
+         y="97.843727"
          x="-1853.0728"
          sodipodi:role="line"
-         id="tspan20923">que era um ga...</tspan></text>
+         style="font-size:16.000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125.00000%;writing-mode:lr-tb;text-anchor:start;font-family:Sans"
+         id="tspan2717">era um bobão.</tspan></text>
     <text
        inkscape:export-ydpi="150"
        inkscape:export-xdpi="150"
@@ -6348,7 +6350,7 @@
        style="font-size:11.000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100.00000%;writing-mode:lr-tb;text-anchor:middle;fill:#adadad;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Sans"
        xml:space="preserve"><tspan
          y="72.405792"
-         x="-1655.673"
+         x="-1655.6730"
          id="tspan6380"
          sodipodi:role="line">[?]</tspan></text>
   </g>
@@ -6444,7 +6446,7 @@
        x="-2010.4532"
        style="font-size:9.0000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100.00000%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Sans"
        xml:space="preserve"><tspan
-         y="215.9203"
+         y="215.92030"
          x="-2010.4532"
          id="tspan20774"
          sodipodi:role="line">Remover</tspan></text>
@@ -6540,7 +6542,7 @@
        x="-2010.4532"
        style="font-size:9.0000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100.00000%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Sans"
        xml:space="preserve"><tspan
-         y="215.9203"
+         y="215.92030"
          x="-2010.4532"
          id="tspan20798"
          sodipodi:role="line">Remover</tspan></text>
@@ -6595,11 +6597,11 @@
      inkscape:export-ydpi="150"><tspan
        sodipodi:role="line"
        id="tspan20810"
-       x="152.0332"
+       x="152.03320"
        y="429.08728">100%</tspan></text>
   <path
-     style="fill:#d7d7d7;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000"
-     d="M 48.391338,417.08179 L 63.226938,425.33067 L 48.391338,433.57954 L 48.391338,417.08179 z "
+     style="fill:#ffffd3;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000"
+     d="M 60.391338,325.08179 L 75.226938,333.33067 L 60.391338,341.57954 L 60.391338,325.08179 z "
      id="path20812"
      sodipodi:nodetypes="cccc" />
   <g
@@ -6612,7 +6614,7 @@
        x="-1806.8488"
        style="font-size:13.000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100.00000%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Sans"
        xml:space="preserve"><tspan
-         y="100.5"
+         y="100.50000"
          x="-1806.8488"
          id="tspan20205"
          sodipodi:role="line">Jesuisim Porã</tspan></text>
@@ -6628,7 +6630,7 @@
        inkscape:export-ydpi="150"><tspan
          sodipodi:role="line"
          id="tspan20830"
-         x="-1655.673"
+         x="-1655.6730"
          y="99.280518">[?]</tspan></text>
   </g>
   <g
@@ -6655,7 +6657,7 @@
        style="font-size:11.000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100.00000%;writing-mode:lr-tb;text-anchor:middle;fill:#adadad;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Sans"
        xml:space="preserve"><tspan
          y="160.86215"
-         x="-1655.673"
+         x="-1655.6730"
          id="tspan20846"
          sodipodi:role="line">[?]</tspan></text>
   </g>
@@ -6687,7 +6689,7 @@
          sodipodi:role="line"
          id="tspan6334"
          x="-1901.9982"
-         y="290">Tags</tspan></text>
+         y="290.00000">Tags</tspan></text>
     <text
        inkscape:export-ydpi="150"
        inkscape:export-xdpi="150"
@@ -7910,7 +7912,7 @@
      style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:130.00000%;writing-mode:lr-tb;text-anchor:start;fill:#a1a1a1;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Trebuchet MS"
      xml:space="preserve"><tspan
        y="858.66711"
-       x="935.6098"
+       x="935.60980"
        id="tspan8368"
        sodipodi:role="line">iUp'tipo'.png</tspan></text>
   <text
@@ -7963,7 +7965,7 @@
      style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:130.00000%;writing-mode:lr-tb;text-anchor:start;fill:#a1a1a1;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Trebuchet MS"
      xml:space="preserve"><tspan
        y="853.27759"
-       x="697.5611"
+       x="697.56110"
        id="tspan8381"
        sodipodi:role="line">separator.png</tspan></text>
   <rect
@@ -8027,7 +8029,7 @@
          sodipodi:role="line"
          id="tspan8458"
          x="-2010.4532"
-         y="215.9203">Remover</tspan></text>
+         y="215.92030">Remover</tspan></text>
   </g>
   <rect
      inkscape:export-ydpi="90.000000"
@@ -8094,7 +8096,7 @@
      sodipodi:linespacing="130.00000%"><tspan
        sodipodi:role="line"
        id="tspan8504"
-       x="697.5611"
+       x="697.56110"
        y="908.41626">bgVerde70.png</tspan></text>
   <rect
      ry="6.3558283"
@@ -8697,7 +8699,7 @@
        sodipodi:role="line"
        id="tspan9695"
        x="909.03253"
-       y="940.1308">Crie agora albuns e coleções</tspan></text>
+       y="940.13080">Crie agora albuns e coleções</tspan></text>
   <rect
      style="opacity:1.0000000;fill:url(#linearGradient7178);fill-opacity:1.0000000;stroke:none;stroke-width:2.0000000;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000"
      id="rect7176"
@@ -8947,4 +8949,75 @@
        x="1105.3154"
        y="861.53921"
        id="tspan3714">tipo em pt!!!!</tspan></text>
+  <rect
+     style="fill:#e7e7e7;fill-opacity:1.0000000"
+     y="427.84094"
+     x="914.91785"
+     height="63.000000"
+     width="63.000000"
+     id="rect2721" />
+  <rect
+     id="rect3449"
+     width="60.000000"
+     height="60.000000"
+     x="915.91785"
+     y="428.84094"
+     style="fill:#ffffff;fill-opacity:1.0000000" />
+  <image
+     y="432.84094"
+     x="920.91785"
+     id="image3451"
+     width="51.000000"
+     xlink:href="data:image/jpg;base64,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 /9k= "
+     height="51.000000" />
+  <g
+     id="g3464"
+     transform="matrix(0.176471,0.000000,0.000000,0.116455,1040.873,490.5624)">
+    <g
+       id="g3472"
+       style="stroke:#4f4f4f;stroke-width:6.9583225;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000">
+      <path
+         sodipodi:nodetypes="cssc"
+         id="path3474"
+         d="M -609.90890,597.00000 C -609.90890,622.39200 -658.09110,622.39200 -658.09110,597.00000 C -658.09110,571.60800 -647.29829,551.00000 -634.00000,551.00000 C -620.70171,551.00000 -609.90890,571.60800 -609.90890,597.00000 z "
+         style="fill:#51a3d7;fill-opacity:1.0000000;stroke:#4f4f4f;stroke-width:6.9583225;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000" />
+      <path
+         transform="matrix(0.651640,0.000000,0.000000,1.000000,-564.2745,280.0000)"
+         d="M -83.000000 257.00000 A 24.000000 24.000000 0 1 1  -131.00000,257.00000 A 24.000000 24.000000 0 1 1  -83.000000 257.00000 z"
+         sodipodi:ry="24.000000"
+         sodipodi:rx="24.000000"
+         sodipodi:cy="257.00000"
+         sodipodi:cx="-107.00000"
+         id="path3476"
+         style="fill:#ebd6a5;fill-opacity:1.0000000;stroke:#4f4f4f;stroke-width:8.6198692;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+         sodipodi:type="arc" />
+    </g>
+    <g
+       id="g3468"
+       transform="translate(4.174439e-14,-171.7402)">
+      <path
+         style="fill:#51a3d7;fill-opacity:1.0000000"
+         d="M -609.90890,597.00000 C -609.90890,622.39200 -658.09110,622.39200 -658.09110,597.00000 C -658.09110,571.60800 -647.29829,551.00000 -634.00000,551.00000 C -620.70171,551.00000 -609.90890,571.60800 -609.90890,597.00000 z "
+         id="path3459"
+         sodipodi:nodetypes="cssc" />
+      <path
+         sodipodi:type="arc"
+         style="fill:#ebd6a5;fill-opacity:1.0000000"
+         id="path3461"
+         sodipodi:cx="-107.00000"
+         sodipodi:cy="257.00000"
+         sodipodi:rx="24.000000"
+         sodipodi:ry="24.000000"
+         d="M -83.000000 257.00000 A 24.000000 24.000000 0 1 1  -131.00000,257.00000 A 24.000000 24.000000 0 1 1  -83.000000 257.00000 z"
+         transform="matrix(0.651640,0.000000,0.000000,1.000000,-564.2745,280.0000)" />
+    </g>
+    <rect
+       style="fill:none;fill-opacity:1.0000000;stroke:#4f4f4f;stroke-width:6.9616919;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+       id="rect3478"
+       width="48.755463"
+       height="57.387978"
+       x="-673.09290"
+       y="571.12158"
+       transform="matrix(5.666653,0.000000,0.000000,8.587008,3117.325,-4673.931)" />
+  </g>
 </svg>
