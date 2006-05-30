@@ -36,7 +36,7 @@ $comments_vars = array('arquivoId','action');
 $comments_prefix_var = 'arquivo:';
 $comments_object_var = 'arquivoId';
 
-if ($el_p_admin_gallery == 'y' || $user == $arquivo['user']) {
+if (isset($el_p_admin_gallery) && $el_p_admin_gallery == 'y' || $user == $arquivo['user']) {
 	$smarty->assign('permission', true);
 }
 

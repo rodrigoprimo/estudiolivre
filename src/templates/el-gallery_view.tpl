@@ -159,6 +159,7 @@
 					<span class="campo">Detentor dos DA:</span> {$arquivo.donoCopyright}<br/>
 					<span class="campo">Produtora:</span> {$arquivo.produtora}<br/>
 					<span class="campo">Contato:</span> {$arquivo.contato}<br/>
+					{include file="el-gallery_upload_"|cat:$arquivo.tipo|cat:".tpl"}
 				</div>
 			</div>
 		</div>
@@ -172,9 +173,16 @@
   <span onClick="cancelEdit()" style="cursor: pointer">Cancelar</span>
 </div>
 
-
-
-
+{if $arquivo.editCache}
+<div id="lightFileAltered" style="display:none; width: 400px;">
+	Atenção: este arquivo foi modificado e as alterações não foram salvas!<br/>
+	<span onClick="cancelEdit(); hideLightbox();" style="cursor: pointer">Cancelar</span>&nbsp;&nbsp;&nbsp;
+	<span onClick="restoreEdit(); hideLightbox();" style="cursor: pointer">Restaurar</span>
+</div>
+<script language="Javascript">
+	showLightbox('lightFileAltered');
+</script>
+{/if}
 
 {*
 

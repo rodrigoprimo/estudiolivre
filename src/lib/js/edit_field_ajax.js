@@ -44,10 +44,20 @@ function exibeCampo(field, value) {
 	eval('errorMsg_' + field + ' = "";');
 }
 
-function editaCampo(field) {
+function showEdit(field) {
     document.getElementById("show-"  + field).style.display = "none";
-    document.getElementById("input-" + field).style.display = display[field];
+    document.getElementById("input-" + field).style.display = display[field];	
+}
+
+function editaCampo(field) {
+	showEdit(field);
     document.getElementById("input-" + field).focus();
+}
+
+function restoreField(field, value) {
+	document.getElementById("input-" + field).value = value;
+	showEdit(field);
+	startEdit();
 }
 
 function exibeErro(campo, msg) {
@@ -66,8 +76,12 @@ function startEdit() {
 function cancelEdit() {
 	saveFieldCache = new Array();
 	xajax_rollback_arquivo(arquivoId);
+	return true;
 }
 
+function restoreEdit() {
+	xajax_restore_edit(arquivoId);
+}
 
 //TODO abstrair as funcoes de thumb pra outro js, ja que sao usadas no upload e no user...
 function changeThumbStatus() {

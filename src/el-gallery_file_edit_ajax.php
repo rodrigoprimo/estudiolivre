@@ -76,4 +76,22 @@ function rollback_arquivo($arquivoId) {
 	}
 	return $objResponse;
 }
+
+$ajaxlib->registerFunction('restore_edit');
+function restore_edit($arquivoId) {
+	global $elgallib;
+	
+	$objResponse = new xajaxResponse();
+	
+	$arquivo = $elgallib->get_arquivo($arquivoId);
+	$cache = unserialize($arquivo['editCache']);
+	
+	foreach ($cache as $field => $value) {
+  		$objResponse->addScriptCall('restoreField', $field, $value);
+  	}
+  	
+	return $objResponse;
+		
+}
+
 ?>
