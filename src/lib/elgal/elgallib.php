@@ -648,7 +648,8 @@ class ELGalLib extends TikiLib {
       }
       
       global $tikilib;
-      $tikilib->blob_encodessh ($data);
+      $tikilib->blob_encode ($data);
+      
       fclose($fp);
       
       return $data;
