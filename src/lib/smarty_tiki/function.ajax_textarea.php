@@ -22,6 +22,7 @@ function smarty_function_ajax_textarea($params, &$smarty) {
 	$display = $params['display'];
 	$mode = $params['mode'];
 	$noclear = $params['noclear'];
+	$style = $params['style'];
 	$permission = $params['permission'];
 
 	if (!$permission) {
@@ -48,13 +49,13 @@ function smarty_function_ajax_textarea($params, &$smarty) {
 	$output .= ($value ? $value : $default);
 	$output .= "</div>";
 	
-	$output .= '<textarea class="'.$class.'" id="input-'.$id. '"  onBlur="saveField(this)" style="display:' . ($edit ? $display : "none") . '" '; 
+	$output .= "<img id=\"error-$id\" class=\"gUpErrorImg\" style=\"display: none\" src=\"styles/estudiolivre/errorImg.png\" onMouseover=\"overlib(errorMsg_$id);\" onMouseout=\"nd();\"> ";
+	
+	$output .= '<textarea id="input-'.$id. '"  onBlur="saveField(this)" style="display:' . ($edit ? $display : "none") . '; ' . $style . '" '; 
 	if (!$value && !$noclear) { 
 	    $output .= " onFocus=\"limpaCampo('$id');\" onChange=\"mudado['$id']=1;\"";
 	}
 	$output .= '>'. ($value ? htmlspecialchars($value) : $default) .'</textarea>';
-
-	$output .= "<img id=\"error-$id\" class=\"gUpErrorImg\" style=\"display: none\" src=\"styles/estudiolivre/errorImg.png\" onMouseover=\"overlib(errorMsg_$id);\" onMouseout=\"nd();\"> ";
 	
 	$output .= '<script language="JavaScript">display["'.$id.'"] = "'.$display.'";errorMsg_'.$id.' = "";</script>';
 	

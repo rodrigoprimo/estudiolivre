@@ -714,13 +714,15 @@ img {
 	font-size:10px;	
 }
 
-/* Gallery Upload */
+/* Gallery Upload ######## */
 
 #gUpload {
 	/*border:1px solid purple;*/
-	padding: 10px 10px 10px 0px;
+	padding: 10px 0px 10px 0px;
 	overflow:hidden;
 }
+
+/* Gallery Upload - Left ######### */
 
 IMG.separator {
 	width:140px;
@@ -865,7 +867,7 @@ DIV.gUpUploading {
 	background-image:url(estudiolivre/bgRed50.png);
 }
 
-A.gUpButton {
+A.gUpButton, A.gUpButtonHover {
 	display:block;
 	position:absolute;
 	right:3px;
@@ -879,7 +881,7 @@ A.gUpButton {
 	overflow:hidden;
 }
 
-A.gUpButton:hover {
+A.gUpButtonHover {
 	background-image:url(estudiolivre/bInactive.png);
 }
 
@@ -909,31 +911,41 @@ A.gUpButton:hover {
 	float:left;
 	margin: 0px 7px 5px 0px;
 	overflow:hidden;
+	padding:4px;
+	border-top:1px solid #e7e7e7;
+	border-left:1px solid #e7e7e7;
+	border-right:2px solid #e7e7e7;
+	border-bottom:2px solid #e7e7e7;
 	width: 60px;
 	height: 60px;
-	/* border: 1px solid black; */
 	position: relative;
+	cursor:pointer;
 }
 
 #gUpThumbImgForm {
 	position: relative;
+	cursor:pointer;
 }
 
 #gUserThumbFormContainer {
 	position: relative;
+	cursor:pointer;
 }
 
 #gUpThumbForm {
 	position: absolute;
 	left: -175px;
-	top: 0px;
+	top: 2px;
 	clip: rect(0px, 255px, 62px, 175px);
 	z-index: 20;
 	opacity: 0;
+	cursor:pointer;
 }
 
 .gUpThumbFormButton {
 	height: 62px;
+	cursor:pointer;
+	border:30px solid blue;
 }
 
 #gUserThumbForm {
@@ -965,69 +977,85 @@ A.gUpButton:hover {
 	z-index: 5;
 }
 
+#gUpTitleAuthor {
+	position:relative;
+	top:0px;
+}
+
+DIV.gUpEdit:hover {
+	background-color:#ffffd3;
+}
+
 INPUT.gUpEdit {
-	height:14px;
-	padding: 0px 3px 0px 0px;
-	background-color:#f1f1f1;
-	border:1px solid #c9c9c9;
-	font-family: arial,verdana,helvetica,lucida,sans-serif;
+	border: 1px inset rgb(233, 233, 174);
+	padding: 3px 0px 3px 3px;
+	font-size: 12px;
+	font-weight: bold;
+	font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;
+	background-color: #f1f1f1;
+	margin-right:4px;
+}
+
+DIV.gUpEdit  {
+	font-size: 12px;
+	font-weight: bold;
+	font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;
+}
+
+INPUT.gUpTitle{
+	width:174px;
+
+}
+
+INPUT.gUpAuthor {
+	width:149px;
+}
+
+DIV.gUpTitle{
+	width: 185px;
+	position: relative;
+	top: 4px;
+	margin-left: 4px;
+}
+
+#show-descricao {
+	padding: 3px;
+	border: 1px solid #FFF;
+	width: 250px;
+	height:125px;
 	font-size:12px;
+	overflow: -moz-scrollbars-vertical;
+	float:left;
 }
 
-DIV.gUpEdit {
-}
-
-.gUpTitle {
-	width: 157px;
-	margin-bottom: 3px;
-	font-size:13px;
-	font-weight:bold;
-}
-
-.gUpAuthor {
-	display: inline;
+#error-descricao {
+	position:relative;
+	left:-3px;
+	float:right;
 }
 
 DIV.gUpAuthor {
-	font-style: italic;	
+	font-style: italic;
+	font-weight:normal;
 }
 
-#gUpAuthor A {
-	font-style:italic;
-	font-size:11px;
-}
-
-DIV.gUpEditDescription {
-	height:122px;
-	margin: 0px 0px 0px 22px;
-	padding-top:2px;
-	width: 200px;
-	font-size:12px;
-
-}
-
-TEXTAREA.gUpEditDescription {
-	height:120px;
-	margin: 0px 0px 0px 20px;
-	font-family: arial,verdana,helvetica,lucida,sans-serif;
-	text-align: left;
-	width: 200px;
-	font-size:12px;
+#gUpAuthorCont{
+	position:relative;
+	top:8px;
 }
 
 #gUpEditTags {
+	width:259px;
 	font-size:12px;
 }
 
 #gUpEditTags INPUT {
+	border: 1px inset rgb(233, 233, 174);
 	height:14px;
-	width:85%;
-	/*margin-left:20px;*/
+	width:220px;
 	padding-right:3px;
 	background-color:#f1f1f1;
-	border:1px solid #c9c9c9;
-	font-size:11px;
-	text-align:right;
+	font-size:12px;
 }
 
 #gUpTagSugest {
@@ -1057,9 +1085,20 @@ A.gUpmore {
 	margin-right:5px;
 }
 
-#gUpMoreOptions {
-	text-align:right;
+#gUpMoreOptions INPUT {
+	border: 1px inset rgb(233, 233, 174);
+	padding: 3px 0px 3px 3px;
+	font-size: 12px;
+	font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;
+	background-color: #f1f1f1;
+	margin-right:4px;
 }
+
+.gUpMoreOptionsName {
+	
+}
+
+
 
 #gUpSave {
 	text-align:center;

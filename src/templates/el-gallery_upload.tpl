@@ -49,7 +49,7 @@
 	      <form name="uploadForm" target="uploadTarget" action="el-gallery_upload_file.php?UPLOAD_IDENTIFIER={$uploadId}" method="post" enctype="multipart/form-data">
   		    <input type="hidden" name="UPLOAD_IDENTIFIER" value="{$uploadId}">  		    <input type="hidden" name="arquivoId" value="">
   		    <input type="hidden" name="tipo" value="">
-   	   	    <input type="file" name="arquivo" onChange="changeStatus(this.value);">
+   	   	    <input type="file" name="arquivo" onMouseOver="document.getElementById('gUpButton').className='gUpButtonHover'" onMouseOut="document.getElementById('gUpButton').className='gUpButton'" onChange="changeStatus(this.value);">
    	      </form>
          </div>
    
@@ -60,13 +60,14 @@
     
   </div>
 
-  <div id="gUpRight" style="display: none">
+  <div id="gUpRight" style="display:none">
+  
     <div id="gUpThumbImgForm">
       <div id="gUpThumb">
-	<div id="gUpThumbImg">
-	  <img id="thumbnail" alt="" height="60" width="60" src="">
-	  <div id="gUpThumbStatus"></div>
-	</div>
+	    <div id="gUpThumbImg">
+	      <img id="thumbnail" alt="" height="60" width="60" src="">
+	      <div id="gUpThumbStatus"></div>
+	    </div>
       </div>
       <div id="gUpThumbForm">
   	<iframe name="thumbUpTarget" style="display:none" onLoad="finishUpThumb();"></iframe>
@@ -80,26 +81,29 @@
     <form>  
 
     <div id="gUpTitleAuthor">
-        {ajax_input permission=$permission class="gUpTitle gUpEdit" id="titulo" value=$arquivo.titulo default="Titulo" display="inline"}
-		<div id="gUpAuthor">
+        {ajax_input permission=$permission class="gUpEdit gUpTitle" id="titulo" value=$arquivo.titulo default="Titulo" display="inline"}
+		<div id="gUpAuthorCont">
 		  	Por {ajax_input permission=$permission class="gUpAuthor gUpEdit" id="autor" value=$realName default="Autor da obra" display="inline" mode="edit"}
 		</div>
     </div>
       
-    <br style="line-height:30px;">
+    <br style="clear:both; line-height:30px;">
     <div id="gUpDescription">
-	     {ajax_textarea permission=$permission class="gUpEditDescription" id="descricao" value=$arquivo.descricao default="Descrição da sua obra" display="block"}
+    	{ajax_textarea permission=$permission  display="block" style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" class="gUpEdit" id="descricao" value=$arquivo.descricao default="Descrição da sua obra"}
     </div>
     
     <br style=" line-height:20px;">
 	Licença: <span onClick="showLightbox('el-license')" style="cursor: pointer"><img id="uImagemLicenca" src="styles/estudiolivre/{$licenca.linkImagem}" alt="..."/></span>
 	{include file="el-gallery_license.tpl"}
 	
+	<br />
+	<br />	
+	
     <div id="gUpEditTags">
       {if $feature_freetags eq 'y' && $tiki_p_freetags_tag eq 'y'}
         <span>Tags</span>
 	{* O ideal eh que tenha suggest aqui nesse campo *}
-	{ajax_input permission=$permission class="freetags" id="tags" value="$taglist" noclear=1}<br>
+	{ajax_input permission=$permission class="freetags" id="tags" value="$taglist" noclear=1 display="inline"}<br>
 	  <div id="gUpTagSugest">
 	    {* Aqui ficam listadas as tags do usuário.
 	    Primeiro as 10 mais usadas, com um botão "exibir +" e outro "exibir todas" *}
