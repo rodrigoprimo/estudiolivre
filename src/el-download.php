@@ -11,10 +11,12 @@ if (!isset($_REQUEST['arquivo']) || $_REQUEST['arquivo'] == 0) {
 
 $arquivo = $elgallib->get_file($_REQUEST['arquivo']);
 
+// TODO: esse bloco vai sair
 if(isset($_REQUEST['thumbnail'])) {
+    exit;
     header("Content-type: image/png");
     readfile($arquivo['thumbnail']);
-    exit;
+    
 }
 
 header("Content-type: ". $arquivo['formato']);

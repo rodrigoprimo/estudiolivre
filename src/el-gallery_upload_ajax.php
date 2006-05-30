@@ -1,7 +1,7 @@
 <?php
 
 require_once("dumb_progress_meter.php");
-
+require_once("el-gallery_file_edit_ajax.php");
 
 $ajaxlib->statusMessagesOff();
 $ajaxlib->waitCursorOff();
@@ -73,49 +73,6 @@ function generate_thumb($arquivoId) {
 	return $objResponse;
 }
 
-$ajaxlib->registerFunction('save_field');
-function save_field($arquivoId, $name, $value) {
-	$objResponse = new xajaxResponse();
-
-	if ($name == 'tags') {
-	    _tag_arquivo($arquivoId, $value);
-	} else {
-	    global $elgallib, $user, $el_p_admin_acervo;
-	    $el_p_admin_acervo = 'y';
-	    $arquivo = $elgallib->get_arquivo($arquivoId);
-	    if (!$user || $user != $arquivo['user'] || $el_p_admin_acervo != 'y') {
-			return false;
-	    }
-	    $error = $elgallib->edit_field($arquivoId, $name, $value);
-	    
-	    if($error) {
-			$objResponse->addScriptCall('exibeErro', $name, $error);
-	    } else {
-			$objResponse->addScriptCall('exibeCampo', $name, $value);
-	    }
-	}
-	
-	return $objResponse;
-
-}
-
-function _tag_arquivo($arquivoId, $tag_string) {
-    global $freetaglib, $elgallib;
-    if (!is_object($freetaglib)) {
-	include_once('lib/freetag/freetaglib.php');
-    }
-    
-    global $user;
-
-    $arquivo = $elgallib->get_arquivo($arquivoId);
-    
-    $href = "el-arquivo.php?arquivoId=$arquivoId";
-
-    $freetaglib->add_object('acervo', $arquivoId, $arquivo['descricao'], $arquivo['titulo'], $href);	
-    $freetaglib->update_tags($user, $arquivoId, 'acervo', $tag_string);
-	
-
-}
 $ajaxlib->registerFunction('set_arquivo_licenca');
 function set_arquivo_licenca ($arquivoId, $resposta1, $resposta2, $padrao = false) {
 

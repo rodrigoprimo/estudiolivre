@@ -5,7 +5,7 @@
      {tooltip name="list-descricao-licenca" text=$arquivo.descricaoLicenca}<a href="{$arquivo.linkHumanReadable}"><img src="styles/estudiolivre/{$arquivo.linkImagem}"></a>{/tooltip}
     </div>
     <div id="gThumb">
-	  <a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view">
+	  <a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}">
       {if sizeof($arquivo.thumbnail)}
 	  <img height="51" src="el-download.php?arquivo={$arquivo.arquivoId}&thumbnail=1">
 	  {else}
@@ -20,7 +20,7 @@
       <div id="gNameAuthor">
         <div id="gName">
 	 	
-	  {tooltip name="list-clique-pag-arquivo" text="Clique para ir para a página do arquivo"}<a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view">
+	  {tooltip name="list-clique-pag-arquivo" text="Clique para ir para a página do arquivo"}<a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}">
 	    {$arquivo.nomeArquivo}
 	  </a>{/tooltip}
 	 
@@ -68,9 +68,9 @@
 	  </div>
 	  <div id="gComments">
 	    {if $arquivo.commentsCount == 0}
-	    	{tooltip name="list-primeiro-comentar" text="Seja o primeiro a comentar sobre esse arquivo"}<a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view#comments">nenhum comentário</a>{/tooltip}
+	    	{tooltip name="list-primeiro-comentar" text="Seja o primeiro a comentar sobre esse arquivo"}<a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}#comments">nenhum comentário</a>{/tooltip}
 	    {else}
-	    	{tooltip name="list-ler-comentarios" text="Clique para ler os comentários"}<a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=view#comments">{$arquivo.commentsCount} comentário{if $arquivo.commentsCount != 1}s{/if}</a>{/tooltip}
+	    	{tooltip name="list-ler-comentarios" text="Clique para ler os comentários"}<a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}#comments">{$arquivo.commentsCount} comentário{if $arquivo.commentsCount != 1}s{/if}</a>{/tooltip}
 	    {/if}
 	  </div>
         </div>
@@ -89,9 +89,9 @@
   
   <div id="gEditDelete">
     {if $arquivo.user eq $user}
-      {tooltip name="list-editar-informacoes-arquivo" text="Editar informações do arquivo"}<a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=edit"><img alt="editar" src="styles/estudiolivre/iEdit.png"></a>{/tooltip}
+      {tooltip name="list-editar-informacoes-arquivo" text="Editar informações do arquivo"}<a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}"><img alt="editar" src="styles/estudiolivre/iEdit.png"></a>{/tooltip}
       <br>
-      {tooltip name="list-apagar-arquivo-acervo" text="Apagar esse arquivo do acervo"}<a href="el-gallery_manage.php?arquivoId={$arquivo.arquivoId}&action=delete"><img alt="apagar" src="styles/estudiolivre/iDelete.png"></a>{/tooltip}
+      {tooltip name="list-apagar-arquivo-acervo" text="Apagar esse arquivo do acervo"}<a href="el-gallery_delete.php?arquivoId={$arquivo.arquivoId}"><img alt="apagar" src="styles/estudiolivre/iDelete.png"></a>{/tooltip}
     {/if}
   </div>
   

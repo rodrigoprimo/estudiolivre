@@ -1,3 +1,9 @@
+
+<script language="JavaScript" src="lib/js/freetags.js"></script>
+<script language="JavaScript" src="lib/js/edit_field_ajax.js"></script>
+<script language="JavaScript" src="lib/js/file_edit.js"></script>
+<script language="JavaScript">arquivoId = {$arquivoId};</script>
+
 <div id="arqCont">
 	<div id="aTopCont">
 		<div id="aThumbRatingLic">		
@@ -26,9 +32,9 @@
 							{$arquivo.hits}
 						</span>
 						{tooltip name="view-baixe-arquivo" text="Baixe esse arquivo"}
-							<a href="#">
-								<img alt="" src="styles/estudiolivre/iDownload.png">
-							</a>
+						<a href="el-download.php?arquivo={$arquivoId}&action=download">
+						  <img alt="" src="styles/estudiolivre/iDownload.png">
+						</a>
 						{/tooltip}
 					</div>
 					<div id="gPlay">
@@ -53,7 +59,7 @@
 				</div>
 				<div id="aNameAuthor">
 					<div id="aName">
-						<a id="titulo" href="el-download.php?arquivo={$arquivoId}&action=download">{$arquivo.titulo}</a>
+						{ajax_input permission=$permission class="gUpTitle gUpEdit" id="titulo" value=$arquivo.titulo default="Titulo" display="inline"}
 						{if $user eq $arquivo.user}
 							<form method="post" action="el-gallery_manage.php" style="display:inline">
 								<input type="hidden" name="arquivoId" value="{$p.arquivoId}" />
@@ -139,15 +145,7 @@
 					</a>					
 					<h1>Descrição</h1>
 				</div>
-				<div id="aDescCont" class="aItemsCont" style="display:block">
-					Caralho, esse arquivo eh muito doido. Baixa aí procê vê. 
-					Caralho, esse arquivo eh muito doido. Baixa aí procê vê.
-					Caralho, esse arquivo eh muito doido. Baixa aí procê vê.
-					Caralho, esse arquivo eh muito doido. Baixa aí procê vê.
-					Caralho, esse arquivo eh muito doido. Baixa aí procê vê.
-					Caralho, esse arquivo eh muito doido. Baixa aí procê vê.
-					Caralho, esse arquivo eh muito doido. Baixa aí procê vê.
-				</div>
+				{ajax_textarea permission=$permission class="aItemsCont" id="descricao" value=$arquivo.descricao display="block"}
 			</div>
 			<br />
 			<div id="aInfo">

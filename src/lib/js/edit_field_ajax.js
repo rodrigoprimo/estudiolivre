@@ -16,6 +16,7 @@ function saveField(fieldObj){
     }
     
     if (saveFieldCache[field] == null || saveFieldCache[field] != value) {
+		//precisa ser implementada em cada caso que for editar campos em ajax
 		call_save_function(field, value);
 		saveFieldCache[field] = value;
     } else {

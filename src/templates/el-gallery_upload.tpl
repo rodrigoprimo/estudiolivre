@@ -1,8 +1,8 @@
 <!-- el-gallery_upload_general.tpl begin -->
 
 <script language="JavaScript" src="lib/elgal/upload.js"></script>
-<script language="JavaScript" src="lib/js/freetags.js"></script>
 <script language="JavaScript" src="lib/js/edit_field_ajax.js"></script>
+<script language="JavaScript" src="lib/js/freetags.js"></script>
 
 <div id="gUpload">
   <div id="gUpLeft">
