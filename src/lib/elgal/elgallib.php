@@ -256,29 +256,85 @@ class ELGalLib extends TikiLib {
     
   }
   
+  
   function edit_field($arquivoId, $name, $value) {
-  	if (in_array($name, $this->basic_fields)) {
-	    $table = "el_arquivo";
-  	} elseif (in_array($name, $this->extension_fields)) {
-	    $arquivo = $this->get_arquivo($arquivoId);
-	    $table = "el_arquivo_" . strtolower($arquivo['tipo']); 
-  	} else {
+  	if (!in_array($name, $this->basic_fields) && !in_array($name, $this->extension_fields)) {
 	    return "campo inexistente";
   	}
   	
   	$error = $this->check_field($name, $value);
 	if ($error) return $error;
 
-	if ($name == 'titulo') {
-	    $this->query("update `tiki_objects` set `name`=? where `itemId`=? and `type`=?",
-			 array($value, $arquivoId, 'acervo'));
-	} elseif ($name == 'descricao') {
-	    $this->query("update `tiki_objects` set `description`=? where `itemId`=? and `type`=?",
-			 array($value, $arquivoId, 'acervo'));
+	$arquivo = $this->get_arquivo($arquivoId);
+	$cache = $arquivo['editCache'];
+	if (!$cache) {
+		$cache = array();
+	} else {
+		$cache = unserialize($cache);
 	}
+	
+	$cache[$name] = $value;
+	
+	$query = "update `el_arquivo` set `editCache`=? where `arquivoId`=?";
+	$this->query($query, array(serialize($cache),$arquivoId));
+  }
+  
+  function commit($arquivoId) {
+  	$arquivo = $this->get_arquivo($arquivoId);
+  	if (!$arquivo) return false;
+  	$cache = unserialize($arquivo['editCache']);
   	
-  	$query = "update `$table` set `$name`=? where `arquivoId`=?";
-  	return $this->query($query, array($value,$arquivoId)) ? false : "bug! erro na query: $query";
+  	if (!is_array($cache)) {
+  		return true;
+  	}
+  	
+  	$tipo = $arquivo['tipo'];
+  	
+  	$query = "update `el_arquivo` set ";
+  	$queryExt = "update `el_arquivo_$tipo` set ";
+  	
+  	$bindvals = array();
+  	$bindvalsExt = array();
+  	
+  	foreach ($cache as $field => $value) {
+  		if (in_array($field, $this->basic_fields)) {
+	    	$query .= " `$field` = ?, ";
+  			$bindvals[] = $value;
+  		} elseif (in_array($field, $this->extension_fields)) {
+  			$queryExt .= " `$field` = ?, ";
+  			$bindvalsExt[] = $value;
+  		}
+  	}
+  	
+  	$query .= "`editCache`='' where `arquivoId`=?";
+	$bindvals[] = $arquivoId;
+	
+	if (!$this->query($query, $bindvals)) {
+		return false;
+	}
+	
+	if (sizeof($bindvalsExt)) {
+		$queryExt = preg_replace('/, $/', 'where `arquivoId`=?');
+		$bindvalsExt[] = $arquivoId;
+		if (!$this->query($queryExt, $bindvalsExt)) {
+			return false;
+		}
+	}
+	
+	if (isset($cache['titulo'])) {
+	    $this->query("update `tiki_objects` set `name`=? where `itemId`=? and `type`=?",
+			 array($cache['titulo'], $arquivoId, 'acervo'));
+	}
+	if (isset($cache['descricao'])) {
+	    $this->query("update `tiki_objects` set `description`=? where `itemId`=? and `type`=?",
+			 array($cache['descricao'], $arquivoId, 'acervo'));
+	}
+	
+	return true;
+  }
+  
+  function rollback($arquivoId) {
+  	return $this->query("update `el_arquivo` set `editCache`='' where `arquivoId`=?",array($arquivoId));
   }
   
   function check_field($name, $value) {
@@ -476,6 +532,8 @@ class ELGalLib extends TikiLib {
   
   function publish_arquivo($arquivoId) {
   	global $user;
+  	
+  	$this->commit($arquivoId);
   	
   	// TODO permissoes mais complexas, tipo admin
   	// TODO verificar erros

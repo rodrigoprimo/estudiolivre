@@ -1,6 +1,5 @@
 <?php
 
-$ajaxlib->debugOn();
 
 $ajaxlib->registerFunction('save_field');
 function save_field($arquivoId, $name, $value) {
@@ -46,5 +45,35 @@ function _tag_arquivo($arquivoId, $tag_string) {
     $freetaglib->update_tags($user, $arquivoId, 'acervo', $tag_string);
 	
 
+}
+
+$ajaxlib->registerFunction('commit_arquivo');
+function commit_arquivo($arquivoId) {
+	global $elgallib;
+	$objResponse = new xajaxResponse();
+	
+	if ($elgallib->commit($arquivoId)) {
+		$objResponse->addScript('finishEdit()');
+	}
+	return $objResponse;
+}
+
+$ajaxlib->registerFunction('rollback_arquivo');
+function rollback_arquivo($arquivoId) {
+	global $elgallib;
+	
+	$objResponse = new xajaxResponse();
+	
+	if ($elgallib->rollback($arquivoId)) {
+		$arquivo = $elgallib->get_arquivo($arquivoId);
+		$fields = array_merge($elgallib->basic_fields, $elgallib->extension_fields);
+		foreach ($fields as $field) {
+			if (isset($arquivo[$field])) {
+				$objResponse->addScriptCall('exibeCampo',$field, $arquivo[$field]);
+			}
+		}
+		$objResponse->addScript('finishEdit()');
+	}
+	return $objResponse;
 }
 ?>

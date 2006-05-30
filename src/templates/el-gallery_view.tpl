@@ -167,7 +167,10 @@
 
 
 
-
+<div id="save-exit" style="position: relative; z-index: 10; display: none">
+  <span onClick="xajax_commit_arquivo(arquivoId)" style="cursor: pointer">Salvar</span>&nbsp;&nbsp;&nbsp;
+  <span onClick="cancelEdit()" style="cursor: pointer">Cancelar</span>
+</div>
 
 
 

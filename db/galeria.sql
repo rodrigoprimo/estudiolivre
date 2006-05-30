@@ -31,7 +31,8 @@ create table `el_arquivo` (
        rating tinyint not null, key(rating),
        hits int4 not null,
        streamHits int4 not null,
-       thumbnail varchar(255) not null
+       thumbnail varchar(255) not null,
+       editCache blob not null
 );
 
 drop table `el_arquivo_audio`;

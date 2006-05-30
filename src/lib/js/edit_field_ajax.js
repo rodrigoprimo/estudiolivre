@@ -19,6 +19,7 @@ function saveField(fieldObj){
 		//precisa ser implementada em cada caso que for editar campos em ajax
 		call_save_function(field, value);
 		saveFieldCache[field] = value;
+		startEdit();
     } else {
 		exibeCampo(field, value);
     }
@@ -35,7 +36,9 @@ function exibeCampo(field, value) {
 		var showElement = document.getElementById("show-" + field);
 		showElement.style.display = display[field];
 		showElement.innerHTML = value.replace(new RegExp(/\n/g), '<br/>');
-		document.getElementById("input-" + field).style.display = "none";
+		var editElement = document.getElementById("input-" + field);
+		editElement.style.display = "none";
+		editElement.value = value;
     }
 	hide('error-' + field);
 	eval('errorMsg_' + field + ' = "";');
@@ -50,6 +53,19 @@ function editaCampo(field) {
 function exibeErro(campo, msg) {
 	eval('errorMsg_' + campo + ' = msg;');
 	document.getElementById('error-' + campo).style.display = 'inline';
+}
+
+function finishEdit() {
+	hide('save-exit');
+}
+
+function startEdit() {
+	show('save-exit');
+}
+
+function cancelEdit() {
+	saveFieldCache = new Array();
+	xajax_rollback_arquivo(arquivoId);
 }
 
 
@@ -84,6 +100,6 @@ function updateThumbProgressMeter(uploadInfo) {
     var normalized = uploadInfo['bytes_uploaded'] / uploadInfo['bytes_total'];
     var percent = Math.ceil(100 * normalized);
     if (percent) {
-	document.getElementById('gUserThumbStatus').innerHTML = percent + '%';	
+		document.getElementById('gUserThumbStatus').innerHTML = percent + '%';	
     }	
 }
