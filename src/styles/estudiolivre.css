@@ -1080,6 +1080,10 @@ DIV.gUpAuthor {
 	margin-top:4px;
 }
 
+#gUpmoreoptionsLink {
+	float:right;
+}
+
 A.gUpmore {
 	font-size:11px;
 	margin-right:5px;
@@ -1094,8 +1098,20 @@ A.gUpmore {
 	margin-right:4px;
 }
 
+#gUpMoreOptions * {
+	margin-top:	3px;
+}
+
 .gUpMoreOptionsName {
-	
+/*	display:inline;	*/
+	text-align:right;
+	padding-right:5px;
+	float:left;
+	width:94px;
+}
+
+.gUpMoreOptionsInput {
+	display:inline;	
 }
 
 

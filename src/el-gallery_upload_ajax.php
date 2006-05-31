@@ -24,7 +24,7 @@ function create_file($tipo, $fileName, $uploadId) {
 	
 	$arquivo = array();
 	
-	$error = $elgallib->validate_filetype($tipo, $fileName);
+	$error = false;// TODO $elgallib->validate_filetype($tipo, $fileName);
 	if ($error) {
 		$objResponse->addAlert($error);
 		return $objResponse;
@@ -44,7 +44,7 @@ function create_file($tipo, $fileName, $uploadId) {
 		$templateName = 'el-gallery_upload_' . $tipo . '.tpl';
 		$smarty->assign('permission', true);
 		$content = $smarty->fetch($templateName);
-		$objResponse->addAssign('gUpMoreOptionContent', 'innerHTML', $content);
+		$objResponse->addAssign('gUpMoreOptionsContent', 'innerHTML', $content);
 		$objResponse->addScript(_extractScripts($content));
 	}
 			
@@ -98,7 +98,7 @@ function set_arquivo_licenca ($arquivoId, $resposta1, $resposta2, $padrao = fals
 		$objResponse->addAlert("nao foi possivel editar o campo licencaId");
     } else {
     	$licenca = $elgallib->get_licenca($licencaId);
-    	$objResponse->addScript("document.getElementById('uImagemLicenca').src = 'styles/estudiolivre/" . $licenca['linkImagem'] . "?rand=".rand()."';");
+    	$objResponse->addScript("document.getElementById('uImagemLicenca').src = 'styles/estudiolivre/h_" . $licenca['linkImagem'] . "?rand=".rand()."';");
     }
 	
 	return $objResponse;

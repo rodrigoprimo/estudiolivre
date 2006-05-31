@@ -93,7 +93,7 @@
     </div>
     
     <br style=" line-height:20px;">
-	Licença: <span onClick="showLightbox('el-license')" style="cursor: pointer"><img id="uImagemLicenca" src="styles/estudiolivre/{$licenca.linkImagem}" alt="..."/></span>
+	Licença: <span onClick="showLightbox('el-license')" style="cursor: pointer;text-decoration:underline"><img id="uImagemLicenca" src="styles/estudiolivre/h_{$licenca.linkImagem}" alt="Escolha uma licença"/></span>
 	{include file="el-gallery_license.tpl"}
 	
 	<br />
@@ -129,9 +129,9 @@
     <br style="clear:both; line-height:20px;">
     
     <div id="gUpMoreOptions">
-      <a class="gUpmore" onclick="javascript:flip('gUpMoreOptionContent'); return false;"> [+] opções </a>
-      
-      <div style="display:none" id="gUpMoreOptionContent">
+      <a class="gUpmore" id="gUpmoreoptionsLink" onclick="javascript:flip('gUpMoreOptionsContent'); return false;"> [+] opções </a><br/>
+
+      <div style="display:none" id="gUpMoreOptionsContent">
         {include file="el-gallery_upload_metadata.tpl"}
       </div>
     </div>
