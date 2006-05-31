@@ -21,6 +21,8 @@ if (!isset($_REQUEST['arquivoId'])) {
 $arquivoId = $_REQUEST['arquivoId'];
 $arquivo = $elgallib->get_arquivo($arquivoId);
 
+elAddCrumb($arquivo['titulo']);
+
 $smarty->assign('arquivoId',$arquivoId);
 $smarty->assign('arquivo',$arquivo);
 

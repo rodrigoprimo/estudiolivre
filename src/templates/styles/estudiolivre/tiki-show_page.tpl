@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.9 2006-05-30 00:02:31 nano Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.10 2006-05-31 15:56:14 nano Exp $ *}
 <script language="JavaScript" src="lib/js/contextualMenu.js"></script>
 
 <!-- menu contextual -->
@@ -13,10 +13,7 @@
 </map>
 
 
-{breadcrumbs type="trail" loc="page" crumbs=$crumbs}
-{if $feature_page_title eq 'y'}
-	{breadcrumbs type="pagetitle" loc="page" crumbs=$crumbs}
-{/if}
+{elcrumbs crumbs=$elCrumbs}
 
 <div class="wikitopline" style="text-align:right;padding-top:5px" onclick="cancelBubble(event)">
 

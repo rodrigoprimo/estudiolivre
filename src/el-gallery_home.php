@@ -7,6 +7,8 @@ require_once("el-gallery_ajax.php");
 
 $ajaxlib->processRequests();
 
+elAddCrumb('Galeria de arquivos');
+
 //TODO mudar isso pra categories pra solucionar o problema das cores
 $smarty->assign('style', 'estudiolivre_biblio.css');
 //fazendo agora, tem que refatorar a linha acima nos templates, pra verificarem category e nao style
