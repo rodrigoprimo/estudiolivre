@@ -1,4 +1,3 @@
-drop table `el_tipos_arquivo`;
 CREATE TABLE `el_tipos_arquivo` (
 	`tipoId` int(11) NOT NULL auto_increment,
 	`nome` varchar(64) default NULL,
@@ -7,7 +6,6 @@ CREATE TABLE `el_tipos_arquivo` (
 
 INSERT INTO `el_tipos_arquivo` VALUES (1,'Video',NULL),(2,'Audio',NULL),(3,'Imagem',NULL),(4,'Texto',NULL);
 
-drop table `el_arquivo`;
 create table `el_arquivo` (
        arquivoId int4 primary key auto_increment,
        idFisico varchar(150), key(idFisico),
@@ -35,7 +33,6 @@ create table `el_arquivo` (
        editCache blob not null
 );
 
-drop table `el_arquivo_audio`;
 create table `el_arquivo_audio` ( 
         arquivoId int4 primary key, 
         duracao int not null, key(duracao),
@@ -49,7 +46,6 @@ create table `el_arquivo_audio` (
         album varchar(64) null
 );
 
-drop table `el_arquivo_video`;
 create table `el_arquivo_video` (
        arquivoId int4 primary key,
        duracao int not null, key(duracao),
@@ -63,7 +59,6 @@ create table `el_arquivo_video` (
        fichaTecnica text, fulltext key(fichaTecnica)
 );
 
-drop table `el_arquivo_imagem`;
 create table `el_arquivo_imagem` (
        arquivoId int4 primary key,
        tamanhoImagemX int not null, key(tamanhoImagemX),
@@ -71,8 +66,6 @@ create table `el_arquivo_imagem` (
        dpi int not null, key(dpi)
 );
 
-#criacao tabela de licenças
-drop table `el_licenca`;
 create table `el_licenca` (
 	licencaId int4 primary key auto_increment,
 	tipo varchar(64) not null, key(tipo),
