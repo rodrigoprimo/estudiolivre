@@ -646,26 +646,30 @@ class ELGalLib extends TikiLib {
   function create_thumb_imagem($image) {
     
     $fp = fopen($image, 'rb');
+    if (!$fp) return false;
+    
     $data = '';
     while (!feof($fp)) {
       $data .= fread($fp, 8192 * 16);
     }
     
-    if (function_exists('imagepng')) {
-      
-      //bloco que acha a proporcao pro thumbnail
-      list($width, $height) = getimagesize($image);
-      $percent = ($width>(12/7.5)*$height) ? 120/$width : 75/$height;
-      $src = imagecreatefromstring($data);
-      $img = imagecreatetruecolor($width*$percent, $height*$percent);
-      imagecopyresized($img, $src, 0, 0, 0, 0, $width*$percent, $height*$percent, $width, $height);
-      
-      ob_start();
-      imagepng($img);
-      $data = ob_get_contents();
-      ob_end_clean();
-      
+    
+    if (!function_exists('imagepng')) {
+    	return false;
     }
+      
+    //bloco que acha a proporcao pro thumbnail
+    list($width, $height) = getimagesize($image);
+    $percent = ($width>(12/7.5)*$height) ? 120/$width : 75/$height;
+    $src = imagecreatefromstring($data);
+    $img = imagecreatetruecolor($width*$percent, $height*$percent);
+    imagecopyresized($img, $src, 0, 0, 0, 0, $width*$percent, $height*$percent, $width, $height);
+      
+    ob_start();
+    imagepng($img);
+    $data = ob_get_contents();
+    ob_end_clean();
+    
     return $data;
     global $tikilib;
     $tikilib->blob_encode($data);
