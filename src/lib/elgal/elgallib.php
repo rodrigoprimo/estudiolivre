@@ -79,7 +79,7 @@ class ELGalLib extends TikiLib {
   }
     
   function list_all_uploads($tipos = array(), $offset = 0, $maxRecords = -1, $sort_mode = 'data_publicacao_desc', $userName = '', $find = '', $filters = array()) {
-      global $user;
+      
       if ($find) {
 		  $mid = " where (a.`titulo` like ? or a.`descricao` like ?) ";
 		  $bindvals=array('%'.$find.'%','%'.$find.'%');
@@ -110,13 +110,8 @@ class ELGalLib extends TikiLib {
 		$bindvals[] = '%'.$value.'%';
       }
 
-      if (!$user) {
-		$tables = " from `el_arquivo` a, `el_licenca` l ";
-      } else {
-		$tables = ", ur.`rating` as user_rating from `el_arquivo` a,`el_licenca` l left join `el_arquivo_rating` ur on ur.`arquivoId` = a.`arquivoId` and ur.`user`=? ";
-		$bindvals = array_merge(array($user),$bindvals);
-      }
-
+      $tables = " from `el_arquivo` a, `el_licenca` l ";
+      
       $query = "select a.*, a.`titulo` as nomeArquivo, l.`descricao` descricaoLicenca, `linkImagem`, `linkHumanReadable` $tables $mid and a.`licencaId`=l.`licencaId` and `publicado`=1 order by ".$this->convert_sortmode($sort_mode);
       $result = $this->query($query,$bindvals,$maxRecords,$offset);
     
@@ -721,6 +716,10 @@ class ELGalLib extends TikiLib {
 
     return $this->getOne($query, array((int)$last));
 
+  }
+  
+  function getUserRating($arquivoId, $userName) {
+  	return $this->getOne("select `rating` from `el_arquivo_rating` where `arquivoId`=? and `user`=?", array($arquivoId, $userName));
   }
   
 }

@@ -1,6 +1,5 @@
 <?php
 
-
 $ajaxlib->registerFunction('save_field');
 function save_field($arquivoId, $name, $value) {
 	global $el_p_admin_gallery;

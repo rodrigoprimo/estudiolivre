@@ -3,8 +3,13 @@ require_once("tiki-setup.php");
 require_once("lib/elgal/elgallib.php");
 require_once("lib/ajax/ajaxlib.php");
 require_once("el-gallery_file_edit_ajax.php");
+require_once("el-gallery_view_ajax.php");
 
 $ajaxlib->processRequests();
+
+require_once("lib/freetag/freetaglib.php");
+require_once("lib/commentslib.php");
+$commentslib = new Comments($dbTiki);
 
 // TODO: mudar nos templates a verificacao da galeria por category, nao style
 $smarty->assign('style', 'estudiolivre_biblio.css');
@@ -20,6 +25,8 @@ if (!isset($_REQUEST['arquivoId'])) {
 }   
 $arquivoId = $_REQUEST['arquivoId'];
 $arquivo = $elgallib->get_arquivo($arquivoId);
+$arquivo['tags'] = $freetaglib->get_tags_on_object($arquivoId, 'acervo');
+$arquivo['userRating'] = $elgallib->getUserRating($arquivoId, $user);
 
 elAddCrumb($arquivo['titulo']);
 

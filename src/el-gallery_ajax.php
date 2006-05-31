@@ -13,17 +13,6 @@ function xajax_pre_loading() {
 }
 */
 
-$ajaxlib->registerFunction("vota");
-function vota($arquivoId, $nota) {
-    global $user, $elgallib;
-    $rating = round($elgallib->vote_arquivo($arquivoId, $user, $nota));
-
-    $objResponse = new xajaxResponse();
-    $objResponse->addAssign('rt-'.$arquivoId, 'innerHTML', $rating);
-    $objResponse->addAssign('rtimg-'.$arquivoId, 'src', 'styles/estudiolivre/rt_'.$rating.'.png');
-    return $objResponse;
-} 
-
 $ajaxlib->registerFunction("get_files");
 function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $find = '', $filters = array()) {
     global $elgallib, $smarty;

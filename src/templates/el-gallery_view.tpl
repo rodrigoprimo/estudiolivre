@@ -2,6 +2,7 @@
 <script language="JavaScript" src="lib/js/freetags.js"></script>
 <script language="JavaScript" src="lib/js/edit_field_ajax.js"></script>
 <script language="JavaScript" src="lib/js/file_edit.js"></script>
+<script language="JavaScript" src="lib/js/el-rating.js"></script>
 <script language="JavaScript">arquivoId = {$arquivoId};</script>
 
 <div id="arqCont">
@@ -9,7 +10,7 @@
 		<div id="aThumbRatingLic">		
 			<div id="aRating">
 				{tooltip name="view-avaliacao" text="Avaliação"}
-					<img alt="{$arquivo.rating} estrelas" src="styles/estudiolivre/star{math equation="round(x)" x=$arquivo.rating|default:"blk"}.png">
+					<img id="aRatingImg" alt="{$arquivo.rating} estrelas" src="styles/estudiolivre/star{math equation="round(x)" x=$arquivo.rating|default:"blk"}.png">
 				{/tooltip}
 			</div>
 			<div id="aThumb">
@@ -39,7 +40,7 @@
 					</div>
 					<div id="gPlay">
 						<span class="gStreamCount">
-							00
+							{$arquivo.streamHits}
 						</span>
 						{if $arquivo.tipo eq "Video"}
 							{assign var=tooltipText value="Assita esse vídeo"}
@@ -75,67 +76,88 @@
 				</div>
 			</div>
 			<div id="aActions">
-				<span > <img alt="{$arquivo.rating} estrelas" src="styles/estudiolivre/star{math equation="round(x)" x=$arquivo.rating|default:"blk"}.png"> </span>
+				<span>
+				{section name=rating start=1 loop=6 step=1}
+			    	{if $arquivo.userRating && $arquivo.userRating >= $smarty.section.rating.index}
+		  		    	<img id="aRatingVote-{$smarty.section.rating.index}" src="styles/estudiolivre/iStarOn.png" border="0" onClick="acervoVota({$arquivo.arquivoId},{$smarty.section.rating.index})"/>
+			    	{else}
+			        	<img id="aRatingVote-{$smarty.section.rating.index}" src="styles/estudiolivre/iStarOff.png" border="0" onClick="acervoVota({$arquivo.arquivoId},{$smarty.section.rating.index})"/>
+				    {/if}
+			    {/section}
+			    </span>
 			</div>			
 			<div id="aTags">
-				{foreach from=$freetags.data item=taginfo}
-	  				<a class="freetag" href="tiki-freetag_list_objects.php?tag={$taginfo.tag}">{$taginfo.tag}</a> 
-				{/foreach} tags, tags, tags, tags, tags (...)
+				{foreach from=$arquivo.tags.data item=t}
+			        <a class="freetag" href="tiki-browse_freetags.php?tag={$t.tag}">{$t.tag}</a> 
+    			{foreachelse}
+      				&nbsp;
+    			{/foreach}
 			</div>
 		</div>
 	</div>
 	<br />
 	<div id="aMiddle">
+		
+		<!-- comentarios -->
+
+		{if $tiki_p_read_comments eq 'y'}
 		<div id="aComments">
 			<div id="aCommentsTitle" class="uMainTitle">
-				<a href="#" onClick="javascript:flip('aCommentsItemsCont'); return false;">
+				<a href="#comments" onClick="flip('aCommentsItemsCont'); flip('aCommentSend'); return false;">
 					<img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
 				</a>
-				<h1>Comentarios (9)</h1>
+				<h1>Comentários ({$comments_cant})</h1>
 			</div>
+			{if $comments_cant > 0}
 			<div id="aCommentsItemsCont" class="aItemsCont" style="display:block">
-				{*foreach from=$userMessages.data item='msg'*}
+				{foreach from=$comments_coms item='comment'}
 					<div class="uMsgItem">
 						<div class="uMsgAvatar">
-							<img alt="" title="" src="tiki-show_user_avatar.php?user=criscabello">
+							<img alt="" title="" src="tiki-show_user_avatar.php?user={$comment.userName}">
 						</div>
 						<div class="uMsgTxt">
+							{if ($tiki_p_remove_comments eq 'y' && $forum_mode ne 'y') || ($tiki_p_admin_forum eq 'y' and $forum_mode eq 'y')}
 							<div class="uMsgDel">
-								<a href="#"><img alt="" title="Deletar Mensagem" src="styles/estudiolivre/iDelete.png"></a>
+								<a href="{$comments_complete_father}comments_threshold={$comments_threshold}&amp;comments_threadId={$comment.threadId}&amp;comments_remove=1&amp;comments_offset={$comments_offset}&amp;comments_sort_mode={$comments_sort_mode}&amp;comments_maxComments={$comments_maxComments}&amp;comments_parentId={$comments_parentId}&amp;comments_style={$comments_style}"><img alt="" title="Deletar Mensagem" src="styles/estudiolivre/iDelete.png"></a>
 							</div>
+							{/if}
 							<div class="uMsgDate">
-								11:30{$msg.date|date_format:"%H:%M"}<br />
-								28/05/06{$msg.date|date_format:"%d/%m/%Y"}
+								{$comment.commentDate|date_format:"%H:%M"}<br />
+								{$comment.commentDate|date_format:"%d/%m/%y"}
 							</div>
-							<a href="el-user.php?view_user=uira">uira</a>: caralho, q musica massa...
+							<a href="el-user.php?view_user={$comment.userName}">{$comment.userName}</a>: {$comment.parsed}
 						</div>
 					</div>
 					<hr>
-				{*/foreach*}
-				{* <div class="aCommentItem">
-						<div class="aCommentAvatar">
-							Foto
-						</div>
-						<div class="aCommentTxt">
-							uira: vai tomar no cú, porra!
-						</div>
-						<div class="aCommentDate">
-							11:25<br>
-							25/05/2005
-						</div>
-						<div class="aCommentEditDel">
-							editar | Deletar
-						</div>
-					</div> *}
+				{/foreach}
 			</div>
-			<div id="aCommentSend">
-				<div id="uMsgSend">         
-					<input type="submit" name="" value="enviar" label="enviar" id="uMsgSendSubmit">
-					<input type="text" id="uMsgSendInput">
+			{/if}
+			{if $user and (($tiki_p_forum_post eq 'y' and $forum_mode eq 'y') or ($tiki_p_post_comments eq 'y' and $forum_mode ne 'y'))}
+			<div id="aCommentSend" style="display:block">
+				<div id="uMsgSend">
+					<form method="post" action="{$comments_father}" id='editpostform'>
+		    			<input type="hidden" name="comments_reply_threadId" value="{$comments_reply_threadId|escape}" />    
+					    <input type="hidden" name="comments_grandParentId" value="{$comments_grandParentId|escape}" />    
+					    <input type="hidden" name="comments_parentId" value="{$comments_parentId|escape}" />
+					    <input type="hidden" name="comments_offset" value="{$comments_offset|escape}" />
+					    <input type="hidden" name="comments_threadId" value="{$comments_threadId|escape}" />
+					    <input type="hidden" name="comments_threshold" value="{$comments_threshold|escape}" />
+					    <input type="hidden" name="comments_sort_mode" value="{$comments_sort_mode|escape}" />
+					    {* Traverse request variables that were set to this page adding them as hidden data *}
+					    {section name=i loop=$comments_request_data}
+						    <input type="hidden" name="{$comments_request_data[i].name|escape}" value="{$comments_request_data[i].value|escape}" />
+					    {/section}
+						<input type="hidden" name="comments_title" value="foobar" />
+						<input type="submit" name="comments_postComment" value="enviar" label="enviar" id="uMsgSendSubmit" />
+						<input type="text" id="uMsgSendInput" name="comments_data" value="{$comment_data|escape}"/>
+					</form>
 					<br /><br /><br />
 				</div>
 			</div>
+			{/if}
 		</div>
+		{/if}
+		<!-- fim dos comentarios -->
 		
 		<div id="aDescriptionInfo">
 			<div id="aDesc">
@@ -150,12 +172,12 @@
 			<br />
 			<div id="aInfo">
 				<div id="aInfoTitle" class="uMainTitle">
-					<a href="#" onClick="javascript:flip('aInfoCont'); return false;">
-						<img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
+					<a href="#" onClick="flip('aInfoCont'); return false;">
+						<img onclick="this.toggleImage('iArrowGreyDown.png')" src="styles/estudiolivre/iArrowGreyRight.png">
 					</a>					
 					<h1>Detalhes do Arquivo</h1>
 				</div>
-				<div id="aInfoCont" class="aItemsCont" style="display:block">
+				<div id="aInfoCont" class="aItemsCont" style="display:none">
 					<span class="campo">Detentor dos DA:</span> {$arquivo.donoCopyright}<br/>
 					<span class="campo">Produtora:</span> {$arquivo.produtora}<br/>
 					<span class="campo">Contato:</span> {$arquivo.contato}<br/>
