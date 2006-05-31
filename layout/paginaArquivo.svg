@@ -10,7 +10,7 @@
    xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    sodipodi:docname="paginaArquivo.svg"
-   sodipodi:docbase="/home/rhwinter/dev/cvs/estudiolivre/layout"
+   sodipodi:docbase="/home/uira/devel/eclipse_workspace/estudiolivre/layout"
    height="660.00000px"
    width="840.00000px"
    inkscape:version="0.43"
@@ -19,6 +19,51 @@
    version="1.0">
   <defs
      id="defs1396">
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient12569"
+       id="linearGradient5285"
+       gradientUnits="userSpaceOnUse"
+       x1="-458.75842"
+       y1="-700.05035"
+       x2="-432.48956"
+       y2="-652.10773" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient12569"
+       id="linearGradient5283"
+       gradientUnits="userSpaceOnUse"
+       x1="-458.75842"
+       y1="-700.05035"
+       x2="-432.48956"
+       y2="-652.10773" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient12569"
+       id="linearGradient5281"
+       gradientUnits="userSpaceOnUse"
+       x1="-458.75842"
+       y1="-700.05035"
+       x2="-432.48956"
+       y2="-652.10773" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient12569"
+       id="linearGradient5279"
+       gradientUnits="userSpaceOnUse"
+       x1="-458.75842"
+       y1="-700.05035"
+       x2="-432.48956"
+       y2="-652.10773" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient12569"
+       id="linearGradient5277"
+       gradientUnits="userSpaceOnUse"
+       x1="-458.75842"
+       y1="-700.05035"
+       x2="-432.48956"
+       y2="-652.10773" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient12569"
@@ -2533,6 +2578,69 @@
        inkscape:collect="always"
        xlink:href="#linearGradient12569"
        id="linearGradient10309"
+       gradientUnits="userSpaceOnUse"
+       x1="-458.75842"
+       y1="-700.05035"
+       x2="-432.48956"
+       y2="-652.10773" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient12569"
+       id="linearGradient2423"
+       gradientUnits="userSpaceOnUse"
+       x1="-458.75842"
+       y1="-700.05035"
+       x2="-432.48956"
+       y2="-652.10773" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient12569"
+       id="linearGradient2431"
+       gradientUnits="userSpaceOnUse"
+       x1="-458.75842"
+       y1="-700.05035"
+       x2="-432.48956"
+       y2="-652.10773" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient12569"
+       id="linearGradient10561"
+       gradientUnits="userSpaceOnUse"
+       x1="-458.75842"
+       y1="-700.05035"
+       x2="-432.48956"
+       y2="-652.10773" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient12569"
+       id="linearGradient10563"
+       gradientUnits="userSpaceOnUse"
+       x1="-458.75842"
+       y1="-700.05035"
+       x2="-432.48956"
+       y2="-652.10773" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient12569"
+       id="linearGradient10565"
+       gradientUnits="userSpaceOnUse"
+       x1="-458.75842"
+       y1="-700.05035"
+       x2="-432.48956"
+       y2="-652.10773" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient12569"
+       id="linearGradient10567"
+       gradientUnits="userSpaceOnUse"
+       x1="-458.75842"
+       y1="-700.05035"
+       x2="-432.48956"
+       y2="-652.10773" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient12569"
+       id="linearGradient10569"
        gradientUnits="userSpaceOnUse"
        x1="-458.75842"
        y1="-700.05035"
@@ -7114,4 +7222,82 @@
      d="M 915.30898,229.24734 L 1025.309,229.24734 L 1025.309,251.09341 L 1025.309,299.82704 L 1025.309,321.67317 L 915.30898,321.67317 L 915.30898,299.82704 L 915.30898,251.09341 L 915.30898,229.24734 z "
      id="path2388"
      sodipodi:nodetypes="ccccccccc" />
+  <path
+     sodipodi:sides="5"
+     sodipodi:type="star"
+     id="path2391"
+     inkscape:randomized="0"
+     sodipodi:cx="-447.11832"
+     sodipodi:cy="-677.43262"
+     inkscape:flatsided="false"
+     sodipodi:arg2="1.4088858"
+     sodipodi:arg1="0.78056728"
+     transform="matrix(0.277997,4.783798e-2,-4.547518e-2,0.292442,1238.33,287.6969)"
+     style="fill:#ffde0a;fill-opacity:1;stroke:url(#linearGradient2423);stroke-width:1;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1"
+     sodipodi:r2="11.087763"
+     sodipodi:r1="27.440657"
+     inkscape:rounded="0"
+     d="M -427.62133,-658.1231 L -445.33092,-666.48987 L -459.45786,-652.92292 L -456.97315,-672.35121 L -474.24155,-681.5943 L -454.99633,-685.23488 L -451.54186,-704.51438 L -442.13236,-687.33609 L -422.72898,-690.00838 L -436.15881,-675.75103 L -427.62133,-658.1231 z "
+     inkscape:export-filename="/home/uira/devel/eclipse_workspace/estudiolivre/src/styles/estudiolivre/iStarOn.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <path
+     sodipodi:sides="5"
+     sodipodi:type="star"
+     id="path2399"
+     inkscape:randomized="0"
+     sodipodi:cx="-447.11832"
+     sodipodi:cy="-677.43262"
+     inkscape:flatsided="false"
+     sodipodi:arg2="1.4088858"
+     sodipodi:arg1="0.78056728"
+     transform="matrix(0.278149,4.783798e-2,-4.550002e-2,0.292442,1334.556,287.6969)"
+     style="fill:#dedede;fill-opacity:1;stroke:url(#linearGradient2431);stroke-width:1;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1"
+     sodipodi:r2="11.087763"
+     sodipodi:r1="27.440657"
+     inkscape:rounded="0"
+     d="M -427.62133,-658.1231 L -445.33092,-666.48987 L -459.45786,-652.92292 L -456.97315,-672.35121 L -474.24155,-681.5943 L -454.99633,-685.23488 L -451.54186,-704.51438 L -442.13236,-687.33609 L -422.72898,-690.00838 L -436.15881,-675.75103 L -427.62133,-658.1231 z "
+     inkscape:export-filename="/home/uira/devel/eclipse_workspace/estudiolivre/src/styles/estudiolivre/iStarOff.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90" />
+  <rect
+     ry="6.3558283"
+     rx="6.3558283"
+     y="48.600777"
+     x="1108.4078"
+     height="55.262085"
+     width="74.91967"
+     id="rect2412"
+     style="opacity:1;fill:none;fill-opacity:1;stroke:#373737;stroke-width:0.15891781;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+  <text
+     sodipodi:linespacing="130%"
+     id="text2414"
+     y="96.176102"
+     x="1114.1919"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:129.99999523%;writing-mode:lr-tb;text-anchor:start;fill:#a1a1a1;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Trebuchet MS"
+     xml:space="preserve"><tspan
+       y="96.176102"
+       x="1114.1919"
+       id="tspan2416"
+       sodipodi:role="line">iStarOn.png</tspan></text>
+  <rect
+     style="opacity:1;fill:none;fill-opacity:1;stroke:#373737;stroke-width:0.16077563;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+     id="rect2425"
+     width="76.681587"
+     height="55.262085"
+     x="1203.6986"
+     y="48.600777"
+     rx="6.3558283"
+     ry="6.3558283" />
+  <text
+     xml:space="preserve"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:129.99999523%;writing-mode:lr-tb;text-anchor:start;fill:#a1a1a1;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Trebuchet MS"
+     x="1209.2152"
+     y="96.231766"
+     id="text2427"
+     sodipodi:linespacing="130%"><tspan
+       sodipodi:role="line"
+       id="tspan2429"
+       x="1209.2152"
+       y="96.231766">iStarOff.png</tspan></text>
 </svg>
