@@ -654,7 +654,7 @@ img {
 }
 
 #userMenuContainer {
-	text-align:left;
+	text-align:center;
 	background-color:white;
 	padding:5px;
 	margin: 0px 1px 5px 5px;
@@ -668,7 +668,7 @@ img {
 	height:50px;
 	width:60px;
 	float:left;
-	margin: 0px 5px 5px 0px; 
+	margin: 0px 5px 5px 15px; 
 }
 
 #userMenuContainer hr {
@@ -679,14 +679,20 @@ img {
 	text-align:center;
 }
 
-#uName {
-	font-size:14px;
+#uMenuName {
+	width:100%;
+	margin-top:5px;
+	font-size:18px;
 	font-weight:bold;
 }
 
 #uStats {
 	font-size:10px;
 	color:gray;
+}
+
+#moduleLastChanges, #moduleWhoIsThere {
+	text-align:left;
 }
 
 /* Login Box */

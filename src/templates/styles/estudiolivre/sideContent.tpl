@@ -124,7 +124,7 @@
 
   <div id="userMenuContainer">
 
-	<span id="uName" style="border:1px solid ">
+	<span id="uMenuName">
 		<a href="el-user.php?view_user={$user}">{$user}</a>
 	</span>
   
@@ -145,7 +145,7 @@
 	<img alt="" src="styles/estudiolivre/iKarmaInactive.png">
       </span>
     </div>
-    <br style="line-height:7px;">
+    <br style="line-height:10px;">
      <hr>
     
     <div id="moduleLastChanges">
