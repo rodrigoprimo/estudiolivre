@@ -38,8 +38,8 @@ function exibeCampo(field, value) {
 		showElement.innerHTML = value.replace(new RegExp(/\n/g), '<br/>');
 		var editElement = document.getElementById("input-" + field);
 		editElement.style.display = "none";
-		editElement.value = value;
     }
+	editElement = document.getElementById("input-" + field).value = '';
 	hide('error-' + field);
 	eval('errorMsg_' + field + ' = "";');
 }

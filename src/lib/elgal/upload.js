@@ -52,6 +52,13 @@ function finishUpload() {
 		if (thumbUpId == null) {
 			xajax_generate_thumb(arquivoId);
 		}
+		xajax_get_file_info(arquivoId);
+	}
+}
+
+function setAutoFields(result) {
+	for (var i=0; i<result.length; i += 2) {
+		exibeCampo(result[i], result[i+1]);		
 	}
 }
 

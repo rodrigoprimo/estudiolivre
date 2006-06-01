@@ -139,7 +139,7 @@
     
      <br style="clear:both; line-height:20px;">
     
-    <div id="gUpSave">
+    <div id="save-exit" style="display: none">
        <img src="styles/estudiolivre/bSave.png" onClick="xajax_check_publish(arquivoId)"/>
     </div>
 

@@ -260,6 +260,15 @@ class ELGalLib extends TikiLib {
   	$error = $this->check_field($name, $value);
 	if ($error) return $error;
 
+	$cache = $this->get_edit_cache($arquivoId);
+	
+	$cache[$name] = $value;
+	
+	$this->set_edit_cache($arquivoId, $cache);
+
+  }
+  
+  function get_edit_cache($arquivoId) {
 	$arquivo = $this->get_arquivo($arquivoId);
 	$cache = $arquivo['editCache'];
 	if (!$cache) {
@@ -267,11 +276,12 @@ class ELGalLib extends TikiLib {
 	} else {
 		$cache = unserialize($cache);
 	}
-	
-	$cache[$name] = $value;
-	
-	$query = "update `el_arquivo` set `editCache`=? where `arquivoId`=?";
-	$this->query($query, array(serialize($cache),$arquivoId));
+  	return $cache;
+  }
+  
+  function set_edit_cache($arquivoId, $cache) {
+  		$query = "update `el_arquivo` set `editCache`=? where `arquivoId`=?";
+		$this->query($query, array(serialize($cache),$arquivoId));
   }
   
   function commit($arquivoId) {
@@ -578,7 +588,7 @@ class ELGalLib extends TikiLib {
     $result = $this->query($query,$bindvals);
     return $result->fetchRow();
   }
-
+  
   function add_file_hit($id) {
     $query = "update el_arquivo set `hits`=`hits`+1 where `arquivoId`=?";
     $result = $this->query($query,array($id));
@@ -642,7 +652,7 @@ class ELGalLib extends TikiLib {
       // rolooooowww
       return FALSE;
   }
-    
+  
   function create_thumb_imagem($image) {
     
     $fp = fopen($image, 'rb');
@@ -749,6 +759,36 @@ class ELGalLib extends TikiLib {
       
       return $data;
   }
+  
+  
+  function extract_file_info($arquivoId) {
+  	$arquivo = $this->get_arquivo($arquivoId);
+  	$tipo = $arquivo["tipo"];
+  	$methodName = 'extract_file_info_' . strtolower($tipo);
+  	if (method_exists($this, $methodName)) {
+  		return $this->$methodName($arquivo["arquivo"]);
+  	} else {
+  		return array();
+  	}
+  }
+  
+  function extract_file_info_imagem($image) {
+	$path = "repo/" . $image;
+	$result = array();
+	list($result['tamanhoImagemX'], $result['tamanhoImagemY']) = getimagesize($path);
+	return $result;
+  }
+
+  function extract_file_info_audio($path) {
+  	//
+  }  
+  
+  function extract_file_info_video($path) {
+  	//
+  }
+  
+  
+    
   
   function new_files($user) {
     

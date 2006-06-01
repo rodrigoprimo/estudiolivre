@@ -73,6 +73,36 @@ function generate_thumb($arquivoId) {
 	return $objResponse;
 }
 
+
+$ajaxlib->registerFunction('get_file_info');
+function get_file_info($arquivoId) {
+	global $elgallib;
+	
+	$objResponse = new xajaxResponse();
+	
+	$cache = $elgallib->get_edit_cache($arquivoId);
+	$result = $elgallib->extract_file_info($arquivoId);
+	// diff para saber campos novos
+	$result = array_diff($result, $cache);
+	// merge
+	$cache = array_merge($cache, $result);
+	
+	$elgallib->set_edit_cache($arquivoId, $cache);
+	
+	// deixa o foreach no php, q js eh uma bosta pra isso
+	$formattedResult = array();
+	foreach ($result as $key => $value) {
+		array_push($formattedResult, $key, $value);
+	}
+	
+	if (sizeOf($result) > 0) {
+		$objResponse->addScriptCall('setAutoFields', $formattedResult);
+	}
+	
+	return $objResponse;
+}
+
+
 $ajaxlib->registerFunction('set_arquivo_licenca');
 function set_arquivo_licenca ($arquivoId, $resposta1, $resposta2, $padrao = false) {
 
