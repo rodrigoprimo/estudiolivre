@@ -1087,6 +1087,7 @@ DIV.gUpAuthor {
 A.gUpmore {
 	font-size:11px;
 	margin-right:5px;
+	/*margin-bottom:15px;*/
 }
 
 #gUpMoreOptions INPUT {
@@ -1096,25 +1097,31 @@ A.gUpmore {
 	font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;
 	background-color: #f1f1f1;
 	margin-right:4px;
+	max-width: 100px;
 }
 
 #gUpMoreOptions * {
 	margin-top:	3px;
 }
 
+#gUpMoreOptionsContent {
+	padding-top:10px;
+}
+
+.gUpMoreOptionsItem{
+	height:22px;
+}
+
 .gUpMoreOptionsName {
-/*	display:inline;	*/
 	text-align:right;
 	padding-right:5px;
 	float:left;
 	width:94px;
 }
 
-.gUpMoreOptionsInput {
-	display:inline;	
+.gUpMoreOptionsInput:hover {
+	background-color:#ffffd3;
 }
-
-
 
 #gUpSave {
 	text-align:center;
