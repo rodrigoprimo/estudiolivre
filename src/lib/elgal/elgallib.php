@@ -652,30 +652,68 @@ class ELGalLib extends TikiLib {
     while (!feof($fp)) {
       $data .= fread($fp, 8192 * 16);
     }
+    fclose($fp);
     
     
     if (!function_exists('imagepng')) {
     	return false;
     }
-      
+    
+    $thumbSide = $this->get_preference('el_thumb_side', 60);
+    
     //bloco que acha a proporcao pro thumbnail
     list($width, $height) = getimagesize($image);
-    $percent = ($width>(12/7.5)*$height) ? 120/$width : 75/$height;
+	
+	if ($width < $thumbSide && $height < $thumbSide) {
+		return $data;
+	}
+	
+    
+    $sourceX = 0;
+    $sourceY = 0;
+    $destX = 0;
+    $destY = 0;
+    $sourceW = $width;
+    $sourceH = $height;
+    
+    // crop normal
+    if ($width > $height) {
+    	$sourceX = ($width - $height) / 2;
+    	$sourceW = $height;
+    	
+    } elseif ($height > $width) {
+    	$sourceY = ($height - $width) / 2;
+    	$sourceH = $width;
+
+    }
+    
+    $destW = $thumbSide;
+    $destH = $thumbSide;
+	
+	// se o lado da imagem eh menor q o thumb
+   	if ($height < $thumbSide) {
+   		$destY = ($thumbSide - $height) / 2;
+   		$destH = $height;
+   	}
+   	if ($width < $thumbSide) {
+   		$destX = ($thumbSide - $width) / 2;
+   		$destW = $width;
+   	}
+    
+    
     $src = imagecreatefromstring($data);
-    $img = imagecreatetruecolor($width*$percent, $height*$percent);
-    imagecopyresized($img, $src, 0, 0, 0, 0, $width*$percent, $height*$percent, $width, $height);
-      
+    $img = imagecreatetruecolor($thumbSide, $thumbSide);
+    
+    imagecopyresized($img, $src, $destX, $destY, $sourceX, $sourceY, $destW, $destH, $sourceW, $sourceH);
+	
+    
+    
     ob_start();
     imagepng($img);
     $data = ob_get_contents();
     ob_end_clean();
     
     return $data;
-    global $tikilib;
-    $tikilib->blob_encode($data);
-    fclose($fp);
-    
-    
   }
   
   
