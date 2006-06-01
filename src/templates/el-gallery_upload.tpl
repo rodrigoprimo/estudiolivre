@@ -78,10 +78,9 @@
         </form>
       </div>
     </div>
-    <form>  
 
     <div id="gUpTitleAuthor">
-        {ajax_input permission=$permission class="gUpEdit gUpTitle" id="titulo" value=$arquivo.titulo default="Titulo" display="inline"}
+        {ajax_input permission=$permission class="gUpEdit gUpTitle" id="titulo" value=$arquivo.titulo default="Titulo" display="inline" truncate=50}
 		<div id="gUpAuthorCont">
 		  	Por {ajax_input permission=$permission class="gUpAuthor gUpEdit" id="autor" value=$realName default="Autor da obra" display="inline" mode="edit"}
 		</div>
@@ -139,11 +138,10 @@
     
      <br style="clear:both; line-height:20px;">
     
-    <div id="save-exit" style="display: none">
+    <div id="save-exit">
        <img src="styles/estudiolivre/bSave.png" onClick="xajax_check_publish(arquivoId)"/>
     </div>
 
-    </form>
 
   </div>
   

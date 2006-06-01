@@ -297,9 +297,7 @@ img {
 
 .hiddenDescript {
 	display:none;
-	/*border: 1px solid blue;*/
 	position:absolute;
-	/*right:999px;*/
 	width:150px;
 	text-align:center;
 	height:0px;
@@ -1039,6 +1037,7 @@ DIV.gUpTitle{
 	font-size:12px;
 	overflow: -moz-scrollbars-vertical;
 	float:left;
+	font-weight:normal;
 }
 
 #error-descricao {

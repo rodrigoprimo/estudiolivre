@@ -1,10 +1,10 @@
 var saveFieldCache = new Array();
 var display = new Array();
+var truncations = new Array();
 var mudado = new Array();
 var thumbTimerId = null;
 var thumbUpId;
 var upThumbStarted = false;
-
 
 function saveField(fieldObj){
     var field = fieldObj.id.replace(/^input-/,'');
@@ -18,7 +18,6 @@ function saveField(fieldObj){
     if (saveFieldCache[field] == null || saveFieldCache[field] != value) {
 		//precisa ser implementada em cada caso que for editar campos em ajax
 		call_save_function(field, value);
-		saveFieldCache[field] = value;
 		startEdit();
     } else {
 		exibeCampo(field, value);
@@ -34,16 +33,22 @@ function limpaCampo(field) {
 function exibeCampo(field, value) {
 	var editElement = document.getElementById("input-" + field);
 	var type = editElement.type;
+	var truncated;
+	if (truncations[field] && value.length > truncations[field]) {
+		truncated = value.substring(0, truncations[field]) + '(...)';
+	} else {
+		truncated = value;
+	}
 	if (value.length > 0 && type != 'checkbox') {
 		var showElement = document.getElementById("show-" + field);
 		showElement.style.display = display[field];
-		showElement.innerHTML = value.replace(new RegExp(/\n/g), '<br/>');
+		showElement.innerHTML = truncated; //replace(new RegExp(/\n/g), '<br/>'); - parse_data ja poe br
 		editElement.style.display = "none";
-    } else if (type == 'checkbox') {
+		saveFieldCache[field] = value;		
+	} else if (type == 'checkbox') {
     	editElement.checked = value ? 1 : 0;
     }
     
-	editElement.value = '';
 	hide('error-' + field);
 	eval('errorMsg_' + field + ' = "";');
 }
@@ -56,6 +61,10 @@ function showEdit(field) {
 function editaCampo(field) {
 	showEdit(field);
     document.getElementById("input-" + field).focus();
+}
+
+function setEditData(field, value) {
+	document.getElementById('input-'+field).value = value;
 }
 
 function restoreField(field, value) {

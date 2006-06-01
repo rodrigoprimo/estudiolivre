@@ -58,6 +58,7 @@ function finishUpload() {
 
 function setAutoFields(result) {
 	for (var i=0; i<result.length; i += 2) {
+		setEditData(result[i], result[i+1]);
 		exibeCampo(result[i], result[i+1]);		
 	}
 }
@@ -161,17 +162,21 @@ function updateThumbProgressMeter(uploadInfo) {
 var resposta1 = null;
 var resposta2 = null;
 
-function checkLightboxLicenca() {
+function saveLicenca() {
 	var padrao = false;
 	if (resposta1 && resposta2) {
 		padrao = (document.getElementById("uLicencaPadrao").checked ? 1 : 0);
 		xajax_set_arquivo_licenca(arquivoId, resposta1, resposta2, padrao);
-		return true;
+		hide('licencaErro');
+		hideLightbox();
 	} else {
-		alert("Você não escolheu nenhuma licença!!!");
-		return false;
+		show('licencaErro');
 	}
 }
 
-setLightboxCheckFunction('el-license',checkLightboxLicenca);
+function hideLicencaErro() {
+		hide('licencaErro');
+		return true;
+}
+setLightboxCheckFunction('el-license',hideLicencaErro);
 

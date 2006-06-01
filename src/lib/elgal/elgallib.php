@@ -344,6 +344,7 @@ class ELGalLib extends TikiLib {
   
   function check_field($name, $value) {
   	// verifica dados
+  	
   	$methodName = "check_field_" . $name;
   	if (method_exists($this, $methodName)) {
   		$error = $this->$methodName($value);
@@ -351,36 +352,29 @@ class ELGalLib extends TikiLib {
   	}
   }
   
-  function check_required_field($value) {
+  function check_required_field($value, $msg = 'Campo obrigatório') {
   	if (preg_match('/^\s*$/',$value)) {
-  		return "Campo obrigatório!";
+  		return "$msg";
   	}
   }
   
-  function check_field_titulo($name) { return $this->check_required_field($name);  }
-  function check_field_autor($value) { return $this->check_required_field($value);  }
-  function check_field_descricao($value) { return $this->check_required_field($value);  }
-  /*
-   * 
-  function check_field_($value) { return $this->check_required_field($value);  }
-  function check_field_($value) { return $this->check_required_field($value);  }
-  function check_field_($value) { return $this->check_required_field($value);  }
-  function check_field_($value) { return $this->check_required_field($value);  }
-  */
+  function check_field_titulo($name) { return $this->check_required_field($name, 'O título é obrigatório');  }
+  function check_field_autor($value) { return $this->check_required_field($value, 'O autor é obrigatório');  }
+  function check_field_descricao($value) { return $this->check_required_field($value, 'A descrição é obrigatória');  }
   
-  function check_numeric_field($value) {
+  function check_numeric_field($value, $msg = 'Campo numérico') {
   	if (!preg_match('/^\d*$/', $value)) {
-  		return "Campo numérico!";
+  		return $msg;
   	}
   }
   
-  function check_field_tamanhoImagemX($value) { return $this->check_numeric_field($value); } 
-  function check_field_tamanhoImagemY($value) { return $this->check_numeric_field($value); } 
-  function check_field_dpi($value) { return $this->check_numeric_field($value); } 
-  function check_field_duracao($value) { return $this->check_numeric_field($value); } 
-  function check_field_bpm($value) { return $this->check_numeric_field($value); } 
-  function check_field_sampleRate($value) { return $this->check_numeric_field($value); } 
-  function check_field_bitRate($value) { return $this->check_numeric_field($value); } 
+  function check_field_tamanhoImagemX($value) { return $this->check_numeric_field($value, 'Largura deve ser um número'); } 
+  function check_field_tamanhoImagemY($value) { return $this->check_numeric_field($value, 'Altura deve ser um número'); } 
+  function check_field_dpi($value) { return $this->check_numeric_field($value, 'DPI deve ser um número'); } 
+  function check_field_duracao($value) { return $this->check_numeric_field($value, 'Duração deve ser um número'); } 
+  function check_field_bpm($value) { return $this->check_numeric_field($value, 'BPM deve ser um número'); } 
+  function check_field_sampleRate($value) { return $this->check_numeric_field($value, 'Sample rate deve ser um número'); } 
+  function check_field_bitRate($value) { return $this->check_numeric_field($value, 'Bit rate deve ser um número'); } 
    
   
   function get_arquivo($arquivoId) {
@@ -549,14 +543,18 @@ class ELGalLib extends TikiLib {
 
   function check_publish($arquivoId) {
   	$arquivo = $this->get_arquivo($arquivoId);
-  	
-  	$errorList = '';
-  	
+  	$cache = unserialize($arquivo['editCache']);
+  	$errorList = array();
   	
   	foreach ($arquivo as $key => $value) {
+  		if (isset($cache[$key])) {
+  			$value = $cache[$key];
+  		} else {
+  			$value = '';
+  		}
   		if (!is_array($value)) {
 	  		if ($error = $this->check_field($key, $value)) {
-  				$errorList .= $error . "\n";
+  				$errorList[$key] = $error;
   			}
   		}
   	}

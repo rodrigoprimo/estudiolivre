@@ -12,7 +12,7 @@ function save_field($arquivoId, $name, $value) {
 	    global $elgallib, $user, $el_p_admin_acervo;
 	    $arquivo = $elgallib->get_arquivo($arquivoId);
 	    if ($user != $arquivo['user'] && $el_p_admin_gallery != 'y') {
-	    	if (!$usr) $objResponse->addAlert('Sua sessao expirou!');
+	    	if (!$usr) $objResponse->addAlert('Sua sessão expirou!');
 			return $objResponse;
 	    }
 	    $error = $elgallib->edit_field($arquivoId, $name, $value);
@@ -20,6 +20,11 @@ function save_field($arquivoId, $name, $value) {
 	    if($error) {
 			$objResponse->addScriptCall('exibeErro', $name, $error);
 	    } else {
+	    	// TODO: generalizar isso?
+	    	if ($name == 'descricao') {
+	    		$value = $elgallib->parse_data($value);
+	    		//$value = htmlspecialchars($value);
+	    	}
 			$objResponse->addScriptCall('exibeCampo', $name, $value);
 	    }
 	}

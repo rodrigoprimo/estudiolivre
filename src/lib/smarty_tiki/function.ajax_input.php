@@ -59,9 +59,14 @@ function smarty_function_ajax_input($params, &$smarty) {
 	
 	$output .= "<img id=\"error-$id\" class=\"gUpErrorImg\" style=\"display: none\" src=\"styles/estudiolivre/errorImg.png\" onMouseover=\"overlib(errorMsg_$id);\" onMouseout=\"nd();\"> ";
 	
-	$output .= '<script language="JavaScript">display["'.$id.'"] = "'.$display.'";errorMsg_'.$id.' = "";</script>';
+	$output .= '<script language="JavaScript">';
+	$output .= '  display["'.$id.'"] = "'.$display.'";errorMsg_'.$id.' = "";';
+	if ($truncate) {
+    	$output .= '  truncations["'.$id.'"] = "'.$truncate.'";';
+	}
+    $output .= '</script>';
 		
-	return $output;	 	
+	return $output;
 }
 
 ?>

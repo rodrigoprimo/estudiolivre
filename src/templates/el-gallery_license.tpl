@@ -26,12 +26,15 @@
 		<br />
 		
 		<input id="uLicencaPadrao" type="checkbox" {if !$licenca}checked{/if}/> Definir como licença padrão.
-		
+		<div id="licencaErro" style="display: none">Você não escolheu nenhuma licença!</div>
         <br />
 		<table class="el-upload-general el-upload-general3">
 			<tr>
 				<td class="el-upload-general-right">
-				<input style="width: auto;" type="submit" id="_submit" name="save" value="Escolher" onClick="hideLightbox()"/>&nbsp;&nbsp;&nbsp;
+					<input style="width: auto;" type="submit" value="Escolher" onClick="saveLicenca();"/>&nbsp;&nbsp;&nbsp;
+				</td>
+				<td class="el-upload-general-right">
+					<input style="width: auto;" type="submit" value="Cancelar" onClick="hideLightbox();"/>&nbsp;&nbsp;&nbsp;
 				</td>
 			</tr>
 		</table>

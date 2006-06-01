@@ -141,7 +141,7 @@ function publish_arquivo($arquivoId) {
 	$objResponse = new xajaxResponse();
     
     if ($elgallib->publish_arquivo($arquivoId)) {
-    	$objResponse->addRedirect("el-gallery_manage.php?arquivoId=$arquivoId&action=view");
+    	$objResponse->addRedirect("el-gallery_view.php?arquivoId=$arquivoId");
     } else {
     	$objResponse->addAlert("Não foi possível publicar o arquivo");
     }
@@ -153,8 +153,13 @@ function check_publish($arquivoId) {
 	global $elgallib;
 	$objResponse = new xajaxResponse();
     
-    if ($error = $elgallib->check_publish($arquivoId)) {
-    	$objResponse->addAssign("gUpErrorList", "innerHTML", nl2br($error));
+    if ($errorList = $elgallib->check_publish($arquivoId)) {
+    	$errorMsgs = '';
+    	foreach ($errorList as $field => $error) {
+    		$errorMsgs .= $error . "<br>\n";
+    		$objResponse->addScriptCall('exibeErro',$field, $error);
+    	}
+    	$objResponse->addAssign("gUpErrorList", "innerHTML", $errorMsgs);
     	$objResponse->addScript("showLightbox('gUpError')");
     } else {
     	$objResponse->addScript("showLightbox('el-publish')");
