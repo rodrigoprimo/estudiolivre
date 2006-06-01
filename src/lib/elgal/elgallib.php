@@ -766,25 +766,42 @@ class ELGalLib extends TikiLib {
   	$tipo = $arquivo["tipo"];
   	$methodName = 'extract_file_info_' . strtolower($tipo);
   	if (method_exists($this, $methodName)) {
-  		return $this->$methodName($arquivo["arquivo"]);
+  		
+  		$path = "repo/" . $arquivo["arquivo"];
+  		return $this->$methodName($path);
   	} else {
   		return array();
   	}
   }
   
-  function extract_file_info_imagem($image) {
-	$path = "repo/" . $image;
+  function extract_file_info_imagem($path) {
 	$result = array();
 	list($result['tamanhoImagemX'], $result['tamanhoImagemY']) = getimagesize($path);
 	return $result;
   }
 
   function extract_file_info_audio($path) {
-  	//
+  	$audio = new ffmpeg_movie($path, 0);
+      
+    $result = array();
+    $result['duracao'] = $audio->getDuration();
+    $result['bitRate'] = $audio->getBitRate();
+    
+    return $result;
   }  
   
   function extract_file_info_video($path) {
-  	//
+      $movie = new ffmpeg_movie($path, 0);
+      
+      $result = array();
+      $result['tamanhoImagemX'] = $movie->getFrameWidth();
+      $result['tamanhoImagemY'] = $movie->getFrameHeight();
+      $result['duracao'] = $movie->getDuration();
+      $result['temAudio'] = $movie->hasAudio();
+      
+      // TODO tem cor ?
+      
+      return $result;
   }
   
   

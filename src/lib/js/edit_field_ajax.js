@@ -32,14 +32,18 @@ function limpaCampo(field) {
 }
 
 function exibeCampo(field, value) {
-    if (value.length > 0) {
+	var editElement = document.getElementById("input-" + field);
+	var type = editElement.type;
+	if (value.length > 0 && type != 'checkbox') {
 		var showElement = document.getElementById("show-" + field);
 		showElement.style.display = display[field];
 		showElement.innerHTML = value.replace(new RegExp(/\n/g), '<br/>');
-		var editElement = document.getElementById("input-" + field);
 		editElement.style.display = "none";
+    } else if (type == 'checkbox') {
+    	editElement.checked = value ? 1 : 0;
     }
-	editElement = document.getElementById("input-" + field).value = '';
+    
+	editElement.value = '';
 	hide('error-' + field);
 	eval('errorMsg_' + field + ' = "";');
 }
