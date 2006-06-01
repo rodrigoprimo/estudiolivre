@@ -179,7 +179,7 @@ img {
 	text-decoration: none;
 }
 
-#wikitext .titlebar {
+.titlebar {
 	/*display:inline;*/
 	/*height:10px;*/
 	padding-left:10px;
@@ -193,7 +193,7 @@ img {
 	background-color:#eeeeee;
 }
 
-#wikitext .titlebar:first-letter {
+.titlebar:first-letter {
     text-transform: uppercase;
    	font-size:28px;
    	text-weight:bold;
@@ -392,6 +392,13 @@ img {
 	text-align:justify;
 }
 
+p.editdate {
+	float:right;
+	border-top:1px solid #ececec;
+	padding-top:5px;
+	font-size:10px;
+	text-align:right;
+}
 /* side content */
 
 #sideContent {
