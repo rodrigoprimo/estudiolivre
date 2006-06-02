@@ -59,22 +59,18 @@
 					</div>
 				</div>
 				<div id="aNameAuthor">
+					{if $permission}
+						<a id="aDelete" href="el-gallery_delete.php?arquivoId={$arquivo.arquivoId}">{tooltip name="apagar-arquivo-acervo" text="Apagar esse arquivo"}<img src="styles/estudiolivre/iDelete.png"/>{/tooltip}</a>
+					{/if}
 					<div id="aName">
-						{ajax_input permission=$permission class="gUpTitle gUpEdit" id="titulo" value=$arquivo.titulo default="Titulo" display="inline"}
-						{if $user eq $arquivo.user}
-							<form method="post" action="el-gallery_manage.php" style="display:inline">
-								<input type="hidden" name="arquivoId" value="{$p.arquivoId}" />
-								<input type="hidden" name="action" value="delete" />
-								<input type="submit" value="{tr}excluir{/tr}" />
-							</form>
-						{/if}
+						{ajax_input permission=$permission class="gUpEdit" id="titulo" value=$arquivo.titulo default="Titulo" display="inline"}
 					</div>
-			
 					<div id="aAuthorDate">
 						por <a href="#">{$arquivo.autor}</a> em <i>{$arquivo.data_publicacao|date_format:"%d/%m/%Y"}</i>
 					</div>
 				</div>
 			</div>
+					
 			<div id="aActions">
 				{if $user}
 					<span>
@@ -97,7 +93,7 @@
 			</div>
 		</div>
 	</div>
-	<br />
+	<br style="line-height: 25px"/>
 	<div id="aMiddle">
 		
 		<!-- comentarios -->
@@ -105,13 +101,16 @@
 		{if $tiki_p_read_comments eq 'y'}
 		<div id="aComments">
 			<div id="aCommentsTitle" class="uMainTitle">
-				<a href="#comments" onClick="flip('aCommentsItemsCont'); flip('aCommentSend'); return false;">
-					<img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
-				</a>
-				<h1>Comentários ({$comments_cant})</h1>
+				<div class="aTitleCont">
+					<a href="#comments" onClick="flip('aCommentsItemsCont'); flip('aCommentSend'); return false;">
+						<img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
+					</a>
+					<h1>Comentários ({$comments_cant})</h1>
+					<img id="aCommentsRss" src="styles/estudiolivre/iRss.png"/>
+				</div>
 			</div>
-			{if $comments_cant > 0}
 			<div id="aCommentsItemsCont" class="aItemsCont" style="display:block">
+				{if $comments_cant > 0}
 				{foreach from=$comments_coms item='comment'}
 					<div class="uMsgItem">
 						<div class="uMsgAvatar">
@@ -130,12 +129,11 @@
 							<a href="el-user.php?view_user={$comment.userName}">{$comment.userName}</a>: {$comment.parsed}
 						</div>
 					</div>
-					<hr>
 				{/foreach}
+				{/if}
 			</div>
-			{/if}
-			{if $user and (($tiki_p_forum_post eq 'y' and $forum_mode eq 'y') or ($tiki_p_post_comments eq 'y' and $forum_mode ne 'y'))}
 			<div id="aCommentSend" style="display:block">
+				{if $user and (($tiki_p_forum_post eq 'y' and $forum_mode eq 'y') or ($tiki_p_post_comments eq 'y' and $forum_mode ne 'y'))}
 				<div id="uMsgSend">
 					<form method="post" action="{$comments_father}" id='editpostform'>
 		    			<input type="hidden" name="comments_reply_threadId" value="{$comments_reply_threadId|escape}" />    
@@ -155,8 +153,8 @@
 					</form>
 					<br /><br /><br />
 				</div>
+				{/if}
 			</div>
-			{/if}
 		</div>
 		{/if}
 		<!-- fim dos comentarios -->
@@ -164,22 +162,27 @@
 		<div id="aDescriptionInfo">
 			<div id="aDesc">
 				<div id="aDescTitle" class="uMainTitle">
-					<a href="#" onClick="javascript:flip('aDescCont'); return false;">
-						<img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
-					</a>					
-					<h1>Descrição</h1>
+					<div class="aTitleCont aTitleContRight">
+						<a href="#" onClick="flip('aDescCont');">
+							<img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
+						</a>					
+						<h1>Descrição</h1>
+					</div>
 				</div>
-				{ajax_textarea permission=$permission class="aItemsCont" id="descricao" value=$arquivo.descricao display="block"}
+				<div id="aDescCont" class="aItemsCont" style="display:block">
+					{ajax_textarea permission=$permission class="gUpEdit" style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" id="descricao" value=$arquivo.descricao display="block"}
+				</div>
 			</div>
-			<br />
 			<div id="aInfo">
 				<div id="aInfoTitle" class="uMainTitle">
-					<a href="#" onClick="flip('aInfoCont'); return false;">
-						<img onclick="this.toggleImage('iArrowGreyDown.png')" src="styles/estudiolivre/iArrowGreyRight.png">
-					</a>					
-					<h1>Detalhes do Arquivo</h1>
+					<div class="aTitleCont aTitleContRight">
+						<a href="#" onClick="flip('aInfoCont'); return false;">
+							<img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
+						</a>					
+						<h1>Detalhes do Arquivo</h1>
+					</div>
 				</div>
-				<div id="aInfoCont" class="aItemsCont" style="display:none">
+				<div id="aInfoCont" class="aItemsCont" style="display:block">
 					<span class="campo">Detentor dos DA:</span> {$arquivo.donoCopyright}<br/>
 					<span class="campo">Produtora:</span> {$arquivo.produtora}<br/>
 					<span class="campo">Contato:</span> {$arquivo.contato}<br/>
@@ -265,7 +268,7 @@ treco bizarro:<br>
 
   <img src="http://creativecommons.org/images/public/somerights20.pt.png"><br/><br/><br/>
 
-  {if $user eq $arquivo.user}
+  {if $permission}
   <form method="post" action="el-gallery_manage.php" style="display:inline">
     <input type="hidden" name="arquivoId" value="{$arquivoId}" />
     <input type="hidden" name="action" value="edit" />

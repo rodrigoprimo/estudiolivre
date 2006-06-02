@@ -88,7 +88,9 @@
       
     <br style="clear:both; line-height:30px;">
     <div id="gUpDescription">
-    	{ajax_textarea permission=$permission  display="block" style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" class="gUpEdit" id="descricao" value=$arquivo.descricao default="Escreva aqui a descrição da sua obra"}
+    	<div>
+	    	{ajax_textarea permission=$permission  display="block" style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" class="gUpEdit gUpDescription" id="descricao" value=$arquivo.descricao default="Escreva aqui a descrição da sua obra"}
+	    </div>
     </div>
     
     <br style=" line-height:20px;">
