@@ -80,7 +80,7 @@
     
     {tooltip name="list-tags-arquivo" text="Tags desse arquivo"}<div id="gTags">
     {foreach from=$arquivo.tags.data item=t}
-      <a href="tiki-browse_freetags.php?tag={$t.tag}">{$t.tag}</a> 
+      <a href="tiki-browse_freetags.php?tag={$t.tag}">{$t.tag}</a>,
     {foreachelse}
       &nbsp;
     {/foreach}

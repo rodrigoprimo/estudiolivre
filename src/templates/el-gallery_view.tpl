@@ -86,7 +86,7 @@
 			</div>			
 			<div id="aTags">
 				{foreach from=$arquivo.tags.data item=t}
-			        <a class="freetag" href="tiki-browse_freetags.php?tag={$t.tag}">{$t.tag}</a> 
+			        <a class="freetag" href="tiki-browse_freetags.php?tag={$t.tag}">{$t.tag}</a>,
     			{foreachelse}
       				&nbsp;
     			{/foreach}
