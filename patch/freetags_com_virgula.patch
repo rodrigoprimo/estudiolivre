@@ -1,0 +1,11 @@
+--- lib/freetag/freetaglib.php	2006-05-23 13:45:05.000000000 -0300
++++ lib/freetag/freetaglib.php	2006-06-02 15:42:50.000000000 -0300
+@@ -922,5 +922,7 @@
+ 
+ }
+ 
++require_once("lib/freetag/eltaglib.php");
++
+ global $dbTiki;
+-$freetaglib = new FreetagLib($dbTiki);
++$freetaglib = new ElTagLib($dbTiki);
