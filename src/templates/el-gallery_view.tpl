@@ -76,15 +76,17 @@
 				</div>
 			</div>
 			<div id="aActions">
-				<span>
-				{section name=rating start=1 loop=6 step=1}
-			    	{if $arquivo.userRating && $arquivo.userRating >= $smarty.section.rating.index}
-		  		    	<img id="aRatingVote-{$smarty.section.rating.index}" src="styles/estudiolivre/iStarOn.png" border="0" onClick="acervoVota({$arquivo.arquivoId},{$smarty.section.rating.index})"/>
-			    	{else}
-			        	<img id="aRatingVote-{$smarty.section.rating.index}" src="styles/estudiolivre/iStarOff.png" border="0" onClick="acervoVota({$arquivo.arquivoId},{$smarty.section.rating.index})"/>
-				    {/if}
-			    {/section}
-			    </span>
+				{if $user}
+					<span>
+					{section name=rating start=1 loop=6 step=1}
+				    	{if $arquivo.userRating && $arquivo.userRating >= $smarty.section.rating.index}
+			  		    	<img id="aRatingVote-{$smarty.section.rating.index}" src="styles/estudiolivre/iStarOn.png" border="0" onClick="acervoVota({$arquivo.arquivoId},{$smarty.section.rating.index})"/>
+				    	{else}
+				        	<img id="aRatingVote-{$smarty.section.rating.index}" src="styles/estudiolivre/iStarOff.png" border="0" onClick="acervoVota({$arquivo.arquivoId},{$smarty.section.rating.index})"/>
+					    {/if}
+				    {/section}
+				    </span>
+			    {/if}
 			</div>			
 			<div id="aTags">
 				{foreach from=$arquivo.tags.data item=t}

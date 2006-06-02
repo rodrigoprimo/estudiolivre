@@ -43,6 +43,9 @@ class ELGalLib extends TikiLib {
   }
   
   function vote_arquivo($arquivoId, $user, $nota) {
+  	  if (!$user) {
+  	  	return false;
+  	  }
       $this->query("delete from `el_arquivo_rating` where `arquivoId`=? and `user`=?",
 		   array($arquivoId, $user));
 
