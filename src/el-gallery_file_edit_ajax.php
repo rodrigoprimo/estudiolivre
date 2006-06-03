@@ -1,5 +1,8 @@
 <?php
 
+global $userHasPermOnFile;
+
+$ajaxlib->setPermission('save_field', $userHasPermOnFile);
 $ajaxlib->registerFunction('save_field');
 function save_field($arquivoId, $name, $value) {
 	global $el_p_admin_gallery;
@@ -9,12 +12,8 @@ function save_field($arquivoId, $name, $value) {
 	if ($name == 'tags') {
 	    _tag_arquivo($arquivoId, $value);
 	} else {
-	    global $elgallib, $user, $el_p_admin_acervo;
-	    $arquivo = $elgallib->get_arquivo($arquivoId);
-	    if ($user != $arquivo['user'] && $el_p_admin_gallery != 'y') {
-	    	if (!$usr) $objResponse->addAlert('Sua sessão expirou!');
-			return $objResponse;
-	    }
+	    global $elgallib;
+	    
 	    $error = $elgallib->edit_field($arquivoId, $name, $value);
 	    
 	    if($error) {
@@ -51,6 +50,7 @@ function _tag_arquivo($arquivoId, $tag_string) {
 
 }
 
+$ajaxlib->setPermission('commit_arquivo', $userHasPermOnFile);
 $ajaxlib->registerFunction('commit_arquivo');
 function commit_arquivo($arquivoId) {
 	global $elgallib;
@@ -62,6 +62,7 @@ function commit_arquivo($arquivoId) {
 	return $objResponse;
 }
 
+$ajaxlib->setPermission('rollback_arquivo', $userHasPermOnFile);
 $ajaxlib->registerFunction('rollback_arquivo');
 function rollback_arquivo($arquivoId) {
 	global $elgallib;
@@ -81,6 +82,7 @@ function rollback_arquivo($arquivoId) {
 	return $objResponse;
 }
 
+$ajaxlib->setPermission('restore_edit', $userHasPermOnFile);
 $ajaxlib->registerFunction('restore_edit');
 function restore_edit($arquivoId) {
 	global $elgallib;
@@ -97,5 +99,21 @@ function restore_edit($arquivoId) {
 	return $objResponse;
 		
 }
+
+$ajaxlib->setPermission('generate_thumb', $userHasPermOnFile);
+$ajaxlib->registerFunction('generate_thumb');
+function generate_thumb($arquivoId) {
+	global $elgallib;
+
+	$objResponse = new xajaxResponse();
+	$arquivo = $elgallib->get_arquivo($arquivoId);
+	
+	$elgallib->generate_thumb($arquivoId);
+	$objResponse->addScript("document.getElementById('thumbnail').src = 'repo/" . $arquivo['thumbnail'] . "';");
+		
+	return $objResponse;
+}
+
+
 
 ?>

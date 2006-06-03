@@ -21,6 +21,11 @@ function upload() {
 
 function startUpload(id) {
 	arquivoId = id;
+	if (xajaxRequestUri.match(new RegExp(/arquivoId=/))) {
+		xajaxRequestUri = xajaxRequestUri.replace(new RegExp(/arquivoId=\d+/), 'arquivoId='+id);
+	} else {
+		xajaxRequestUri += '?arquivoId=' + id;
+	}
 	document.uploadForm.arquivoId.value = arquivoId;
 	document.thumbForm.arquivoId.value = arquivoId;
 	updateUploadInfo();

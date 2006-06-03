@@ -3,6 +3,10 @@
 require_once("dumb_progress_meter.php");
 require_once("el-gallery_file_edit_ajax.php");
 
+global $userHasPermOnFile;
+
+//TODO agora ja sabemos o arquioId de antemão
+
 $ajaxlib->statusMessagesOff();
 $ajaxlib->waitCursorOff();
 $ajaxlib->debugOff();
@@ -17,6 +21,7 @@ function upload_info($uploadId, $callback = 'updateProgressMeter') {
 	return $objResponse;
 }
 
+$ajaxlib->setPermission('create_file', $userHasPermOnFile);
 $ajaxlib->registerFunction('create_file');
 function create_file($tipo, $fileName, $uploadId) {
 	$objResponse = new xajaxResponse();
@@ -61,25 +66,13 @@ function _extractScripts($content) {
 	return $script;
 }
 
-$ajaxlib->registerFunction('generate_thumb');
-function generate_thumb($arquivoId) {
-
-	//TODO permissao
-	global $elgallib;
-	$elgallib->generate_thumb($arquivoId);
-	$objResponse = new xajaxResponse();
-	$arquivo = $elgallib->get_arquivo($arquivoId);
-	$objResponse->addScript("document.getElementById('thumbnail').src = 'repo/" . $arquivo['thumbnail'] . "';");
-	return $objResponse;
-}
-
-
+$ajaxlib->setPermission('get_file_info', $userHasPermOnFile);
 $ajaxlib->registerFunction('get_file_info');
 function get_file_info($arquivoId) {
 	global $elgallib;
 	
 	$objResponse = new xajaxResponse();
-	
+
 	$cache = $elgallib->get_edit_cache($arquivoId);
 	$result = $elgallib->extract_file_info($arquivoId);
 	// diff para saber campos novos
@@ -98,61 +91,59 @@ function get_file_info($arquivoId) {
 	if (sizeOf($result) > 0) {
 		$objResponse->addScriptCall('setAutoFields', $formattedResult);
 	}
-	
+		
 	return $objResponse;
 }
 
 
+$ajaxlib->setPermission('set_arquivo_licenca', $userHasPermOnFile);
 $ajaxlib->registerFunction('set_arquivo_licenca');
 function set_arquivo_licenca ($arquivoId, $resposta1, $resposta2, $padrao = false) {
 
-    global $user, $userlib, $elgallib;
-	$el_p_admin_acervo = 'y';
-	$arquivo = $elgallib->get_arquivo($arquivoId);
-	
-	if (!$user || $user != $arquivo['user'] || $el_p_admin_acervo != 'y') {
-		return false;
-    }
-
+    global $userlib, $elgallib;
+    
 	$objResponse = new xajaxResponse();
-    $licencaId = $elgallib->id_licenca($resposta1, $resposta2);
-    
-    if ($padrao) {
-    	$result = $userlib->set_user_field('licencaPadrao', $licencaId);
-    	if(!$result) $objResponse->addAlert("nao foi possivel editar o campo licencaPadrao");
-    }
-    
-    $result = $elgallib->set_licenca($arquivoId, $licencaId);
-	
-    if(!$result) {
+	$licencaId = $elgallib->id_licenca($resposta1, $resposta2);
+	    
+	if ($padrao) {
+	  	$result = $userlib->set_user_field('licencaPadrao', $licencaId);
+	   	if(!$result) $objResponse->addAlert("nao foi possivel editar o campo licencaPadrao");
+	}
+	    
+	$result = $elgallib->set_licenca($arquivoId, $licencaId);
+		
+	if(!$result) {
 		$objResponse->addAlert("nao foi possivel editar o campo licencaId");
-    } else {
-    	$licenca = $elgallib->get_licenca($licencaId);
-    	$objResponse->addScript("document.getElementById('uImagemLicenca').src = 'styles/estudiolivre/h_" . $licenca['linkImagem'] . "?rand=".rand()."';");
-    }
-	
+	} else {
+	  	$licenca = $elgallib->get_licenca($licencaId);
+	  	$objResponse->addScript("document.getElementById('uImagemLicenca').src = 'styles/estudiolivre/h_" . $licenca['linkImagem'] . "?rand=".rand()."';");
+	}
+		
 	return $objResponse;
 	
 }
 
+$ajaxlib->setPermission('publish_arquivo', $userHasPermOnFile);
 $ajaxlib->registerFunction('publish_arquivo');
 function publish_arquivo($arquivoId) {
-	global $user, $elgallib;
+	global $elgallib;
 	$objResponse = new xajaxResponse();
-    
-    if ($elgallib->publish_arquivo($arquivoId)) {
+	
+	if ($elgallib->publish_arquivo($arquivoId)) {
     	$objResponse->addRedirect("el-gallery_view.php?arquivoId=$arquivoId");
     } else {
     	$objResponse->addAlert("Não foi possível publicar o arquivo");
     }
+
     return $objResponse;
 }
 
+$ajaxlib->setPermission('check_publish', $userHasPermOnFile);
 $ajaxlib->registerFunction('check_publish');
 function check_publish($arquivoId) {
 	global $elgallib;
 	$objResponse = new xajaxResponse();
-    
+	
     if ($errorList = $elgallib->check_publish($arquivoId)) {
     	$errorMsgs = '';
     	foreach ($errorList as $field => $error) {
