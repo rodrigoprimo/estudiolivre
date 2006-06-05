@@ -106,9 +106,9 @@ function generate_thumb($arquivoId) {
 	global $elgallib;
 
 	$objResponse = new xajaxResponse();
-	$arquivo = $elgallib->get_arquivo($arquivoId);
-	
 	$elgallib->generate_thumb($arquivoId);
+
+	$arquivo = $elgallib->get_arquivo($arquivoId);
 	$objResponse->addScript("document.getElementById('thumbnail').src = 'repo/" . $arquivo['thumbnail'] . "';");
 		
 	return $objResponse;
