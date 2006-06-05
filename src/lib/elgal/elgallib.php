@@ -162,28 +162,52 @@ class ELGalLib extends TikiLib {
       return $this->getOne($query, $bindvals);
   }
 
-  function validate_filetype($tipo, $filename) {
-  	
-  	$mimeType = mime_content_type($filename);
-  	
-  	if ($mimeType == 'application/ogg' && preg_match("/^Audio|Video$/",$tipo)) {
-		$mimeType = strtolower($tipo)."/ogg";		 
-    } 
-  	
-  	preg_match("/(.+)\/.+/", $mimeType, $arqTipo);
-  	  	
-  	if ($arqTipo[1] == "image") {
-		$arqTipo[1] = "imagem";
-    } elseif ($arqTipo[1] == "text") {
-		$arqTipo[1] = "texto";
-    }
-    
-    if($arqTipo[1] != strtolower($tipo)) {
-		return "Você deve fornecer um arquivo do tipo: ".$tipo.", e não do tipo: ".$arqTipo[1];
-    }
-    
-    return false;
-    
+  function validate_filetype($tipo, $filename, $filename_only = false) {
+
+      // TODO: completar lista
+      if ($filename_only) {
+	  $types = array();
+	  $types['Imagem'] = array('png','jpg','jpeg','gif','tiff','svg','bmp','psd','xcf','eps');
+	  $types['Audio'] = array('mp3','ogg','wav','aiff');
+	  $types['Video'] = array('mpg','mpeg','avi','ogg','theora','wmv','3gp','mp4','yuv','mp2');
+	  $types['Texto'] = true;
+
+	  if (!$types[$tipo]) {
+	      return "Tipo $tipo invalido"; // nao deve acontecer
+	  }
+	  if (!is_array($types[$tipo])) {
+	      return '';
+	  }
+	  if (!preg_match('/\.([^.]{3,4})/', $filename, $m)) {
+	      return 'Erro: formato de arquivo inválido';
+	  }
+	  if (in_array($m[1], $types[$tipo])) {
+	      return '';
+	  } else {
+	      return "Erro: formato de arquivo nao suportado";
+	  }
+      }
+
+      $mimeType = mime_content_type($filename);
+      
+      if ($mimeType == 'application/ogg' && preg_match("/^Audio|Video$/",$tipo)) {
+	  $mimeType = strtolower($tipo)."/ogg";		 
+      } 
+      
+      preg_match("/(.+)\/.+/", $mimeType, $arqTipo);
+      
+      if ($arqTipo[1] == "image") {
+	  $arqTipo[1] = "imagem";
+      } elseif ($arqTipo[1] == "text") {
+	  $arqTipo[1] = "texto";
+      }
+      
+      if($arqTipo[1] != strtolower($tipo)) {
+	  return "Você deve fornecer um arquivo do tipo: ".$tipo.", e não do tipo: ".$arqTipo[1];
+      }
+      
+      return false;
+      
   }
 
   function list_pending_uploads($user) {
