@@ -5,9 +5,12 @@
  * by nano: thenano@gmail.com
  */
  
+global $el_p_vote, $arquivoId;
+ 
+$ajaxlib->setPermission('vota', $el_p_vote && $arquivoId);
 $ajaxlib->registerFunction("vota");
-function vota($arquivoId, $nota) {
-    global $user, $elgallib;
+function vota($nota) {
+    global $user, $elgallib, $arquivoId;
     
     if (!$user) {
     	return false;

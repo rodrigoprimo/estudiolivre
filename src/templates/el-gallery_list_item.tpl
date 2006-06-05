@@ -93,18 +93,7 @@
       <br>
       {tooltip name="list-apagar-arquivo-acervo" text="Apagar esse arquivo do acervo"}<a href="el-gallery_delete.php?arquivoId={$arquivo.arquivoId}"><img alt="apagar" src="styles/estudiolivre/iDelete.png"></a>{/tooltip}
     {/if}
-  </div>
-  
-   {* if $user}
-   {section name=rating start=1 loop=6 step=1}
-       {if $arquivo.user_rating && $arquivo.user_rating >= $smarty.section.rating.index}
-         <img id="rt-{$arquivo.arquivoId}-{$smarty.section.rating.index}" src="styles/estudiolivre/rt_{$arquivo.user_rating}.png" border="0" onClick="acervoVota({$arquivo.arquivoId},{$smarty.section.rating.index})">
-       {else}   
-         <img id="rt-{$arquivo.arquivoId}-{$smarty.section.rating.index}" src="styles/estudiolivre/rt_blk.png" border="0" onClick="acervoVota({$arquivo.arquivoId},{$smarty.section.rating.index})">
-       {/if}
-   {/section}<br />
-   {/if *}
-  
+  </div>  
 </div>
 
 

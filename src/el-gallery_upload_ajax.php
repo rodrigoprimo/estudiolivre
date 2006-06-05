@@ -3,15 +3,7 @@
 require_once("dumb_progress_meter.php");
 require_once("el-gallery_file_edit_ajax.php");
 
-global $userHasPermOnFile;
-
-//TODO agora ja sabemos o arquioId de antemão
-
-$ajaxlib->statusMessagesOff();
-$ajaxlib->waitCursorOff();
-$ajaxlib->debugOff();
-$ajaxlib->setLogFile("/tmp/xajax.log");
-
+global $userHasPermOnFile, $arquivoId, $el_p_upload_files;
 
 $ajaxlib->registerFunction('upload_info');
 function upload_info($uploadId, $callback = 'updateProgressMeter') {
@@ -21,7 +13,7 @@ function upload_info($uploadId, $callback = 'updateProgressMeter') {
 	return $objResponse;
 }
 
-$ajaxlib->setPermission('create_file', $userHasPermOnFile);
+$ajaxlib->setPermission('create_file', $el_p_upload_files);
 $ajaxlib->registerFunction('create_file');
 function create_file($tipo, $fileName, $uploadId) {
 	$objResponse = new xajaxResponse();
@@ -66,10 +58,10 @@ function _extractScripts($content) {
 	return $script;
 }
 
-$ajaxlib->setPermission('get_file_info', $userHasPermOnFile);
+$ajaxlib->setPermission('get_file_info', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('get_file_info');
-function get_file_info($arquivoId) {
-	global $elgallib;
+function get_file_info() {
+	global $elgallib, $arquivoId;
 	
 	$objResponse = new xajaxResponse();
 
@@ -96,11 +88,11 @@ function get_file_info($arquivoId) {
 }
 
 
-$ajaxlib->setPermission('set_arquivo_licenca', $userHasPermOnFile);
+$ajaxlib->setPermission('set_arquivo_licenca', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('set_arquivo_licenca');
-function set_arquivo_licenca ($arquivoId, $resposta1, $resposta2, $padrao = false) {
+function set_arquivo_licenca ($resposta1, $resposta2, $padrao = false) {
 
-    global $userlib, $elgallib;
+    global $userlib, $elgallib, $arquivoId;
     
 	$objResponse = new xajaxResponse();
 	$licencaId = $elgallib->id_licenca($resposta1, $resposta2);
@@ -123,10 +115,10 @@ function set_arquivo_licenca ($arquivoId, $resposta1, $resposta2, $padrao = fals
 	
 }
 
-$ajaxlib->setPermission('publish_arquivo', $userHasPermOnFile);
+$ajaxlib->setPermission('publish_arquivo', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('publish_arquivo');
-function publish_arquivo($arquivoId) {
-	global $elgallib;
+function publish_arquivo() {
+	global $elgallib, $arquivoId;
 	$objResponse = new xajaxResponse();
 	
 	if ($elgallib->publish_arquivo($arquivoId)) {
@@ -138,10 +130,10 @@ function publish_arquivo($arquivoId) {
     return $objResponse;
 }
 
-$ajaxlib->setPermission('check_publish', $userHasPermOnFile);
+$ajaxlib->setPermission('check_publish', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('check_publish');
-function check_publish($arquivoId) {
-	global $elgallib;
+function check_publish() {
+	global $elgallib, $arquivoId;
 	$objResponse = new xajaxResponse();
 	
     if ($errorList = $elgallib->check_publish($arquivoId)) {

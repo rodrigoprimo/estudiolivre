@@ -1,4 +1,4 @@
-function acervoVota(arquivoId, nota) {
+function acervoVota(nota) {
     var img_src = 'styles/estudiolivre/iStarOn.png';
     var blk_src = 'styles/estudiolivre/iStarOff.png';
     
@@ -13,5 +13,5 @@ function acervoVota(arquivoId, nota) {
 		document.getElementById('aRatingVote-'+i).src = src;
     }
 
-    xajax_vota(arquivoId, nota);
+    xajax_vota(nota);
 }

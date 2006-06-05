@@ -55,9 +55,9 @@ function finishUpload() {
 		document.getElementById('gUpPercent').style.backgroundColor = '#ffe475';
 		document.getElementById('gUpPercent').innerHTML = '100%';
 		if (thumbUpId == null) {
-			xajax_generate_thumb(arquivoId);
+			xajax_generate_thumb();
 		}
-		xajax_get_file_info(arquivoId);
+		xajax_get_file_info();
 	}
 }
 
@@ -123,7 +123,7 @@ function selecionaTipo(tipo) {
 }
 
 function call_save_function(field, value) {
-	xajax_save_field(arquivoId, field, value);
+	xajax_save_field(field, value);
 }
 
 function changeThumbStatus() {
@@ -171,7 +171,7 @@ function saveLicenca() {
 	var padrao = false;
 	if (resposta1 && resposta2) {
 		padrao = (document.getElementById("uLicencaPadrao").checked ? 1 : 0);
-		xajax_set_arquivo_licenca(arquivoId, resposta1, resposta2, padrao);
+		xajax_set_arquivo_licenca(resposta1, resposta2, padrao);
 		hide('licencaErro');
 		hideLightbox();
 	} else {

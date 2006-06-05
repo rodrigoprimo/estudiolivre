@@ -164,7 +164,7 @@
       <div id='moduleWhoIsThereMore' style="display:none;padding-left:5px">
 		{foreach from=$online_users item='onlineUser'}
 		  {if $onlineUser.user neq $user}
-		    <a href="tiki-user_information.php?view_user=$onlineUser.user">{$onlineUser.user}</a><br/>
+		    <a href="el-user.php?view_user={$onlineUser.user}">{$onlineUser.user}</a><br/>
 		  {/if}
 		{/foreach}
       </div>

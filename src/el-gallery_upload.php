@@ -36,11 +36,9 @@ $smarty->assign('category', 'gallery');
 $avatar = $tikilib->get_user_avatar($user);
 $smarty->assign('avatar', $avatar);
 
-$arquivoId = 0;
-
 //isto eh uma conveniencia, so pra bloquear a mudanca de campo no cliente
 //nao garante seguranca
-$smarty->assign('permission',true);
+$smarty->assign('permission', $el_p_upload_files);
 
 // licenca padrao
 if ($licencaId = $tikilib->get_user_preference($user, 'licencaPadrao')) {

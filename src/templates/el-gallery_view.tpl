@@ -3,7 +3,6 @@
 <script language="JavaScript" src="lib/js/edit_field_ajax.js"></script>
 <script language="JavaScript" src="lib/js/file_edit.js"></script>
 <script language="JavaScript" src="lib/js/el-rating.js"></script>
-<script language="JavaScript">arquivoId = {$arquivoId};</script>
 
 <div id="arqCont">
 	<div id="aTopCont">
@@ -76,9 +75,9 @@
 					<span>
 					{section name=rating start=1 loop=6 step=1}
 				    	{if $arquivo.userRating && $arquivo.userRating >= $smarty.section.rating.index}
-			  		    	<img id="aRatingVote-{$smarty.section.rating.index}" src="styles/estudiolivre/iStarOn.png" border="0" onClick="acervoVota({$arquivo.arquivoId},{$smarty.section.rating.index})"/>
+			  		    	<img id="aRatingVote-{$smarty.section.rating.index}" src="styles/estudiolivre/iStarOn.png" border="0" onClick="acervoVota({$smarty.section.rating.index})"/>
 				    	{else}
-				        	<img id="aRatingVote-{$smarty.section.rating.index}" src="styles/estudiolivre/iStarOff.png" border="0" onClick="acervoVota({$arquivo.arquivoId},{$smarty.section.rating.index})"/>
+				        	<img id="aRatingVote-{$smarty.section.rating.index}" src="styles/estudiolivre/iStarOff.png" border="0" onClick="acervoVota({$smarty.section.rating.index})"/>
 					    {/if}
 				    {/section}
 				    </span>
@@ -196,11 +195,11 @@
 
 
 <div id="save-exit" style="position: relative; z-index: 10; display: none">
-  <span onClick="xajax_commit_arquivo(arquivoId)" style="cursor: pointer">Salvar</span>&nbsp;&nbsp;&nbsp;
+  <span onClick="xajax_commit_arquivo()" style="cursor: pointer">Salvar</span>&nbsp;&nbsp;&nbsp;
   <span onClick="cancelEdit()" style="cursor: pointer">Cancelar</span>
 </div>
 
-{if $arquivo.editCache}
+{if $arquivo.editCache && $permission && $arquivo.user eq $user}
 <div id="lightFileAltered" style="display:none; width: 400px;">
 	Atenção: este arquivo foi modificado e as alterações não foram salvas!<br/>
 	<span onClick="cancelEdit(); hideLightbox();" style="cursor: pointer">Cancelar</span>&nbsp;&nbsp;&nbsp;

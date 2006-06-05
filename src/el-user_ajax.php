@@ -2,15 +2,7 @@
 
 require_once("dumb_progress_meter.php");
 
-$ajaxlib->statusMessagesOff();
-$ajaxlib->waitCursorOff();
-$ajaxlib->debugOff();
-$ajaxlib->setLogFile("/tmp/xajax.log");
-
-$ajaxlib->registerFunction('save_field');
 $ajaxlib->registerFunction('upload_info');
-$ajaxlib->registerFunction('get_files');
-
 function upload_info($uploadId, $callback = 'updateProgressMeter') {
 	$objResponse = new xajaxResponse();
 	$uploadInfo = upload_progress_meter_get_info($uploadId);
@@ -18,6 +10,8 @@ function upload_info($uploadId, $callback = 'updateProgressMeter') {
 	return $objResponse;
 }
 
+$ajaxlib->setPermission('save_field', $permission);
+$ajaxlib->registerFunction('save_field');
 function save_field($name, $value) {
 
     global $user, $userlib;
@@ -39,32 +33,5 @@ function save_field($name, $value) {
 	return $objResponse;
 
 }
-
-function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $find = '', $filters = array()) {
-    global $elgallib, $smarty;
-
-    $objResponse = new xajaxResponse();
-	$total = $elgallib->count_all_uploads($tipos, $userName, $find);
-
-    $files = $elgallib->list_all_uploads($tipos, $offset, $maxRecords, $sort_mode, $userName, $find, $filters);
-    $smarty->assign_by_ref('arquivos',$files);
-    $smarty->assign('maxRecords', $maxRecords);
-    $smarty->assign('offset', $offset);
-	$smarty->assign('sort_mode', $sort_mode);
-	$smarty->assign('total', $total);
-	$smarty->assign('userName', $userName);
-	$smarty->assign('find', $find);
-	$smarty->assign('filters', $filters);
-	$smarty->assign('page', ($offset/$maxRecords)+1);
-	$smarty->assign('lastPage', ceil($total/$maxRecords));
-
-    $objResponse->addAssign("gListCont", "innerHTML", $smarty->fetch("el-gallery_section.tpl"));
-    $objResponse->addAssign("listNav", "innerHTML", $smarty->fetch("el-gallery_pagination.tpl"));
-    $objResponse->addScript("nd()");
-    //$objResponse->addScript("acervoCache('$tiposHr', $offset, $maxRecords, '$sort_mode', '$find', '$filtersHr')");
-    
-    return $objResponse;
-}
-
 
 ?>

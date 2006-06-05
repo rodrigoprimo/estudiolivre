@@ -1,18 +1,5 @@
 <?php
 
-$ajaxlib->statusMessagesOff();
-$ajaxlib->waitCursorOn();
-$ajaxlib->debugOff();
-$ajaxlib->setLogFile("/tmp/xajax.log");
-/*
-$ajaxlib->registerPreFunction('xajax_pre_loading');
-function xajax_pre_loading() {
-    $objResponse = new xajaxResponse();
-    $objResponse->addAssign('elLoading','style.display','none');
-    return $objResponse;
-}
-*/
-
 $ajaxlib->registerFunction("get_files");
 function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $find = '', $filters = array()) {
     global $elgallib, $smarty;

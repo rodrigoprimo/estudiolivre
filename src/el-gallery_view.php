@@ -18,12 +18,12 @@ $smarty->assign('category', 'gallery');
 $avatar = $tikilib->get_user_avatar($user);
 $smarty->assign('avatar', $avatar);
 
-if (!isset($_REQUEST['arquivoId'])) {
+if (!$arquivoId) {
 	$smarty->assign('msg',tra('Você não escolheu nenhum arquivo!'));
 	$smarty->display('error.tpl');
 	exit;
 }   
-$arquivoId = $_REQUEST['arquivoId'];
+
 $arquivo = $elgallib->get_arquivo($arquivoId);
 $arquivo['tags'] = $freetaglib->get_tags_on_object($arquivoId, 'acervo');
 $arquivo['userRating'] = $elgallib->getUserRating($arquivoId, $user);
@@ -45,7 +45,7 @@ $comments_vars = array('arquivoId','action');
 $comments_prefix_var = 'arquivo:';
 $comments_object_var = 'arquivoId';
 
-if (isset($el_p_admin_gallery) && $el_p_admin_gallery == 'y' || $user == $arquivo['user']) {
+if ($userHasPermOnFile) {
 	$smarty->assign('permission', true);
 }
 

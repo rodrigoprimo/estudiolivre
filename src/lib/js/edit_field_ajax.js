@@ -88,12 +88,12 @@ function startEdit() {
 
 function cancelEdit() {
 	saveFieldCache = new Array();
-	xajax_rollback_arquivo(arquivoId);
+	xajax_rollback_arquivo();
 	return true;
 }
 
 function restoreEdit() {
-	xajax_restore_edit(arquivoId);
+	xajax_restore_edit();
 }
 
 //TODO abstrair as funcoes de thumb pra outro js, ja que sao usadas no upload e no user...

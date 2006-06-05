@@ -857,17 +857,19 @@ class ELGalLib extends TikiLib {
   
 }
 
-global $elgallib, $dbTiki, $userHasPermOnFile;
+global $elgallib, $dbTiki, $userHasPermOnFile, $arquivoId;
 $elgallib = new ELGalLib($dbTiki);
 
 if (isset($_REQUEST['arquivoId'])) {
+	$arquivoId = $_REQUEST['arquivoId'];
 	$arquivo = $elgallib->get_arquivo($_REQUEST['arquivoId']);
 	if ($arquivo['user'] == $user || $el_p_admin_gallery == 'y') {
 		$userHasPermOnFile = true;
 	} else {
 		$userHasPermOnFile = false;
 	}		
+} else {
+	$arquivoId = false;
 }
-$userHasPermOnFile = true;
-
+	
 ?>

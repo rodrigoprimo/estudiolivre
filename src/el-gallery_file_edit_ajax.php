@@ -1,16 +1,16 @@
 <?php
 
-global $userHasPermOnFile;
+global $userHasPermOnFile, $arquivoId;
 
-$ajaxlib->setPermission('save_field', $userHasPermOnFile);
+$ajaxlib->setPermission('save_field', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('save_field');
-function save_field($arquivoId, $name, $value) {
-	global $el_p_admin_gallery;
+function save_field($name, $value) {
+	global $el_p_admin_gallery, $arquivoId;
 	
 	$objResponse = new xajaxResponse();
 
 	if ($name == 'tags') {
-	    _tag_arquivo($arquivoId, $value);
+	    _tag_arquivo($value);
 	} else {
 	    global $elgallib;
 	    
@@ -32,10 +32,10 @@ function save_field($arquivoId, $name, $value) {
 
 }
 
-function _tag_arquivo($arquivoId, $tag_string) {
-    global $freetaglib, $elgallib;
+function _tag_arquivo($tag_string) {
+    global $freetaglib, $elgallib, $arquivoId;
     if (!is_object($freetaglib)) {
-	include_once('lib/freetag/freetaglib.php');
+		include_once('lib/freetag/freetaglib.php');
     }
     
     global $user;
@@ -50,10 +50,10 @@ function _tag_arquivo($arquivoId, $tag_string) {
 
 }
 
-$ajaxlib->setPermission('commit_arquivo', $userHasPermOnFile);
+$ajaxlib->setPermission('commit_arquivo', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('commit_arquivo');
-function commit_arquivo($arquivoId) {
-	global $elgallib;
+function commit_arquivo() {
+	global $elgallib, $arquivoId;
 	$objResponse = new xajaxResponse();
 	
 	if ($elgallib->commit($arquivoId)) {
@@ -62,10 +62,10 @@ function commit_arquivo($arquivoId) {
 	return $objResponse;
 }
 
-$ajaxlib->setPermission('rollback_arquivo', $userHasPermOnFile);
+$ajaxlib->setPermission('rollback_arquivo', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('rollback_arquivo');
-function rollback_arquivo($arquivoId) {
-	global $elgallib;
+function rollback_arquivo() {
+	global $elgallib, $arquivoId;
 	
 	$objResponse = new xajaxResponse();
 	
@@ -82,10 +82,10 @@ function rollback_arquivo($arquivoId) {
 	return $objResponse;
 }
 
-$ajaxlib->setPermission('restore_edit', $userHasPermOnFile);
+$ajaxlib->setPermission('restore_edit', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('restore_edit');
-function restore_edit($arquivoId) {
-	global $elgallib;
+function restore_edit() {
+	global $elgallib, $arquivoId;
 	
 	$objResponse = new xajaxResponse();
 	
@@ -100,10 +100,10 @@ function restore_edit($arquivoId) {
 		
 }
 
-$ajaxlib->setPermission('generate_thumb', $userHasPermOnFile);
+$ajaxlib->setPermission('generate_thumb', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('generate_thumb');
-function generate_thumb($arquivoId) {
-	global $elgallib;
+function generate_thumb() {
+	global $elgallib, $arquivoId;
 
 	$objResponse = new xajaxResponse();
 	$elgallib->generate_thumb($arquivoId);

@@ -9,9 +9,9 @@ function error($errorMsg) {
 	exit;
 }
 
-if (isset($_REQUEST['arquivoId']) && isset($_FILES['thumb']) && !empty($_FILES['thumb']['name'])) {
+if ($arquivoId && isset($_FILES['thumb']) && !empty($_FILES['thumb']['name'])) {
 
-    $arquivoId = $_REQUEST['arquivoId'];
+    global $arquivoId;
     
     preg_match("/(.+)\/.+/", $_FILES["thumb"]["type"], $arq_tipo);
     

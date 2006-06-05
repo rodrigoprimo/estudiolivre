@@ -5,9 +5,9 @@
 require_once ("tiki-setup.php");
 require_once ("lib/elgal/elgallib.php");
 
-if (isset ($_REQUEST['arquivoId']) && isset ($_FILES['arquivo']) && !empty ($_FILES['arquivo']['name'])) {
+if ($arquivoId && isset ($_FILES['arquivo']) && !empty ($_FILES['arquivo']['name'])) {
 
-	$arquivoId = $_REQUEST['arquivoId'];
+	global $arquivoId;
 
 	if ($_FILES["arquivo"]["type"] == 'application/ogg' && preg_match("/^Audio|Video$/", $_REQUEST['tipo'])) {
 		$_FILES["arquivo"]["type"] = strtolower($_REQUEST['tipo']) . "/ogg";

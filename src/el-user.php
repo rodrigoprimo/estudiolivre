@@ -5,7 +5,24 @@ require_once('tiki-setup.php');
 require_once('lib/elgal/elgallib.php');
 require_once('lib/ajax/ajaxlib.php');
 
+if (isset($_REQUEST['view_user'])) {
+	$userwatch = $_REQUEST['view_user'];
+	if ($userwatch == $user) 
+		$permission = true;
+	else 
+		$permission = false;
+} else {
+	if ($user) {
+		$userwatch = $user;
+		$permission = true;
+	} else {
+		$noUser = true;
+		$permission = false;
+	}
+}
+
 require_once("el-user_ajax.php");
+require_once("el-gallery_ajax.php");
 
 $ajaxlib->processRequests();
 
@@ -14,17 +31,10 @@ require_once('lib/messu/messulib.php');
 require_once('lib/commentslib.php');
 $commentslib = new Comments($dbTiki);
 
-if (isset($_REQUEST['view_user'])) {
-	$userwatch = $_REQUEST['view_user'];
-} else {
-	if ($user) {
-		$userwatch = $user;
-	} else {
-		$smarty->assign('msg', tra("You are not logged in and no user indicated"));
-
-		$smarty->display("error.tpl");
-		die;
-	}
+if (isset($noUser)) {
+	$smarty->assign('msg', tra("You are not logged in and no user indicated"));
+	$smarty->display("error.tpl");
+	die;
 }
 
 $_REQUEST['view_user'] = $userwatch;
@@ -41,7 +51,7 @@ $smarty->assign_by_ref('arquivos',$uploads);
 
 $total = $elgallib->count_all_uploads(array('Audio', 'Video', 'Imagem', 'Texto'), $view_user);
 
-$smarty->assign('permission', $view_user == $user);
+$smarty->assign('permission', $permission);
 $smarty->assign('userName', $view_user);
 $smarty->assign('maxRecords', 5);
 $smarty->assign('offset', 0);
