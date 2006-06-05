@@ -12,20 +12,28 @@ var tipos = new Array('Audio','Video','Imagem','Texto');
 var arquivoId = false;
 var uploadFinished = false;
 
-function upload() {
-	uploadId = document.uploadForm.UPLOAD_IDENTIFIER.value;
-	var filename = document.uploadForm.arquivo.value;
-	if (!tipoSelecionado) alert('bug');
-	xajax_create_file(tipoSelecionado, filename, uploadId);		
-}
-
-function startUpload(id) {
-	arquivoId = id;
+function setRequestUri(id) {
 	if (xajaxRequestUri.match(new RegExp(/arquivoId=/))) {
 		xajaxRequestUri = xajaxRequestUri.replace(new RegExp(/arquivoId=\d+/), 'arquivoId='+id);
 	} else {
 		xajaxRequestUri += '?arquivoId=' + id;
 	}
+}
+
+function upload() {
+	uploadId = document.uploadForm.UPLOAD_IDENTIFIER.value;
+	var filename = document.uploadForm.arquivo.value;
+	if (!tipoSelecionado) alert('bug');
+	if (arquivoId) {
+		startUpload(arquivoId);
+	} else {
+		xajax_create_file(tipoSelecionado, filename, uploadId);		
+	}
+}
+
+function startUpload(id) {
+	arquivoId = id;
+	setRequestUri(id);
 	document.uploadForm.arquivoId.value = arquivoId;
 	document.thumbForm.arquivoId.value = arquivoId;
 	updateUploadInfo();
@@ -162,6 +170,23 @@ function updateThumbProgressMeter(uploadInfo) {
     }	
 }
 
+function restoreForm (id, tipo, arquivo, thumbnail) {
+	arquivoId = id;
+	setRequestUri(id);
+	selecionaTipo(tipo);
+	show('gUpRight');
+	if (arquivo) {
+		document.getElementById('gUpButton').innerHTML = '<span onClick="removeUpload();">remover</span>';
+		document.getElementById('gUpStatusBar').className = "gUpStatus gUpEditing";
+		document.getElementById('gUpStatusBar').style.width = originalWidth + 'px';
+		document.getElementById('gUpPercent').style.backgroundColor = '#ffe475';
+		document.getElementById('gUpPercent').innerHTML = '100%';
+	}
+	if (thumbnail) {
+		document.getElementById('thumbnail').src = 'repo/' + thumbnail;
+	}
+	restoreEdit(id);
+}
 
 //implementacao do checkLightBox para a licenca
 var resposta1 = null;

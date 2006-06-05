@@ -1,6 +1,6 @@
 <?php
 
-global $userHasPermOnFile, $arquivoId;
+global $userHasPermOnFile, $arquivoId, $el_p_upload_files;
 
 $ajaxlib->setPermission('save_field', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('save_field');
@@ -82,14 +82,20 @@ function rollback_arquivo() {
 	return $objResponse;
 }
 
-$ajaxlib->setPermission('restore_edit', $userHasPermOnFile && $arquivoId);
+$ajaxlib->setPermission('restore_edit', $el_p_upload_files == 'y');
 $ajaxlib->registerFunction('restore_edit');
-function restore_edit() {
-	global $elgallib, $arquivoId;
+function restore_edit($arquivoId) {
+	global $elgallib, $user;
 	
 	$objResponse = new xajaxResponse();
 	
 	$arquivo = $elgallib->get_arquivo($arquivoId);
+	// permissao tem q ser dentro da funcao, pois o arquivoId dessa chamada pode nao ser
+	// o mesmo do global.
+	if (!$user || $user != $arquivo['user']) {
+		return $objResponse;
+	} 
+	
 	$cache = unserialize($arquivo['editCache']);
 	
 	foreach ($cache as $field => $value) {
@@ -97,7 +103,6 @@ function restore_edit() {
   	}
   	
 	return $objResponse;
-		
 }
 
 $ajaxlib->setPermission('generate_thumb', $userHasPermOnFile && $arquivoId);

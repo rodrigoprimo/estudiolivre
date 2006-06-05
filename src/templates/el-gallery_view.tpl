@@ -203,7 +203,7 @@
 <div id="lightFileAltered" style="display:none; width: 400px;">
 	Atenção: este arquivo foi modificado e as alterações não foram salvas!<br/>
 	<span onClick="cancelEdit(); hideLightbox();" style="cursor: pointer">Cancelar</span>&nbsp;&nbsp;&nbsp;
-	<span onClick="restoreEdit(); hideLightbox();" style="cursor: pointer">Restaurar</span>
+	<span onClick="restoreEdit({$arquivo.arquivoId}); hideLightbox();" style="cursor: pointer">Restaurar</span>
 </div>
 <script language="Javascript">
 	showLightbox('lightFileAltered');

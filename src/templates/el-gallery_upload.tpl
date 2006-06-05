@@ -152,5 +152,23 @@
 {include file="el-gallery_publish.tpl"}
 {include file="el-gallery_error.tpl"}
 
+{if $pending && $permission && $user}
+<div id="lightFileAltered" style="display:none; width: 400px;">
+	Atenção: você tem arquivos que não foram publicados!<br/>
+	<ul>
+	{foreach from=$pending item=arquivo}
+	  <li>
+	    <a onClick="restoreForm({$arquivo.arquivoId}, '{$arquivo.tipo}', '{$arquivo.arquivo}', '{$arquivo.thumbnail}'); hideLightbox();">{$arquivo.titulo|default:$arquivo.arquivo|default:$arquivo.arquivoId}</a>&nbsp;&nbsp;
+	    <a href="el-gallery_delete.php?arquivoId={$arquivo.arquivoId}">X</a>
+	  </li>
+	{/foreach}
+	</ul>
+	<a onClick="hideLightbox();">Novo arquivo</a>
+</div>
+<script language="Javascript">
+	showLightbox('lightFileAltered');
+</script>
+{/if}
+
 <!-- el-gallery_upload_general.tpl end -->
 

@@ -69,6 +69,7 @@ function setEditData(field, value) {
 
 function restoreField(field, value) {
 	document.getElementById("input-" + field).value = value;
+	document.getElementById("input-" + field).onfocus = new Function();
 	showEdit(field);
 	startEdit();
 }
@@ -92,8 +93,9 @@ function cancelEdit() {
 	return true;
 }
 
-function restoreEdit() {
-	xajax_restore_edit();
+function restoreEdit(id) {
+	arquivoId = id;
+	xajax_restore_edit(arquivoId);
 }
 
 //TODO abstrair as funcoes de thumb pra outro js, ja que sao usadas no upload e no user...

@@ -211,21 +211,24 @@ class ELGalLib extends TikiLib {
   }
 
   function list_pending_uploads($user) {
-    $query = "select `arquivoId`, `user`, a.`tipo`, `pontoId`, a.`licencaId`, `publicado`, `data_publicacao`, a.`titulo` `nomeArquivo`, `arquivo`, `formato`, `tamanho`, l.`tipo` `licenca` from `el_arquivo` a left join `el_licenca` l on a.licencaId = l.licencaId where a.publicado=0 and `user`=?";
-
-    $query_cant = "select count(*) from `el_arquivo` where `user`=? and not `publicado`";
-
+    
+    $query = "select * from `el_arquivo` where `publicado`=0 and `user`=?";
     $bindvals = array($user);
 
-    $cant = $this->getOne($query_cant, $bindvals);
-    
-    $data = array();
     $result = $this->query($query, $bindvals);
+
+	$data = array();
     while ($row = $result->fetchRow()) {
-      $data[] = $row;
+      if ($row['arquivo'] || $row['thumbnail'] || $row['editCache']) {
+      	if ($row['editCache']) {
+      		$row = array_merge($row, unserialize($row['editCache']));
+      	}
+      	$data[] = $row;
+      } else {
+      	$this->delete_arquivo($row['arquivoId']);
+      }
     }
-    return array('data' => $data,
-		 'cant' => $cant);
+    return $data;
   }
   
   function create_arquivo($obrigatorio,$user) {
