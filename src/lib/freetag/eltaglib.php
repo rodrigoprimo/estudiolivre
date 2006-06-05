@@ -8,6 +8,8 @@ if (strpos($_SERVER["SCRIPT_NAME"],basename(__FILE__)) !== false) {
 
 class ElTagLib extends FreetagLib {
 
+    var $_normalized_valid_chars = 'a-zA-Z0-9çáéíóúÇÁÉÍÓÚâêôÂÊÔãõÃÕ';
+
     function _parse_tag($tag_string) {
 	if(get_magic_quotes_gpc()) {
 	    $query = stripslashes(trim($tag_string));
