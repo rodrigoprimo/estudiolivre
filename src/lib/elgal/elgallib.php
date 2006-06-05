@@ -754,6 +754,9 @@ class ELGalLib extends TikiLib {
   
   function create_thumb_video($path) {
      
+      if (!function_exists('ffmpeg_movie')) {
+	  return false;
+      }
       //first, get movie and gif info
       $movie = new ffmpeg_movie($path, 0);
       $width = $movie->getFrameWidth();
@@ -806,16 +809,22 @@ class ELGalLib extends TikiLib {
   }
 
   function extract_file_info_audio($path) {
-  	$audio = new ffmpeg_movie($path, 0);
+      if (!function_exists('ffmpeg_movie')) {
+	  return array();
+      }
+      $audio = new ffmpeg_movie($path, 0);
       
-    $result = array();
-    $result['duracao'] = $audio->getDuration();
-    $result['bitRate'] = $audio->getBitRate();
-    
-    return $result;
+      $result = array();
+      $result['duracao'] = $audio->getDuration();
+      $result['bitRate'] = $audio->getBitRate();
+      
+      return $result;
   }  
   
   function extract_file_info_video($path) {
+      if (!function_exists('ffmpeg_movie')) {
+	  return array();
+      }
       $movie = new ffmpeg_movie($path, 0);
       
       $result = array();
