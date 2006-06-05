@@ -18,7 +18,7 @@
 					<img src="styles/estudiolivre/iLicSamplingPlus.png">
 				</div>
 				{if sizeof($arquivo.thumbnail)}
-					<img src="el-download.php?arquivo={$arquivo.arquivoId}&thumbnail=1" border=0>
+					<img src="repo/{$arquivo.thumbnail}" border=0>
 				{else}
 					<img height="100" src="styles/estudiolivre/iThumb{$arquivo.tipo}.png">
 				{/if}
