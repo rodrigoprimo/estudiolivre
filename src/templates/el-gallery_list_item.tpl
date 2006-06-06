@@ -44,17 +44,15 @@
 		  </div>
 
 		  <div id="gPlay">
-		  	<span class="gStreamCount">--</span>
+		  	<span class="gStreamCount">{$arquivo.streamHits}</span>
 		    {if $arquivo.tipo eq "Video"}
-		    	{assign var=tooltipText value="Assita esse vídeo"}
-		    {else}
-		    	{if $arquivo.tipo eq "Audio"}
-		    		{assign var=tooltipText value="Ouça essa música"}
-		    	{/if}
+		    	{assign var=tooltipText value="Assita este vídeo"}
+		    {elseif $arquivo.tipo eq "Audio"}
+		    	{assign var=tooltipText value="Ouça esta música"}
 		    {/if}
 		    {if $tooltipText}
 		    	{tooltip name="list-i-play" text=$tooltipText}
-				    <a href="#">
+				    <a href="#" onClick="xajax_streamFile({$arquivo.arquivoId}, '{$arquivo.tipo}')">
 				      <img alt="" src="styles/estudiolivre/iPlay.png">
 				    </a>
 			    {/tooltip}

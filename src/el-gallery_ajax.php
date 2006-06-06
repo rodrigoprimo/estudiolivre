@@ -1,5 +1,7 @@
 <?php
 
+global $el_p_view;
+
 $ajaxlib->registerFunction("get_files");
 function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $find = '', $filters = array()) {
     global $elgallib, $smarty;
@@ -29,6 +31,36 @@ function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $fi
     //$objResponse->addScript("acervoCache('$tiposHr', $offset, $maxRecords, '$sort_mode', '$find', '$filtersHr')");
     
     return $objResponse;
+}
+
+$ajaxlib->setPermission('streamFile', $el_p_view);
+$ajaxlib->registerFunction("streamFile");
+function streamFile($arquivoId, $type) {
+	global $elgallib;
+
+    $objResponse = new xajaxResponse();
+    
+    if (!$arquivoId) {
+    	return $objResponse;
+    }
+    
+    $elgallib->add_stream_hit($arquivoId);
+    $arquivo = $elgallib->get_arquivo($arquivoId);
+    
+    $playerName = 'player' . $type;
+    $validUrl = 'http://' . $_SERVER['HTTP_HOST'] . '/repo/' . $arquivo['arquivo'];
+    if ($type == 'Video' || $type == 'Imagem') {
+    	$width = $arquivo['tamanhoImagemX'];
+    	$height = $arquivo['tamanhoImagemY'];
+    } else {
+    	$width = 200;
+    	$height = 50;
+    }
+        
+    $objResponse->addScript("loadFile($playerName, '" . $validUrl . "', $width, $height, '" . $type . "')");
+    
+    return $objResponse;
+    
 }
 
 ?>

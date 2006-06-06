@@ -860,7 +860,7 @@ class ELGalLib extends TikiLib {
   
 }
 
-global $elgallib, $dbTiki, $userHasPermOnFile, $arquivoId;
+global $elgallib, $dbTiki, $userHasPermOnFile, $arquivoId, $el_p_admin_gallery;
 $elgallib = new ELGalLib($dbTiki);
 
 if (isset($_REQUEST['arquivoId'])) {

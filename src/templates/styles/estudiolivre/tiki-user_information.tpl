@@ -161,4 +161,6 @@
   </div>
 </div>
 
+{include file="el-player.tpl"}
+
 <!-- tiki-user_information.tpl end -->

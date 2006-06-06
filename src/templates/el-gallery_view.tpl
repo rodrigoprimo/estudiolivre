@@ -210,6 +210,8 @@
 </script>
 {/if}
 
+{include file="el-player.tpl"}
+
 {*
 
 <hr>

@@ -72,4 +72,6 @@
 
 <script language="JavaScript">init('{$find}')</script>
 
+{include file="el-player.tpl"}
+
 <!-- el-gallery_home.tpl end -->
