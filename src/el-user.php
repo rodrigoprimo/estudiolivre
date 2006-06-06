@@ -21,13 +21,16 @@ if (isset($_REQUEST['view_user'])) {
 	}
 }
 
+$_REQUEST['view_user'] = $userwatch;
+$view_user = $_REQUEST['view_user'];
+
+require_once('lib/messu/messulib.php');
 require_once("el-user_ajax.php");
 require_once("el-gallery_ajax.php");
 
 $ajaxlib->processRequests();
 
 require_once('lib/blogs/bloglib.php');
-require_once('lib/messu/messulib.php');
 require_once('lib/commentslib.php');
 $commentslib = new Comments($dbTiki);
 
@@ -36,9 +39,6 @@ if (isset($noUser)) {
 	$smarty->display("error.tpl");
 	die;
 }
-
-$_REQUEST['view_user'] = $userwatch;
-$view_user = $_REQUEST['view_user'];
 
 $info = $tikilib->get_page_info("Usuário_" . $view_user);
 $pdata = $tikilib->parse_data($info["data"],$info["is_html"]);
