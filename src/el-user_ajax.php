@@ -41,6 +41,8 @@ function sendMsg($subject = '', $body = '', $priority = 3, $cc = '') {
 	global $messulib, $userwatch, $user, $view_user, $smarty;
 	$messulib->post_message($userwatch, $user, $view_user, $cc, $subject, $body, $priority);
 	$objResponse = new xajaxResponse();
+	
+	$smarty->assign('permission', $permission);
 	$smarty->assign('userMessages', $messulib->list_user_messages($view_user, 0, 5, 'date_desc', '', '', '', '', 'messages'));
 	$objResponse->addAssign("uMsgItems", "innerHTML", $smarty->fetch("el-user_msg.tpl"));
 	
