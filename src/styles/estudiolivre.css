@@ -38,6 +38,16 @@ img {
 	margin:0px auto;
 }
 
+.tooltipCont {
+	margin-top:5px;
+	width:205px;
+}
+
+.tooltipMid {
+	padding: 0 7px 0 7px;
+	background-image:url(estudiolivre/tooltipMid.png);	
+	background-repeat:repeat-y;
+}
 
 /* topBar */
 
