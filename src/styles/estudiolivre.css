@@ -179,14 +179,19 @@ img {
 	text-indent:2em;
 }
 
-#wikitext a {
-	color: black;
+#wikitext a:link {
+	color: #808080;
 	text-decoration: underline;
 }
 
 #wikitext a:hover {
 	color: grey;
 	text-decoration: none;
+}
+
+#wikitext a:visited {
+	color: #93a3b2;
+	text-decoration: underline;
 }
 
 .titlebar {
