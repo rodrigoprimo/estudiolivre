@@ -28,7 +28,7 @@
 	
 	<div id="gAuthor">
 	
-	por {$arquivo.user|userlink} em {$arquivo.data_publicacao|date_format:"%d/%m/%Y"}
+	por <a href="el-user.php?view_user={$arquivo.user}">{$arquivo.user}</a> em {$arquivo.data_publicacao|date_format:"%d/%m/%Y"}
 	
 	</div>
 	

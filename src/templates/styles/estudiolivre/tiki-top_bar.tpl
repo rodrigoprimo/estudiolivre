@@ -41,7 +41,7 @@
   <div id="topMenuCubesContainer"><ul id="topMenuCubes">
 
       <li><div class="hiddenDescript" id="metareciclagem">metareciclagem</div><a href="http://xango.metareciclagem.org/"><img src="styles/estudiolivre/cubeBlue.png"></a></li>
-    {if $category eq "gallery}
+    {if $category eq "gallery"}
       <li><img src="styles/estudiolivre/cubeGrey.png"></li>
     {else}
       <li><div class="hiddenDescript" id="acervolivre">acervo.livre</div><a href="el-gallery_home.php"><img src="styles/estudiolivre/cubeGreen.png"></a></li>

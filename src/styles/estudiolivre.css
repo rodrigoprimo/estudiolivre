@@ -667,6 +667,10 @@ p.editdate {
 	text-align:right;
 }
 
+#gAuthor A {
+	font-style: italic;
+}
+
 #gPlay, #gDownload {
 	float:left;
 	margin-right:1px;
