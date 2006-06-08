@@ -134,15 +134,17 @@
 
       <br>
       <span id="uStats">
-        <img src="styles/estudiolivre/iOnline.png"> meu status
+        <img src="styles/estudiolivre/iOnline.png"> online
       </span>
       <br>
       <span id="uKarma">
+      	{*
         <img alt="" src="styles/estudiolivre/iKarma.png">
 	<img alt="" src="styles/estudiolivre/iKarma.png">
 	<img alt="" src="styles/estudiolivre/iKarma.png">
 	<img alt="" src="styles/estudiolivre/iKarmaInactive.png">
 	<img alt="" src="styles/estudiolivre/iKarmaInactive.png">
+	     *}
       </span>
     </div>
     <br style="line-height:10px;">

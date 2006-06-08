@@ -72,7 +72,7 @@
 					
 			<div id="aActions">
 				{if $user}
-					<span>
+					{tooltip text="Clique para votar ou para mudar o seu voto"}<span>
 					{section name=rating start=1 loop=6 step=1}
 				    	{if $arquivo.userRating && $arquivo.userRating >= $smarty.section.rating.index}
 			  		    	<img id="aRatingVote-{$smarty.section.rating.index}" src="styles/estudiolivre/iStarOn.png" border="0" onClick="acervoVota({$smarty.section.rating.index})"/>
@@ -80,7 +80,7 @@
 				        	<img id="aRatingVote-{$smarty.section.rating.index}" src="styles/estudiolivre/iStarOff.png" border="0" onClick="acervoVota({$smarty.section.rating.index})"/>
 					    {/if}
 				    {/section}
-				    </span>
+				    </span>{/tooltip}
 			    {/if}
 			</div>			
 			<div id="aTags">
@@ -182,9 +182,18 @@
 					</div>
 				</div>
 				<div id="aInfoCont" class="aItemsCont" style="display:block">
-					<span class="campo">Detentor dos DA:</span> {$arquivo.donoCopyright}<br/>
-					<span class="campo">Produtora:</span> {$arquivo.produtora}<br/>
-					<span class="campo">Contato:</span> {$arquivo.contato}<br/>
+					<div class="gUpMoreOptionsItem">
+						<div class="gUpMoreOptionsName">Detentor dos DA:</div>
+						<span class="gUpMoreOptionsInput" style="display:inline"> {$arquivo.donoCopyright}</span>
+					</div>
+					<div class="gUpMoreOptionsItem">
+						<div class="gUpMoreOptionsName">Produtora:</div>
+						<span class="gUpMoreOptionsInput" style="display:inline"> {$arquivo.produtora}</span>
+					</div>
+					<div class="gUpMoreOptionsItem">
+						<div class="gUpMoreOptionsName">Contato:</div>
+						<span class="gUpMoreOptionsInput" style="display:inline"> {$arquivo.contato}</span>
+					</div>				
 					{include file="el-gallery_upload_"|cat:$arquivo.tipo|cat:".tpl"}
 				</div>
 			</div>
@@ -192,11 +201,10 @@
 	</div>
 </div>
 
-
-
-<div id="save-exit" style="position: relative; z-index: 10; display: none">
-  <span onClick="xajax_commit_arquivo()" style="cursor: pointer">Salvar</span>&nbsp;&nbsp;&nbsp;
-  <span onClick="cancelEdit()" style="cursor: pointer">Cancelar</span>
+<br>
+<div id="save-exit" class="aSaveCancel" style="z-index: 10; display: none;">
+  <img src="styles/estudiolivre/bSave.png" onClick="xajax_commit_arquivo();document.getElementById('save-exit').style.display='none'" style="cursor: pointer">&nbsp;&nbsp;&nbsp;
+  <img src="styles/estudiolivre/bCancelar.png" onClick="cancelEdit();document.getElementById('save-exit').style.display='none'" style="cursor: pointer">
 </div>
 
 {if $arquivo.editCache && $permission && $arquivo.user eq $user}

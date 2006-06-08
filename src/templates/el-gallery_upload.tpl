@@ -141,7 +141,7 @@
      <br style="clear:both; line-height:20px;">
     
     <div id="save-exit">
-       <img src="styles/estudiolivre/bSave.png" onClick="xajax_check_publish()"/>
+       <img src="styles/estudiolivre/bPublicar.png" onClick="xajax_check_publish()"/>
     </div>
 
 

@@ -13,7 +13,7 @@ body {
 	padding: 5px 10px 5px 10px;
 	font-family: arial,verdana,helvetica,lucida,sans-serif; /*BitStream Vera Sans, Verdana;*/
 	font-size:12px;
-	/* Este degradÃª tah funcionando marromeno
+	/* Este degradÃÂª tah funcionando marromeno
 	background-image:url(estudiolivre/bgGradient.png);
 	background-repeat:repeat-x;
 	background-position: bottom;*/
@@ -475,7 +475,7 @@ p.editdate {
 	float:left;
 	height:20px;
 	background-image:url(estudiolivre/bMidActive.png);
-	cursor: pointer;
+	cursor: pointer;	
 }
 
 .buttonInactive {
@@ -525,6 +525,7 @@ p.editdate {
 }
 
 #gHomeWikiTitle {
+	margin-top:3px;
 	float:right;	
 }
 
@@ -595,7 +596,6 @@ p.editdate {
 	position:absolute;
 	padding:2px 0px 3px 10px;
 	bottom:-15px;
-	color:#
 }
 
 #gNameAuthor {
@@ -622,8 +622,8 @@ p.editdate {
 	margin: 5px 0px 0px 20px;
 }
 
-#gComments{
-	width:92px;
+#gComments, #gRating{
+	width:100px;
 	text-align:center;
 }
 
@@ -652,6 +652,7 @@ p.editdate {
 	color:#aaa;
 	font-size:12px;
 	font-weight:bolder;
+	padding:2px;
 }
 
 #topMenuContainer a:hover {
@@ -673,7 +674,7 @@ p.editdate {
 	height:50px;
 	width:60px;
 	float:left;
-	margin: 0px 5px 5px 15px; 
+	margin: 5px 5px 5px 15px; 
 }
 
 #userMenuContainer hr {
@@ -681,12 +682,12 @@ p.editdate {
 }
 
 #userNameStatsKarma {
+	height:50px;
 	text-align:center;
 }
 
 #uMenuName {
 	width:100%;
-	margin-top:5px;
 	font-size:18px;
 	font-weight:bold;
 }
@@ -1140,7 +1141,7 @@ A.gUpmore {
 	text-align:center;
 }
 
-/* ####### Página do Arquivo ####### */
+/* ####### PÃ¡gina do Arquivo ####### */
 
 #arqCont {
 	padding:5px;
@@ -1255,7 +1256,7 @@ A.gUpmore {
 	left:0px;
 	top:0px;*/
 	width:270px;
-	height:100%;
+	/*height:100%;*/
 	border-right: 2px solid #c2c2be;
 	float: left;
 }
@@ -1290,6 +1291,7 @@ A.gUpmore {
 
 #aCommentSend #uMsgSendInput {
 	width: 75%;
+	background-color:white;
 }
 
 #aCommentSend #uMsgSend {
@@ -1298,7 +1300,8 @@ A.gUpmore {
 
 #aCommentsItemsCont .uMsgItem {
 	text-align:left;
-	margin-bottom:8px
+	margin-bottom:10px;
+	padding-bottom:3px;
 }
 
 #aDescriptionInfo {
@@ -1311,10 +1314,17 @@ A.gUpmore {
 	padding-right: 10px;
 }
 
-#aDesc {
-	
+#aDescCont {
+	margin-bottom:15px;
 }
 
+.aSaveCancel {
+	margin:10px;
+	margin-top:20px;
+	border: 1px solid #c2c2be;
+	text-align:center;
+	padding:5px 0 3px 0;
+}
 
 /* ####### User Page ####### */
 
