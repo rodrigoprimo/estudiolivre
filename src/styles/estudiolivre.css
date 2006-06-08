@@ -553,7 +553,10 @@ p.editdate {
 	font-size:10px;
 	height:100%;
 	margin: 5px 5px 5px 5px;
-	border-top: 3px solid #91cd6d;
+	border-top: 1px solid #eaeaea;
+	border-left: 1px solid #eaeaea;
+	border-right: 2px solid #eaeaea;
+	border-bottom: 2px solid #eaeaea;
 	padding:5px;
 	overflow:hidden;
 }
@@ -1367,13 +1370,13 @@ A.gUpmore {
 
 .uContactInfoCont {
 	margin:2px;
-	padding:5px;
+	padding:2px;
 	float:left;
-	width:30%;
-	text-align:center;
-}	
+	width:37%;
+}
 
 #uKarmaThumb {
+	width:20%;
 	border-right:2px solid grey;
 	border-left:2px solid grey;
 }
@@ -1401,9 +1404,11 @@ A.gUpmore {
 }
 
 .uMainTitle {
-	padding-top: 3px;
+	padding: 3px;
 	margin:0 0 5px 0;
-	border-top: 2px solid #c2c2be;
+	border-top: 1px solid #e3e3e1;
+	border-bottom: 1px solid #e3e3e1;
+	background-color:#f0f0ef;
 }
 
 .uMainTitle h1 {
@@ -1509,3 +1514,29 @@ A.gUpmore {
 
 
 /* footer */
+
+
+
+/* ##### Classes repetitivas e uteis ##### */
+
+.center {
+	text-align:center;
+	
+}
+
+.right {
+	text-align:right;
+}
+
+.left {
+	text-align:left;
+}
+
+.uLittle {
+	font-size:90%
+}
+
+
+
+
+
