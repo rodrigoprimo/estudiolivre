@@ -8,18 +8,20 @@
 	<div id="aTopCont">
 		<div id="aThumbRatingLic">		
 			<div id="aRating">
-				{tooltip name="view-avaliacao" text="Avaliação"}
-					<img id="aRatingImg" alt="{$arquivo.rating} estrelas" src="styles/estudiolivre/star{math equation="round(x)" x=$arquivo.rating|default:"blk"}.png">
+				{tooltip name="view-avaliacao" text="Avaliação atual"}
+					<img id="aRatingImg" src="styles/estudiolivre/star{math equation="round(x)" x=$arquivo.rating|default:"blk"}.png">
 				{/tooltip}
 			</div>
-			<div id="aThumb">
+			<div id="aThumbLic">
 				<div id="aLic">
-					<img src="styles/estudiolivre/iLicSamplingPlus.png">
+					     {tooltip name="arq-descricao-licenca" text=$arquivo.licenca.descricao}
+					     <a href="{$arquivo.licenca.linkHumanReadable}"><img src="styles/estudiolivre/{$arquivo.licenca.linkImagem}"></a>
+					     {/tooltip}
 				</div>
 				{if sizeof($arquivo.thumbnail)}
-					<img src="repo/{$arquivo.thumbnail}" border=0>
+					<img id="aThumb" src="repo/{$arquivo.thumbnail}">
 				{else}
-					<img height="100" src="styles/estudiolivre/iThumb{$arquivo.tipo}.png">
+					<img id="aThumb" src="styles/estudiolivre/iThumb{$arquivo.tipo}.png">
 				{/if}
 			</div>
 		</div>
@@ -182,19 +184,21 @@
 					</div>
 				</div>
 				<div id="aInfoCont" class="aItemsCont" style="display:block">
-					<div class="gUpMoreOptionsItem">
-						<div class="gUpMoreOptionsName">Detentor dos DA:</div>
-						<span class="gUpMoreOptionsInput" style="display:inline"> {$arquivo.donoCopyright}</span>
+					<div id="gUpMoreOptions">
+						<div class="gUpMoreOptionsItem">
+							<div class="gUpMoreOptionsName">Detentor dos DA:</div>
+							<span class="gUpMoreOptionsInput" style="display:inline"> {$arquivo.donoCopyright}</span>
+						</div>
+						<div class="gUpMoreOptionsItem">
+							<div class="gUpMoreOptionsName">Produtora:</div>
+							<span class="gUpMoreOptionsInput" style="display:inline"> {$arquivo.produtora}</span>
+						</div>
+						<div class="gUpMoreOptionsItem">
+							<div class="gUpMoreOptionsName">Contato:</div>
+							<span class="gUpMoreOptionsInput" style="display:inline"> {$arquivo.contato}</span>
+						</div>				
+						{include file="el-gallery_upload_"|cat:$arquivo.tipo|cat:".tpl"}
 					</div>
-					<div class="gUpMoreOptionsItem">
-						<div class="gUpMoreOptionsName">Produtora:</div>
-						<span class="gUpMoreOptionsInput" style="display:inline"> {$arquivo.produtora}</span>
-					</div>
-					<div class="gUpMoreOptionsItem">
-						<div class="gUpMoreOptionsName">Contato:</div>
-						<span class="gUpMoreOptionsInput" style="display:inline"> {$arquivo.contato}</span>
-					</div>				
-					{include file="el-gallery_upload_"|cat:$arquivo.tipo|cat:".tpl"}
 				</div>
 			</div>
 		</div>

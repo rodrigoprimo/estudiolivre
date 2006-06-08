@@ -1171,11 +1171,16 @@ A.gUpmore {
 	text-align:center;
 }
 
-#aThumb {
+#aThumbLic {
 	position:absolute;
 	bottom:opx;
 	margin-bottom:5px;
 	z-index:20;
+}
+
+#aThumb {
+	width:100px;
+	height:100px;
 }
 
 #aLic {
@@ -1466,8 +1471,8 @@ A.gUpmore {
 	height:40px;
 }
 
-.uMsgAvatar{
-	
+.uMsgDate{
+	font-size:10px;
 }
 
 #uMsgSend {
