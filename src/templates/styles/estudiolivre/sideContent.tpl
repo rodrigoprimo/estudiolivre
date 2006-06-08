@@ -91,7 +91,7 @@
     {/if}
 	</ul>
 	</div>
-  {elseif $style eq "estudiolivre_biblio.css"}
+  {elseif $category eq "gallery"}
   {*********ACERVO********}
     <a href="el-gallery_home.php"><img src="styles/estudiolivre/logoAcervo.png"></a>
 	<div id="localMenu">

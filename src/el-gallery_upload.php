@@ -29,8 +29,6 @@ include_once("freetag_list.php");
 
 global $tikilib, $user;
 
-//TODO tirar abaixo e deixar apenas o category
-$smarty->assign('style', 'estudiolivre_biblio.css');
 $smarty->assign('category', 'gallery');
 
 $avatar = $tikilib->get_user_avatar($user);

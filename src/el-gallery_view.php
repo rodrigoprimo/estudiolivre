@@ -11,8 +11,6 @@ require_once("lib/freetag/freetaglib.php");
 require_once("lib/commentslib.php");
 $commentslib = new Comments($dbTiki);
 
-// TODO: mudar nos templates a verificacao da galeria por category, nao style
-$smarty->assign('style', 'estudiolivre_biblio.css');
 $smarty->assign('category', 'gallery');
 
 $avatar = $tikilib->get_user_avatar($user);

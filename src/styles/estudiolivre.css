@@ -84,6 +84,10 @@ img {
 	color: grey;
 }
 
+.pointer {
+	cursor: pointer;
+}
+
 
 /*************************************************/
 
@@ -1415,8 +1419,8 @@ A.gUpmore {
 }	
 
 #uKarmaThumb {
-	border-right:2px solid grey;
-	border-left:2px solid grey;
+	border-right:2px solid #e3e3e1;
+	border-left:2px solid #e3e3e1;
 }
 
 #uKarma {

@@ -19,7 +19,7 @@
        <div id="tiki-midGraf" onclick="showMenu(event)">
     {elseif $category eq "Vídeo"}
        <div id="tiki-midVideo" onclick="showMenu(event)">
-    {elseif $style eq "estudiolivre_biblio.css"}
+    {elseif $category eq "gallery"}
         <div id="tiki-midAcervo">
     {else}
         <div id="tiki-mid">
@@ -30,10 +30,5 @@
     
     {include file="sideContent.tpl"}
     
-    {*if $style eq "estudiolivre_biblio.css"}
-      {include file="el-gallery_sidemenu.tpl"}
-    {else}
-      {include file="modules/mod-el_menu.tpl"}
-    {/if*}
 </div>
 <!-- content.tpl end -->
