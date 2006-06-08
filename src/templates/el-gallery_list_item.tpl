@@ -49,6 +49,8 @@
 		    	{assign var=tooltipText value="Assita este vídeo"}
 		    {elseif $arquivo.tipo eq "Audio"}
 		    	{assign var=tooltipText value="Ouça esta música"}
+		    {elseif $arquivo.tipo eq "Imagem"}
+		    	{assign var=tooltipText value="Veja esta imagem"}
 		    {/if}
 		    {if $tooltipText}
 		    	{tooltip name="list-i-play" text=$tooltipText}

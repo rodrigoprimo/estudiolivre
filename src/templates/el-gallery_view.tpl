@@ -101,7 +101,7 @@
 
 		{if $tiki_p_read_comments eq 'y'}
 		<div id="aComments">
-			<div id="aCommentsTitle" class="uMainTitle">
+			<div id="aCommentsTitle" class="sectionTitle">
 				<div class="aTitleCont">
 					<a href="#comments" onClick="flip('aCommentsItemsCont'); flip('aCommentSend'); return false;">
 						<img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
@@ -162,7 +162,7 @@
 		
 		<div id="aDescriptionInfo">
 			<div id="aDesc">
-				<div id="aDescTitle" class="uMainTitle">
+				<div id="aDescTitle" class="sectionTitle">
 					<div class="aTitleCont aTitleContRight">
 						<a href="#" onClick="flip('aDescCont');">
 							<img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
@@ -175,7 +175,7 @@
 				</div>
 			</div>
 			<div id="aInfo">
-				<div id="aInfoTitle" class="uMainTitle">
+				<div id="aInfoTitle" class="sectionTitle">
 					<div class="aTitleCont aTitleContRight">
 						<a href="#" onClick="flip('aInfoCont'); return false;">
 							<img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">

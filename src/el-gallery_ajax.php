@@ -47,6 +47,16 @@ function streamFile($arquivoId, $type) {
     $elgallib->add_stream_hit($arquivoId);
     $arquivo = $elgallib->get_arquivo($arquivoId);
     
+    
+    if ($type == 'Imagem') {
+    	$objResponse->addAssign('gImagem', 'src', 'repo/' . $arquivo['arquivo']);
+    	$objResponse->addScript("document.getElementById('gPlayerImagem').style.width = " . $arquivo['tamanhoImagemX']);
+    	$objResponse->addScript("document.getElementById('gPlayerImagem').style.height = " . $arquivo['tamanhoImagemY']);
+    	$objResponse->addScript("showLightbox('gPlayerImagem')");
+    	
+    	return $objResponse;
+    }
+    
     $playerName = 'player' . $type;
     $validUrl = 'http://' . $_SERVER['HTTP_HOST'] . '/estudiolivre/repo/' . $arquivo['arquivo'];
     if ($type == 'Video' || $type == 'Imagem') {

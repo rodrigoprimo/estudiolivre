@@ -1,4 +1,4 @@
-<div id="gCortadoContVideo" style="display:none">
+<div id="gPalyerVideo" style="display:none">
 	<applet code="com.fluendo.player.Cortado.class" 
            archive="lib/elgal/player/cortado-ovt.jar" 
 		   width="" height="">
@@ -11,7 +11,7 @@
 	</applet>
 </div>
 
-<div id="gCortadoContAudio" style="display:none">
+<div id="gPlayerAudio" style="display:none">
 	<applet code="com.fluendo.player.Cortado.class" 
            archive="lib/elgal/player/cortado-ov.jar" 
 		   width="" height="">
@@ -22,6 +22,10 @@
       <param name="audio" value="true"/>
       <param name="bufferSize" value="100"/>
 	</applet>
+</div>
+
+<div id="gPlayerImagem" style="display:none">
+	<img id="gImagem" src=""/>
 </div>
 
 <script language="JavaScript" src="lib/elgal/player/cortado.js"></script>

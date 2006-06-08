@@ -10,7 +10,7 @@
     </div>
     
     <div id="uContactKarmaAccount">
-      <div id="uContact" class="uContactInfoCont">
+      <div id="uContact" class="uContactInfoCont left">
         {ajax_input permission=$permission id="realName" class="uContactItem" value=$realName default="Nome completo" display="block"}
 		<br />
         {ajax_input permission=$permission id="email" class="uContactItem" value=$userinfo.email default="E-mail" display="block" truncate='25'}
@@ -73,7 +73,7 @@
       </div>  
     </div>
     <div id="uGallery" class="uMainContainer">
-      <div id="uGalleryTitle" class="uMainTitle">
+      <div id="uGalleryTitle" class="sectionTitle uMainTitle uSectionsTitle">
         <a class="uRssCont" href="#"><img src="styles/estudiolivre/iRss.png"></a>
         <a href="#" onClick="javascript:flip('uGalleryItems'); return false;">
           <img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
@@ -89,7 +89,7 @@
       </div>
     </div>
     <div id="uBlog" class="uMainContainer">
-      <div id="uBlogTitle" class="uMainTitle">
+      <div id="uBlogTitle" class="sectionTitle uMainTitle">
         <a class="uRssCont" href="#"><img src="styles/estudiolivre/iRss.png"></a>
         <a href="#" onClick="javascript:flip('uBlogItems'); return false;">
         	<img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
@@ -118,7 +118,7 @@
       </div>
     </div>
     <div id="uMsgs" class="uMainContainer">
-      <div id="uMsgsTitle" class="uMainTitle">
+      <div id="uMsgsTitle" class="sectionTitle uMainTitle">
         <a class="uRssCont" href="#"><img src="styles/estudiolivre/iRss.png"></a>
         <a href="#" onClick="javascript:flip('uMsgItems'); return false;">
           <img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
@@ -131,7 +131,7 @@
       </div>
     </div>
     <div id="uWiki" class="uMainContainer">
-    	<div id="uWikiTitle" class="uMainTitle">
+    	<div id="uWikiTitle" class="sectionTitle uMainTitle">
     		<a class="uRssCont" href="#"><img src="styles/estudiolivre/iRss.png"></a>
     		<a href="#" onClick="javascript:flip('uWikiMid'); return false;">
               <img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
