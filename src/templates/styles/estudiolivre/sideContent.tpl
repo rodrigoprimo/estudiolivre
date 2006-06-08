@@ -102,8 +102,21 @@
     	{if $user}
         	<li><a href="el-gallery_upload.php">compartilhe sua obra</a></li>
         {else}
-      		<div id="precisaLogar" style="display:none;width:100px">
-      			Aqui vai a mensagem pedindo pro cara logar
+      		<div id="precisaLogar" style="display:none;width:200px;padding:5px">
+      			Para compartilhar a sua obra no <b>Acervo Livre</b> é necessário se <a href="tiki-register.php">cadastrar</a> no site.<br><br>
+      			Se for cadastrado, efetue o login:<br>
+
+					    <form id="uLoginBox" action="tiki-login.php" method="post">
+					      <input class="uText" type="text" name="user" id="login-user" size="12" value="usuário" onFocus="this.value=''"/>
+					      <input class="uText" type="text" name="pass" id="login-pass" size="10" value="senha" onFocus="this.value='';this.type='password'"/>
+					      <input type="image" name="login" src="styles/estudiolivre/iLogin.png" />      
+					      <div id="uLoginOptions">
+					        <a href="tiki-remind_password.php">&raquo; recuperar senha</a><br>
+					      </div>
+					   </form>
+
+			  <br><br>
+				Se preferir, <a href="tiki-view_faq.php?faqId=3">leia mais</a> sobre o <b>Acervo Livre</b>.
       		</div>
       		<li onclick="showLightbox('precisaLogar')" style="cursor:pointer"><a>compartilhe sua obra</a></li>
         {/if}   
