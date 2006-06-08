@@ -6,7 +6,7 @@
 <div id="userPage">
   <div id="uGeneralInfo">
     <div id="uName">
-      {$userinfo.login}
+      {$userinfo.login} {if $user eq $userinfo.login}{tooltip text="Modifique as suas preferências"}<a href="tiki-user_preferences.php"><img src="img/mytiki/prefs.gif" height="15"></a>{/tooltip}{/if}
     </div>
     
     <div id="uContactKarmaAccount">
