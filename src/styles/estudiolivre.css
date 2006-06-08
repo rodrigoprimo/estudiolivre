@@ -49,6 +49,44 @@ img {
 	background-repeat:repeat-y;
 }
 
+.center {
+	text-align:center;
+	
+}
+
+.right {
+	text-align:right;
+}
+
+.left {
+	text-align:left;
+}
+
+.uLittle {
+	font-size:90%
+}
+
+.sectionTitle {
+	padding-top: 3px;
+	margin:0 0 5px 0;
+	border-top: 2px solid #c2c2be;
+}
+
+.sectionTitle h1 {
+	display:inline;
+	font-size:13px;
+	font-weight:bold;
+}
+
+.sectionTitle h2 {
+	display:inline;
+	font-size:12px;
+	color: grey;
+}
+
+
+/*************************************************/
+
 /* topBar */
 
 #topContainer {
@@ -617,7 +655,7 @@ p.editdate {
 }
 
 #gNameAuthor {
-	margin-right:40px;
+	margin-right:20px;
 	width: 240px;
 }
 
@@ -637,7 +675,7 @@ p.editdate {
 }
 
 #gRatingComments {
-	margin: 5px 0px 0px 20px;
+	margin: 5px 0px 0px 15px;
 }
 
 #gComments, #gRating{
@@ -1332,7 +1370,7 @@ A.gUpmore {
 	border-left: 2px solid #c2c2be;
 }
 
-#aDescriptionInfo .uMainTitle {
+#aDescriptionInfo .sectionTitle {
 	padding-left: 20px;
 	padding-right: 10px;
 }
@@ -1370,13 +1408,13 @@ A.gUpmore {
 
 .uContactInfoCont {
 	margin:2px;
-	padding:2px;
+	padding:5px;
 	float:left;
-	width:37%;
-}
+	width:30%;
+	/*text-align:center;*/
+}	
 
 #uKarmaThumb {
-	width:20%;
 	border-right:2px solid grey;
 	border-left:2px solid grey;
 }
@@ -1405,27 +1443,19 @@ A.gUpmore {
 
 .uMainTitle {
 	padding: 3px;
-	margin:0 0 5px 0;
 	border-top: 1px solid #e3e3e1;
 	border-bottom: 1px solid #e3e3e1;
 	background-color:#f0f0ef;
 }
 
-.uMainTitle h1 {
-	display:inline;
-	font-size:13px;
-	font-weight:bold;
-}
-
-.uMainTitle h2 {
-	display:inline;
-	font-size:12px;
-	color: grey;
-}
-
 .uMainItemContainer {
 	margin-left:10px;
-}	
+}
+
+#uGalleryItems {
+	margin-left:5px;
+	width: 102%;
+}
 
 .uRssCont{
 	float:right;
@@ -1514,29 +1544,6 @@ A.gUpmore {
 
 
 /* footer */
-
-
-
-/* ##### Classes repetitivas e uteis ##### */
-
-.center {
-	text-align:center;
-	
-}
-
-.right {
-	text-align:right;
-}
-
-.left {
-	text-align:left;
-}
-
-.uLittle {
-	font-size:90%
-}
-
-
 
 
 
