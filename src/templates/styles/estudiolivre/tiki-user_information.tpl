@@ -20,7 +20,7 @@
         Localizado em: {ajax_input permission=$permission id="country" class="uContactItem" value=$country default="País" display="inline"}
       </div>
 
-      <div id="uKarmaThumb" class="uContactInfoCont">
+      <div id="uKarmaThumb" class="uContactInfoCont center">
 		<div id="uKarma">
 		  <img class="uKarmaImg" src="styles/estudiolivre/iKarma.png">
 		  <img class="uKarmaImg" class="uKarmaImg" src="styles/estudiolivre/iKarma.png">
@@ -49,16 +49,27 @@
 
 	  </div>
 
-      <div id="uAccountInfo" class="uContactInfoCont">
-        <span class="uContactItem">Membro desde {$userinfo.registrationDate|date_format:"%d/%m/%Y"}</span>
+      <div id="uAccountInfo" class="uContactInfoCont right">
+        <span class="uContactItem"><a href="#">(X) Amigos</a></span>
+        <br />
+        {* TODO falar a descricao da licenca no tooltip *}
+        <span class="uContactItem">
+        	<span class="uContactItem">
+        	{if $permission}<a href="#" onClick="lalala fazer a parada escoher licença">{/if}
+	        	{if $licenca}
+		        	{tooltip name="MinhaLicencaPadrao" text="Minha Licença Padrão"}<img src="styles/estudiolivre/h_{$licenca.linkImagem}"/>{/tooltip}
+		        {elseif $permission}
+		        	Escolher Licença Padrão
+	    	    {else}
+	        		(Usuário sem Licença Padrão)
+	        	{/if}
+        	{if $permission}</a>{/if}
+        	</span>
+        </span>
         <br />
         <span class="uContactItem"><a href="tiki-lastchanges.php?find={$userinfo.login}&sort_mode=lastModif_desc&days=0">Contribuições Recentes</a></span>
-
         <br />
-        <span class="uContactItem"><a href="#">(X) Amigos</a></span>
-
-        <br />
-        <span class="uContactItem"><a href="#">Minha Licença Padrão (X)</a></span>
+        <span class="uContactItem uLittle">Membro desde {$userinfo.registrationDate|date_format:"%d/%m/%Y"}</span>
       </div>  
     </div>
     <div id="uGallery" class="uMainContainer">

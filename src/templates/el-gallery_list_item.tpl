@@ -49,6 +49,8 @@
 		    	{assign var=tooltipText value="Assita este vídeo"}
 		    {elseif $arquivo.tipo eq "Audio"}
 		    	{assign var=tooltipText value="Ouça esta música"}
+		    {elseif $arquivo.tipo eq "Imagem"}
+		    	{assign var=tooltipText value="Ver esta imagem"}
 		    {/if}
 		    {if $tooltipText}
 		    	{tooltip name="list-i-play" text=$tooltipText}
@@ -66,7 +68,7 @@
 	  </div>
 	  <div id="gComments">
 	    {if $arquivo.commentsCount == 0}
-	    	{tooltip name="list-primeiro-comentar" text="Seja o primeiro a comentar sobre esse arquivo"}<a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}#comments">nenhum comentário</a>{/tooltip}
+	    	{tooltip name="list-primeiro-comentar" text="Seja o primeiro a comentar sobre esse arquivo"}<a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}#comments">0 comentários</a>{/tooltip}
 	    {else}
 	    	{tooltip name="list-ler-comentarios" text="Clique para ler os comentários"}<a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}#comments">{$arquivo.commentsCount} comentário{if $arquivo.commentsCount != 1}s{/if}</a>{/tooltip}
 	    {/if}

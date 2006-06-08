@@ -48,7 +48,7 @@ function streamFile($arquivoId, $type) {
     $arquivo = $elgallib->get_arquivo($arquivoId);
     
     $playerName = 'player' . $type;
-    $validUrl = 'http://' . $_SERVER['HTTP_HOST'] . '/repo/' . $arquivo['arquivo'];
+    $validUrl = 'http://' . $_SERVER['HTTP_HOST'] . '/estudiolivre/repo/' . $arquivo['arquivo'];
     if ($type == 'Video' || $type == 'Imagem') {
     	$width = $arquivo['tamanhoImagemX'];
     	$height = $arquivo['tamanhoImagemY'];

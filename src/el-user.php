@@ -62,6 +62,11 @@ $smarty->assign('filters', array());
 $smarty->assign('page', 1);
 $smarty->assign('lastPage', ceil($total/5));
 
+// licenca padrao
+if ($licencaId = $tikilib->get_user_preference($view_user, 'licencaPadrao')) {
+	$licenca = $elgallib->get_licenca($licencaId);
+	$smarty->assign('licenca', $licenca);
+}
 
 $userPosts = $bloglib->list_user_posts($view_user, 0, 5);
 for($i = 0; $i < sizeof($userPosts['data']); $i++) {
