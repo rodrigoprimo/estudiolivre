@@ -64,7 +64,11 @@ $smarty->assign('pageName', $page);
 if(is_array($info)) {
 	$pdata = $tikilib->parse_data($info["data"],$info["is_html"]);
 	foreach($info as $infoName => $value) {
-		$smarty->assign($infoName, $value);
+		if($infoName != "user") {
+			$smarty->assign($infoName, $value);
+		} else {
+			$smarty->assign('modifUser', $value);
+		}
 	}	
 }
 $smarty->assign_by_ref('userWiki', $pdata);

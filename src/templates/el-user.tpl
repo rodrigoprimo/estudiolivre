@@ -96,8 +96,16 @@
         </h1>
       </div>
       <div id="uGalleryItems" class="uMainItemContainer" style="display:block">
+      {if sizeof($arquivos)}
       	<div id="listNav" class="ulistNav">{include file="el-gallery_pagination.tpl"}</div>
 		<div id="gListCont">{include file="el-gallery_section.tpl"}</div>
+	  {else}
+	  	{if $permission}
+		  	<p> Você ainda não possui arquivos no acervo livre. <a href="el-gallery_upload.php">Compartilhe</a> sua obra!</p>
+	  	{else}
+	  		<p> Esse usuário ainda não possui arquivos no acervo livre.</p>
+	  	{/if}
+	  {/if}
       </div>
     </div>
     <div id="uBlog" class="uMainContainer">
@@ -112,21 +120,29 @@
         </h1>
       </div>
       <div id="uBlogItems" class="uMainItemContainer" style="display:block">
-        {foreach from=$userPosts.data item='post'}
-        <div class="uBlogItem">
-          <div id="uBlogItemTitle">
-            <h1>{$post.title|truncate:40}</h1> - {$post.created|date_format:"%d/%m/%Y"}
-          </div>
-          <div id="uBlogItemText">
-            {$post.data|truncate:150} <a href="#" title="Ler mais...">(...)</a>
-          </div>
-          <div id="uBlogItemBottom">
-            <a href="tiki-view_blog_post.php?blogId={$post.blogId}&postId={$post.postId}">ler mais</a> | 
-            <a href="tiki-view_blog_post.php?blogId={$post.blogId}&postId={$post.postId}">permalink</a> | 
-            <a href="tiki-view_blog_post.php?blogId={$post.blogId}&postId={$post.postId}&show_comments=1#comments">({$post.commentsCount}) comentaram</a>
-          </div>
-        </div>
-        {/foreach}
+        {if sizeof($userPosts.data)}
+	      	{foreach from=$userPosts.data item='post'}
+	        <div class="uBlogItem">
+	          <div id="uBlogItemTitle">
+	            <h1>{$post.title|truncate:40}</h1> - {$post.created|date_format:"%d/%m/%Y"}
+	          </div>
+	          <div id="uBlogItemText">
+	            {$post.data|truncate:150} <a href="#" title="Ler mais...">(...)</a>
+	          </div>
+	          <div id="uBlogItemBottom">
+	            <a href="tiki-view_blog_post.php?blogId={$post.blogId}&postId={$post.postId}">ler mais</a> | 
+	            <a href="tiki-view_blog_post.php?blogId={$post.blogId}&postId={$post.postId}">permalink</a> | 
+	            <a href="tiki-view_blog_post.php?blogId={$post.blogId}&postId={$post.postId}&show_comments=1#comments">({$post.commentsCount}) comentaram</a>
+	          </div>
+	        </div>
+	        {/foreach}
+		{else}
+		  	{if $permission}
+			  	<p> Você ainda não possui blogs. <a href="tiki-edit_blog.php">Crie</a> um blog ou veja a <a href="tiki-list_blogs.php">lista</a> dos existentes.</p>
+		  	{else}
+		  		<p> Esse usuário ainda não possui posts em blogs.</p>
+			{/if}
+		{/if}
       </div>
     </div>
     {if $allowMsgs}
@@ -144,21 +160,41 @@
       </div>
     </div>
     {/if}
-    <div id="uWiki" class="uMainContainer">
-    	<div id="uWikiTitle" class="sectionTitle uMainTitle">
-    		<a class="uRssCont" href="#"><img src="styles/estudiolivre/iRss.png"></a>
-    		<a href="#" onClick="javascript:flip('uWikiMid'); return false;">
-              <img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
-        	</a>
-        	&nbsp;
-    		<h1>
-    		  <a href="#" title="Wiki de {$userinfo.login}">Wiki</a>
-    		</h1>
-    	</div>
-    	<div id="uWikiMid" style="display:block">
-    	{include file=tiki-show_page.tpl parsed=$userWiki page=$pageName lastUser=$user}
-        </div>
-    </div>
+    {if $permission}
+      {if $userWiki}
+	    <div id="uWiki" class="uMainContainer">
+	    	<div id="uWikiTitle" class="sectionTitle uMainTitle">
+	    		<a class="uRssCont" href="#"><img src="styles/estudiolivre/iRss.png"></a>
+	    		<a href="#" onClick="javascript:flip('uWikiMid'); return false;">
+	              <img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
+	        	</a>
+	        	&nbsp;
+	    		<h1>
+	    		  <a href="#" title="Wiki de {$userinfo.login}">Wiki</a>
+	    		</h1>
+	    	</div>
+	    	<div id="uWikiMid" style="display:block">
+	    	{include file=tiki-show_page.tpl parsed=$userWiki page=$pageName lastUser=$modifUser}
+	        </div>
+	    </div>
+	  {else}
+	  	  <div id="uWiki" class="uMainContainer">
+	    	<div id="uWikiTitle" class="sectionTitle uMainTitle">
+	    		<a class="uRssCont" href="#"><img src="styles/estudiolivre/iRss.png"></a>
+	    		<a href="#" onClick="javascript:flip('uWikiMid'); return false;">
+	              <img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
+	        	</a>
+	        	&nbsp;
+	    		<h1>
+	    		  <a href="#" title="Wiki de {$userinfo.login}">Wiki</a>
+	    		</h1>
+	    	</div>
+	    	<div id="uWikiMid" style="display:block"> 
+	    		<p> Você ainda não tem uma página wiki pessoal. <a href="tiki-editpage.php?page={$pageName}">Crie</a> seu wiki!</p>
+	    	</div>
+	      </div>
+	  {/if}
+    {/if}
   </div>
 </div>
 
