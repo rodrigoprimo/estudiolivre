@@ -61,7 +61,7 @@ function _extractScripts($content) {
 $ajaxlib->setPermission('get_file_info', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('get_file_info');
 function get_file_info() {
-	global $elgallib, $arquivoId;
+	global $elgallib, $arquivoId, $user;
 	
 	$objResponse = new xajaxResponse();
 
@@ -69,9 +69,13 @@ function get_file_info() {
 	$result = $elgallib->extract_file_info($arquivoId);
 	// diff para saber campos novos
 	$result = array_diff($result, $cache);
+
+	// merge com as infos basicas
+	$basicInfos = array('autor' => $elgallib->get_user_preference($user, 'realName'), 'titulo' => $elgallib->get_file_name($arquivoId));
+	$result = array_merge($result, $basicInfos);
+
 	// merge
 	$cache = array_merge($cache, $result);
-	
 	$elgallib->set_edit_cache($arquivoId, $cache);
 	
 	// deixa o foreach no php, q js eh uma bosta pra isso

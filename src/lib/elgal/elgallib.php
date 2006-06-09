@@ -609,7 +609,16 @@ class ELGalLib extends TikiLib {
     }
   }
 
+  function get_file_name($id) {
+  	$query = "select arquivo from `el_arquivo` where `arquivoId`=?";
+    $bindvals = array($id);
+    $file_name = $this->getOne($query,$bindvals);
+  	preg_match("/\d+_\d+-(.+)\..+$/", $file_name, $ret_name);
+  	return $ret_name[1];
+  }
+
   function get_file($id) {
+  	// TODO esse methodo nao eh usado, ou entao nao deveria ser.... o get_arquivo faz tudo e melhor.
     $dir = "repo/";
     $query = "select * from `el_arquivo` where `arquivoId`=?";
     $bindvals = array($id);

@@ -44,8 +44,6 @@ if ($licencaId = $tikilib->get_user_preference($user, 'licencaPadrao')) {
 	$smarty->assign('licenca', $licenca);
 }
 
-$smarty->assign('realName',$tikilib->get_user_preference($user, 'realName'));
-
 $smarty->assign('pending', $elgallib->list_pending_uploads($user));
 
 $smarty->assign('uploadId',rand() . '.' . time());
