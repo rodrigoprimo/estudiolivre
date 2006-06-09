@@ -144,7 +144,7 @@
     		</h1>
     	</div>
     	<div id="uWikiMid" style="display:block">
-    	{include file=tiki-show_page.tpl parsed=$userWiki}
+    	{include file=tiki-show_page.tpl parsed=$userWiki page=$pageName lastUser=$user}
         </div>
     </div>
   </div>

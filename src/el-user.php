@@ -40,8 +40,12 @@ if (isset($noUser)) {
 	die;
 }
 
-$info = $tikilib->get_page_info("Usuário_" . $view_user);
+$page = "Usuário_" . $view_user;
+$info = $tikilib->get_page_info($page);
 $pdata = $tikilib->parse_data($info["data"],$info["is_html"]);
+foreach($info as $infoName => $value) {
+	$smarty->assign($infoName, $value);
+}
 $smarty->assign_by_ref('userWiki', $pdata);
 
 $sort_mode = 'data_publicacao_desc';
