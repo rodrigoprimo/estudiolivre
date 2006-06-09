@@ -49,7 +49,7 @@ function smarty_function_ajax_textarea($params, &$smarty) {
 	$output .= ($value ? $value : $default);
 	$output .= "</div>";
 	
-	$output .= "<img id=\"error-$id\" class=\"gUpErrorImg\" style=\"display: none\" src=\"styles/estudiolivre/errorImg.png\" onMouseover=\"overlib(errorMsg_$id);\" onMouseout=\"nd();\"> ";
+	$output .= "<img id=\"error-$id\" class=\"gUpErrorImg\" style=\"display: none\" src=\"styles/estudiolivre/errorImg.png\" onMouseover=\"tooltip(errorMsg_$id);\" onMouseout=\"nd();\"> ";
 	
 	$output .= '<textarea id="input-'.$id. '"  onBlur="saveField(this)" style="display:' . ($edit ? $display : "none") . '; ' . $style . '" '; 
 	if (!$value && !$noclear) { 

@@ -168,7 +168,7 @@
       <a href="tiki-lastchanges.php?days=0">Ultimas Alterações</a> <a href="#" onClick="toggle('moduleLastChangesMore')" onFocus="this.blur()">[+]</a>
       <div id='moduleLastChangesMore' style="display:none;padding-left:5px">
       	{foreach from=$modLastModif item='page'}
-			<a href="tiki-index.php?page={$page.pageName}" onMouseover="overlib('<div class=\'tooltipCont\'><img src=\'styles/estudiolivre/tooltipTop.png\'><div class=\'tooltipMid\'>{if $page.comment}{$page.comment}{else}<i>Modificação não comentada</i>{/if}<br>editado por: <b>{$page.user}</b></div><img src=\'styles/estudiolivre/tooltipBottom.png\'></div>', FULLHTML)" onMouseout="nd()">{$page.pageName}</a><br/>
+			<a href="tiki-index.php?page={$page.pageName}" onMouseover="tooltip('{if $page.comment}{$page.comment}{else}<i>Modificação não comentada</i>{/if}<br>editado por: <b>{$page.user}</b>')" onMouseout="nd()">{$page.pageName}</a><br/>
      	{/foreach}
       </div>
     </div>

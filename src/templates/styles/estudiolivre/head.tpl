@@ -118,7 +118,7 @@ You are most likely wanting to modify the top of your Tiki site. Please consider
   {* ---- END ---- *}
   
   {* ------------ scripts do el --------------*}
-  <script language="JavaScript" type="text/javascript" src="lib/elgal/el.js"></script>
+  <script language="JavaScript" type="text/javascript" src="lib/js/tooltip.js"></script>
   
   {* ------- fim -------- *}
   

@@ -88,11 +88,11 @@
       </div>
       <div id="gUpThumbForm">
   	<iframe name="thumbUpTarget" style="display:none" onLoad="finishUpThumb();"></iframe>
-        <form action="el-gallery_upload_thumb.php?UPLOAD_IDENTIFIER=thumb.{$uploadId}" method="post" enctype="multipart/form-data" name="thumbForm" target="thumbUpTarget">
+        {tooltip text="Clique para selecionar outra <b>miniatura</b> para o arquivo"}<form action="el-gallery_upload_thumb.php?UPLOAD_IDENTIFIER=thumb.{$uploadId}" method="post" enctype="multipart/form-data" name="thumbForm" target="thumbUpTarget">
 	  <input type="hidden" name="UPLOAD_IDENTIFIER" value="thumb.{$uploadId}">
 	  <input type="hidden" name="arquivoId" value="">
 	  <input type="file" name="thumb" onChange="changeThumbStatus()" class="gUpThumbFormButton">
-        </form>
+        </form>{/tooltip}
       </div>
     </div>
 

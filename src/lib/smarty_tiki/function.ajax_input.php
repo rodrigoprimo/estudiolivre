@@ -57,7 +57,7 @@ function smarty_function_ajax_input($params, &$smarty) {
 	}
 	$output .= " onBlur=\"saveField(this)\" style=\"display:" . ($edit ? $display : 'none') . "\">";
 	
-	$output .= "<img id=\"error-$id\" class=\"gUpErrorImg\" style=\"display: none\" src=\"styles/estudiolivre/errorImg.png\" onMouseover=\"overlib(errorMsg_$id);\" onMouseout=\"nd();\"> ";
+	$output .= "<img id=\"error-$id\" class=\"gUpErrorImg\" style=\"display: none\" src=\"styles/estudiolivre/errorImg.png\" onMouseover=\"tooltip(errorMsg_$id);\" onMouseout=\"nd();\"> ";
 	
 	$output .= '<script language="JavaScript">';
 	$output .= '  display["'.$id.'"] = "'.$display.'";errorMsg_'.$id.' = "";';
