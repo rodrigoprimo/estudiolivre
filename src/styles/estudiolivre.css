@@ -1305,7 +1305,7 @@ A.gUpmore {
 	vertical-align:middle;
 }
 
-#aActions SPAN {
+#aActions DIV {
 	margin-top:20px;
 	display:block;
 	text-align:center;

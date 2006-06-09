@@ -67,7 +67,7 @@
 						{if $permission}
 							{tooltip text="Clique para modificar o nome desse arquivo"}{ajax_input permission=$permission class="editable" id="titulo" value=$arquivo.titulo default="Titulo" display="inline"}{/tooltip}
 						{else}
-							{ajax_input permission=$permission class="editable" id="titulo" value=$arquivo.titulo default="Titulo" display="inline"}
+							{ajax_input permission=$permission id="titulo" value=$arquivo.titulo default="Titulo" display="inline"}
 						{/if}
 					</div>
 					<div id="aAuthorDate">
@@ -78,22 +78,25 @@
 					
 			<div id="aActions">
 				{if $user}
-					{tooltip text="Clique para votar ou para mudar o seu voto"}<span>
+					<div>
 					{section name=rating start=1 loop=6 step=1}
-				    	{if $arquivo.userRating && $arquivo.userRating >= $smarty.section.rating.index}
-			  		    	<img id="aRatingVote-{$smarty.section.rating.index}" src="styles/estudiolivre/iStarOn.png" border="0" onClick="acervoVota({$smarty.section.rating.index})"/>
-				    	{else}
-				        	<img id="aRatingVote-{$smarty.section.rating.index}" src="styles/estudiolivre/iStarOff.png" border="0" onClick="acervoVota({$smarty.section.rating.index})"/>
-					    {/if}
+						{if not $smarty.section.rating.first}{assign var=plural value="s"}{/if}
+						{tooltip text="Clique para mudar o seu voto para <b>"|cat:$smarty.section.rating.index|cat:" estrela"|cat:$plural|cat:"</b>"}
+					    	{if $arquivo.userRating && $arquivo.userRating >= $smarty.section.rating.index}
+				  		    	<img id="aRatingVote-{$smarty.section.rating.index}" src="styles/estudiolivre/iStarOn.png" border="0" onClick="acervoVota({$smarty.section.rating.index})"/>
+					    	{else}
+					        	<img id="aRatingVote-{$smarty.section.rating.index}" src="styles/estudiolivre/iStarOff.png" border="0" onClick="acervoVota({$smarty.section.rating.index})"/>
+						    {/if}
+					    {/tooltip}
 				    {/section}
-				    </span>{/tooltip}
+				    </div>
 			    {/if}
 			</div>			
 			<div id="aTags">
 				{foreach from=$arquivo.tags.data item=t name=tags}
 			        {tooltip text="Clique para ver outros arquivos com a tag <b>"|cat:$t.tag|cat:"</b>"}<a class="freetag" href="tiki-browse_freetags.php?tag={$t.tag}">{$t.tag}</a>{if not $smarty.foreach.tags.last},{/if}{/tooltip}
     			{foreachelse}
-      				&nbsp;
+			    	{tooltip text="Esse arquivo não tem tags"}<div>&nbsp;</div>{/tooltip}
     			{/foreach}
 			</div>
 		</div>
@@ -178,7 +181,7 @@
 					{if $permission}
 						{tooltip text="Clique aqui para modificar a descrição do arquivo"}{ajax_textarea permission=$permission class="editable" style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" id="descricao" value=$arquivo.descricao display="block"}{/tooltip}
 					{else}
-						{ajax_textarea permission=$permission class="editable" style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" id="descricao" value=$arquivo.descricao display="block"}
+						{ajax_textarea permission=$permission style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" id="descricao" value=$arquivo.descricao display="block"}
 					{/if}
 				</div>
 			</div>
