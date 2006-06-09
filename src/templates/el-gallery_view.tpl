@@ -64,7 +64,11 @@
 						<a id="aDelete" href="el-gallery_delete.php?arquivoId={$arquivo.arquivoId}">{tooltip name="apagar-arquivo-acervo" text="Apagar esse arquivo"}<img src="styles/estudiolivre/iDelete.png"/>{/tooltip}</a>
 					{/if}
 					<div id="aName">
-						{ajax_input permission=$permission class="gUpEdit" id="titulo" value=$arquivo.titulo default="Titulo" display="inline"}
+						{if $permission}
+							{tooltip text="Clique para modificar o nome desse arquivo"}{ajax_input permission=$permission class="editable" id="titulo" value=$arquivo.titulo default="Titulo" display="inline"}{/tooltip}
+						{else}
+							{ajax_input permission=$permission class="editable" id="titulo" value=$arquivo.titulo default="Titulo" display="inline"}
+						{/if}
 					</div>
 					<div id="aAuthorDate">
 						por <a href="el-user.php?view_user={$arquivo.autor}">{$arquivo.autor}</a> em <i>{$arquivo.data_publicacao|date_format:"%d/%m/%Y"}</i>
@@ -85,13 +89,15 @@
 				    </span>{/tooltip}
 			    {/if}
 			</div>			
+			{tooltip text="Tags desse arquivo"}
 			<div id="aTags">
 				{foreach from=$arquivo.tags.data item=t}
-			        <a class="freetag" href="tiki-browse_freetags.php?tag={$t.tag}">{$t.tag}</a>,
+			        {tooltip text="Clique para ver outros arquivos com a tag <b>".$t.tag."</b>"}<a class="freetag" href="tiki-browse_freetags.php?tag={$t.tag}">{$t.tag}</a>,{/tooltip}
     			{foreachelse}
       				&nbsp;
     			{/foreach}
 			</div>
+			{/tooltip}
 		</div>
 	</div>
 	<br style="line-height: 25px"/>
@@ -171,7 +177,11 @@
 					</div>
 				</div>
 				<div id="aDescCont" class="aItemsCont" style="display:block">
-					{ajax_textarea permission=$permission class="gUpEdit" style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" id="descricao" value=$arquivo.descricao display="block"}
+					{if $permission}
+						{tooltip text="Clique aqui para modificar a descrição do arquivo"}{ajax_textarea permission=$permission class="editable" style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" id="descricao" value=$arquivo.descricao display="block"}{/tooltip}
+					{else}
+						{ajax_textarea permission=$permission class="editable" style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" id="descricao" value=$arquivo.descricao display="block"}
+					{/if}
 				</div>
 			</div>
 			<div id="aInfo">
@@ -207,8 +217,8 @@
 
 <br>
 <div id="save-exit" class="aSaveCancel" style="z-index: 10; display: none;">
-  <img src="styles/estudiolivre/bSave.png" onClick="xajax_commit_arquivo();document.getElementById('save-exit').style.display='none'" style="cursor: pointer">&nbsp;&nbsp;&nbsp;
-  <img src="styles/estudiolivre/bCancelar.png" onClick="cancelEdit();document.getElementById('save-exit').style.display='none'" style="cursor: pointer">
+  {tooltip text="Salve as modificações que acaba de fazer"}<img src="styles/estudiolivre/bSave.png" onClick="xajax_commit_arquivo();document.getElementById('save-exit').style.display='none'" style="cursor: pointer">{/tooltip}&nbsp;&nbsp;&nbsp;
+  {tooltip text="Cancele as modificações que acaba de fazer"}<img src="styles/estudiolivre/bCancelar.png" onClick="cancelEdit();document.getElementById('save-exit').style.display='none'" style="cursor: pointer">{/tooltip}
 </div>
 
 {if $arquivo.editCache && $permission && $arquivo.user eq $user}

@@ -88,6 +88,26 @@ img {
 	cursor: pointer;
 }
 
+/* para fazer links 'falsos' com span*/
+span.pointer {
+	text-decoration:none;
+	color:grey;
+}
+
+span.pointer:hover {
+	color: black;
+}
+
+DIV.editable:hover {
+	background-color:#ffffd3;
+}
+
+INPUT.editable {
+	border: 1px inset rgb(233, 233, 174);
+	padding: 3px 0px 3px 3px;
+	background-color: #f1f1f1;
+	margin-right:4px;
+}
 
 /*************************************************/
 
@@ -1070,17 +1090,6 @@ A.gUpButtonHover {
 #gUpTitleAuthor {
 	position:relative;
 	top:0px;
-}
-
-DIV.gUpEdit:hover {
-	background-color:#ffffd3;
-}
-
-INPUT.gUpEdit {
-	border: 1px inset rgb(233, 233, 174);
-	padding: 3px 0px 3px 3px;
-	background-color: #f1f1f1;
-	margin-right:4px;
 }
 
 INPUT.gUpTitle{

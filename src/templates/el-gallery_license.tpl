@@ -25,7 +25,7 @@
 		</table>
 		<br />
 		
-		<input id="uLicencaPadrao" type="checkbox" {if !$licenca}checked{/if}/> Definir como licença padrão.
+		<input id="uLicencaPadrao" type="checkbox" {if !$licenca}checked{/if}/> Definir como licença {tooltip text="Nas próximas vezes que você for enviar um arquivo a licença utilizada será essa"}padrão{/tooltip}.
 		<div id="licencaErro" style="display: none">Você não escolheu nenhuma licença!</div>
         <br />
 		<table class="el-upload-general el-upload-general3">

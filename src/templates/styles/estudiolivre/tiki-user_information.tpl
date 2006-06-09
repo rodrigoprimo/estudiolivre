@@ -11,13 +11,13 @@
     
     <div id="uContactKarmaAccount">
       <div id="uContact" class="uContactInfoCont left">
-        {ajax_input permission=$permission id="realName" class="uContactItem" value=$realName default="Nome completo" display="block"}
+        {ajax_input permission=$permission id="realName" class="uContactItem editable" value=$realName default="Nome completo" display="block"}
 		<br />
-        {ajax_input permission=$permission id="email" class="uContactItem" value=$userinfo.email default="E-mail" display="block" truncate='25'}
+        {ajax_input permission=$permission id="email" class="uContactItem editable" value=$userinfo.email default="E-mail" display="block" truncate='25'}
 		<br />
-        {ajax_input permission=$permission id="homePage" class="uContactItem" value=$homePage default="Homepage" display="block" truncate='25'}
+        {ajax_input permission=$permission id="homePage" class="uContactItem editable" value=$homePage default="Homepage" display="block" truncate='25'}
 		<br />
-        Localizado em: {ajax_input permission=$permission id="country" class="uContactItem" value=$country default="País" display="inline"}
+        Localizado em: {ajax_input permission=$permission id="country" class="uContactItem editable" value=$country default="País" display="inline"}
       </div>
 
       <div id="uKarmaThumb" class="uContactInfoCont center">
@@ -35,6 +35,7 @@
 		</div>
 
 		{if $permission}
+		{tooltip text="Clique aqui para selecionar um novo <b>avatar</b>"}
 		<div id="gUserThumbFormContainer">
 	      <div id="gUserThumbForm">
 	        <iframe name="thumbUpTarget" style="display:none" onLoad="finishUpThumb();"></iframe>
@@ -45,6 +46,7 @@
 	        </form>
 	      </div>
 	    </div>
+	    {/tooltip}
 	    {/if}
 
 	  </div>

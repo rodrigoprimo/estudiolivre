@@ -9,23 +9,23 @@
     <div id="gUpIcons">
       {* Aqui terá um JS que colore o ícone selecionado e deixa os outros preto e branco *}
       <div class="gUpIcon">
-        <img id="iconeAudio" onMouseOver="acendeTipo('Audio');" onMouseOut="apagaTipo('Audio')" onClick="selecionaTipo('Audio')" alt="" src="styles/estudiolivre/iUpAudioOff.png"><br />
-        Áudio
+        {*tooltip text="Clique aqui para enviar um arquivo de <b>áudio</b>"*}<img id="iconeAudio" onMouseOver="acendeTipo('Audio');" onMouseOut="apagaTipo('Audio')" onClick="selecionaTipo('Audio')" alt="" src="styles/estudiolivre/iUpAudioOff.png"><br />
+        Áudio{*/tooltip*}
       </div>
     
       <div class="gUpIcon">
-        <img id="iconeImagem" onMouseOver="acendeTipo('Imagem');" onMouseOut="apagaTipo('Imagem')" onClick="selecionaTipo('Imagem')" alt="" src="styles/estudiolivre/iUpImagemOff.png"><br />
-        Imagem
+        {*tooltip text="Clique aqui para enviar uma <b>imagem</b>"*}<img id="iconeImagem" onMouseOver="acendeTipo('Imagem');" onMouseOut="apagaTipo('Imagem')" onClick="selecionaTipo('Imagem')" alt="" src="styles/estudiolivre/iUpImagemOff.png"><br />
+        Imagem{*/tooltip*}
       </div>
     
       <div class="gUpIcon">
-        <img id="iconeTexto" onMouseOver="acendeTipo('Texto');" onMouseOut="apagaTipo('Texto')" onClick="selecionaTipo('Texto')" alt="" src="styles/estudiolivre/iUpTextoOff.png"><br />
-        Texto
+        {*tooltip text="Clique aqui para enviar um arquivo de <b>texto</b>"*}<img id="iconeTexto" onMouseOver="acendeTipo('Texto');" onMouseOut="apagaTipo('Texto')" onClick="selecionaTipo('Texto')" alt="" src="styles/estudiolivre/iUpTextoOff.png"><br />
+        Texto{*/tooltip*}
       </div>
     
       <div class="gUpIcon">
-        <img id="iconeVideo" onMouseOver="acendeTipo('Video');" onMouseOut="apagaTipo('Video')" onClick="selecionaTipo('Video')" alt="" src="styles/estudiolivre/iUpVideoOff.png"><br />
-        Video
+		{*tooltip text="Clique aqui para enviar um arquivo de <b>vídeo</b>."*}<img id="iconeVideo" onMouseOver="acendeTipo('Video');" onMouseOut="apagaTipo('Video')" onClick="selecionaTipo('Video')" alt="" src="styles/estudiolivre/iUpVideoOff.png"><br />
+        Video{*/tooltip*}
       </div>
     
     </div>
@@ -54,8 +54,25 @@
          </div>
    
      </div>
-      
+    {*if $pending && $permission}
+    <img class="separator" src="styles/estudiolivre/separator.png">
+	{/if*}      
     </div>
+
+    {if $pending && $permission && $user}
+	 	<div id="fileAltered" style="display:block;text-align:left">
+	 		Arquivos não publicados:<br/>
+		 	<ul>
+				{foreach from=$pending item=arquivo}
+					<li>
+						<a onClick="restoreForm({$arquivo.arquivoId}, '{$arquivo.tipo}', '{$arquivo.arquivo}', '{$arquivo.thumbnail}');flip('fileAltered')">{$arquivo.titulo|default:$arquivo.arquivo|default:$arquivo.arquivoId}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+					    <a href="el-gallery_delete.php?arquivoId={$arquivo.arquivoId}">(apagar)</a>
+					</li>
+				{/foreach}
+			 </ul>
+		 </div>
+	 {/if}
+    
     
     
   </div>
@@ -80,16 +97,16 @@
     </div>
 
     <div id="gUpTitleAuthor">
-        {ajax_input permission=$permission class="gUpEdit gUpTitle" id="titulo" value=$arquivo.titulo default="Titulo" display="inline" truncate=50}
+        {ajax_input permission=$permission class="editable gUpTitle" id="titulo" value=$arquivo.titulo default="Titulo" display="inline" truncate=50}
 		<div id="gUpAuthorCont">
-		  	Por {ajax_input permission=$permission class="gUpAuthor gUpEdit" id="autor" value=$realName default="Autor da obra" display="inline" mode="edit"}
+		  	Por {ajax_input permission=$permission class="gUpAuthor editable" id="autor" value=$realName default="Autor da obra" display="inline" mode="edit"}
 		</div>
     </div>
       
     <br style="clear:both; line-height:30px;">
     <div id="gUpDescription">
     	<div>
-	    	{ajax_textarea permission=$permission  display="block" style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" class="gUpEdit gUpDescription" id="descricao" value=$arquivo.descricao default="Escreva aqui a descrição da sua obra"}
+	    	{ajax_textarea permission=$permission  display="block" style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" class="editable gUpDescription" id="descricao" value=$arquivo.descricao default="Escreva aqui a descrição da sua obra"}
 	    </div>
     </div>
     
@@ -104,19 +121,22 @@
       {if $feature_freetags eq 'y' && $tiki_p_freetags_tag eq 'y'}
         <span>Tags</span>
 	{* O ideal eh que tenha suggest aqui nesse campo *}
-	{ajax_input permission=$permission class="freetags" id="tags" value="$taglist" noclear=1 display="inline"}<br>
+	{tooltip text="Escreva aqui as tags desse arquivo (separadas por <b>vírgula</b>)"}{ajax_input permission=$permission class="freetags" id="tags" value="$taglist" noclear=1 display="inline"}{/tooltip}<br>
 	  <div id="gUpTagSugest">
 	    {* Aqui ficam listadas as tags do usuário.
 	    Primeiro as 10 mais usadas, com um botão "exibir +" e outro "exibir todas" *}
+
 	    <div id="gUpTagSuggestUser" >
-	      <div id="gUpTagSuggestMore">
-	        <a href="#" class="gUpmore" onclick="javascript:flip('gUpTagSugestUserMoreTen'); return false;">+10</a>
+	      <div id="gUpTagSuggestMore" style="display:block">
+	        <a href="#" class="gUpmore" onclick="document.getElementById('gUpTagListItem').innerHTML=document.getElementById('gUpTagListItem').innerHTML+document.getElementById('gUpTagSuggestUserMoreTen').innerHTML;flip('gUpTagSuggestMore');return false;">+10</a>
 	      </div>
+	   	  {tooltip text="Clique nas tags para adiocioná-las ao campo acima"}
 	      <div id="gUpTagListItem">
 	        {foreach from=$tag_suggestion item=t}
-		  <a href="javascript:addTag('{$t}')">{$t}</a>
+		  		<span class="pointer" onclick="addTag('{$t}');this.style.display='none'">{$t}</span>
 	        {/foreach}
 	      </div> 
+    	  {/tooltip}
 	    </div>
 	    
 	    <div id="gUpTagSuggestUserMoreTen" style="display:none">
@@ -130,11 +150,8 @@
     <br style="clear:both; line-height:20px;">
     
     <div id="gUpMoreOptions">
-      <a class="gUpmore" id="gUpmoreoptionsLink" onclick="javascript:flip('gUpMoreOptionsContent'); return false;"> [+] opções </a><br/>
-		{*include file="el-gallery_upload_Audio.tpl"}
-		{include file="el-gallery_upload_Video.tpl"*}
+      {tooltip text="Clique para definir outras propriedades do arquivo"}<a class="gUpmore" id="gUpmoreoptionsLink" onclick="javascript:flip('gUpMoreOptionsContent'); return false;"> [+] opções </a>{/tooltip}<br/>
       <div style="display:none" id="gUpMoreOptionsContent">
-        {include file="el-gallery_upload_metadata.tpl"}
       </div>
     </div>
     
@@ -151,24 +168,6 @@
 
 {include file="el-gallery_publish.tpl"}
 {include file="el-gallery_error.tpl"}
-
-{if $pending && $permission && $user}
-<div id="lightFileAltered" style="display:none; width: 400px;">
-	Atenção: você tem arquivos que não foram publicados!<br/>
-	<ul>
-	{foreach from=$pending item=arquivo}
-	  <li>
-	    <a onClick="restoreForm({$arquivo.arquivoId}, '{$arquivo.tipo}', '{$arquivo.arquivo}', '{$arquivo.thumbnail}'); hideLightbox();">{$arquivo.titulo|default:$arquivo.arquivo|default:$arquivo.arquivoId}</a>&nbsp;&nbsp;
-	    <a href="el-gallery_delete.php?arquivoId={$arquivo.arquivoId}">X</a>
-	  </li>
-	{/foreach}
-	</ul>
-	<a onClick="hideLightbox();">Novo arquivo</a>
-</div>
-<script language="Javascript">
-	showLightbox('lightFileAltered');
-</script>
-{/if}
 
 <!-- el-gallery_upload_general.tpl end -->
 

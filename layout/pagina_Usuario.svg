@@ -17,10 +17,32 @@
    inkscape:version="0.43"
    width="840.00000"
    height="660.00000"
-   sodipodi:docbase="/home/rhwinter/dev/cvs/estudiolivre/layout"
+   sodipodi:docbase="/home/nano/devel/eclipse_workspace/estudiolivre/layout"
    sodipodi:docname="pagina_Usuario.svg">
   <defs
      id="defs1396">
+    <linearGradient
+       id="linearGradient4419">
+      <stop
+         style="stop-color:#e7e7e7;stop-opacity:1;"
+         offset="0"
+         id="stop4421" />
+      <stop
+         style="stop-color:#767676;stop-opacity:0;"
+         offset="1"
+         id="stop4423" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4400">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop4402" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop4404" />
+    </linearGradient>
     <linearGradient
        id="linearGradient8543">
       <stop
@@ -2147,13 +2169,32 @@
        id="linearGradient8596"
        xlink:href="#linearGradient54966"
        inkscape:collect="always" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4400"
+       id="linearGradient4406"
+       x1="606.70276"
+       y1="334.5"
+       x2="624.7724"
+       y2="334.5"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.925543,0,0,1.20726,46.00796,-75.3426)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4419"
+       id="linearGradient4425"
+       x1="665.22693"
+       y1="331.39145"
+       x2="605.82031"
+       y2="331.39145"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
-     inkscape:cy="84.795253"
-     inkscape:cx="443.71325"
-     inkscape:zoom="1"
-     inkscape:window-height="1086"
-     inkscape:window-width="1592"
+     inkscape:cy="45.817337"
+     inkscape:cx="165.62539"
+     inkscape:zoom="4.0886076"
+     inkscape:window-height="815"
+     inkscape:window-width="1287"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      borderopacity="1.0"
@@ -2162,8 +2203,8 @@
      id="base"
      showguides="false"
      inkscape:guide-bbox="true"
-     inkscape:window-x="0"
-     inkscape:window-y="86"
+     inkscape:window-x="305"
+     inkscape:window-y="357"
      inkscape:current-layer="svg1393">
     <sodipodi:guide
        orientation="horizontal"
@@ -4106,7 +4147,7 @@
        sodipodi:linespacing="100.00000%"><tspan
          sodipodi:role="line"
          id="tspan8273"
-         x="187.60695"
+         x="187.60694"
          y="-787.5957">Hovers dessa sessão</tspan></text>
   </g>
   <g
@@ -4539,21 +4580,21 @@
      inkscape:export-ydpi="90.000000"
      inkscape:export-xdpi="90.000000"
      inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
-     style="opacity:0.063829787;fill:#c2c2be;fill-opacity:1.0000000;stroke:none;stroke-width:0.077509880;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+     style="opacity:0.06382979;fill:#c2c2be;fill-opacity:1;stroke:none;stroke-width:0.07750988;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
      id="rect4851"
      width="178.36269"
-     height="199.28465"
-     x="-225.71620"
-     y="-630.55072"
+     height="178.28465"
+     x="-225.7162"
+     y="-609.55072"
      rx="6.3558288"
-     ry="0.0000000"
-     transform="scale(-1.000000,-1.000000)" />
+     ry="0"
+     transform="scale(-1,-1)" />
   <rect
      transform="matrix(6.45835e-19,-1,1,2.597e-19,0,0)"
      ry="0"
      rx="6.3558283"
      y="48.190456"
-     x="-610.62415"
+     x="-611.39807"
      height="548.55194"
      width="2"
      id="rect4849"
@@ -5226,113 +5267,99 @@
        id="tspan17442">CrisScabello</tspan></text>
   <text
      xml:space="preserve"
-     style="font-size:11.000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100.00000%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Sans"
-     x="456.47565"
-     y="346.98566"
-     id="text17476"
-     sodipodi:linespacing="100.00000%"
-     inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
-     inkscape:export-xdpi="90.000000"
-     inkscape:export-ydpi="90.000000"><tspan
-       sodipodi:role="line"
-       id="tspan17478"
-       x="456.47565"
-       y="346.98566">Ultimas Contribuições</tspan></text>
-  <text
-     xml:space="preserve"
-     style="font-size:11.000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100.00000%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Sans"
-     x="496.9361"
-     y="373.58829"
+     style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Sans"
+     x="550.63062"
+     y="313.58829"
      id="text17480"
-     sodipodi:linespacing="100.00000%"
+     sodipodi:linespacing="100%"
      inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
      inkscape:export-xdpi="90.000000"
      inkscape:export-ydpi="90.000000"><tspan
        sodipodi:role="line"
        id="tspan17482"
-       x="496.9361"
-       y="373.58829">Amigos</tspan></text>
+       x="550.63062"
+       y="313.58829">Amigos</tspan></text>
   <rect
      inkscape:export-ydpi="90.000000"
      inkscape:export-xdpi="90.000000"
      inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
-     style="opacity:1.0000000;fill:#c2c2be;fill-opacity:1.0000000;stroke:none;stroke-width:0.077509880;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+     style="opacity:1;fill:#c2c2be;fill-opacity:1;stroke:none;stroke-width:0.07750988;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
      id="rect3396"
-     width="1.0000000"
-     height="99.000000"
-     x="-227.86890"
-     y="-405.77478"
+     width="1"
+     height="99"
+     x="-245.8689"
+     y="-399.77478"
      rx="6.3558283"
-     ry="0.0000000"
-     transform="scale(-1.000000,-1.000000)" />
+     ry="0"
+     transform="scale(-1,-1)" />
   <text
-     sodipodi:linespacing="100.00000%"
+     sodipodi:linespacing="100%"
      id="text3398"
-     y="321.20334"
-     x="516.91095"
-     style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100.00000%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+     y="419.33875"
+     x="524.79639"
+     style="font-size:10.54055977px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
      xml:space="preserve"
      inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
      inkscape:export-xdpi="90.000000"
      inkscape:export-ydpi="90.000000"><tspan
-       y="321.20334"
-       x="516.91095"
+       y="419.33875"
+       x="524.79638"
        id="tspan3400"
        sodipodi:role="line">Membro desde: 12/09/89</tspan></text>
   <text
      sodipodi:linespacing="100%"
      id="text3402"
-     y="413.89969"
-     x="131.25554"
+     y="411.89969"
+     x="129.79655"
      style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
      xml:space="preserve"
      inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
      inkscape:export-xdpi="90.000000"
      inkscape:export-ydpi="90.000000"><tspan
-       y="413.89969"
-       x="131.25554"
+       y="411.89969"
+       x="129.79655"
        id="tspan3404"
        sodipodi:role="line">Localizado em: Curralinho</tspan></text>
   <text
-     sodipodi:linespacing="100.00000%"
+     sodipodi:linespacing="100%"
      id="text3406"
-     y="321.67505"
+     y="313.58829"
      x="131.73015"
-     style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100.00000%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
      xml:space="preserve"
      inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
      inkscape:export-xdpi="90.000000"
      inkscape:export-ydpi="90.000000"><tspan
-       y="321.67505"
+       y="313.58829"
        x="131.73015"
        id="tspan3408"
        sodipodi:role="line">Cristiano Scabello da Silva</tspan></text>
   <text
-     sodipodi:linespacing="100.00000%"
+     sodipodi:linespacing="100%"
      id="text3410"
-     y="350.86581"
-     x="131.70085"
-     style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100.00000%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+     y="342.86581"
+     x="100.14812"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
      xml:space="preserve"
      inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
      inkscape:export-xdpi="90.000000"
      inkscape:export-ydpi="90.000000"><tspan
-       y="350.86581"
-       x="131.70085"
+       y="342.86581"
+       x="100.14812"
        id="tspan3412"
        sodipodi:role="line">cris@gmail.com</tspan></text>
   <text
-     sodipodi:linespacing="100.00000%"
+     sodipodi:linespacing="100%"
      id="text3414"
-     y="382.38275"
-     x="131.153"
-     style="font-size:12.000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100.00000%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+     y="379.45871"
+     x="121.47234"
+     style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
      xml:space="preserve"
      inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
      inkscape:export-xdpi="90.000000"
      inkscape:export-ydpi="90.000000"><tspan
-       y="382.38275"
-       x="131.153"
+       y="379.45871"
+       x="121.47234"
        id="tspan3416"
        sodipodi:role="line">http://www.cris.com.tv</tspan></text>
   <g
@@ -5340,15 +5367,15 @@
      id="layer3"
      inkscape:groupmode="layer" />
   <rect
-     transform="scale(-1.000000,-1.000000)"
-     ry="0.0000000"
+     transform="scale(-1,-1)"
+     ry="0"
      rx="6.3558283"
-     y="-405.77478"
-     x="-422.07477"
-     height="99.000000"
-     width="1.0000000"
+     y="-399.77478"
+     x="-404.07477"
+     height="99"
+     width="1"
      id="rect3435"
-     style="opacity:1.0000000;fill:#c2c2be;fill-opacity:1.0000000;stroke:none;stroke-width:0.077509880;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+     style="opacity:1;fill:#c2c2be;fill-opacity:1;stroke:none;stroke-width:0.07750988;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
      inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
      inkscape:export-xdpi="90.000000"
      inkscape:export-ydpi="90.000000" />
@@ -6218,12 +6245,12 @@
        style="fill:#e3e3e1;fill-opacity:1;stroke:none;stroke-linejoin:round;stroke-opacity:1" />
   </g>
   <image
-     y="392.00000"
-     x="487.07501"
+     y="333.74863"
+     x="530.18335"
      xlink:href="imports/small-by-nc-sa.gif"
      sodipodi:absref="/home/uira/culturadigital/estudiolivre/layout/imports/small-by-nc-sa.gif"
-     width="60.000000"
-     height="20.000000"
+     width="60"
+     height="20"
      id="image4039"
      inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
      inkscape:export-xdpi="90.000000"
@@ -6272,17 +6299,6 @@
      inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
      inkscape:export-xdpi="90.000000"
      inkscape:export-ydpi="90.000000" />
-  <image
-     y="334.19489"
-     x="581"
-     xlink:href="imports/iRss.png"
-     sodipodi:absref="/home/uira/culturadigital/estudiolivre/layout/imports/iRss.png"
-     width="15.098529"
-     height="15"
-     id="image2339"
-     inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
-     inkscape:export-xdpi="90.000000"
-     inkscape:export-ydpi="90.000000" />
   <rect
      style="opacity:1;fill:#ffffff;fill-opacity:0.80932204;stroke:none;stroke-width:0.10896178;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
      id="rect2341"
@@ -6307,18 +6323,20 @@
      inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
      inkscape:export-xdpi="90.000000"
      inkscape:export-ydpi="90.000000" />
-  <rect
-     style="opacity:1;fill:#ffffff;fill-opacity:0.80932204;stroke:none;stroke-width:0.10896178;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-     id="rect3071"
-     width="18"
-     height="17.893761"
-     x="579.63391"
-     y="333.20126"
-     rx="0"
-     ry="0"
+  <text
+     xml:space="preserve"
+     style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Sans"
+     x="470.19312"
+     y="380.98566"
+     id="text17476"
+     sodipodi:linespacing="100%"
      inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
      inkscape:export-xdpi="90.000000"
-     inkscape:export-ydpi="90.000000" />
+     inkscape:export-ydpi="90.000000"><tspan
+       sodipodi:role="line"
+       id="tspan17478"
+       x="470.19312"
+       y="380.98566">Ultimas Contribuições</tspan></text>
   <rect
      style="opacity:1;fill:#ffffff;fill-opacity:0.80932204;stroke:none;stroke-width:0.10896178;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
      id="rect3075"
@@ -6334,9 +6352,9 @@
   <g
      id="g3079"
      transform="matrix(2.206848,0.000000,0.000000,2.482990,1771.065,2144.969)"
-     inkscape:export-filename="telaUpload_versao00.png"
-     inkscape:export-xdpi="150"
-     inkscape:export-ydpi="150">
+     inkscape:export-filename="/home/nano/avatarUira.png"
+     inkscape:export-xdpi="90.33609"
+     inkscape:export-ydpi="90.33609">
     <g
        id="g3081"
        transform="matrix(0.499525,0.000000,0.000000,0.496628,-531.8976,-815.5579)">
@@ -6883,15 +6901,15 @@
      id="rect4843"
      style="opacity:1.0000000;fill:none;fill-opacity:0.48305085;stroke:#000000;stroke-width:0.30000001;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000" />
   <rect
-     transform="scale(-1.000000,-1.000000)"
-     ry="0.0000000"
+     transform="scale(-1,-1)"
+     ry="0"
      rx="6.3558283"
-     y="-629.39807"
-     x="-228.86890"
-     height="196.97926"
-     width="2.0000000"
+     y="-611.39807"
+     x="-228.8689"
+     height="178.97926"
+     width="2"
      id="rect4845"
-     style="opacity:1.0000000;fill:#c2c2be;fill-opacity:1.0000000;stroke:none;stroke-width:0.077509880;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-opacity:1.0000000"
+     style="opacity:1;fill:#c2c2be;fill-opacity:1;stroke:none;stroke-width:0.07750988;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
      inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
      inkscape:export-xdpi="90.000000"
      inkscape:export-ydpi="90.000000" />
@@ -6952,4 +6970,70 @@
      inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
      inkscape:export-xdpi="90.000000"
      inkscape:export-ydpi="90.000000" />
+  <path
+     style="opacity:0.9;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#a4a4a4;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+     d="M 752.96959,357 L 671.96959,357 L 594.96959,379 L 627.96959,357 L 606.96959,357 C 603.09159,357 599.96959,353.878 599.96959,350 L 599.96959,307.99078 C 599.96959,304.11278 603.09159,300.99078 606.96959,300.99078 L 752.96959,300.99078 C 756.84759,300.99078 759.96959,304.11278 759.96959,307.99078 L 759.96959,350 C 759.96959,353.878 756.84759,357 752.96959,357 z "
+     id="rect3517"
+     sodipodi:nodetypes="cccccccccccc" />
+  <g
+     id="g3513"
+     transform="matrix(1.789786,0,0,1.789786,-318.7412,-338.4868)">
+    <image
+       inkscape:export-ydpi="90.000000"
+       inkscape:export-xdpi="90.000000"
+       inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
+       id="image2339"
+       height="15"
+       width="15.098529"
+       sodipodi:absref="/home/uira/culturadigital/estudiolivre/layout/imports/iRss.png"
+       xlink:href="imports/iRss.png"
+       x="576.71747"
+       y="368.19489" />
+    <rect
+       inkscape:export-ydpi="90.000000"
+       inkscape:export-xdpi="90.000000"
+       inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
+       ry="2.0503788"
+       rx="2.0503788"
+       y="368.00409"
+       x="576.75635"
+       height="15.685965"
+       width="15.190125"
+       id="rect3071"
+       style="fill:#ffffff;fill-opacity:0.80932204;stroke:none;stroke-width:0.10896178;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+  </g>
+  <text
+     inkscape:export-ydpi="90.000000"
+     inkscape:export-xdpi="90.000000"
+     inkscape:export-filename="/home/uira/culturadigital/estudiolivre/layout/screenshots/paginaUsuario.png"
+     sodipodi:linespacing="100%"
+     id="text3520"
+     y="342.80194"
+     x="600.29767"
+     style="font-size:28.06129265px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Sans"
+     xml:space="preserve"><tspan
+       y="342.80194"
+       x="600.29767"
+       id="tspan3522"
+       sodipodi:role="line">uições</tspan></text>
+  <path
+     style="opacity:0.9;color:#000000;fill:none;fill-opacity:1.0;fill-rule:evenodd;stroke:url(#linearGradient4425);stroke-width:2.75269389;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;visibility:visible;display:inline;overflow:visible"
+     d="M 603.053,316.60229 L 748.74582,316.60229 L 748.74582,352.51925 L 603.72023,352.51925 M 705.80573,352.51925 L 705.80573,316.60229"
+     id="rect4408"
+     sodipodi:nodetypes="cccccc" />
+  <text
+     xml:space="preserve"
+     style="font-size:9.76280689px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+     x="618.78998"
+     y="311.11713"
+     id="text4427"><tspan
+       sodipodi:role="line"
+       id="tspan4429"
+       x="618.78998"
+       y="311.11713">Hover:</tspan></text>
+  <path
+     sodipodi:nodetypes="cccccc"
+     id="path3525"
+     d="M 626.18776,355.64944 L 607.78452,355.64944 C 604.19526,355.64944 601.30572,351.88038 601.30572,347.19862 L 601.30572,309.77354 C 601.30572,305.09179 604.19526,301.32272 607.78452,301.32272 L 626.18776,301.32272"
+     style="opacity:0.9;color:#000000;fill:url(#linearGradient4406);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible" />
 </svg>

@@ -107,6 +107,7 @@
       			Se for cadastrado, efetue o login:<br>
 
 					    <form id="uLoginBox" action="tiki-login.php" method="post">
+					      <input type="hidden" name="redirect" value="el-gallery_upload.php">
 					      <input class="uText" type="text" name="user" id="login-user" size="12" value="usuário" onFocus="this.value=''"/>
 					      <input class="uText" type="text" name="pass" id="login-pass" size="10" value="senha" onFocus="this.value='';this.type='password'"/>
 					      <input type="image" name="login" src="styles/estudiolivre/iLogin.png" />      
@@ -138,7 +139,7 @@
   <div id="userMenuContainer">
 
 	<span id="uMenuName">
-		<a href="el-user.php?view_user={$user}">{$user}</a>
+		{tooltip text="Navegue para a sua página pessoal para ver seus blogs, arquivos, mensagens e mudar as suas preferências."}<a href="el-user.php?view_user={$user}">{$user}</a>{/tooltip}
 	</span>
   
     <img alt="" id="uOnlineThumb" class="uThumb" src="tiki-show_user_avatar.php?user={$user}"/>
@@ -199,7 +200,7 @@
     <form id="uLoginBox" action="tiki-login.php" method="post">
       <input class="uText" type="text" name="user" id="login-user" size="12" value="usuário" onFocus="this.value=''"/>
       <input class="uText" type="text" name="pass" id="login-pass" size="10" value="senha" onFocus="this.value='';this.type='password'"/>
-      <input type="image" name="login" src="styles/estudiolivre/iLogin.png" />
+      {tooltip text="Clique aqui ou aperte <i>enter</i> para efetuar o login"}<input type="image" name="login" src="styles/estudiolivre/iLogin.png" />{/tooltip}
       
       <div id="uLoginOptions">
         <a href="tiki-remind_password.php">&raquo; recuperar senha</a><br>
