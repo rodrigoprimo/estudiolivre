@@ -89,15 +89,13 @@
 				    </span>{/tooltip}
 			    {/if}
 			</div>			
-			{tooltip text="Tags desse arquivo"}
 			<div id="aTags">
-				{foreach from=$arquivo.tags.data item=t}
-			        {tooltip text="Clique para ver outros arquivos com a tag <b>".$t.tag."</b>"}<a class="freetag" href="tiki-browse_freetags.php?tag={$t.tag}">{$t.tag}</a>,{/tooltip}
+				{foreach from=$arquivo.tags.data item=t name=tags}
+			        {tooltip text="Clique para ver outros arquivos com a tag <b>"|cat:$t.tag|cat:"</b>"}<a class="freetag" href="tiki-browse_freetags.php?tag={$t.tag}">{$t.tag}</a>{if not $smarty.foreach.tags.last},{/if}{/tooltip}
     			{foreachelse}
       				&nbsp;
     			{/foreach}
 			</div>
-			{/tooltip}
 		</div>
 	</div>
 	<br style="line-height: 25px"/>

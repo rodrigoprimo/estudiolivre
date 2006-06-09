@@ -78,13 +78,13 @@
       
     </div>
     
-    {tooltip name="list-tags-arquivo" text="Tags desse arquivo"}<div id="gTags">
-    {foreach from=$arquivo.tags.data item=t}
-      <a href="tiki-browse_freetags.php?tag={$t.tag}">{$t.tag}</a>,
+    <div id="gTags">
+    {foreach from=$arquivo.tags.data item=t name=tags}
+      {tooltip text="Clique para ver outros arquivos com a tag <b>"|cat:$t.tag|cat:"</b>"}<a href="tiki-browse_freetags.php?tag={$t.tag}">{$t.tag}</a>{if not $smarty.foreach.tags.last},{/if}{/tooltip}
     {foreachelse}
-      &nbsp;
+      {tooltip text="Esse arquivo não tem tags"}<div>&nbsp;</div>{/tooltip}
     {/foreach}
-    </div>{/tooltip}
+   </div>
   </div>
   
   <div id="gEditDelete">
