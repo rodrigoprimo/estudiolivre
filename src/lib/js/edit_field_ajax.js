@@ -46,7 +46,8 @@ function exibeCampo(field, value) {
 		editElement.style.display = "none";
 		saveFieldCache[field] = value;		
 	} else if (type == 'checkbox') {
-    	editElement.checked = value ? 1 : 0;
+		if(value == '1') editElement.checked = 1;
+		else editElement.checked = 0;
     }
     
 	hide('error-' + field);

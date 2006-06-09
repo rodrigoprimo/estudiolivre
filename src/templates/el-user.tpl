@@ -6,18 +6,28 @@
 <div id="userPage">
   <div id="uGeneralInfo">
     <div id="uName">
-      {$userinfo.login} {if $user eq $userinfo.login}{tooltip text="Modifique as suas preferências"}<a href="tiki-user_preferences.php"><img src="img/mytiki/prefs.gif" height="15"></a>{/tooltip}{/if}
+		{if $permission}
+			{tooltip text="Selecione para tornar esta página pública"}
+				{ajax_checkbox permission=$permission class="" id="isPublic" value=$isPublic}
+			{/tooltip}
+			{$userinfo.login}
+			{tooltip text="Modifique as suas preferências"}
+				<a href="tiki-user_preferences.php"><img src="img/mytiki/prefs.gif" height="15"></a>
+			{/tooltip}
+		{else}
+			{$userinfo.login}
+		{/if}
     </div>
     
     <div id="uContactKarmaAccount">
       <div id="uContact" class="uContactInfoCont left">
         {ajax_input permission=$permission id="realName" class="uContactItem editable" value=$realName default="Nome completo" display="block"}
-		<br />
+        <br />
         {ajax_input permission=$permission id="email" class="uContactItem editable" value=$userinfo.email default="E-mail" display="block" truncate='25'}
 		<br />
-        {ajax_input permission=$permission id="homePage" class="uContactItem editable" value=$homePage default="Homepage" display="block" truncate='25'}
+        {ajax_input permission=$permission id="site" class="uContactItem editable" value=$site default="Site" display="block" truncate='25'}
 		<br />
-        Localizado em: {ajax_input permission=$permission id="country" class="uContactItem editable" value=$country default="País" display="inline"}
+        {ajax_input permission=$permission id="local" class="uContactItem editable" value=$local default="Localização" display="inline"}
       </div>
 
       <div id="uKarmaThumb" class="uContactInfoCont center">
@@ -119,6 +129,7 @@
         {/foreach}
       </div>
     </div>
+    {if $allowMsgs}
     <div id="uMsgs" class="uMainContainer">
       <div id="uMsgsTitle" class="sectionTitle uMainTitle">
         <a class="uRssCont" href="#"><img src="styles/estudiolivre/iRss.png"></a>
@@ -132,6 +143,7 @@
       	{include file="el-user_msg.tpl"}
       </div>
     </div>
+    {/if}
     <div id="uWiki" class="uMainContainer">
     	<div id="uWikiTitle" class="sectionTitle uMainTitle">
     		<a class="uRssCont" href="#"><img src="styles/estudiolivre/iRss.png"></a>

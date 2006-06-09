@@ -1,19 +1,24 @@
 <?php
 
 // Initialization
-require_once('tiki-setup.php');
-require_once('lib/elgal/elgallib.php');
+if (!isset($_POST['xajax']) || $_POST['xajax'] != 'upload_info') {
+	require_once("tiki-setup.php");
+	require_once("lib/elgal/elgallib.php");
+} else {
+	$feature_ajax = "y";
+}
+
 require_once('lib/ajax/ajaxlib.php');
 
 if (isset($_REQUEST['view_user'])) {
-	$userwatch = $_REQUEST['view_user'];
-	if ($userwatch == $user) 
+	$view_user = $_REQUEST['view_user'];
+	if ($view_user == $user) 
 		$permission = true;
 	else 
 		$permission = false;
 } else {
 	if ($user) {
-		$userwatch = $user;
+		$view_user = $user;
 		$permission = true;
 	} else {
 		$noUser = true;
@@ -21,9 +26,7 @@ if (isset($_REQUEST['view_user'])) {
 	}
 }
 
-$_REQUEST['view_user'] = $userwatch;
-$view_user = $_REQUEST['view_user'];
-
+include_once ('lib/userprefs/scrambleEmail.php');
 require_once('lib/messu/messulib.php');
 require_once("el-user_ajax.php");
 require_once("el-gallery_ajax.php");
@@ -40,11 +43,29 @@ if (isset($noUser)) {
 	die;
 }
 
+if (!$userlib->user_exists($view_user)) {
+	$smarty->assign('msg', tra("Unknown user"));
+	$smarty->display("error.tpl");
+	die;
+}
+
+if ($tiki_p_admin != 'y' && !$permission) {
+	$isPublic = $tikilib->get_user_preference($view_user, 'isPublic', '1');
+	if (!$isPublic) {
+		$smarty->assign('msg', tra("The user has chosen to make his information private"));
+		$smarty->display("error.tpl");
+		die;
+	}
+}
+
 $page = "Usuário_" . $view_user;
 $info = $tikilib->get_page_info($page);
-$pdata = $tikilib->parse_data($info["data"],$info["is_html"]);
-foreach($info as $infoName => $value) {
-	$smarty->assign($infoName, $value);
+$smarty->assign('pageName', $page);
+if(is_array($info)) {
+	$pdata = $tikilib->parse_data($info["data"],$info["is_html"]);
+	foreach($info as $infoName => $value) {
+		$smarty->assign($infoName, $value);
+	}	
 }
 $smarty->assign_by_ref('userWiki', $pdata);
 
@@ -82,6 +103,57 @@ $smarty->assign('userMessages', $messulib->list_user_messages($view_user, 0, 5, 
 
 $smarty->assign('uploadId',rand() . '.' . time());
 
-include("tiki-user_information.php");
+//coisas herdadas do tiki-user_information.php
+//include("tiki-user_information.php");
+
+/* coisa que podem ser uteis
+$user_language = $tikilib->get_language($view_user);
+$smarty->assign_by_ref('user_language',$user_language);
+$country = $tikilib->get_user_preference($view_user,'country','');
+$smarty->assign('country',$country);
+$anonpref = $tikilib->get_preference('userbreadCrumb',4);
+$userbreadCrumb = $tikilib->get_user_preference($view_user,'userbreadCrumb',$anonpref);
+$smarty->assign_by_ref('userbreadCrumb',$userbreadCrumb);
+$avatar = $tikilib->get_user_avatar($view_user);
+$smarty->assign('avatar', $avatar);
+$homePage = $tikilib->get_user_preference($view_user,'site','');
+$smarty->assign_by_ref('site',$homePage);
+$timezone_options = $tikilib->get_timezone_list(true);
+$smarty->assign_by_ref('timezone_options', $timezone_options);
+$server_time = new Date();
+$display_timezone = $tikilib->get_user_preference($view_user, 'display_timezone', $server_time->tz->getID());
+$smarty->assign_by_ref('display_timezone', $display_timezone);
+$userPage = $feature_wiki_userpage_prefix.$userinfo['login'];
+$exist = $tikilib->page_exists($userPage);
+$smarty->assign("userPage_exists", $exist);
+********************************/
+
+$user_style = $tikilib->get_user_preference($view_user,'theme',$site_style);
+$smarty->assign_by_ref('user_style',$user_style);
+
+$allowMsgs = $tikilib->get_user_preference($view_user,'allowMsgs','y');
+$smarty->assign('allowMsgs',$allowMsgs);
+$realName = $tikilib->get_user_preference($view_user,'realName','');
+$local = $tikilib->get_user_preference($view_user,'local','');
+$smarty->assign('local',$local);
+$smarty->assign_by_ref('realName',$realName);
+$site = $tikilib->get_user_preference($view_user,'site','');
+$smarty->assign_by_ref('site',$site);
+
+$isPublic = $tikilib->get_user_preference($view_user, 'isPublic', '1');
+$smarty->assign('isPublic', $isPublic);
+
+$userinfo = $userlib->get_user_info($view_user);
+$smarty->assign_by_ref('userinfo', $userinfo);
+
+$email_isPublic = $tikilib->get_user_preference($view_user, 'email is public', 'y');
+if ($email_isPublic != 'n') {
+	$userinfo['email'] = scrambleEmail($userinfo['email'], $email_isPublic);
+}
+$smarty->assign_by_ref('email_isPublic',$email_isPublic);
+
+
+$smarty->assign('mid', 'el-user.tpl');
+$smarty->display("tiki.tpl");
 
 ?>
