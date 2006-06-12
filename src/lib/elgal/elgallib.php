@@ -323,7 +323,7 @@ class ELGalLib extends TikiLib {
   		return true;
   	}
   	
-  	$tipo = $arquivo['tipo'];
+  	$tipo = strtolower($arquivo['tipo']);
   	
   	$query = "update `el_arquivo` set ";
   	$queryExt = "update `el_arquivo_$tipo` set ";
@@ -349,7 +349,7 @@ class ELGalLib extends TikiLib {
 	}
 	
 	if (sizeof($bindvalsExt)) {
-		$queryExt = preg_replace('/, $/', 'where `arquivoId`=?');
+		$queryExt = preg_replace('/, $/', ' where `arquivoId`=?', $queryExt);
 		$bindvalsExt[] = $arquivoId;
 		if (!$this->query($queryExt, $bindvalsExt)) {
 			return false;
@@ -659,22 +659,23 @@ class ELGalLib extends TikiLib {
 
     if ($arquivo['tipo'] == "Video") {
 		$thumbData = $this->create_thumb_video("repo/".$arquivo['arquivo']);
+		$this->save_thumb($thumbData, $arquivoId, $user, '.gif');
     }
     elseif ($arquivo['tipo'] == "Imagem") {
 		$thumbData = $this->create_thumb_imagem("repo/".$arquivo['arquivo']);
+		$this->save_thumb($thumbData, $arquivoId, $user, '.png');
     } else {
 		return false;
     }
-	
-    $this->save_thumb($thumbData, $arquivoId, $user);
   }
   
-  function save_thumb($fileBlob,$arquivoId,$user) {
+  function save_thumb($fileBlob,$arquivoId,$user, $ext) {
       $destination = "repo/";
       
       $arquivo = $this->get_arquivo($arquivoId);
 
       $fileName = 'thumb_' . $arquivo['arquivo'];
+      $fileName = preg_replace('/\.(.+?)$/', $ext, $fileName);
       $path = $destination.$fileName;
       $fp = fopen($path, "w");
       if (!$fp) {
@@ -706,7 +707,7 @@ class ELGalLib extends TikiLib {
     	return false;
     }
     
-    $thumbSide = $this->get_preference('el_thumb_side', 60);
+    $thumbSide = $this->get_preference('el_thumb_side', 100);
     
     //bloco que acha a proporcao pro thumbnail
     list($width, $height) = getimagesize($image);
@@ -766,16 +767,20 @@ class ELGalLib extends TikiLib {
   
   function create_thumb_video($path) {
      
-      if (!function_exists('ffmpeg_movie')) {
-	  return false;
-      }
+      //if (!function_exists('ffmpeg_movie')) {
+	  //	return false;
+      //}
       //first, get movie and gif info
       $movie = new ffmpeg_movie($path, 0);
       $width = $movie->getFrameWidth();
       $height = $movie->getFrameHeight();
       $frameTotal = $movie->getFrameCount();
-      $rate = (int)($frameTotal/20);
-      $percent = ($width>(12/7.5)*$height) ? 120/$width : 75/$height;
+      
+      $thumbSide = $this->get_preference('el_thumb_side', 100);
+      $thumbVideoSize = $this->get_preference('el_thumb_video_size', 10);
+      
+      $rate = (int)($frameTotal/$thumbVideoSize);
+      $percent = ($width>$height) ? $thumbSide/$width : $thumbSide/$height;
       $width = (int)($percent*$width);
       $height = (int)($percent*$height);
       if($width%2 != 0) $width++;
