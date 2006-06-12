@@ -59,7 +59,7 @@ function streamFile($arquivoId, $type) {
     
     $playerName = 'player' . $type;
     $validUrl = 'http://' . $_SERVER['HTTP_HOST'] . '/estudiolivre/repo/' . $arquivo['arquivo'];
-    if ($type == 'Video' || $type == 'Imagem') {
+    if ($type == 'Video') {
     	$width = $arquivo['tamanhoImagemX'];
     	$height = $arquivo['tamanhoImagemY'];
     } else {
@@ -67,7 +67,7 @@ function streamFile($arquivoId, $type) {
     	$height = 50;
     }
         
-    $objResponse->addScript("loadFile($playerName, '" . $validUrl . "', $width, $height, '" . $type . "')");
+    $objResponse->addScript("loadFile($playerName, '$validUrl', $width, $height, '$type')");
     
     return $objResponse;
     

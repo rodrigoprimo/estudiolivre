@@ -659,11 +659,15 @@ class ELGalLib extends TikiLib {
 
     if ($arquivo['tipo'] == "Video") {
 		$thumbData = $this->create_thumb_video("repo/".$arquivo['arquivo']);
-		$this->save_thumb($thumbData, $arquivoId, $user, '.gif');
+		if ($thumbData) {
+			$this->save_thumb($thumbData, $arquivoId, $user, '.gif');
+		}
     }
     elseif ($arquivo['tipo'] == "Imagem") {
 		$thumbData = $this->create_thumb_imagem("repo/".$arquivo['arquivo']);
-		$this->save_thumb($thumbData, $arquivoId, $user, '.png');
+		if ($thumbData) {
+			$this->save_thumb($thumbData, $arquivoId, $user, '.png');
+		}
     } else {
 		return false;
     }
@@ -767,11 +771,17 @@ class ELGalLib extends TikiLib {
   
   function create_thumb_video($path) {
      
-      //if (!function_exists('ffmpeg_movie')) {
-	  //	return false;
-      //}
+      if (!class_exists('ffmpeg_movie')) {
+	  	return false;
+      }
+      
       //first, get movie and gif info
       $movie = new ffmpeg_movie($path, 0);
+      //if error, return false
+      if (!is_object($movie)) {
+      	return false;
+      }
+
       $width = $movie->getFrameWidth();
       $height = $movie->getFrameHeight();
       $frameTotal = $movie->getFrameCount();
@@ -788,13 +798,13 @@ class ELGalLib extends TikiLib {
       $gif = new ffmpeg_animated_gif("/tmp/el-thumb.gif", $width, $height, 1, 0);
 
       for ($i=1; $i <= $frameTotal; $i+=$rate) {
-	  $gif->addFrame($movie->getFrame($i));
+	  	$gif->addFrame($movie->getFrame($i));
       }
       
       $fp = fopen("/tmp/el-thumb.gif", 'rb');
       $data = '';
       while (!feof($fp)) {
-	  $data .= fread($fp, 8192 * 16);
+	  	$data .= fread($fp, 8192 * 16);
       }
       
       global $tikilib;
@@ -826,28 +836,36 @@ class ELGalLib extends TikiLib {
   }
 
   function extract_file_info_audio($path) {
-      if (!function_exists('ffmpeg_movie')) {
-	  return array();
+      if (!class_exists('ffmpeg_movie')) {
+	  	return array();
       }
       $audio = new ffmpeg_movie($path, 0);
+      //if error, return false
+      if (!is_object($audio)) {
+      	return array();
+      }
       
       $result = array();
-      $result['duracao'] = $audio->getDuration();
-      $result['bitRate'] = $audio->getBitRate();
+      $result['duracao'] = (int)$audio->getDuration();
+      $result['bitRate'] = (int)$audio->getBitRate();
       
       return $result;
   }  
   
   function extract_file_info_video($path) {
-      if (!function_exists('ffmpeg_movie')) {
-	  return array();
+      if (!class_exists('ffmpeg_movie')) {
+	  	return array();
       }
       $movie = new ffmpeg_movie($path, 0);
+      //if error, return false
+      if (!is_object($movie)) {
+      	return array();
+      }
       
       $result = array();
       $result['tamanhoImagemX'] = $movie->getFrameWidth();
       $result['tamanhoImagemY'] = $movie->getFrameHeight();
-      $result['duracao'] = $movie->getDuration();
+      $result['duracao'] = (int)$movie->getDuration();
       $result['temAudio'] = $movie->hasAudio();
       
       // TODO tem cor ?
