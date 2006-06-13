@@ -82,29 +82,6 @@ function rollback_arquivo() {
 	return $objResponse;
 }
 
-$ajaxlib->setPermission('restore_edit', $el_p_upload_files == 'y');
-$ajaxlib->registerFunction('restore_edit');
-function restore_edit($arquivoId) {
-	global $elgallib, $user;
-	
-	$objResponse = new xajaxResponse();
-	
-	$arquivo = $elgallib->get_arquivo($arquivoId);
-	// permissao tem q ser dentro da funcao, pois o arquivoId dessa chamada pode nao ser
-	// o mesmo do global.
-	if (!$user || $user != $arquivo['user']) {
-		return $objResponse;
-	} 
-	
-	$cache = unserialize($arquivo['editCache']);
-	
-	foreach ($cache as $field => $value) {
-  		$objResponse->addScriptCall('restoreField', $field, $value);
-  	}
-  	
-	return $objResponse;
-}
-
 $ajaxlib->setPermission('generate_thumb', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('generate_thumb');
 function generate_thumb() {
