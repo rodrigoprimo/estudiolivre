@@ -88,6 +88,7 @@ function updateProgressMeter(uploadInfo) {
 function changeStatus(value) {
     document.getElementById('gUpFileName').innerHTML = value.replace(new RegExp(/^.*(\/|\\)/), '');
     show('gUpRight');
+    hide('fileAltered');
     uploadStartTimer = setTimeout("upload()",500);
     document.uploadForm.tipo.value = tipoSelecionado;
     document.getElementById('thumbnail').src = 'styles/estudiolivre/iThumb'+tipoSelecionado+'.png';

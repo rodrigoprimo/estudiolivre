@@ -66,6 +66,7 @@ function editaCampo(field) {
 
 function setEditData(field, value) {
 	document.getElementById('input-'+field).value = value;
+	mudado[field]=1;
 }
 
 function restoreField(field, value) {
