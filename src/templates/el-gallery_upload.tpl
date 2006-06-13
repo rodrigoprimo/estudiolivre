@@ -1,5 +1,4 @@
 <!-- el-gallery_upload_general.tpl begin -->
-
 <script language="JavaScript" src="lib/elgal/upload.js"></script>
 <script language="JavaScript" src="lib/js/edit_field_ajax.js"></script>
 <script language="JavaScript" src="lib/js/freetags.js"></script>
@@ -54,18 +53,18 @@
          </div>
    
      </div>
-    {*if $pending && $permission}
+    
     <img class="separator" src="styles/estudiolivre/separator.png">
-	{/if*}      
+	    
     </div>
 
-    {if $pending && $permission && $user}
+    {if $pending && $permission}
 	 	<div id="fileAltered" style="display:block;text-align:left">
 	 		Arquivos não publicados:<br/>
 		 	<ul>
-				{foreach from=$pending item=arquivo}
+				{foreach from=$pending item=pendente}
 					<li>
-						<a onClick="restoreForm({$arquivo.arquivoId}, '{$arquivo.tipo}', '{$arquivo.arquivo}', '{$arquivo.thumbnail}');flip('fileAltered')">{$arquivo.titulo|default:$arquivo.arquivo|default:$arquivo.arquivoId}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a onClick="restoreForm({$pendente.arquivoId}, '{$pendente.tipo}', '{$pendente.arquivo}', '{$pendente.thumbnail}');flip('fileAltered')">{$pendente.titulo|default:$pendente.arquivo|default:$pendente.arquivoId}</a>&nbsp;&nbsp;&nbsp;&nbsp;
 					    <a href="el-gallery_delete.php?arquivoId={$arquivo.arquivoId}">(apagar)</a>
 					</li>
 				{/foreach}
