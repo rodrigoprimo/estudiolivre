@@ -71,7 +71,7 @@
 						{/if}
 					</div>
 					<div id="aAuthorDate">
-						por <a href="el-user.php?view_user={$arquivo.autor}">{$arquivo.autor}</a> em <i>{$arquivo.data_publicacao|date_format:"%d/%m/%Y"}</i>
+						autor: {ajax_input permission=$permission id="autor" value=$arquivo.autor default="Autor da Obra" display="inline"} - enviado por <a href="el-user.php?view_user={$arquivo.user}">{$arquivo.user}</a> em <i>{$arquivo.data_publicacao|date_format:"%d/%m/%Y"}</i>
 					</div>
 				</div>
 			</div>

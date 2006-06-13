@@ -154,34 +154,4 @@ function check_publish() {
     return $objResponse;    
 }
 
-$ajaxlib->setPermission('restore_edit', $el_p_upload_files == 'y');
-$ajaxlib->registerFunction('restore_edit');
-function restore_edit($arquivoId) {
-	global $elgallib, $user, $smarty;
-	
-	$objResponse = new xajaxResponse();
-	
-	$arquivo = $elgallib->get_arquivo($arquivoId);
-	// permissao tem q ser dentro da funcao, pois o arquivoId dessa chamada pode nao ser
-	// o mesmo do global.
-	if (!$user || $user != $arquivo['user']) {
-		return $objResponse;
-	} 
-	
-	$templateName = 'el-gallery_upload_' . $arquivo['tipo'] . '.tpl';
-	$smarty->assign('permission', true);
-	$content = $smarty->fetch($templateName);
-	$objResponse->addAssign('gUpMoreOptionsContent', 'innerHTML', $content);
-	$objResponse->addScript(_extractScripts($content));
-	
-	$cache = unserialize($arquivo['editCache']);
-	
-	foreach ($cache as $field => $value) {
-  		$objResponse->addScriptCall('restoreField', $field, $value);
-  	}
-  	
-	return $objResponse;
-}
-
-
 ?>
