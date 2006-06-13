@@ -8,7 +8,7 @@ if (strpos($_SERVER["SCRIPT_NAME"],basename(__FILE__)) !== false) {
 
 class ElTagLib extends FreetagLib {
 
-    var $_normalized_valid_chars = 'a-zA-Z0-9çáéíóúÇÁÉÍÓÚâêôÂÊÔãõÃÕ';
+    var $_normalized_valid_chars = 'a-zA-Z0-9çáéíóúÇÁÉÍÓÚâêôÂÊÔãõÃÕ ';
 
     function _parse_tag($tag_string) {
 	if(get_magic_quotes_gpc()) {
@@ -21,7 +21,9 @@ class ElTagLib extends FreetagLib {
 	$delim = 0;
 	$newwords = array();
 	foreach ($words as $key => $word) {
-	    $newwords[] = preg_replace('/\s+/',' ',$word);
+		$word = preg_replace('/\s+/',' ',$word);
+		$word = preg_replace('/^\s|\s$/','',$word);
+	    $newwords[] = $word;
 	}
 
 	return $newwords;
