@@ -133,7 +133,7 @@
 	   	  {tooltip text="Clique nas tags para adiocioná-las ao campo acima"}
 	      <div id="gUpTagListItem">
 	        {foreach from=$tag_suggestion item=t}
-		  		<span class="pointer" onclick="addTag('{$t}');this.style.display='none'">{$t}</span>
+		  		<span class="pointer" onclick="addTag(this)">{$t}</span>
 	        {/foreach}
 	      </div> 
     	  {/tooltip}

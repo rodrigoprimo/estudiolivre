@@ -5,5 +5,7 @@ function addTag(tag) {
 	    document.getElementById('input-tags').value += ', ';
     }
  
-    document.getElementById('input-tags').value += tag;
+    document.getElementById('input-tags').value += tag.innerHTML;
+    tag.style.display = 'none';
+    xajax_save_field('tags', document.getElementById('input-tags').value);
 }
