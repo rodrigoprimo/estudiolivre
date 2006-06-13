@@ -72,17 +72,16 @@ function get_file_info() {
 	$basicInfos = array('autor' => $elgallib->get_user_preference($user, 'realName'), 'titulo' => $elgallib->get_file_name($arquivoId));
 	$result = array_merge($result, $basicInfos);
 
-	// diff para saber campos novos
-	$result = array_diff($result, $cache);
-	
 	// merge
-	$cache = array_merge($cache, $result);
+	$cache = array_merge($result, $cache);
 	$elgallib->set_edit_cache($arquivoId, $cache);
 	
 	// deixa o foreach no php, q js eh uma bosta pra isso
 	$formattedResult = array();
 	foreach ($result as $key => $value) {
-		array_push($formattedResult, $key, $value);
+		if (!isset($cache[$key])) {
+			array_push($formattedResult, $key, $value);
+		}
 	}
 	
 	if (sizeOf($result) > 0) {
