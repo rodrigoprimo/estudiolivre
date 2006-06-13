@@ -160,41 +160,29 @@
       </div>
     </div>
     {/if}
-    {if $permission}
-      {if $userWiki}
-	    <div id="uWiki" class="uMainContainer">
-	    	<div id="uWikiTitle" class="sectionTitle uMainTitle">
-	    		<a class="uRssCont" href="#"><img src="styles/estudiolivre/iRss.png"></a>
-	    		<a href="#" onClick="javascript:flip('uWikiMid'); return false;">
-	              <img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
-	        	</a>
-	        	&nbsp;
-	    		<h1>
-	    		  <a href="#" title="Wiki de {$userinfo.login}">Wiki</a>
-	    		</h1>
-	    	</div>
-	    	<div id="uWikiMid" style="display:block">
+    <div id="uWiki" class="uMainContainer">
+    	<div id="uWikiTitle" class="sectionTitle uMainTitle">
+    		<a class="uRssCont" href="#"><img src="styles/estudiolivre/iRss.png"></a>
+    		<a href="#" onClick="javascript:flip('uWikiMid'); return false;">
+              <img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
+        	</a>
+        	&nbsp;
+    		<h1>
+    		  <a href="#" title="Wiki de {$userinfo.login}">Wiki</a>
+    		</h1>
+    	</div>
+    	<div id="uWikiMid" style="display:block">
+		  {if $userWiki}
 	    	{include file=tiki-show_page.tpl parsed=$userWiki page=$pageName lastUser=$modifUser}
-	        </div>
-	    </div>
-	  {else}
-	  	  <div id="uWiki" class="uMainContainer">
-	    	<div id="uWikiTitle" class="sectionTitle uMainTitle">
-	    		<a class="uRssCont" href="#"><img src="styles/estudiolivre/iRss.png"></a>
-	    		<a href="#" onClick="javascript:flip('uWikiMid'); return false;">
-	              <img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
-	        	</a>
-	        	&nbsp;
-	    		<h1>
-	    		  <a href="#" title="Wiki de {$userinfo.login}">Wiki</a>
-	    		</h1>
-	    	</div>
-	    	<div id="uWikiMid" style="display:block"> 
-	    		<p> Você ainda não tem uma página wiki pessoal. <a href="tiki-editpage.php?page={$pageName}">Crie</a> seu wiki!</p>
-	    	</div>
-	      </div>
-	  {/if}
-    {/if}
+	      {else}
+	      	{if $permission}
+	      		<p> Você ainda não tem uma página wiki pessoal. <a href="tiki-editpage.php?page={$pageName}">Crie</a> seu wiki!</p>
+	      	{else}
+	      		<p> Esse usuário ainda não possui uma página wiki pessoal </p>
+	      	{/if}
+	      {/if}
+        </div>
+    </div>
   </div>
 </div>
 
