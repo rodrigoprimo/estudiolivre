@@ -123,7 +123,7 @@ class ELGalLib extends TikiLib {
 		  global $freetaglib, $commentslib;
 		  while ($row = $result->fetchRow()) {
 		  	  $row['commentsCount'] = $commentslib->count_comments('arquivo:' . $row['arquivoId']);
-		  	  $row['tags'] = $freetaglib->get_tags_on_object($row['arquivoId'], 'acervo');
+		  	  $row['tags'] = $freetaglib->get_tags_on_object($row['arquivoId'], 'gallery');
 		      $ret[] = $row;
 		  }
 		  return $ret;
@@ -358,11 +358,11 @@ class ELGalLib extends TikiLib {
 	
 	if (isset($cache['titulo'])) {
 	    $this->query("update `tiki_objects` set `name`=? where `itemId`=? and `type`=?",
-			 array($cache['titulo'], $arquivoId, 'acervo'));
+			 array($cache['titulo'], $arquivoId, 'gallery'));
 	}
 	if (isset($cache['descricao'])) {
 	    $this->query("update `tiki_objects` set `description`=? where `itemId`=? and `type`=?",
-			 array($cache['descricao'], $arquivoId, 'acervo'));
+			 array($cache['descricao'], $arquivoId, 'gallery'));
 	}
 	
 	return true;

@@ -42,10 +42,10 @@ function _tag_arquivo($tag_string) {
 
     $arquivo = $elgallib->get_arquivo($arquivoId);
     
-    $href = "el-arquivo.php?arquivoId=$arquivoId";
+    $href = "el-gallery_view.php?arquivoId=$arquivoId";
 
-    $freetaglib->add_object('acervo', $arquivoId, $arquivo['descricao'], $arquivo['titulo'], $href);	
-    $freetaglib->update_tags($user, $arquivoId, 'acervo', $tag_string);
+    $freetaglib->add_object('gallery', $arquivoId, $arquivo['descricao'], $arquivo['titulo'], $href);	
+    $freetaglib->update_tags($user, $arquivoId, 'gallery', $tag_string);
 	
 
 }

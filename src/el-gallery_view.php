@@ -23,7 +23,7 @@ if (!$arquivoId) {
 }   
 
 $arquivo = $elgallib->get_arquivo($arquivoId);
-$arquivo['tags'] = $freetaglib->get_tags_on_object($arquivoId, 'acervo');
+$arquivo['tags'] = $freetaglib->get_tags_on_object($arquivoId, 'gallery');
 $arquivo['userRating'] = $elgallib->getUserRating($arquivoId, $user);
 
 elAddCrumb($arquivo['titulo']);
