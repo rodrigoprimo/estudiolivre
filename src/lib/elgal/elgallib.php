@@ -588,6 +588,10 @@ class ELGalLib extends TikiLib {
   			}
   		}
   	}
+
+  	if (!$arquivo['licencaId']) {
+  		$errorList['licenca'] = 'Você deve escolher uma licença';
+  	}
   	
   	return $errorList;
   	
