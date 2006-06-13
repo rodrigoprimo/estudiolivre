@@ -164,30 +164,30 @@ class ELGalLib extends TikiLib {
 
   function validate_filetype($tipo, $filename, $filename_only = false) {
 
-      // TODO: completar lista
+	  // TODO: completar lista
       if ($filename_only) {
-	  $types = array();
-	  $types['Imagem'] = array('png','jpg','jpeg','gif','tiff','svg','bmp','psd','xcf','eps');
-	  $types['Audio'] = array('mp3','ogg','wav','aiff');
-	  $types['Video'] = array('mpg','mpeg','avi','ogg','theora','wmv','3gp','mp4','yuv','mp2');
-	  $types['Texto'] = true;
-
-	  if (!$types[$tipo]) {
-	      return "Tipo $tipo invalido"; // nao deve acontecer
-	  }
-	  if (!is_array($types[$tipo])) {
-	      return '';
-	  }
-	  if (!preg_match('/\.([^.]{3,4})/', $filename, $m)) {
-	      return 'Erro: formato de arquivo inválido';
-	  }
-	  if (in_array($m[1], $types[$tipo])) {
-	      return '';
-	  } else {
-	      return "Erro: formato de arquivo nao suportado";
-	  }
+		  $types = array();
+		  $types['Imagem'] = array('png','jpg','jpeg','gif','tiff','svg','bmp','psd','xcf','eps');
+		  $types['Audio'] = array('mp3','ogg','wav','aiff');
+		  $types['Video'] = array('mpg','mpeg','avi','ogg','theora','wmv','3gp','mp4','yuv','mp2');
+		  $types['Texto'] = true;
+	
+		  if (!$types[$tipo]) {
+		      return "Tipo $tipo invalido"; // nao deve acontecer
+		  }
+		  if (!is_array($types[$tipo])) {
+		      return '';
+		  }
+		  if (!preg_match('/\.([^.]{3,4})/', $filename, $m)) {
+		      return 'Erro: formato de arquivo inválido';
+		  }
+		  if (in_array($m[1], $types[$tipo])) {
+		      return '';
+		  } else {
+		      return "Erro: formato de arquivo nao suportado";
+		  }
       }
-
+      
       $mimeType = mime_content_type($filename);
       
       if ($mimeType == 'application/ogg' && preg_match("/^Audio|Video$/",$tipo)) {
@@ -203,7 +203,7 @@ class ELGalLib extends TikiLib {
       }
       
       if($arqTipo[1] != strtolower($tipo)) {
-	  return "Você deve fornecer um arquivo do tipo: ".$tipo.", e não do tipo: ".$arqTipo[1];
+	  	return "Você deve fornecer um arquivo do tipo: ".$tipo.", e não do tipo: ".$arqTipo[1];
       }
       
       return false;
@@ -252,12 +252,12 @@ class ELGalLib extends TikiLib {
       $query = "select max(`arquivoId`) from `el_arquivo` where `titulo`=? and `tipo`=? and `autor`=? and `donoCopyright`=? and `descricao`=? and `user`=?";
       $id = $this->getOne($query, $bindvals);
 
-      $nomeTipo = strtolower($obrigatorio['tipo']);
-      if ($this->query("insert into `el_arquivo_$nomeTipo` (`arquivoId`) values (?)",Array($id))){
-	return $id;
+	  if (in_array($obrigatorio['tipo'], array('Audio','Video','Imagem'))) {
+        $nomeTipo = strtolower($obrigatorio['tipo']);
+        $this->query("insert into `el_arquivo_$nomeTipo` (`arquivoId`) values (?)",Array($id));
       }
+      return $id;
     }
-    return false;
   }
 
   function delete_arquivo($arquivoId) {
@@ -422,7 +422,7 @@ class ELGalLib extends TikiLib {
     
     $arquivo['licenca'] = $result->fetchRow();
     
-    if (isset($arquivo['tipo'])) {
+    if (isset($arquivo['tipo']) && $arquivo['tipo'] != "Texto") {
       $tipo = preg_replace('/[^a-z]/','',$arquivo['tipo']);
       $table = 'el_arquivo_' . strtolower($arquivo['tipo']);
       
@@ -660,17 +660,18 @@ class ELGalLib extends TikiLib {
     if ($arquivo['tipo'] == "Video") {
 		$thumbData = $this->create_thumb_video("repo/".$arquivo['arquivo']);
 		if ($thumbData) {
-			$this->save_thumb($thumbData, $arquivoId, $user, '.gif');
+			return $this->save_thumb($thumbData, $arquivoId, $user, '.gif');
 		}
     }
     elseif ($arquivo['tipo'] == "Imagem") {
 		$thumbData = $this->create_thumb_imagem("repo/".$arquivo['arquivo']);
 		if ($thumbData) {
-			$this->save_thumb($thumbData, $arquivoId, $user, '.png');
+			return $this->save_thumb($thumbData, $arquivoId, $user, '.png');
 		}
-    } else {
-		return false;
     }
+    
+    return false;
+    
   }
   
   function save_thumb($fileBlob,$arquivoId,$user, $ext) {
@@ -683,7 +684,7 @@ class ELGalLib extends TikiLib {
       $path = $destination.$fileName;
       $fp = fopen($path, "w");
       if (!$fp) {
-	  return "Impossivel gravar arquivo!";
+	  	return false;
       }
       fwrite($fp, $fileBlob);
       fclose($fp);
@@ -692,7 +693,7 @@ class ELGalLib extends TikiLib {
       $bindvals = array($fileName,$arquivoId);
       $this->query($query,$bindvals);
       // rolooooowww
-      return FALSE;
+      return $fileName;
   }
   
   function create_thumb_imagem($image) {

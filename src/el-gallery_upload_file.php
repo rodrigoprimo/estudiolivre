@@ -21,7 +21,7 @@ if ($arquivoId && isset ($_FILES['arquivo']) && !empty ($_FILES['arquivo']['name
 	elseif ($arq_tipo[1] == "text") {
 		$arq_tipo[1] = "texto";
 	}
-	if ($arq_tipo[1] != strtolower($_REQUEST['tipo'])) {
+	if ($arq_tipo[1] != strtolower($_REQUEST['tipo']) && $_REQUEST['tipo'] != "Texto") {
 		$errorMsg = "Você deve fornecer um arquivo do tipo: " . $_REQUEST['tipo'] . ", e nao do tipo: " . $arq_tipo[1];
 	} else {
 		// Were there any problems with the upload?  If so, report here.

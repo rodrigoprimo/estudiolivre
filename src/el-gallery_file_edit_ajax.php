@@ -88,10 +88,11 @@ function generate_thumb() {
 	global $elgallib, $arquivoId;
 
 	$objResponse = new xajaxResponse();
-	$elgallib->generate_thumb($arquivoId);
-
-	$arquivo = $elgallib->get_arquivo($arquivoId);
-	$objResponse->addScript("document.getElementById('thumbnail').src = 'repo/" . $arquivo['thumbnail'] . "';");
+	$thumb = $elgallib->generate_thumb($arquivoId);
+	
+	if ($thumb) {
+		$objResponse->addScript("document.getElementById('thumbnail').src = 'repo/" . $thumb . "';");
+	}
 		
 	return $objResponse;
 }
