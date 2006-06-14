@@ -271,11 +271,18 @@ class ELGalLib extends TikiLib {
       $arquivo = $result->fetchRow();
       $query = "delete from `el_arquivo` where `arquivoId` = ?";
       $this->query($query,array($arquivoId));
-      $dir = "repo/";
-      if($arquivo['arquivo'] != ""){
-	$file = $dir.$arquivo['arquivo'];
-	unlink($file);
+      
+      if (in_array($arquivo['tipo'], array('Audio','Video','Imagem'))) {
+	      $table = 'el_arquivo_' . strtolower($arquivo['tipo']);
+	      $query = "delete from `$table` where `arquivoId` = ?";
+	      $this->query($query,array($arquivoId));
       }
+      
+      $dir = "repo/";
+      if ($arquivo['arquivo'] != "") {
+		  $file = $dir.$arquivo['arquivo'];
+		  unlink($file);
+	  }
       return true;
     }
     
@@ -504,7 +511,15 @@ class ELGalLib extends TikiLib {
   
   function save_file($file,$arquivoId,$user) {
     $destination = "repo/";
-    $data = $this->get_arquivo($arquivoId);
+    $arquivo = $this->get_arquivo($arquivoId);
+    if (isset($arquivo['arquivo']) && file_exists($destination.$arquivo['arquivo'])) {
+    	unlink($destination.$arquivo['arquivo']);
+    }
+    if (isset($arquivo['thumbnail']) && file_exists($destination.$arquivo['thumbnail'])) {
+    	unlink($destination.$arquivo['thumbnail']);
+    }
+        
+    
     $query = "update `el_arquivo` set `arquivo`=?,`formato`=?,`tamanho`=?,`data_publicacao`=? where `arquivoId`=?";
     $bindvals[] = $arquivoId.'_'.$user.'-'.$file['name'];
     $bindvals[] = $file['type'];
@@ -512,18 +527,17 @@ class ELGalLib extends TikiLib {
     $bindvals[] = time();
     $bindvals[] = $arquivoId;
 
-    $path = $destination.$bindvals[0];
-
     if(!$this->query($query, $bindvals)) {
       // deu pau
       return "Erro nas informacoes do banco de dados...";
     }
+	$path = $destination.$bindvals[0];
     if (move_uploaded_file($file['tmp_name'], $path)) {
-        $query = "update `el_arquivo` set `idFisico`=? where `arquivoId`=?";
+    	$query = "update `el_arquivo` set `idFisico`=? where `arquivoId`=?";
         $bindvals = array($this->set_id_fisico($arquivoId),$arquivoId);
         $this->query($query,$bindvals);
-	// rolooooowww
-	return FALSE;
+		// rolooooowww
+		return FALSE;
     }
     else {
       // deu pau
@@ -660,7 +674,7 @@ class ELGalLib extends TikiLib {
     global $user;
     
     $arquivo = $this->get_arquivo($arquivoId);
-
+    
     if ($arquivo['tipo'] == "Video") {
 		$thumbData = $this->create_thumb_video("repo/".$arquivo['arquivo']);
 		if ($thumbData) {

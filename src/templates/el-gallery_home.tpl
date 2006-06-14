@@ -1,5 +1,6 @@
 <!-- el-gallery_home.tpl begin -->
 
+<script language="JavaScript" src="lib/js/el_array.js"></script>
 <script language="JavaScript" src="lib/elgal/el_home.js"></script>
 
 <!-- Feature Wiki Begin -->

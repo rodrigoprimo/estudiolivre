@@ -28,6 +28,7 @@ function save_field($name, $value) {
 	    }
 	}
 	
+	$objResponse->addScriptCall('setWaiting',$name,false);
 	return $objResponse;
 
 }
@@ -91,13 +92,13 @@ function generate_thumb() {
 	$thumb = $elgallib->generate_thumb($arquivoId);
 	
 	if ($thumb) {
-		$objResponse->addScript("document.getElementById('thumbnail').src = 'repo/" . $thumb . "';");
+		$objResponse->addAssign("thumbnail", "src", 'repo/' . $thumb);
 	}
-		
+
 	return $objResponse;
 }
 
-$ajaxlib->setPermission('restore_edit', $el_p_upload_files == 'y');
+$ajaxlib->setPermission('restore_edit', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('restore_edit');
 function restore_edit($arquivoId) {
 	global $elgallib, $user, $smarty;

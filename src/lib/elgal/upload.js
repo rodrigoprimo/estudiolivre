@@ -11,6 +11,7 @@ var tipoSelecionado = false;
 var tipos = new Array('Audio','Video','Imagem','Texto');
 var arquivoId = false;
 var uploadFinished = false;
+var uploadError = false; // nao faz nada por enquanto
 
 function setRequestUri(id) {
 	if (xajaxRequestUri.match(new RegExp(/arquivoId=/))) {
@@ -55,6 +56,9 @@ function updateUploadInfo() {
 
 function finishUpload() {
 	if (timerId) {
+		if (uploadError) {
+			return removeUpload();
+		}
 		uploadFinished = true;
 		clearTimeout(timerId);
 		document.getElementById('gUpButton').innerHTML = '<span onClick="removeUpload();">remover</span>';
@@ -119,10 +123,10 @@ function apagaTipo(tipo) {
 }
 
 function selecionaTipo(tipo) {
-	if (tipoSelecionado && !uploadStarted) {
+	if (tipoSelecionado && !arquivoId) {
 		document.getElementById("icone" + tipoSelecionado).src = "styles/estudiolivre/iUp" + tipoSelecionado + "Off.png";
 	}
-	if (!uploadStarted) {
+	if (!arquivoId) {
 		tipoSelecionado = tipo;
 		document.getElementById("icone" + tipo).src = "styles/estudiolivre/iUp" + tipo + ".png";
 		show('gUpList');
@@ -172,9 +176,9 @@ function updateThumbProgressMeter(uploadInfo) {
 }
 
 function restoreForm (id, tipo, arquivo, thumbnail) {
+	selecionaTipo(tipo);
 	arquivoId = id;
 	setRequestUri(id);
-	selecionaTipo(tipo);
 	show('gUpRight');
 	if (arquivo) {
 		document.getElementById('gUpButton').innerHTML = '<span onClick="removeUpload();">remover</span>';

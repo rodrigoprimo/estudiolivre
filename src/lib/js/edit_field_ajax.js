@@ -5,6 +5,7 @@ var mudado = new Array();
 var thumbTimerId = null;
 var thumbUpId;
 var upThumbStarted = false;
+var waitingQueue = new Array();
 
 function saveField(fieldObj){
     var field = fieldObj.id.replace(/^input-/,'');
@@ -16,12 +17,21 @@ function saveField(fieldObj){
     }
     
     if (saveFieldCache[field] == null || saveFieldCache[field] != value) {
+    	setWaiting(field, true);
 		//precisa ser implementada em cada caso que for editar campos em ajax
 		call_save_function(field, value);
 		startEdit();
     } else {
 		exibeCampo(field, value);
     }
+}
+
+function setWaiting(field, waiting) {
+	if (waiting) {
+		waitingQueue.add(field);
+	} else {
+		waitingQueue.remove(field);
+	}
 }
 
 function limpaCampo(field) {
@@ -133,4 +143,13 @@ function updateThumbProgressMeter(uploadInfo) {
     if (percent) {
 		document.getElementById('gUserThumbStatus').innerHTML = percent + '%';	
     }	
+}
+
+function checkWaiting(cmd) {
+	if(waitingQueue.length) {
+		eval(cmd);
+	}
+	else {
+		setTimeout("checkWaiting('"+cmd+"');", 200);
+	}
 }

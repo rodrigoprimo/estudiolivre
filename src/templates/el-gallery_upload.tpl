@@ -1,4 +1,5 @@
 <!-- el-gallery_upload_general.tpl begin -->
+<script language="JavaScript" src="lib/js/el_array.js"></script>
 <script language="JavaScript" src="lib/elgal/upload.js"></script>
 <script language="JavaScript" src="lib/js/edit_field_ajax.js"></script>
 <script language="JavaScript" src="lib/js/freetags.js"></script>
@@ -63,9 +64,9 @@
 	 		Arquivos não publicados:<br/>
 		 	<ul>
 				{foreach from=$pending item=pendente}
-					<li>
+					<li id="pendente-{$pendente.arquivoId}">
 						<a onClick="restoreForm({$pendente.arquivoId}, '{$pendente.tipo}', '{$pendente.arquivo}', '{$pendente.thumbnail}');flip('fileAltered')">{$pendente.titulo|default:$pendente.arquivo|default:$pendente.arquivoId}</a>&nbsp;&nbsp;&nbsp;&nbsp;
-					    <a href="el-gallery_delete.php?arquivoId={$arquivo.arquivoId}">(apagar)</a>
+					    <a onClick="xajax_delete_file({$pendente.arquivoId})">(apagar)</a>
 					</li>
 				{/foreach}
 			 </ul>
@@ -157,7 +158,7 @@
      <br style="clear:both; line-height:20px;">
     
     <div id="save-exit">
-       <img src="styles/estudiolivre/bPublicar.png" onClick="xajax_check_publish()"/>
+       <img src="styles/estudiolivre/bPublicar.png" onClick="checkWaiting('xajax_check_publish()')"/>
     </div>
 
 

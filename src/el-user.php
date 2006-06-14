@@ -4,32 +4,36 @@
 if (!isset($_POST['xajax']) || $_POST['xajax'] != 'upload_info') {
 	require_once("tiki-setup.php");
 	require_once("lib/elgal/elgallib.php");
+
+	if (isset($_REQUEST['view_user'])) {
+		$view_user = $_REQUEST['view_user'];
+		if ($view_user == $user) 
+			$permission = true;
+		else 
+			$permission = false;
+	} else {
+		if ($user) {
+			$view_user = $user;
+			$permission = true;
+		} else {
+			$noUser = true;
+			$permission = false;
+		}
+	}
+
+	include_once ('lib/userprefs/scrambleEmail.php');
+	require_once('lib/messu/messulib.php');
+	require_once("el-gallery_ajax.php");
+
 } else {
 	$feature_ajax = "y";
+	$user = '';
+	$permission = false;
 }
 
 require_once('lib/ajax/ajaxlib.php');
 
-if (isset($_REQUEST['view_user'])) {
-	$view_user = $_REQUEST['view_user'];
-	if ($view_user == $user) 
-		$permission = true;
-	else 
-		$permission = false;
-} else {
-	if ($user) {
-		$view_user = $user;
-		$permission = true;
-	} else {
-		$noUser = true;
-		$permission = false;
-	}
-}
-
-include_once ('lib/userprefs/scrambleEmail.php');
-require_once('lib/messu/messulib.php');
 require_once("el-user_ajax.php");
-require_once("el-gallery_ajax.php");
 
 $ajaxlib->processRequests();
 

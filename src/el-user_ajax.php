@@ -38,8 +38,8 @@ $ajaxlib->setPermission('sendMsg', $user);
 $ajaxlib->registerFunction('sendMsg');
 function sendMsg($subject = '', $body = '', $priority = 3, $cc = '') {
 	
-	global $messulib, $userwatch, $user, $view_user, $smarty;
-	$messulib->post_message($userwatch, $user, $view_user, $cc, $subject, $body, $priority);
+	global $messulib, $user, $view_user, $smarty, $permission;
+	$messulib->post_message($view_user, $user, $view_user, $cc, $subject, $body, $priority);
 	$objResponse = new xajaxResponse();
 	
 	$smarty->assign('permission', $permission);

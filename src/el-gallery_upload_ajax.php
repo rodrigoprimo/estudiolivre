@@ -13,7 +13,7 @@ function upload_info($uploadId, $callback = 'updateProgressMeter') {
 	return $objResponse;
 }
 
-$ajaxlib->setPermission('create_file', $el_p_upload_files);
+$ajaxlib->setPermission('create_file', $el_p_upload_files == 'y');
 $ajaxlib->registerFunction('create_file');
 function create_file($tipo, $fileName, $uploadId) {
 	$objResponse = new xajaxResponse();
@@ -45,6 +45,24 @@ function create_file($tipo, $fileName, $uploadId) {
 		$objResponse->addScript(_extractScripts($content));
 	}
 			
+	return $objResponse;
+}
+
+$ajaxlib->setPermission('delete_file', $el_p_upload_files == 'y');
+$ajaxlib->registerFunction('delete_file');
+function delete_file($arquivoId) {
+	global $elgallib, $user;
+	$arquivo = $elgallib->get_arquivo($arquivoId);
+	$objResponse = new xajaxResponse();
+	
+	if (!isset($arquivo['user']) || $arquivo['user'] != $user) {
+		return $objResponse;
+	}
+	
+	$elgallib->delete_arquivo($arquivoId);
+	
+	$objResponse->addRemove("pendente-$arquivoId");
+	
 	return $objResponse;
 }
 
