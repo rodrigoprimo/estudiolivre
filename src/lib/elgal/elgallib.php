@@ -16,7 +16,7 @@ $commentslib = new Comments($dbTiki);
 class ELGalLib extends TikiLib {
 
   var $basic_fields = array("licencaId","titulo","tipo","user","autor","donoCopyright","descricao","produtora","contato","siteRelacionado","rating","thumbnail");
-  var $extension_fields = array("duracao","tipoDoAudio","bpm","sampleRate","bitRate","genero","letra","fichaTecnica","tamanhoImagemX","tamanhoImagemY","temAudio","temCor","idiomaVideo","legendas","idiomaLegenda","dpi");
+  var $extension_fields = array("duracao","tipoDoAudio","bpm","sampleRate","bitRate","genero","letra","fichaTecnica","tamanhoImagemX","tamanhoImagemY","temAudio","temCor","idioma","legendas","idiomaLegenda","dpi");
   
   function ELGalLib($db) {
     if (!$db) {
