@@ -38,7 +38,7 @@
         <div id="gDownloadPlay">
           <div id="gDownload">
 	  		<span class="gDownloadCount">{$arquivo.hits}</span>
-		    {tooltip name="list-baixe-arquivo" text="Baixe esse arquivo"}
+		    {tooltip name="list-baixe-arquivo" text="Copie o arquivo (para o seu computador)"}
 		      <a href="el-download.php?arquivo={$arquivoId}&action=download">
 		        <img alt="" src="styles/estudiolivre/iDownload.png">
 		      </a>
@@ -47,7 +47,7 @@
 
 		  <div id="gPlay">
 		  	{if $arquivo.tipo eq "Video"}
-		    	{assign var=tooltipText value="Assita esse vídeo"}
+		    	{assign var=tooltipText value="Assita a esse vídeo"}
 		    {elseif $arquivo.tipo eq "Audio"}
 		    	{assign var=tooltipText value="Ouça essa música"}
 		    {elseif $arquivo.tipo eq "Imagem"}
