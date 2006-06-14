@@ -86,7 +86,7 @@
     </div>
     <div id="uGallery" class="uMainContainer">
       <div id="uGalleryTitle" class="sectionTitle uMainTitle uSectionsTitle">
-        <a class="uRssCont" href="#"><img src="styles/estudiolivre/iRss.png"></a>
+        <a class="uRssCont" href="el-gallery_rss.php?user={$userinfo.login}&ver=2"><img src="styles/estudiolivre/iRss.png"></a>
         <a href="#" onClick="javascript:flip('uGalleryItems'); return false;">
           <img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
         </a>
@@ -110,7 +110,7 @@
     </div>
     <div id="uBlog" class="uMainContainer">
       <div id="uBlogTitle" class="sectionTitle uMainTitle">
-        <a class="uRssCont" href="#"><img src="styles/estudiolivre/iRss.png"></a>
+        <a class="uRssCont" href="el-userblogs_rss.php?user={$userinfo.login}&ver=2"><img src="styles/estudiolivre/iRss.png"></a>
         <a href="#" onClick="javascript:flip('uBlogItems'); return false;">
         	<img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
         </a>
@@ -148,7 +148,7 @@
     {if $allowMsgs}
     <div id="uMsgs" class="uMainContainer">
       <div id="uMsgsTitle" class="sectionTitle uMainTitle">
-        <a class="uRssCont" href="#"><img src="styles/estudiolivre/iRss.png"></a>
+        <a class="uRssCont" href="el-usermsgs_rss.php?user={$userinfo.login}&ver=2"><img src="styles/estudiolivre/iRss.png"></a>
         <a href="#" onClick="javascript:flip('uMsgItems'); return false;">
           <img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
         </a>
@@ -162,7 +162,7 @@
     {/if}
     <div id="uWiki" class="uMainContainer">
     	<div id="uWikiTitle" class="sectionTitle uMainTitle">
-    		<a class="uRssCont" href="#"><img src="styles/estudiolivre/iRss.png"></a>
+    		<a class="uRssCont" href="tiki-wiki_rss.php?ver=2"><img src="styles/estudiolivre/iRss.png"></a>
     		<a href="#" onClick="javascript:flip('uWikiMid'); return false;">
               <img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
         	</a>
