@@ -1,7 +1,10 @@
 <?php
 
+require_once("el-gallery_stream_ajax.php");
+
 global $el_p_view;
 
+$ajaxlib->setPermission('get_files', $el_p_view == 'y');
 $ajaxlib->registerFunction("get_files");
 function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $find = '', $filters = array()) {
     global $elgallib, $smarty;
@@ -31,46 +34,6 @@ function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $fi
     //$objResponse->addScript("acervoCache('$tiposHr', $offset, $maxRecords, '$sort_mode', '$find', '$filtersHr')");
     
     return $objResponse;
-}
-
-$ajaxlib->setPermission('streamFile', $el_p_view);
-$ajaxlib->registerFunction("streamFile");
-function streamFile($arquivoId, $type) {
-	global $elgallib;
-
-    $objResponse = new xajaxResponse();
-    
-    if (!$arquivoId) {
-    	return $objResponse;
-    }
-    
-    $elgallib->add_stream_hit($arquivoId);
-    $arquivo = $elgallib->get_arquivo($arquivoId);
-    
-    
-    if ($type == 'Imagem') {
-    	$objResponse->addAssign('gImagem', 'src', 'repo/' . $arquivo['arquivo']);
-    	$objResponse->addScript("document.getElementById('gPlayerImagem').style.width = " . $arquivo['tamanhoImagemX']);
-    	$objResponse->addScript("document.getElementById('gPlayerImagem').style.height = " . $arquivo['tamanhoImagemY']);
-    	$objResponse->addScript("showLightbox('gPlayerImagem')");
-    	
-    	return $objResponse;
-    }
-    
-    $playerName = 'player' . $type;
-    $validUrl = 'http://' . $_SERVER['HTTP_HOST'] . '/estudiolivre/repo/' . $arquivo['arquivo'];
-    if ($type == 'Video') {
-    	$width = $arquivo['tamanhoImagemX'];
-    	$height = $arquivo['tamanhoImagemY'];
-    } else {
-    	$width = 200;
-    	$height = 50;
-    }
-        
-    $objResponse->addScript("loadFile($playerName, '$validUrl', $width, $height, '$type')");
-    
-    return $objResponse;
-    
 }
 
 ?>

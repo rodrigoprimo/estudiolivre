@@ -38,25 +38,25 @@
         <div id="gDownloadPlay">
           <div id="gDownload">
 	  		<span class="gDownloadCount">{$arquivo.hits}</span>
-		    {tooltip name="list-baixe-arquivo" text="Baixe esse arquivo"}<a href="#">
-		      <img alt="" src="styles/estudiolivre/iDownload.png">
-		    </a>{/tooltip}
+		    {tooltip name="list-baixe-arquivo" text="Baixe esse arquivo"}
+		      <a href="el-download.php?arquivo={$arquivoId}&action=download">
+		        <img alt="" src="styles/estudiolivre/iDownload.png">
+		      </a>
+		    {/tooltip}
 		  </div>
 
 		  <div id="gPlay">
-		  	<span class="gStreamCount">{$arquivo.streamHits}</span>
-		    {if $arquivo.tipo eq "Video"}
-		    	{assign var=tooltipText value="Assita este vídeo"}
+		  	{if $arquivo.tipo eq "Video"}
+		    	{assign var=tooltipText value="Assita esse vídeo"}
 		    {elseif $arquivo.tipo eq "Audio"}
-		    	{assign var=tooltipText value="Ouça esta música"}
+		    	{assign var=tooltipText value="Ouça essa música"}
 		    {elseif $arquivo.tipo eq "Imagem"}
-		    	{assign var=tooltipText value="Veja esta imagem"}
+		    	{assign var=tooltipText value="Veja essa imagem"}
 		    {/if}
 		    {if $tooltipText}
+		    	<span class="gStreamCount">{$arquivo.streamHits}</span>
 		    	{tooltip name="list-i-play" text=$tooltipText}
-				    <a href="#" onClick="xajax_streamFile({$arquivo.arquivoId}, '{$arquivo.tipo}')">
-				      <img alt="" src="styles/estudiolivre/iPlay.png">
-				    </a>
+			    	<img class="pointer" alt="" src="styles/estudiolivre/iPlay.png" onClick="xajax_streamFile({$arquivo.arquivoId}, '{$arquivo.tipo}')">
 			    {/tooltip}
 		    {/if}
 		  </div>

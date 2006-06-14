@@ -4,6 +4,7 @@ require_once("lib/elgal/elgallib.php");
 require_once("lib/ajax/ajaxlib.php");
 require_once("el-gallery_file_edit_ajax.php");
 require_once("el-gallery_view_ajax.php");
+require_once("el-gallery_stream_ajax.php");
 
 $ajaxlib->processRequests();
 
