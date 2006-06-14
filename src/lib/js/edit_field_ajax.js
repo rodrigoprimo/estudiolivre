@@ -146,7 +146,7 @@ function updateThumbProgressMeter(uploadInfo) {
 }
 
 function checkWaiting(cmd) {
-	if(waitingQueue.length) {
+	if(!waitingQueue.length) {
 		eval(cmd);
 	}
 	else {
