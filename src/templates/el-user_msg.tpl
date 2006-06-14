@@ -14,7 +14,7 @@
             <a href="el-user.php?view_user={$msg.user_from}">{$msg.user_from}</a>: {$msg.body}
         </div>
 	</div>
-    <hr>
+
 {/foreach}
 
 {if $user}
