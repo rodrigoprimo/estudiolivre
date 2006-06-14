@@ -1,5 +1,5 @@
 <!-- body.tpl begin -->
-<body {if $user_dbl eq 'y' and $dblclickedit eq 'y' and $tiki_p_edit eq 'y'}ondblclick="location.href='tiki-editpage.php?page={$page|escape:"url"}';"{/if} {if $show_comzone eq 'y'}onload="javascript:flip('comzone');"{/if}{if $section} class="tiki_{$section}"{/if}>
+<body style="border:1px solid blue" {if $user_dbl eq 'y' and $dblclickedit eq 'y' and $tiki_p_edit eq 'y'}ondblclick="location.href='tiki-editpage.php?page={$page|escape:"url"}';"{/if} {if $show_comzone eq 'y'}onload="javascript:flip('comzone');"{/if}{if $section} class="tiki_{$section}"{/if}>
 
   {include file="el-lightbox.tpl"}
 
@@ -13,11 +13,11 @@
   
 	{* Tiki main contains all page *}
 	
-	<div style="width:760px;margin:0px auto;">
-	<!-- SELO: isso é só pro teste.estudiolivre !-->
-	<img src="styles/estudiolivre/faixaTeste.png" style="position:absolute; top:5px;z-index:5"/>
-	<div>
-	<!-- fim do selo !-->
+		<!--[if lte IE 6]>
+			<center>
+			<div style="text-align:left; width:760px; border:1px solid red">
+		<![endif]-->
+	
 		<div id="tiki-main">
 	    	{if $feature_top_bar eq 'y'}
 		        {include file="tiki-top_bar.tpl"}
@@ -25,9 +25,11 @@
 		    {include file="content.tpl"}
 		    {include file="footer.tpl"}
 		</div>
-	<!-- div do selo !-->
-	</div>
-	</div>
+		
+		<!--[if lte IE 6]>
+			</div>
+			<center>
+		<![endif]-->
 </body>
 
 <!-- body.tpl end -->

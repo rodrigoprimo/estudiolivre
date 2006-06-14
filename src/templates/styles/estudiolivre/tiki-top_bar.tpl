@@ -1,15 +1,16 @@
 <!-- tiki-top_bar.tpl begin -->
 <div id="tiki-top">
-<img src="styles/estudiolivre/mainTop.png">
-
-<div id="topContainer">
-  <div id="logo">
-    <a href="/">
-      {tooltip name="navegue-home" text="Navegue para a home do EstúdioLivre"}<img src="styles/estudiolivre/logoTop.png">{/tooltip}
-    </a>
-  </div>
+  <img src="styles/estudiolivre/mainTop.png"><div id="topContainer">
+  	{* Logo TESTE *}<img src="styles/estudiolivre/faixaTeste.png" style="position:absolute; top:-20px; left:0px; z-index:5"/>
+  	<div id="logo">
+      <a href="/">
+        {tooltip name="navegue-home" text="Ir para a Página Inicial"}
+          <img src="styles/estudiolivre/logoTop.png">
+        {/tooltip}
+      </a>
+    </div>
   
-  <script language="JavaScript" src="lib/js/busca.js"></script>
+    <script language="JavaScript" src="lib/js/busca.js"></script>
 
   <div id="search" onLoad="marcaBusca(getCookie('busca'));">
     <form id='form-busca' class="searchForm" method="get" action="tiki-searchresults.php" {if $category eq 'gallery'}onSubmit="xajax_get_files(tipos, 0, 5, sortMode+sortDirection, '', this.highlight.value); findValue = this.highlight.value; return false;"{/if}>

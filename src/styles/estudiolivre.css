@@ -116,7 +116,7 @@ INPUT.editable {
 #topContainer {
 	position:relative;
 	height:15px;
-	background-color:white;
+	background-color:#FFF;
 	padding:10px;
 	border-right:3px solid #e7e7e7;
 }
@@ -1603,5 +1603,6 @@ A.gUpmore {
 
 /* footer */
 
+/* Fixes for Internet Explorer */
 
-
+@import url("estudiolivre/ie.css");

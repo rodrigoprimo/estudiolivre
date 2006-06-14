@@ -1,0 +1,11 @@
+DIV#topContainer {
+	/*position:relative;
+	top:-5px;*/
+	height:35px;
+	padding:10px;
+}
+
+* {
+	padding:0px;
+	margin:0px;
+}
