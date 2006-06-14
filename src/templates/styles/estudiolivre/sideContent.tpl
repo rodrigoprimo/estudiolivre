@@ -165,8 +165,11 @@
      <hr>
     
     <div id="moduleLastChanges">
-      <a href="tiki-lastchanges.php?days=0">Ultimas Alterações</a> <a href="#" onClick="toggle('moduleLastChangesMore')" onFocus="this.blur()">[+]</a>
-      <div id='moduleLastChangesMore' style="display:none;padding-left:5px">
+	    <a class="pointer" onClick="javascript:flip('moduleLastChangesMore'); return false;">
+          <img onclick="this.toggleImage('iArrowGreyDown.png')" src="styles/estudiolivre/iArrowGreyRight.png">
+        </a>
+      <a href="tiki-lastchanges.php?days=0">Ultimas Alterações</a>
+      <div id='moduleLastChangesMore' style="display:none;">
       	{foreach from=$modLastModif item='page'}
 			<a href="tiki-index.php?page={$page.pageName}" onMouseover="tooltip('{if $page.comment}{$page.comment}{else}<i>Modificação não comentada</i>{/if}<br>editado por: <b>{$page.user}</b>')" onMouseout="nd()">{$page.pageName}</a><br/>
      	{/foreach}
@@ -176,8 +179,11 @@
     <hr>
     <div id="moduleWhoIsThere">
     {if sizeof($online_users) > 1}
-      Usuários Online <a href="#" onClick="toggle('moduleWhoIsThereMore')" onFocus="this.blur()">[+]</a>
-      <div id='moduleWhoIsThereMore' style="display:none;padding-left:5px">
+      <a class="pointer" onClick="javascript:flip('moduleWhoIsThereMore'); return false;">
+          <img onclick="this.toggleImage('iArrowGreyDown.png')" src="styles/estudiolivre/iArrowGreyRight.png">
+      </a>
+      Usuários Online
+      <div id='moduleWhoIsThereMore' style="display:none;">
 		{foreach from=$online_users item='onlineUser'}
 		  {if $onlineUser.user neq $user}
 		    <a href="el-user.php?view_user={$onlineUser.user}">{$onlineUser.user}</a><br/>

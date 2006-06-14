@@ -827,6 +827,13 @@ p.editdate {
 	text-align:left;
 }
 
+#moduleLastChangesMore {
+	padding-left:20px;	
+}
+
+#moduleWhoIsThereMore {
+	padding-left:20px
+}
 /* Login Box */
 
 #uLoginBox{
