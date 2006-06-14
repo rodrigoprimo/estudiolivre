@@ -130,7 +130,7 @@ INPUT.editable {
 }
 
 
-/* search */
+/* search a caixa de busca no canto superior direito do site, que aparece o tempo inteiro */
 
 #search {
 	height:42px;
@@ -138,21 +138,20 @@ INPUT.editable {
 	top:-15px;
 	right:5px;
 	float:right;
-	/*background-image:url(estudiolivre/buscaTemp2.png);
-	background-repeat:no-repeat;*/
 }
 
 .searchForm {
 	float:right;
-	/*border: 1px solid red;*/
 	margin: 0px;
 	padding: 0px;
 }
 
+/* para aparecerem as opções de busca quando o mouse passa por cima da caixa de busca */
 #search .searchForm:hover .searchOptions{
 	left:0px;
 }
 
+/* para aparecer o '+' logo abaixo da busca, desabilitado nesse release*/
 #search .searchForm:hover .searchMore {
 	left:0px;
 }
@@ -176,6 +175,7 @@ INPUT.editable {
 	width:80%
 }
 
+/* as opções de busca. o left é -9999 para que não apareça a não ser quando o mouse passa por cima (ver acima) */
 .searchOptions {
 	position:relative;
 	left: -9999px;
@@ -203,6 +203,7 @@ INPUT.editable {
 	cursor:pointer;
 }
 
+/* essas duas classes não fazem nada nesse release */
 .searchMore {
 	position:relative;
 	left: -9999px;
@@ -218,6 +219,7 @@ INPUT.editable {
 }
 
 /* Wiki Text */
+/* tudo que está dentro do texto wiki em si*/
 
 #wikitext H1 {
     font-weight: normal;
@@ -256,6 +258,7 @@ INPUT.editable {
 	text-decoration: underline;
 }
 
+/* classe usada para o que estiver entre '-=' e '=-', tipo '-=titulo=-'*/
 .titlebar {
 	/*display:inline;*/
 	/*height:10px;*/
@@ -280,6 +283,44 @@ INPUT.editable {
 	color: red;
 	font-size:14px;
 }
+
+/* classe das coisas dentro de '^' do wiki (fica uma caixa em volta)*/
+.simplebox {
+  background: #efefef;
+  border: 1pt dashed #aaa;
+  font-family: monospace;
+/*  white-space: pre;*/
+/*  margin: 1.33em 0px;*/
+  margin-left: 40px;
+  margin-right: 40px;
+  padding: 2px;
+}
+
+/* classe das linhas que começam com espaço no wiki, são as linhas de 'código'*/
+tt {
+	display:block;
+	font-family: courier, serif, monospace;
+	margin:2px;
+	margin-left:15px;
+	margin-bottom:5px;
+	/*border: 1px solid green;	*/
+}
+
+/*classe dos [+] e [-] que aparecem ao lado das tags wiki '!+' ou '!-' ou '!!+' e assim por diante */
+.flipper{
+	font-size:12px;
+	font-weight:normal;
+	float:left;
+	margin-left:5px;
+	margin-right:5px;
+	margin-top:2px;
+}
+
+/*pois o [+] no h1 fica muito em cima*/
+h1 .flipper {
+	margin-top:8px;
+}
+	
 
 /* Search Result */
 
