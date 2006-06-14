@@ -38,10 +38,10 @@ function create_file($tipo, $fileName, $uploadId) {
 	$objResponse->addScriptCall('startUpload',$arquivoId);
 	
 	if (in_array($tipo, array('Audio','Video','Imagem'))) {
-		$templateName = 'el-gallery_upload_' . $tipo . '.tpl';
+		$templateName = 'el-gallery_metadata_' . $tipo . '.tpl';
 		$smarty->assign('permission', true);
 		$content = $smarty->fetch($templateName);
-		$objResponse->addAssign('gUpMoreOptionsContent', 'innerHTML', $content);
+		$objResponse->addPrepend('gUpMoreOptionsContent', 'innerHTML', $content);
 		$objResponse->addScript(_extractScripts($content));
 	}
 			

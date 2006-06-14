@@ -113,10 +113,10 @@ function restore_edit($arquivoId) {
 	} 
 	
 	if($arquivo['publicado'] == '0') {
-		$templateName = 'el-gallery_upload_' . $arquivo['tipo'] . '.tpl';
+		$templateName = 'el-gallery_metadata_' . $arquivo['tipo'] . '.tpl';
 		$smarty->assign('permission', true);
 		$content = $smarty->fetch($templateName);
-		$objResponse->addAssign('gUpMoreOptionsContent', 'innerHTML', $content);
+		$objResponse->addPrepend('gUpMoreOptionsContent', 'innerHTML', $content);
 		$objResponse->addScript(_extractScripts($content));
 	}
 	

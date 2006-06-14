@@ -152,6 +152,7 @@
     <div id="gUpMoreOptions">
       {tooltip text="Clique para definir outras propriedades do arquivo"}<a class="gUpmore" id="gUpmoreoptionsLink" onclick="javascript:flip('gUpMoreOptionsContent'); return false;"> [+] opções </a>{/tooltip}<br/>
       <div style="display:none" id="gUpMoreOptionsContent">
+      	{include file="el-gallery_metadata.tpl"}
       </div>
     </div>
     
