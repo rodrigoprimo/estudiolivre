@@ -72,4 +72,25 @@ function delMsg($userFrom, $msgId) {
 
 }
 
+$ajaxlib->setPermission('set_licenca', $permission);
+$ajaxlib->registerFunction('set_licenca');
+function set_licenca($r1, $r2) {
+	
+	global $userlib, $elgallib;
+    
+	$objResponse = new xajaxResponse();
+	$licencaId = $elgallib->id_licenca($r1, $r2);
+	    
+  	$result = $userlib->set_user_field('licencaPadrao', $licencaId);
+	if (!$result) {
+		$objResponse->addAlert("nao foi possivel definir a licença padrao");
+	}
+	else {
+		$licenca = $elgallib->get_licenca($licencaId);
+		$objResponse->addAssign('uLicence', 'src', 'styles/estudiolivre/h_' . $licenca['linkImagem'] . '?rand='.rand());
+	}
+
+	return $objResponse;			
+}
+
 ?>

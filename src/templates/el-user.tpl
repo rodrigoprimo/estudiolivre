@@ -67,15 +67,15 @@
         {* TODO falar a descricao da licenca no tooltip *}
         <span class="uContactItem">
         	<span class="uContactItem">
-        	{if $permission}<a href="#" onClick="lalala fazer a parada escoher licença">{/if}
+        	{if $permission}<span class="pointer" onClick="showLightbox('el-license')">{/if}
 	        	{if $licenca}
-		        	{tooltip name="MinhaLicencaPadrao" text="Minha Licença Padrão"}<img src="styles/estudiolivre/h_{$licenca.linkImagem}"/>{/tooltip}
+		        	{tooltip name="MinhaLicencaPadrao" text="Minha Licença Padrão"}<img id="uLicence" src="styles/estudiolivre/h_{$licenca.linkImagem}"/>{/tooltip}
 		        {elseif $permission}
 		        	Escolher Licença Padrão
 	    	    {else}
 	        		(Usuário sem Licença Padrão)
 	        	{/if}
-        	{if $permission}</a>{/if}
+        	{if $permission}</span>{/if}
         	</span>
         </span>
         <br />
@@ -178,6 +178,9 @@
   </div>
 </div>
 
+{if $permission}
+	{include file="el-user_license.tpl"}
+{/if}
 {include file="el-player.tpl"}
 
 <!-- tiki-user_information.tpl end -->

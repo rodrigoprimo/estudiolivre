@@ -130,7 +130,7 @@ function set_arquivo_licenca ($resposta1, $resposta2, $padrao = false) {
 		$objResponse->addAlert("nao foi possivel editar o campo licencaId");
 	} else {
 	  	$licenca = $elgallib->get_licenca($licencaId);
-	  	$objResponse->addScript("document.getElementById('uImagemLicenca').src = 'styles/estudiolivre/h_" . $licenca['linkImagem'] . "?rand=".rand()."';");
+	  	$objResponse->addAssign('uImagemLicenca', 'src', 'styles/estudiolivre/h_' . $licenca['linkImagem'] . '?rand='.rand());
 	}
 		
 	return $objResponse;

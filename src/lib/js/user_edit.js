@@ -11,3 +11,22 @@ function sendMsg() {
 		xajax_sendMsg('foobar', body);
 	}
 }
+
+//implementacao da licenca
+var resposta1 = null;
+var resposta2 = null;
+
+function saveLicenca() {
+	if (resposta1 && resposta2) {
+		xajax_set_licenca(resposta1, resposta2);
+		hide('licencaErro');
+		hideLightbox();
+	} else {
+		show('licencaErro');
+	}
+}
+
+function hideLicencaErro() {
+		hide('licencaErro');
+		return true;
+}
