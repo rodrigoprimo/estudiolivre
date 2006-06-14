@@ -29,7 +29,7 @@
 
 <div id="topMenu">
   <div id="topMenuGeneral">
-    {tooltip name="saiba-estudiolivre" text="Saiba <b>o que é</b> o EstúdioLivre"}<a href="tiki-index.php?page=O+que+%C3%A9">sobre</a>{/tooltip}
+    {tooltip name="saiba-estudiolivre" text="Saiba <b>o que é</b> o EstúdioLivre"}<a href="tiki-index.php?page=sobre">sobre</a>{/tooltip}
     | 
   	{tooltip name="forum-discussoes" text="Fórum de <b>discussões</b> - tire suas dúvidas aqui"}<a href="tiki-forums.php">fórum</a>{/tooltip}
     | 
@@ -37,9 +37,9 @@
     | 
     {tooltip text="Veja os <b>blogs</b> dos usuários do EstúdioLivre"}<a href="tiki-list_blogs.php">blogs</a>{/tooltip}
     | 
-    {tooltip name="perguntas-frequentes" text="<b>Perguntas</b> mais freqüêntes"}<a href="tiki-list_faqs.php">faq</a>{/tooltip}
+    {tooltip name="perguntas-frequentes" text="<b>Perguntas</b> mais freqüêntes"}<a href="tiki-index.php?page=faq">faq</a>{/tooltip}
     | 
-    {tooltip name="entre-contato" text="Entre em contato - descubra os <b>canais de comunicação</b> com a comunidade"}<a href="tiki-index.php?page=Contato">contato</a>{/tooltip}
+    {tooltip name="entre-contato" text="Entre em contato - descubra os <b>canais de comunicação</b> com a comunidade"}<a href="tiki-index.php?page=contato">contato</a>{/tooltip}
   </div>
   <div id="topMenuCubesContainer"><ul id="topMenuCubes">
 

@@ -101,6 +101,17 @@
 	{if !($searchNoResults) }
 		{if $results}
 			{tr}Found{/tr} "{$words}" {tr}in{/tr} {$cant_results} {$where2}
+			{if !$pageExists}
+			<br />
+				{if $where ne 'forums' and $user}{tr}Não existe uma página chamada {$words}, mas você pode{/tr} 
+					{tooltip text="Clique para criar a página e editá-la"}
+						<a href="tiki-editpage.php?page={$words}">criá-la.</a>
+					{/tooltip}
+					{tooltip name="searchresult-pagina-orfa" text="Nenhuma outra página do wiki levará a essa página. Assim ela estará, de certo modo, inacessível. Para resolver isso basta colocar um link para esta página em alguma outra página"}
+					  (a página será órfã)
+					{/tooltip}</a>
+				{/if}
+			{/if}
 			<br /><br />
 		{/if}
 		<div id="searchResults">
@@ -126,7 +137,14 @@
 			{sectionelse}
 			<div id="searchNoResults">
 				{tr}No pages matched the search criteria{/tr}<br />
-				{if $where ne 'forums' and $user}<br /><br />{tr}Você pode colaborar criando a página{/tr} <a href="tiki-editpage.php?page={$words}">{$words}</a> {tooltip name="searchresult-pagina-orfa" text="Nenhuma outra página do wiki levará a essa página. Assim ela estará, de certo modo, inacessível. Para resolver isso basta colocar um link para esta página em alguma outra página"}(a página será órfã){/tooltip}</a>{/if}
+				{if $where ne 'forums' and $user}{tr}Você pode colaborar criando a página{/tr} 
+					{tooltip text="Clique para criar a página e editá-la"}
+						<a href="tiki-editpage.php?page={$words}">{$words}</a>
+					{/tooltip}
+					{tooltip name="searchresult-pagina-orfa" text="Nenhuma outra página do wiki levará a essa página. Assim ela estará, de certo modo, inacessível. Para resolver isso basta colocar um link para esta página em alguma outra página"}
+					  (a página será órfã)
+					{/tooltip}</a>
+				{/if}
 			</div>
 			{/section}
 		</div>

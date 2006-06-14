@@ -291,6 +291,7 @@ INPUT.editable {
   font-family: monospace;
 /*  white-space: pre;*/
 /*  margin: 1.33em 0px;*/
+  margin:5px;
   margin-left: 40px;
   margin-right: 40px;
   padding: 2px;
