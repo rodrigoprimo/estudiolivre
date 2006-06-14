@@ -27,7 +27,10 @@ function streamFile($arquivoId, $type) {
     }
     
     $playerName = 'player' . $type;
-    $validUrl = 'http://' . $_SERVER['HTTP_HOST'] . '/estudiolivre/repo/' . $arquivo['arquivo'];
+    $validUrl = 'http://' . $_SERVER['HTTP_HOST'] .  $_SERVER['REQUEST_URI'];
+    $validUrl = preg_replace('/\/el-.+\.php.*$/','',$validUrl);
+    $validUrl .= '/repo/' . $arquivo['arquivo'];
+   	
     if ($type == 'Video') {
     	$width = $arquivo['tamanhoImagemX'];
     	$height = $arquivo['tamanhoImagemY'];
