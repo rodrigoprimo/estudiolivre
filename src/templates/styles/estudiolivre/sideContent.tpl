@@ -165,9 +165,7 @@
      <hr>
     
     <div id="moduleLastChanges">
-	    <a class="pointer" onClick="javascript:flip('moduleLastChangesMore'); return false;">
-          <img onclick="this.toggleImage('iArrowGreyDown.png')" src="styles/estudiolivre/iArrowGreyRight.png">
-        </a>
+        <img class="pointer" onclick="javascript:flip('moduleLastChangesMore');this.toggleImage('iArrowGreyDown.png')" src="styles/estudiolivre/iArrowGreyRight.png">
       <a href="tiki-lastchanges.php?days=0">Ultimas Alterações</a>
       <div id='moduleLastChangesMore' style="display:none;">
       	{foreach from=$modLastModif item='page'}
@@ -179,9 +177,7 @@
     <hr>
     <div id="moduleWhoIsThere">
     {if sizeof($online_users) > 1}
-      <a class="pointer" onClick="javascript:flip('moduleWhoIsThereMore'); return false;">
-          <img onclick="this.toggleImage('iArrowGreyDown.png')" src="styles/estudiolivre/iArrowGreyRight.png">
-      </a>
+      <img class="pointer" onclick="javascript:flip('moduleWhoIsThereMore');this.toggleImage('iArrowGreyDown.png')" src="styles/estudiolivre/iArrowGreyRight.png">
       Usuários Online
       <div id='moduleWhoIsThereMore' style="display:none;">
 		{foreach from=$online_users item='onlineUser'}
