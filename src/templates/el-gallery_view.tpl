@@ -196,8 +196,8 @@
 				</div>
 				<div id="aInfoCont" class="aItemsCont" style="display:block">
 					<div id="gUpMoreOptions">
-						{include file="el-gallery_metadata_"|cat:$arquivo.tipo|cat:".tpl"}
 						{include file="el-gallery_metadata.tpl"}
+						{include file="el-gallery_metadata_"|cat:$arquivo.tipo|cat:".tpl"}
 					</div>
 				</div>
 			</div>

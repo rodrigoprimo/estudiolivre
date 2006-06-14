@@ -41,7 +41,7 @@ function create_file($tipo, $fileName, $uploadId) {
 		$templateName = 'el-gallery_metadata_' . $tipo . '.tpl';
 		$smarty->assign('permission', true);
 		$content = $smarty->fetch($templateName);
-		$objResponse->addPrepend('gUpMoreOptionsContent', 'innerHTML', $content);
+		$objResponse->addAppend('gUpMoreOptionsContent', 'innerHTML', $content);
 		$objResponse->addScript(_extractScripts($content));
 	}
 			

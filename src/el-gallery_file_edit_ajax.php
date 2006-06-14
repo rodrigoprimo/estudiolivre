@@ -116,7 +116,7 @@ function restore_edit($arquivoId) {
 		$templateName = 'el-gallery_metadata_' . $arquivo['tipo'] . '.tpl';
 		$smarty->assign('permission', true);
 		$content = $smarty->fetch($templateName);
-		$objResponse->addPrepend('gUpMoreOptionsContent', 'innerHTML', $content);
+		$objResponse->addAppend('gUpMoreOptionsContent', 'innerHTML', $content);
 		$objResponse->addScript(_extractScripts($content));
 	}
 	
