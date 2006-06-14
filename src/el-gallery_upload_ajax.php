@@ -21,7 +21,7 @@ function create_file($tipo, $fileName, $uploadId) {
 	
 	$arquivo = array();
 	
-	$error = $elgallib->validate_filetype($tipo, $fileName, true);
+	$error = $elgallib->validate_filename($tipo, $fileName);
 	if ($error) {
 		$objResponse->addAlert($error);
 		return $objResponse;

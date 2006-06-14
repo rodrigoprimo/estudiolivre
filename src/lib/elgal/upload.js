@@ -56,11 +56,11 @@ function updateUploadInfo() {
 
 function finishUpload() {
 	if (timerId) {
+		clearTimeout(timerId);
+		uploadFinished = true;
 		if (uploadError) {
 			return removeUpload();
 		}
-		uploadFinished = true;
-		clearTimeout(timerId);
 		document.getElementById('gUpButton').innerHTML = '<span onClick="removeUpload();">remover</span>';
 		document.getElementById('gUpStatusBar').className = "gUpStatus gUpEditing";
 		document.getElementById('gUpStatusBar').style.width = originalWidth + 'px';
@@ -99,6 +99,7 @@ function changeStatus(value) {
 }
 
 function removeUpload() {
+	uploadError = false;
     uploadStarted = false;
     uploadFinished = false;
     document.uploadForm.style.display = 'block';
@@ -191,6 +192,11 @@ function restoreForm (id, tipo, arquivo, thumbnail) {
 		document.getElementById('thumbnail').src = 'repo/' + thumbnail;
 	}
 	restoreEdit(id);
+}
+
+function setUploadError(msg) {
+	uploadError = true;
+	alert(msg);
 }
 
 //implementacao do checkLightBox para a licenca

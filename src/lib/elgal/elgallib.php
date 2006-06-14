@@ -162,31 +162,35 @@ class ELGalLib extends TikiLib {
       return $this->getOne($query, $bindvals);
   }
 
-  function validate_filetype($tipo, $filename, $filename_only = false) {
+  function validate_filename($tipo, $filename) {
 
 	  // TODO: completar lista
-      if ($filename_only) {
-		  $types = array();
-		  $types['Imagem'] = array('png','jpg','jpeg','gif','tiff','svg','bmp','psd','xcf','eps');
-		  $types['Audio'] = array('mp3','ogg','wav','aiff');
-		  $types['Video'] = array('mpg','mpeg','avi','ogg','theora','wmv','3gp','mp4','yuv','mp2');
-		  $types['Texto'] = true;
-	
-		  if (!$types[$tipo]) {
-		      return "Tipo $tipo invalido"; // nao deve acontecer
-		  }
-		  if (!is_array($types[$tipo])) {
-		      return '';
-		  }
-		  if (!preg_match('/\.([^.]{3,4})/', $filename, $m)) {
-		      return 'Erro: formato de arquivo inválido';
-		  }
-		  if (in_array($m[1], $types[$tipo])) {
-		      return '';
-		  } else {
-		      return "Erro: formato de arquivo nao suportado";
-		  }
-      }
+      
+	  $types = array();
+	  $types['Imagem'] = array('png','jpg','jpeg','gif','tiff','svg','bmp','psd','xcf','eps');
+	  $types['Audio'] = array('mp3','ogg','wav','aiff');
+	  $types['Video'] = array('mpg','mpeg','avi','ogg','theora','wmv','3gp','mp4','yuv','mp2');
+	  $types['Texto'] = true;
+
+	  if (!$types[$tipo]) {
+	      return "Tipo $tipo invalido"; // nao deve acontecer
+	  }
+	  if (!is_array($types[$tipo])) {
+	      return '';
+	  }
+	  if (!preg_match('/\.([^.]{3,4})/', $filename, $m)) {
+	      return 'Erro: formato de arquivo inválido';
+	  }
+	  if (in_array($m[1], $types[$tipo])) {
+	      return '';
+	  } else {
+	      return "Erro: formato de arquivo nao suportado";
+	  }
+    
+      
+  }
+  
+  function validate_file($tipo, $filename) {
       
       $mimeType = mime_content_type($filename);
       
@@ -207,7 +211,6 @@ class ELGalLib extends TikiLib {
       }
       
       return false;
-      
   }
 
   function list_pending_uploads($user) {
