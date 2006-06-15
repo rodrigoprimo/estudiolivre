@@ -3,7 +3,6 @@
 
 /* general tags */
 html {
-	background-image:url(estudiolivre/bodyBg.png);
 	background-image:url(estudiolivre/bgGradientBlue.png);
 	background-repeat:repeat-x;
 }
@@ -13,10 +12,10 @@ body {
 	padding: 5px 10px 5px 10px;
 	font-family: arial,verdana,helvetica,lucida,sans-serif; /*BitStream Vera Sans, Verdana;*/
 	font-size:12px;
-	/* Este degradCBCB* tah funcionando marromeno
-	background-image:url(estudiolivre/bgGradient.png);
-	background-repeat:repeat-x;
-	background-position: bottom;*/
+
+	background-image:url(estudiolivre/bgShadow.png);
+	background-repeat:repeat-y;
+	background-position: center;
 }
 
 A {
@@ -32,10 +31,12 @@ img {
 	border:0px;
 }
 
-
 #tiki-main {
 	width:760px;
 	margin:0px auto;
+	
+	padding-top:21px;
+	padding-bottom:21px;
 }
 
 .tooltipCont {
@@ -118,12 +119,11 @@ INPUT.editable {
 	height:15px;
 	background-color:#FFF;
 	padding:10px;
-	border-right:3px solid #e7e7e7;
 }
 
 #logo {
 	position:absolute;
-	top:-10px;
+	top:-15px;
 	left:10px;
 	float:left;
 	z-index:3;
@@ -146,7 +146,7 @@ INPUT.editable {
 	padding: 0px;
 }
 
-/* para aparecerem as opC'C5es de busca quando o mouse passa por cima da caixa de busca */
+/* para aparecerem as opções de busca quando o mouse passa por cima da caixa de busca */
 #search .searchForm:hover .searchOptions{
 	left:0px;
 }
@@ -175,7 +175,7 @@ INPUT.editable {
 	width:80%
 }
 
-/* as opC'C5es de busca. o left C) -9999 para que nC#o apareC'a a nC#o ser quando o mouse passa por cima (ver acima) */
+/* as opções de busca. o left é -9999 para que não apareça a não ser quando o mouse passa por cima (ver acima) */
 .searchOptions {
 	position:relative;
 	left: -9999px;
@@ -203,7 +203,7 @@ INPUT.editable {
 	cursor:pointer;
 }
 
-/* essas duas classes nC#o fazem nada nesse release */
+/* essas duas classes não fazem nada nesse release */
 .searchMore {
 	position:relative;
 	left: -9999px;
@@ -219,7 +219,7 @@ INPUT.editable {
 }
 
 /* Wiki Text */
-/* tudo que estC! dentro do texto wiki em si*/
+/* tudo que está dentro do texto wiki em si*/
 
 #wikitext H1 {
     font-weight: normal;
@@ -291,13 +291,12 @@ INPUT.editable {
   font-family: monospace;
 /*  white-space: pre;*/
 /*  margin: 1.33em 0px;*/
-  margin:5px;
   margin-left: 40px;
   margin-right: 40px;
   padding: 2px;
 }
 
-/* classe das linhas que comeC'am com espaC'o no wiki, sC#o as linhas de 'cC3digo'*/
+/* classe das linhas que começam com espaço no wiki, são as linhas de 'código'*/
 tt {
 	display:block;
 	font-family: courier, serif, monospace;
@@ -375,20 +374,19 @@ h1 .flipper {
 /* top menu */
 
 #topMenu {
-	height:24px;
-	border-left:5px solid white;
-	border-right:5px solid white;
-	border-right:3px solid #e7e7e7;
-	padding:0 5px 0 5px;
-	background-image:url(estudiolivre/topMenuBg.png);
-	background-color:white;
+	height:22px;
+	padding:0px 5px 0px 5px;
+	border-top:1px solid #c1dfeb;
+	border-bottom:1px solid #c1dfeb;
+/*	background-image:url(estudiolivre/topMenuBg.png);*/
+	background-color:#f6fafc;
 	color:grey;
 	text-align:right;
 	overflow:hidden;
 }
 
 #topMenu A {
-	 font-size:12px;
+	 font-size:13px;
 	 font-weight:bold;
 }
 
@@ -398,6 +396,9 @@ h1 .flipper {
 }
 
 #topMenuCubes {
+	position:relative;
+	top:-20px;
+	
 	list-style-type:none;
 	display:inline;
 }
@@ -406,7 +407,6 @@ h1 .flipper {
 	position:relative;	
 	width:350px;
 	float:right;
-	margin-right:7px;
 }
 
 #topMenuCubes li {
@@ -425,7 +425,6 @@ h1 .flipper {
 	font-size:16px;
 	margin-top:-2px;
 	right:140px;
-	font-weight:bold;
 }
 
 .hiddenDescript#metareciclagem {
@@ -455,10 +454,6 @@ h1 .flipper {
 	overflow:hidden;
 	/*height:300px;*/
 	background-color:white;
-	background-image:url(estudiolivre/mainBg.png);
-	border-right:3px solid #e7e7e7;
-	background-repeat:no-repeat;
-	background-position:bottom;
 }
 
 /* tiki */
@@ -829,13 +824,6 @@ p.editdate {
 	text-align:left;
 }
 
-#moduleLastChangesMore {
-	padding-left:20px;	
-}
-
-#moduleWhoIsThereMore {
-	padding-left:20px
-}
 /* Login Box */
 
 #uLoginBox{
@@ -858,7 +846,8 @@ p.editdate {
 }
 
 #uLoginOptions {
-	font-size:10px;	
+	padding:2px;
+	font-size:14px;
 }
 
 /* Gallery Upload ######## */
@@ -963,16 +952,7 @@ DIV.gUpForm {
 	left: 20px;
 	opacity:0;
 	z-index:10;
-	clip: rect( 0px, 225px, 40px,170px);
-}
-
-DIV.aForm {
-	position:absolute;
-	top: 0px;
-	left: -160px;
-	opacity:0;
-	z-index:10;
-	clip: rect( 0px, 220px, 70px,170px);
+	clip: rect( 0px, 225px, 30px,170px);
 }
 
 DIV.gUpStatus {
@@ -1263,7 +1243,7 @@ A.gUpmore {
 	text-align:right;
 	padding-right:5px;
 	float:left;
-	width:130px;
+	width:94px;
 }
 
 .gUpMoreOptionsInput:hover {
@@ -1274,7 +1254,7 @@ A.gUpmore {
 	text-align:center;
 }
 
-/* ####### PCB!gina do Arquivo ####### */
+/* ####### PÃ¡gina do Arquivo ####### */
 
 #arqCont {
 	padding:5px;
@@ -1511,7 +1491,6 @@ A.gUpmore {
 	
 .uContactItem {
 	display:block;
-	width:95%;
 }	
 
 .uMainContainer {
@@ -1567,7 +1546,6 @@ A.gUpmore {
 }
 .uMsgItem{
 	margin-top:5px;
-	margin-bottom:10px;
 	border-bottom:1px solid #adadad;
 	overflow:hidden;
 }	
@@ -1606,7 +1584,6 @@ A.gUpmore {
 	border-bottom: 2px solid #e9e9e9;
 	border-left: 2px solid #e9e9e9;
 	-moz-border-radius:8px 0px 0px 8px;
-	background-color:white;
 }
 
 #uMsgSendSubmit {
@@ -1624,7 +1601,3 @@ A.gUpmore {
 
 
 /* footer */
-
-/* Fixes for Internet Explorer */
-
-@import url("estudiolivre/ie.css");
