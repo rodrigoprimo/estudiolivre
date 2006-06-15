@@ -110,9 +110,7 @@
 		<div id="aComments">
 			<div id="aCommentsTitle" class="sectionTitle">
 				<div class="aTitleCont">
-					<a href="#comments" onClick="flip('aCommentsItemsCont'); flip('aCommentSend'); return false;">
-						<img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
-					</a>
+					<img class="pointer" onclick="flip('aCommentsItemsCont'); flip('aCommentSend');this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
 					<h1>Comentários ({$comments_cant})</h1>
 					<img id="aCommentsRss" src="styles/estudiolivre/iRss.png"/>
 				</div>
@@ -157,7 +155,15 @@
 					    {/section}
 						<input type="hidden" name="comments_title" value="foobar" />
 						<input type="submit" name="comments_postComment" value="enviar" label="enviar" id="uMsgSendSubmit" />
-						<input type="text" id="uMsgSendInput" name="comments_data" value="{$comment_data|escape}"/>
+						{if !$comments_cant}
+							{tooltip text="Seja o primeiro a comentar! Digite aqui o seu comentário e clique em <b>enviar</b>"}
+								<input type="text" id="uMsgSendInput" name="comments_data" value="{$comment_data|escape}"/>
+							{/tooltip}
+						{else}
+							{tooltip text="Digite o seu comentário e clique em <b>enviar</b>"}
+								<input type="text" id="uMsgSendInput" name="comments_data" value="{$comment_data|escape}"/>
+							{/tooltip}
+						{/if}
 					</form>
 					<br /><br /><br />
 				</div>
@@ -171,9 +177,7 @@
 			<div id="aDesc">
 				<div id="aDescTitle" class="sectionTitle">
 					<div class="aTitleCont aTitleContRight">
-						<a href="#" onClick="flip('aDescCont');">
-							<img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
-						</a>					
+						<img class="pointer" onclick="flip('aDescCont');this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
 						<h1>Descrição</h1>
 					</div>
 				</div>
@@ -188,9 +192,7 @@
 			<div id="aInfo">
 				<div id="aInfoTitle" class="sectionTitle">
 					<div class="aTitleCont aTitleContRight">
-						<a href="#" onClick="flip('aInfoCont'); return false;">
-							<img onclick="this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
-						</a>					
+						<img class="pointer" onclick="flip('aInfoCont');this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
 						<h1>Detalhes do Arquivo</h1>
 					</div>
 				</div>
