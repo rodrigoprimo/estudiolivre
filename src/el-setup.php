@@ -16,7 +16,9 @@ if ($feature_tooltip == 'y') {
 require_once("el-breadcrumbs.php");
 
 
-$isIe = preg_match('/MSIE/', $_SERVER['HTTP_USER_AGENT']) && !preg_match('/Opera/', $_SERVER['HTTP_USER_AGENT']);
-$smarty->assign('isIe',$isIe);
+$isIE = preg_match('/MSIE/', $_SERVER['HTTP_USER_AGENT']) && !preg_match('/Opera/', $_SERVER['HTTP_USER_AGENT']);
+$smarty->assign('isIE',$isIE);
+
+// TODO: Fazer ieGIF2PNG q substitui o {if $isIE}gif{else}png{/if}
 
 ?>

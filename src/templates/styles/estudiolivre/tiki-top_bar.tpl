@@ -1,9 +1,9 @@
 <!-- tiki-top_bar.tpl begin -->
 <div id="tiki-top">
-  <img src="styles/estudiolivre/mainTop.png"><div id="topContainer">
+  <div id="topContainer">
   	{* Logo TESTE *}
   	 <a href="http://dev.estudiolivre.org/tiki-view_tracker.php?status=o&trackerId=13&offset=0&sort_mode=created_desc">
-  	  {tooltip text="Clique aqui e <b>reporte os bugs</b> encontrados! Ajude-nos a <b>melhorar</b> o EstúdioLivre!!!"}<img src="styles/estudiolivre/faixaTeste.png" style="position:absolute; top:-20px; left:0px; z-index:5"/>{/tooltip}
+  	  {tooltip text="Clique aqui e <b>reporte os bugs</b> encontrados! Ajude-nos a <b>melhorar</b> o EstúdioLivre!!!"}<img src="styles/estudiolivre/faixaTeste.{if $isIE}gif{else}png{/if}" style="position:absolute; top:-30px; left:0px; z-index:5"/>{/tooltip}
   	 </a>
   	<div id="logo">
       <a href="/">
@@ -46,31 +46,31 @@
   </div>
   <div id="topMenuCubesContainer"><ul id="topMenuCubes">
 
-      {*
+	{*
       <li><div class="hiddenDescript" id="metareciclagem">metareciclagem</div><a href="http://xango.metareciclagem.org/"><img src="styles/estudiolivre/cubeBlue.png"></a></li>
       *}
     {if $category eq "gallery"}
-      <li><img src="styles/estudiolivre/cubeGrey.png"></li>
+      <li><img src="styles/estudiolivre/cubeGrey{if $isIE}IE{/if}.png"></li>
     {else}
-      <li><div class="hiddenDescript" id="acervolivre">acervo.livre</div><a href="el-gallery_home.php"><img src="styles/estudiolivre/cubeGreen.png"></a></li>
+      <li><div class="hiddenDescript" id="acervolivre">acervo.livre</div>{if $isIE}{tooltip name="video-lab" text="ACERVO||LIVRE"}<a href="el-gallery_home.php"><img src="styles/estudiolivre/cubeGreen{if $isIE}IE{/if}.png"></a>{/tooltip}{else}<a href="el-gallery_home.php"><img src="styles/estudiolivre/cubeGreen{if $isIE}IE{/if}.png"></a>{/if}</li>
     {/if}
 
     {if $category eq "Áudio"}
-      <li><img src="styles/estudiolivre/cubeGrey.png"></li>
+      <li><img src="styles/estudiolivre/cubeGrey{if $isIE}IE{/if}.png"></li>
     {else}
-      <li><div class="hiddenDescript" id="audiolab">áudio||lab</div><a href="tiki-index.php?page=Áudio"><img src="styles/estudiolivre/cubeOrange.png"></a></li>
+      <li><div class="hiddenDescript" id="audiolab">áudio||lab</div>{if $isIE}{tooltip name="video-lab" text="AUDIO||LAB"}<a href="tiki-index.php?page=Áudio"><img src="styles/estudiolivre/cubeOrange{if $isIE}IE{/if}.png"></a>{/tooltip}{else}<a href="tiki-index.php?page=Áudio"><img src="styles/estudiolivre/cubeOrange{if $isIE}IE{/if}.png"></a>{/if}</li>
     {/if}
 
     {if $category eq "Vídeo"}
-      <li><img src="styles/estudiolivre/cubeGrey.png"></li>
+      <li><img src="styles/estudiolivre/cubeGrey{if $isIE}IE{/if}.png"></li>
     {else}
-      <li><div class="hiddenDescript" id="videolab">vídeo||lab</div><a href="tiki-index.php?page=Vídeo"><img src="styles/estudiolivre/cubeRed.png"></a></li>
+      <li><div class="hiddenDescript" id="videolab">vídeo||lab</div>{if $isIE}{tooltip name="video-lab" text="VIDEO||LAB"}<a href="tiki-index.php?page=Vídeo"><img src="styles/estudiolivre/cubeRed{if $isIE}IE{/if}.png"></a>{/tooltip}{else}<a href="tiki-index.php?page=Vídeo"><img src="styles/estudiolivre/cubeRed{if $isIE}IE{/if}.png"></a>{/if}</li>
     {/if}
     
     {if $category eq "Gráfico"}
-      <li><img src="styles/estudiolivre/cubeGrey.png"></li>
+      <li><img src="styles/estudiolivre/cubeGrey{if $isIE}IE{/if}.png"></li>
     {else}
-      <li><div class="hiddenDescript" id="grafilab">grafi||lab</div><a href="tiki-index.php?page=Gráfico"><img src="styles/estudiolivre/cubePurple.png"></a></li>
+      <li><div class="hiddenDescript" id="grafilab">grafi||lab</div>{if $isIE}{tooltip name="video-lab" text="GRAFI||LAB"}<a href="tiki-index.php?page=Gráfico"><img {if $isIE} {/if} src="styles/estudiolivre/cubePurple{if $isIE}IE{/if}.png"></a>{/tooltip}{else}<a href="tiki-index.php?page=Gráfico"><img {if $isIE} {/if} src="styles/estudiolivre/cubePurple{if $isIE}IE{/if}.png"></a>{/if}</li>
     {/if}
     
   </ul></div>

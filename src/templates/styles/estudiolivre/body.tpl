@@ -1,4 +1,6 @@
 <!-- body.tpl begin -->
+
+
 <body {if $user_dbl eq 'y' and $dblclickedit eq 'y' and $tiki_p_edit eq 'y'}ondblclick="location.href='tiki-editpage.php?page={$page|escape:"url"}';"{/if} {if $show_comzone eq 'y'}onload="javascript:flip('comzone');"{/if}{if $section} class="tiki_{$section}"{/if}>
 
   {include file="el-lightbox.tpl"}
@@ -12,11 +14,10 @@
   {/if}
   
 	{* Tiki main contains all page *}
-	
-		<!--[if lte IE 6]>
-			<center>
-			<div style="text-align:left; width:760px; border:1px solid red">
-		<![endif]-->
+	  {if $isIE}
+	    <center>
+	  	  <div style="text-align:left; width:760px; border-right:2px solid gray; border-left:2px solid gray">
+	  {/if}
 	
 		<div id="tiki-main">
 	    	{if $feature_top_bar eq 'y'}
@@ -25,11 +26,11 @@
 		    {include file="content.tpl"}
 		    {include file="footer.tpl"}
 		</div>
-		
-		<!--[if lte IE 6]>
-			</div>
-			<center>
-		<![endif]-->
+
+	  {if $isIE}
+	    </div>
+	      <center>
+	  {/if}
 </body>
 
 <!-- body.tpl end -->

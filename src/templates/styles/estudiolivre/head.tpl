@@ -49,7 +49,15 @@ You are most likely wanting to modify the top of your Tiki site. Please consider
   {if $transition_style ne '' and $transition_style ne 'none' }
   <link rel="StyleSheet"  href="styles/transitions/{$transition_style}" type="text/css" />
   {/if}
+  
   <link rel="StyleSheet"  href="styles/{$style}" type="text/css" />
+  
+  {* CSS com fixes do IE *}
+  <!--[if lte IE 6]>
+    <link rel="StyleSheet"  href="styles/estudiolivre/ie.css" type="text/css" />
+  <![endif]-->
+  
+  
   {if $favicon}<link rel="icon" href="{$favicon}" />{/if}
   {* --- jscalendar block --- *}
   {if $feature_jscalendar eq 'y' and $uses_jscalendar eq 'y'}
@@ -159,7 +167,5 @@ You are most likely wanting to modify the top of your Tiki site. Please consider
   </script>
   {/literal}
 
-{$xajax_js}  
-</head>
-
+{$xajax_js}
 <!-- head.tpl end -->
