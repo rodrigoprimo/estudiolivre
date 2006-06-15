@@ -26,6 +26,7 @@
 	        	{ajax_input permission=$permission id="realName" class="uContactItem editable" value=$realName default="Nome completo" display="block"}
         	{/tooltip}
         {else}
+        	{*TODO: mudar isso pra SPAN com tooltip*}
         	{ajax_input permission=$permission id="realName" class="uContactItem" value=$realName default="Nome completo" display="block"}
         {/if}
         <br />
@@ -34,6 +35,7 @@
 		        {ajax_input permission=$permission id="email" class="uContactItem editable" value=$userinfo.email default="E-mail" display="block" truncate='25'}        
 		    {/tooltip}
         {else}
+        	{*TODO mudar isso pra um mailto:*}
 	        {ajax_input permission=$permission id="email" class="uContactItem" value=$userinfo.email default="E-mail" display="block" truncate='25'}
 	    {/if}
 		<br />
@@ -42,6 +44,7 @@
 		        {ajax_input permission=$permission id="site" class="uContactItem editable" value=$site default="Site" display="block" truncate='25'}        
 		    {/tooltip}
         {else}		
+            {*TODO: mudar isso pra um a href!!*}
 	        {ajax_input permission=$permission id="site" class="uContactItem" value=$site default="Site" display="block" truncate='25'}
 	    {/if}
 		<br />
@@ -49,7 +52,8 @@
         	{tooltip text="Clique para modificar a sua <b>localização</b>"}
 		        {ajax_input permission=$permission id="local" class="uContactItem editable" value=$local default="Localização" display="inline"}        
 		    {/tooltip}
-        {else}		
+        {else}	
+        	{*TODO: mudar isso pra SPAN com tooltip*}	
 	        {ajax_input permission=$permission id="local" class="uContactItem" value=$local default="Localização" display="inline"}
 	    {/if}
       </div>
