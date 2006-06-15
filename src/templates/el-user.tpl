@@ -21,13 +21,37 @@
     
     <div id="uContactKarmaAccount">
       <div id="uContact" class="uContactInfoCont left">
-        {ajax_input permission=$permission id="realName" class="uContactItem editable" value=$realName default="Nome completo" display="block"}
+        {if $permission}
+        	{tooltip text="Clique para modificar o seu <b>nome</b>"}
+	        	{ajax_input permission=$permission id="realName" class="uContactItem editable" value=$realName default="Nome completo" display="block"}
+        	{/tooltip}
+        {else}
+        	{ajax_input permission=$permission id="realName" class="uContactItem" value=$realName default="Nome completo" display="block"}
+        {/if}
         <br />
-        {ajax_input permission=$permission id="email" class="uContactItem editable" value=$userinfo.email default="E-mail" display="block" truncate='25'}
+        {if $permission}
+        	{tooltip text="Clique para modificar o seu <b>email</b>"}
+		        {ajax_input permission=$permission id="email" class="uContactItem editable" value=$userinfo.email default="E-mail" display="block" truncate='25'}        
+		    {/tooltip}
+        {else}
+	        {ajax_input permission=$permission id="email" class="uContactItem" value=$userinfo.email default="E-mail" display="block" truncate='25'}
+	    {/if}
 		<br />
-        {ajax_input permission=$permission id="site" class="uContactItem editable" value=$site default="Site" display="block" truncate='25'}
+        {if $permission}
+        	{tooltip text="Clique para modificar o seu <b>site</b>"}
+		        {ajax_input permission=$permission id="site" class="uContactItem editable" value=$site default="Site" display="block" truncate='25'}        
+		    {/tooltip}
+        {else}		
+	        {ajax_input permission=$permission id="site" class="uContactItem" value=$site default="Site" display="block" truncate='25'}
+	    {/if}
 		<br />
-        {ajax_input permission=$permission id="local" class="uContactItem editable" value=$local default="Localização" display="inline"}
+        {if $permission}
+        	{tooltip text="Clique para modificar a sua <b>localização</b>"}
+		        {ajax_input permission=$permission id="local" class="uContactItem editable" value=$local default="Localização" display="inline"}        
+		    {/tooltip}
+        {else}		
+	        {ajax_input permission=$permission id="local" class="uContactItem" value=$local default="Localização" display="inline"}
+	    {/if}
       </div>
 
       <div id="uKarmaThumb" class="uContactInfoCont center">
@@ -67,15 +91,23 @@
         {* TODO falar a descricao da licenca no tooltip *}
         <span class="uContactItem">
         	<span class="uContactItem">
-        	{if $permission}<span class="pointer" onClick="showLightbox('el-license')">{/if}
-	        	{if $licenca}
-		        	{tooltip name="MinhaLicencaPadrao" text="Minha Licença Padrão"}<img id="uLicence" src="styles/estudiolivre/h_{$licenca.linkImagem}"/>{/tooltip}
-		        {elseif $permission}
-		        	Escolher Licença Padrão
-	    	    {else}
-	        		(Usuário sem Licença Padrão)
-	        	{/if}
-        	{if $permission}</span>{/if}
+        	{if $permission}        		
+        			<span class="pointer" onClick="showLightbox('el-license')">
+        			{if $licenca}
+			    	   	{tooltip text="Clique para modificar a sua licença padrão"}
+			    	   		<img id="uLicence" src="styles/estudiolivre/h_{$licenca.linkImagem}"/>
+			    	   	{/tooltip}
+			    	{else}
+	    		    	(Selecione sua licença Padrão)
+	    		    {/if}
+	    		    </span>
+	        {else}
+		        {if $licenca}
+			    	   	{tooltip text="Licença padrão desse usuário: "|cat:$licenca.descricao}<img id="uLicence" src="styles/estudiolivre/h_{$licenca.linkImagem}"/>{/tooltip}
+		    	{else}
+		        	(Usuário sem Licença Padrão)
+		        {/if}
+		    {/if}
         	</span>
         </span>
         <br />
