@@ -130,4 +130,12 @@ function restore_edit($arquivoId) {
 }
 
 
+$ajaxlib->registerFunction('upload_info');
+function upload_info($uploadId, $callback = 'updateProgressMeter') {
+	$objResponse = new xajaxResponse();
+	$uploadInfo = upload_progress_meter_get_info($uploadId);
+	$objResponse->addScriptCall($callback,$uploadInfo);
+	return $objResponse;
+}
+
 ?>

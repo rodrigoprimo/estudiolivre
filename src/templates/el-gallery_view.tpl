@@ -10,7 +10,7 @@
 	<div id="aTopCont">
 		<div id="aThumbRatingLic">		
 			<div id="aRating">
-				{tooltip name="view-avaliacao" text="Avaliação atual"}
+				{tooltip name="view-avaliacao" text="AvaliaC'C#o atual"}
 					<img id="aRatingImg" src="styles/estudiolivre/star{math equation="round(x)" x=$arquivo.rating|default:"blk"}.png">
 				{/tooltip}
 			</div>
@@ -20,11 +20,27 @@
 					     <a href="{$arquivo.licenca.linkHumanReadable}"><img src="styles/estudiolivre/{$arquivo.licenca.linkImagem}"></a>
 					     {/tooltip}
 				</div>
-				{if sizeof($arquivo.thumbnail)}
-					<img id="aThumb" src="repo/{$arquivo.thumbnail}">
-				{else}
-					<img id="aThumb" src="styles/estudiolivre/iThumb{$arquivo.tipo}.png">
-				{/if}
+
+			    <div id="gUpThumbImgForm">
+					<div id="gUserThumbFormContainer">
+					{if sizeof($arquivo.thumbnail)}
+						<img id="thumbnail" src="repo/{$arquivo.thumbnail}" height="60" width="60">
+					{else}
+						<img id="thumbnail" src="styles/estudiolivre/iThumb{$arquivo.tipo}.png" height="60" width="60">
+					{/if}
+					</div>
+					<div class="aForm">
+				        {tooltip text="Clique para selecionar outra <b>miniatura</b> para o arquivo"}
+				        <form action="el-gallery_upload_thumb.php?UPLOAD_IDENTIFIER=thumb.{$uploadId}" method="post" enctype="multipart/form-data" name="thumbForm" target="thumbUpTarget">
+					  	<input type="hidden" name="UPLOAD_IDENTIFIER" value="thumb.{$uploadId}">
+					  	<input type="hidden" name="arquivoId" value="{$arquivo.arquivoId}">
+					  	<input type="file" name="thumb" onChange="changeThumbStatus()" class="gUpThumbFormButton">
+				        </form>
+				        {/tooltip}
+				    </div>
+			      	<div id="gUserThumbStatus"></div>
+					<iframe name="thumbUpTarget" style="display:none" onLoad="finishUpThumb();"></iframe>
+			    </div>
 			</div>
 		</div>
 		
@@ -43,9 +59,9 @@
 					</div>
 					<div id="gPlay">
 						{if $arquivo.tipo eq "Video"}
-							{assign var=tooltipText value="Assita a esse vídeo"}
+							{assign var=tooltipText value="Assita a esse vC-deo"}
 						{elseif $arquivo.tipo eq "Audio"}
-							{assign var=tooltipText value="Ouça essa música"}
+							{assign var=tooltipText value="OuC'a essa mC:sica"}
 						{elseif $arquivo.tipo eq "Imagem"}
 							{assign var=tooltipText value="Veja essa imagem"}
 						{/if}
@@ -96,7 +112,7 @@
 				{foreach from=$arquivo.tags.data item=t name=tags}
 			        {tooltip text="Clique para ver outros arquivos com a tag <b>"|cat:$t.tag|cat:"</b>"}<a class="freetag" href="tiki-browse_freetags.php?tag={$t.tag}">{$t.tag}</a>{if not $smarty.foreach.tags.last},{/if}{/tooltip}
     			{foreachelse}
-			    	{tooltip text="Esse arquivo não tem tags"}<div>&nbsp;</div>{/tooltip}
+			    	{tooltip text="Esse arquivo nC#o tem tags"}<div>&nbsp;</div>{/tooltip}
     			{/foreach}
 			</div>
 		</div>
@@ -111,7 +127,7 @@
 			<div id="aCommentsTitle" class="sectionTitle">
 				<div class="aTitleCont">
 					<img class="pointer" onclick="flip('aCommentsItemsCont'); flip('aCommentSend');this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
-					<h1>Comentários ({$comments_cant})</h1>
+					<h1>ComentC!rios ({$comments_cant})</h1>
 					<img id="aCommentsRss" src="styles/estudiolivre/iRss.png"/>
 				</div>
 			</div>
@@ -156,11 +172,11 @@
 						<input type="hidden" name="comments_title" value="foobar" />
 						<input type="submit" name="comments_postComment" value="enviar" label="enviar" id="uMsgSendSubmit" />
 						{if !$comments_cant}
-							{tooltip text="Seja o primeiro a comentar! Digite aqui o seu comentário e clique em <b>enviar</b>"}
+							{tooltip text="Seja o primeiro a comentar! Digite aqui o seu comentC!rio e clique em <b>enviar</b>"}
 								<input type="text" id="uMsgSendInput" name="comments_data" value="{$comment_data|escape}"/>
 							{/tooltip}
 						{else}
-							{tooltip text="Digite o seu comentário e clique em <b>enviar</b>"}
+							{tooltip text="Digite o seu comentC!rio e clique em <b>enviar</b>"}
 								<input type="text" id="uMsgSendInput" name="comments_data" value="{$comment_data|escape}"/>
 							{/tooltip}
 						{/if}
@@ -178,12 +194,12 @@
 				<div id="aDescTitle" class="sectionTitle">
 					<div class="aTitleCont aTitleContRight">
 						<img class="pointer" onclick="flip('aDescCont');this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
-						<h1>Descrição</h1>
+						<h1>DescriC'C#o</h1>
 					</div>
 				</div>
 				<div id="aDescCont" class="aItemsCont" style="display:block">
 					{if $permission}
-						{tooltip text="Clique aqui para modificar a descrição do arquivo"}{ajax_textarea permission=$permission class="editable" style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" id="descricao" value=$arquivo.descricao display="block"}{/tooltip}
+						{tooltip text="Clique aqui para modificar a descri&ccedil;&atilde;o do arquivo"}{ajax_textarea permission=$permission class="editable" style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" id="descricao" value=$arquivo.descricao display="block"}{/tooltip}
 					{else}
 						{ajax_textarea permission=$permission style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" id="descricao" value=$arquivo.descricao display="block"}
 					{/if}
@@ -209,13 +225,13 @@
 
 <br>
 <div id="save-exit" class="aSaveCancel" style="z-index: 10; display: none;">
-  {tooltip text="Salve as modificações que acaba de fazer"}<img src="styles/estudiolivre/bSave.png" onClick="checkWaiting('xajax_commit_arquivo()');hide('save-exit')" style="cursor: pointer">{/tooltip}&nbsp;&nbsp;&nbsp;
-  {tooltip text="Cancele as modificações que acaba de fazer"}<img src="styles/estudiolivre/bCancelar.png" onClick="cancelEdit();hide('save-exit')" style="cursor: pointer">{/tooltip}
+  {tooltip text="Salve as modificaC'C5es que acaba de fazer"}<img src="styles/estudiolivre/bSave.png" onClick="checkWaiting('xajax_commit_arquivo()');hide('save-exit')" style="cursor: pointer">{/tooltip}&nbsp;&nbsp;&nbsp;
+  {tooltip text="Cancele as modificaC'C5es que acaba de fazer"}<img src="styles/estudiolivre/bCancelar.png" onClick="cancelEdit();hide('save-exit')" style="cursor: pointer">{/tooltip}
 </div>
 
 {if $arquivo.editCache && $permission && $arquivo.user eq $user}
 <div id="lightFileAltered" style="display:none; width: 400px;">
-	Atenção: este arquivo foi modificado e as alterações não foram salvas!<br/>
+	AtenC'C#o: este arquivo foi modificado e as alteraC'C5es nC#o foram salvas!<br/>
 	<span onClick="cancelEdit(); hideLightbox();" style="cursor: pointer">Cancelar</span>&nbsp;&nbsp;&nbsp;
 	<span onClick="restoreEdit({$arquivo.arquivoId}); hideLightbox();" style="cursor: pointer">Restaurar</span>
 </div>

@@ -5,14 +5,6 @@ require_once("el-gallery_file_edit_ajax.php");
 
 global $userHasPermOnFile, $arquivoId, $el_p_upload_files;
 
-$ajaxlib->registerFunction('upload_info');
-function upload_info($uploadId, $callback = 'updateProgressMeter') {
-	$objResponse = new xajaxResponse();
-	$uploadInfo = upload_progress_meter_get_info($uploadId);
-	$objResponse->addScriptCall($callback,$uploadInfo);
-	return $objResponse;
-}
-
 $ajaxlib->setPermission('create_file', $el_p_upload_files == 'y');
 $ajaxlib->registerFunction('create_file');
 function create_file($tipo, $fileName, $uploadId) {
@@ -146,7 +138,7 @@ function publish_arquivo() {
 	if ($elgallib->publish_arquivo($arquivoId)) {
     	$objResponse->addRedirect("el-gallery_view.php?arquivoId=$arquivoId");
     } else {
-    	$objResponse->addAlert("Não foi possível publicar o arquivo");
+    	$objResponse->addAlert("NC#o foi possC-vel publicar o arquivo");
     }
 
     return $objResponse;

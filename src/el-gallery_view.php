@@ -18,7 +18,7 @@ $avatar = $tikilib->get_user_avatar($user);
 $smarty->assign('avatar', $avatar);
 
 if (!$arquivoId) {
-	$smarty->assign('msg',tra('Você não escolheu nenhum arquivo!'));
+	$smarty->assign('msg',tra('VocC* nC#o escolheu nenhum arquivo!'));
 	$smarty->display('error.tpl');
 	exit;
 }   
@@ -49,6 +49,11 @@ if ($userHasPermOnFile) {
 }
 
 include_once ("comments.php");
+
+
+
+
+$smarty->assign('uploadId',rand() . '.' . time());
 
 $smarty->assign('mid','el-gallery_view.tpl');
 $smarty->display('tiki.tpl');

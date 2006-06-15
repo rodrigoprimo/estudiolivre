@@ -13,7 +13,7 @@ body {
 	padding: 5px 10px 5px 10px;
 	font-family: arial,verdana,helvetica,lucida,sans-serif; /*BitStream Vera Sans, Verdana;*/
 	font-size:12px;
-	/* Este degradÃÂª tah funcionando marromeno
+	/* Este degradCBCB* tah funcionando marromeno
 	background-image:url(estudiolivre/bgGradient.png);
 	background-repeat:repeat-x;
 	background-position: bottom;*/
@@ -146,7 +146,7 @@ INPUT.editable {
 	padding: 0px;
 }
 
-/* para aparecerem as opções de busca quando o mouse passa por cima da caixa de busca */
+/* para aparecerem as opC'C5es de busca quando o mouse passa por cima da caixa de busca */
 #search .searchForm:hover .searchOptions{
 	left:0px;
 }
@@ -175,7 +175,7 @@ INPUT.editable {
 	width:80%
 }
 
-/* as opções de busca. o left é -9999 para que não apareça a não ser quando o mouse passa por cima (ver acima) */
+/* as opC'C5es de busca. o left C) -9999 para que nC#o apareC'a a nC#o ser quando o mouse passa por cima (ver acima) */
 .searchOptions {
 	position:relative;
 	left: -9999px;
@@ -203,7 +203,7 @@ INPUT.editable {
 	cursor:pointer;
 }
 
-/* essas duas classes não fazem nada nesse release */
+/* essas duas classes nC#o fazem nada nesse release */
 .searchMore {
 	position:relative;
 	left: -9999px;
@@ -219,7 +219,7 @@ INPUT.editable {
 }
 
 /* Wiki Text */
-/* tudo que está dentro do texto wiki em si*/
+/* tudo que estC! dentro do texto wiki em si*/
 
 #wikitext H1 {
     font-weight: normal;
@@ -297,7 +297,7 @@ INPUT.editable {
   padding: 2px;
 }
 
-/* classe das linhas que começam com espaço no wiki, são as linhas de 'código'*/
+/* classe das linhas que comeC'am com espaC'o no wiki, sC#o as linhas de 'cC3digo'*/
 tt {
 	display:block;
 	font-family: courier, serif, monospace;
@@ -963,7 +963,16 @@ DIV.gUpForm {
 	left: 20px;
 	opacity:0;
 	z-index:10;
-	clip: rect( 0px, 225px, 30px,170px);
+	clip: rect( 0px, 225px, 40px,170px);
+}
+
+DIV.aForm {
+	position:absolute;
+	top: 0px;
+	left: -160px;
+	opacity:0;
+	z-index:10;
+	clip: rect( 0px, 220px, 70px,170px);
 }
 
 DIV.gUpStatus {
@@ -1265,7 +1274,7 @@ A.gUpmore {
 	text-align:center;
 }
 
-/* ####### PÃ¡gina do Arquivo ####### */
+/* ####### PCB!gina do Arquivo ####### */
 
 #arqCont {
 	padding:5px;
