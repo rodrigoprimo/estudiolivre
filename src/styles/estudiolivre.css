@@ -406,6 +406,7 @@ h1 .flipper {
 	position:relative;	
 	width:350px;
 	float:right;
+	margin-right:7px;
 }
 
 #topMenuCubes li {
@@ -424,6 +425,7 @@ h1 .flipper {
 	font-size:16px;
 	margin-top:-2px;
 	right:140px;
+	font-weight:bold;
 }
 
 .hiddenDescript#metareciclagem {
