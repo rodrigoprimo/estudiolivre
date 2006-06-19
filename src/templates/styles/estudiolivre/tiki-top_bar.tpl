@@ -3,7 +3,7 @@
   <div id="topContainer">
   	{* Logo TESTE *}
   	 <a href="http://dev.estudiolivre.org/tiki-view_tracker.php?status=o&trackerId=13&offset=0&sort_mode=created_desc">
-  	  {tooltip text="Clique aqui e <b>reporte os bugs</b> encontrados! Ajude-nos a <b>melhorar</b> o EstúdioLivre!!!"}<img src="styles/estudiolivre/faixaTeste.{if $isIE}gif{else}png{/if}" style="position:absolute; top:-30px; left:0px; z-index:5"/>{/tooltip}
+  	  {tooltip text="Clique aqui e <b>relate os bugs</b> encontrados! Ajude-nos a <b>melhorar</b> o EstúdioLivre!!!"}<img src="styles/estudiolivre/faixaTeste.{if $isIE}gif{else}png{/if}" style="position:absolute; top:-30px; left:0px; z-index:5"/>{/tooltip}
   	 </a>
   	<div id="logo">
       <a href="/">

@@ -1599,5 +1599,49 @@ A.gUpmore {
 	cursor: pointer;
 }
 
+/* página que lista os usuários (tiki-list_users.tpl) */
+
+/*o título da página e a paginacao*/
+#users h1, #users .paginacao {
+	text-align:center;
+	background-color:#f9f9f9;
+	border:1px solid gray;
+}
+
+/*para dar uma margenzinha e um padding na paginação*/
+#users .paginacao {
+	padding:3px;
+	margin-bottom:10px;
+}
+
+/* para que as flechas da paginacao nao fiquem coladas no texto*/
+#users .paginacao img {
+	margin:0 15px 0 15px;
+}
+
+/* para que a contagem de usuários fique na direita */
+#users h5 {
+	text-align:right;
+}
+
+/*margens da tabela*/
+#users table{
+	margin: 0 0 20px 0;	
+}
+
+/*para que o título da coluna seja diferente*/
+#users td.heading{
+	font-weight:bold;
+}
+
+/*para que os links da tabela sejam mais visíveis*/
+#users table a {
+	text-decoration:underline;
+	color:black;
+}
+/*para que as linhas da tabela tenham cores diferentes nas linhas pares*/
+#users .odd{
+	background-color:#e9e9e9
+}
 
 /* footer */
