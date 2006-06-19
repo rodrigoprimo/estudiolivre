@@ -27,6 +27,13 @@ $arquivo = $elgallib->get_arquivo($arquivoId);
 $arquivo['tags'] = $freetaglib->get_tags_on_object($arquivoId, 'gallery');
 $arquivo['userRating'] = $elgallib->getUserRating($arquivoId, $user);
 
+$tagString = '';
+foreach ($arquivo['tags']['data'] as $t) {
+    if ($tagString) $tagString .= ', ';
+    $tagString .= $t['tag'];
+}
+$arquivo['tagString'] = $tagString;
+
 elAddCrumb($arquivo['titulo']);
 
 $smarty->assign('arquivoId',$arquivoId);
