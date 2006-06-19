@@ -1151,9 +1151,9 @@ A.gUpButtonHover {
 
 #gUserThumbForm {
 	position: absolute;
-	left: -115px;
+	left: -120px;
 	top: -90px;
-	clip: rect( 0px, 255px, 90px, 155px);
+	clip: rect(0px, 255px, 90px, 165px);
 	z-index: 20;
 	opacity: 0;
 }
@@ -1305,7 +1305,21 @@ A.gUpmore {
 	text-align:center;
 }
 
-/* ####### PÃ¡gina do Arquivo ####### */
+/* ####### Página do Arquivo ####### */
+
+#aThumbForm {
+	position: absolute;
+	left: -155px;
+	top: 0px;
+	clip: rect(0px, 255px, 100px, 165px);
+	z-index: 25;
+	opacity: 0;
+}
+
+#aThumbFormButton {
+	height:100px;
+	cursor:pointer;
+}
 
 #arqCont {
 	padding:5px;
@@ -1341,7 +1355,7 @@ A.gUpmore {
 	position:absolute;
 	bottom:0;
 	left:0px;
-	z-index:100;
+	z-index:20;
 }
 
 #aMainInfo {

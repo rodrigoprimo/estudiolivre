@@ -21,26 +21,24 @@
 					     {/tooltip}
 				</div>
 
-			    <div id="gUpThumbImgForm">
-					<div id="gUserThumbFormContainer">
-					{if sizeof($arquivo.thumbnail)}
-						<img id="thumbnail" src="repo/{$arquivo.thumbnail}" height="60" width="60">
-					{else}
-						<img id="thumbnail" src="styles/estudiolivre/iThumb{$arquivo.tipo}.png" height="60" width="60">
-					{/if}
-					</div>
-					<div class="aForm">
+				{if sizeof($arquivo.thumbnail)}
+					<img id="thumbnail" src="repo/{$arquivo.thumbnail}" height="100" width="100">
+				{else}
+					<img id="thumbnail" src="styles/estudiolivre/iThumb{$arquivo.tipo}.png" height="100" width="100">
+				{/if}
+				<div id="gUserThumbStatus"></div>
+				{if $permission}
+					<div id="aThumbForm">
 				        {tooltip text="Clique para selecionar outra <b>miniatura</b> para o arquivo"}
 				        <form action="el-gallery_upload_thumb.php?UPLOAD_IDENTIFIER=thumb.{$uploadId}" method="post" enctype="multipart/form-data" name="thumbForm" target="thumbUpTarget">
-					  	<input type="hidden" name="UPLOAD_IDENTIFIER" value="thumb.{$uploadId}">
-					  	<input type="hidden" name="arquivoId" value="{$arquivo.arquivoId}">
-					  	<input type="file" name="thumb" onChange="changeThumbStatus()" class="gUpThumbFormButton">
+						  	<input type="hidden" name="UPLOAD_IDENTIFIER" value="thumb.{$uploadId}">
+						  	<input type="hidden" name="arquivoId" value="{$arquivo.arquivoId}">
+						  	<input type="file" name="thumb" onChange="changeThumbStatus()" id="aThumbFormButton">
 				        </form>
 				        {/tooltip}
 				    </div>
-			      	<div id="gUserThumbStatus"></div>
 					<iframe name="thumbUpTarget" style="display:none" onLoad="finishUpThumb();"></iframe>
-			    </div>
+				{/if}
 			</div>
 		</div>
 		
@@ -127,7 +125,7 @@
 			<div id="aCommentsTitle" class="sectionTitle">
 				<div class="aTitleCont">
 					<img class="pointer" onclick="flip('aCommentsItemsCont'); flip('aCommentSend');this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
-					<h1>ComentC!rios ({$comments_cant})</h1>
+					<h1>Comentários ({$comments_cant})</h1>
 					<img id="aCommentsRss" src="styles/estudiolivre/iRss.png"/>
 				</div>
 			</div>
@@ -194,7 +192,7 @@
 				<div id="aDescTitle" class="sectionTitle">
 					<div class="aTitleCont aTitleContRight">
 						<img class="pointer" onclick="flip('aDescCont');this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
-						<h1>DescriC'C#o</h1>
+						<h1>Descrição</h1>
 					</div>
 				</div>
 				<div id="aDescCont" class="aItemsCont" style="display:block">
@@ -215,7 +213,9 @@
 				<div id="aInfoCont" class="aItemsCont" style="display:block">
 					<div id="gUpMoreOptions">
 						{include file="el-gallery_metadata.tpl"}
-						{include file="el-gallery_metadata_"|cat:$arquivo.tipo|cat:".tpl"}
+						{if $arquivo.tipo neq "Texto"}
+							{include file="el-gallery_metadata_"|cat:$arquivo.tipo|cat:".tpl"}
+						{/if}
 					</div>
 				</div>
 			</div>

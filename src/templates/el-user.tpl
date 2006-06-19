@@ -90,7 +90,7 @@
 	  </div>
 
       <div id="uAccountInfo" class="uContactInfoCont right">
-        <!-- span class="uContactItem"><a href="#">(X) Amigos</a></span --!>
+        <!-- span class="uContactItem"><a href="#">(X) Amigos</a></span -->
         <br />
         {* TODO falar a descricao da licenca no tooltip *}
         <span class="uContactItem">
