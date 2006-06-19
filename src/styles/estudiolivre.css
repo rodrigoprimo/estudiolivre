@@ -223,6 +223,45 @@ INPUT.editable {
 
 /* Wiki Text */
 /* tudo que está dentro do texto wiki em si*/
+#wikiPreviewCont{
+	overflow:hidden;
+    padding-top:7px;
+	margin:10px 0px 20px 0px;
+}
+
+.wikiPreview {
+	margin:0px;
+	border:1px solid grey;	
+}
+
+#label.wikiPreview {
+	padding:5px 5px 0px 5px;
+	font-size:18px;
+	position:relative;
+	bottom:0px;
+	margin:0px;
+	border:1px solid grey;
+	border-bottom:1px solid white;
+
+}
+
+#attention.wikiPreview {
+	padding:5px;
+	text-align:justify;
+	font-weight:bold;
+	width:45%;
+	float:right;
+	position:relative;
+	top:-1px;
+	margin:0px;
+	border: 1px solid grey;
+	border-bottom:1px solid grey;
+	border-top:1px solid white;	
+}
+
+#attention #attentionSave {
+	text-align:center;
+}
 
 #wikitext H1 {
     font-weight: normal;
