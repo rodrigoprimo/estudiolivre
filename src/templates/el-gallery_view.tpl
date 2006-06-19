@@ -10,7 +10,7 @@
 	<div id="aTopCont">
 		<div id="aThumbRatingLic">		
 			<div id="aRating">
-				{tooltip name="view-avaliacao" text="AvaliaC'C#o atual"}
+				{tooltip name="view-avaliacao" text="Avaliação atual"}
 					<img id="aRatingImg" src="styles/estudiolivre/star{math equation="round(x)" x=$arquivo.rating|default:"blk"}.png">
 				{/tooltip}
 			</div>
@@ -57,9 +57,9 @@
 					</div>
 					<div id="gPlay">
 						{if $arquivo.tipo eq "Video"}
-							{assign var=tooltipText value="Assita a esse vC-deo"}
+							{assign var=tooltipText value="Assita a esse vídeo"}
 						{elseif $arquivo.tipo eq "Audio"}
-							{assign var=tooltipText value="OuC'a essa mC:sica"}
+							{assign var=tooltipText value="Ouça essa música"}
 						{elseif $arquivo.tipo eq "Imagem"}
 							{assign var=tooltipText value="Veja essa imagem"}
 						{/if}
@@ -110,7 +110,7 @@
 				{foreach from=$arquivo.tags.data item=t name=tags}
 			        {tooltip text="Clique para ver outros arquivos com a tag <b>"|cat:$t.tag|cat:"</b>"}<a class="freetag" href="tiki-browse_freetags.php?tag={$t.tag}">{$t.tag}</a>{if not $smarty.foreach.tags.last},{/if}{/tooltip}
     			{foreachelse}
-			    	{tooltip text="Esse arquivo nC#o tem tags"}<div>&nbsp;</div>{/tooltip}
+			    	{tooltip text="Esse arquivo não tem tags"}<div>&nbsp;</div>{/tooltip}
     			{/foreach}
 			</div>
 		</div>
@@ -225,13 +225,13 @@
 
 <br>
 <div id="save-exit" class="aSaveCancel" style="z-index: 10; display: none;">
-  {tooltip text="Salve as modificaC'C5es que acaba de fazer"}<img src="styles/estudiolivre/bSave.png" onClick="checkWaiting('xajax_commit_arquivo()');hide('save-exit')" style="cursor: pointer">{/tooltip}&nbsp;&nbsp;&nbsp;
-  {tooltip text="Cancele as modificaC'C5es que acaba de fazer"}<img src="styles/estudiolivre/bCancelar.png" onClick="cancelEdit();hide('save-exit')" style="cursor: pointer">{/tooltip}
+  {tooltip text="Salve as modificações que acaba de fazer"}<img src="styles/estudiolivre/bSave.png" onClick="checkWaiting('xajax_commit_arquivo()');hide('save-exit')" style="cursor: pointer">{/tooltip}&nbsp;&nbsp;&nbsp;
+  {tooltip text="Cancele as modificações que acaba de fazer"}<img src="styles/estudiolivre/bCancelar.png" onClick="cancelEdit();hide('save-exit')" style="cursor: pointer">{/tooltip}
 </div>
 
 {if $arquivo.editCache && $permission && $arquivo.user eq $user}
 <div id="lightFileAltered" style="display:none; width: 400px;">
-	AtenC'C#o: este arquivo foi modificado e as alteraC'C5es nC#o foram salvas!<br/>
+	Atenção: este arquivo foi modificado e as alterações não foram salvas!<br/>
 	<span onClick="cancelEdit(); hideLightbox();" style="cursor: pointer">Cancelar</span>&nbsp;&nbsp;&nbsp;
 	<span onClick="restoreEdit({$arquivo.arquivoId}); hideLightbox();" style="cursor: pointer">Restaurar</span>
 </div>
