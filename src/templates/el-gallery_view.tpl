@@ -107,17 +107,15 @@
 			    {/if}
 			</div>
 			
-			
-			<div class="aTags" id="show-tags" onClick="editaCampo('tags')">
-			{foreach from=$arquivo.tags.data item=t name=tags}
-			        {tooltip text="Clique para ver outros arquivos com a tag <b>"|cat:$t.tag|cat:"</b>"}<a class="freetag" href="tiki-browse_freetags.php?tag={$t.tag}">{$t.tag}</a>{if not $smarty.foreach.tags.last},{/if}{/tooltip}
-    			{foreachelse}
-			    	{tooltip text="Esse arquivo não tem tags"}<div>&nbsp;</div>{/tooltip}
-    			{/foreach}
+			{assign var=fileTags value=$arquivo.tags}
+			<div class="aTags" id="show-tags" {if $permission}onClick="editaCampo('tags')"{/if}>
+				{include file="el-gallery_tags.tpl"}
 			</div>
-			<input class="aTags" id="input-tags" value="{$arquivo.tagString}" onBlur="saveField(this)" style="display: none">
-			<img id="error-tags" class="gUpErrorImg" style="display: none" src="styles/estudiolivre/errorImg.png" onMouseover="tooltip(errorMsg_tags);" onMouseout="nd();"> 
-			<script language="JavaScript">  display["tags"] = "inline";errorMsg_tags = "";</script>
+			{if $permission}
+				<input class="aTags" id="input-tags" value="{$arquivo.tagString}" onBlur="xajax_editTags(this.value)" style="display: none">
+				<img id="error-tags" class="gUpErrorImg" style="display: none" src="styles/estudiolivre/errorImg.png" onMouseover="tooltip(errorMsg_tags);" onMouseout="nd();"> 
+				<script language="JavaScript">  display["tags"] = "inline";errorMsg_tags = "";</script>
+			{/if}
 		</div>
 	</div>
 	<br style="line-height: 25px"/>
