@@ -183,6 +183,7 @@ function restoreForm (id, tipo, arquivo, thumbnail) {
 	setRequestUri(id);
 	show('gUpRight');
 	if (arquivo) {
+		document.uploadForm.style.display = 'none';
 		document.getElementById('gUpButton').innerHTML = '<span onClick="removeUpload();">remover</span>';
 		document.getElementById('gUpStatusBar').className = "gUpStatus gUpEditing";
 		document.getElementById('gUpStatusBar').style.width = originalWidth + 'px';
