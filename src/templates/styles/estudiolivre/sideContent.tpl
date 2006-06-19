@@ -200,8 +200,8 @@
 
   <div id="userMenuContainer">
     <form id="uLoginBox" action="tiki-login.php" method="post">
-      {if $isIE}Usuário: {/if}<input class="{if !$isIE}uText{/if}" type="text" name="user" id="login-user" size="12" {if $isIE}style="width:60%" value="usuário" onFocus="this.value=''"{/if}/>
-      {if $isIE}Senha: {/if}<input class="{if !$isIE}uText{/if}" type="{if $isIE}password{else}text{/if}" name="pass" id="login-pass" size="10"	{if $isIE}style="width:70%"{/if} value="{if !$isIE}senha{/if}" onFocus="this.value='';this.type='password'"/>
+      {if $isIE}Usuário: {/if}<input class="{if !$isIE}uText{/if}" type="text" name="user" id="login-user" size="12" {if $isIE}style="width:60%"{/if} value="usuário" onFocus="if(this.value=='usuário')this.value=''"/>
+      {if $isIE}Senha: {/if}<input class="{if !$isIE}uText{/if}" type="{if $isIE}password{else}text{/if}" name="pass" id="login-pass" size="10"	{if $isIE}style="width:70%"{/if} value="{if !$isIE}senha{/if}" onFocus="if(this.value=='senha')this.value='';this.type='password'"/>
       {tooltip text="Clique aqui ou aperte <i>Enter</i> para efetuar o login"}<input type="image" name="login" src="styles/estudiolivre/iLogin.png" />{/tooltip}
       
       <div id="uLoginOptions">

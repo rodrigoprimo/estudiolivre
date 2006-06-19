@@ -9,7 +9,7 @@ html {
 
 body {
 	margin: 0;
-	padding: 5px 10px 5px 10px;
+	padding: 0px 10px 5px 10px;
 	font-family: arial,verdana,helvetica,lucida,sans-serif; /*BitStream Vera Sans, Verdana;*/
 	font-size:12px;
 
@@ -34,7 +34,7 @@ img {
 #tiki-main {
 	width:760px;
 	margin:0px auto;
-	
+	background-color:#FFF;
 	padding-top:21px;
 	padding-bottom:21px;
 }
@@ -113,6 +113,9 @@ INPUT.editable {
 /*************************************************/
 
 /* topBar */
+#tiki-top{
+	background-color:#FFF;
+}
 
 #topContainer {
 	position:relative;
@@ -291,9 +294,11 @@ INPUT.editable {
   font-family: monospace;
 /*  white-space: pre;*/
 /*  margin: 1.33em 0px;*/
+  margin:5px;
   margin-left: 40px;
   margin-right: 40px;
   padding: 2px;
+  font-weight:bold;
 }
 
 /* classe das linhas que começam com espaço no wiki, são as linhas de 'código'*/
@@ -824,6 +829,13 @@ p.editdate {
 	text-align:left;
 }
 
+#moduleLastChangesMore {
+	padding-left:20px;	
+}
+
+#moduleWhoIsThereMore {
+	padding-left:20px
+}
 /* Login Box */
 
 #uLoginBox{
@@ -847,7 +859,7 @@ p.editdate {
 
 #uLoginOptions {
 	padding:2px;
-	font-size:14px;
+	font-size:12px;
 }
 
 /* Gallery Upload ######## */
@@ -1584,6 +1596,7 @@ A.gUpmore {
 	border-bottom: 2px solid #e9e9e9;
 	border-left: 2px solid #e9e9e9;
 	-moz-border-radius:8px 0px 0px 8px;
+	background-color:white;
 }
 
 #uMsgSendSubmit {
@@ -1634,7 +1647,12 @@ A.gUpmore {
 	font-weight:bold;
 }
 
-/*para que os links da tabela sejam mais visíveis*/
+/*padding nos elementos da tabela: legibilidade*/
+#users td {
+	padding: 4px 0 4px 3px;	
+}
+
+/*para que os links da tabela sejam mais legíveis*/
 #users table a {
 	text-decoration:underline;
 	color:black;

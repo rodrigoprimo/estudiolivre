@@ -14,14 +14,17 @@
             <a href="el-user.php?view_user={$msg.user_from}">{$msg.user_from}</a>: {$msg.body}
         </div>
 	</div>
-
+{foreachelse}
+Seja o primeiro a enviar uma mensagem para esse usuário!<br/>
 {/foreach}
 
-{if $user}
 <div id="uMsgSend">
+{if $user}
 	<form onSubmit="sendMsg(); return false;">
 		<input type="submit" name="" value="enviar" label="enviar" id="uMsgSendSubmit" onClick="sendMsg()">
 	   	<input type="text" id="uMsgSendInput">
 	</form>
-</div>
+{else}
+	Você não pode enviar recados pois não está logado no site.
 {/if}
+</div>

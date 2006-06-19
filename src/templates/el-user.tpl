@@ -7,11 +7,11 @@
   <div id="uGeneralInfo">
     <div id="uName">
 		{if $permission}
-			{tooltip text="Selecione para tornar esta pC!gina pC:blica"}
+			{tooltip text="Selecione para tornar esta página pública"}
 				{ajax_checkbox permission=$permission class="" id="isPublic" value=$isPublic}
 			{/tooltip}
 			{$userinfo.login}
-			{tooltip text="Modifique as suas preferC*ncias"}
+			{tooltip text="Modifique as suas preferências"}
 				<a href="tiki-user_preferences.php"><img src="img/mytiki/prefs.gif" height="15"></a>
 			{/tooltip}
 		{else}
@@ -49,12 +49,12 @@
 	    {/if}
 		<br />
         {if $permission}
-        	{tooltip text="Clique para modificar a sua <b>localizaC'C#o</b>"}
-		        {ajax_input permission=$permission id="local" class="uContactItem editable" value=$local default="LocalizaC'C#o" display="inline"}        
+        	{tooltip text="Clique para modificar a sua <b>localização</b>"}
+		        {ajax_input permission=$permission id="local" class="uContactItem editable" value=$local default="Localização" display="inline"}        
 		    {/tooltip}
         {else}	
         	{*TODO: mudar isso pra SPAN com tooltip*}	
-	        {ajax_input permission=$permission id="local" class="uContactItem" value=$local default="LocalizaC'C#o" display="inline"}
+	        {ajax_input permission=$permission id="local" class="uContactItem" value=$local default="Localização" display="inline"}
 	    {/if}
       </div>
 
@@ -90,7 +90,7 @@
 	  </div>
 
       <div id="uAccountInfo" class="uContactInfoCont right">
-        <!-- <span class="uContactItem"><a href="#">(X) Amigos</a></span> -->
+        <!-- span class="uContactItem"><a href="#">(X) Amigos</a></span --!>
         <br />
         {* TODO falar a descricao da licenca no tooltip *}
         <span class="uContactItem">
@@ -98,24 +98,24 @@
         	{if $permission}        		
         			<span class="pointer" onClick="showLightbox('el-license')">
         			{if $licenca}
-			    	   	{tooltip text="Clique para modificar a sua licenC'a padrC#o"}
+			    	   	{tooltip text="Clique para modificar a sua licença padrão"}
 			    	   		<img id="uLicence" src="styles/estudiolivre/h_{$licenca.linkImagem}"/>
 			    	   	{/tooltip}
 			    	{else}
-	    		    	(Selecione sua licenC'a PadrC#o)
+	    		    	(Selecione sua licença Padrão)
 	    		    {/if}
 	    		    </span>
 	        {else}
 		        {if $licenca}
-			    	   	{tooltip text="LicenC'a padrC#o desse usuC!rio: "|cat:$licenca.descricao}<img id="uLicence" src="styles/estudiolivre/h_{$licenca.linkImagem}"/>{/tooltip}
+			    	   	{tooltip text="Licença padrão desse usuário: "|cat:$licenca.descricao}<img id="uLicence" src="styles/estudiolivre/h_{$licenca.linkImagem}"/>{/tooltip}
 		    	{else}
-		        	(UsuC!rio sem LicenC'a PadrC#o)
+		        	(Usuário sem Licença Padrão)
 		        {/if}
 		    {/if}
         	</span>
         </span>
         <br />
-        <span class="uContactItem"><a href="tiki-lastchanges.php?find={$userinfo.login}&sort_mode=lastModif_desc&days=0">ContribuiC'C5es Recentes</a></span>
+        <span class="uContactItem"><a href="tiki-lastchanges.php?find={$userinfo.login}&sort_mode=lastModif_desc&days=0">Contribuições Recentes</a></span>
         <br />
         <span class="uContactItem uLittle">Membro desde {$userinfo.registrationDate|date_format:"%d/%m/%Y"}</span>
       </div>  
@@ -135,9 +135,9 @@
 		<div id="gListCont">{include file="el-gallery_section.tpl"}</div>
 	  {else}
 	  	{if $permission}
-		  	<p> VocC* ainda nC#o possui arquivos no acervo livre. <a href="el-gallery_upload.php">Compartilhe</a> sua obra!</p>
+		  	<p> Você ainda não possui arquivos no acervo livre. <a href="el-gallery_upload.php">Compartilhe</a> sua obra!</p>
 	  	{else}
-	  		<p> Esse usuC!rio ainda nC#o possui arquivos no acervo livre.</p>
+	  		<p> Esse usuário ainda não possui arquivos no acervo livre.</p>
 	  	{/if}
 	  {/if}
       </div>
@@ -170,9 +170,9 @@
 	        {/foreach}
 		{else}
 		  	{if $permission}
-			  	<p> VocC* ainda nC#o possui blogs. <a href="tiki-edit_blog.php">Crie</a> um blog ou veja a <a href="tiki-list_blogs.php">lista</a> dos existentes.</p>
+			  	<p> Você ainda não possui blogs. <a href="tiki-edit_blog.php">Crie</a> um blog ou veja a <a href="tiki-list_blogs.php">lista</a> dos existentes.</p>
 		  	{else}
-		  		<p> Esse usuC!rio ainda nC#o possui posts em blogs.</p>
+		  		<p> Esse usuário ainda não possui posts em blogs.</p>
 			{/if}
 		{/if}
       </div>
@@ -204,9 +204,9 @@
 	    	{include file=tiki-show_page.tpl parsed=$userWiki page=$pageName lastUser=$modifUser}
 	      {else}
 	      	{if $permission}
-	      		<p> VocC* ainda nC#o tem uma pC!gina wiki pessoal. <a href="tiki-editpage.php?page={$pageName}">Crie</a> seu wiki!</p>
+	      		<p> Você ainda não tem uma página wiki pessoal. <a href="tiki-editpage.php?page={$pageName}">Crie</a> seu wiki!</p>
 	      	{else}
-	      		<p> Esse usuC!rio ainda nC#o possui uma pC!gina wiki pessoal </p>
+	      		<p> Esse usuário ainda não possui uma página wiki pessoal </p>
 	      	{/if}
 	      {/if}
         </div>

@@ -1,6 +1,12 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-list_users.tpl,v 1.2 2006-06-19 02:33:08 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-list_users.tpl,v 1.3 2006-06-19 04:04:27 rhwinter Exp $ *}
 <div id="users">
-<h1>{tr}User List{/tr}</h1>
+<h1>
+	{if !$find}
+		{tr}User List{/tr}
+	{else}
+		Busca de usuários	
+	{/if}
+</h1>
 {*================
 	{if $feature_help eq 'y'}
 		<a href="{$helpurl}UserList" target="tikihelp" class="tikihelp" title="{tr}User List{/tr}">
@@ -13,10 +19,10 @@
 		{if !$find}
 			{tr}users registered{/tr}
 		{else}
-			resultado{if $cant_users > 1}s{/if} para "{$find}"
+			resultado{if $cant_users > 1}s{/if} para "{$find}"<br>
+			Veja <a href="tiki-list_users.php">a lista de todos os usuários</a>.
 		{/if}
 </h5>
-
 
 {*===============
 <table class="findtable">
@@ -36,7 +42,7 @@
 	<tr>
 		<td class="heading">
 			{tooltip text="Clique para que a listagem seja por <b>ordem alfabética</b> de nome de usuário"}
-			<a href="tiki-list_users.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'login_desc'}login_asc{else}login_desc{/if}" class="userlistheading">
+			<a href="tiki-list_users.php?{if $find}find={$find}&amp;{/if}offset={$offset}&amp;sort_mode={if $sort_mode eq 'login_desc'}login_asc{else}login_desc{/if}" class="userlistheading">
 				<img src="styles/estudiolivre/sort{if $sort_mode eq 'login_desc'}ArrowUp{elseif $sort_mode eq 'login_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 			</a>
 			{/tooltip}
@@ -44,7 +50,7 @@
 		</td>
 		<td class="heading">
 			{tooltip text="Clique para que a listagem seja por <b>ordem alfabética</b> de nome completo"}
-			<a class="userlistheading" href="tiki-list_users.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'realName_desc'}realName_asc{else}realName_desc{/if}">
+			<a class="userlistheading" href="tiki-list_users.php?{if $find}find={$find}&amp;{/if}offset={$offset}&amp;sort_mode={if $sort_mode eq 'realName_desc'}realName_asc{else}realName_desc{/if}">
 				<img src="styles/estudiolivre/sort{if $sort_mode eq 'realName_desc'}ArrowUp{elseif $sort_mode eq 'realName_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 			</a>
 			{/tooltip}
@@ -60,7 +66,7 @@
 		====================*}
 		<td class="heading">
 			{tooltip text="Clique para que a listagem seja por <b>ordem alfabética</b> de localização"}
-			<a class="userlistheading" href="tiki-list_users.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'country_desc'}country_asc{else}country_desc{/if}">
+			<a class="userlistheading" href="tiki-list_users.php?{if $find}find={$find}&amp;{/if}offset={$offset}&amp;sort_mode={if $sort_mode eq 'country_desc'}country_asc{else}country_desc{/if}">
 				<img src="styles/estudiolivre/sort{if $sort_mode eq 'country_desc'}ArrowUp{elseif $sort_mode eq 'country_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 			</a>
 			{/tooltip}
@@ -125,9 +131,7 @@
 		</tr>
 	{/section}
 </table>
-
 <br />
-
 <div class="paginacao">
 	{if $prev_offset >= 0}
 		<a class="userprevnext" href="tiki-list_users.php?find={$find}&amp;offset={$prev_offset}&amp;sort_mode={$sort_mode}">
