@@ -6,10 +6,10 @@
     </div>
     <div id="gThumb">
 	  <a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}">
-      {if sizeof($arquivo.thumbnail)}
-	  <img height="51" src="repo/{$arquivo.thumbnail}">
+      {if $arquivo.thumbnail}
+		  <img height="51" src="repo/{$arquivo.thumbnail}">
 	  {else}
-	  <img height="51" src="styles/estudiolivre/iThumb{$arquivo.tipo}.png">
+		  <img height="51" src="styles/estudiolivre/iThumb{$arquivo.tipo}.png">
       {/if}
       </a>
     </div>

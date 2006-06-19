@@ -21,7 +21,7 @@
 					     {/tooltip}
 				</div>
 
-				{if sizeof($arquivo.thumbnail)}
+				{if $arquivo.thumbnail}
 					<img id="thumbnail" src="repo/{$arquivo.thumbnail}" height="100" width="100">
 				{else}
 					<img id="thumbnail" src="styles/estudiolivre/iThumb{$arquivo.tipo}.png" height="100" width="100">
