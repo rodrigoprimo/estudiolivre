@@ -5,15 +5,20 @@ if (!selectedBusca) {
 }
 
 function marcaBusca(name) {
-    if (selectedBusca == 'wiki' || selectedBusca == 'gallery' || selectedBusca == 'forum') { 
+    if (selectedBusca == 'wiki' || selectedBusca == 'gallery' || selectedBusca == 'forum' || selectedBusca == 'usuarios' ) { 
 		document.getElementById('busca-'+selectedBusca).className = '';
 	}
 	selectedBusca = name;
 	setCookie('busca',selectedBusca);
-	document.getElementById('busca-'+name).className = 'selected';	
+	document.getElementById('busca-'+name).className = 'selected';
 	if (selectedBusca == 'wiki' || selectedBusca == 'forum') {
+		document.getElementById('searchField').name='highlight';
 		document.getElementById('form-busca').action = 'tiki-searchresults.php';
+	} else if (selectedBusca == 'usuarios') {
+		document.getElementById('searchField').name='find';
+		document.getElementById('form-busca').action = 'tiki-list_users.php';
 	} else {
+		document.getElementById('searchField').name='highlight';		
 		document.getElementById('form-busca').action = 'el-gallery_home.php';
 	}
 }
