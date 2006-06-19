@@ -19,8 +19,8 @@ function streamFile($arquivoId, $type) {
     
     if ($type == 'Imagem') {
     	$objResponse->addAssign('gImagem', 'src', 'repo/' . $arquivo['arquivo']);
-    	$objResponse->addScript("document.getElementById('gPlayerImagem').style.width = " . $arquivo['tamanhoImagemX']);
-    	$objResponse->addScript("document.getElementById('gPlayerImagem').style.height = " . $arquivo['tamanhoImagemY']);
+    	$objResponse->addScript("document.getElementById('gPlayerImagem').style.width = '" . $arquivo['tamanhoImagemX'] . "px';");
+    	$objResponse->addScript("document.getElementById('gPlayerImagem').style.height = '" . $arquivo['tamanhoImagemY'] . "px';");
     	$objResponse->addScript("showLightbox('gPlayerImagem')");
     	
     	return $objResponse;
