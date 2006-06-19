@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.3 2006-06-19 06:25:33 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.4 2006-06-19 19:58:00 nano Exp $ *}
 
 {popup_init src="lib/overlib.js"}
 
@@ -144,9 +144,7 @@
 	{include file=tiki-edit_help_tool.tpl area_name='editwiki'}
 {/if*}
 
-<textarea id='editwiki' class="wikiedit" name="edit" rows="40" style="WIDTH: 100%;">
-	{$pagedata|escape}
-</textarea>
+<textarea id='editwiki' class="wikiedit" name="edit" rows="40" style="WIDTH: 100%;">{$pagedata|escape}</textarea>
 
 {if $wysiwyg}
 	 <script type="text/javascript" src="lib/fckeditor/fckeditor.js"></script>
