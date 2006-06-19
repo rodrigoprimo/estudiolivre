@@ -120,7 +120,13 @@ function updateThumbUpInfo() {
 	if (!upThumbStarted) {
 		upThumbStarted = true;
 		show('gUserThumbStatus');
-		hide('gUserThumbFormContainer');
+		// TODO: tosco
+		if (document.getElementById('gUserThumbFormContainer')) {
+		    hide('gUserThumbFormContainer');
+		}
+		if (document.getElementById('aThumbForm')) {
+		    hide('aThumbForm');
+		}
 		document.getElementById('gUserThumbStatus').innerHTML = '0%';
 	}
 	xajax_upload_info(thumbUpId, 'updateThumbProgressMeter');
@@ -131,7 +137,13 @@ function finishUpThumb() {
 	if (thumbTimerId) {
 		clearTimeout(thumbTimerId);
 		upThumbStarted = false;
-		show('gUserThumbFormContainer');
+		// TODO: tosco
+		if (document.getElementById('gUserThumbFormContainer')) {
+		    show('gUserThumbFormContainer');
+		}
+		if (document.getElementById('aThumbForm')) {
+		    show('aThumbForm');
+		}
 		hide('gUserThumbStatus');	
 	}
 }
