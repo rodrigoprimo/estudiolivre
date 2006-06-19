@@ -166,10 +166,10 @@
     
     <div id="moduleLastChanges">
         <img class="pointer" onclick="javascript:flip('moduleLastChangesMore');this.toggleImage('iArrowGreyDown.png')" src="styles/estudiolivre/iArrowGreyRight.png">
-      <a href="tiki-lastchanges.php?days=0">Ultimas Alterações</a>
+      <a href="tiki-lastchanges.php?days=0">Últimas Alterações</a>
       <div id='moduleLastChangesMore' style="display:none;">
       	{foreach from=$modLastModif item='page'}
-			<a href="tiki-index.php?page={$page.pageName}" onMouseover="tooltip('{if $page.comment}{$page.comment}{else}<i>Modificação não comentada</i>{/if}<br>editado por: <b>{$page.user}</b>')" onMouseout="nd()">{$page.pageName}</a><br/>
+			<a href="tiki-index.php?page={$page.pageName}" onMouseover="tooltip('{if $page.comment}{$page.comment|replace:"'":"\\'"}{else}<i>Modificação não comentada</i>{/if}<br>editado por: <b>{$page.user}</b>')" onMouseout="nd()">{$page.pageName}</a><br/>
      	{/foreach}
       </div>
     </div>
