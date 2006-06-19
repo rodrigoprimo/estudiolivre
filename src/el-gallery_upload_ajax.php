@@ -113,13 +113,13 @@ function set_arquivo_licenca ($resposta1, $resposta2, $padrao = false) {
 	    
 	if ($padrao) {
 	  	$result = $userlib->set_user_field('licencaPadrao', $licencaId);
-	   	if(!$result) $objResponse->addAlert("nao foi possivel editar o campo licencaPadrao");
+	   	if(!$result) $objResponse->addAlert("Não foi possivel editar o campo licencaPadrao");
 	}
 	    
 	$result = $elgallib->set_licenca($arquivoId, $licencaId);
 		
 	if(!$result) {
-		$objResponse->addAlert("nao foi possivel editar o campo licencaId");
+		$objResponse->addAlert("Não foi possivel editar o campo licencaId");
 	} else {
 	  	$licenca = $elgallib->get_licenca($licencaId);
 	  	$objResponse->addAssign('uImagemLicenca', 'src', 'styles/estudiolivre/h_' . $licenca['linkImagem'] . '?rand='.rand());
@@ -131,15 +131,20 @@ function set_arquivo_licenca ($resposta1, $resposta2, $padrao = false) {
 
 $ajaxlib->setPermission('publish_arquivo', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('publish_arquivo');
-function publish_arquivo() {
-	global $elgallib, $arquivoId;
-	$objResponse = new xajaxResponse();
-	
-	if ($elgallib->publish_arquivo($arquivoId)) {
+function publish_arquivo($dontShowAgain = false) {
+    global $elgallib, $arquivoId;
+    $objResponse = new xajaxResponse();
+    
+    if ($elgallib->publish_arquivo($arquivoId)) {
     	$objResponse->addRedirect("el-gallery_view.php?arquivoId=$arquivoId");
     } else {
-    	$objResponse->addAlert("NC#o foi possC-vel publicar o arquivo");
+    	$objResponse->addAlert("Não foi possível publicar o arquivo");
     }
+
+    if ($dontShowAgain) {
+	global $userlib, $user;
+	$userlib->set_user_preference($user, "el_disclaimer_seen", true);
+    }	
 
     return $objResponse;
 }
@@ -147,8 +152,8 @@ function publish_arquivo() {
 $ajaxlib->setPermission('check_publish', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('check_publish');
 function check_publish() {
-	global $elgallib, $arquivoId;
-	$objResponse = new xajaxResponse();
+    global $user, $userlib, $elgallib, $arquivoId;
+    $objResponse = new xajaxResponse();
 	
     if ($errorList = $elgallib->check_publish($arquivoId)) {
     	$errorMsgs = '';
@@ -159,7 +164,11 @@ function check_publish() {
     	$objResponse->addAssign("gUpErrorList", "innerHTML", $errorMsgs);
     	$objResponse->addScript("showLightbox('gUpError')");
     } else {
-    	$objResponse->addScript("showLightbox('el-publish')");
+	if ($userlib->get_user_preference($user, 'el_disclaimer_seen', false)) {
+	    return publish_arquivo();
+	} else {
+	    $objResponse->addScript("showLightbox('el-publish')");
+	}
     }
     return $objResponse;    
 }
