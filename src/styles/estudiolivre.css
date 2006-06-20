@@ -530,10 +530,15 @@ h1 .flipper {
 	float:left;
 }
 
+#topMenuLoading	{
+	display:none;
+	margin-left:110px;
+	float:left;
+}
+
 #topMenuCubes {
 	position:relative;
 	top:-20px;
-	
 	list-style-type:none;
 	display:inline;
 }

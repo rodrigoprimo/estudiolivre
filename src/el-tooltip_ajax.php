@@ -2,13 +2,7 @@
 
 require_once("lib/ajax/ajaxlib.php");
 
-$ajaxlib->statusMessagesOff();
-$ajaxlib->waitCursorOff();
-$ajaxlib->debugOff();
-$ajaxlib->setLogFile("/tmp/xajax.log");
-
 $ajaxlib->registerFunction('register_tooltip_click');
-
 function register_tooltip_click($tipName) {
 	global $tooltiplib;
 	

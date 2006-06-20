@@ -44,9 +44,13 @@
     {tooltip name="perguntas-frequentes" text="<b>Perguntas</b> mais freqüêntes"}<a href="tiki-index.php?page=faq">faq</a>{/tooltip}
     | 
     {tooltip name="entre-contato" text="Entre em contato - descubra os <b>canais de comunicação</b> com a comunidade"}<a href="tiki-index.php?page=contato">contato</a>{/tooltip}
+    
   </div>
-  <div id="topMenuCubesContainer"><ul id="topMenuCubes">
-
+  <div id="topMenuLoading">
+	  <img src="styles/estudiolivre/iProgress.gif">
+  </div>
+  <div id="topMenuCubesContainer">
+  	<ul id="topMenuCubes">
 	{*
       <li><div class="hiddenDescript" id="metareciclagem">metareciclagem</div><a href="http://xango.metareciclagem.org/"><img src="styles/estudiolivre/cubeBlue.png"></a></li>
       *}
@@ -74,7 +78,9 @@
       <li><div class="hiddenDescript" id="grafilab">grafi||lab</div>{if $isIE}{tooltip name="video-lab" text="GRAFI||LAB"}<a href="tiki-index.php?page=Gráfico"><img {if $isIE} {/if} src="styles/estudiolivre/cubePurple{if $isIE}IE{/if}.png"></a>{/tooltip}{else}<a href="tiki-index.php?page=Gráfico"><img {if $isIE} {/if} src="styles/estudiolivre/cubePurple{if $isIE}IE{/if}.png"></a>{/if}</li>
     {/if}
     
-  </ul></div>
+  </ul>
+  
+  </div>
 </div>
 </div>
 

@@ -126,7 +126,9 @@ You are most likely wanting to modify the top of your Tiki site. Please consider
   {* ---- END ---- *}
   
   {* ------------ scripts do el --------------*}
+  {$xajax_js}
   <script language="JavaScript" type="text/javascript" src="lib/js/tooltip.js"></script>
+  <script language="JavaScript" type="text/javascript" src="lib/ajax/tiki-ajax.js"></script>
   
   {* ------- fim -------- *}
   
@@ -166,6 +168,5 @@ You are most likely wanting to modify the top of your Tiki site. Please consider
   //window.attachEvent("onload", correctPNG);
   </script>
   {/literal}
-
-{$xajax_js}
+  
 <!-- head.tpl end -->

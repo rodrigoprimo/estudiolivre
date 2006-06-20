@@ -146,6 +146,7 @@ if ($feature_ajax == 'y') {
 global $ajaxlib;
 $ajaxlib = new TikiAjax();
 $ajaxlib->registerFunction("loadComponent");
+$ajaxlib->setLogFile("/tmp/xajax.log");
 
 function loadComponent($template, $htmlElementId) {
     global $smarty, $ajaxlib;

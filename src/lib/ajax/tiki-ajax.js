@@ -4,11 +4,11 @@ function loadComponent(url, template, htmlelement) {
 }
 
 xajax.loadingFunction = function() {
-    show('ajaxLoading');
+    document.getElementById('topMenuLoading').style.display = "inline";
 };
 
 xajax.doneLoadingFunction = function() {
-    hide('ajaxLoading');
+    document.getElementById('topMenuLoading').style.display = "none";
 };
 
 
