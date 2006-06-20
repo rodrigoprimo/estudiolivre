@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.5 2006-06-20 03:38:30 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.6 2006-06-20 04:30:46 rhwinter Exp $ *}
 
 {popup_init src="lib/overlib.js"}
 
@@ -32,7 +32,7 @@
 				<script language="javascript" type="text/javascript">
 					setPreview = function(){
 						document.getElementById('editpageform').innerHTML+='<input type=\"hidden\" name=\"preview\" value=\"1\">';
-						document.getElementById('editpageform').submit()
+						document.getElementById('editpageform').submit();
 					}
 				</script>
 			{/literal}
