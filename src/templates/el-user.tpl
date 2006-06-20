@@ -126,7 +126,7 @@
         <img class="pointer" onclick="javascript:flip('uGalleryItems');this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
         &nbsp;
         <h1>
-          <a href="#">Galeria pessoal</a>
+          <a name="gallery">Galeria pessoal</a>
         </h1>
       </div>
       <div id="uGalleryItems" class="uMainItemContainer" style="display:block">

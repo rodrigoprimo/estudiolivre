@@ -176,7 +176,7 @@
     
     <hr>
     <div id="moduleGallery">
-    	Arquivos: {tooltip text="Veja arquivos que já publicou"}<a href="#">ver</a>{/tooltip} | {tooltip text="Publique <b>sua obra</b> no Estúdio Livre!"}<a href="el-gallery_upload.php">publicar</a>{/tooltip}
+    	Acervo: {tooltip text="Veja arquivos que já publicou"}<a href="el-user.php?view_user={$user}#gallery">ver</a>{/tooltip} | {tooltip text="Publique <b>sua obra</b> no Estúdio Livre!"}<a href="el-gallery_upload.php">publicar</a>{/tooltip}
     </div>
     
     <hr>
