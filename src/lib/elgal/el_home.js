@@ -4,6 +4,7 @@ var acervo_cache = new Array();
 var sortMode = 'data_publicacao';
 var sortDirection = '_desc';
 var findValue = '';
+var maxRecords = 10;
 
 function init(findVal) {
 	
@@ -52,7 +53,7 @@ function toggleFilter(button, position, tipo) {
 	
 	setButton(button, position, tipo);
 	
-	xajax_get_files(tipos, 0, 5, sortMode+sortDirection, '', findValue);
+	xajax_get_files(tipos, 0, maxRecords, sortMode+sortDirection, '', findValue);
 	//el_get_files(tipos, 0, 5, 'data_publicacao_desc','', new Array());
 	
 }
@@ -100,11 +101,11 @@ function toggleSortArrow(img, alternate) {
 		sortDirection = '_desc';
 	}
 	setCookie('sortDirection', sortDirection);
-	xajax_get_files(tipos, 0, 5, sortMode+sortDirection, '', findValue);
+	xajax_get_files(tipos, 0, maxRecords, sortMode+sortDirection, '', findValue);
 }
 
 function setSortMode(sel) {
 	sortMode = sel.value;
 	setCookie('sortMode', sortMode);
-	xajax_get_files(tipos, 0, 5, sortMode+sortDirection, '', findValue);
+	xajax_get_files(tipos, 0, maxRecords, sortMode+sortDirection, '', findValue);
 }

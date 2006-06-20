@@ -61,16 +61,16 @@ if(isset($_REQUEST['highlight'])) {
 
 $total = $elgallib->count_all_uploads($tipos, '', $find);
 
-$smarty->assign('maxRecords', 5);
+$smarty->assign('maxRecords', 10);
 $smarty->assign('offset', 0);
 $smarty->assign('total', $total);
 //$smarty->assign('userName', '');
 $smarty->assign('find', $find);
 //$smarty->assign('filters', $filters);
 $smarty->assign('page', 1);
-$smarty->assign('lastPage', ceil($total/5));
+$smarty->assign('lastPage', ceil($total/10));
 
-$files = $elgallib->list_all_uploads($tipos, 0, 5, $sort_mode, '', $find);
+$files = $elgallib->list_all_uploads($tipos, 0, 10, $sort_mode, '', $find);
 $smarty->assign_by_ref('arquivos',$files);
 
 $smarty->assign('mid', 'el-gallery_home.tpl');
