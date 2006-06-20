@@ -15,7 +15,7 @@ $dateId = "data_publicacao";
 $authorId = "autor";
 $titleId = "titulo";
 $urlparam = "arquivoId";
-$readrepl = "el-gallery_manage.php?action=view&arquivoId=%s";
+$readrepl = "el-gallery_view.php?arquivoId=%s";
 $uniqueid = $feed;
 
 if (isset($_REQUEST['user'])) {
