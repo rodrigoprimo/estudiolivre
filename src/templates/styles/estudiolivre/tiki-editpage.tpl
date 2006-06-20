@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.6 2006-06-20 04:30:46 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.7 2006-06-20 15:13:25 nano Exp $ *}
 
 {popup_init src="lib/overlib.js"}
 
@@ -27,11 +27,15 @@
 			Edição da página <b>{$page|escape|truncate:20:"(...)":true}{if $pageAlias ne ''}&nbsp;({$pageAlias|escape}){/if}</b>
 		</span>
 		<div class="wikiEdit" id="editCont" style="display:block">
-			<!--input type="submit" class="wikiaction" name="preview" value="{tr}preview{/tr}" style="float:right"/--!>
+			<!--input type="submit" class="wikiaction" name="preview" value="{tr}preview{/tr}" style="float:right"/-->
 			{literal}
 				<script language="javascript" type="text/javascript">
 					setPreview = function(){
-						document.getElementById('editpageform').innerHTML+='<input type=\"hidden\" name=\"preview\" value=\"1\">';
+						var inputPreview = document.createElement('input');
+						inputPreview.type = "hidden";
+						inputPreview.name = "preview";
+						inputPreview.value = "1";
+						document.getElementById('editpageform').appendChild(inputPreview);
 						document.getElementById('editpageform').submit();
 					}
 				</script>
