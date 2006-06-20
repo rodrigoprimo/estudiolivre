@@ -175,6 +175,11 @@
     </div>
     
     <hr>
+    <div id="moduleGallery">
+    	Arquivos: {tooltip text="Veja arquivos que já publicou"}<a href="#">ver</a>{/tooltip} | {tooltip text="Publique <b>sua obra</b> no Estúdio Livre!"}<a href="el-gallery_upload.php">publicar</a>{/tooltip}
+    </div>
+    
+    <hr>
     <div id="moduleWhoIsThere">
     {if sizeof($online_users) > 1}
       <img class="pointer" onclick="javascript:flip('moduleWhoIsThereMore');this.toggleImage('iArrowGreyDown.png')" src="styles/estudiolivre/iArrowGreyRight.png">

@@ -1,10 +1,14 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-edit_help.tpl,v 1.1 2006-06-19 06:25:33 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-edit_help.tpl,v 1.2 2006-06-20 03:38:30 rhwinter Exp $ *}
 {* Show wiki syntax and plugins help *}
 {* TODO: Add links to add samples to edit form *}
 
-<span class="pointer" onclick="flip('edithelpzone')">ajuda</span>
+{tooltip text="Ver ou esconder a <b>ajuda</b> do wiki"}
+	<span id="editHelp" class="pointer" onclick="flip('edithelpzone')"><img src="images/ed_help.gif"></span>
+{/tooltip}
+
 <div class="wiki-edithelp"  id='edithelpzone'  style="display:none">
 <div id="wikihelp-tab">
+<br/><br/>
 {if count($plugins) ne 0}
   <div style="text-align: right;">
     <a href="javascript:hide('wikihelp-tab');show('wikiplhelp-tab');">{tr}Show Plugins Help{/tr}</a>
@@ -75,4 +79,8 @@ Note that plugin arguments can be closed in double quotes (&quot;); this allows 
 </table>
 </div>
 {/if}
+
+{tooltip text="Ver ou esconder a <b>ajuda</b> do wiki"}
+	<span style="float:right;margin-right:50px" class="pointer" onclick="flip('edithelpzone')"><img src="images/ed_help.gif"></span>
+{/tooltip}
 </div>

@@ -52,19 +52,24 @@
          </div>
    
      </div>
+    <center>
+	    <img class="separator" src="styles/estudiolivre/separator.png">
+    </center>
     
-    <img class="separator" src="styles/estudiolivre/separator.png">
-	    
     </div>
 
     {if $pending && $permission}
 	 	<div id="fileAltered" style="display:block;text-align:left">
 	 		Arquivos não publicados:<br/>
-		 	<ul>
+		 	<ul id="gUpPending">
 				{foreach from=$pending item=pendente}
 					<li id="pendente-{$pendente.arquivoId}">
-						<a onClick="restoreForm({$pendente.arquivoId}, '{$pendente.tipo}', '{$pendente.arquivo}', '{$pendente.thumbnail}');flip('fileAltered')">{$pendente.titulo|default:$pendente.arquivo|default:$pendente.arquivoId}</a>&nbsp;&nbsp;&nbsp;&nbsp;
-					    <a onClick="xajax_delete_file({$pendente.arquivoId})">(apagar)</a>
+						<span class="pointer" onClick="xajax_delete_file({$pendente.arquivoId})"><img src="styles/estudiolivre/iDelete.png"></span>
+						{tooltip text="Clique para continuar o envio desse arquivo"}
+							<span class="pointer" onClick="restoreForm({$pendente.arquivoId}, '{$pendente.tipo}', '{$pendente.arquivo}', '{$pendente.thumbnail}');flip('fileAltered')">
+								{$pendente.titulo|default:$pendente.arquivo|default:$pendente.arquivoId}
+							</span>
+						{/tooltip}
 					</li>
 				{/foreach}
 			 </ul>

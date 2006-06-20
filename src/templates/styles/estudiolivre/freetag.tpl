@@ -8,8 +8,8 @@
 		  }
 		{/literal}
 	</script>
-	{tr}Folksonomy Tags{/tr}
 	<div id="freetager">
+	{tr}Tags{/tr}
 		{if $feature_help eq 'y'}
 			<!--div class="simplebox">{tr}Put tags separated by spaces. For tags with more than one word, use no spaces and put words together.{/tr}</div--!>
 		{/if}

@@ -220,9 +220,99 @@ INPUT.editable {
 	font-size:12px;
 	background-color:#ebebeb;
 }
+/*********************************/
+/*Coisas da página de edição wiki*/
+/*********************************/
 
-/* Wiki Text */
-/* tudo que está dentro do texto wiki em si*/
+/* imagem da interrogação, ajuda wiki */
+#editHelp{
+	float:right;
+	margin-right:50px
+}
+
+/**/
+#textareasize {
+	float:right;
+	margin-right:3px;
+	margin-top:2px;
+}
+
+#wikiEditCont{
+	overflow:hidden;
+	margin:0px;
+	padding-top:7px;
+}
+
+.wikiEdit {
+	margin:0px;
+	padding:10px 5px 0px 5px;
+	border:1px solid grey;	
+}
+
+#label.wikiEdit {
+	padding:5px 5px 0px 5px;
+	font-size:16px;
+	position:relative;
+	bottom:0px;
+	border-bottom:1px solid white;
+}
+
+#labelRight {
+	float:right;
+	padding:0px;
+	padding-top:2px;
+	font-size:12px;
+	border:0;
+}
+
+#attention {
+	text-align:center;
+	padding:5px;
+	width:35%;
+	position:relative;
+	top:-1px;
+	margin-right:10px;
+	border: 1px solid grey;
+	border-bottom:1px solid grey;
+	border-top:1px solid white;	
+	margin-left:60%;
+}
+
+#wikiPreviewCont INPUT, #wikiEditCont INPUT, #wikiEditCont TEXTAREA {
+	border: 1px inset rgb(233, 233, 174);
+	background-color:#f1f1f1;
+}
+#wikiPreviewCont .image, #wikiEditCont .image {
+	border:0;
+}
+
+#editwiki {
+	margin: 5px 0px 10px 0px;	
+	width:99%;
+}
+
+#freetager{
+	text-align:right;
+}
+
+#wikiEditExtra {
+	margin-bottom:10px;	
+}
+
+#categorizator {
+	margin:5px 0px 0px 20px;
+	overflow:hidden;
+	width:50%
+}
+
+#maisOpcoes {
+	margin:5px 0px 5px 20px;
+}
+
+/****************************************************/
+/* coisas específicas da pré-visualização da edição */
+/****************************************************/
+
 #wikiPreviewCont{
 	overflow:hidden;
     padding-top:7px;
@@ -236,16 +326,13 @@ INPUT.editable {
 
 #label.wikiPreview {
 	padding:5px 5px 0px 5px;
-	font-size:18px;
+	font-size:16px;
 	position:relative;
 	bottom:0px;
-	margin:0px;
-	border:1px solid grey;
 	border-bottom:1px solid white;
-
 }
 
-#attention.wikiPreview {
+#wikiPreviewCont #attention {
 	padding:5px;
 	text-align:justify;
 	font-weight:bold;
@@ -262,6 +349,10 @@ INPUT.editable {
 #attention #attentionSave {
 	text-align:center;
 }
+
+/* Wiki Text */
+/* tudo que está dentro do texto wiki em si*/
+
 
 #wikitext H1 {
     font-weight: normal;
@@ -875,6 +966,11 @@ p.editdate {
 #moduleWhoIsThereMore {
 	padding-left:20px
 }
+
+#moduleGallery{
+	text-align:left;
+}
+
 /* Login Box */
 
 #uLoginBox{
@@ -1303,6 +1399,10 @@ A.gUpmore {
 
 #gUpSave {
 	text-align:center;
+}
+
+#gUpPending {
+	list-style-type:none;
 }
 
 /* ####### Página do Arquivo ####### */
