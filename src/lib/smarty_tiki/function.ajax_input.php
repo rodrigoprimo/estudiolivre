@@ -34,6 +34,8 @@ function smarty_function_ajax_input($params, &$smarty) {
 		$output .= ($edit ? $default : $trucated);
 		$output .= "</div>";
 		return $output;	
+	} else {
+		$class .= " editable";
 	}
 	
 	if ($mode == 'edit') {

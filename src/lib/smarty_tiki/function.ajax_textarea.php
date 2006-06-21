@@ -31,6 +31,8 @@ function smarty_function_ajax_textarea($params, &$smarty) {
 		$output .= "</div>";
 		
 		return $output;	
+	} else {
+		$class .= " editable";
 	}
 
 	if ($mode == 'edit') {

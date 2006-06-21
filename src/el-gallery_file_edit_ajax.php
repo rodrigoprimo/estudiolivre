@@ -20,7 +20,7 @@ function save_field($name, $value) {
 			$objResponse->addScriptCall('exibeErro', $name, $error);
 	    } else {
 	    	// TODO: generalizar isso?
-	    	if ($name == 'descricao') {
+	    	if ($name == 'descricao' || $name == 'fichaTecnica' || $name == 'letra') {
 	    		$value = $elgallib->parse_data($value);
 	    		//$value = htmlspecialchars($value);
 	    	}

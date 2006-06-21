@@ -101,16 +101,16 @@
     </div>
 
     <div id="gUpTitleAuthor">
-        {ajax_input permission=$permission class="editable gUpTitle" id="titulo" value=$arquivo.titulo default="Titulo" display="inline" truncate=50}
+        {ajax_input permission=$permission class="gUpTitle" id="titulo" value=$arquivo.titulo default="Titulo" display="inline" truncate=50}
 		<div id="gUpAuthorCont">
-		  	Por {ajax_input permission=$permission class="gUpAuthor editable" id="autor" value=$realName default="Autor da obra" display="inline" mode="edit"}
+		  	Por {ajax_input permission=$permission class="gUpAuthor" id="autor" value=$realName default="Autor da obra" display="inline" mode="edit"}
 		</div>
     </div>
       
     <br style="clear:both; line-height:30px;">
     <div id="gUpDescription">
     	<div>
-	    	{ajax_textarea permission=$permission  display="block" style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" class="editable gUpDescription" id="descricao" value=$arquivo.descricao default="Escreva aqui a descrição da sua obra"}
+	    	{ajax_textarea permission=$permission  display="block" style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" class="gUpDescription" id="descricao" value=$arquivo.descricao default="Escreva aqui a descrição da sua obra"}
 	    </div>
     </div>
     

@@ -79,7 +79,7 @@
 					{/if}
 					<div id="aName">
 						{if $permission}
-							{tooltip text="Clique para modificar o nome desse arquivo"}{ajax_input permission=$permission class="editable" id="titulo" value=$arquivo.titulo default="Titulo" display="inline"}{/tooltip}
+							{tooltip text="Clique para modificar o nome desse arquivo"}{ajax_input permission=$permission id="titulo" value=$arquivo.titulo default="Titulo" display="inline"}{/tooltip}
 						{else}
 							{ajax_input permission=$permission id="titulo" value=$arquivo.titulo default="Titulo" display="inline"}
 						{/if}
@@ -200,7 +200,7 @@
 				</div>
 				<div id="aDescCont" class="aItemsCont" style="display:block">
 					{if $permission}
-						{tooltip text="Clique aqui para modificar a descri&ccedil;&atilde;o do arquivo"}{ajax_textarea permission=$permission class="editable" style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" id="descricao" value=$arquivo.descricao display="block"}{/tooltip}
+						{tooltip text="Clique aqui para modificar a descri&ccedil;&atilde;o do arquivo"}{ajax_textarea permission=$permission style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" id="descricao" value=$arquivo.descricao display="block"}{/tooltip}
 					{else}
 						{ajax_textarea permission=$permission style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" id="descricao" value=$arquivo.descricao display="block"}
 					{/if}

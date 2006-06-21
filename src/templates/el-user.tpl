@@ -24,7 +24,7 @@
       <div id="uContact" class="uContactInfoCont left">
         {if $permission}
         	{tooltip text="Clique para modificar o seu <b>nome</b>"}
-	        	{ajax_input permission=$permission id="realName" class="uContactItem editable" value=$realName default="Nome completo" display="block"}
+	        	{ajax_input permission=$permission id="realName" class="uContactItem" value=$realName default="Nome completo" display="block"}
         	{/tooltip}
         {else}
         	{*TODO: mudar isso pra SPAN com tooltip*}
@@ -33,7 +33,7 @@
         <br />
         {if $permission}
         	{tooltip text="Clique para modificar o seu <b>email</b>"}
-		        {ajax_input permission=$permission id="email" class="uContactItem editable" value=$userinfo.email default="E-mail" display="block" truncate='25'}        
+		        {ajax_input permission=$permission id="email" class="uContactItem" value=$userinfo.email default="E-mail" display="block" truncate='25'}        
 		    {/tooltip}
         {else}
         	{*TODO mudar isso pra um mailto:*}
@@ -42,7 +42,7 @@
 		<br />
         {if $permission}
         	{tooltip text="Clique para modificar o seu <b>site</b>"}
-		        {ajax_input permission=$permission id="site" class="uContactItem editable" value=$site default="Site" display="block" truncate='25'}        
+		        {ajax_input permission=$permission id="site" class="uContactItem" value=$site default="Site" display="block" truncate='25'}        
 		    {/tooltip}
         {else}		
             {*TODO: mudar isso pra um a href!!*}
@@ -51,7 +51,7 @@
 		<br />
         {if $permission}
         	{tooltip text="Clique para modificar a sua <b>localização</b>"}
-		        {ajax_input permission=$permission id="local" class="uContactItem editable" value=$local default="Localização" display="inline"}        
+		        {ajax_input permission=$permission id="local" class="uContactItem" value=$local default="Localização" display="inline"}        
 		    {/tooltip}
         {else}	
         	{*TODO: mudar isso pra SPAN com tooltip*}	
