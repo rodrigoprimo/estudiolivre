@@ -4,7 +4,8 @@ if (!isset($_POST['xajax']) || $_POST['xajax'] != 'upload_info') {
 	require_once("tiki-setup.php");
 	require_once("lib/elgal/elgallib.php");
 } else {
-	$feature_ajax = "y";
+        session_start();
+        $feature_ajax = "y";
 }
 
 require_once("lib/ajax/ajaxlib.php");
