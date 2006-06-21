@@ -220,6 +220,12 @@ INPUT.editable {
 	font-size:12px;
 	background-color:#ebebeb;
 }
+
+/* estilo dos breadcrumbs */
+.elcrumbs {
+	margin:7px 0px 0px 15px;
+}
+
 /*********************************/
 /*Coisas da página de edição wiki*/
 /*********************************/
@@ -1773,14 +1779,14 @@ A.gUpmore {
 /* página que lista os usuários (tiki-list_users.tpl) */
 
 /*o título da página e a paginacao*/
-#users h1, #users .paginacao {
+#users h1, #users .paginacao, #forum h1, #forum .paginacao {
 	text-align:center;
 	background-color:#f9f9f9;
 	border:1px solid gray;
 }
 
 /*para dar uma margenzinha e um padding na paginação*/
-#users .paginacao {
+#users .paginacao, #forum .paginacao {
 	padding:3px;
 	margin-bottom:10px;
 }
@@ -1817,6 +1823,31 @@ A.gUpmore {
 }
 /*para que as linhas da tabela tenham cores diferentes nas linhas pares*/
 #users .odd{
+	background-color:#e9e9e9
+}
+
+/********************/
+/* estilos do fórum */
+/********************/
+
+/*título da página e paginacao (ver acima!!)*/
+/*!!!!!!!VER ACIMA!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+/*células da tabela da tiki-forums.tpl*/
+#forumTable .forumTableCell {
+	text-align:center;
+	vertical-align:center;
+	padding:2px;
+}
+
+td.forumName {
+	font-size:18px;
+	background-color:#888;
+	text-align:center;	
+	color:white;
+}
+
+#forumTable .odd{
 	background-color:#e9e9e9
 }
 

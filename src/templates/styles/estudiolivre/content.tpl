@@ -1,5 +1,9 @@
 <!-- content.tpl begin -->
+
+
+
 <div id="contentBubble">
+{elcrumbs crumbs=$elCrumbs}
     {if $feature_usermenu eq 'y'}	
       <div id="usermenu">
         &nbsp;&nbsp;<a href="tiki-usermenu.php?url={$smarty.server.REQUEST_URI|escape:"url"}"><img src='img/icons/add.gif' border='0' alt='{tr}add{/tr}' title='{tr}add{/tr}' /></a>
