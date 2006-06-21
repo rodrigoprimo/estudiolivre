@@ -31,12 +31,10 @@ function elAddCrumb($title) {
 
 }
 
-// isso deveria estar no tiki-index.php e tiki-user_information.php, mas nao queremos mexer lah.
-// as outras paginas tratarao adicionarao o seu rastro.
+// isso deveria estar no tiki-index.php, mas nao queremos mexer lah.
+// as outras paginas adicionarao o seu rastro.
 if (isset($_REQUEST['page'])) {
 	elAddCrumb($_REQUEST['page']);	
-} elseif (isset($_REQUEST['view_user'])) {
-	elAddCrumb($_REQUEST['view_user']);
 }
 
 $smarty->assign_by_ref("elCrumbs",$_SESSION['elBreadCrumbs']);

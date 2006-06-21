@@ -31,6 +31,8 @@ include_once("freetag_list.php");
 
 global $tikilib, $user;
 
+$smarty->assign('headtitle', "subir arquivo");
+
 $smarty->assign('category', 'gallery');
 
 $avatar = $tikilib->get_user_avatar($user);

@@ -12,18 +12,22 @@ require_once("lib/freetag/freetaglib.php");
 require_once("lib/commentslib.php");
 $commentslib = new Comments($dbTiki);
 
-$smarty->assign('category', 'gallery');
-
 $avatar = $tikilib->get_user_avatar($user);
 $smarty->assign('avatar', $avatar);
 
 if (!$arquivoId) {
-	$smarty->assign('msg',tra('VocC* nC#o escolheu nenhum arquivo!'));
+	$smarty->assign('msg',tra('Você não escolheu nenhum arquivo!'));
 	$smarty->display('error.tpl');
 	exit;
 }   
 
 $arquivo = $elgallib->get_arquivo($arquivoId);
+
+$smarty->assign('headtitle', $arquivo['titulo']);
+elAddCrumb($arquivo['titulo']);
+
+$smarty->assign('category', 'gallery');
+
 $arquivo['tags'] = $freetaglib->get_tags_on_object($arquivoId, 'gallery');
 $arquivo['userRating'] = $elgallib->getUserRating($arquivoId, $user);
 
@@ -33,8 +37,6 @@ foreach ($arquivo['tags']['data'] as $t) {
     $tagString .= $t['tag'];
 }
 $arquivo['tagString'] = $tagString;
-
-elAddCrumb($arquivo['titulo']);
 
 $smarty->assign('arquivoId',$arquivoId);
 $smarty->assign('arquivo',$arquivo);

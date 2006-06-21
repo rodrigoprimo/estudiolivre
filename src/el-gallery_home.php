@@ -7,7 +7,8 @@ require_once("el-gallery_ajax.php");
 
 $ajaxlib->processRequests();
 
-elAddCrumb('Galeria de arquivos');
+$smarty->assign('headtitle', "acervo");
+elAddCrumb('acervo');
 
 $smarty->assign('category', 'gallery');
 

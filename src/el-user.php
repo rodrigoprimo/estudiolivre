@@ -63,6 +63,9 @@ if ($tiki_p_admin != 'y' && !$permission) {
 	}
 }
 
+$smarty->assign('headtitle', $view_user);
+elAddCrumb($view_user);
+
 $page = "Usuário_" . $view_user;
 $info = $tikilib->get_page_info($page);
 $smarty->assign('pageName', $page);
