@@ -35,9 +35,6 @@ $smarty->assign('headtitle', "subir arquivo");
 
 $smarty->assign('category', 'gallery');
 
-$avatar = $tikilib->get_user_avatar($user);
-$smarty->assign('avatar', $avatar);
-
 //isto eh uma conveniencia, so pra bloquear a mudanca de campo no cliente
 //nao garante seguranca
 $smarty->assign('permission', $el_p_upload_files);

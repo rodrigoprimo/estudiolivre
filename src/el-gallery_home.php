@@ -16,9 +16,6 @@ $info = $tikilib->get_page_info('destak');
 $pdata = $tikilib->parse_data($info["data"],$info["is_html"]);
 $smarty->assign_by_ref('destak', $pdata);
 
-$avatar = $tikilib->get_user_avatar($user);
-$smarty->assign('avatar', $avatar);
-
 if(isset($_COOKIE['sortMode'])) {
 	$sortField = $_COOKIE['sortMode'];
 } else {

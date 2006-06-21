@@ -12,9 +12,6 @@ require_once("lib/freetag/freetaglib.php");
 require_once("lib/commentslib.php");
 $commentslib = new Comments($dbTiki);
 
-$avatar = $tikilib->get_user_avatar($user);
-$smarty->assign('avatar', $avatar);
-
 if (!$arquivoId) {
 	$smarty->assign('msg',tra('Você não escolheu nenhum arquivo!'));
 	$smarty->display('error.tpl');
