@@ -11,6 +11,7 @@ if (!isset($_POST['xajax']) || $_POST['xajax'] != 'upload_info') {
 require_once("lib/ajax/ajaxlib.php");
 require_once("el-gallery_upload_ajax.php");
 require_once("el-license_ajax.php");
+require_once("el-tags_ajax.php");
 
 $ajaxlib->processRequests();
 
@@ -27,13 +28,14 @@ if ($el_p_upload_files != 'y') {
     die;
 }
 
-include_once("freetag_list.php");
-
 global $tikilib, $user;
 
 $smarty->assign('headtitle', "subir arquivo");
 
 $smarty->assign('category', 'gallery');
+
+$smarty->assign('tag_suggestion', $freetaglib->get_tag_suggestion('', 0, 10));
+$smarty->assign('moreTagsOffset', 10);
 
 //isto eh uma conveniencia, so pra bloquear a mudanca de campo no cliente
 //nao garante seguranca

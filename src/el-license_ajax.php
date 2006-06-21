@@ -1,6 +1,6 @@
 <?php
 
-// nao precisa verificacao de permissao
+$ajaxlib->setPermission('get_license', $user);
 $ajaxlib->registerFunction('get_license');
 function get_license($r1, $r2, $r3) {
     global $elgallib;

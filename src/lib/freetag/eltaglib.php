@@ -29,6 +29,41 @@ class ElTagLib extends FreetagLib {
 	return $newwords;
     }
 
+	function get_tag_suggestion($exclude = '', $offset = 0, $maxRecords = -1) {
+	
+		$query = "select distinct(t.tagId), t.tag from `tiki_freetags` t, `tiki_freetagged_objects` o, `tiki_objects` tko where t.`tagId`=o.`tagId` and o.`objectId`=tko.`objectId` order by hits";
+		$result = $this->query($query, array(), $maxRecords, $offset);
+	
+		$tags = array();
+		$index = array();
+		while ($row = $result->fetchRow()) {
+		    $tag = $row['tag'];
+		    if (!isset($index[$tag]) && !preg_match("/$tag/",$exclude)) {
+				$tags[] = $tag;
+				$index[$tag] = 1;
+		    }
+		}
+	
+		return $tags;
+	}
+	
+	function count_tags($user = '') {
+	    
+		$bindvals = array();
+	
+		if (isset($user) && (!empty($user))) {
+		    $mid = "AND `user` = ?"; 
+		    $bindvals[] = $user;
+		} else {
+		    $mid = "";
+		}
+		    
+		$query = "select count(distinct(t.`tagId`)) from `tiki_freetags` t, `tiki_freetagged_objects` o where o.`tagId` = t.`tagId`	$mid";
+	
+		return $this->getOne($query, $bindvals);
+
+    }
+
 }
 
 global $dbTiki;

@@ -133,13 +133,11 @@
 
 	    <div id="gUpTagSuggestUser" >
 	      <div id="gUpTagSuggestMore" style="display:block">
-	        <a href="#" class="gUpmore" onclick="document.getElementById('gUpTagListItem').innerHTML=document.getElementById('gUpTagListItem').innerHTML+document.getElementById('gUpTagSuggestUserMoreTen').innerHTML;flip('gUpTagSuggestMore');return false;">+10</a>
+	        {include file="el-tag_suggest_more.tpl"}
 	      </div>
 	   	  {tooltip text="Clique nas tags para adiocioná-las ao campo acima"}
 	      <div id="gUpTagListItem">
-	        {foreach from=$tag_suggestion item=t}
-		  		<span class="pointer" onclick="addTag(this)">{$t}</span>
-	        {/foreach}
+	        {include file="el-tag_suggest_list.tpl"}
 	      </div> 
     	  {/tooltip}
 	    </div>
