@@ -162,7 +162,7 @@
      <br style="clear:both; line-height:20px;">
     
     <div id="save-exit">
-       <img src="styles/estudiolivre/bPublicar.png" onClick="checkWaiting('xajax_check_publish()')"/>
+       <img src="styles/estudiolivre/bPublicar.png" class="pointer" onClick="checkWaiting('xajax_check_publish()')"/>
     </div>
 
 
