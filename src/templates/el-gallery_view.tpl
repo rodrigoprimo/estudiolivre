@@ -215,7 +215,7 @@
 				</div>
 				<div id="aInfoCont" class="aItemsCont" style="display:block">
 					<div id="gUpMoreOptions">
-						<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">Formato:</div> {$arquivo.formato}</div>
+						<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">Formato:</div> {$arquivo.tipo} - {$arquivo.formato|show_extension}</div>
 						<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">Tamanho:</div> {$arquivo.tamanho|show_filesize}</div>
 						{include file="el-gallery_metadata.tpl"}
 						{if $arquivo.tipo neq "Texto"}
