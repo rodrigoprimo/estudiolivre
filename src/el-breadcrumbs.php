@@ -35,7 +35,10 @@ function elAddCrumb($title) {
 // as outras paginas adicionarao o seu rastro.
 if (isset($_REQUEST['page'])) {
 	elAddCrumb($_REQUEST['page']);	
+} elseif (isset($_REQUEST['tag'])) {
+	elAddCrumb($_REQUEST['tag']);	
 }
+
 
 $smarty->assign_by_ref("elCrumbs",$_SESSION['elBreadCrumbs']);
 

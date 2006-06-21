@@ -11,6 +11,7 @@ if( !defined( 'PLUGINS_DIR' ) ) {
 
 require_once("lib/freetag/freetaglib.php");
 require_once("lib/commentslib.php");
+global $dbTiki;
 $commentslib = new Comments($dbTiki);
 
 class ELGalLib extends TikiLib {
@@ -124,7 +125,7 @@ class ELGalLib extends TikiLib {
 
       $tables = " from `el_arquivo` a, `el_licenca` l ";
       
-      $query = "select a.*, a.`titulo` as nomeArquivo, l.`descricao` descricaoLicenca, `linkImagem`, `linkHumanReadable` $tables $mid and a.`licencaId`=l.`licencaId` and `publicado`=1 order by ".$this->convert_sortmode($sort_mode);
+      $query = "select a.*, l.`descricao` descricaoLicenca, `linkImagem`, `linkHumanReadable` $tables $mid and a.`licencaId`=l.`licencaId` and `publicado`=1 order by ".$this->convert_sortmode($sort_mode);
       $result = $this->query($query,$bindvals,$maxRecords,$offset);
     
       if ($result) {

@@ -21,7 +21,7 @@
         <div id="gName">
 	 	
 	  {tooltip name="list-clique-pag-arquivo" text="Clique para ir para a página do arquivo"}<a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}">
-	    {$arquivo.nomeArquivo}
+	    {$arquivo.titulo}
 	  </a>{/tooltip}
 	 
 	</div>

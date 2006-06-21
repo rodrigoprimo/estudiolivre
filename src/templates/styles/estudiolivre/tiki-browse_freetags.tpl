@@ -1,8 +1,8 @@
 {* $Header$ *}
 
 {if $feature_ajax eq 'y'}
-<script src="lib/cpaint/cpaint2.inc.compressed.js" type="text/javascript"></script>
-<script src="lib/freetag/freetag_ajax.js" type="text/javascript"></script>
+{* <script src="lib/cpaint/cpaint2.inc.compressed.js" type="text/javascript"></script>
+ <script src="lib/freetag/freetag_ajax.js" type="text/javascript"></script> *}
 {/if}
 
 {if $feature_morcego eq 'y' and $freetags_feature_3d eq 'y'}
@@ -44,113 +44,35 @@
 </div>
 {/if}
 
-<h2>Objects tagged <span id="currentTag2">{$tag}</span></h2>
+<h2>{tr}Tag {/tr}<span id="currentTag2">{$tag}</span></h2>
 
-{if $feature_ajax eq 'y'}
 <div class="navbar">
-<a class="linkbut {if $type eq ''} highlight{/if}"  href="javascript:setObjectType('','typeAll');" id="typeAll">{tr}All{/tr}</a>
+<a class="linkbut {if $type eq ''} highlight{/if}"  href="tiki-browse_freetags.php?tag={$tag}" id="typeAll">{tr}All{/tr}</a>
 {if $feature_wiki eq 'y'}
-<a class="linkbut {if $type eq "wiki page"} highlight{/if}"  href="javascript:setObjectType('wiki page','typeWikiPage');" id="typeWikiPage">{tr}Wiki pages{/tr}</a>
-{/if}
-{if $feature_galleries eq 'y'}
-<a class="linkbut {if $type eq 'image gallery'} highlight{/if}"  href="javascript:setObjectType('image gallery','typeImageGalleries');" id="typeImageGalleries">{tr}Image galleries{/tr}</a>
-{/if}
-{if $feature_galleries eq 'y'}
-<a class="linkbut {if $type eq "image"} highlight{/if}"  href="javascript:setObjectType('image','typeImage');" id="typeImage">{tr}Images{/tr}</a>
-{/if}
-{if $feature_file_galleries eq 'y'}
-<a class="linkbut {if $type eq "file gallery"} highlight{/if}"  href="javascript:setObjectType('file gallery','typeFileGallery');" id="typeFileGallery">{tr}File galleries{/tr}</a>
-{/if}
-{if $feature_blogs eq 'y'}
-<a class="linkbut {if $type eq "blog post"} highlight{/if}"  href="javascript:setObjectType('blog post','typeBlogPost');" id="typeBlogPost">{tr}Blogs{/tr}</a>
-{/if}
-{if $feature_trackers eq 'y'}
-<a class="linkbut {if $type eq "tracker"} highlight{/if}"  href="javascript:setObjectType('tracker','typeTracker');" id="typeTracker">{tr}Trackers{/tr}</a>
-{/if}<a class="linkbut {if $type eq "tracker item"} highlight{/if}"  href="javascript:setObjectType('tracker item','typeTrackerItem');" id="typeTrackerItem">{tr}Trackers Items{/tr}</a>
-{if $feature_quizzes eq 'y'}
-<a class="linkbut {if $type eq "quizz"} highlight{/if}"  href="javascript:setObjectType('quizz','typeQuiz');" id="typeQuiz">{tr}Quizzes{/tr}</a>
-{/if}
-{if $feature_polls eq 'y'}
-<a class="linkbut {if $type eq "poll"} highlight{/if}"  href="javascript:setObjectType('poll','typePoll');" id="typePoll">{tr}Polls{/tr}</a>
-{/if}
-{if $feature_surveys eq 'y'}
-<a class="linkbut {if $type eq "survey"} highlight{/if}"  href="javascript:setObjectType('survey','typeSurvey');" id="typeSurvey">{tr}Surveys{/tr}</a>
-{/if}
-{if $feature_directory eq 'y'}
-<a class="linkbut {if $type eq "directory"} highlight{/if}"  href="javascript:setObjectType('directory','typeDirectory');" id="typeDirectory">{tr}Directory{/tr}</a>
-{/if}
-{if $feature_faqs eq 'y'}
-<a class="linkbut {if $type eq "faq"} highlight{/if}"  href="javascript:setObjectType('faq','typeFaq');" id="typeFaq">{tr}FAQs{/tr}</a>
-{/if}
-{if $feature_sheet eq 'y'}
-<a class="linkbut {if $type eq "sheet"} highlight{/if}"  href="javascript:setObjectType('sheet','typeSheet');" id="typeSheet">{tr}Sheets{/tr}</a>
-{/if}
-{if $feature_articles eq 'y'}
-<a class="linkbut {if $type eq "article"} highlight{/if}"  href="javascript:setObjectType('article','typeArticle');" id="typeArticle">{tr}Articles{/tr}</a>
+<a class="linkbut {if $type eq "wiki page"} highlight{/if}"  href="tiki-browse_freetags.php?tag={$tag}&amp;type=wiki" id="typeWikiPage">{tr}Wiki pages{/tr}</a>
 {/if}
   <a class="linkbut" href="tiki-browse_freetags.php?tag={$tag}&amp;type=gallery">{if $type eq 'gallery'}<span class="highlight">{/if}{tr}Acervo{/tr}{if $type eq 'gallery'}</span>{/if}</a>
 </div>
 
 <div id="objectList"></div>
-<script language="JavaScript">listObjects('{$tag}');</script>
 
-{else}
-
-  <a class="linkbut" href="tiki-browse_freetags.php?tag={$tag}">{tr}All{/tr}</a>
-  {if $feature_wiki eq 'y'}
-  <a class="linkbut" href="tiki-browse_freetags.php?tag={$tag}&amp;type=wiki+page">{if $type eq 'wiki page'}<span class="highlight">{/if}{tr}Wiki pages{/tr}{if $type eq 'wiki page'}</span>{/if}</a>
-  {/if}
-  {if $feature_galleries eq 'y'}
-  <a class="linkbut" href="tiki-browse_freetags.php?tag={$tag}&amp;type=image+gallery">{if $type eq 'image gallery'}<span class="highlight">{/if}{tr}Image galleries{/tr}{if $type eq 'image gallery'}</span>{/if}</a>
-  {/if}
-  {if $feature_galleries eq 'y'}
-  <a class="linkbut" href="tiki-browse_freetags.php?tag={$tag}&amp;type=image">{if $type eq 'image'}<span class="highlight">{/if}{tr}Images{/tr}{if $type eq image}</span>{/if}</a>
-  {/if}
-  {if $feature_file_galleries eq 'y'}
-  <a class="linkbut" href="tiki-browse_freetags.php?tag={$tag}&amp;type=file+gallery">{if $type eq 'file gallery'}<span class="highlight">{/if}{tr}File galleries{/tr}{if $type eq 'file gallery'}</span>{/if}</a>
-  {/if}
-  {if $feature_blogs eq 'y'}
-  <a class="linkbut" href="tiki-browse_freetags.php?tag={$tag}&amp;type=blog+post">{if $type eq 'blog'}<span class="highlight">{/if}{tr}Blogs{/tr}{if $type eq 'blog'}</span>{/if}</a>
-  {/if}
-  {if $feature_trackers eq 'y'}
-  <a class="linkbut" href="tiki-browse_freetags.php?tag={$tag}&amp;type=tracker">{if $type eq 'tracker'}<span class="highlight">{/if}{tr}Trackers{/tr}{if $type eq 'tracker'}</span>{/if}</a>
-  {/if}<a class="linkbut" href="tiki-browse_freetags.php?tag={$tag}&amp;type=trackerItem">{if $type eq 'trackerItem'}<span class="highlight">{/if}{tr}Trackers Items{/tr}{if $type eq 'trackerItem'}</span>{/if}</a>
-  {if $feature_quizzes eq 'y'}
-  <a class="linkbut" href="tiki-browse_freetags.php?tag={$tag}&amp;type=quiz">{if $type eq 'quiz'}<span class="highlight">{/if}{tr}Quizzes{/tr}{if $type eq 'quiz'}</span>{/if}</a>
-  {/if}
-  {if $feature_polls eq 'y'}
-  <a class="linkbut" href="tiki-browse_freetags.php?tag={$tag}&amp;type=poll">{if $type eq 'poll'}<span class="highlight">{/if}{tr}Polls{/tr}{if $type eq 'poll'}</span>{/if}</a>
-  {/if}
-  {if $feature_surveys eq 'y'}
-  <a class="linkbut" href="tiki-browse_freetags.php?tag={$tag}&amp;type=survey">{if $type eq 'survey'}<span class="highlight">{/if}{tr}Surveys{/tr}{if $type eq 'survey'}</span>{/if}</a>
-  {/if}
-  {if $feature_directory eq 'y'}
-  <a class="linkbut" href="tiki-browse_freetags.php?tag={$tag}&amp;type=directory">{if $type eq 'directory'}<span class="highlight">{/if}{tr}Directory{/tr}{if $type eq 'directory'}</span>{/if}</a>
-  {/if}
-  {if $feature_faqs eq 'y'}
-  <a class="linkbut" href="tiki-browse_freetags.php?tag={$tag}&amp;type=faq">{if $type eq 'faq'}<span class="highlight">{/if}{tr}FAQs{/tr}{if $type eq 'faq'}</span>{/if}</a>
-  {/if}
-  {if $feature_sheet eq 'y'}
-  <a class="linkbut" href="tiki-browse_freetags.php?tag={$tag}&amp;type=sheet">{if $type eq 'sheet'}<span class="highlight">{/if}{tr}Sheets{/tr}{if $type eq 'sheet'}</span>{/if}</a>
-  {/if}
-  {if $feature_articles eq 'y'}
-  <a class="linkbut" href="tiki-browse_freetags.php?tag={$tag}&amp;type=article">{if $type eq 'article'}<span class="highlight">{/if}{tr}Articles{/tr}{if $type eq 'article'}</span>{/if}</a>
-  {/if}   
-  <a class="linkbut" href="tiki-browse_freetags.php?tag={$tag}&amp;type=gallery">{if $type eq 'gallery'}<span class="highlight">{/if}{tr}Acervo{/tr}{if $type eq 'gallery'}</span>{/if}</a>
-
-{/if $feature_ajax}
-
-  <h3>{$cantobjects} {tr}results found{/tr}</h3>
-  {if $cantobjects > 0}
+<h3>{$cantobjects} resultado{if $cantobjects != 1}s{/if}</h3>
+{if $cantobjects > 0}
   <table class="normal">
   {cycle values="odd,even" print=false}
   {section name=ix loop=$objects}
-  <tr class="{cycle}" >
+  <tr class="{cycle}">
+    {if $objects[ix].type eq 'gallery'}
+      <td colspan="3">{el_gallery_item id=$objects[ix].itemId}</td>
+    {else}
+
   <td>{tr}{$objects[ix].type|replace:"wiki page":"Wiki"|replace:"article":"Article"|replace:"gallery":"Acervo"|regex_replace:"/tracker [0-9]*/":"tracker item"}{/tr}</td>
   <td><a href="{$objects[ix].href}" class="catname">{$objects[ix].name}</a></td>
   <td>{$objects[ix].description}&nbsp;</td>
+    {/if}
   </tr>
   {/section}
+
   </table>
   <br />   
 
