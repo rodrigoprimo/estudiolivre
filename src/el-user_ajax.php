@@ -74,12 +74,12 @@ function delMsg($userFrom, $msgId) {
 
 $ajaxlib->setPermission('set_licenca', $permission);
 $ajaxlib->registerFunction('set_licenca');
-function set_licenca($r1, $r2) {
+function set_licenca($r1, $r2, $r3) {
 	
 	global $userlib, $elgallib;
     
 	$objResponse = new xajaxResponse();
-	$licencaId = $elgallib->id_licenca($r1, $r2);
+	$licencaId = $elgallib->id_licenca($r1, $r2, $r3);
 	    
   	$result = $userlib->set_user_field('licencaPadrao', $licencaId);
 	if (!$result) {

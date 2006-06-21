@@ -18,6 +18,15 @@ class ELGalLib extends TikiLib {
   var $basic_fields = array("licencaId","titulo","tipo","user","autor","donoCopyright","descricao","produtora","contato","siteRelacionado","rating","thumbnail");
   var $extension_fields = array("duracao","tipoDoAudio","bpm","sampleRate","bitRate","genero","letra","fichaTecnica","tamanhoImagemX","tamanhoImagemY","temAudio","temCor","idioma","legendas","idiomaLegenda","dpi");
   
+  var $licencas = array(0 => array(0 => array(0 => 6,  //Attribution non-comercial no derivatives
+					      1 => 5,  //Attribution non-comercial
+					      2 => 7), //Attribution non-comercial share-alike
+				   1 => 3),            //Sampling plus non-comercial
+			1 => array(0 => array(0 => 8,  //Attribution no derivatives
+					      1 => 4,  //Attribution
+					      2 => 9), //Attribution share-alike
+				   1 => 2));           //Sampling plus
+						
   function ELGalLib($db) {
     if (!$db) {
       die ("Invalid db object passed to WikiLib constructor");
@@ -447,41 +456,15 @@ class ELGalLib extends TikiLib {
     }
     return $arquivo;
   }
-    /*
-    Resposta 2
-     1 = Sim;
-     2 = Não;
-     3 = Sim, contanto...;
-    */
-    function id_licenca($resposta1, $resposta2) {
-        if($resposta1 == 1) {
-        	switch($resposta2) {
-        		case 1:
-        			$id_licenca = 6;
-        			break;
-        		case 2:
-        			$id_licenca = 5;
-        			break;
-        		case 3:
-        			$id_licenca = 7;
-        			break;
-        	}
-        } else {
-        	switch($resposta2) {
-        		case 1:
-        			$id_licenca = 8;
-        			break;
-        		case 2:
-        			$id_licenca = 4;
-        			break;
-        		case 3:
-        			$id_licenca = 9;
-        			break;
-        	}
-        }
-        return @$id_licenca;
-    }
 
+  function id_licenca($resposta1, $resposta2, $resposta3) {
+      $licenca = $this->licencas[$resposta1][$resposta2];
+      if (is_array($licenca)) {
+	  $licenca = $licenca[$resposta3];
+      }
+      return $licenca;
+  }
+    
   function set_licenca($arquivoId, $licencaId) {
     $query = "update `el_arquivo` set `licencaId` = ? where `arquivoId` = $arquivoId";
     return $this->query($query,array($licencaId));

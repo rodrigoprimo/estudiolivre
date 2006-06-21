@@ -1,4 +1,5 @@
 <script language="JavaScript" src="lib/js/el_array.js"></script>
+<script language="JavaScript" src="lib/js/license.js"></script>
 <script language="JavaScript" src="lib/elgal/upload.js"></script>
 <script language="JavaScript" src="lib/js/edit_field_ajax.js"></script>
 <script language="JavaScript" src="lib/js/freetags.js"></script>
@@ -66,7 +67,7 @@
 					<li id="pendente-{$pendente.arquivoId}">
 						<span class="pointer" onClick="xajax_delete_file({$pendente.arquivoId})"><img src="styles/estudiolivre/iDelete.png"></span>
 						{tooltip text="Clique para continuar o envio desse arquivo"}
-							<span class="pointer" onClick="restoreForm({$pendente.arquivoId}, '{$pendente.tipo}', '{$pendente.arquivo}', '{$pendente.thumbnail}');flip('fileAltered')">
+							<span class="pointer" onClick="restoreForm({$pendente.arquivoId}, '{$pendente.tipo}', '{$pendente.arquivo}', '{$pendente.thumbnail}');flip('fileAltered');nd();">
 								{$pendente.titulo|default:$pendente.arquivo|default:$pendente.arquivoId}
 							</span>
 						{/tooltip}
@@ -115,7 +116,8 @@
     
     <br style=" line-height:20px;">
 	Licença: <span onClick="showLightbox('el-license')" style="cursor: pointer;text-decoration:underline"><img id="uImagemLicenca" src="styles/estudiolivre/h_{$licenca.linkImagem}" alt="Escolha uma licença"/></span>
-	{include file="el-gallery_license.tpl"}
+	{assign var="upload" value=1}
+	{include file="el-license.tpl"}
 	
 	<br />
 	<br />	

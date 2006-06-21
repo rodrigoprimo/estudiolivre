@@ -1,5 +1,6 @@
 <!-- tiki-user_information.tpl begin -->
 
+<script language="JavaScript" src="lib/js/license.js"></script>
 <script language="JavaScript" src="lib/js/user_edit.js"></script>
 <script language="JavaScript" src="lib/js/edit_field_ajax.js"></script>
 
@@ -215,7 +216,7 @@
 </div>
 
 {if $permission}
-	{include file="el-user_license.tpl"}
+	{include file="el-license.tpl"}
 {/if}
 {include file="el-player.tpl"}
 

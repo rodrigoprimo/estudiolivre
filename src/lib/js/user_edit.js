@@ -13,20 +13,14 @@ function sendMsg() {
 }
 
 //implementacao da licenca
-var resposta1 = null;
-var resposta2 = null;
 
 function saveLicenca() {
-	if (resposta1 && resposta2) {
-		xajax_set_licenca(resposta1, resposta2);
-		hide('licencaErro');
-		hideLightbox();
-	} else {
-		show('licencaErro');
-	}
+    if (resposta1 != null && resposta2 != null && (resposta2 == 1 || resposta3 != null)) {
+	xajax_set_licenca(resposta1, resposta2, resposta3);
+	hide('licencaErro');
+	hideLightbox();
+    } else {
+	show('licencaErro');
+    }
 }
 
-function hideLicencaErro() {
-		hide('licencaErro');
-		return true;
-}

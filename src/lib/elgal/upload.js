@@ -202,14 +202,12 @@ function setUploadError(msg) {
 }
 
 //implementacao do checkLightBox para a licenca
-var resposta1 = null;
-var resposta2 = null;
 
 function saveLicenca() {
 	var padrao = false;
-	if (resposta1 && resposta2) {
+	if (resposta1 != null && resposta2 != null && (resposta2 == 1 || resposta3 != null)) {
 		padrao = (document.getElementById("uLicencaPadrao").checked ? 1 : 0);
-		xajax_set_arquivo_licenca(resposta1, resposta2, padrao);
+		xajax_set_arquivo_licenca(resposta1, resposta2, resposta3, padrao);
 		hide('licencaErro');
 		hideLightbox();
 	} else {
@@ -217,9 +215,5 @@ function saveLicenca() {
 	}
 }
 
-function hideLicencaErro() {
-		hide('licencaErro');
-		return true;
-}
 setLightboxCheckFunction('el-license',hideLicencaErro);
 

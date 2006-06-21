@@ -104,12 +104,12 @@ function get_file_info() {
 
 $ajaxlib->setPermission('set_arquivo_licenca', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('set_arquivo_licenca');
-function set_arquivo_licenca ($resposta1, $resposta2, $padrao = false) {
+function set_arquivo_licenca ($resposta1, $resposta2, $resposta3, $padrao = false) {
 
     global $userlib, $elgallib, $arquivoId;
     
 	$objResponse = new xajaxResponse();
-	$licencaId = $elgallib->id_licenca($resposta1, $resposta2);
+	$licencaId = $elgallib->id_licenca($resposta1, $resposta2, $resposta3);
 	    
 	if ($padrao) {
 	  	$result = $userlib->set_user_field('licencaPadrao', $licencaId);

@@ -97,12 +97,12 @@ create table `el_arquivo_rating` (
 	primary key (arquivoId, user));
 
 #nano 23/05/2006 - descricao das licencas
-update el_licenca set descricao = 'Permite fazer uso comercial, copiar, distribuir, exibir, executar e criar obras derivadas, desde que seja dado crédito ao autor original.' where subtipo = 'Atribution';
-update el_licenca set descricao = 'Não permite uso comercial. Você pode copiar, distribuir, exibir, executar e criar obras derivadas, desde que seja dado crédito ao autor original.' where subtipo = 'Atribution Non-Comercial';
-update el_licenca set descricao = 'Não permite uso comercial, copiar, distribuir, exibir e executar a obra, desde que seja dado crédito ao autor original e que não seja criada outra obra com base nesta.' where subtipo = 'Atribution Non-Comercial No Derivatives';
-update el_licenca set descricao = 'Não permite uso comercial, copiar, distribuir, exibir, executar e criar obras derivadas, desde que seja dado crédito ao autor original e compartilhe da mesma licença.' where subtipo = 'Atribution Non-Comercial Share-Alike';
-update el_licenca set descricao = 'Permite uso comercial, copiar, distribuir, exibir, executar e criar obras derivadas, desde que seja dado crédito ao autor original e compartilhe da mesma licença.' where subtipo = 'Atribution Share-Alike';
-update el_licenca set descricao = 'Permite uso comercial, copiar, distribuir, exibir e executar a obra, desde que seja dado crédito ao autor original e que não seja criada outra obra com base nesta.' where subtipo = 'Atribution No Derivatives';
+update el_licenca set descricao = 'Você pode copiar, distribuir, exibir e executar, alterar, transformar ou utilizar esta obra para criar outra obra com base nesta, para fins comerciais e não-comerciais.' where subtipo = 'Atribution';
+update el_licenca set descricao = 'Você pode copiar, distribuir, exibir e executar, alterar, transformar ou utilizar esta obra para criar outra obra com base nesta, para fins não-comerciais.' where subtipo = 'Atribution Non-Comercial';
+update el_licenca set descricao = 'Você pode copiar, distribuir, exibir e executar esta obra para fins não-comerciais, mas não pode alterá-la, transformá-la ou utilizá-la para criar outra obra com base nesta.' where subtipo = 'Atribution Non-Comercial No Derivatives';
+update el_licenca set descricao = 'Você pode copiar, distribuir, exibir e executar, alterar, transformar ou utilizar esta obra para criar outra obra com base nesta, para fins não-comerciais, mas deverá publicá-la pela mesma licença.' where subtipo = 'Atribution Non-Comercial Share-Alike';
+update el_licenca set descricao = 'Você pode copiar, distribuir, exibir e executar, alterar, transformar ou utilizar esta obra para criar outra obra com base nesta, para fins comerciais e não-comerciais, mas deverá publicá-la pela mesma licença.' where subtipo = 'Atribution Share-Alike';
+update el_licenca set descricao = 'Você pode copiar, distribuir, exibir e executar esta obra para fins comerciais e não-comerciais, mas não pode alterá-la, transformá-la ou utilizá-la para criar outra obra com base nesta.' where subtipo = 'Atribution No Derivatives';
 update el_licenca set descricao = '' where subtipo = 'Sampling';
-update el_licenca set descricao = '' where subtipo = 'Sampling Plus';
-update el_licenca set descricao = '' where subtipo = 'Sampling Plus Non-Comercial';
+update el_licenca set descricao = 'Você pode samplear, mesclar ou transformar a obra para fins comerciais e não-comerciais. É permitido executar, exibir e distribuir cópias desta obra para fins não-comerciais.' where subtipo = 'Sampling Plus';
+update el_licenca set descricao = 'Você pode samplear, mesclar, transformar, executar, exibir e distribuir cópias desta obra para fins não-comerciais.' where subtipo = 'Sampling Plus Non-Comercial';

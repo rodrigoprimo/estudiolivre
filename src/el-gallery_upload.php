@@ -9,6 +9,7 @@ if (!isset($_POST['xajax']) || $_POST['xajax'] != 'upload_info') {
 
 require_once("lib/ajax/ajaxlib.php");
 require_once("el-gallery_upload_ajax.php");
+require_once("el-license_ajax.php");
 
 $ajaxlib->processRequests();
 
