@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="caixas_linhas.svg"
+   sodipodi:docbase="/home/lais"
+   inkscape:version="0.41+0.42pre1"
+   sodipodi:version="0.32"
+   id="svg1647"
+   height="1052.3622047"
+   width="744.09448819">
+  <defs
+     id="defs1649" />
+  <sodipodi:namedview
+     showguides="false"
+     inkscape:window-y="27"
+     inkscape:window-x="0"
+     inkscape:window-height="949"
+     inkscape:window-width="1280"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="px"
+     inkscape:cy="499.93932"
+     inkscape:cx="390.93506"
+     inkscape:zoom="1.3058349"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata1652">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <rect
+       rx="24.223171"
+       ry="30.951828"
+       y="277.15482"
+       x="247.46481"
+       height="539.77020"
+       width="273.48315"
+       id="rect7296"
+       style="opacity:1.0000000;color:#000000;fill:#ffffff;fill-opacity:1.0000000;fill-rule:nonzero;stroke:#646464;stroke-width:0.77580732;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000;visibility:visible;display:inline;overflow:visible" />
+    <path
+       sodipodi:nodetypes="ccc"
+       id="path8024"
+       d="M 247.47772,325.66707 L 519.58934,325.66707 L 519.58934,327.01280"
+       style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#818181;stroke-width:1.0262276px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000" />
+    <text
+       sodipodi:linespacing="100.00000%"
+       id="text8752"
+       y="317.96609"
+       x="254.24348"
+       style="font-size:14.000000px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100.00000%;writing-mode:lr-tb;text-anchor:start;fill:#999999;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="317.96609"
+         x="254.24348"
+         id="tspan8754"
+         sodipodi:role="line">caixas e linhas</tspan></text>
+    <path
+       style="color:#000000;fill:none;fill-opacity:1.0000000;fill-rule:nonzero;stroke:#407591;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4.0000000;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000;visibility:visible;display:inline;overflow:visible"
+       d="M 312.18339,356.83169 L 457.25112,355.94888 C 457.25112,363.31159 457.18339,365.30569 457.18339,375.83169 L 457.18339,458.73682 C 457.18339,469.26282 449.60139,477.73682 440.18339,477.73682 L 295.11566,477.73682 C 295.11566,471.82191 295.18339,469.26282 295.18339,458.73682 L 295.18339,375.83169 C 295.18339,365.30569 302.76539,356.83169 312.18339,356.83169 z "
+       id="path3463"
+       sodipodi:nodetypes="ccccccccc" />
+    <path
+       sodipodi:nodetypes="ccccccccc"
+       id="path8812"
+       d="M 440.18339,496.83169 L 295.11566,495.94888 C 295.11566,503.31159 295.18339,505.30569 295.18339,515.83169 L 295.18339,598.73682 C 295.18339,609.26282 302.76539,617.73682 312.18339,617.73682 L 457.25112,617.73682 C 457.25112,611.82191 457.18339,609.26282 457.18339,598.73682 L 457.18339,515.83169 C 457.18339,505.30569 449.60139,496.83169 440.18339,496.83169 z "
+       style="color:#000000;fill:none;fill-opacity:1.0000000;fill-rule:nonzero;stroke:#e6e6e6;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4.0000000;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000;visibility:visible;display:inline;overflow:visible" />
+    <flowRoot
+       style="fill:#999999;fill-opacity:1.0000000"
+       id="flowRoot10266">
+      <flowRegion
+         id="flowRegion10268">
+        <rect
+           style="fill:#999999;fill-opacity:1.0000000"
+           y="332.51620"
+           x="254.24348"
+           height="33.694920"
+           width="259.60403"
+           id="rect10270" />
+      </flowRegion>
+      <flowDiv
+         style="fill:#999999;fill-opacity:1.0000000"
+         id="flowDiv10272"
+         xml:space="preserve"><flowPara
+           style="fill:#999999;fill-opacity:1.0000000"
+           id="flowPara10274">as caixas podem mudar de tamanho</flowPara></flowDiv>    </flowRoot>
+    <path
+       sodipodi:nodetypes="cc"
+       id="path10278"
+       d="M 277.30665,700.99697 L 481.00775,700.99697"
+       style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#e6e6e6;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000" />
+    <flowRoot
+       transform="translate(0.000000,300.0000)"
+       id="flowRoot10280"
+       style="fill:#999999;fill-opacity:1.0000000">
+      <flowRegion
+         id="flowRegion10282">
+        <rect
+           id="rect10284"
+           width="259.60403"
+           height="33.694920"
+           x="254.24348"
+           y="332.51620"
+           style="fill:#999999;fill-opacity:1.0000000" />
+      </flowRegion>
+      <flowDiv
+         xml:space="preserve"
+         id="flowDiv10286"
+         style="fill:#999999;fill-opacity:1.0000000"><flowPara
+           id="flowPara10288"
+           style="fill:#999999;fill-opacity:1.0000000">linhas são utilizadas dentro das caixas para dividir o &quot;mesmo&quot; conteúdo</flowPara></flowDiv>    </flowRoot>
+    <path
+       style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#91cd6d;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000"
+       d="M 277.30665,720.99697 L 481.00775,720.99697"
+       id="path10290"
+       sodipodi:nodetypes="cc" />
+    <path
+       sodipodi:nodetypes="cc"
+       id="path10292"
+       d="M 277.30665,740.99697 L 481.00775,740.99697"
+       style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#3a60c8;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000" />
+    <path
+       style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#ff8200;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000"
+       d="M 277.30665,760.99697 L 481.00775,760.99697"
+       id="path10294"
+       sodipodi:nodetypes="cc" />
+    <path
+       sodipodi:nodetypes="cc"
+       id="path10296"
+       d="M 277.30665,780.99697 L 481.00775,780.99697"
+       style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#9965e6;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000" />
+    <path
+       style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#ff0400;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000"
+       d="M 277.30665,800.99697 L 481.00775,800.99697"
+       id="path10298"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-opacity:0.75000000;fill-rule:evenodd;stroke:#407591;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000"
+       d="M 277.30665,680.99697 L 481.00775,680.99697"
+       id="path12054"
+       sodipodi:nodetypes="cc" />
+  </g>
+</svg>
