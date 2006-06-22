@@ -943,7 +943,6 @@ p.editdate {
 
 #userMenuContainer img.uThumb {
 	height:50px;
-	width:60px;
 	float:left;
 	margin: 5px 5px 5px 15px; 
 }
@@ -1659,10 +1658,6 @@ A.gUpmore {
 	margin-left:2px;
 }	
 
-#uThumbImg {
-	height:90px;
-}
-	
 .uContactItem {
 	display:block;
 }	
@@ -1726,12 +1721,16 @@ A.gUpmore {
 
 .uMsgDate, .uMsgDel, .uMsgAvatar{
 	float:left;
-	/*height:40px;*/
 }
+
 .uMsgAvatar {
 	margin-right:5px;
 }
-	
+
+.uMsgAvatar IMG {
+	height:50px;
+}
+
 .uMsgTxt {
 	padding: 0 5px 0 0;
 }

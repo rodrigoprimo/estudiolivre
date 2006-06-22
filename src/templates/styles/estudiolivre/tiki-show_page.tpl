@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.13 2006-06-22 10:15:22 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.14 2006-06-22 15:55:51 nano Exp $ *}
 <!--script language="JavaScript" src="lib/js/contextualMenu.js"></script-->
 
 <!-- menu contextual>
@@ -262,7 +262,7 @@
 
 {if isset($wiki_authors_style) && $wiki_authors_style eq 'business'}
 <p class="editdate">
-  {tr}Last edited by{/tr} {$lastUser|userlink}
+  {tr}Last edited by{/tr} <a href="el-user.php?view_user={$lastUser}">{$lastUser}</a>
   {section name=author loop=$contributors}
    {if $smarty.section.author.first}, {tr}based on work by{/tr}
    {else}

@@ -61,11 +61,12 @@
 
       <div id="uKarmaThumb" class="uContactInfoCont center">
 		<div id="uKarma">
+		  {* TODO quando tiver karma
 		  <img class="uKarmaImg" src="styles/estudiolivre/iKarma.png">
 		  <img class="uKarmaImg" class="uKarmaImg" src="styles/estudiolivre/iKarma.png">
 		  <img class="uKarmaImg" src="styles/estudiolivre/iKarmaInactive.png">
 		  <img class="uKarmaImg" src="styles/estudiolivre/iKarmaInactive.png">
-		  <img class="uKarmaImg" src="styles/estudiolivre/iKarmaInactive.png">
+		  <img class="uKarmaImg" src="styles/estudiolivre/iKarmaInactive.png"> *}
 		</div>
 
 	    <div id="gUserThumb">

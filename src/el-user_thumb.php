@@ -4,6 +4,7 @@
 require_once("tiki-setup.php");
 include_once('lib/userprefs/userprefslib.php');
 include_once('lib/imagegals/imagegallib.php');
+require_once('lib/elgal/elgallib.php');
 
 function error($errorMsg) {
     echo "<script language=\"javaScript\">alert('".$errorMsg."');</script>";
@@ -33,10 +34,12 @@ if (isset($_FILES['thumb']) && !empty($_FILES['thumb']['name'])) {
 		error("O tamanho máximo da miniatura é de $maxSize kBytes.");
     }
 
-	$handle = fopen($_FILES['thumb']['tmp_name'], "r");
-    $data = fread($handle, $size);
-    fclose($handle);
+    $data = $elgallib->create_thumb_imagem($_FILES['thumb']['tmp_name']);
 
+    if (!$data) {
+    	error("Não foi possível gerar o avatar");
+    }
+    
 	$userprefslib->set_user_avatar($user, 'u', '', $name, $size, $type, $data);
 
     echo "<script>parent.document.getElementById('uThumbImg').src = 'tiki-show_user_avatar.php?user=" . $user . "&rand=" . rand() . "';</script>";

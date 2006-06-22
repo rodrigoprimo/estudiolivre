@@ -141,7 +141,7 @@
 	<span id="uMenuName">
 		{tooltip text="Navegue para a sua página pessoal para ver seus blogs, arquivos, mensagens e mudar as suas preferências."}<a href="el-user.php?view_user={$user}">{$user}</a>{/tooltip}
 	</span>
-  
+
     <img alt="" id="uOnlineThumb" class="uThumb" src="tiki-show_user_avatar.php?user={$user}"/>
   
     <div id="userNameStatsKarma">
