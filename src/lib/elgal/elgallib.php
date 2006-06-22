@@ -194,7 +194,7 @@ class ELGalLib extends TikiLib {
 	  if (in_array($m[1], $types[$tipo])) {
 	      return '';
 	  } else {
-	      return "Erro: formato de arquivo nao suportado";
+	      return "Erro: formato $m[1] não suportado para o tipo $tipo.";
 	  }
     
       

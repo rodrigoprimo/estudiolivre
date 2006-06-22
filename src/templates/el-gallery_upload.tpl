@@ -141,12 +141,6 @@
 	      </div> 
     	  {/tooltip}
 	    </div>
-	    
-	    <div id="gUpTagSuggestUserMoreTen" style="display:none">
-	      {foreach from=$tag_suggestion item=t}
-	      <a href="javascript:addTag('{$t}')">{$t}</a> 
-	      {/foreach}
-	    </div>
 	  </div>
       {/if freetags}
     </div>
@@ -154,7 +148,7 @@
     
     <div id="gUpMoreOptions">
       {tooltip text="Clique para definir outras propriedades do arquivo"}
-      	<a class="gUpmore" id="gUpmoreoptionsLink" onclick="javascript:flip('gUpMoreOptionsContent'); document.getElementById('moreOptionArrow').toggleImage('iArrowGreyDown.png');return false;"> opções <img id="moreOptionArrow" src="styles/estudiolivre/iArrowGreyLeft.png"> </a>{/tooltip}<br/>
+      	<a class="gUpmore pointer" id="gUpmoreoptionsLink" onclick="javascript:flip('gUpMoreOptionsContent'); document.getElementById('moreOptionArrow').toggleImage('iArrowGreyDown.png');return false;"> opções <img id="moreOptionArrow" src="styles/estudiolivre/iArrowGreyLeft.png"> </a>{/tooltip}<br/>
       <div style="display:none" id="gUpMoreOptionsContent">
       	{include file="el-gallery_metadata.tpl"}
       </div>
@@ -173,6 +167,7 @@
 
 {include file="el-gallery_publish.tpl"}
 {include file="el-gallery_error.tpl"}
+<div id="errorDiv" style="display:none; width:200px"></div>
 
 <!-- el-gallery_upload_general.tpl end -->
 

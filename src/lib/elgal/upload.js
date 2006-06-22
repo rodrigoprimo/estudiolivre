@@ -198,13 +198,9 @@ function restoreForm (id, tipo, arquivo, thumbnail) {
 
 function setUploadError(msg) {
 	uploadError = true;
-	// troquei o 'alert' por isso:
-	var newDiv=document.createElement(div);
-	newDiv.id='errorDiv';
-	document.body.appendChild(newDiv);
+	var div=document.getElementById('errorDiv');
+	div.innerHTML = msg;
 	showLightbox('errorDiv');
-	//TODO: testar! eu n?o sei como....
-	//alert(msg);
 }
 
 //implementacao do checkLightBox para a licenca
