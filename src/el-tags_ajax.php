@@ -1,5 +1,7 @@
 <?php
 
+global $user;
+
 $ajaxlib->setPermission('get_more_tags', $user);
 $ajaxlib->registerFunction('get_more_tags');
 function get_more_tags($offset, $maxRecords) {

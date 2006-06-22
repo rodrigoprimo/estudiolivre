@@ -105,18 +105,19 @@ function generate_thumb() {
 $ajaxlib->setPermission('restore_edit', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('restore_edit');
 function restore_edit($arquivoId) {
-	global $elgallib, $user, $smarty;
+	global $elgallib, $user, $smarty, $freetaglib;
 	
 	$objResponse = new xajaxResponse();
 	
 	$arquivo = $elgallib->get_arquivo($arquivoId);
+	
 	// permissao tem q ser dentro da funcao, pois o arquivoId dessa chamada pode nao ser
 	// o mesmo do global.
 	if (!$user || $user != $arquivo['user']) {
 		return $objResponse;
 	} 
 	
-	if($arquivo['publicado'] == '0') {
+	if($arquivo['publicado'] == '0' && $arquivo['tipo'] != "Texto") {
 		$templateName = 'el-gallery_metadata_' . $arquivo['tipo'] . '.tpl';
 		$smarty->assign('permission', true);
 		$content = $smarty->fetch($templateName);
@@ -124,12 +125,27 @@ function restore_edit($arquivoId) {
 		$objResponse->addScript(_extractScripts($content));
 	}
 	
+	$tags = $freetaglib->get_tags_on_object($arquivoId, 'gallery');
+	$tagString = "";
+	foreach ($tags['data'] as $t) {
+	    if ($tagString) $tagString .= ', ';
+	    $tagString .= $t['tag'];
+	}
+
 	$cache = unserialize($arquivo['editCache']);
+	$cache['tags'] = $tagString;
 	
 	foreach ($cache as $field => $value) {
   		$objResponse->addScriptCall('restoreField', $field, $value);
   	}
-  	
+	
+	if ($arquivo["arquivo"]) {
+	    preg_match("/\d+_\d+-(.+)$/", $arquivo['arquivo'], $nome);
+	    $objResponse->addAssign("gUpFileName", "innerHTML", $nome[1]);
+    	} else {
+	    $objResponse->addAssign("thumbnail", "src", "styles/estudiolivre/iThumb" . $arquivo['tipo'] . ".png");
+	}
+
 	return $objResponse;
 }
 
