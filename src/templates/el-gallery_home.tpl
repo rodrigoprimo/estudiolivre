@@ -46,7 +46,7 @@
       <img id="listFilterImg4" alt="" src="styles/estudiolivre/bRightInac.png" />
       
     </ul>
-	  {tooltip text="<i>Feed</i> <b>RSS</b> do acervo.livre"}<a href="http://teste.estudiolivre.org/el-gallery_rss.php?ver=2"><img src="styles/estudiolivre/iRss.png"></a> {/tooltip}
+	  {tooltip text="<i>Feed</i> &nbsp;<b>RSS</b> do acervo.livre"}<a href="http://teste.estudiolivre.org/el-gallery_rss.php?ver=2"><img src="styles/estudiolivre/iRss.png"></a> {/tooltip}
   </div>
   <!-- Filters End -->
   

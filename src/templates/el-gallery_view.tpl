@@ -112,7 +112,7 @@
 				{include file="el-gallery_tags.tpl"}
 			</div>
 			{if $permission}
-				<input class="aTags" id="input-tags" value="{$arquivo.tagString}" onBlur="xajax_editTags(this.value)" style="display: none">
+				<input class="aTags" id="input-tags" value="{$arquivo.tagString}" onBlur="xajax_editTags(this.value)" style="display:none; width:80%; padding-left:5px">
 				<img id="error-tags" class="gUpErrorImg" style="display: none" src="styles/estudiolivre/errorImg.png" onMouseover="tooltip(errorMsg_tags);" onMouseout="nd();"> 
 				<script language="JavaScript">  display["tags"] = "inline";errorMsg_tags = "";</script>
 			{/if}
