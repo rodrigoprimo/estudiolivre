@@ -230,8 +230,8 @@
 
 <br>
 <div id="save-exit" class="aSaveCancel" style="z-index: 10; display: none;">
-  {tooltip text="Salve as modificações que acaba de fazer"}<img src="styles/estudiolivre/bSave.png" onClick="checkWaiting('xajax_commit_arquivo()');hide('save-exit')" style="cursor: pointer">{/tooltip}&nbsp;&nbsp;&nbsp;
-  {tooltip text="Cancele as modificações que acaba de fazer"}<img src="styles/estudiolivre/bCancelar.png" onClick="cancelEdit();hide('save-exit')" style="cursor: pointer">{/tooltip}
+  {tooltip text="Salve as modificações que acaba de fazer"}<img src="styles/estudiolivre/bSave.png" onClick="checkWaiting('xajax_commit_arquivo()');hide('save-exit');nd();" style="cursor: pointer">{/tooltip}&nbsp;&nbsp;&nbsp;
+  {tooltip text="Cancele as modificações que acaba de fazer"}<img src="styles/estudiolivre/bCancelar.png" onClick="cancelEdit();hide('save-exit');nd();" style="cursor: pointer">{/tooltip}
 </div>
 
 {if $arquivo.editCache && $permission && $arquivo.user eq $user}

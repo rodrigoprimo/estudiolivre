@@ -19,12 +19,16 @@ function save_field($name, $value) {
 	    if($error) {
 			$objResponse->addScriptCall('exibeErro', $name, $error);
 	    } else {
-	    	// TODO: generalizar isso?
+		$l = strlen($value);
+
+		// TODO: avisar usuario
+		$value = strip_tags($value);
+		
+	    	// TODO: generalizar isso, de acordo com wikiParsed do ajax_textarea
 	    	if ($name == 'descricao' || $name == 'fichaTecnica' || $name == 'letra') {
 	    		$value = $elgallib->parse_data($value);
-	    		//$value = htmlspecialchars($value);
-	    	}
-			$objResponse->addScriptCall('exibeCampo', $name, $value);
+		}
+		$objResponse->addScriptCall('exibeCampo', $name, $value);
 	    }
 	}
 	

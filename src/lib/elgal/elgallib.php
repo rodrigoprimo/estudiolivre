@@ -315,7 +315,7 @@ class ELGalLib extends TikiLib {
 
 	$cache = $this->get_edit_cache($arquivoId);
 	
-	$cache[$name] = $value;
+	$cache[$name] = strip_tags($value);
 	
 	$this->set_edit_cache($arquivoId, $cache);
 
