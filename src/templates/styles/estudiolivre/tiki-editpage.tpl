@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.7 2006-06-20 15:13:25 nano Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.8 2006-06-22 10:15:22 rhwinter Exp $ *}
 
 {popup_init src="lib/overlib.js"}
 
@@ -108,6 +108,7 @@
 					{include file=structures.tpl}
 					
 					{if $feature_wiki_templates eq 'y' and $tiki_p_use_content_templates eq 'y' and !$templateId}
+						<br/>
 						{tr}Apply template{/tr}:
 						<select name="templateId" onchange="javascript:document.getElementById('editpageform').submit();">
 						<option value="0">{tr}none{/tr}</option>
@@ -227,11 +228,13 @@
 					{/if}
 					
 					{if $wiki_spellcheck eq 'y'}
+						<br/>
 						{tr}Spellcheck{/tr}:
 						<input type="checkbox" name="spellcheck" {if $spellcheck eq 'y'}checked="checked"{/if}/>
 					{/if}
 					
 					{if $feature_wiki_import_html eq 'y'}
+						  <br/>
 						  {tr}Import HTML{/tr}:
 						    <input class="wikitext" type="text" name="suck_url" value="{$suck_url|escape}" />&nbsp;
 						    <input type="submit" class="wikiaction" name="do_suck" value="{tr}Import{/tr}" />&nbsp;
@@ -240,6 +243,7 @@
 					{/if}
 					
 					{if $tiki_p_admin_wiki eq 'y'}
+						<br>
 						{tr}Import page{/tr}:
 						<input type="hidden" name="MAX_FILE_SIZE" value="1000000000" />
 						<input name="userfile1" type="file" />
@@ -272,6 +276,7 @@
 					<input type="hidden" name="page" value="{$page|escape}" />
 					
 					{if $feature_antibot eq 'y' && $anon_user eq 'y'}
+						<br/>
 						{tr}Anti-Bot verification code{/tr}:
 						<img src="tiki-random_num_img.php" alt='{tr}Random Image{/tr}'/>
 						{tr}Enter the code you see above{/tr}:
@@ -279,6 +284,7 @@
 					{/if}
 					
 					{if $wiki_feature_copyrights  eq 'y'}
+						<br/>
 						{tr}License{/tr}:
 						<a href="tiki-index.php?page={$wikiLicensePage}">{tr}{$wikiLicensePage}{/tr}</a>
 						{if $wikiSubmitNotice neq ""}

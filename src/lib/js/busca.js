@@ -5,7 +5,7 @@ if (!selectedBusca) {
 }
 
 function marcaBusca(name) {
-    if (selectedBusca == 'wiki' || selectedBusca == 'gallery' || selectedBusca == 'forum' || selectedBusca == 'usuarios' ) { 
+    if (selectedBusca == 'wiki' || selectedBusca == 'gallery' || selectedBusca == 'forum' || selectedBusca == 'usuarios' || selectedBusca == 'blogs') { 
 		document.getElementById('busca-'+selectedBusca).className = '';
 	}
 	selectedBusca = name;
@@ -17,6 +17,9 @@ function marcaBusca(name) {
 	} else if (selectedBusca == 'usuarios') {
 		document.getElementById('searchField').name='find';
 		document.getElementById('form-busca').action = 'tiki-list_users.php';
+	} else if (selectedBusca == 'blogs') {
+		document.getElementById('searchField').name='find';
+		document.getElementById('form-busca').action = 'tiki-list_blogs.php';
 	} else {
 		document.getElementById('searchField').name='highlight';		
 		document.getElementById('form-busca').action = 'el-gallery_home.php';

@@ -1,10 +1,7 @@
 <div id="el-license" style="display: none; width: 500px;">
-	<br />
-	<br />
 	<h2>Escolha uma licença:</h2>
-
 	Agora você precisa escolher sob qual licença sua obra será publicada.<br />
-	As questões abaixo te ajudam nessa tarefa, mas se você tiver alguma dúvida, visite o FAQ sobre <a href="tiki-view_faq.php?faqId=2" target="_blank">Direitos autorais e generosidade intelectual</a>
+	As questões abaixo te ajudam nessa tarefa, mas se você tiver alguma dúvida, visite o FAQ sobre <a href="tiki-index.php?page=faq+Direitos+Autorais" target="_blank">Direitos autorais e generosidade intelectual</a>
 
 	<div id="atribution">
 	  <br />
@@ -27,9 +24,13 @@
       {if $upload}
 	  <input id="uLicencaPadrao" type="checkbox" {if !$licenca}checked{/if}/> Definir como licença {tooltip text="Nas próximas vezes que você for enviar um arquivo a licença utilizada será essa"}padrão{/tooltip}.
       {/if}
-	  <div id="licencaErro" style="display: none">Você não escolheu nenhuma licença!</div>
-	  <br /><br />
-
+	  <div id="licencaErro" style="display: none">
+	  	<br/>
+	  	<b>Você deve escolher uma licença!</b>
+	  	<br/>
+	  </div>
+	  <br/>
+	  <br>
 	  <input style="width: auto;" type="submit" value="Escolher" onClick="saveLicenca();"/>&nbsp;&nbsp;&nbsp;
 	  <input style="width: auto;" type="submit" value="Cancelar" onClick="hideLightbox();"/>&nbsp;&nbsp;&nbsp;
 	</div>

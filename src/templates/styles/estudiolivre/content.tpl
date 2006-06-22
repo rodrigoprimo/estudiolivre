@@ -16,13 +16,13 @@
     
     
     {* Index we display a wiki page here *}
-    
+    {* tirei os  onclick="showMenu(event)"> do contextualMenu *}
     {if $category eq "Áudio"}
-      <div id="tiki-midAudio" onclick="showMenu(event)">
+      <div id="tiki-midAudio">
     {elseif $category eq "Gráfico"}
-       <div id="tiki-midGraf" onclick="showMenu(event)">
+       <div id="tiki-midGraf">
     {elseif $category eq "Vídeo"}
-       <div id="tiki-midVideo" onclick="showMenu(event)">
+       <div id="tiki-midVideo">
     {elseif $category eq "gallery"}
         <div id="tiki-midAcervo">
     {else}

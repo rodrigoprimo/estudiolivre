@@ -60,10 +60,11 @@
 		{else}
 		   	{tr}No categories defined{/tr} <br />
 		{/if}
-		{if $tiki_p_admin_categories eq 'y'}
-			<a href="tiki-admin_categories.php" class="link">{tr}Admin categories{/tr}</a>
-		{/if}
+		
 	</div>
+	{if $tiki_p_admin_categories eq 'y'}
+			&nbsp;&nbsp;&nbsp;<a href="tiki-admin_categories.php" class="link">{tr}Admin categories{/tr}</a>
+	{/if}
 	{literal}
 		<script language="javascript" type="text/javascript">
 			var options=document.getElementById('categorySelect').options;

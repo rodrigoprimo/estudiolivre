@@ -1,21 +1,82 @@
-#lightbox{
+#lightbox {
 	position:absolute;
-	background-color:#fff;
-	padding: 10px;
-	border-bottom: 2px solid #666;
-	border-right: 2px solid #666;
 	z-index:101;
-	-moz-border-radius: 20px 20px 20px 20px;
 	display:none;
 }
 
+#lightboxCont {
+	background-color:#fff;
+	display:table-row;
+	padding:0px;
+	margin:0px;
+}
+.lightBoxTop,.lightBoxBottom {
+	display:table-row;
+	padding:0px;
+	margin:0px;
+}
+
+/*cells e tamanhos*/
+.lightBoxLeft,.lightBoxRight,.lightBoxTopMid,.lightBoxTopLeft,.lightBoxTopRight,.lightBoxBottomLeft,.lightBoxBottomRight,.lightBoxBottomMid {
+	display:table-cell;
+}
+
+/**********************/
+/*        TOP         */
+/**********************/
+.lightBoxTopLeft,.lightBoxTopRight {
+	width:41px;
+	height:37px;
+}
+	
+.lightBoxTopLeft {
+	background-image:url(estudiolivre/lBox_tl.png);
+}
+.lightBoxTopMid {
+	background-image:url(estudiolivre/lBox_t.png);	
+	background-repeat:repeat-x;
+}
+.lightBoxTopRight {
+	background-image:url(estudiolivre/lBox_tr.png);
+}
+
+/**********************/
+/*        MID         */
+/**********************/
+.lightBoxLeft {
+	background-image:url(estudiolivre/lBox_l.png);	
+	background-repeat:repeat-y;
+}	
+.lightBoxRight {
+	width:41px;
+	background-image:url(estudiolivre/lBox_r.png);	
+	background-repeat:repeat-y;
+}
+
+/**********************/
+/*        Bottom      */
+/**********************/
+.lightBoxBottomLeft,.lightBoxBottomRight{
+		height:42px;
+		width:41px;
+}
+.lightBoxBottomLeft {
+	background-image:url(estudiolivre/lBox_lb.png);
+}
+.lightBoxBottomMid {
+	background-image:url(estudiolivre/lBox_b.png);	
+	background-repeat:repeat-x;
+}
+.lightBoxBottomRight {
+	background-image:url(estudiolivre/lBox_rb.png);
+}
+
+/* o resto... */
+
 #closeButton{
-	position:absolute;
-	top: 5px;
-	right: 5px;
-	z-index:102;
+	float:left;
 	cursor:pointer;
-	margin:5px;
+	margin-top:18px;
 }
 
 #overlay{
@@ -27,10 +88,3 @@
 	z-index:100;
 	display:none;
 }
-
-/* html #overlay{
-	background-color: #333;
-	back\ground-color: transparent;
-	background-image: url(blank.gif);
-	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="overlay.png", sizingMethod="scale");
-}*/

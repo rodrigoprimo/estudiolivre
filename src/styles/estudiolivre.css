@@ -1772,59 +1772,66 @@ A.gUpmore {
 	cursor: pointer;
 }
 
-/* página que lista os usuários (tiki-list_users.tpl) */
+/******************************************************/
+/* estilos para as páginas que listam:
+	- usuários (tiki-list_users.tpl)
+	- forums (tiki-list_forums.tpl)
+	- blogs (tiki-list_blogs.tpl)
+ */
+/******************************************************/
 
 /*o título da página e a paginacao*/
-#users h1, #users .paginacao, #forum h1, #forum .paginacao {
+#users h1, #users .paginacao, #forum h1, #forum .paginacao, #blogs h1, #blogs .paginacao,  #listLastChanges .paginacao,  #listLastChanges h1 {
 	text-align:center;
 	background-color:#f9f9f9;
 	border:1px solid gray;
 }
 
 /*para dar uma margenzinha e um padding na paginação*/
-#users .paginacao, #forum .paginacao {
+#users .paginacao, #forum .paginacao, #blogs .paginacao,  #listLastChanges paginacao {
 	padding:3px;
 	margin-bottom:10px;
 }
 
 /* para que as flechas da paginacao nao fiquem coladas no texto*/
-#users .paginacao img {
+#users .paginacao img, #forum .paginacao img,  #blogs .paginacao img,  #listLastChanges .paginacao img {
 	margin:0 15px 0 15px;
 }
 
 /* para que a contagem de usuários fique na direita */
-#users h5 {
+#users h5, #blogs h5, #listLastChanges h5 {
 	text-align:right;
 }
 
-/*margens da tabela*/
-#users table{
+/*margens e largura da tabela*/
+#users table, #forum table, #blogs table,  #listLastChanges table{
 	margin: 0 0 20px 0;	
+	width:100%;
 }
 
 /*para que o título da coluna seja diferente*/
-#users td.heading{
+#users td.heading, #forum td.heading, #blogs td.heading,  #listLastChanges td.heading{
 	font-weight:bold;
 }
 
 /*padding nos elementos da tabela: legibilidade*/
-#users td {
+#users td, #forum td, #blogs td,  #listLastChanges td{
 	padding: 4px 0 4px 3px;	
 }
 
 /*para que os links da tabela sejam mais legíveis*/
-#users table a {
+#users table a, #forum table a, #blogs table a, #listLastChanges a {
 	text-decoration:underline;
 	color:black;
 }
 /*para que as linhas da tabela tenham cores diferentes nas linhas pares*/
-#users .odd{
+#users .odd, #forum .odd, #blogs .odd,  #listLastChanges .odd{
 	background-color:#e9e9e9
 }
 
-/********************/
-/* estilos do fórum */
-/********************/
+/******************************/
+/* estilos extra para o fórum */
+/******************************/
 
 /*título da página e paginacao (ver acima!!)*/
 /*!!!!!!!VER ACIMA!!!!!!!!!!!!!!!!!!!!!!!!!*/
@@ -1836,6 +1843,7 @@ A.gUpmore {
 	padding:2px;
 }
 
+/*para dar destaque ao nome do fórum*/
 td.forumName {
 	font-size:18px;
 	background-color:#888;
@@ -1843,8 +1851,38 @@ td.forumName {
 	color:white;
 }
 
-#forumTable .odd{
-	background-color:#e9e9e9
+
+/**********************************************/
+/* estilos da listagem das ultimas alterações */
+/**********************************************/
+
+#listLastChanges h4 {
+	font-weight:normal;
+	text-align:center;
+}
+
+/* aquela caixinha de busca nas últimas alterações */
+#lastChangesOptions{
+	padding:7px 2px 7px 2px;
+	margin-left:68%;
+	width:170px;
+	text-align:center;
+	border: 1px solid #e9e9e9;
+	font-size:12px;
+}
+
+#lastChangesOptions INPUT {
+	border:1px outset rgb(233, 233, 174);
+	margin:2px;
+	background-color:#c1c1c1;
+	font-size:12px;
+}
+
+
+#lastChangesOptions .input {
+	border: 1px inset rgb(233, 233, 174);
+	background-color:#f1f1f1;
+	font-size:12px;
 }
 
 /* footer */

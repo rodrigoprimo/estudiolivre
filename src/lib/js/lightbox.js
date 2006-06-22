@@ -99,7 +99,7 @@ function showLightbox(divId) {
 	document.getElementById("overlay").style.height = (arrayPageSize[1] + 'px');
 	document.getElementById('overlay').style.display = 'block';
 
-	content.style.display = 'block';
+	content.style.display = 'table-cell';
 	
 	// get width of the content to define the position of the lightbox
 	var width = (content.style.width).replace(new RegExp(/px/),"");
@@ -115,12 +115,21 @@ function showLightbox(divId) {
    	for (i = 0; i != selects.length; i++) {
 		selects[i].style.visibility = "hidden";
 	}*/
+	
+	//set the lightbox width to be the same as the content's
+	//objLightbox.style.width=content.style.width;
 
-	// append the content inside the lightbox
-	objLightbox.appendChild(content);
+	// append the content inside the lightboxCont
+	// this is what we did before
+	//objLightbox.appendChild(content);
+	// now we will append the content before the second child
+	var container=document.getElementById('lightboxCont');
+	container.insertBefore(content,container.childNodes[2]);
+	////container.firstChild.appendChild(content);
+	//container.appendChild(content);
 	
 	//display the lightbox and the content
-	objLightbox.style.display = 'block';
+	objLightbox.style.display = 'table';
 	
 }
 

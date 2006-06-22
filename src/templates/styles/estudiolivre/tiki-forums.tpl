@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-forums.tpl,v 1.1 2006-06-21 06:05:15 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-forums.tpl,v 1.2 2006-06-22 10:15:22 rhwinter Exp $ *}
 
 <div id="forum">
 	<h1>
@@ -20,8 +20,7 @@
 				<td  class="heading">
 					<a class="tableheading" href="tiki-forums.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'name_desc'}name_asc{else}name_desc{/if}">
 						<img src="styles/estudiolivre/sort{if $sort_mode eq 'name_desc'}ArrowUp{elseif $sort_mode eq 'name_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
-					</a>
-						{tr}Name{/tr}
+					</a>{tr}Name{/tr}
 				</td>
 				{if $forum_list_topics eq 'y'}
 					<td class="heading">

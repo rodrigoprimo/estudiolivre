@@ -1,7 +1,7 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.12 2006-06-21 06:05:15 rhwinter Exp $ *}
-<script language="JavaScript" src="lib/js/contextualMenu.js"></script>
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.13 2006-06-22 10:15:22 rhwinter Exp $ *}
+<!--script language="JavaScript" src="lib/js/contextualMenu.js"></script-->
 
-<!-- menu contextual -->
+<!-- menu contextual>
 <div id="menu" style="position: absolute; display: none;" onmouseout="hideMenu(event)"  onclick="forceHideMenu(event)">
 	<img class="menu" id="menuImgedit" src="styles/estudiolivre/iEditWiki.png" usemap="editMap"><img class="menu" id="menuImgprint" src="styles/estudiolivre/iPrintWiki.png" usemap="printMap"><br class="menu"><img class="menu" id="menuImgwiki3d" src="styles/estudiolivre/iWiki3d.png" usemap="wiki3dMap">
 </div>
@@ -11,9 +11,9 @@
 </map>
 <map class="menu" name="wiki3dMap"><area class="menu" shape="poly" coords="8,6,11,15,14,22,19,28,23,36,30,46,42,54,52,57,63,60,59,73,51,72,40,68,26,62,14,48,7,37,4,29,0,19,0,7" href="javascript:wiki3d_open('{$page|escape}',{$wiki_3d_width}, {$wiki_3d_height})" onmouseover="hoverSubMenu('wiki3d')" onmouseout="outSubMenu('wiki3d')" onClick="forceHideMenu(event)">
 </map>
-
+-->
 	
-<div class="wikitopline" style="text-align:right;padding-top:5px" onclick="cancelBubble(event)">
+<div class="wikitopline" style="text-align:right;padding-top:5px"><!--do contextualMenu onclick="cancelBubble(event)"-->
 
 { if $print_page ne 'y'}
 	{if !$lock}

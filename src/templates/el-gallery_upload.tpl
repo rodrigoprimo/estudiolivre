@@ -9,22 +9,22 @@
     <div id="gUpIcons">
       {* Aqui terá um JS que colore o ícone selecionado e deixa os outros preto e branco *}
       <div class="gUpIcon">
-        {*tooltip text="Clique aqui para enviar um arquivo de <b>áudio</b>"*}<img id="iconeAudio" onMouseOver="acendeTipo('Audio');" onMouseOut="apagaTipo('Audio')" onClick="selecionaTipo('Audio')" alt="" src="styles/estudiolivre/iUpAudioOff.png"><br />
+        {*tooltip text="Clique aqui para enviar um arquivo de <b>áudio</b>"*}<img id="iconeAudio" onMouseOver="acendeTipo('Audio');" onMouseOut="apagaTipo('Audio'); return nd();" onClick="selecionaTipo('Audio')" alt="" src="styles/estudiolivre/iUpAudioOff.png"><br />
         Áudio{*/tooltip*}
       </div>
     
       <div class="gUpIcon">
-        {*tooltip text="Clique aqui para enviar uma <b>imagem</b>"*}<img id="iconeImagem" onMouseOver="acendeTipo('Imagem');" onMouseOut="apagaTipo('Imagem')" onClick="selecionaTipo('Imagem')" alt="" src="styles/estudiolivre/iUpImagemOff.png"><br />
+        {*tooltip text="Clique aqui para enviar uma <b>imagem</b>"*}<img id="iconeImagem" onMouseOver="acendeTipo('Imagem');" onMouseOut="apagaTipo('Imagem'); return nd();" onClick="selecionaTipo('Imagem')" alt="" src="styles/estudiolivre/iUpImagemOff.png"><br />
         Imagem{*/tooltip*}
       </div>
     
       <div class="gUpIcon">
-        {*tooltip text="Clique aqui para enviar um arquivo de <b>texto</b>"*}<img id="iconeTexto" onMouseOver="acendeTipo('Texto');" onMouseOut="apagaTipo('Texto')" onClick="selecionaTipo('Texto')" alt="" src="styles/estudiolivre/iUpTextoOff.png"><br />
+        {*tooltip text="Clique aqui para enviar um arquivo de <b>texto</b>"*}<img id="iconeTexto" onMouseOver="acendeTipo('Texto');" onMouseOut="apagaTipo('Texto'); return nd();" onClick="selecionaTipo('Texto')" alt="" src="styles/estudiolivre/iUpTextoOff.png"><br />
         Texto{*/tooltip*}
       </div>
     
       <div class="gUpIcon">
-		{*tooltip text="Clique aqui para enviar um arquivo de <b>vídeo</b>."*}<img id="iconeVideo" onMouseOver="acendeTipo('Video');" onMouseOut="apagaTipo('Video')" onClick="selecionaTipo('Video')" alt="" src="styles/estudiolivre/iUpVideoOff.png"><br />
+		{*tooltip text="Clique aqui para enviar um arquivo de <b>vídeo</b>."*}<img id="iconeVideo" onMouseOver="acendeTipo('Video');" onMouseOut="apagaTipo('Video'); return nd();" onClick="selecionaTipo('Video')" alt="" src="styles/estudiolivre/iUpVideoOff.png"><br />
         Vídeo{*/tooltip*}
       </div>
     
@@ -153,7 +153,8 @@
     <br style="clear:both; line-height:20px;">
     
     <div id="gUpMoreOptions">
-      {tooltip text="Clique para definir outras propriedades do arquivo"}<a class="gUpmore" id="gUpmoreoptionsLink" onclick="javascript:flip('gUpMoreOptionsContent'); return false;"> [+] opções </a>{/tooltip}<br/>
+      {tooltip text="Clique para definir outras propriedades do arquivo"}
+      	<a class="gUpmore" id="gUpmoreoptionsLink" onclick="javascript:flip('gUpMoreOptionsContent'); document.getElementById('moreOptionArrow').toggleImage('iArrowGreyDown.png');return false;"> opções <img id="moreOptionArrow" src="styles/estudiolivre/iArrowGreyLeft.png"> </a>{/tooltip}<br/>
       <div style="display:none" id="gUpMoreOptionsContent">
       	{include file="el-gallery_metadata.tpl"}
       </div>

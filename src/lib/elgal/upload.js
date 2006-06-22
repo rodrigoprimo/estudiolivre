@@ -132,7 +132,7 @@ function selecionaTipo(tipo) {
 		document.getElementById("icone" + tipo).src = "styles/estudiolivre/iUp" + tipo + ".png";
 		show('gUpList');
 	} else {
-		alert('Você não pode mudar o tipo de arquivo depois de começar o upload');
+		fixedTooltip('Voc? n?o pode mudar o tipo de arquivo depois de come?ar o upload');
 	}
 }
 
@@ -198,7 +198,13 @@ function restoreForm (id, tipo, arquivo, thumbnail) {
 
 function setUploadError(msg) {
 	uploadError = true;
-	alert(msg);
+	// troquei o 'alert' por isso:
+	var newDiv=document.createElement(div);
+	newDiv.id='errorDiv';
+	document.body.appendChild(newDiv);
+	showLightbox('errorDiv');
+	//TODO: testar! eu n?o sei como....
+	//alert(msg);
 }
 
 //implementacao do checkLightBox para a licenca

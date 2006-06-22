@@ -46,9 +46,10 @@
       <img id="listFilterImg4" alt="" src="styles/estudiolivre/bRightInac.png" />
       
     </ul>
-  
+	  {tooltip text="<i>Feed</i> <b>RSS</b> do acervo.livre"}<a href="http://teste.estudiolivre.org/el-gallery_rss.php?ver=2"><img src="styles/estudiolivre/iRss.png"></a> {/tooltip}
   </div>
   <!-- Filters End -->
+  
   
   <div id="rightContainerTop">
     <div id="listOrder">
@@ -70,7 +71,6 @@
 <div id="gListCont">
 	{include file="el-gallery_section.tpl"}
 </div>
-
 <script language="JavaScript">init('{$find}')</script>
 
 {include file="el-player.tpl"}

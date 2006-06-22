@@ -133,7 +133,7 @@
 {if $user}
   
   <div id="topMenuContainer">
-    <a href="tiki-logout.php">Logout</a>
+    <a href="tiki-logout.php?page={$current_location}">Logout</a>
   </div>
 
   <div id="userMenuContainer">
@@ -195,7 +195,14 @@
     	Não há usuários online
     {/if}
     </div>
-    
+	
+	{if  $tiki_p_admin eq 'y'}
+	    <hr>
+		<div style="text-align:left">
+			<a href="tiki-admin.php">Administrar</a> o TikiWiki
+	    </div>
+	{/if}
+        
   </div>
 
 {else}
