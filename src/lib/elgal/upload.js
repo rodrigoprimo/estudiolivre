@@ -67,6 +67,9 @@ function finishUpload() {
 		document.getElementById('gUpPercent').style.backgroundColor = '#ffe475';
 		document.getElementById('gUpPercent').innerHTML = '100%';
 		if (thumbUpId == null) {
+			document.getElementById('thumbnail').src = "";			
+			document.getElementById('thumbnail').className = "gUpThumbImgCreating";
+			setTimeout('document.getElementById("thumbnail").src = "styles/estudiolivre/iProgress.gif"',100);
 			xajax_generate_thumb();
 		}
 		xajax_get_file_info();

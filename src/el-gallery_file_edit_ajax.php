@@ -91,12 +91,12 @@ $ajaxlib->setPermission('generate_thumb', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('generate_thumb');
 function generate_thumb() {
 	global $elgallib, $arquivoId;
-
 	$objResponse = new xajaxResponse();
 	$thumb = $elgallib->generate_thumb($arquivoId);
 	
 	if ($thumb) {
 		$objResponse->addAssign("thumbnail", "src", 'repo/' . $thumb);
+		$objResponse->addAssign("thumbnail", "className", 'gUpThumbImg');
 	}
 
 	return $objResponse;

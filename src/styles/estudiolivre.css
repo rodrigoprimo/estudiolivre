@@ -1231,6 +1231,15 @@ A.gUpButtonHover {
 	cursor:pointer;
 }
 
+.gUpThumbImg {
+	width: 60px;
+	height: 60px;
+}
+
+.gUpThumbImgCreating {
+	margin: 20px 0px 0px 22px;
+}
+
 #gUpThumbImgForm {
 	position: relative;
 	cursor:pointer;

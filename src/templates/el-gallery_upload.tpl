@@ -86,7 +86,7 @@
     <div id="gUpThumbImgForm">
       <div id="gUpThumb">
 	    <div id="gUpThumbImg">
-	      <img id="thumbnail" alt="" height="60" width="60" src="">
+	      <img id="thumbnail" alt="" src="" class="gUpThumbImg">
 	      <div id="gUpThumbStatus"></div>
 	    </div>
       </div>
