@@ -33,20 +33,20 @@
         <br />
         {if $permission}
         	{tooltip text="Clique para modificar o seu <b>email</b>"}
-		        {ajax_input permission=$permission id="email" class="uContactItem" value=$userinfo.email default="E-mail" display="block" truncate='20'}        
+		        {ajax_input permission=$permission id="email" class="uContactItem" value=$userinfo.email default="E-mail" display="block" truncate='17'}        
 		    {/tooltip}
         {else}
         	{*TODO mudar isso pra um mailto:*}
-	        {ajax_input permission=$permission id="email" class="uContactItem" value=$userinfo.email default="E-mail" display="block" truncate='20'}
+	        {ajax_input permission=$permission id="email" class="uContactItem" value=$userinfo.email default="E-mail" display="block" truncate='17'}
 	    {/if}
 		<br />
         {if $permission}
         	{tooltip text="Clique para modificar o seu <b>site</b>"}
-		        {ajax_input permission=$permission id="site" class="uContactItem" value=$site default="Site" display="block" truncate='20'}        
+		        {ajax_input permission=$permission id="site" class="uContactItem" value=$site default="Site" display="block" truncate='17'}        
 		    {/tooltip}
         {else}		
             {*TODO: mudar isso pra um a href!!*}
-	        {ajax_input permission=$permission id="site" class="uContactItem" value=$site default="Site" display="block" truncate='20'}
+	        {ajax_input permission=$permission id="site" class="uContactItem" value=$site default="Site" display="block" truncate='17'}
 	    {/if}
 		<br />
         {if $permission}

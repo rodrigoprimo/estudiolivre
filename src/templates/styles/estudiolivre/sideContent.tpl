@@ -175,11 +175,6 @@
     </div>
     
     <hr>
-    <div id="moduleGallery">
-    	Acervo: {tooltip text="Veja os arquivos que você publicou"}<a href="el-user.php?view_user={$user}#gallery">ver</a>{/tooltip} | {tooltip text="Publique <b>sua obra</b> no Estúdio Livre!"}<a href="el-gallery_upload.php">publicar</a>{/tooltip}
-    </div>
-    
-    <hr>
     <div id="moduleWhoIsThere">
     {if sizeof($online_users) > 1}
       <img class="pointer" onclick="javascript:flip('moduleWhoIsThereMore');this.toggleImage('iArrowGreyDown.png')" src="styles/estudiolivre/iArrowGreyRight.png">
@@ -194,6 +189,11 @@
     {else}
     	Não há usuários online
     {/if}
+    </div>
+    
+    <hr>
+    <div id="moduleGallery">
+    	Acervo: {tooltip text="Veja os arquivos que você publicou"}<a href="el-user.php?view_user={$user}#gallery">ver</a>{/tooltip} | {tooltip text="Publique <b>sua obra</b> no Estúdio Livre!"}<a href="el-gallery_upload.php">publicar</a>{/tooltip}
     </div>
 	
 	{if  $tiki_p_admin eq 'y'}
