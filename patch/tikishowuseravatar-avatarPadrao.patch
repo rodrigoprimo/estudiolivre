@@ -1,0 +1,17 @@
+--- ../estudiolivre_base/tiki-show_user_avatar.php	2006-05-12 16:52:58.000000000 -0300
++++ tiki-show_user_avatar.php	2006-06-22 12:53:29.000000000 -0300
+@@ -22,7 +22,12 @@
+ $type = $info["avatarFileType"];
+ $content = $info["avatarData"];
+ 
+-header ("Content-type: $type");
+-echo "$content";
++if ($content) {
++	header ("Content-type: $type");
++	echo "$content";
++} else{
++	header ("Content-type: image/png");
++	readfile("styles/estudiolivre/iThumbUser.png");
++}
+ 
+ ?>
