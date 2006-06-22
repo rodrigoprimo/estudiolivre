@@ -24,10 +24,15 @@ function smarty_function_ajax_textarea($params, &$smarty) {
 	$noclear = $params['noclear'];
 	$style = $params['style'];
 	$permission = $params['permission'];
+	$wikiParsed = $params['wikiParsed'];
+
+	global $tikilib;
+
+	$show_value = $wikiParsed ? $tikilib->parse_data($value) : $value;
 
 	if (!$permission) {
 		$output .= '<div id="show-'. $id .'" class="'.$class.'" style="display:' . ($edit ? 'none' : $display ) . '">';
-		$output .= ($value ? $value : $default);
+		$output .= ($value ? $show_value : $default);
 		$output .= "</div>";
 		
 		return $output;	
@@ -48,7 +53,7 @@ function smarty_function_ajax_textarea($params, &$smarty) {
 	
 	$output = '';
 	$output .= '<div id="show-'. $id .'" class="'.$class.'" style="display:' . ($edit ? 'none' : $display ) . '" onClick="editaCampo(' . "'" . $id . "'" . ');">';
-	$output .= ($value ? $value : $default);
+	$output .= ($value ? $show_value : $default);
 	$output .= "</div>";
 	
 	$output .= "<img id=\"error-$id\" class=\"gUpErrorImg\" style=\"display: none\" src=\"styles/estudiolivre/errorImg.png\" onMouseover=\"tooltip(errorMsg_$id);\" onMouseout=\"nd();\"> ";

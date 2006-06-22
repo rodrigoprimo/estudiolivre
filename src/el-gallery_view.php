@@ -34,9 +34,6 @@ foreach ($arquivo['tags']['data'] as $t) {
     $tagString .= $t['tag'];
 }
 $arquivo['tagString'] = $tagString;
-$arquivo['descricao'] = $tikilib->parse_data($arquivo['descricao']);
-if (isset($arquivo['fichaTecnica'])) $arquivo['fichaTecnica'] = $tikilib->parse_data($arquivo['fichaTecnica']);
-if (isset($arquivo['letra'])) $arquivo['letra'] = $tikilib->parse_data($arquivo['letra']);
 
 $smarty->assign('arquivoId',$arquivoId);
 $smarty->assign('arquivo',$arquivo);

@@ -8,4 +8,4 @@
 <div id="aLegenda" class="gUpMoreOptionsItem" style="display:{if $arquivo.legendas}block{else}none{/if};"><div class="gUpMoreOptionsName">Idioma da Legenda:</div> {ajax_input permission=$permission value=$arquivo.idiomaLegenda id="idiomaLegenda" default="" display="inline"}</div>
 <br/>
 <div class="gUpMoreOptionsItem">Ficha Técnica:</div>
-{ajax_textarea permission=$permission value=$arquivo.fichaTecnica id="fichaTecnica" default="" display="block" style="width: 235px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;"}
+{ajax_textarea permission=$permission value=$arquivo.fichaTecnica id="fichaTecnica" default="" display="block" style="width: 235px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" wikiParsed=1}
