@@ -5,24 +5,30 @@ if (strpos($_SERVER["SCRIPT_NAME"],basename(__FILE__)) !== false) {
   exit;
 }
 
-function truncate($substring, $max = 0, $rep = '...') {
-	
-	if(!$max) {
-		return $substring;
-	} 
+function truncate($string, $max = 0, $rep = '...') {
 
-	if(strlen($substring) < 1){
-    	$string = $rep;
-    }else{
-    	$string = $substring;
+    if(!$max) {
+	return $string;
     }
-      
-    $leave = $max - strlen ($rep);
-      
-    if(strlen($string) > $max){
-    	return substr_replace($string, $rep, $leave);
-    }else{
+    
+    preg_match_all('/(\&\#\d+;)/', $string, $m);
+
+    $maxOrig = $max;
+
+    if ($m[1] && is_array($m[1])) {
+	$i = 0;
+	foreach ($m[1] as $bigChar) {
+	    if ($i++ == $maxOrig) {
+		break;
+	    }
+	    $max += strlen($bigChar) - 1;
+	}
+    }
+
+    if(strlen($string) <= $max){
     	return $string;
+    }else{
+	return substr($string, 0, $max) . $rep;
     }
       
 }

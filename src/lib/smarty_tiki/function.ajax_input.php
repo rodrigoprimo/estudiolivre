@@ -24,10 +24,10 @@ function smarty_function_ajax_input($params, &$smarty) {
 	$display = $params['display'];
 	$mode = $params['mode'];
 	$noclear = $params['noclear'];
-	$truncate = $params['truncate'];
+	$truncate = (int)$params['truncate'];
 	$permission = $params['permission'];
 
- 	$trucated = truncate($value, $truncate, '(...)');
+	$trucated = truncate($value, $truncate, '(...)');
 	
 	if (!$permission) {
 		$output .= '<div id="show-'. $id .'" class="'.$class.'" style="display:' . ($edit ? 'none' : $display ) . '">';
