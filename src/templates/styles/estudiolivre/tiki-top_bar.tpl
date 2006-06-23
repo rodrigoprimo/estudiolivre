@@ -47,9 +47,9 @@
     {tooltip name="entre-contato" text="Entre em contato - descubra os <b>canais de comunicação</b> com a comunidade"}<a href="tiki-index.php?page=contato">contato</a>{/tooltip}
     
   </div>
-  <div id="topMenuLoading">
+ {* <div id="topMenuLoading">
 	  <img src="styles/estudiolivre/iProgress.gif">
-  </div>
+  </div> *}
   <div id="topMenuCubesContainer">
   	<ul id="topMenuCubes">
 	{*

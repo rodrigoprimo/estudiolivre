@@ -95,34 +95,3 @@
     {/if}
   </div>  
 </div>
-
-
-{*
-
-<div class="el-list-branco">
-        <div class="el-thumbnail">
-      
-        </div>
-        <div class="el-file-info">
-        
-       
-     {if $arquivo.tipo eq 'Audio'}
-        <object type="application/x-shockwave-flash" data="styles/estudiolivre/musicplayer.swf?&song_url=repo/{$arquivo.arquivo}" width="17" height="17"></object>
-     {/if}
-        <br />
-        <span style="vertical-align:top">licença:</span>
-	
-	&nbsp;<a href="{$arquivo.link_human_readable}">
-	
-	<img border="0" src="{$arquivo.link_imagem}"/></a>
-        </div>
-        <div class="el-file-info2">
-        {$arquivo.formato}, {$arquivo.tamanho|show_filesize}<br/>
-        <br/>
- 
-
-
-      
-        </div>
-        
-  </div> *}

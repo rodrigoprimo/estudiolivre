@@ -299,6 +299,12 @@ class ELGalLib extends TikiLib {
 		  $file = $dir.$arquivo['arquivo'];
 		  unlink($file);
 	  }
+	  
+	  global $freetaglib;
+	  require_once("lib/freetag/freetaglib.php");
+	  
+	  $freetaglib->delete_object('gallery', $arquivoId);
+	  
       return true;
     }
     

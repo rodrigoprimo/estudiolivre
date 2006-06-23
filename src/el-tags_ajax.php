@@ -10,10 +10,10 @@ function get_more_tags($offset, $maxRecords) {
     
     $objResponse = new xajaxResponse();
 
-    $smarty->assign('tag_suggestion', $freetaglib->get_tag_suggestion('', $offset, $maxRecords));
+    $smarty->assign('tag_suggestion', $freetaglib->get_distinct_tag_suggestion('', $offset, $maxRecords));
     $objResponse->addAppend("gUpTagListItem", "innerHTML", $smarty->fetch("el-tag_suggest_list.tpl"));
     
-    if(($offset + $maxRecords) < $freetaglib->count_tags()) {
+    if(($offset + $maxRecords) < $freetaglib->count_distinct_tags()) {
     	$smarty->assign('moreTagsOffset', $offset + $maxRecords);
     	$objResponse->addAssign("gUpTagSuggestMore", "innerHTML", $smarty->fetch("el-tag_suggest_more.tpl"));
     } else {

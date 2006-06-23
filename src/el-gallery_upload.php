@@ -34,7 +34,7 @@ $smarty->assign('headtitle', "subir arquivo");
 
 $smarty->assign('category', 'gallery');
 
-$smarty->assign('tag_suggestion', $freetaglib->get_tag_suggestion('', 0, 10));
+$smarty->assign('tag_suggestion', $freetaglib->get_distinct_tag_suggestion('', 0, 10));
 $smarty->assign('moreTagsOffset', 10);
 
 //isto eh uma conveniencia, so pra bloquear a mudanca de campo no cliente

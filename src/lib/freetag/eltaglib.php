@@ -29,7 +29,7 @@ class ElTagLib extends FreetagLib {
 	return $newwords;
     }
 
-	function get_tag_suggestion($exclude = '', $offset = 0, $maxRecords = -1) {
+	function get_distinct_tag_suggestion($exclude = '', $offset = 0, $maxRecords = -1) {
 	
 		$query = "select distinct(t.tagId), t.tag from `tiki_freetags` t, `tiki_freetagged_objects` o, `tiki_objects` tko where t.`tagId`=o.`tagId` and o.`objectId`=tko.`objectId` order by hits";
 		$result = $this->query($query, array(), $maxRecords, $offset);
@@ -47,7 +47,7 @@ class ElTagLib extends FreetagLib {
 		return $tags;
 	}
 	
-	function count_tags($user = '') {
+	function count_distinct_tags($user = '') {
 	    
 		$bindvals = array();
 	
@@ -62,6 +62,23 @@ class ElTagLib extends FreetagLib {
 	
 		return $this->getOne($query, $bindvals);
 
+    }
+    
+    //TODO: move to objectlib
+    function delete_object($type, $itemId) {
+    	$objId = $this->getOne("select `objectId` from `tiki_objects` where `type`=? and `itemId`=?", array($type, $itemId));
+    	if (!$objId) {
+    		return false;
+    	}
+    	
+    	$bindvals = array($objId);
+    	$this->query("delete from `tiki_objects` where `objectId`=?", $bindvals);
+    	$this->query("delete from `tiki_categorized_objects` where `catObjectId`=?", $bindvals);
+    	$this->query("delete from `tiki_category_objects` where `catObjectId`=?", $bindvals);
+    	$this->query("delete from `tiki_freetagged_objects` where `objectId`=?", $bindvals);
+    	
+    	return true;
+    
     }
 
 }
