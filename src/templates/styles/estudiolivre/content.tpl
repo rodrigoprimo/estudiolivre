@@ -1,7 +1,5 @@
 <!-- content.tpl begin -->
 
-
-
 <div id="contentBubble">
 {elcrumbs crumbs=$elCrumbs}
     {if $feature_usermenu eq 'y'}	
@@ -29,7 +27,12 @@
         <div id="tiki-mid">
     {/if}
 
+<!--HIGHLIGHT BEGIN-->
+
     {include file=$mid}
+
+<!--HIGHLIGHT END-->
+<!-- sasquatch -->
     </div>
     
     {include file="sideContent.tpl"}

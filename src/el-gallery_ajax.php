@@ -24,12 +24,13 @@ function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $fi
 	$smarty->assign('page', ($offset/$maxRecords)+1);
 	$smarty->assign('lastPage', ceil($total/$maxRecords));
 
-	if ($find) {
+    if ($find) {
 		$smarty->load_filter('output','highlight');
 		$_REQUEST['highlight'] = $find;
 	}
+
+	$objResponse->addAssign("listNav", "innerHTML", $smarty->fetch("el-gallery_pagination.tpl"));
     $objResponse->addAssign("gListCont", "innerHTML", $smarty->fetch("el-gallery_section.tpl"));
-    $objResponse->addAssign("listNav", "innerHTML", $smarty->fetch("el-gallery_pagination.tpl"));
     $objResponse->addScript("nd()");
     //$objResponse->addScript("acervoCache('$tiposHr', $offset, $maxRecords, '$sort_mode', '$find', '$filtersHr')");
     
