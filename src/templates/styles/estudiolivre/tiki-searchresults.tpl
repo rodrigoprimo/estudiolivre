@@ -116,24 +116,8 @@
 		{/if}
 		<div id="searchResults">
 			{section  name=search loop=$results}
-			<div class="searchResultItem">
-				<a href="{$results[search].href}&amp;highlight={$words}" class="searchResultItemLink" title="{if $feature_search_fulltext eq 'y'}{if $results[search].relevance <= 0}({tr}Simple search{/tr}){else}{tr}Relevance{/tr}: {$results[search].relevance}{/if}{/if} - {tr}Hits{/tr}: {$results[search].hits}">
-					{$results[search].pageName|strip_tags}
-				</a>
-				{if $results[search].type > ''}
-					<span class="searchType">
-						({$results[search].type})
-					</span>
-				{/if}				
-				<br />
-				<div class="searchdesc">
-					{$results[search].data|strip_tags}
-				</div>
-				{*<div class="searchdate">
-					{tr}Last modification date{/tr}: {$results[search].lastModif|tiki_long_datetime}
-				</div>*}
-				<br />
-			</div>
+				{assign var=result value=$results[search]}
+				{include file="searchresult-item.tpl"}
 			{sectionelse}
 			<div id="searchNoResults">
 				{tr}No pages matched the search criteria{/tr}<br />
