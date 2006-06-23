@@ -5,7 +5,7 @@ if (!selectedBusca) {
 }
 
 function marcaBusca(name) {
-    if (selectedBusca == 'wiki' || selectedBusca == 'gallery' || selectedBusca == 'forum' || selectedBusca == 'usuarios' || selectedBusca == 'blogs') { 
+    if (selectedBusca == 'wiki' || selectedBusca == 'gallery' || selectedBusca == 'forum' || selectedBusca == 'usuarios' || selectedBusca == 'blogs' || selectedBusca == 'tags') { 
 		document.getElementById('busca-'+selectedBusca).className = '';
 	}
 	selectedBusca = name;
@@ -14,12 +14,16 @@ function marcaBusca(name) {
 	if (selectedBusca == 'wiki' || selectedBusca == 'forum') {
 		document.getElementById('searchField').name='highlight';
 		document.getElementById('form-busca').action = 'tiki-searchresults.php';
+		document.getElementById('form-busca').where.value = selectedBusca + 's';
 	} else if (selectedBusca == 'usuarios') {
 		document.getElementById('searchField').name='find';
 		document.getElementById('form-busca').action = 'tiki-list_users.php';
 	} else if (selectedBusca == 'blogs') {
 		document.getElementById('searchField').name='find';
 		document.getElementById('form-busca').action = 'tiki-list_blogs.php';
+	} else if (selectedBusca == 'tags') {
+		document.getElementById('searchField').name='tag';
+		document.getElementById('form-busca').action = 'tiki-browse_freetags.php';
 	} else {
 		document.getElementById('searchField').name='highlight';		
 		document.getElementById('form-busca').action = 'el-gallery_home.php';
