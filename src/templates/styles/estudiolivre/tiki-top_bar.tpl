@@ -21,9 +21,11 @@
       <ul class="searchOptions">
         <li id="busca-wiki" class="">{tooltip name="buscar-somente" text="Buscar somente nas páginas <b>wiki</b>"}<a onclick="marcaBusca('wiki')">wiki</a>{/tooltip}</li>
         <li id="busca-gallery" class="">{tooltip name="buscar-acervo" text="Buscar no <b>acervo</b> do EstúdioLivre"}<a onclick="marcaBusca('gallery')">acervo</a>{/tooltip}</li>
-        <li id="busca-forum" class="">{tooltip name="buscar-forum" text="Buscar nos <b>fóruns</b> do EstúdioLivre"}<a onclick="marcaBusca('forum')">f&oacute;rum</a>{/tooltip}</li>
         <li id="busca-usuarios" class="">{tooltip text="Buscar <b>usuários</b> do EstúdioLivre"}<a onclick="marcaBusca('usuarios')">usu&aacute;rio</a>{/tooltip}</li>
-        <li id="busca-blogs" class="">{tooltip text="Buscar <b>blogs</b> do EstúdioLivre"}<a onclick="marcaBusca('blogs')">blog</a>{/tooltip}</li>
+		<li id="busca-tags" class="">{tooltip text="Buscar conteúdos com uma <b>tag</b>"}<a onclick="marcaBusca('tags')">tag</a>{/tooltip}</li>
+		<li id="busca-blogs" class="">{tooltip text="Buscar <b>blogs</b> do EstúdioLivre"}<a onclick="marcaBusca('blogs')">blog</a>{/tooltip}</li>
+     {* <li id="busca-forum" class="">{tooltip name="buscar-forum" text="Buscar nos <b>fóruns</b> do EstúdioLivre"}<a onclick="marcaBusca('forum')">f&oacute;rum</a>{/tooltip}</li>
+      *}
       </ul>
       <input id="searchField" name="highlight" size="15" type="text" accesskey="s" value="Buscar" onFocus="limpaBusca(this);"/><input class="submit" type="image" name="search" src="styles/estudiolivre/bSearch.png"/>
 {*      <a class="searchMore" href="tiki-searchresults.php">mais opções de busca <span>+</span></a> *}
