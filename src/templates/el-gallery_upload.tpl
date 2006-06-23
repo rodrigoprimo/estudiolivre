@@ -7,23 +7,22 @@
 <div id="gUpload">
   <div id="gUpLeft">
     <div id="gUpIcons">
-      {* Aqui terá um JS que colore o ícone selecionado e deixa os outros preto e branco *}
-      <div class="gUpIcon">
+      <div class="gUpIcon pointer">
         {*tooltip text="Clique aqui para enviar um arquivo de <b>áudio</b>"*}<img id="iconeAudio" onMouseOver="acendeTipo('Audio');" onMouseOut="apagaTipo('Audio'); return nd();" onClick="selecionaTipo('Audio')" alt="" src="styles/estudiolivre/iUpAudioOff.png"><br />
         Áudio{*/tooltip*}
       </div>
     
-      <div class="gUpIcon">
+      <div class="gUpIcon pointer">
         {*tooltip text="Clique aqui para enviar uma <b>imagem</b>"*}<img id="iconeImagem" onMouseOver="acendeTipo('Imagem');" onMouseOut="apagaTipo('Imagem'); return nd();" onClick="selecionaTipo('Imagem')" alt="" src="styles/estudiolivre/iUpImagemOff.png"><br />
         Imagem{*/tooltip*}
       </div>
     
-      <div class="gUpIcon">
+      <div class="gUpIcon pointer">
         {*tooltip text="Clique aqui para enviar um arquivo de <b>texto</b>"*}<img id="iconeTexto" onMouseOver="acendeTipo('Texto');" onMouseOut="apagaTipo('Texto'); return nd();" onClick="selecionaTipo('Texto')" alt="" src="styles/estudiolivre/iUpTextoOff.png"><br />
         Texto{*/tooltip*}
       </div>
     
-      <div class="gUpIcon">
+      <div class="gUpIcon pointer">
 		{*tooltip text="Clique aqui para enviar um arquivo de <b>vídeo</b>."*}<img id="iconeVideo" onMouseOver="acendeTipo('Video');" onMouseOut="apagaTipo('Video'); return nd();" onClick="selecionaTipo('Video')" alt="" src="styles/estudiolivre/iUpVideoOff.png"><br />
         Vídeo{*/tooltip*}
       </div>
