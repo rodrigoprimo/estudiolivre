@@ -245,6 +245,4 @@
 </script>
 {/if}
 
-{include file="el-player.tpl"}
-
 <!-- el-gallery_view.rpl end -->

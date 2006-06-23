@@ -219,6 +219,5 @@
 {if $permission}
 	{include file="el-license.tpl"}
 {/if}
-{include file="el-player.tpl"}
 
 <!-- tiki-user_information.tpl end -->
