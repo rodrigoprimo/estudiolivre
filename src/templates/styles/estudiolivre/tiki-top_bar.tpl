@@ -52,38 +52,55 @@
  {* <div id="topMenuLoading">
 	  <img src="styles/estudiolivre/iProgress.gif">
   </div> *}
-  <div id="topMenuCubesContainer">
-  	<ul id="topMenuCubes">
-	{*
-      <li><div class="hiddenDescript" id="metareciclagem">metareciclagem</div><a href="http://xango.metareciclagem.org/"><img src="styles/estudiolivre/cubeBlue.png"></a></li>
-      *}
-    {if $category eq "gallery"}
-      <li><img src="styles/estudiolivre/cubeGrey{if $isIE}IE{/if}.png"></li>
-    {else}
-      <li><div class="hiddenDescript" id="acervolivre">acervo.livre</div>{if $isIE}{tooltip name="video-lab" text="ACERVO||LIVRE"}<a href="el-gallery_home.php"><img src="styles/estudiolivre/cubeGreen{if $isIE}IE{/if}.png"></a>{/tooltip}{else}<a href="el-gallery_home.php"><img src="styles/estudiolivre/cubeGreen{if $isIE}IE{/if}.png"></a>{/if}</li>
-    {/if}
-
-    {if $category eq "Áudio"}
-      <li><img src="styles/estudiolivre/cubeGrey{if $isIE}IE{/if}.png"></li>
-    {else}
-      <li><div class="hiddenDescript" id="audiolab">áudio||lab</div>{if $isIE}{tooltip name="video-lab" text="AUDIO||LAB"}<a href="tiki-index.php?page=Áudio"><img src="styles/estudiolivre/cubeOrange{if $isIE}IE{/if}.png"></a>{/tooltip}{else}<a href="tiki-index.php?page=Áudio"><img src="styles/estudiolivre/cubeOrange{if $isIE}IE{/if}.png"></a>{/if}</li>
-    {/if}
-
-    {if $category eq "Vídeo"}
-      <li><img src="styles/estudiolivre/cubeGrey{if $isIE}IE{/if}.png"></li>
-    {else}
-      <li><div class="hiddenDescript" id="videolab">vídeo||lab</div>{if $isIE}{tooltip name="video-lab" text="VIDEO||LAB"}<a href="tiki-index.php?page=Vídeo"><img src="styles/estudiolivre/cubeRed{if $isIE}IE{/if}.png"></a>{/tooltip}{else}<a href="tiki-index.php?page=Vídeo"><img src="styles/estudiolivre/cubeRed{if $isIE}IE{/if}.png"></a>{/if}</li>
-    {/if}
     
-    {if $category eq "Gráfico"}
-      <li><img src="styles/estudiolivre/cubeGrey{if $isIE}IE{/if}.png"></li>
-    {else}
-      <li><div class="hiddenDescript" id="grafilab">grafi||lab</div>{if $isIE}{tooltip name="video-lab" text="GRAFI||LAB"}<a href="tiki-index.php?page=Gráfico"><img {if $isIE} {/if} src="styles/estudiolivre/cubePurple{if $isIE}IE{/if}.png"></a>{/tooltip}{else}<a href="tiki-index.php?page=Gráfico"><img {if $isIE} {/if} src="styles/estudiolivre/cubePurple{if $isIE}IE{/if}.png"></a>{/if}</li>
-    {/if}
-    
-  </ul>
-  
-  </div>
+	<div id="topMenuCubesContainer">
+	  <ul id="topMenuCubes">
+		{*
+	      <li><div class="hiddenDescript" id="metareciclagem">metareciclagem</div><a href="http://xango.metareciclagem.org/"><img src="styles/estudiolivre/cubeBlue.png"></a></li>
+	      *}
+		
+		{* Cores das Categorias *}
+		
+		{assign var=gallery value="Green"}
+		{assign var=audio value="Orange"}
+		{assign var=video value="Red"}
+		{assign var=grafico value="Purple"}
+		
+		
+	    {if $category eq "gallery"}{assign var=gallery value="Grey"}{/if}
+	    <li>
+	      <div class="hiddenDescript" id="acervolivre">acervo.livre</div>
+	        <a href="el-gallery_home.php" {if $isIE}title="ACERVO.LIVRE"{/if}>
+	          <img src="styles/estudiolivre/cube{$gallery}{if $isIE}IE{/if}.png">
+	        </a>
+	    </li>
+	
+	    {if $category eq "Áudio"}{assign var=audio value="Grey"}{/if}
+	    <li>
+	      <div class="hiddenDescript" id="audiolab">áudio||lab</div>
+	        <a href="tiki-index.php?page=Áudio" {if $isIE}title="AUDIO||LAB"{/if}>
+	          <img src="styles/estudiolivre/cube{$audio}{if $isIE}IE{/if}.png">
+	        </a>
+	    </li>
+	
+	    {if $category eq "Vídeo"}{assign var=video value="Grey"}{/if}
+	    <li>
+	      <div class="hiddenDescript" id="videolab">vídeo||lab</div>
+	        <a href="tiki-index.php?page=Vídeo" {if $isIE}title="VIDEO||LAB"{/if}>
+	          <img src="styles/estudiolivre/cube{$video}{if $isIE}IE{/if}.png">
+	        </a>
+	    </li>
+	    
+	    {if $category eq "Gráfico"}{assign var=grafico value="Grey"}{/if}
+	    <li>
+	    <div class="hiddenDescript" id="grafilab">grafi||lab</div>
+	        <a href="tiki-index.php?page=Gráfico" {if $isIE}title="GRAFI||LAB"{/if}>
+	          <img {if $isIE} {/if} src="styles/estudiolivre/cube{$grafico}{if $isIE}IE{/if}.png">
+	        </a>
+	    </li>
+	  </ul>
+	  
+	</div>
 </div>
 </div>
 
