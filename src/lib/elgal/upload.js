@@ -45,7 +45,7 @@ function updateUploadInfo() {
 	if (!uploadStarted) {
 		uploadStarted = true;
 		document.uploadForm.style.display = 'none';
-		document.getElementById('gUpButton').innerHTML = 'cancelar';
+		document.getElementById('gUpButton').innerHTML = '<span onClick="cancelUpload();">cancelar</span>';
 		document.getElementById('gUpPercent').innerHTML = '0%';
 		document.getElementById('gUpStatusBar').style.width = '0px';
 		document.getElementById('gUpStatusBar').className = "gUpStatus gUpUploading";
@@ -108,10 +108,19 @@ function removeUpload() {
     document.uploadForm.style.display = 'block';
     document.getElementById('gUpButton').innerHTML = 'procurar';
     document.getElementById('gUpPercent').innerHTML = '';
+    document.getElementById('gUpPercent').style.backgroundColor = '#e1a7a4';
     document.getElementById('gUpStatusBar').style.width = '0px';
     document.getElementById('gUpStatusBar').className = "gUpStatus";
     document.getElementById('gUpFileName').innerHTML = '';
     document.uploadForm.reset();
+}
+
+function cancelUpload() {
+	if (uploadStarted) {
+		window.stop();
+		clearTimeout(timerId);
+		removeUpload();
+	}
 }
 
 function acendeTipo(tipo) {
