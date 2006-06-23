@@ -52,13 +52,14 @@ if (strpos($_SERVER["SCRIPT_NAME"],basename(__FILE__)) !== false) {
 	$beginPosition = strpos($source, $beginTag);
 	$endPosition =  strpos($source, $endTag);
 	
-	if (empty($beginPosition) || empty($endPosition)) {
-		return $source;
+	if (!empty($beginPosition) && !empty($endPosition)) {
+		$begin = substr($source, 0, $beginPosition);
+		$mid = substr($source, $beginPosition + strlen($beginTag), $endPosition - $beginPosition - strlen($beginTag));
+		$end = substr($source, $endPosition + strlen($endTag));
+	} else {
+		$begin = $end = '';
+		$mid = $source;
 	}
-	
-	$begin = substr($source, 0, $beginPosition);
-	$mid = substr($source, $beginPosition + strlen($beginTag), $endPosition - $beginPosition - strlen($beginTag));
-	$end = substr($source, $endPosition + strlen($endTag));
 	
 	$source = ''; // save memory
 	
