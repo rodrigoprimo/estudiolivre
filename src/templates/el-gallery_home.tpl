@@ -21,26 +21,26 @@
   <!-- Filters Begin -->
   <div id="listFilters">
   
-    <ul id="listFiltersButtons">
+    <ul class="listFiltersButtons">
     
       <img id="listFilterImg0" alt="" src="styles/estudiolivre/bLeftInac.png" />
       {tooltip name="home-fitrar-audio" text="Filtrar arquivos de áudio"}<li id="listFilterBut0" class="buttonInactive" onClick="toggleFilter(this, 0, 'Audio')">
-	  áudio
+	  <a>áudio</a>
       </li>{/tooltip}
       
-      <img id="listFilterImg1" alt="" src="styles/estudiolivre/bInac2Inac.png" />
+      <img id="listFilterImg1" alt="" src="styles/estudiolivre/bInac2Inac.png" style="display:none"/>
       {tooltip name="home-filtrar-imagens" text="Filtrar imagens"}<li id="listFilterBut1" class="buttonInactive" onClick="toggleFilter(this, 1, 'Imagem')">
-	  gráfico
+	  <a>gráfico</a>
       </li>{/tooltip}
       
-      <img id="listFilterImg2" alt="" src="styles/estudiolivre/bInac2Inac.png" />
+      <img id="listFilterImg2" alt="" src="styles/estudiolivre/bInac2Inac.png" style="display:none"/>
       {tooltip name="home-filtrar-videos" text="Filtrar arquivos de vídeo"}<li id="listFilterBut2" class="buttonInactive" onClick="toggleFilter(this, 2, 'Video')">
-	  vídeo
+	  <a>vídeo</a>
       </li>{/tooltip}
       
-      <img id="listFilterImg3" alt="" src="styles/estudiolivre/bInac2Inac.png" />
-      {tooltip name="home-filtrar-textos" text="Filtrar textos"}<li id="listFilterBut3" class="buttonInactive" onClick="toggleFilter(this, 3, 'Texto')">
-	  texto
+      <img id="listFilterImg3" alt="" src="styles/estudiolivre/bInac2Inac.png" style="display:none"/>
+      {tooltip name="home-filtrar-textos" text="Filtrar textos"}<li id="listFilterBut3" style="border-right:0px solid gray;" class="buttonInactive buttonInactiveRight" onClick="toggleFilter(this, 3, 'Texto')">
+	  <a>texto</a>
       </li>{/tooltip}
       
       <img id="listFilterImg4" alt="" src="styles/estudiolivre/bRightInac.png" />
