@@ -17,7 +17,7 @@ function wikiplugin_acervotag($data, $params) {
     
     foreach ($objects['data'] as $object) {
 	$arquivo = $elgallib->get_arquivo($object['itemId']);
-	$arquivo['commentsCount'] = $commentslib->count_comments('arquivo:' . $id);
+	$arquivo['commentsCount'] = $commentslib->count_comments('arquivo:' . $object['itemId']);
 	$arquivo['tags'] = $freetaglib->get_tags_on_object($object['itemId'], 'gallery');
 	$arquivo['descricaoLicenca'] = $arquivo['licenca']['descricao'];
 	$arquivo['linkImagem'] = $arquivo['licenca']['linkImagem'];
