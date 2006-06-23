@@ -479,13 +479,26 @@ h1 .flipper {
 	margin: 15px 0 15px 0;
 }
 
-.searchResultItemLink {
-	font-size:14px;
-	color:grey;
+.searchResultItem {
+	position:relative;
+	font-size:12px;
+	height:100%;
+	margin: 5px 5px 5px 5px;
+	/*border-top: 1px solid #eaeaea;
+	border-left: 1px solid #eaeaea;
+	border-right: 1px solid #eaeaea;
+	border-bottom: 1px solid #eaeaea;*/
+	padding: 5px 5px 0px 5px;
 }
 
-.searchResultItemLink:hover {
+.searchResultItem .searchdesc {
+	margin-left:10px;
+}
 
+.searchResultItemLink {
+	font-size:14px;
+	font-weight:bold;
+	color:grey;
 }
 
 #searchResults .searchdesc {
@@ -719,17 +732,17 @@ p.editdate {
 	float:left;
 }
 
-#listFiltersButtons {
+.listFiltersButtons {
 	list-style-type:none;
 	display:inline;
 	font-size:12px;
 }
 
-#listFiltersButtons li {
+.listFiltersButtons li {
 	float:left;
 }
 
-#listFiltersButtons img {
+.listFiltersButtons img {
 	 float:left
 }
 
@@ -737,14 +750,28 @@ p.editdate {
 	float:left;
 	height:20px;
 	background-image:url(estudiolivre/bMidActive.png);
-	cursor: pointer;	
+	cursor: pointer;
+	padding: 0px 4px 0px 4px;
+	border-right:1px solid #7f7f7f;
 }
 
 .buttonInactive {
 	float:left;
 	height:20px;
 	background-image:url(estudiolivre/bMidInac.png);
-	cursor: pointer;	
+	cursor: pointer;
+	padding: 0px 4px 0px 4px;
+	border-right:1px solid gray;
+}
+
+.buttonInactiveRight {
+	border-right:0px solid gray;
+}
+
+.listFiltersButtons A {
+	position:relative;
+	top:2px;
+	color:black;
 }
 
 #rightContainerTop {
@@ -1894,5 +1921,28 @@ td.forumName {
 	background-color:#f1f1f1;
 	font-size:12px;
 }
+
+/* Browse FreeTags */
+
+#browseFreeTags H2 {
+	font-size:12px;
+	font-weight:normal;
+}
+
+#currentTag2 {
+	font-size:16px;
+	font-weight:bold;
+	text-transform: uppercase;
+}
+
+#freeTagsPagination {
+	border-bottom:1px solid gray;
+	padding-bottom:3px;
+	
+	text-align:right;
+	font-size:12px;
+	font-weight:bold;
+}
+
 
 /* footer */
