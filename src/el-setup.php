@@ -13,6 +13,8 @@ if ($feature_tooltip == 'y') {
 	require_once("el-tooltip_ajax.php");	
 }
 
+require_once("el-gallery_stream_ajax.php");
+
 require_once("el-breadcrumbs.php");
 
 
