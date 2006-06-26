@@ -5,18 +5,32 @@
 
 <!-- Feature Wiki Begin -->
 <div id="gHomeWiki" {if $tiki_p_edit eq 'y'} ondblclick="location.href='tiki-editpage.php?page=destak'"{/if}>
-	<span id="gHomeWikiTitle">Destaques
-		{tooltip name="home-flip-destaques" text="Alternar a visualização dos destaques"}<a onclick="javascript:flip('gHomeWikiToggle');return false;" href="#">
-			<img onclick="this.toggleImage('iGreenArrowLeft.png');" src="styles/estudiolivre/sortArrowDown.png">
-		</a>{/tooltip}
+	<span id="gHomeWikiTitle">
+		{tooltip name="home-flip-destaques" text="Alternar a visualização dos destaques"}
+			<a onclick="javascript:flip('gHomeWikiToggle');return false;" href="#">
+				<img onclick="this.toggleImage('iGreenArrowLeft.png');" src="styles/estudiolivre/sortArrowDown.png">
+			</a>
+		{/tooltip}
 	</span>
-	<div id="gHomeWikiToggle" style="display:block">
+	<div id="gHomeWikiToggle" style="display:block;">
 		{$destak}
+	</div>
+	
+	<div id="gHomeWikiBottom">
+		{tooltip text="<i>Feed</i> &nbsp;<b>RSS</b> do acervo.livre"}
+			<a href="http://teste.estudiolivre.org/el-gallery_rss.php?ver=2">
+				<up style="position:relative; top:-4px;">Assinar RSS do acervo</up> <img src="styles/estudiolivre/iRss.png">
+			</a>
+		{/tooltip}
 	</div>
 </div>
 <!-- Feature Wiki End -->
 	
-	{include file="el-gallery_list_filters.tpl"}
+	{if $isIE}
+		{include file="ie_el-gallery_list_filters.tpl"}
+	{else}
+		{include file="el-gallery_list_filters.tpl"}
+	{/if}
 
 <div id="gListCont">
 	{include file="el-gallery_section.tpl"}

@@ -4,7 +4,7 @@
 <!-- Filters Begin -->
 	<div id="listFilters">
 
-		<ul class="listFiltersButtons">
+		<ul class="listFiltersButtons" style="position:relative">
 			
 			<img id="listFilterImg0" alt="" src="styles/estudiolivre/bLeftInac.png" />
 			{tooltip name="home-fitrar-audio" text="Filtrar arquivos de áudio"}
@@ -29,18 +29,16 @@
 
 			<img id="listFilterImg3" alt="" src="styles/estudiolivre/bInac2Inac.png" style="display:none"/>
 			{tooltip name="home-filtrar-textos" text="Filtrar textos"}
-				<li id="listFilterBut3" style="border-right:0px solid gray;" class="buttonInactive buttonInactiveRight" onClick="toggleFilter(this, 3, 'Texto')">
+				<li id="listFilterBut3" class="buttonInactive" onClick="toggleFilter(this, 3, 'Texto')">
 					<a>texto</a>
 				</li>
 			{/tooltip}
-
-			<img id="listFilterImg4" alt="" src="styles/estudiolivre/bRightInac.png" />
-
+			<img id="listFilterImg4" alt="" src="styles/estudiolivre/bRightInac.png" style="position:absolute;"/>
 		</ul>
+
 	</div>
 <!-- Filters End -->
 
-  
   <div id="rightContainerTop">
     <div id="listOrder">
       {tooltip name="home-crescente-decrescente" text="Define ordenação crescente ou decrescente"}<img alt="" onClick="toggleSortArrow(this,'{if $sortDirection eq 'Up'}sortArrowDown.png{else}sortArrowUp.png{/if}')" 

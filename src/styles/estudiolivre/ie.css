@@ -37,3 +37,8 @@ DIV#uLoginBox input.uText {
 	margin-bottom:2px;
 	display:block
 }
+
+#listFilters LI {
+	position:relative;
+	left:-5px;
+}

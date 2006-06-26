@@ -5,17 +5,18 @@
 html {
 	background-image:url(estudiolivre/bgGradientBlue.png);
 	background-repeat:repeat-x;
-	height:100%;	
+	/*height:99.3%;*/
+	height:100%;
 }
 
 body {
 	min-height:100%;
-
 	margin: 0;
+	
 	padding: 0px 10px 5px 10px;
 	font-family: arial,verdana,helvetica,lucida,sans-serif; /*BitStream Vera Sans, Verdana;*/
 	font-size:12px;
-
+	
 	background-image:url(estudiolivre/bgShadow.png);
 	background-repeat:repeat-y;
 	background-position: center;
@@ -819,6 +820,11 @@ p.editdate {
 #gHomeWikiTitle {
 	margin-top:3px;
 	float:right;	
+}
+
+#gHomeWikiBottom {
+	text-align:right;
+	clear:both;
 }
 
 #gListCont {
