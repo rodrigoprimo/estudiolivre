@@ -1,6 +1,6 @@
 --- ../estudiolivre_base/lib/tikilib.php	2006-04-29 11:56:19.000000000 -0300
-+++ lib/tikilib.php	2006-06-26 19:59:46.000000000 -0300
-@@ -4488,5 +4489,8 @@
++++ lib/tikilib.php	2006-06-26 20:04:18.000000000 -0300
+@@ -4488,6 +4489,8 @@
  	// This section matches [...].
  	// Added handling for [[foo] sections.  -rlpowell
  	if (!$simple_wiki) {
@@ -9,10 +9,10 @@
  		preg_match_all("/(?<!\[)\[([^\[][^\]]+)\]/", $data, $noparseurl);
  
  		foreach (array_unique($noparseurl[1])as $np) {
-@@ -5540,7 +5544,41 @@
- 
+@@ -5541,6 +5545,41 @@
  	return $data;
      }
+ 
 +		    
 +    function getWikiTemplate(&$data) {
 +	global $templateStack;      
@@ -50,3 +50,4 @@
 +    
      function parse_smileys($data) {
  	global $feature_smileys;
+ 
