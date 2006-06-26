@@ -838,11 +838,6 @@ p.editdate {
 	overflow:hidden;
 }
 
-#gListItem * {
-	/*border:1px solid black;*/
-}
-
-
 #gLicenseThumbContainer {
 	float:left;
 }
@@ -901,7 +896,13 @@ p.editdate {
 }
 
 #gName, #gAuthor {
+	padding-left:5px;
 	text-align:right;
+}
+
+#gName A {
+	font-weight:bold;
+	font-size:13px;
 }
 
 #gAuthor A {
@@ -1139,7 +1140,9 @@ DIV.gUpForm {
 	position:absolute;
 	top: 0px;
 	left: 20px;
-	opacity:0;
+	filter:alpha(opacity=0);
+	-moz-opacity:0.0;
+	opacity:0.0;
 	z-index:10;
 	clip: rect( 0px, 225px, 30px,170px);
 }
@@ -1286,7 +1289,9 @@ A.gUpButtonHover {
 	top: 2px;
 	clip: rect(0px, 255px, 62px, 175px);
 	z-index: 20;
-	opacity: 0;
+	filter:alpha(opacity=0);
+	-moz-opacity:0.0;
+	opacity:0.0;
 	cursor:pointer;
 }
 
@@ -1302,7 +1307,9 @@ A.gUpButtonHover {
 	top: -90px;
 	clip: rect(0px, 255px, 90px, 165px);
 	z-index: 20;
-	opacity: 0;
+	filter:alpha(opacity=0);
+	-moz-opacity:0.0;
+	opacity:0.0;
 }
 
 .gUserThumbFormButton {
@@ -1460,7 +1467,9 @@ A.gUpmore {
 	top: 0px;
 	clip: rect(0px, 255px, 100px, 165px);
 	z-index: 25;
-	opacity: 0;
+	filter:alpha(opacity=0);
+	-moz-opacity:0.0;
+	opacity:0.0;
 }
 
 #aThumbFormButton {
@@ -1526,13 +1535,13 @@ A.gUpmore {
 	float:right;
 	filter:alpha(opacity=40);
 	-moz-opacity:.40;
-	opacity:.40;	
+	opacity:.40;
 }
 
 #aDelete:hover {
 	filter:alpha(opacity=100);
 	-moz-opacity:1;
-	opacity:;			
+	opacity:1;			
 }
 
 #aAuthorDate {
