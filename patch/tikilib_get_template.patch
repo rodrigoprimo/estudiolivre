@@ -1,6 +1,6 @@
 --- ../estudiolivre_base/lib/tikilib.php	2006-04-29 11:56:19.000000000 -0300
-+++ lib/tikilib.php	2006-06-26 19:47:16.000000000 -0300
-@@ -4488,6 +4489,8 @@
++++ lib/tikilib.php	2006-06-26 19:59:46.000000000 -0300
+@@ -4488,5 +4489,8 @@
  	// This section matches [...].
  	// Added handling for [[foo] sections.  -rlpowell
  	if (!$simple_wiki) {
@@ -9,44 +9,44 @@
  		preg_match_all("/(?<!\[)\[([^\[][^\]]+)\]/", $data, $noparseurl);
  
  		foreach (array_unique($noparseurl[1])as $np) {
-@@ -5550,6 +5554,40 @@
+@@ -5540,7 +5544,41 @@
  
  	return $data;
      }
 +		    
 +    function getWikiTemplate(&$data) {
-+      global $templateStack;      
-+      $template = array();
-+      $matches = array();
-+      
-+      preg_match_all("/(?s)\{\{(.*?)(?:\|\|(.*?))?\}\}/", $data, $template);
-+
-+      if($template) {      
++	global $templateStack;      
++	$template = array();
++	$matches = array();
 +	
-+	for($j=0; $j<sizeof($template[0]); $j++) {
-+	  
-+	  if(isset($templateStack[$template[1][$j]]) && $templateStack[$template[1][$j]]) {
-+	    global $smarty;
-+	    $smarty->assign('msg', tra("ha!, queria me pegar em um loop infinito ein?"));
-+	    $smarty->display("error.tpl");
-+	    die;
-+	  }
-+   
-+	  $templateStack[$template[1][$j]] = true;
-+	  $info = $this->get_page_info($template[1][$j]);
-+	  $pdata = $this->parse_data($info["data"],$info["is_html"]);
-+	  $templateStack[$template[1][$j]] = false;
-+	  if(isset($template[2][$j])){
-+	    preg_match_all("/(?s)(.+?)\=(.+?)(?:\|\||$)/", $template[2][$j], $matches);
-+	  
-+	    for($i=0; $i<sizeof($matches[0]); $i++){
-+	      $pdata = preg_replace("/" . trim($matches[1][$i]) . "/", trim($matches[2][$i]), $pdata);
++	preg_match_all("/(?s)\{\{(.*?)(?:\|\|(.*?))?\}\}/", $data, $template);
++	
++	if($template) {      
++	    
++	    for($j=0; $j<sizeof($template[0]); $j++) {
++		
++		if(isset($templateStack[$template[1][$j]]) && $templateStack[$template[1][$j]]) {
++		    global $smarty;
++		    $smarty->assign('msg', tra("ha!, queria me pegar em um loop infinito ein?"));
++		    $smarty->display("error.tpl");
++		    die;
++		}
++		
++		$templateStack[$template[1][$j]] = true;
++		$info = $this->get_page_info($template[1][$j]);
++		$pdata = $this->parse_data($info["data"],$info["is_html"]);
++		$templateStack[$template[1][$j]] = false;
++		if(isset($template[2][$j])){
++		    preg_match_all("/(?s)(.+?)\=(.+?)(?:\|\||$)/", $template[2][$j], $matches);
++		    
++		    for($i=0; $i<sizeof($matches[0]); $i++){
++			$pdata = preg_replace("/" . trim($matches[1][$i]) . "/", trim($matches[2][$i]), $pdata);
++		    }
++		}
++		$data = preg_replace("/(?s)\{\{(.*?)\}\}/", trim($pdata), $data, 1);
 +	    }
-+	  }
-+	  $data = preg_replace("/(?s)\{\{(.*?)\}\}/", trim($pdata), $data, 1);
 +	}
-+      }
 +    }
- 
-     function get_pages($data) {
- 	global $page_regex;
++    
+     function parse_smileys($data) {
+ 	global $feature_smileys;
