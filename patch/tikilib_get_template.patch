@@ -1,5 +1,5 @@
 --- ../estudiolivre_base/lib/tikilib.php	2006-04-29 11:56:19.000000000 -0300
-+++ lib/tikilib.php	2006-06-26 19:04:52.000000000 -0300
++++ lib/tikilib.php	2006-06-26 19:47:16.000000000 -0300
 @@ -4488,6 +4489,8 @@
  	// This section matches [...].
  	// Added handling for [[foo] sections.  -rlpowell
@@ -9,7 +9,7 @@
  		preg_match_all("/(?<!\[)\[([^\[][^\]]+)\]/", $data, $noparseurl);
  
  		foreach (array_unique($noparseurl[1])as $np) {
-@@ -5540,6 +5544,40 @@
+@@ -5550,6 +5554,40 @@
  
  	return $data;
      }
@@ -25,7 +25,7 @@
 +	
 +	for($j=0; $j<sizeof($template[0]); $j++) {
 +	  
-+	  if(isset($templateStack[$template[1][$j]])) {
++	  if(isset($templateStack[$template[1][$j]]) && $templateStack[$template[1][$j]]) {
 +	    global $smarty;
 +	    $smarty->assign('msg', tra("ha!, queria me pegar em um loop infinito ein?"));
 +	    $smarty->display("error.tpl");
@@ -48,5 +48,5 @@
 +      }
 +    }
  
-     function parse_smileys($data) {
- 	global $feature_smileys;
+     function get_pages($data) {
+ 	global $page_regex;
