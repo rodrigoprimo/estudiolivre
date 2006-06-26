@@ -1,4 +1,4 @@
-{$menu_info.title}
+<strong>{$menu_info.title}</strong>
 <br/>
 
 <form method="post" action="{$ownurl}">
