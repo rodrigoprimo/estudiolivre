@@ -37,6 +37,7 @@ if (isset($_REQUEST['page'])) {
 	elAddCrumb($_REQUEST['page']);	
 } elseif (isset($_REQUEST['tag'])) {
 	elAddCrumb($_REQUEST['tag']);	
+	$smarty->assign('headtitle', $_REQUEST['tag']);
 }
 
 

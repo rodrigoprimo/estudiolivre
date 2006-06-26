@@ -27,9 +27,9 @@ $ajaxlib->setPermission('editTags', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction("editTags");
 function editTags($tag_string) {
 	
-	global $smarty, $arquivoId, $freetaglib;
-	
-	_tag_arquivo($tag_string);
+	global $smarty, $arquivoId, $elgallib, $freetaglib;
+
+	$elgallib->tag_arquivo($arquivoId, $tag_string);
 	
 	$objResponse = new xajaxResponse();
 	

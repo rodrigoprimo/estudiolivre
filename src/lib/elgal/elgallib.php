@@ -17,7 +17,7 @@ $commentslib = new Comments($dbTiki);
 class ELGalLib extends TikiLib {
 
   var $basic_fields = array("licencaId","titulo","tipo","user","autor","donoCopyright","descricao","produtora","contato","siteRelacionado","rating","thumbnail");
-  var $extension_fields = array("duracao","tipoDoAudio","bpm","sampleRate","bitRate","genero","letra","fichaTecnica","tamanhoImagemX","tamanhoImagemY","temAudio","temCor","idioma","legendas","idiomaLegenda","dpi");
+  var $extension_fields = array("duracao","tipoDoAudio","bpm","sampleRate","bitRate","genero","letra","fichaTecnica","tamanhoImagemX","tamanhoImagemY","temAudio","temCor","idioma","legendas","idiomaLegenda","dpi","tags");
   
   var $licencas = array(0 => array(0 => array(0 => 6,  //Attribution non-comercial no derivatives
 					      1 => 5,  //Attribution non-comercial
@@ -361,13 +361,15 @@ class ELGalLib extends TikiLib {
   	$bindvalsExt = array();
   	
   	foreach ($cache as $field => $value) {
-  		if (in_array($field, $this->basic_fields)) {
+	    if ($field == 'tags') {
+		$this->tag_arquivo($arquivoId, $value);
+	    } elseif (in_array($field, $this->basic_fields)) {
 	    	$query .= " `$field` = ?, ";
-  			$bindvals[] = $value;
-  		} elseif (in_array($field, $this->extension_fields)) {
-  			$queryExt .= " `$field` = ?, ";
-  			$bindvalsExt[] = $value;
-  		}
+		$bindvals[] = $value;
+	    } elseif (in_array($field, $this->extension_fields)) {
+		$queryExt .= " `$field` = ?, ";
+		$bindvalsExt[] = $value;
+	    }
   	}
   	
   	$query .= "`editCache`='' where `arquivoId`=?";
@@ -397,6 +399,21 @@ class ELGalLib extends TikiLib {
 	return true;
   }
   
+  function tag_arquivo($arquivoId, $tag_string) {
+      global $freetaglib, $user;
+
+      if (!is_object($freetaglib)) {
+	  include_once('lib/freetag/freetaglib.php');
+      }
+      
+      $arquivo = $this->get_arquivo($arquivoId);
+      
+      $href = "el-gallery_view.php?arquivoId=$arquivoId";
+      
+      $freetaglib->add_object('gallery', $arquivoId, $arquivo['descricao'], $arquivo['titulo'], $href);	
+      $freetaglib->update_tags($user, $arquivoId, 'gallery', $tag_string);
+  }
+
   function rollback($arquivoId) {
   	return $this->query("update `el_arquivo` set `editCache`='' where `arquivoId`=?",array($arquivoId));
   }

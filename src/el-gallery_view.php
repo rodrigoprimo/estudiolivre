@@ -20,6 +20,12 @@ if (!$arquivoId) {
 
 $arquivo = $elgallib->get_arquivo($arquivoId);
 
+if (!$arquivo || !$arquivo['publicado']) {
+	$smarty->assign('msg',tra('Arquivo inexistente!'));
+	$smarty->display('error.tpl');
+	exit;
+}   
+
 $smarty->assign('headtitle', $arquivo['titulo']);
 elAddCrumb($arquivo['titulo']);
 

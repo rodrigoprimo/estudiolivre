@@ -9,49 +9,27 @@ function save_field($name, $value) {
 	
 	$objResponse = new xajaxResponse();
 
-	if ($name == 'tags') {
-	    _tag_arquivo($value);
+	global $elgallib;
+	
+	$error = $elgallib->edit_field($arquivoId, $name, $value);
+	
+	if($error) {
+	    $objResponse->addScriptCall('exibeErro', $name, $error);
 	} else {
-	    global $elgallib;
+	    $l = strlen($value);
 	    
-	    $error = $elgallib->edit_field($arquivoId, $name, $value);
+	    // TODO: avisar usuario
+	    $value = strip_tags($value);
 	    
-	    if($error) {
-			$objResponse->addScriptCall('exibeErro', $name, $error);
-	    } else {
-		$l = strlen($value);
-
-		// TODO: avisar usuario
-		$value = strip_tags($value);
-		
-	    	// TODO: generalizar isso, de acordo com wikiParsed do ajax_textarea
-	    	if ($name == 'descricao' || $name == 'fichaTecnica' || $name == 'letra') {
-	    		$value = $elgallib->parse_data($value);
-		}
-		$objResponse->addScriptCall('exibeCampo', $name, $value);
+	    // TODO: generalizar isso, de acordo com wikiParsed do ajax_textarea
+	    if ($name == 'descricao' || $name == 'fichaTecnica' || $name == 'letra') {
+		$value = $elgallib->parse_data($value);
 	    }
+	    $objResponse->addScriptCall('exibeCampo', $name, $value);
 	}
 	
 	$objResponse->addScriptCall('setWaiting',$name,false);
 	return $objResponse;
-
-}
-
-function _tag_arquivo($tag_string) {
-    global $freetaglib, $elgallib, $arquivoId;
-    if (!is_object($freetaglib)) {
-		include_once('lib/freetag/freetaglib.php');
-    }
-    
-    global $user;
-
-    $arquivo = $elgallib->get_arquivo($arquivoId);
-    
-    $href = "el-gallery_view.php?arquivoId=$arquivoId";
-
-    $freetaglib->add_object('gallery', $arquivoId, $arquivo['descricao'], $arquivo['titulo'], $href);	
-    $freetaglib->update_tags($user, $arquivoId, 'gallery', $tag_string);
-	
 
 }
 
@@ -137,7 +115,7 @@ function restore_edit($arquivoId) {
 	}
 
 	$cache = unserialize($arquivo['editCache']);
-	$cache['tags'] = $tagString;
+	//	$cache['tags'] = $tagString;
 	
 	foreach ($cache as $field => $value) {
   		$objResponse->addScriptCall('restoreField', $field, $value);
