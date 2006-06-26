@@ -95,7 +95,7 @@
 					<div>
 					{section name=rating start=1 loop=6 step=1}
 						{if not $smarty.section.rating.first}{assign var=plural value="s"}{/if}
-						{tooltip text="Clique para mudar o seu voto para <b>"|cat:$smarty.section.rating.index|cat:" estrela"|cat:$plural|cat:"</b>"}
+						{tooltip name="arquivo_vote" text="Clique para mudar o seu voto para <b>"|cat:$smarty.section.rating.index|cat:" estrela"|cat:$plural|cat:"</b>"}
 					    	{if $arquivo.userRating && $arquivo.userRating >= $smarty.section.rating.index}
 				  		    	<img class="pointer" id="aRatingVote-{$smarty.section.rating.index}" src="styles/estudiolivre/iStarOn.png" onClick="acervoVota({$smarty.section.rating.index})"/>
 					    	{else}
