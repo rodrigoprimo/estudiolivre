@@ -10,3 +10,5 @@ insert into users_grouppermissions values ('Anonymous','el_p_view','y');
 insert into users_grouppermissions values ('Anonymous','tiki_p_view_freetags','y');
 insert into users_grouppermissions values ('Registered','tiki_p_freetags_tag','y');
 
+delete from users_grouppermissions where permName = 'tiki_p_vote_poll';
+insert into users_grouppermissions values ('Registered','tiki_p_vote_poll','y');
