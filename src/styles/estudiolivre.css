@@ -5,9 +5,12 @@
 html {
 	background-image:url(estudiolivre/bgGradientBlue.png);
 	background-repeat:repeat-x;
+	height:100%;	
 }
 
 body {
+	min-height:100%;
+
 	margin: 0;
 	padding: 0px 10px 5px 10px;
 	font-family: arial,verdana,helvetica,lucida,sans-serif; /*BitStream Vera Sans, Verdana;*/
