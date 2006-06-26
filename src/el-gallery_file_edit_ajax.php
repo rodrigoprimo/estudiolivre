@@ -93,10 +93,14 @@ function generate_thumb() {
 	global $elgallib, $arquivoId;
 	$objResponse = new xajaxResponse();
 	$thumb = $elgallib->generate_thumb($arquivoId);
-	
+
+	$objResponse->addAssign("thumbnail", "className", 'gUpThumbImg');	
+
 	if ($thumb) {
-		$objResponse->addAssign("thumbnail", "src", 'repo/' . $thumb);
-		$objResponse->addAssign("thumbnail", "className", 'gUpThumbImg');
+	    $objResponse->addAssign("thumbnail", "src", 'repo/' . $thumb);
+	} else {
+	    $arquivo = $elgallib->get_arquivo($arquivoId);
+	    $objResponse->addAssign("thumbnail", "src", 'styles/estudiolivre/iThumb' . $arquivo["tipo"] . '.png');
 	}
 
 	return $objResponse;

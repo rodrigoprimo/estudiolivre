@@ -44,24 +44,25 @@ function exibeCampo(field, value) {
 	var type = editElement.type;
 	var truncated;
 	if (truncations[field] && value.length > truncations[field]) {
-		truncated = value.substring(0, truncations[field]) + '(...)';
+	    truncated = value.substring(0, truncations[field]) + '(...)';
 	} else {
-		truncated = value;
+	    truncated = value;
 	}
 	if (value.length > 0 && type != 'checkbox') {
-		var showElement = document.getElementById("show-" + field);
+	    var showElement = document.getElementById("show-" + field);
 		showElement.style.display = display[field];
 		showElement.innerHTML = truncated; //replace(new RegExp(/\n/g), '<br/>'); - parse_data ja poe br
 		editElement.style.display = "none";
 		saveFieldCache[field] = value;		
 	} else if (type == 'checkbox') {
-		if(value == '1') editElement.checked = 1;
-		else editElement.checked = 0;
-    }
-    
+	    if(value == '1') editElement.checked = 1;
+	    else editElement.checked = 0;
+	}
+	
 	hide('error-' + field);
 	eval('errorMsg_' + field + ' = "";');
 }
+
 
 function showEdit(field) {
     document.getElementById("show-"  + field).style.display = "none";
