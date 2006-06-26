@@ -20,11 +20,13 @@
       <div id="gNameAuthor">
         <div id="gName">
 	 	
-	  {tooltip name="list-clique-pag-arquivo" text="Clique para ir para a página do arquivo"}<a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}">
-	    {$arquivo.titulo}
-	  </a>{/tooltip}
-	 
-	</div>
+	    {tooltip name="list-clique-pag-arquivo" text="Clique para ir para a página do arquivo"}
+	      <a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}">
+	        {$arquivo.titulo}
+	      </a>
+	    {/tooltip}
+	    
+	    </div>
 	
 	<div id="gAuthor">
 	
