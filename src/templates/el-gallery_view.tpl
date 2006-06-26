@@ -173,11 +173,11 @@
 						<input type="hidden" name="comments_title" value="foobar" />
 						<input type="submit" name="comments_postComment" value="enviar" label="enviar" id="uMsgSendSubmit" />
 						{if !$comments_cant}
-							{tooltip text="Seja o primeiro a comentar! Digite aqui o seu comentC!rio e clique em <b>enviar</b>"}
+							{tooltip text="Seja o primeiro a comentar! Digite aqui o seu comentário e clique em <b>enviar</b>"}
 								<input type="text" id="uMsgSendInput" name="comments_data" value="{$comment_data|escape}"/>
 							{/tooltip}
 						{else}
-							{tooltip text="Digite o seu comentC!rio e clique em <b>enviar</b>"}
+							{tooltip text="Digite o seu comentário e clique em <b>enviar</b>"}
 								<input type="text" id="uMsgSendInput" name="comments_data" value="{$comment_data|escape}"/>
 							{/tooltip}
 						{/if}

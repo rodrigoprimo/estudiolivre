@@ -16,7 +16,7 @@ if ($arquivoId && isset($_FILES['thumb']) && !empty($_FILES['thumb']['name'])) {
     preg_match("/(.+)\/.+/", $_FILES["thumb"]["type"], $arq_tipo);
     
     if ($arq_tipo[1] != "image") {
-	error("O arquivo fornecido nC#o C) uma imagem.");
+	error("O arquivo fornecido não é uma imagem.");
 	
     }
 
@@ -34,7 +34,7 @@ if ($arquivoId && isset($_FILES['thumb']) && !empty($_FILES['thumb']['name'])) {
     $maxSize = $tikilib->get_preference('el_max_thumb_size', 200);
 
     if ($_FILES['thumb']["size"] > $maxSize * 1024) {
-	error("O tamanho mC!ximo da miniatura C) de $maxSize kBytes.");
+	error("O tamanho máximo da miniatura é de $maxSize kBytes.");
     }
     
     if (preg_match('/(\..+?)$/', $_FILES["thumb"]["name"], $m)) {
