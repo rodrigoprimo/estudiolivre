@@ -15,7 +15,8 @@ function create_file($tipo, $fileName, $uploadId) {
 	
 	$error = $elgallib->validate_filename($tipo, $fileName);
 	if ($error) {
-		$objResponse->addScript("setUploadError('$error')");
+		$objResponse->addScript("setUploadErrorMsg('$error')");
+		$objResponse->addScript("uploadError = true;");
 		return $objResponse;
 	}
 	

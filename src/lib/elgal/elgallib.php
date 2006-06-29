@@ -191,7 +191,7 @@ class ELGalLib extends TikiLib {
 	  if (!preg_match('/\.([^.]{3,4})/', $filename, $m)) {
 	      return 'Erro: formato de arquivo inválido';
 	  }
-	  if (in_array($m[1], $types[$tipo])) {
+	  if (in_array(strtolower($m[1]), $types[$tipo])) {
 	      return '';
 	  } else {
 	      return "Erro: formato $m[1] não suportado para o tipo $tipo.";
@@ -220,7 +220,7 @@ class ELGalLib extends TikiLib {
       }
       
       if($arqTipo[1] != strtolower($tipo)) {
-	  	return "Você deve fornecer um arquivo do tipo: ".$tipo.", e não do tipo: ".$arqTipo[1];
+	  	return "Atenção: este arquivo não foi validado pelo nosso servidor. É possível que você tenha subido um arquivo do tipo $arqTipo[1] ao invéz do tipo $tipo";
       }
       
       return false;

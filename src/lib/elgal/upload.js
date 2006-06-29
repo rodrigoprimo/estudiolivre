@@ -208,8 +208,7 @@ function restoreForm (id, tipo, arquivo, thumbnail) {
 	restoreEdit(id);
 }
 
-function setUploadError(msg) {
-	uploadError = true;
+function setUploadErrorMsg(msg) {
 	var div=document.getElementById('errorDiv');
 	div.innerHTML = msg;
 	showLightbox('errorDiv');
