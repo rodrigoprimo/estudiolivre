@@ -179,16 +179,24 @@
 		{/if}
       </div>
     </div>
-    {if $allowMsgs}
+    {if $allowMsgs || $permission}
     <div id="uMsgs" class="uMainContainer">
       <div id="uMsgsTitle" class="sectionTitle uMainTitle">
         <a class="uRssCont" href="el-usermsgs_rss.php?user={$userinfo.login}&ver=2"><img src="styles/estudiolivre/iRss.png"></a>
         <img class="pointer" onclick="javascript:flip('uMsgItems');this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
         &nbsp;
         <h1><a href="#">Recados</a></h1>
+        {if $permission}
+			{tooltip text="Selecione para permitir que outr@s usuári@s mandem mensagens para você"}
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				{ajax_checkbox permission=$permission class="" id="allowMsgs" value=$allowMsgs}
+			{/tooltip}
+		{/if}
       </div>
       <div id="uMsgItems" class="uMainItemContainer" style="display:block">
-      	{include file="el-user_msg.tpl"}
+      	{if $allowMsgs}
+	      	{include file="el-user_msg.tpl"}
+	    {/if}
       </div>
     </div>
     {/if}

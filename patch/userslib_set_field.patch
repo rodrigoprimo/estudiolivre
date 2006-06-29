@@ -9,7 +9,7 @@
 +
 +	global $user;
 +
-+	$aUserPrefs = array('realName','site','local', 'isPublic', 'licencaPadrao');
++	$aUserPrefs = array('realName','site','local', 'isPublic', 'licencaPadrao', 'allowMsgs');
 +	if (in_array($name, $aUserPrefs)) {
 +	    $result = $this->set_user_preference($user, $name, $value);
 +	} else {

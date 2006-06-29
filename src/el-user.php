@@ -143,7 +143,7 @@ $smarty->assign("userPage_exists", $exist);
 $user_style = $tikilib->get_user_preference($view_user,'theme',$site_style);
 $smarty->assign_by_ref('user_style',$user_style);
 
-$allowMsgs = $tikilib->get_user_preference($view_user,'allowMsgs','y');
+$allowMsgs = $tikilib->get_user_preference($view_user,'allowMsgs',1);
 $smarty->assign('allowMsgs',$allowMsgs);
 $realName = $tikilib->get_user_preference($view_user,'realName','');
 $local = $tikilib->get_user_preference($view_user,'local','');

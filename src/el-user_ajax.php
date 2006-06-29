@@ -34,7 +34,7 @@ function save_field($name, $value) {
 
 }
 
-$ajaxlib->setPermission('sendMsg', $user);
+$ajaxlib->setPermission('sendMsg', $user && $tikilib->get_user_preference($view_user,'allowMsgs',1));
 $ajaxlib->registerFunction('sendMsg');
 function sendMsg($subject = '', $body = '', $priority = 3, $cc = '') {
 	
