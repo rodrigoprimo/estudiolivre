@@ -30,26 +30,26 @@
 }
 	
 .lightBoxTopLeft {
-	background-image:url(estudiolivre/lBox_tl.png);
+	background-image:url(../lBox_tl.png);
 }
 .lightBoxTopMid {
-	background-image:url(estudiolivre/lBox_t.png);	
+	background-image:url(../lBox_t.png);	
 	background-repeat:repeat-x;
 }
 .lightBoxTopRight {
-	background-image:url(estudiolivre/lBox_tr.png);
+	background-image:url(../lBox_tr.png);
 }
 
 /**********************/
 /*        MID         */
 /**********************/
 .lightBoxLeft {
-	background-image:url(estudiolivre/lBox_l.png);	
+	background-image:url(../lBox_l.png);	
 	background-repeat:repeat-y;
 }	
 .lightBoxRight {
 	width:41px;
-	background-image:url(estudiolivre/lBox_r.png);	
+	background-image:url(../lBox_r.png);	
 	background-repeat:repeat-y;
 }
 
@@ -61,14 +61,14 @@
 		width:41px;
 }
 .lightBoxBottomLeft {
-	background-image:url(estudiolivre/lBox_lb.png);
+	background-image:url(../lBox_lb.png);
 }
 .lightBoxBottomMid {
-	background-image:url(estudiolivre/lBox_b.png);	
+	background-image:url(../lBox_b.png);	
 	background-repeat:repeat-x;
 }
 .lightBoxBottomRight {
-	background-image:url(estudiolivre/lBox_rb.png);
+	background-image:url(../lBox_rb.png);
 }
 
 /* o resto... */
@@ -82,7 +82,7 @@
 #overlay{
 	position:absolute;
 	top:0; left:0;
-	background-image: url(estudiolivre/overlay.png);
+	background-image: url(../overlay.png);
 	text-align:center;
 	width:100%;
 	z-index:100;

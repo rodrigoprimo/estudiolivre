@@ -49,13 +49,13 @@
 
   {if $category eq "Vídeo"}
 	  {include file="mod-el_menu_video.tpl"}
-	  <link rel="StyleSheet"  href="styles/estudiolivre_video.css" type="text/css" />
+	  <link rel="StyleSheet"  href="styles/estudiolivre_orig/css/estudiolivre_video.css" type="text/css" />
   {elseif $category eq "Áudio"}
   	  {include file="mod-el_menu_audio.tpl"}
-  	  <link rel="StyleSheet"  href="styles/estudiolivre_audio.css" type="text/css" />
+  	  <link rel="StyleSheet"  href="styles/estudiolivre_orig/css/estudiolivre_audio.css" type="text/css" />
   {elseif $category eq "Gráfico"}
   	  {include file="mod-el_menu_grafico.tpl"}
-  	  <link rel="StyleSheet"  href="styles/estudiolivre_grafico.css" type="text/css" />
+  	  <link rel="StyleSheet"  href="styles/estudiolivre_orig/css/estudiolivre_grafico.css" type="text/css" />
   {/if}
 
   <div id="tiki-coluna-direita">

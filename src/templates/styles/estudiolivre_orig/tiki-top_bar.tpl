@@ -3,10 +3,10 @@
   <!--<img id="delme-later" src="styles/estudiolivre_orig/delme-later.gif">-->
 
   <div id="links-dinamicos">
-    <a href="tiki-index.php?page=O+que+é"><img id="oqeh" src="styles/estudiolivre_orig/oqeh.png"></a><br/>
+    <a href="tiki-index.php?page=sobre"><img id="oqeh" src="styles/estudiolivre_orig/oqeh.png"></a><br/>
     <a href="tiki-forums.php"><img id="conversando" src="styles/estudiolivre_orig/conversando.png"></a><br/>
     <a href="tiki-list_users.php"><img id="pessoas" src="styles/estudiolivre_orig/pessoas.png"></a><br/>
-    <a href="tiki-list_faqs.php"><img id="faq" src="styles/estudiolivre_orig/perg_freq.png"></a><br/>
+    <a href="tiki-index.php?page=faq"><img id="faq" src="styles/estudiolivre_orig/perg_freq.png"></a><br/>
   </div>
 
   <div id="links">
