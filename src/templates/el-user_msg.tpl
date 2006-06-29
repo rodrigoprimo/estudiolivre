@@ -15,7 +15,7 @@
         </div>
 	</div>
 {foreachelse}
-Seja o primeiro a enviar uma mensagem para esse usuário!<br/>
+Seja @ primeir@ a enviar uma mensagem para esse(a) usuári@!<br/>
 {/foreach}
 
 <div id="uMsgSend">
