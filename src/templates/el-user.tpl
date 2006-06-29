@@ -109,9 +109,9 @@
 	    		    </span>
 	        {else}
 		        {if $licenca}
-			    	   	{tooltip text="Licença padrão desse usuário: "|cat:$licenca.descricao}<img id="uLicence" src="styles/estudiolivre/h_{$licenca.linkImagem}"/>{/tooltip}
+			    	   	{tooltip text="Licença padrão desse(a) usuári@: "|cat:$licenca.descricao}<img id="uLicence" src="styles/estudiolivre/h_{$licenca.linkImagem}"/>{/tooltip}
 		    	{else}
-		        	(Usuário sem Licença Padrão)
+		        	(Usuári@ sem Licença Padrão)
 		        {/if}
 		    {/if}
         	</span>
@@ -139,7 +139,7 @@
 	  	{if $permission}
 		  	<p> Você ainda não possui arquivos no acervo livre. <a href="el-gallery_upload.php">Compartilhe</a> sua obra!</p>
 	  	{else}
-	  		<p> Esse usuário ainda não possui arquivos no acervo livre.</p>
+	  		<p> Esse(a) usuári@ ainda não possui arquivos no acervo livre.</p>
 	  	{/if}
 	  {/if}
       </div>
@@ -174,7 +174,7 @@
 		  	{if $permission}
 			  	<p> Você ainda não possui blogs. <a href="tiki-edit_blog.php">Crie</a> um blog ou veja a <a href="tiki-list_blogs.php">lista</a> dos existentes.</p>
 		  	{else}
-		  		<p> Esse usuário ainda não possui posts em blogs.</p>
+		  		<p> Esse(a) usuári@ ainda não possui posts em blogs.</p>
 			{/if}
 		{/if}
       </div>
@@ -216,7 +216,7 @@
 	      	{if $permission}
 	      		<p> Você ainda não tem uma página wiki pessoal. <a href="tiki-editpage.php?page={$pageName}">Crie</a> seu wiki!</p>
 	      	{else}
-	      		<p> Esse usuário ainda não possui uma página wiki pessoal </p>
+	      		<p> Esse(a) usuári@ ainda não possui uma página wiki pessoal </p>
 	      	{/if}
 	      {/if}
         </div>

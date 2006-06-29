@@ -178,7 +178,7 @@
     <div id="moduleWhoIsThere">
     {if sizeof($online_users) > 1}
       <img class="pointer" onclick="javascript:flip('moduleWhoIsThereMore');this.toggleImage('iArrowGreyDown.png')" src="styles/estudiolivre/iArrowGreyRight.png">
-      Usuários Online
+      Usuári@s Online
       <div id='moduleWhoIsThereMore' style="display:none;">
 		{foreach from=$online_users item='onlineUser'}
 		  {if $onlineUser.user neq $user}
@@ -187,7 +187,7 @@
 		{/foreach}
       </div>
     {else}
-    	Não há usuários online
+    	Não há usuári@s online
     {/if}
     </div>
     

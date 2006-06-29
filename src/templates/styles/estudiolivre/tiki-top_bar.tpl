@@ -21,7 +21,7 @@
       <ul class="searchOptions">
         <li id="busca-wiki" class="">{tooltip name="buscar-somente" text="Buscar somente nas páginas <b>wiki</b>"}<a onclick="marcaBusca('wiki')">wiki</a>{/tooltip}</li>
         <li id="busca-gallery" class="">{tooltip name="buscar-acervo" text="Buscar no <b>acervo</b> do EstúdioLivre"}<a onclick="marcaBusca('gallery')">acervo</a>{/tooltip}</li>
-        <li id="busca-usuarios" class="">{tooltip text="Buscar <b>usuários</b> do EstúdioLivre"}<a onclick="marcaBusca('usuarios')">usu&aacute;rio</a>{/tooltip}</li>
+        <li id="busca-usuarios" class="">{tooltip text="Buscar <b>usuári@s</b> do EstúdioLivre"}<a onclick="marcaBusca('usuarios')">usu&aacute;rio</a>{/tooltip}</li>
 		<li id="busca-tags" class="">{tooltip text="Buscar conteúdos com uma <b>tag</b>"}<a onclick="marcaBusca('tags')">tag</a>{/tooltip}</li>
 		<li id="busca-blogs" class="">{tooltip text="Buscar <b>blogs</b> do EstúdioLivre"}<a onclick="marcaBusca('blogs')">blog</a>{/tooltip}</li>
      {* <li id="busca-forum" class="">{tooltip name="buscar-forum" text="Buscar nos <b>fóruns</b> do EstúdioLivre"}<a onclick="marcaBusca('forum')">f&oacute;rum</a>{/tooltip}</li>
@@ -40,9 +40,9 @@
     | 
   	{tooltip name="forum-discussoes" text="Fóruns de <b>discussões</b> - tire suas dúvidas aqui"}<a href="tiki-forums.php">fóruns</a>{/tooltip}
     | 
-    {tooltip name="lista-comunidade" text="Veja a lista de <b>pessoas</b> que fazem parte da comunidade"}<a href="tiki-list_users.php">usuários</a>{/tooltip}
+    {tooltip name="lista-comunidade" text="Veja a lista de <b>pessoas</b> que fazem parte da comunidade"}<a href="tiki-list_users.php">usuári@s</a>{/tooltip}
     | 
-    {tooltip text="Veja os <b>blogs</b> dos usuários do EstúdioLivre"}<a href="tiki-list_blogs.php">blogs</a>{/tooltip}
+    {tooltip text="Veja os <b>blogs</b> dos usuári@s do EstúdioLivre"}<a href="tiki-list_blogs.php">blogs</a>{/tooltip}
     | 
     {tooltip name="perguntas-frequentes" text="<b>Perguntas</b> mais freqüêntes"}<a href="tiki-index.php?page=faq">faq</a>{/tooltip}
     | 

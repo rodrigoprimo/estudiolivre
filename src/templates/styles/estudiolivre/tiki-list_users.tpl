@@ -1,10 +1,10 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-list_users.tpl,v 1.3 2006-06-19 04:04:27 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-list_users.tpl,v 1.4 2006-06-29 19:54:47 rhwinter Exp $ *}
 <div id="users">
 <h1>
 	{if !$find}
-		{tr}User List{/tr}
+		Lista de usuári@s
 	{else}
-		Busca de usuários	
+		Busca de usuári@s	
 	{/if}
 </h1>
 {*================
@@ -20,7 +20,7 @@
 			{tr}users registered{/tr}
 		{else}
 			resultado{if $cant_users > 1}s{/if} para "{$find}"<br>
-			Veja <a href="tiki-list_users.php">a lista de todos os usuários</a>.
+			Veja <a href="tiki-list_users.php">a lista de todos os usuári@s</a>.
 		{/if}
 </h5>
 
@@ -41,7 +41,7 @@
 <table width="100%">
 	<tr>
 		<td class="heading">
-			{tooltip text="Clique para que a listagem seja por <b>ordem alfabética</b> de nome de usuário"}
+			{tooltip text="Clique para que a listagem seja por <b>ordem alfabética</b> de nome de usuári@"}
 			<a href="tiki-list_users.php?{if $find}find={$find}&amp;{/if}offset={$offset}&amp;sort_mode={if $sort_mode eq 'login_desc'}login_asc{else}login_desc{/if}" class="userlistheading">
 				<img src="styles/estudiolivre/sort{if $sort_mode eq 'login_desc'}ArrowUp{elseif $sort_mode eq 'login_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 			</a>
