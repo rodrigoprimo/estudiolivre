@@ -71,7 +71,7 @@
 				</td>
 			</tr>
 			
-			{cycle values="odd,even" print=false}
+			{cycle values="even,odd" print=false}
 			{section name=changes loop=$lastchanges}
 				<tr class="{cycle}">
 					<td>
@@ -82,11 +82,15 @@
 						{tooltip text="Ação realizada nessa modificação: "|cat:{tr}$lastchanges[changes].action{/tr}}
 							<a href="tiki-index.php?page={$lastchanges[changes].pageName|escape:"url"}" class="tablename">
 								{$lastchanges[changes].pageName|truncate:18:"(...)":true}
-							</a> <br>
+							</a>
 						{/tooltip}
+					
 					{if $lastchanges[changes].version}
-					(<a class="link" href="tiki-pagehistory.php?page={$lastchanges[changes].pageName|escape:"url"}">{tr}hist{/tr}</a> {tr}v{/tr}{$lastchanges[changes].version}</span>)
-					&nbsp;<a class="link" href="tiki-pagehistory.php?page={$lastchanges[changes].pageName|escape:"url"}&amp;preview={$lastchanges[changes].version}"
+					<div style="text-align:right">
+					{tooltip text="A versão atual dessa página é <b>"|cat:$lastchanges[changes].version|cat:"</b>"}<a class="link" href="tiki-pagehistory.php?page={$lastchanges[changes].pageName|escape:"url"}">
+					h</a>{/tooltip}&nbsp;
+					
+					<a class="link" href="tiki-pagehistory.php?page={$lastchanges[changes].pageName|escape:"url"}&amp;preview={$lastchanges[changes].version}"
 					 title="{tr}view{/tr}">v</a>&nbsp;
 
 					{if $tiki_p_rollback eq 'y'}
@@ -99,11 +103,13 @@
 					d</a>&nbsp;
 					<a class="link" href="tiki-pagehistory.php?page={$lastchanges[changes].pageName|escape:"url"}&amp;source={$lastchanges[changes].version}" title="{tr}source{/tr}">
 					s</a>
-	
+					</div>
 					{elseif $lastchanges[changes].versionlast}
-						(<a class="link" href="tiki-pagehistory.php?page={$lastchanges[changes].pageName|escape:"url"}">{tr}hist{/tr}</a>)
+						<div style="text-align:right;margin-right:5em">
+						{tooltip text="A versão atual dessa página é <b>"|cat:$lastchanges[changes].version|cat:"</b>"}<a class="link" href="tiki-pagehistory.php?page={$lastchanges[changes].pageName|escape:"url"}">
+						h</a>{/tooltip}
+						</div>
 					{/if}
-					
 					</td>
 					<td>
 						{$lastchanges[changes].user}
