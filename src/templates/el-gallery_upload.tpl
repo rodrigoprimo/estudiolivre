@@ -36,7 +36,7 @@
 
       <div class="gUpListItem gUpSelected">
         
-        <a href="#" onclick="upload();" class="gUpListEdit"><img src="styles/estudiolivre/iSelect.png"></a>
+        <img class="gUpListEdit" src="styles/estudiolivre/iSelect.png">
     	<div id="gUpBackground" class="gUpListItemField">
     	  <div id="gUpFileName"></div>
     	  <div id="gUpPercentContainer" class="gUpPercent"><span id="gUpPercent"></span></div>

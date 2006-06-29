@@ -140,7 +140,7 @@ $exist = $tikilib->page_exists($userPage);
 $smarty->assign("userPage_exists", $exist);
 ********************************/
 
-$user_style = $tikilib->get_user_preference($view_user,'theme',$site_style);
+$user_style = $tikilib->get_user_preference($view_user, 'theme', 'estudiolivre.css');
 $smarty->assign_by_ref('user_style',$user_style);
 
 $allowMsgs = $tikilib->get_user_preference($view_user,'allowMsgs',1);
