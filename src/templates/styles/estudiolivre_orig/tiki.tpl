@@ -1,3 +1,5 @@
+<script type="text/javascript" src="lib/js/toggleImage.js"></script>
+
 {include file="header.tpl"}
 {* Index we display a wiki page here *}
 {*if $feature_bidi eq 'y'}

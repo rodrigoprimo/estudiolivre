@@ -5,7 +5,7 @@
  				if (($listate == '+' || $listate == '-') && !($litype == '*' && !strstr(current($listbeg), '</ul>') || $litype == '#' && !strstr(current($listbeg), '</ol>'))) {
  				    $thisid = 'id' . microtime() * 1000000;
 -				    $data .= '<br /><a id="flipper' . $thisid . '" class="link" href="javascript:flipWithSign(\'' . $thisid . '\')">[' . ($listate == '-' ? '+' : '-') . ']</a>';
-+				    $data .= '<br /><a class="flipper" id="flipper' . $thisid . '" class="link" href="javascript:flipWithSign(\'' . $thisid . '\')">[' . ($listate == '-' ? '+' : '-') . ']</a>';
++				    $data .= '<br /><img class="flipper" id="flipper' . $thisid . '" class="pointer" onclick="flip(\'' . $thisid . '\');this.toggleImage(\'iArrowGrey' . ($listate == '-' ? 'Down' : 'Right') . '.png\')" src="styles/estudiolivre/iArrowGrey' . ($listate == '-' ? 'Right' : 'Down') . '.png">';
  				    $listyle = ' id="' . $thisid . '" style="display:' . ($listate == '+' ? 'block' : 'none') . ';"';
  				    $addremove = 1;
  				}
@@ -14,7 +14,7 @@
  			if (($listate == '+' || $listate == '-')) {
  			    $thisid = 'id' . microtime() * 1000000;
 -			    $data .= '<br /><a id="flipper' . $thisid . '" class="link" href="javascript:flipWithSign(\'' . $thisid . '\')">[' . ($listate == '-' ? '+' : '-') . ']</a>';
-+			    $data .= '<br /><a class="flipper" id="flipper' . $thisid . '" class="link" href="javascript:flipWithSign(\'' . $thisid . '\')">[' . ($listate == '-' ? '+' : '-') . ']</a>';
++			    $data .= '<br /><img class="flipper" id="flipper' . $thisid . '" class="pointer" onclick="flip(\'' . $thisid . '\');this.toggleImage(\'iArrowGrey' . ($listate == '-' ? 'Down' : 'Right') . '.png\')" src="styles/estudiolivre/iArrowGrey' . ($listate == '-' ? 'Right' : 'Down') . '.png">';
  			    $listyle = ' id="' . $thisid . '" style="display:' . ($listate == '+' ? 'block' : 'none') . ';"';
  			    $addremove = 1;
  			}
@@ -31,7 +31,7 @@
  			    // OK. Must insert flipper after HEADER, and then open new div...
  			    $thisid = 'id' . microtime() * 1000000;
 -			    $aclose = '<a id="flipper' . $thisid . '" class="link" href="javascript:flipWithSign(\'' . $thisid . '\')">[' . ($divstate == '-' ? '+' : '-') . ']</a>';
-+			    $aopen = '<a class="flipper" id="flipper' . $thisid . '" class="link" href="javascript:flipWithSign(\'' . $thisid . '\')">[' . ($divstate == '-' ? '+' : '-') . ']</a>';
++			    $aopen = '<img class="flipper" id="flipper' . $thisid . '" class="pointer" onclick="flip(\'' . $thisid . '\');this.toggleImage(\'iArrowGrey' . ($divstate == '-' ? 'Down' : 'Right') . '.png\')" src="styles/estudiolivre/iArrowGrey' . ($divstate == '-' ? 'Right' : 'Down') . '.png">';
  			    $aclose .= '<div id="' . $thisid . '" style="display:' . ($divstate == '+' ? 'block' : 'none') . ';">';
  			    array_unshift($divdepth, $hdrlevel);
  			    $addremove = 1;
