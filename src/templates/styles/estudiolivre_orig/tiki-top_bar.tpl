@@ -13,7 +13,7 @@
     <a href="tiki-index.php?page=Gráfico"><img src="styles/estudiolivre_orig/logo_grafi_p.png"></a><br/>
     <a href="tiki-index.php?page=Vídeo"><img src="styles/estudiolivre_orig/logo_video_p.png"></a><br/>
     <a href="tiki-index.php?page=Áudio"><img src="styles/estudiolivre_orig/logo_audio_p.png"></a><br/>
-    <a href="tiki-index.php?page=galerias+de+arquivos+livres"><img src="styles/estudiolivre_orig/logo_acervo_livre_p.png"></a><br/>
+    <a href="el-gallery_home.php"><img src="styles/estudiolivre_orig/logo_acervo_livre_p.png"></a><br/>
     <a href="http://xango.metareciclagem.org"><img src="styles/estudiolivre_orig/logo_metarec_p.png"></a><br/>
   </div>
 </div>
