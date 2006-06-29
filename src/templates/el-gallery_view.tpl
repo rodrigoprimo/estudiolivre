@@ -185,6 +185,9 @@
 					<br /><br /><br />
 				</div>
 				{/if}
+				{if !$user}
+					Faça o login para comentar!
+				{/if}
 			</div>
 		</div>
 		{/if}
