@@ -43,7 +43,7 @@ function exibeCampo(field, value) {
 	var editElement = document.getElementById("input-" + field);
 	var type = editElement.type;
 	var truncated;
-	if (truncations[field] && value.length > truncations[field]) {
+	if (truncations[field] && value.length > (parseInt(truncations[field]) + 4) ) {
 	    truncated = value.substring(0, truncations[field]) + '(...)';
 	} else {
 	    truncated = value;
