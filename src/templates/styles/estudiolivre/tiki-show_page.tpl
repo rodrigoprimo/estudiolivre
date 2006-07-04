@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.14 2006-06-22 15:55:51 nano Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.15 2006-07-04 23:26:46 rhwinter Exp $ *}
 <!--script language="JavaScript" src="lib/js/contextualMenu.js"></script-->
 
 <!-- menu contextual>
@@ -305,7 +305,7 @@
 
 {if $print_page eq 'y'}
   <div class="editdate" align="center"><p>
-    {tr}The original document is available at{/tr} {$urlprefix}tiki-index.php?page={$page|escape:"url"}
+    {tr}The original document is available at{/tr}:<br><b>{$urlprefix}tiki-index.php?page={$page|escape:"url"}</b>
   </p></div>
 {/if}
 
