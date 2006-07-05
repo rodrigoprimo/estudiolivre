@@ -1,6 +1,6 @@
 {include file="header.tpl"}{* This must be included as the first thing in a document to be XML compliant *}
 
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-print.tpl,v 1.2 2006-07-05 23:33:41 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-print.tpl,v 1.3 2006-07-05 23:48:51 rhwinter Exp $ *}
 
 {* Index we display a wiki page here *}
 
@@ -31,6 +31,8 @@ body {
 	width: 100%;
 	border: 0;
 	margin-top:40px;
+	font-size:12pt;
+	line-height:1.5em;
 }
 
 p.editdate {
