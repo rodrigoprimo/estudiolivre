@@ -363,6 +363,10 @@ INPUT.editable {
 /* Wiki Text */
 /* tudo que está dentro do texto wiki em si*/
 
+A.external{
+	background: url(estudiolivre/externalLink.png) center right no-repeat;
+	padding-right: 13px;
+}
 
 #wikitext H1 {
     font-weight: normal;
@@ -385,6 +389,7 @@ INPUT.editable {
 	text-align:justify;
 	text-indent:2em;
 }
+
 
 #wikitext a:link {
 	color: #808080;

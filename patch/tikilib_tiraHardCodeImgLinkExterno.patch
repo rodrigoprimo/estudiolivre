@@ -1,0 +1,20 @@
+--- estudiolivre/lib/tikilib.php	2006-07-05 14:15:50.000000000 -0300
++++ /home/rhwinter/tikilib.php	2006-07-05 19:53:24.000000000 -0300
+@@ -4240,7 +4240,7 @@
+ 		$attrib .= 'target="_blank" ';
+ 	if ($feature_wiki_ext_icon == 'y') {
+ 		$attrib .= 'class="wiki external" ';
+-		$ext_icon = "<img border=\"0\" class=\"externallink\" src=\"img/icons/external_link.gif\" alt=\"external link\" />";
++		$ext_icon = "";
+ 	} else {
+ 		$attrib .= 'class="wiki" ';
+ 		$ext_icon = "";
+@@ -4987,7 +4987,7 @@
+ 	    	global $feature_wiki_ext_icon;
+ 	    	if ($feature_wiki_ext_icon == 'y') {
+ 		    	$class = 'class="wiki external"';
+-		    	$ext_icon = "<img border=\"0\" class=\"externallink\" src=\"img/icons/external_link.gif\" alt=\"external link\" />";
++		    	$ext_icon = "";
+ 	    	}
+ 	    }
+ 
