@@ -130,9 +130,7 @@ function set_arquivo_licenca ($resposta1, $resposta2, $resposta3, $padrao = fals
 	
 }
 
-$ajaxlib->setPermission('publish_arquivo', $userHasPermOnFile && $arquivoId);
-$ajaxlib->registerFunction('publish_arquivo');
-function publish_arquivo($dontShowAgain = false) {
+function _publish_arquivo() {
     global $elgallib, $arquivoId;
     $objResponse = new xajaxResponse();
     
@@ -142,17 +140,12 @@ function publish_arquivo($dontShowAgain = false) {
     	$objResponse->addAlert("Não foi possível publicar o arquivo");
     }
 
-    if ($dontShowAgain) {
-	global $userlib, $user;
-	$userlib->set_user_preference($user, "el_disclaimer_seen", true);
-    }	
-
     return $objResponse;
 }
 
 $ajaxlib->setPermission('check_publish', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('check_publish');
-function check_publish() {
+function check_publish($showDisclaimer = true, $dontShowAgain = false) {
     global $user, $userlib, $elgallib, $arquivoId;
     $objResponse = new xajaxResponse();
 	
@@ -165,8 +158,12 @@ function check_publish() {
     	$objResponse->addAssign("gUpErrorList", "innerHTML", $errorMsgs);
     	$objResponse->addScript("showLightbox('gUpError')");
     } else {
-	if ($userlib->get_user_preference($user, 'el_disclaimer_seen', false)) {
-	    return publish_arquivo();
+	if (!$showDisclaimer || $userlib->get_user_preference($user, 'el_disclaimer_seen', false)) {
+	    if ($dontShowAgain) {
+		global $userlib, $user;
+		$userlib->set_user_preference($user, "el_disclaimer_seen", true);
+	    }
+	    return _publish_arquivo();
 	} else {
 	    $objResponse->addScript("showLightbox('el-publish')");
 	}

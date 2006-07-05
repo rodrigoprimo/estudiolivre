@@ -9,7 +9,7 @@
   
   <p><input type="checkbox" id="disclaimerCheck">Não mostrar este aviso novamente</p>
   <center>
-   <a onClick="xajax_publish_arquivo((document.getElementById('disclaimerCheck').checked ? 1 : 0))">CONCORDO</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <a onClick="xajax_check_publish(0, (document.getElementById('disclaimerCheck').checked ? 1 : 0))">CONCORDO</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    <a onClick="hideLightbox('el-publish')">NÃO CONCORDO</a>
   </center>
 </div>
