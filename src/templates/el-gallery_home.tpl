@@ -8,7 +8,7 @@
 	<span id="gHomeWikiTitle">
 		{tooltip name="home-flip-destaques" text="Alternar a visualização dos destaques"}
 			<a onclick="javascript:flip('gHomeWikiToggle');return false;" href="#">
-				<img onclick="this.toggleImage('iGreenArrowLeft.png');" src="styles/estudiolivre/sortArrowDown.png">
+				<img onclick="toggleImage(this,'iGreenArrowLeft.png');" src="styles/estudiolivre/sortArrowDown.png">
 			</a>
 		{/tooltip}
 	</span>

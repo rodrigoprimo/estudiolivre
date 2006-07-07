@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.8 2006-06-22 10:15:22 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.9 2006-07-07 20:06:59 rhwinter Exp $ *}
 
 {popup_init src="lib/overlib.js"}
 
@@ -23,7 +23,7 @@
 			gerar {if $preview}nova {/if}{tr}preview{/tr}
 		</span>
 		<span id="label" class="wikiEdit">
-			<img class="pointer" onclick="javascript:flip('editCont');javascript:flip('editLabelLine');this.toggleImage('iArrowGreyRight.png');" src="styles/estudiolivre/iArrowGreyDown.png">
+			<img class="pointer" onclick="javascript:flip('editCont');javascript:flip('editLabelLine');toggleImage(this,'iArrowGreyRight.png');" src="styles/estudiolivre/iArrowGreyDown.png">
 			Edição da página <b>{$page|escape|truncate:20:"(...)":true}{if $pageAlias ne ''}&nbsp;({$pageAlias|escape}){/if}</b>
 		</span>
 		<div class="wikiEdit" id="editCont" style="display:block">
@@ -83,7 +83,7 @@
 				
 				<br/>
 				
-				<img class="pointer" onclick="javascript:flip('maisOpcoes');this.toggleImage('iArrowGreyDown.png');" src="styles/estudiolivre/iArrowGreyRight.png">
+				<img class="pointer" onclick="javascript:flip('maisOpcoes');toggleImage(this,'iArrowGreyDown.png');" src="styles/estudiolivre/iArrowGreyRight.png">
 				<b>Mais opções</b>
 				<div id="maisOpcoes" style="display:none">
 					{if $page_ref_id}

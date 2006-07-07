@@ -1,4 +1,4 @@
-<!-- begin freetag.tpl --!>
+<!-- begin freetag.tpl -->
 {if $feature_freetags eq 'y'}
 	<script language="JavaScript">
 		{literal}
@@ -27,5 +27,5 @@
 		{/foreach}
 	</div>
 {/if}
-<!--end freetag.tpl--!>
+<!--end freetag.tpl-->
 {* $feature_freetags eq 'y' *}

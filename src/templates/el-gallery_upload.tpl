@@ -147,7 +147,7 @@
     
     <div id="gUpMoreOptions">
       {tooltip text="Clique para definir outras propriedades do arquivo"}
-      	<a class="gUpmore pointer" id="gUpmoreoptionsLink" onclick="javascript:flip('gUpMoreOptionsContent'); document.getElementById('moreOptionArrow').toggleImage('iArrowGreyDown.png');return false;"> opções <img id="moreOptionArrow" src="styles/estudiolivre/iArrowGreyLeft.png"> </a>{/tooltip}<br/>
+      	<a class="gUpmore pointer" id="gUpmoreoptionsLink" onclick="javascript:flip('gUpMoreOptionsContent'); toggleImage(document.getElementById('moreOptionArrow'),'iArrowGreyDown.png');return false;"> opções <img id="moreOptionArrow" src="styles/estudiolivre/iArrowGreyLeft.png"> </a>{/tooltip}<br/>
       <div style="display:none" id="gUpMoreOptionsContent">
       	{include file="el-gallery_metadata.tpl"}
       </div>

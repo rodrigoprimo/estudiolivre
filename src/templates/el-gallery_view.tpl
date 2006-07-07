@@ -127,8 +127,10 @@
 		<div id="aComments">
 			<div id="aCommentsTitle" class="sectionTitle">
 				<div class="aTitleCont">
-					<img class="pointer" onclick="flip('aCommentsItemsCont'); flip('aCommentSend');this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
-					<h1>Comentários ({$comments_cant})</h1>
+					<span class="hiddenPointer" onclick="flip('aCommentsItemsCont'); flip('aCommentSend');toggleImage(document.getElementById('comTArrow'),'iArrowGreyRight.png')">
+						<img id="comTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
+						<h1>Comentários ({$comments_cant})</h1>
+					</span>
 					<img id="aCommentsRss" src="styles/estudiolivre/iRss.png"/>
 				</div>
 			</div>
@@ -197,8 +199,10 @@
 			<div id="aDesc">
 				<div id="aDescTitle" class="sectionTitle">
 					<div class="aTitleCont aTitleContRight">
-						<img class="pointer" onclick="flip('aDescCont');this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
-						<h1>Descrição</h1>
+						<span class="hiddenPointer" onclick="flip('aDescCont');toggleImage(document.getElementById('desTArrow'),'iArrowGreyRight.png')" >
+							<img id="desTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
+							<h1>Descrição</h1>
+						</span>
 					</div>
 				</div>
 				<div id="aDescCont" class="aItemsCont" style="display:block">
@@ -212,8 +216,10 @@
 			<div id="aInfo">
 				<div id="aInfoTitle" class="sectionTitle">
 					<div class="aTitleCont aTitleContRight">
-						<img class="pointer" onclick="flip('aInfoCont');this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
-						<h1>Detalhes do Arquivo</h1>
+						<span class="hiddenPointer" onclick="flip('aInfoCont');toggleImage(document.getElementById('detTArrow'),'iArrowGreyRight.png')" >
+							<img id="detTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
+							<h1>Detalhes do Arquivo</h1>
+						</span>
 					</div>
 				</div>
 				<div id="aInfoCont" class="aItemsCont" style="display:block">

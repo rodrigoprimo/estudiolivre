@@ -1,20 +1,20 @@
-Image.prototype.setAlternatePath = function (image1) {
-	var imageName = this.src.replace(new RegExp(/^.*(\/|\\)/), '');
-	var path = this.src.replace(imageName, '');
+function setAlternatePath(image, image1) {
+	var imageName = image.src.replace(new RegExp(/^.*(\/|\\)/), '');
+	var path = image.src.replace(imageName, '');
 	// we get the new image
-	this['image1']=path+image1;
+	image['image1']=path+image1;
 	// and add the one already there
-	this['image2']= this.src;
+	image['image2']= image.src;
 }
 
 
-Image.prototype.toggleImage = function (alternatePath){
-	if(!this.image1) {this.setAlternatePath(alternatePath) }
+function toggleImage(image, alternatePath){
+	if(!image.image1) {setAlternatePath(image,alternatePath) }
 	
-	if(this.src == this.image1){
-		this.src=this.image2;
+	if(image.src == image.image1){
+		image.src=image.image2;
 	}else{
-		this.src=this.image1;
+		image.src=image.image1;
 	}
 	this.blur();
 	//alert(this.src);

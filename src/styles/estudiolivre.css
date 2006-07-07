@@ -99,6 +99,11 @@ span.pointer {
 	color:grey;
 }
 
+span.hiddenPointer {
+	cursor: pointer;
+	color:black;
+}
+
 span.pointer:hover {
 	color: black;
 }
@@ -1451,10 +1456,6 @@ A.gUpmore {
 	max-width: 100px;
 }
 
-#gUpMoreOptions * {
-	margin-top:	3px;
-}
-
 #gUpMoreOptionsContent {
 	padding-top:10px;
 }
@@ -1468,6 +1469,7 @@ A.gUpmore {
 	padding-right:5px;
 	float:left;
 	width:94px;
+	text-decoration:underline;
 }
 
 #gUpSave {
@@ -1477,6 +1479,7 @@ A.gUpmore {
 #gUpPending {
 	list-style-type:none;
 }
+
 
 /* ####### Página do Arquivo ####### */
 

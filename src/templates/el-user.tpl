@@ -125,10 +125,12 @@
     <div id="uGallery" class="uMainContainer">
       <div id="uGalleryTitle" class="sectionTitle uMainTitle uSectionsTitle">
 		<a class="uRssCont" href="el-gallery_rss.php?user={$userinfo.login}&ver=2"><img src="styles/estudiolivre/iRss.png"></a>
-        <img class="pointer" onclick="javascript:flip('uGalleryItems');this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
-        &nbsp;
         <h1>
-          <a name="gallery">Galeria pessoal</a>
+           <span class="pointer" onclick="javascript:flip('uGalleryItems');toggleImage(document.getElementById('gTArrow'),'iArrowGreyRight.png')">
+           	<img id="gTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
+        	&nbsp;
+	        Galeria pessoal
+	       </span>
         </h1>
       </div>
       <div id="uGalleryItems" class="uMainItemContainer" style="display:block">
@@ -147,10 +149,12 @@
     <div id="uBlog" class="uMainContainer">
       <div id="uBlogTitle" class="sectionTitle uMainTitle">
         <a class="uRssCont" href="el-userblogs_rss.php?user={$userinfo.login}&ver=2"><img src="styles/estudiolivre/iRss.png"></a>
-      	<img class="pointer" onclick="javascript:flip('uBlogItems');this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
-        &nbsp;
         <h1>
-          <a href="#">Blogs</a>
+          <span class="pointer" onclick="javascript:flip('uBlogItems');toggleImage(document.getElementById('bTArrow'),'iArrowGreyRight.png')" >
+            <img id="bTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
+	        &nbsp;
+          	Blogs
+          </span>
         </h1>
       </div>
       <div id="uBlogItems" class="uMainItemContainer" style="display:block">
@@ -183,9 +187,13 @@
     <div id="uMsgs" class="uMainContainer">
       <div id="uMsgsTitle" class="sectionTitle uMainTitle">
         <a class="uRssCont" href="el-usermsgs_rss.php?user={$userinfo.login}&ver=2"><img src="styles/estudiolivre/iRss.png"></a>
-        <img class="pointer" onclick="javascript:flip('uMsgItems');this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
-        &nbsp;
-        <h1><a href="#">Recados</a></h1>
+        <h1>
+        	<span class="pointer" onclick="javascript:flip('uMsgItems');toggleImage(document.getElementById('rTArrow'),'iArrowGreyRight.png')">
+        	  	<img id="rTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
+		        &nbsp;
+		        Recados
+	        </span>
+        </h1>
         {if $permission}
 			{tooltip text="Selecione para permitir que outr@s usuári@s mandem mensagens para você"}
 				&nbsp;&nbsp;&nbsp;&nbsp;
@@ -203,10 +211,12 @@
     <div id="uWiki" class="uMainContainer">
     	<div id="uWikiTitle" class="sectionTitle uMainTitle">
     		<a class="uRssCont" href="tiki-wiki_rss.php?ver=2"><img src="styles/estudiolivre/iRss.png"></a>
-            <img class="pointer" onclick="javascript:flip('uWikiMid');this.toggleImage('iArrowGreyRight.png')" src="styles/estudiolivre/iArrowGreyDown.png">
-        	&nbsp;
     		<h1>
-    		  <a href="#" title="Wiki de {$userinfo.login}">Wiki</a>
+    		  <span class="pointer" title="Wiki de {$userinfo.login}" onclick="javascript:flip('uWikiMid');toggleImage(document.getElementById('wTArrow'),'iArrowGreyRight.png')" >
+	    	 	<img id="wTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
+    	    	&nbsp;
+    		  	Wiki
+    		  </span>
     		</h1>
     	</div>
     	<div id="uWikiMid" style="display:block">

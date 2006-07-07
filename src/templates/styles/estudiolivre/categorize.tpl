@@ -1,5 +1,5 @@
 {if $feature_categories eq 'y' and (count($categories) gt 0 or $tiki_p_admin_categories eq 'y')}
-	<img class="pointer" onclick="javascript:flip('categorizator');this.toggleImage('iArrowGreyDown.png');" src="styles/estudiolivre/iArrowGreyRight.png">
+	<img class="pointer" onclick="javascript:flip('categorizator');toggleImage(this,'iArrowGreyDown.png');" src="styles/estudiolivre/iArrowGreyRight.png">
 	<b>{tr}Categorize{/tr}</b>
 	  {*
 	  [ <a class="link" href="javascript:show('categorizator');">{tr}show categories{/tr}</a>
@@ -10,7 +10,7 @@
 	  *}
 	<div id="categorizator" style="display:none;">
 		{if $feature_help eq 'y'}
-			<!--div class="simplebox">{tr}Tip: hold down CTRL to select multiple categories{/tr}</div--!>
+			<!--div class="simplebox">{tr}Tip: hold down CTRL to select multiple categories{/tr}</div-->
 		{/if}
 		{if count($categories) gt 0}
 	   		<div style="display:none">
@@ -55,7 +55,7 @@
 	   		</div>
 	   				
 			{if $feature_help eq 'y'}
-			    <!--div class="simplebox">{tr}Tip: uncheck the above checkbox to uncategorize this page/object{/tr}</div--!>
+			    <!--div class="simplebox">{tr}Tip: uncheck the above checkbox to uncategorize this page/object{/tr}</div-->
 			{/if}
 		{else}
 		   	{tr}No categories defined{/tr} <br />

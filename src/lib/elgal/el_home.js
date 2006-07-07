@@ -92,7 +92,7 @@ function setButton(button, position, tipo) {
 
 function toggleSortArrow(img, alternate) {
 
-	img.toggleImage(alternate);
+	toggleImage(img,alternate);
 
 	/*TODO: esse tro?o tb pode ser refatorado -> interface de cookies do estudiolivre! */
 	if (sortDirection == '_desc') {
