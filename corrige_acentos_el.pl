@@ -3,7 +3,7 @@
 use strict;
 use DBI;
 
-my $dbh = DBI->connect("dbi:mysql:estudiolivre_teste:localhost","root")
+my $dbh = DBI->connect("dbi:mysql:estudiolivre:localhost","root")
     or die "cant connect";
 
 our %wordList = ('Á' => [ qw(COMUNIT?RIA ?CUSTICO EST? FORMUL?RIO ?frica ?lbum P?GINA
@@ -14,7 +14,11 @@ our %wordList = ('Á' => [ qw(COMUNIT?RIA ?CUSTICO EST? FORMUL?RIO ?frica ?lbum 
 
 #my ($x) = $dbh->selectrow_array("select data from tiki_pages where pageName='teste'");
 
-my %tables = ('tiki_pages' => [ qw(page_id pageName description data comment) ]);
+my %tables = ('tiki_pages' => [ qw(page_id pageName description data comment) ],
+	      'tiki_categories' => [ qw(name description) ],
+	      'tiki_forums' => [ qw(name description) ],
+	      'tiki_comments' => [ qw(data) ]);
+
 #%tables = ('tiki_pages' => [ qw(page_id pageName) ]);
 
 foreach my $table (keys %tables) {
