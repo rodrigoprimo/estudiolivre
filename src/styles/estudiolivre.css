@@ -835,13 +835,14 @@ p.editdate {
 }
 
 #gListCont {
+	/*height:65px;*/
 	padding-right:10px;
 }
 
 #gListItem {
 	position:relative;
 	font-size:10px;
-	height:100%;
+	height:60px;
 	margin: 5px 5px 5px 5px;
 	border-top: 1px solid #eaeaea;
 	border-left: 1px solid #eaeaea;
@@ -874,11 +875,15 @@ p.editdate {
 	height:51px;
 }
 
-#gTagsInformationContainer, #gInformation, #gNameAuthor, #gDownloadRatings, #gRatingComments  {
+#gTagsInformationContainer, #gInformation, #gNameAuthor, #gDownloadRating, #gRatingComments  {
 	position:relative;
 	float:left;
 }
 
+#gDownloadRating {
+	width:160px;
+}
+	
 .gDownloadCount, .gStreamCount {
 	/*border:1px solid blue;*/
 	position:absolute;
@@ -930,6 +935,7 @@ p.editdate {
 }
 
 #gDownloadPlay {
+	width:50px;
 	margin:5px 0px 0px 0px;
 }
 
