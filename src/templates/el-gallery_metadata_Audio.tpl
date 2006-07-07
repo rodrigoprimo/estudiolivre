@@ -27,11 +27,11 @@
 {/if}
 
 {if $arquivo.letra || (!$arquivo.letra && $permission) }
-<div class="gUpMoreOptionsItem">Letra:</div>
+<div class="gUpMoreOptionsItemSingle"><div class="gUpMoreOptionsName">Letra:</div></div>
 {ajax_textarea permission=$permission value=$arquivo.letra id="letra" default="" display="block" style="width: 235px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" wikiParsed=1}<br/>
 {/if}
 
 {if $arquivo.fichaTecnica || (!$arquivo.fichaTecnica && $permission) }
-<div class="gUpMoreOptionsItem">Ficha Técnica:</div>
+<div class="gUpMoreOptionsItemSingle"><div class="gUpMoreOptionsName">Ficha Técnica:</div></div>
 {ajax_textarea permission=$permission value=$arquivo.fichaTecnica id="fichaTecnica" default="" display="block" style="width: 235px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" wikiParsed=1}<br/>
 {/if}

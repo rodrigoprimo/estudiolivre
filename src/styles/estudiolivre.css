@@ -1471,6 +1471,10 @@ A.gUpmore {
 	height:3em;
 }
 
+.gUpMoreOptionsItemSingle{
+	height:1em;
+}
+
 .gUpMoreOptionsName {
 	text-align:right;
 	padding-right:5px;

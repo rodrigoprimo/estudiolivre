@@ -10,12 +10,16 @@
 <div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">Altura:</div> {ajax_input permission=$permission id="tamanhoImagemY" value=$arquivo.tamanhoImagemY default="" display="inline"} px</div>
 {/if}
 
-{if $arquivo.temAudio || (!$arquivo.temAudio && $permission) }
+{if $permission }
 <div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">{ajax_checkbox permission=$permission id="temAudio" value=$arquivo.temAudio}</div> Tem audio</div>
+{elseif $arquivo.temAudio }
+<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">Tem audio</div></div>
 {/if}
 
-{if $arquivo.temCor || (!$arquivo.temCor && $permission) }
+{if $permission }
 <div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">{ajax_checkbox permission=$permission id="temCor" value=$arquivo.temCor}</div> Tem cor</div>
+{elseif $arquivo.temCor}
+<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">Tem cor</div></div>
 {/if}
 
 {if $arquivo.idioma || (!$arquivo.idioma && $permission) }
@@ -27,11 +31,12 @@
 {/if}
 
 {if $arquivo.idiomaLegenda || (!$arquivo.idiomaLegenda && $permission) }
-<div id="aLegenda" class="gUpMoreOptionsItem" style="display:{if $arquivo.legendas}block{else}none{/if};"><div class="gUpMoreOptionsName">Idioma da Legenda:</div> {ajax_input permission=$permission value=$arquivo.idiomaLegenda id="idiomaLegenda" default="" display="inline"}</div>
+<div id="aLegenda" class="gUpMoreOptionsItem" style="display:{if $arquivo.legendas}block{else}none{/if};">
+<div class="gUpMoreOptionsName">Idioma da Legenda:</div> {ajax_input permission=$permission value=$arquivo.idiomaLegenda id="idiomaLegenda" default="" display="inline"}</div>
 <br/>
 {/if}
 
 {if $arquivo.fichaTecnica || (!$arquivo.fichaTecnica && $permission) }
-<div class="gUpMoreOptionsItem">Ficha Técnica:</div>
+<div class="gUpMoreOptionsItemSingle"><div class="gUpMoreOptionsName">Ficha Técnica:</div></div>
 {ajax_textarea permission=$permission value=$arquivo.fichaTecnica id="fichaTecnica" default="" display="block" style="width: 235px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" wikiParsed=1}
 {/if}
