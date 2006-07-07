@@ -108,7 +108,7 @@
 
 					    <form id="uLoginBox" action="tiki-login.php" method="post">
 					      <input type="hidden" name="redirect" value="el-gallery_upload.php">
-					      <input class="uText" type="text" name="user" id="login-user" size="12" value="usuário" onFocus="this.value=''"/>
+					      <input class="uText" type="text" name="user" id="login-user" size="12" value="usuári@" onFocus="this.value=''"/>
 					      <input class="uText" type="text" name="pass" id="login-pass" size="10" value="senha" onFocus="this.value='';this.type='password'"/>
 					      <input type="image" name="login" src="styles/estudiolivre/iLogin.png" />      
 					      <div id="uLoginOptions">
