@@ -1,5 +1,5 @@
---- estudiolivre/lib/tikilib.php	2006-07-05 14:15:50.000000000 -0300
-+++ /home/rhwinter/tikilib.php	2006-07-05 19:53:24.000000000 -0300
+--- lib/tikilib.php	2006-07-05 14:15:50.000000000 -0300
++++ lib/tikilib.php	2006-07-05 19:53:24.000000000 -0300
 @@ -4240,7 +4240,7 @@
  		$attrib .= 'target="_blank" ';
  	if ($feature_wiki_ext_icon == 'y') {
