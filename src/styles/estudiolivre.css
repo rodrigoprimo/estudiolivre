@@ -465,6 +465,7 @@ tt {
 .flipper{
 	cursor:pointer;
 	margin-left:5px;
+	margin-right:5px;
 	margin-bottom:0.2em;
 	/*font-size:12px;
 	font-weight:normal;
@@ -1030,6 +1031,12 @@ p.editdate {
 	padding-left:20px;	
 }
 
+#moduleLastChangesViewAll {
+	text-align:right;
+}
+#moduleLastChangesViewAll A{
+	text-decoration:underline;
+}
 #moduleWhoIsThereMore {
 	padding-left:20px
 }
