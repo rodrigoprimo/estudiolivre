@@ -124,7 +124,7 @@
     </div>
     <div id="uGallery" class="uMainContainer">
       <div id="uGalleryTitle" class="sectionTitle uMainTitle uSectionsTitle">
-		<a class="uRssCont" href="el-gallery_rss.php?user={$userinfo.login}&ver=2"><img src="styles/estudiolivre/iRss.png"></a>
+		<a name="gallery" class="uRssCont" href="el-gallery_rss.php?user={$userinfo.login}&ver=2"><img src="styles/estudiolivre/iRss.png"></a>
         <h1>
            <span class="pointer" onclick="javascript:flip('uGalleryItems');toggleImage(document.getElementById('gTArrow'),'iArrowGreyRight.png')">
            	<img id="gTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
@@ -148,7 +148,7 @@
     </div>
     <div id="uBlog" class="uMainContainer">
       <div id="uBlogTitle" class="sectionTitle uMainTitle">
-        <a class="uRssCont" href="el-userblogs_rss.php?user={$userinfo.login}&ver=2"><img src="styles/estudiolivre/iRss.png"></a>
+        <a name="messages" class="uRssCont" href="el-userblogs_rss.php?user={$userinfo.login}&ver=2"><img src="styles/estudiolivre/iRss.png"></a>
         <h1>
           <span class="pointer" onclick="javascript:flip('uBlogItems');toggleImage(document.getElementById('bTArrow'),'iArrowGreyRight.png')" >
             <img id="bTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
