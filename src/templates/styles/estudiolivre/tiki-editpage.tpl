@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.10 2006-07-07 22:05:40 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.11 2006-07-07 22:12:55 rhwinter Exp $ *}
 
 {popup_init src="lib/overlib.js"}
 
@@ -22,8 +22,8 @@
 		<span id="labelRight" class="pointer" name="preview" onclick="setPreview();">
 			gerar {if $preview}nova {/if}{tr}preview{/tr}
 		</span>
-		<span id="label" class="wikiEdit">
-			<img class="pointer" onclick="javascript:flip('editCont');javascript:flip('editLabelLine');toggleImage(this,'iArrowGreyRight.png');" src="styles/estudiolivre/iArrowGreyDown.png">
+		<span id="label" class="wikiEdit hiddenPointer" onclick="javascript:flip('editCont');javascript:flip('editLabelLine');toggleImage(document.getElementById('edTArrow'),'iArrowGreyRight.png');">
+			<img id="edTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
 			Edição da página <b>{$page|escape|truncate:20:"(...)":true}{if $pageAlias ne ''}&nbsp;({$pageAlias|escape}){/if}</b>
 		</span>
 		<div class="wikiEdit" id="editCont" style="display:block">

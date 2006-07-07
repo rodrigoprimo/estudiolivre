@@ -1,5 +1,5 @@
 {if $arquivo.duracao || (!$arquivo.duracao && $permission) }
-<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">Duração:</div> {ajax_input permission=$permission value=$arquivo.duracao id="duracao" default="??" display="inline"} s</div>
+<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">Duração:</div> {ajax_input permission=$permission value=$arquivo.duracao id="duracao" default="" display="inline"} s</div>
 {/if}
 
 {if $arquivo.tipoDoAudio || (!$arquivo.tipoDoAudio && $permission) }
@@ -7,15 +7,15 @@
 {/if}
 
 {if $arquivo.bpm || (!$arquivo.bpm && $permission) }
-<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">bpm:</div> {ajax_input permission=$permission value=$arquivo.bpm id="bpm" default="??" display="inline"}</div>
+<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">bpm:</div> {ajax_input permission=$permission value=$arquivo.bpm id="bpm" default="" display="inline"}</div>
 {/if}
 
 {if $arquivo.sampleRate || (!$arquivo.sampleRate && $permission) }
-<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">Sample Rate:</div> {ajax_input permission=$permission value=$arquivo.sampleRate id="sampleRate" default="??" display="inline"} hz</div>
+<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">Sample Rate:</div> {ajax_input permission=$permission value=$arquivo.sampleRate id="sampleRate" default="" display="inline"} hz</div>
 {/if}
 
 {if $arquivo.bitRate || (!$arquivo.bitRate && $permission) }
-<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">Bit Rate:</div> {ajax_input permission=$permission value=$arquivo.bitRate id="bitRate" default="??" display="inline"} bits</div>
+<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">Bit Rate:</div> {ajax_input permission=$permission value=$arquivo.bitRate id="bitRate" default="" display="inline"} bits</div>
 {/if}
 
 {if $arquivo.genero || (!$arquivo.genero && $permission) }

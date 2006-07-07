@@ -1,13 +1,13 @@
 {if $arquivo.duracao || (!$arquivo.duracao && $permission) }
-<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">Duração:</div> {ajax_input permission=$permission value=$arquivo.duracao id="duracao" default="??" display="inline"} s</div>
+<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">Duração:</div> {ajax_input permission=$permission value=$arquivo.duracao id="duracao" default="" display="inline"} s</div>
 {/if}
 
 {if $arquivo.tamanhoImagemX || (!$arquivo.tamanhoImagemX && $permission) }
-<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">Largura:</div> {ajax_input permission=$permission id="tamanhoImagemX" value=$arquivo.tamanhoImagemX default="??" display="inline"} px</div>
+<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">Largura:</div> {ajax_input permission=$permission id="tamanhoImagemX" value=$arquivo.tamanhoImagemX default="" display="inline"} px</div>
 {/if}
 
 {if $arquivo.tamanhoImagemY || (!$arquivo.tamanhoImagemY && $permission) }
-<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">Altura:</div> {ajax_input permission=$permission id="tamanhoImagemY" value=$arquivo.tamanhoImagemY default="??" display="inline"} px</div>
+<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">Altura:</div> {ajax_input permission=$permission id="tamanhoImagemY" value=$arquivo.tamanhoImagemY default="" display="inline"} px</div>
 {/if}
 
 {if $arquivo.temAudio || (!$arquivo.temAudio && $permission) }

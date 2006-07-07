@@ -1,7 +1,7 @@
 <!-- templates/tiki-preview.tpl start -->
 <div id="wikiPreviewCont">
-	<span id="label" class="wikiPreview">
-		<img class="pointer" onclick="javascript:flip('previewCont');javascript:flip('labelLine');this.toggleImage('iArrowGreyRight.png');" src="styles/estudiolivre/iArrowGreyDown.png">
+	<span id="label" class="wikiPreview hiddenPointer" onclick="javascript:flip('previewCont');javascript:flip('labelLine');toggleImage(document.getElementById('pTArrow'),'iArrowGreyRight.png');">
+		<img id="pTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
 		{tr}Preview{/tr} da página <b>{$page}</b>
 	</span>
 
