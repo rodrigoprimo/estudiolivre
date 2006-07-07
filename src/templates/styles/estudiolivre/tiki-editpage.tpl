@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.9 2006-07-07 20:06:59 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.10 2006-07-07 22:05:40 rhwinter Exp $ *}
 
 {popup_init src="lib/overlib.js"}
 
@@ -16,7 +16,7 @@
 	{if $preview}
 			{include file="tiki-preview.tpl"}
 	{/if}
-	
+
 	<div id="wikiEditCont">	
 		
 		<span id="labelRight" class="pointer" name="preview" onclick="setPreview();">

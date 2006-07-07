@@ -10,7 +10,7 @@
 			{$parsed}
 		</div>
 		<!--form  enctype="multipart/form-data" method="post" action="tiki-editpage.php" id="previewpageform">
-			<input type="hidden" name="page" value="{$page|escape}" / !-->
+			<input type="hidden" name="page" value="{$page|escape}" / -->
 			<span id="attention" class="wikiPreview">
 				{tr}Note: Remember that this is only a preview, and has not yet been saved!{/tr}
 				<div id="attentionSave">
@@ -31,7 +31,7 @@
 			</span>
 		<br />
 	</div>
-		<!--/form--!>
+		<!--/form-->
 	{if $has_footnote}
 		<div  class="wikitext">{$parsed_footnote}</div>
 	{/if}
