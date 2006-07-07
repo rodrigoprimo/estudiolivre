@@ -131,7 +131,7 @@
 						<img id="comTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
 						<h1>Comentários ({$comments_cant})</h1>
 					</span>
-					<img id="aCommentsRss" src="styles/estudiolivre/iRss.png"/>
+					<!--img id="aCommentsRss" src="styles/estudiolivre/iRss.png"/-->
 				</div>
 			</div>
 			<div id="aCommentsItemsCont" class="aItemsCont" style="display:block">
