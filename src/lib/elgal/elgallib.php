@@ -525,12 +525,7 @@ class ELGalLib extends TikiLib {
   function save_file($file,$arquivoId,$user) {
     $destination = "repo/";
     $arquivo = $this->get_arquivo($arquivoId);
-    if (isset($arquivo['arquivo']) && file_exists($destination.$arquivo['arquivo'])) {
-    	unlink($destination.$arquivo['arquivo']);
-    }
-    if (isset($arquivo['thumbnail']) && file_exists($destination.$arquivo['thumbnail'])) {
-    	unlink($destination.$arquivo['thumbnail']);
-    }
+    $this->clear_uploaded_file($arquivoId);
         
     
     $query = "update `el_arquivo` set `arquivo`=?,`formato`=?,`tamanho`=?,`data_publicacao`=? where `arquivoId`=?";
@@ -556,6 +551,20 @@ class ELGalLib extends TikiLib {
       // deu pau
       return "impossivel mover o arquivo para: ".$destination;
     }
+  }
+
+  function clear_uploaded_file($arquivoId) {
+      $destination = "repo/";
+      $arquivo = $this->get_arquivo($arquivoId);
+      if (isset($arquivo['arquivo']) && !empty($arquivo['arquivo']) && file_exists($destination.$arquivo['arquivo'])) {
+	  unlink($destination.$arquivo['arquivo']);
+      }
+      if (isset($arquivo['thumbnail']) && !empty($arquivo['thumbnail']) && file_exists($destination.$arquivo['thumbnail'])) {
+	  unlink($destination.$arquivo['thumbnail']);
+      }
+
+      $query = "update `el_arquivo` set `arquivo`=?, `thumbnail`=? where `arquivoId`=?";
+      $this->query($query, array('','',$arquivoId));
   }
 
   function _update_arquivo($dados, $tabela, $id) {
@@ -619,6 +628,10 @@ class ELGalLib extends TikiLib {
   	if (!$arquivo['licencaId']) {
   		$errorList['licenca'] = 'Você deve escolher uma licença';
   	}
+
+	if (!$arquivo['arquivo'] || !file_exists("repo/".$arquivo['arquivo'])) {
+	    $errorList['arquivo'] = 'Você não terminou de enviar o arquivo';
+	}
   	
   	return $errorList;
   	

@@ -41,6 +41,19 @@ function create_file($tipo, $fileName, $uploadId) {
 	return $objResponse;
 }
 
+$ajaxlib->setPermission('clear_uploaded_file', $userHasPermOnFile && $arquivoId);
+$ajaxlib->registerFunction('clear_uploaded_file');
+function clear_uploaded_file() {
+    global $arquivoId, $elgallib;
+
+    $elgallib->clear_uploaded_file($arquivoId);
+
+    $objResponse = new xajaxResponse();
+    $objResponse->addScriptCall('startUpload',$arquivoId);    
+
+    return $objResponse;
+}
+
 $ajaxlib->setPermission('delete_file', $el_p_upload_files == 'y');
 $ajaxlib->registerFunction('delete_file');
 function delete_file($arquivoId) {

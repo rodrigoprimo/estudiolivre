@@ -26,7 +26,7 @@ function upload() {
 	var filename = document.uploadForm.arquivo.value;
 	if (!tipoSelecionado) alert('bug');
 	if (arquivoId) {
-		startUpload(arquivoId);
+	    xajax_clear_uploaded_file();
 	} else {
 		xajax_create_file(tipoSelecionado, filename, uploadId);		
 	}
