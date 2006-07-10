@@ -2,6 +2,7 @@
 
 <script language="JavaScript" src="lib/js/el_array.js"></script>
 <script language="JavaScript" src="lib/elgal/el_home.js"></script>
+<script language="JavaScript" src="lib/js/delete_file.js"></script>
 
 <!-- Feature Wiki Begin -->
 <div id="gHomeWiki" {if $tiki_p_edit eq 'y'} ondblclick="location.href='tiki-editpage.php?page=destak'"{/if}>
@@ -39,5 +40,7 @@
 
 	{* isso não rola por causa do AJAX. mas o nano vai arrumar.*}
 	{* include file="el-gallery_list_filters.tpl" *}
+	
+{include file="el-gallery_confirm_delete.tpl"}
 	
 <!-- el-gallery_home.tpl end -->

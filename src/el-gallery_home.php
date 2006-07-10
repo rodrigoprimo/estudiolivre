@@ -71,6 +71,8 @@ $smarty->assign('lastPage', ceil($total/10));
 $files = $elgallib->list_all_uploads($tipos, 0, 10, $sort_mode, '', $find);
 $smarty->assign_by_ref('arquivos',$files);
 
+$smarty->assign('dontAskDelete', $tikilib->get_user_preference($user, 'el_dont_check_delete', 0));
+
 $smarty->assign('mid', 'el-gallery_home.tpl');
 $smarty->display('tiki.tpl');
 

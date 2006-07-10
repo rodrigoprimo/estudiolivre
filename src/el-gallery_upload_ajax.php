@@ -171,15 +171,15 @@ function check_publish($showDisclaimer = true, $dontShowAgain = false) {
     	$objResponse->addAssign("gUpErrorList", "innerHTML", $errorMsgs);
     	$objResponse->addScript("showLightbox('gUpError')");
     } else {
-	if (!$showDisclaimer || $userlib->get_user_preference($user, 'el_disclaimer_seen', false)) {
-	    if ($dontShowAgain) {
-		global $userlib, $user;
-		$userlib->set_user_preference($user, "el_disclaimer_seen", true);
-	    }
-	    return _publish_arquivo();
-	} else {
-	    $objResponse->addScript("showLightbox('el-publish')");
-	}
+		if (!$showDisclaimer || $userlib->get_user_preference($user, 'el_disclaimer_seen', false)) {
+		    if ($dontShowAgain) {
+				global $userlib, $user;
+				$userlib->set_user_preference($user, "el_disclaimer_seen", true);
+		    }
+		    return _publish_arquivo();
+		} else {
+		    $objResponse->addScript("showLightbox('el-publish')");
+		}
     }
     return $objResponse;    
 }

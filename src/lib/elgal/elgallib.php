@@ -295,8 +295,13 @@ class ELGalLib extends TikiLib {
       }
       
       $dir = "repo/";
-      if ($arquivo['arquivo'] != "") {
+      if ($arquivo['arquivo'] != "" && file_exists($dir.$arquivo['arquivo'])) {
 		  $file = $dir.$arquivo['arquivo'];
+		  unlink($file);
+	  }
+	  
+	  if ($arquivo['thumbnail'] != "" && file_exists($dir.$arquivo['thumbnail'])) {
+		  $file = $dir.$arquivo['thumbnail'];
 		  unlink($file);
 	  }
 	  

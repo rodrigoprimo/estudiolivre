@@ -91,9 +91,9 @@
   
   <div id="gEditDelete">
     {if $arquivo.user eq $user or $el_p_admin_gallery eq "y"}
-      {tooltip name="list-editar-informacoes-arquivo" text="Editar informações do arquivo"}<a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}"><img alt="editar" src="styles/estudiolivre/iEdit.png"></a>{/tooltip}
+      {tooltip name="list-editar-informacoes-arquivo" text="Editar informações do arquivo"}<a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}"><img src="styles/estudiolivre/iEdit.png"></a>{/tooltip}
       <br>
-      {tooltip name="list-apagar-arquivo-acervo" text="Apagar esse arquivo do acervo"}<a href="el-gallery_delete.php?arquivoId={$arquivo.arquivoId}"><img alt="apagar" src="styles/estudiolivre/iDelete.png"></a>{/tooltip}
+      {tooltip name="list-apagar-arquivo-acervo" text="Apagar esse arquivo do acervo"}<img class="pointer" onClick="deleteFile({$arquivo.arquivoId}, {$dontAskDelete}, 0);" src="styles/estudiolivre/iDelete.png">{/tooltip}
     {/if}
   </div>  
 </div>

@@ -5,6 +5,7 @@
 <script language="JavaScript" src="lib/js/edit_field_ajax.js"></script>
 <script language="JavaScript" src="lib/js/file_edit.js"></script>
 <script language="JavaScript" src="lib/js/el-rating.js"></script>
+<script language="JavaScript" src="lib/js/delete_file.js"></script>
 
 <div id="arqCont">
 	<div id="aTopCont">
@@ -75,7 +76,7 @@
 				</div>
 				<div id="aNameAuthor">
 					{if $permission}
-						<a id="aDelete" href="el-gallery_delete.php?arquivoId={$arquivo.arquivoId}">{tooltip name="apagar-arquivo-acervo" text="Apagar esse arquivo"}<img src="styles/estudiolivre/iDelete.png"/>{/tooltip}</a>
+						{tooltip name="apagar-arquivo-acervo" text="Apagar esse arquivo"}<img id="aDelete" class="pointer" onClick="deleteFile({$arquivo.arquivoId}, {$dontAskDelete}, 0);" src="styles/estudiolivre/iDelete.png"/>{/tooltip}
 					{/if}
 					<div id="aName">
 						{if $permission}
@@ -253,5 +254,7 @@
 	showLightbox('lightFileAltered');
 </script>
 {/if}
+
+{include file="el-gallery_confirm_delete.tpl"}
 
 <!-- el-gallery_view.rpl end -->
