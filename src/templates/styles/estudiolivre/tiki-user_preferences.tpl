@@ -2,10 +2,10 @@
 <h1>
 	{if $userwatch ne $user}
 		<a class="pagetitle" href="tiki-user_preferences.php?view_user={$userwatch}">
-			{tr}User Preferences{/tr}: {$userwatch}
+			{tr}Preferências d@ Usuári@{/tr}: {$userwatch}
 		</a>
 	{else}
-		{tr}User Preferences{/tr}
+		{tr}Preferências d@ Usuári@{/tr}
 	{/if}
 </h1>	
 
