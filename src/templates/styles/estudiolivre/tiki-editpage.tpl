@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.11 2006-07-07 22:12:55 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.12 2006-07-11 02:35:12 rhwinter Exp $ *}
 
 {popup_init src="lib/overlib.js"}
 
@@ -83,8 +83,10 @@
 				
 				<br/>
 				
-				<img class="pointer" onclick="javascript:flip('maisOpcoes');toggleImage(this,'iArrowGreyDown.png');" src="styles/estudiolivre/iArrowGreyRight.png">
-				<b>Mais opções</b>
+				<span class="hiddenPointer" onclick="javascript:flip('maisOpcoes');toggleImage(document.getElementById('edtOptTArrow'),'iArrowGreyDown.png');" >
+					<img class="pointer" id="edtOptTArrow" src="styles/estudiolivre/iArrowGreyRight.png">
+					<b>Mais opções</b>
+				</span>
 				<div id="maisOpcoes" style="display:none">
 					{if $page_ref_id}
 						<input type="hidden" name="page_ref_id" value="{$page_ref_id}" />

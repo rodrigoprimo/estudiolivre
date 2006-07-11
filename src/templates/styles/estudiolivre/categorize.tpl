@@ -1,6 +1,8 @@
 {if $feature_categories eq 'y' and (count($categories) gt 0 or $tiki_p_admin_categories eq 'y')}
-	<img class="pointer" onclick="javascript:flip('categorizator');toggleImage(this,'iArrowGreyDown.png');" src="styles/estudiolivre/iArrowGreyRight.png">
-	<b>{tr}Categorize{/tr}</b>
+	<span class="hiddenPointer"  onclick="javascript:flip('categorizator');toggleImage(document.getElementById('catTArrow'),'iArrowGreyDown.png');">
+		<img id="catTArrow" class="pointer" src="styles/estudiolivre/iArrowGreyRight.png">
+		<b>{tr}Categorize{/tr}</b>
+	</span>
 	  {*
 	  [ <a class="link" href="javascript:show('categorizator');">{tr}show categories{/tr}</a>
 	  | <a class="link" href="javascript:hide('categorizator');">{tr}hide categories{/tr}</a> ]
