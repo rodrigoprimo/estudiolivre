@@ -49,9 +49,13 @@
 
 		  <div id="gPlay">
 		  	{if $arquivo.tipo eq "Video"}
-		    	{assign var=tooltipText value="Assita a esse vídeo"}
+		  		{if $arquivo.formato eq "application/ogg"}
+			    	{assign var=tooltipText value="Assita a esse vídeo"}
+			    {/if}
 		    {elseif $arquivo.tipo eq "Audio"}
-		    	{assign var=tooltipText value="Ouça essa música"}
+		    	{if $arquivo.formato eq "application/ogg"}
+			    	{assign var=tooltipText value="Ouça essa música"}
+			    {/if}
 		    {elseif $arquivo.tipo eq "Imagem"}
 		    	{assign var=tooltipText value="Veja essa imagem"}
 		    {/if}
@@ -60,7 +64,10 @@
 		    	{tooltip name="list-i-play" text=$tooltipText}
 			    	<img class="pointer" alt="" src="styles/estudiolivre/iPlay.png" onClick="xajax_streamFile({$arquivo.arquivoId}, '{$arquivo.tipo}')">
 			    {/tooltip}
+		    {else}
+   		    	<div style="width:19px">&nbsp;</div>
 		    {/if}
+		    
 		  </div>
         </div>
       
