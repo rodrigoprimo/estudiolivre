@@ -1,6 +1,6 @@
 {include file="header.tpl"}{* This must be included as the first thing in a document to be XML compliant *}
-
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-print.tpl,v 1.3 2006-07-05 23:48:51 rhwinter Exp $ *}
+<script type="text/javascript" src="lib/js/toggleImage.js"></script>
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-print.tpl,v 1.4 2006-07-11 01:59:17 rhwinter Exp $ *}
 
 {* Index we display a wiki page here *}
 
@@ -33,6 +33,14 @@ body {
 	margin-top:40px;
 	font-size:12pt;
 	line-height:1.5em;
+}
+
+.titlebar {
+	font-size: 36pt;
+}
+	
+.titlebar:first-letter {
+   	font-size:40pt;
 }
 
 p.editdate {
