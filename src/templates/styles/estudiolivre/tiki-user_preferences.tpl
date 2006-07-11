@@ -2,10 +2,10 @@
 <h1>
 	{if $userwatch ne $user}
 		<a class="pagetitle" href="tiki-user_preferences.php?view_user={$userwatch}">
-			{tr}Preferências d@ Usuári@{/tr}: {$userwatch}
+			{tr}User Preferences{/tr}: {$userwatch}
 		</a>
 	{else}
-		{tr}Preferências d@ Usuári@{/tr}
+		{tr}User Preferences{/tr}
 	{/if}
 </h1>	
 
@@ -162,12 +162,15 @@
     {/section}
         </select>
 		{if $feature_editcss eq 'y' and $tiki_p_create_css eq 'y'}
-			<a href="tiki-edit_css.php" class="link" title="{tr}Edit CSS{/tr}">{tr}Edit CSS{/tr}</a>
+			<br/><a href="tiki-edit_css.php" class="link" title="{tr}Edit CSS{/tr}">{tr}Edit CSS{/tr}</a>
 		{/if}
 				</td></tr>
   {/if}
   {if $change_language eq 'y'}
-  <tr><td  class="form">{tr}Language{/tr}:</td><td class="form">
+  <tr><td  class="form">{tr}Language{/tr}:</td></tr>
+  <tr>
+  <td colspan=2 class="form">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <select name="language">
     {section name=ix loop=$languages}
       {if count($available_languages) == 0 || in_array($languages[ix].value, $available_languages)}
