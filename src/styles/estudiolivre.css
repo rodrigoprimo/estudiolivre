@@ -330,6 +330,10 @@ INPUT.editable {
 	font-weight:bold;
 }
 
+#edtComentario INPUT {
+	width:100%;
+}
+
 #edtSaveCancel {
 	text-align:center;
 	margin-top:15px;
