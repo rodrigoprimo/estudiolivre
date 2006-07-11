@@ -21,7 +21,7 @@
 			<div class="simplebox">{tr}Put tags separated by spaces. For tags with more than one word, use no spaces and put words together.{/tr}</div>
 			*}
 		{/if}
-	    <input type="text" id="tagBox" name="freetag_string" value="{$taglist|escape}" size="60" /><br />
+	    {tooltip text="Escreva aqui as tags dessa página (separadas por <b>vírgula</b>)"}<input type="text" id="tagBox" name="freetag_string" value="{$taglist|escape}" size="60" />{/tooltip}<br />
 		{foreach from=$tag_suggestion item=t}
 			<span onclick="addTag(this)" class="pointer">{$t}</span> 
 		{/foreach}

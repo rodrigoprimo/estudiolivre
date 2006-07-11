@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.13 2006-07-11 06:02:48 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.14 2006-07-11 19:35:09 rhwinter Exp $ *}
 
 {popup_init src="lib/overlib.js"}
 
@@ -14,7 +14,7 @@
 <form  enctype="multipart/form-data" name="editPage" method="post" action="tiki-editpage.php" id="editpageform" onSubmit="return checkForm()">
 
 	{if $preview}
-			{include file="tiki-preview.tpl"}
+		{include file="tiki-preview.tpl"}
 	{/if}
 
 	<div id="wikiEditCont">	
