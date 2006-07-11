@@ -183,13 +183,13 @@ class ELGalLib extends TikiLib {
 	  $types['Texto'] = true;
 
 	  if (!$types[$tipo]) {
-	      return "Tipo $tipo invalido"; // nao deve acontecer
+	      return "Tipo $tipo invalido."; // nao deve acontecer
 	  }
 	  if (!is_array($types[$tipo])) {
 	      return '';
 	  }
 	  if (!preg_match('/\.([^.]{3,4})/', $filename, $m)) {
-	      return 'Erro: formato de arquivo inválido';
+	      return 'Erro: formato de arquivo inválido.';
 	  }
 	  if (in_array(strtolower($m[1]), $types[$tipo])) {
 	      return '';

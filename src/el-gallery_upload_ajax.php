@@ -15,6 +15,8 @@ function create_file($tipo, $fileName, $uploadId) {
 	
 	$error = $elgallib->validate_filename($tipo, $fileName);
 	if ($error) {
+	    // Estranho ficar aqui, mas onde colocar?
+	    $error .= ' Veja a <a href="tiki-index.php?page=Formatos+de+arquivos+do+Acervo+Livre">lista de formatos suportados</a>';
 		$objResponse->addScript("setUploadErrorMsg('$error')");
 		$objResponse->addScript("uploadError = true;");
 		return $objResponse;
