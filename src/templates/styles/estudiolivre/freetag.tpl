@@ -5,8 +5,8 @@
 		  function addTag(tag) {
 		      var currentTags = document.getElementById('tagBox');
     
-		      if (currentTags.value.match(/\S/)) {
-			  currentTags.value += ', ';
+		      if (currentTags.value != '') {
+			  	currentTags.value += ', ';
 		      }
 		      
 		      currentTags.value += tag.innerHTML;

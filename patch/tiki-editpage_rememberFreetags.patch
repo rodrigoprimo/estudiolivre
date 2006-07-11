@@ -1,0 +1,13 @@
+--- tiki-editpage.php	2006-07-11 05:08:28.000000000 -0300
++++ tiki-editpage.php	2006-07-11 05:12:36.000000000 -0300
+@@ -874,6 +874,10 @@
+ 	$smarty->assign('anon_user', 'y');
+ }
+ 
++if (isset($_REQUEST["freetag_string"])) {
++  $smarty->assign_by_ref('taglist', $_REQUEST["freetag_string"]);
++}
++
+ ask_ticket('edit-page');
+ 
+ // Display the Index Template
