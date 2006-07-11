@@ -1,0 +1,11 @@
+--- lang/pt-br/language.php	2006-05-12 16:53:05.000000000 -0300
++++ lang/pt-br/language.php	2006-07-11 17:09:51.000000000 -0300
+@@ -4927,7 +4933,7 @@
+ "Request friendship from this user" => "Solicitação de amizade desse usuário",
+ "Send me a message" => "Envie-me uma mensagem",
+ "Toggle options" => "Mudar opções",
+-"User Preferences" => "Preferências do Usuário",
++"User Preferences" => "Preferências d@ Usuári@",
+ "UserPreferences tpl" => "Preferências do usuário tpl",
+ "Personal Information" => "Informação pessoal",
+ "General preferences" => "Preferências gerais",
