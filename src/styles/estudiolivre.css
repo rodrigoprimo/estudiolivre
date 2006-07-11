@@ -324,6 +324,17 @@ INPUT.editable {
 	margin:5px 0px 5px 20px;
 }
 
+#edtComentario DIV, #edtIsMinor DIV, #edtPreviewAtt {
+	text-align:left;
+	margin-top:15px;
+	font-weight:bold;
+}
+
+#edtSaveCancel {
+	text-align:center;
+	margin-top:15px;
+}
+
 /****************************************************/
 /* coisas específicas da pré-visualização da edição */
 /****************************************************/

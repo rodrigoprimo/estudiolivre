@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.12 2006-07-11 02:35:12 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.13 2006-07-11 06:02:48 rhwinter Exp $ *}
 
 {popup_init src="lib/overlib.js"}
 
@@ -11,7 +11,7 @@
 	</script>
 {/if}
 
-<form  enctype="multipart/form-data" method="post" action="tiki-editpage.php" id="editpageform">
+<form  enctype="multipart/form-data" name="editPage" method="post" action="tiki-editpage.php" id="editpageform" onSubmit="return checkForm()">
 
 	{if $preview}
 			{include file="tiki-preview.tpl"}
@@ -30,7 +30,7 @@
 			<!--input type="submit" class="wikiaction" name="preview" value="{tr}preview{/tr}" style="float:right"/-->
 			{literal}
 				<script language="javascript" type="text/javascript">
-					setPreview = function(){
+					function setPreview(){
 						var inputPreview = document.createElement('input');
 						inputPreview.type = "hidden";
 						inputPreview.name = "preview";
@@ -307,10 +307,16 @@
 		<div id="editLabelLine" style="border-bottom: 2px solid grey; display:none;width: 100%; height: 2px;"></div>
 		
 			<div id="attention">
+			    <span class="pointer" name="preview" onclick="setPreview();">
+					<div id="edtPreviewAtt">Gerar {if $preview}nova {/if}{tr}preview{/tr}</div>
+				</span>
 				{if $page|lower neq 'sandbox'}
+					<div id="edtComentario">
 					{tooltip text="<b>Comente</b> suscintamente as modificações feitas na edição"}
+						<div>{tr}Comentário{/tr}:</div>
 						<input class="wikitext" type="text" name="comment" value="{$commentdata|escape}" />
 					{/tooltip}
+					</div>
 					{if $wiki_feature_copyrights  eq 'y'}
 						{tr}Copyright{/tr}:
 						<tr class="formcolor"><td>
@@ -325,25 +331,89 @@
 				
 				{if $page|lower neq 'sandbox' or $tiki_p_admin eq 'y'}
 					{if $tiki_p_minor eq 'y' and $page|lower ne 'sandbox'}
-						{tooltip text="Selecione se essa modificação foi <b>pequena</b> (ela não vai aparecer na página das ultimas alterações do site)"}
-							<input type="checkbox" name="isminor" value="on"/>
-						{/tooltip}
+						<div id="edtIsMinor">
+							<div>A modificação foi:</div>					
+							{tooltip text="Selecione se essa modificação foi <b>pequena</b> (ela não vai aparecer na página das ultimas alterações do site)"}<input type="radio" name="isminor" value="on" />Pequena<br>{/tooltip}
+							{tooltip text="Selecione se essa modificação foi <b>grande</b> e você quer que tod@s a vejam"}<input type="radio" name="isminor" value="" checked="checked"/>Grande<br>{/tooltip}
+
+						</div>
 					{/if}
 
-						{*ISSO NAO FUNCIONA!...
-						<div id="save-exit" class="aSaveCancel" style="z-index: 10;">
-						  {tooltip text="Salve as modificações que acaba de fazer"}<img name="save" src="styles/estudiolivre/bSave.png" onClick="document.forms.namedItem('form-edit-wiki').submit()" style="cursor: pointer">{/tooltip}&nbsp;&nbsp;&nbsp;
-						  {tooltip text="Cancele as modificações que acaba de fazer"}<img name="cancel_edit" src="styles/estudiolivre/bCancelar.png" onClick="document.forms.namedItem('form-edit-wiki').submit()" style="cursor: pointer">{/tooltip}
-						</div>
-						*}
-						<input class="image" name="save" src="styles/estudiolivre/bSave.png" type="image" value="{tr}save{/tr}" /> &nbsp;&nbsp;
-						{if $page|lower ne 'sandbox'}
-							<input class="image" name="cancel_edit" src="styles/estudiolivre/bCancelar.png" type="image" value="{tr}cancel edit{/tr}" />
-						{/if}
+					{*ISSO NAO FUNCIONA!...
+					<div id="save-exit" class="aSaveCancel" style="z-index: 10;">
+					  {tooltip text="Salve as modificações que acaba de fazer"}<img name="save" src="styles/estudiolivre/bSave.png" onClick="document.forms.namedItem('form-edit-wiki').submit()" style="cursor: pointer">{/tooltip}&nbsp;&nbsp;&nbsp;
+					  {tooltip text="Cancele as modificações que acaba de fazer"}<img name="cancel_edit" src="styles/estudiolivre/bCancelar.png" onClick="document.forms.namedItem('form-edit-wiki').submit()" style="cursor: pointer">{/tooltip}
+					</div>
+					*}
+					<div id="edtSaveCancel">
+					<input class="image" name="save" src="styles/estudiolivre/bSave.png" type="image" value="{tr}save{/tr}" /> &nbsp;&nbsp;
+					{if $page|lower ne 'sandbox'}
+						<input class="image" name="cancel_edit" src="styles/estudiolivre/bCancelar.png" type="image" value="{tr}cancel edit{/tr}"  onclick="cancelar=1"/>
+					{/if}
+					</div>
 				{/if}
 			</div>
 
 		
 	</div>
 </form>
+
+<div id="precisaComentar" style="display:none;width:200px;padding:5px">
+  		É <b>recomendável</b> comentar as modificações realizadas. Assim todos podem saber qual modificação foi feita na página.
+  		<br/>
+  		<br>
+  		Faça o comentário no campo abaixo:
+  		<br/>
+		<input class="wikitext" id="lightComment" type="text" name="lightComment" value="" onkeypress="key(event)"/>
+		<div id="edtSaveCancel">
+			<img src="styles/estudiolivre/bSave.png" onclick="comment()"/>
+		</div>
+	</form>
+</div>
+
+
+{literal}
+	<script language="javascript" type="text/javascript">
+	var cancelar=0;
+	
+	function checkForm() {
+		if (document.editPage.isminor[0].checked){
+			return true;
+		}
+		if(!document.editPage.comment.value && !cancelar){
+			showLightbox('precisaComentar');
+			return false;
+		}
+		//alert(document.editPage.comment.value);
+		return true;
+	}
+	
+	function comment(){
+		document.editPage.comment.value=document.getElementById('lightComment').value;
+		var inputSave = document.createElement('input');
+		inputSave.type = "hidden";
+		inputSave.name = "save";
+		inputSave.value = "1";
+		document.getElementById('editpageform').appendChild(inputSave);
+		document.getElementById('editpageform').submit();
+		hideLightbox();
+	}
+	
+	function key(e){
+		if(window.event) {
+			//IE
+			keynum = window.event.keyCode
+		} else if(e.which) {
+			// Netscape/Firefox/Opera
+			keynum = e.which
+		}
+		if(keynum==13){
+			//we pressed enter!
+			comment();
+		}
+	}
+	
+	</script>
+{/literal}
+
 <br />
