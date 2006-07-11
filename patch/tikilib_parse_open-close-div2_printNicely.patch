@@ -1,5 +1,5 @@
---- /var/www/estudiolivre/lib/tikilib.php.old	2006-07-10 22:47:17.000000000 -0300
-+++ /var/www/estudiolivre/lib/tikilib.php	2006-07-10 22:50:07.000000000 -0300
+--- lib/tikilib.php.old	2006-07-10 22:47:17.000000000 -0300
++++ lib/tikilib.php	2006-07-10 22:50:07.000000000 -0300
 @@ -5292,8 +5292,13 @@
  				$listate = substr($line, $listlevel, 1);
  				if (($listate == '+' || $listate == '-') && !($litype == '*' && !strstr(current($listbeg), '</ul>') || $litype == '#' && !strstr(current($listbeg), '</ol>'))) {
