@@ -1,6 +1,6 @@
 <?
 
-if (__FILE__ !== '/noe/data/vhost/estudiolivre.org/htdocs/migra_tag_salvar.php') {
+if (false && __FILE__ !== '/noe/data/vhost/estudiolivre.org/htdocs/migra_tag_salvar.php') {
     echo "tentando rodar no lugar errado: " . __FILE__ . "\n";
     exit;
 }
@@ -29,6 +29,7 @@ while ($row = $result->fetchRow()) {
 }
 
 function migra_wiki($pageName, $objId_from) {
+
     global $tikilib, $freetaglib;
 
     $query = "select * from estudiolivre_teste.tiki_pages where pageName=?";
@@ -105,8 +106,10 @@ function migra_acervo($arquivoId, $objId_from) {
     $arq = preg_replace("/ /","\ ",$arquivo['arquivo']);
     $thumbnail = preg_replace("/ /","\ ",$arquivo['thumbnail']);
  
-    system("cp /noe/data/vhost/teste.estudiolivre.org/htdocs/repo/$arq /noe/data/vhost/estudiolivre.org/htdocs/repo");
-    system("cp /noe/data/vhost/teste.estudiolivre.org/htdocs/repo/$thumbnail /noe/data/vhost/estudiolivre.org/htdocs/repo");
+    if (!empty($arq))
+	system("cp /noe/data/vhost/teste.estudiolivre.org/htdocs/repo/$arq /noe/data/vhost/estudiolivre.org/htdocs/repo");
+    if (!empty($thumbnail))
+	system("cp /noe/data/vhost/teste.estudiolivre.org/htdocs/repo/$thumbnail /noe/data/vhost/estudiolivre.org/htdocs/repo");
     
 }
 
