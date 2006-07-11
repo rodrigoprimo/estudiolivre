@@ -26,7 +26,6 @@ function streamFile($arquivoId, $type) {
     	return $objResponse;
     }
     
-    $playerName = 'player' . $type;
     $validUrl = 'http://' . $_SERVER['HTTP_HOST'] .  $_SERVER['REQUEST_URI'];
     $validUrl = preg_replace('/\/el-.+\.php.*$/','',$validUrl);
     $validUrl .= '/repo/' . $arquivo['arquivo'];
@@ -34,12 +33,14 @@ function streamFile($arquivoId, $type) {
     if ($type == 'Video') {
     	$width = $arquivo['tamanhoImagemX'];
     	$height = $arquivo['tamanhoImagemY'];
+    	$video = "true";
     } else {
     	$width = 200;
-    	$height = 50;
+    	$height = 20;
+    	$video = "false";
     }
         
-    $objResponse->addScript("loadFile($playerName, '$validUrl', $width, $height, '$type')");
+    $objResponse->addScript("loadFile('$validUrl', $width, $height, '$video')");
     
     return $objResponse;
     

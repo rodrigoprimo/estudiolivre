@@ -1,11 +1,11 @@
-var playerVideo = document.applets[0];
-var playerAudio = document.applets[1];
+var player = document.applets[0];
 
-function loadFile(player, url, width, height, type) {
-	document.getElementById('gPlayer'+type).style.width = width + 'px';
-	document.getElementById('gPlayer'+type).style.height = height + 'px';
+function loadFile(url, width, height, video) {
+	document.getElementById('gPlayer').style.width = width + 'px';
+	document.getElementById('gPlayer').style.height = height + 'px';
 	player.height = height;
 	player.width = width;
-	showLightbox('gPlayer'+type);
+	showLightbox('gPlayer');
 	player.childNodes[1].value = url;
+	player.childNodes[2].value = video;
 }
