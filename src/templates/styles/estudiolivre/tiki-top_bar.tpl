@@ -54,52 +54,40 @@
   </div> *}
     
 	<div id="topMenuCubesContainer">
-	  <ul id="topMenuCubes">
 		{*
 	      <li><div class="hiddenDescript" id="metareciclagem">metareciclagem</div><a href="http://xango.metareciclagem.org/"><img src="styles/estudiolivre/cubeBlue.png"></a></li>
 	      *}
 		
 		{* Cores das Categorias *}
-		
 		{assign var=gallery value="Green"}
 		{assign var=audio value="Orange"}
 		{assign var=video value="Red"}
 		{assign var=grafico value="Purple"}
 		
-		
-	    {if $category eq "gallery"}{assign var=gallery value="Grey"}{/if}
-	    <li>
-	      <div class="hiddenDescript" id="acervolivre">acervo.livre</div>
-	        <a href="el-gallery_home.php" {if $isIE}title="ACERVO.LIVRE"{/if}>
-	          <img src="styles/estudiolivre/cube{$gallery}{if $isIE}IE{/if}.png">
-	        </a>
-	    </li>
-	
-	    {if $category eq "Áudio"}{assign var=audio value="Grey"}{/if}
-	    <li>
-	      <div class="hiddenDescript" id="audiolab">áudio||lab</div>
-	        <a href="tiki-index.php?page=Áudio" {if $isIE}title="AUDIO||LAB"{/if}>
-	          <img src="styles/estudiolivre/cube{$audio}{if $isIE}IE{/if}.png">
-	        </a>
-	    </li>
-	
-	    {if $category eq "Vídeo"}{assign var=video value="Grey"}{/if}
-	    <li>
-	      <div class="hiddenDescript" id="videolab">vídeo||lab</div>
-	        <a href="tiki-index.php?page=Vídeo" {if $isIE}title="VIDEO||LAB"{/if}>
-	          <img src="styles/estudiolivre/cube{$video}{if $isIE}IE{/if}.png">
-	        </a>
-	    </li>
+		{if $category eq "Áudio"}{assign var='audioStyle' value="opacity:0.3"}{/if}
+        <a style="{$audioStyle}" href="tiki-index.php?page=Áudio" {if $isIE}title="AUDIO||LAB"{/if}>
+          <img src="styles/estudiolivre/cube{$audio}{if $isIE}IE{/if}.png">
+	      <span id="audiolab">áudio</span>
+        </a>
+	        
+	    {if $category eq "Gráfico"}{assign var='graficoStyle' value="opacity:0.3"}{/if}
+        <a style="{$graficoStyle}"  href="tiki-index.php?page=Gráfico" {if $isIE}title="GRAFI||LAB"{/if}>
+          <img src="styles/estudiolivre/cube{$grafico}{if $isIE}IE{/if}.png">
+		  <span id="grafilab">gráfico</span>
+        </a>
+
+	    {if $category eq "Vídeo"}{assign var='videoStyle' value="opacity:0.3"}{/if}
+        <a style="{$videoStyle}"  href="tiki-index.php?page=Vídeo" {if $isIE}title="VIDEO||LAB"{/if}>
+          <img src="styles/estudiolivre/cube{$video}{if $isIE}IE{/if}.png">
+	      <span id="videolab">vídeo</span>
+        </a>
 	    
-	    {if $category eq "Gráfico"}{assign var=grafico value="Grey"}{/if}
-	    <li>
-	    <div class="hiddenDescript" id="grafilab">grafi||lab</div>
-	        <a href="tiki-index.php?page=Gráfico" {if $isIE}title="GRAFI||LAB"{/if}>
-	          <img {if $isIE} {/if} src="styles/estudiolivre/cube{$grafico}{if $isIE}IE{/if}.png">
-	        </a>
-	    </li>
-	  </ul>
-	  
+	    {if $category eq "gallery"}{assign var='galleryStyle' value="opacity:0.3"}{/if}
+        <a style="{$galleryStyle}" href="el-gallery_home.php" {if $isIE}title="ACERVO.LIVRE"{/if}>
+	        <img src="styles/estudiolivre/cube{$gallery}{if $isIE}IE{/if}.png">
+	        <span id="acervolivre">acervo</span>      
+        </a> 
+        
 	</div>
 </div>
 </div>

@@ -587,56 +587,36 @@ h1 .flipper {
 	float:left;
 }
 
-#topMenuCubes {
-	position:relative;
-	top:-20px;
-	list-style-type:none;
-	display:inline;
-}
 
 #topMenuCubesContainer {
 	position:relative;	
-	width:350px;
+	margin-top: 1px;
 	float:right;
 }
 
-#topMenuCubes li {
-	float:right;
-	margin-right: 8px;
-	margin-top: 2px;
+#topMenuCubesContainer A {
+	margin-left: 8px;
 }
 
 .hiddenDescript {
-	display:none;
-	position:absolute;
-	width:150px;
-	text-align:center;
-	height:0px;
-	overflow:show;
-	font-size:16px;
-	margin-top:-2px;
-	right:140px;
+	display:inline;
+}
+#grafilab, #videolab, #audiolab, #acervolivre {
+	position:relative;
+	top:-0.4em;
 }
 
-.hiddenDescript#metareciclagem {
-	color:#5e79ef;
+#acervolivre {
+	color:#5a9834;
 }
-.hiddenDescript#acervolivre {
-	color:#5adb6f;
-}
-.hiddenDescript#audiolab {
+#audiolab {
 	color:#ffbc43;
 }
-.hiddenDescript#videolab {
+#videolab {
 	color:#ff5247;
 }
-.hiddenDescript#grafilab {
+#grafilab {
 	color:#8c6db9;
-}
-
-#topMenuCubes li:hover .hiddenDescript {
-	display:block;
-	/*right:140px;*/
 }
 
 /* content */
