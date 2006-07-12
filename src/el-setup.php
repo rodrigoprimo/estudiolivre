@@ -23,9 +23,18 @@ require_once("el-gallery_stream_ajax.php");
 
 require_once("el-breadcrumbs.php");
 
-
 $isIE = preg_match('/MSIE/', $_SERVER['HTTP_USER_AGENT']) && !preg_match('/Opera/', $_SERVER['HTTP_USER_AGENT']);
 $smarty->assign('isIE',$isIE);
+
+$showIeMsg = false;
+if ($isIE) {
+    if (!isset($_COOKIE['ieMsgSeen']) || !$_COOKIE['ieMsgSeen']) {
+	$showIeMsg = true;
+	setcookie('ieMsgSeen',1,time()+60*60*24*7);
+    }
+}
+
+$smarty->assign('showIeMsg',$showIeMsg);
 
 // TODO: Fazer ieGIF2PNG q substitui o {if $isIE}gif{else}png{/if}
 

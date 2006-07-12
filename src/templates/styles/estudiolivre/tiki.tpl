@@ -8,5 +8,9 @@
   {include file="head.tpl"}
 
   {include file="body.tpl"}
+
+  {if $showIeMsg}
+    {include file="ie_notsupported.tpl"}
+  {/if}
   
 </html>
