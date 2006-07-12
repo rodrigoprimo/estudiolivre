@@ -8,7 +8,7 @@ if (strpos($_SERVER["SCRIPT_NAME"],basename(__FILE__)) !== false) {
 
 class ElTagLib extends FreetagLib {
 
-    var $_normalized_valid_chars = 'a-zA-Z0-9çáéíóúÇÁÉÍÓÚâêôÂÊÔãõÃÕ ';
+    var $_normalized_valid_chars = 'a-zA-Z0-9çáéíóúÇÁÉÍÓÚâêôÂÊÔãõÃÕ!?&@#$%*+=-_ ';
 
     function _parse_tag($tag_string) {
 	if(get_magic_quotes_gpc()) {
@@ -31,7 +31,7 @@ class ElTagLib extends FreetagLib {
 
 	function get_distinct_tag_suggestion($exclude = '', $offset = 0, $maxRecords = -1) {
 	
-		$query = "select distinct(t.tagId), t.tag from `tiki_freetags` t, `tiki_freetagged_objects` o, `tiki_objects` tko where t.`tagId`=o.`tagId` and o.`objectId`=tko.`objectId` order by hits";
+		$query = "select distinct(t.tag), t.tagId from `tiki_freetags` t, `tiki_freetagged_objects` o, `tiki_objects` tko where t.`tagId`=o.`tagId` and o.`objectId`=tko.`objectId` order by hits desc";
 		$result = $this->query($query, array(), $maxRecords, $offset);
 	
 		$tags = array();
