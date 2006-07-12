@@ -59,14 +59,14 @@
 					<div id="gPlay">
 						{if $arquivo.tipo eq "Video"}
 							{if $arquivo.formato eq "application/ogg" || $arquivo.formato eq "application/octet-stream"}
-			    				{assign var=tooltipText value="Assita a esse vídeo"}
+			    				{assign var='tooltipText' value="Assita a esse vídeo"}
 						    {/if}
 						{elseif $arquivo.tipo eq "Audio"}
 							{if $arquivo.formato eq "application/ogg" || $arquivo.formato eq "application/octet-stream"}
-						    	{assign var=tooltipText value="Ouça essa música"}
+						    	{assign var='tooltipText' value="Ouça essa música"}
 						    {/if}
 						{elseif $arquivo.tipo eq "Imagem"}
-							{assign var=tooltipText value="Veja essa imagem"}
+							{assign var='tooltipText' value="Veja essa imagem"}
 						{/if}
 						{if $tooltipText}
 							<span class="gStreamCount">
