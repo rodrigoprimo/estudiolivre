@@ -1,6 +1,6 @@
 <?
 
-if (false && __FILE__ !== '/noe/data/vhost/estudiolivre.org/htdocs/migra_tag_salvar.php') {
+if (__FILE__ !== '/noe/data/vhost/estudiolivre.org/htdocs/migra_tag_salvar.php') {
     echo "tentando rodar no lugar errado: " . __FILE__ . "\n";
     exit;
 }
