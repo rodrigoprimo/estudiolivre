@@ -24,38 +24,38 @@
       <div id="uContact" class="uContactInfoCont left">
         {if $permission}
         	{tooltip text="Clique para modificar o seu <b>nome</b>"}
-	        	{ajax_input permission=$permission id="realName" class="uContactItem" value=$realName default="Nome completo" display="block"}
+	        	{ajax_input permission=$permission id="realName" class="uContactItem" value=$realName default="{tr}Nome completo{/tr}" display="block"}
         	{/tooltip}
         {else}
         	{*TODO: mudar isso pra SPAN com tooltip*}
-        	{ajax_input permission=$permission id="realName" class="uContactItem" value=$realName default="Nome completo" display="block"}
+        	{ajax_input permission=$permission id="realName" class="uContactItem" value=$realName default="{tr}Nome completo{/tr}" display="block"}
         {/if}
         <br />
         {if $permission}
         	{tooltip text="Clique para modificar o seu <b>email</b>"}
-		        {ajax_input permission=$permission id="email" class="uContactItem" value=$userinfo.email default="E-mail" display="block" truncate='17'}        
+		        {ajax_input permission=$permission id="email" class="uContactItem" value=$userinfo.email default="{tr}E-mail{/tr}" display="block" truncate='17'}        
 		    {/tooltip}
         {else}
         	{*TODO mudar isso pra um mailto:*}
-	        {ajax_input permission=$permission id="email" class="uContactItem" value=$userinfo.email default="E-mail" display="block" truncate='17'}
+	        {ajax_input permission=$permission id="email" class="uContactItem" value=$userinfo.email default="{tr}E-mail{/tr}" display="block" truncate='17'}
 	    {/if}
 		<br />
         {if $permission}
         	{tooltip text="Clique para modificar o seu <b>site</b>"}
-		        {ajax_input permission=$permission id="site" class="uContactItem" value=$site default="Site" display="block" truncate='17'}        
+		        {ajax_input permission=$permission id="site" class="uContactItem" value=$site default="{tr}Site{/tr}" display="block" truncate='17'}        
 		    {/tooltip}
         {else}		
             {*TODO: mudar isso pra um a href!!*}
-	        {ajax_input permission=$permission id="site" class="uContactItem" value=$site default="Site" display="block" truncate='17'}
+	        {ajax_input permission=$permission id="site" class="uContactItem" value=$site default="{tr}Site{/tr}" display="block" truncate='17'}
 	    {/if}
 		<br />
         {if $permission}
         	{tooltip text="Clique para modificar a sua <b>localização</b>"}
-		        {ajax_input permission=$permission id="local" class="uContactItem" value=$local default="Localização" display="inline"}        
+		        {ajax_input permission=$permission id="local" class="uContactItem" value=$local default="{tr}Localização{/tr}" display="inline"}        
 		    {/tooltip}
         {else}	
         	{*TODO: mudar isso pra SPAN com tooltip*}	
-	        {ajax_input permission=$permission id="local" class="uContactItem" value=$local default="Localização" display="inline"}
+	        {ajax_input permission=$permission id="local" class="uContactItem" value=$local default="{tr}Localização{/tr}" display="inline"}
 	    {/if}
       </div>
 
@@ -104,22 +104,22 @@
 			    	   		<img id="uLicence" src="styles/estudiolivre/h_{$licenca.linkImagem}"/>
 			    	   	{/tooltip}
 			    	{else}
-	    		    	(Selecione sua licença Padrão)
+	    		    	({tr}Selecione sua licença Padrão{/tr})
 	    		    {/if}
 	    		    </span>
 	        {else}
 		        {if $licenca}
 			    	   	{tooltip text="Licença padrão desse(a) usuári@: "|cat:$licenca.descricao}<img id="uLicence" src="styles/estudiolivre/h_{$licenca.linkImagem}"/>{/tooltip}
 		    	{else}
-		        	(Usuári@ sem Licença Padrão)
+		        	({tr}Usuári@ sem Licença Padrão{/tr})
 		        {/if}
 		    {/if}
         	</span>
         </span>
         <br />
-        <span class="uContactItem"><a href="tiki-lastchanges.php?find={$userinfo.login}&sort_mode=lastModif_desc&days=0">Contribuições Recentes</a></span>
+        <span class="uContactItem"><a href="tiki-lastchanges.php?find={$userinfo.login}&sort_mode=lastModif_desc&days=0">{tr}Contribuições Recentes{/tr}</a></span>
         <br />
-        <span class="uContactItem uLittle">Membro desde {$userinfo.registrationDate|date_format:"%d/%m/%Y"}</span>
+        <span class="uContactItem uLittle">{tr}Membro desde{/tr} {$userinfo.registrationDate|date_format:"%d/%m/%Y"}</span>
       </div>  
     </div>
     <div id="uGallery" class="uMainContainer">
@@ -129,7 +129,7 @@
            <span class="pointer" onclick="javascript:flip('uGalleryItems');toggleImage(document.getElementById('gTArrow'),'iArrowGreyRight.png')">
            	<img id="gTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
         	&nbsp;
-	        Galeria pessoal
+	        {tr}Galeria pessoal{/tr}
 	       </span>
         </h1>
       </div>
@@ -139,9 +139,9 @@
 		<div id="gListCont">{include file="el-gallery_section.tpl"}</div>
 	  {else}
 	  	{if $permission}
-		  	<p> Você ainda não possui arquivos no acervo livre. <a href="el-gallery_upload.php">Compartilhe</a> sua obra!</p>
+		  	<p> {tr}Você ainda não possui arquivos no acervo livre{/tr}. <a href="el-gallery_upload.php">{tr}Compartilhe{/tr}</a> {tr}sua obra{/tr}!</p>
 	  	{else}
-	  		<p> Esse(a) usuári@ ainda não possui arquivos no acervo livre.</p>
+	  		<p> {tr}Esse(a) usuári@ ainda não possui arquivos no acervo livre{/tr}.</p>
 	  	{/if}
 	  {/if}
       </div>
@@ -153,7 +153,7 @@
           <span class="pointer" onclick="javascript:flip('uBlogItems');toggleImage(document.getElementById('bTArrow'),'iArrowGreyRight.png')" >
             <img id="bTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
 	        &nbsp;
-          	Blogs
+          	{tr}Blogs{/tr}
           </span>
         </h1>
       </div>
@@ -170,15 +170,15 @@
 	          <div id="uBlogItemBottom">
 	            <a href="tiki-view_blog_post.php?blogId={$post.blogId}&postId={$post.postId}">ler mais</a> | 
 	            <a href="tiki-view_blog_post.php?blogId={$post.blogId}&postId={$post.postId}">permalink</a> | 
-	            <a href="tiki-view_blog_post.php?blogId={$post.blogId}&postId={$post.postId}&show_comments=1#comments">({$post.commentsCount}) comentaram</a>
+	            <a href="tiki-view_blog_post.php?blogId={$post.blogId}&postId={$post.postId}&show_comments=1#comments">({$post.commentsCount}) {tr}comentaram{/tr}</a>
 	          </div>
 	        </div>
 	        {/foreach}
 		{else}
 		  	{if $permission}
-			  	<p> Você ainda não possui blogs. <a href="tiki-edit_blog.php">Crie</a> um blog ou veja a <a href="tiki-list_blogs.php">lista</a> dos existentes.</p>
+			  	<p> {tr}Você ainda não possui blogs{/tr}. <a href="tiki-edit_blog.php">Crie</a> um blog ou veja a <a href="tiki-list_blogs.php">{tr}lista{/tr}</a> {tr}dos existentes{/tr}.</p>
 		  	{else}
-		  		<p> Esse(a) usuári@ ainda não possui posts em blogs.</p>
+		  		<p> {tr}Esse(a) usuári@ ainda não possui posts em blogs{/tr}.</p>
 			{/if}
 		{/if}
       </div>
@@ -191,7 +191,7 @@
         	<span class="pointer" onclick="javascript:flip('uMsgItems');toggleImage(document.getElementById('rTArrow'),'iArrowGreyRight.png')">
         	  	<img id="rTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
 		        &nbsp;
-		        Recados
+		        {tr}Recados{/tr}
 	        </span>
         </h1>
         {if $permission}
@@ -215,7 +215,7 @@
     		  <span class="pointer" title="Wiki de {$userinfo.login}" onclick="javascript:flip('uWikiMid');toggleImage(document.getElementById('wTArrow'),'iArrowGreyRight.png')" >
 	    	 	<img id="wTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
     	    	&nbsp;
-    		  	Wiki
+    		  	{tr}Wiki{/tr}
     		  </span>
     		</h1>
     	</div>
@@ -224,9 +224,9 @@
 	    	{include file=tiki-show_page.tpl parsed=$userWiki page=$pageName lastUser=$modifUser}
 	      {else}
 	      	{if $permission}
-	      		<p> Você ainda não tem uma página wiki pessoal. <a href="tiki-editpage.php?page={$pageName}">Crie</a> seu wiki!</p>
+	      		<p> {tr}Você ainda não tem uma página wiki pessoal{/tr}. <a href="tiki-editpage.php?page={$pageName}">{tr}Crie{/tr}</a> {tr}seu wiki{/tr}!</p>
 	      	{else}
-	      		<p> Esse(a) usuári@ ainda não possui uma página wiki pessoal </p>
+	      		<p> {tr}Esse(a) usuári@ ainda não possui uma página wiki pessoal{/tr} </p>
 	      	{/if}
 	      {/if}
         </div>

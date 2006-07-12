@@ -5,7 +5,7 @@
         </div>
 	<div class="uMsgTxt">
 		<div class="uMsgDel">
-        	{if $permission || $user eq $msg.user_from}<a onClick="xajax_delMsg('{$msg.user_from}', {$msg.msgId})"><img alt="" title="Deletar Mensagem" src="styles/estudiolivre/iDelete.png"></a>{/if}
+        	{if $permission || $user eq $msg.user_from}<a onClick="xajax_delMsg('{$msg.user_from}', {$msg.msgId})"><img alt="" title="{tr}Deletar Mensagem{/tr}" src="styles/estudiolivre/iDelete.png"></a>{/if}
         </div>
         	<div class="uMsgDate">
               {$msg.date|date_format:"%H:%M"}<br />
@@ -15,16 +15,16 @@
         </div>
 	</div>
 {foreachelse}
-Seja @ primeir@ a enviar uma mensagem para esse(a) usuári@!<br/>
+{tr}Seja @ primeir@ a enviar uma mensagem para esse(a) usuári@!{/tr}<br/>
 {/foreach}
 
 <div id="uMsgSend">
 {if $user}
 	<form onSubmit="sendMsg(); return false;">
-		<input type="submit" name="" value="enviar" label="enviar" id="uMsgSendSubmit" onClick="sendMsg()">
+		<input type="submit" name="" value="enviar" label="{tr}enviar{/tr}" id="uMsgSendSubmit" onClick="sendMsg()">
 	   	<input type="text" id="uMsgSendInput">
 	</form>
 {else}
-	Você não pode enviar recados pois não está logado no site.
+	{tr}Você não pode enviar recados pois não está logado no site{/tr}.
 {/if}
 </div>

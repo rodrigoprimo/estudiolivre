@@ -72,18 +72,18 @@
 		</tr>
 		<tr>
 			<td style=" ">
-				por <a href="el-user.php?view_user={$arquivo.user}">{$arquivo.user}</a> em {$arquivo.data_publicacao|date_format:"%d/%m/%Y"}
+				<b>{tr}por{/tr}:</b> <a href="el-user.php?view_user={$arquivo.user}">{$arquivo.user}</a><br><b>{tr}em{/tr}:</b> {$arquivo.data_publicacao|date_format:"%d/%m/%Y"}
 			</td>
 			<td style=" ">
 				<div id="gComments">
 					{if $arquivo.commentsCount == 0}
 						{tooltip name="list-primeiro-comentar" text="Seja o primeiro a comentar sobre esse arquivo"}
-							<a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}#comments">nenhum comentário</a>
+							<a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}#comments">{tr}nenhum comentário{/tr}</a>
 						{/tooltip}
 					{else}
 						{tooltip name="list-ler-comentarios" text="Clique para ler os comentários"}
 							<a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}#comments">
-								{$arquivo.commentsCount} comentário{if $arquivo.commentsCount != 1}s{/if}
+								{$arquivo.commentsCount} {tr}comentário{/tr}{if $arquivo.commentsCount != 1}s{/if}
 							</a>
 						{/tooltip}
 					{/if}

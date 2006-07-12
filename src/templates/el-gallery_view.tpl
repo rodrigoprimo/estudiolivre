@@ -86,7 +86,7 @@
 						{/if}
 					</div>
 					<div id="aAuthorDate">
-						autor: {ajax_input permission=$permission id="autor" value=$arquivo.autor default="Autor da Obra" display="inline"} - enviado por <a href="el-user.php?view_user={$arquivo.user}">{$arquivo.user}</a> em <i>{$arquivo.data_publicacao|date_format:"%d/%m/%Y"}</i>
+						<b>{tr}autor{/tr}:</b> {ajax_input permission=$permission id="autor" value=$arquivo.autor default="Autor da Obra" display="inline"} <br><b>{tr}enviado por{/tr}:</b> <a href="el-user.php?view_user={$arquivo.user}">{$arquivo.user}</a><br><b{tr}em{/tr}</b> <i>{$arquivo.data_publicacao|date_format:"%d/%m/%Y"}</i>
 					</div>
 				</div>
 			</div>
@@ -130,7 +130,7 @@
 				<div class="aTitleCont">
 					<span class="hiddenPointer" onclick="flip('aCommentsItemsCont'); flip('aCommentSend');toggleImage(document.getElementById('comTArrow'),'iArrowGreyRight.png')">
 						<img id="comTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
-						<h1>Comentários ({$comments_cant})</h1>
+						<h1>{tr}Comentários{/tr} ({$comments_cant})</h1>
 					</span>
 					<!--img id="aCommentsRss" src="styles/estudiolivre/iRss.png"/-->
 				</div>
@@ -174,9 +174,9 @@
 						    <input type="hidden" name="{$comments_request_data[i].name|escape}" value="{$comments_request_data[i].value|escape}" />
 					    {/section}
 						<input type="hidden" name="comments_title" value="foobar" />
-						<input type="submit" name="comments_postComment" value="enviar" label="enviar" id="uMsgSendSubmit" />
+						<input type="submit" name="comments_postComment" value="enviar" label="{tr}enviar{/tr}" id="uMsgSendSubmit" />
 						{if !$comments_cant}
-							{tooltip text="Seja o primeiro a comentar! Digite aqui o seu comentário e clique em <b>enviar</b>"}
+							{tooltip text="Seja @ primeir@ a comentar! Digite aqui o seu comentário e clique em <b>enviar</b>"}
 								<input type="text" id="uMsgSendInput" name="comments_data" value="{$comment_data|escape}"/>
 							{/tooltip}
 						{else}
@@ -189,7 +189,7 @@
 				</div>
 				{/if}
 				{if !$user}
-					Faça o login para comentar!
+					{tr}Faça o login para comentar!{/tr}
 				{/if}
 			</div>
 		</div>
@@ -202,7 +202,7 @@
 					<div class="aTitleCont aTitleContRight">
 						<span class="hiddenPointer" onclick="flip('aDescCont');toggleImage(document.getElementById('desTArrow'),'iArrowGreyRight.png')" >
 							<img id="desTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
-							<h1>Descrição</h1>
+							<h1>{tr}Descrição{/tr}</h1>
 						</span>
 					</div>
 				</div>
@@ -219,14 +219,14 @@
 					<div class="aTitleCont aTitleContRight">
 						<span class="hiddenPointer" onclick="flip('aInfoCont');toggleImage(document.getElementById('detTArrow'),'iArrowGreyRight.png')" >
 							<img id="detTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
-							<h1>Detalhes do Arquivo</h1>
+							<h1>{tr}Detalhes do Arquivo{/tr}</h1>
 						</span>
 					</div>
 				</div>
 				<div id="aInfoCont" class="aItemsCont" style="display:block">
 					<div id="gUpMoreOptions">
-						<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">Formato:</div> {$arquivo.tipo} - {$arquivo.formato|show_extension}</div>
-						<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">Tamanho:</div> {$arquivo.tamanho|show_filesize}</div>
+						<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">{tr}Formato{/tr}:</div> {$arquivo.tipo} - {$arquivo.formato|show_extension}</div>
+						<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">{tr}Tamanho{/tr}:</div> {$arquivo.tamanho|show_filesize}</div>
 						{include file="el-gallery_metadata.tpl"}
 						{if $arquivo.tipo neq "Texto"}
 							{include file="el-gallery_metadata_"|cat:$arquivo.tipo|cat:".tpl"}
@@ -246,9 +246,9 @@
 
 {if $arquivo.editCache && $permission && $arquivo.user eq $user}
 <div id="lightFileAltered" style="display:none; width: 400px;">
-	Atenção: este arquivo foi modificado e as alterações não foram salvas!<br/>
-	<span onClick="cancelEdit(); hideLightbox();" style="cursor: pointer">Cancelar</span>&nbsp;&nbsp;&nbsp;
-	<span onClick="restoreEdit({$arquivo.arquivoId}); hideLightbox();" style="cursor: pointer">Restaurar</span>
+	{tr}Atenção: este arquivo foi modificado e as alterações não foram salvas!{/tr}<br/>
+	<span onClick="cancelEdit(); hideLightbox();" style="cursor: pointer">{tr}Cancelar{/tr}</span>&nbsp;&nbsp;&nbsp;
+	<span onClick="restoreEdit({$arquivo.arquivoId}); hideLightbox();" style="cursor: pointer">{tr}Restaurar{/tr}</span>
 </div>
 <script language="Javascript">
 	showLightbox('lightFileAltered');

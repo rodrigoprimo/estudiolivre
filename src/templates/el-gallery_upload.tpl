@@ -8,23 +8,23 @@
   <div id="gUpLeft">
     <div id="gUpIcons">
       <div class="gUpIcon pointer">
-        {*tooltip text="Clique aqui para enviar um arquivo de <b>áudio</b>"*}<img id="iconeAudio" onMouseOver="acendeTipo('Audio');" onMouseOut="apagaTipo('Audio'); return nd();" onClick="selecionaTipo('Audio')" alt="" src="styles/estudiolivre/iUpAudioOff.png"><br />
-        Áudio{*/tooltip*}
+        {*tooltiX text="Clique aqui para enviar um arquivo de <b>áudio</b>"*}<img id="iconeAudio" onMouseOver="acendeTipo('Audio');" onMouseOut="apagaTipo('Audio'); return nd();" onClick="selecionaTipo('Audio')" alt="" src="styles/estudiolivre/iUpAudioOff.png"><br />
+        {tr}Áudio{/tr}{*/tooltip*}
       </div>
     
       <div class="gUpIcon pointer">
-        {*tooltip text="Clique aqui para enviar uma <b>imagem</b>"*}<img id="iconeImagem" onMouseOver="acendeTipo('Imagem');" onMouseOut="apagaTipo('Imagem'); return nd();" onClick="selecionaTipo('Imagem')" alt="" src="styles/estudiolivre/iUpImagemOff.png"><br />
-        Imagem{*/tooltip*}
+        {*tooltiX text="Clique aqui para enviar uma <b>imagem</b>"*}<img id="iconeImagem" onMouseOver="acendeTipo('Imagem');" onMouseOut="apagaTipo('Imagem'); return nd();" onClick="selecionaTipo('Imagem')" alt="" src="styles/estudiolivre/iUpImagemOff.png"><br />
+        {tr}Imagem{/tr}{*/tooltip*}
       </div>
     
       <div class="gUpIcon pointer">
-        {*tooltip text="Clique aqui para enviar um arquivo de <b>texto</b>"*}<img id="iconeTexto" onMouseOver="acendeTipo('Texto');" onMouseOut="apagaTipo('Texto'); return nd();" onClick="selecionaTipo('Texto')" alt="" src="styles/estudiolivre/iUpTextoOff.png"><br />
-        Texto{*/tooltip*}
+        {*tooltiX text="Clique aqui para enviar um arquivo de <b>texto</b>"*}<img id="iconeTexto" onMouseOver="acendeTipo('Texto');" onMouseOut="apagaTipo('Texto'); return nd();" onClick="selecionaTipo('Texto')" alt="" src="styles/estudiolivre/iUpTextoOff.png"><br />
+        {tr}Texto{/tr}{*/tooltip*}
       </div>
     
       <div class="gUpIcon pointer">
-		{*tooltip text="Clique aqui para enviar um arquivo de <b>vídeo</b>."*}<img id="iconeVideo" onMouseOver="acendeTipo('Video');" onMouseOut="apagaTipo('Video'); return nd();" onClick="selecionaTipo('Video')" alt="" src="styles/estudiolivre/iUpVideoOff.png"><br />
-        Vídeo{*/tooltip*}
+		{*tooltiX text="Clique aqui para enviar um arquivo de <b>vídeo</b>."*}<img id="iconeVideo" onMouseOver="acendeTipo('Video');" onMouseOut="apagaTipo('Video'); return nd();" onClick="selecionaTipo('Video')" alt="" src="styles/estudiolivre/iUpVideoOff.png"><br />
+        {tr}Vídeo{/tr}{*/tooltip*}
       </div>
     
     </div>
@@ -42,7 +42,7 @@
     	  <div id="gUpPercentContainer" class="gUpPercent"><span id="gUpPercent"></span></div>
     	  <div class="gUpStatus" id="gUpStatusBar"></div>
     	</div>
-    	<a href="#" class="gUpButton" id="gUpButton">procurar</a>
+    	<a href="#" class="gUpButton" id="gUpButton">{tr}procurar{/tr}</a>
     	<div class="gUpForm">
 	      <form name="uploadForm" target="uploadTarget" action="el-gallery_upload_file.php?UPLOAD_IDENTIFIER={$uploadId}" method="post" enctype="multipart/form-data">
   		    <input type="hidden" name="UPLOAD_IDENTIFIER" value="{$uploadId}">  		    <input type="hidden" name="arquivoId" value="">
@@ -60,7 +60,7 @@
 
     {if $pending && $permission}
 	 	<div id="fileAltered" style="display:block;text-align:left">
-	 		Arquivos não publicados:<br/>
+	 		{tr}Arquivos não publicados{/tr}:<br/>
 		 	<ul id="gUpPending">
 				{foreach from=$pending item=pendente}
 					<li id="pendente-{$pendente.arquivoId}">
@@ -102,7 +102,7 @@
     <div id="gUpTitleAuthor">
         {ajax_input permission=$permission class="gUpTitle" id="titulo" value=$arquivo.titulo default="Titulo" display="inline" truncate=50}
 		<div id="gUpAuthorCont">
-		  	Por {ajax_input permission=$permission class="gUpAuthor" id="autor" value=$realName default="Autor da obra" display="inline" mode="edit"}
+		  	{tr}Por{/tr} {ajax_input permission=$permission class="gUpAuthor" id="autor" value=$realName default="Autor da obra" display="inline" mode="edit"}
 		</div>
     </div>
       
@@ -114,7 +114,7 @@
     </div>
     
     <br style=" line-height:20px;">
-	Licença: <span onClick="showLightbox('el-license')" style="cursor: pointer;text-decoration:underline"><img id="uImagemLicenca" src="styles/estudiolivre/h_{$licenca.linkImagem}" alt="Escolha uma licença"/></span>
+	{tr}Licença{/tr}: <span onClick="showLightbox('el-license')" style="cursor: pointer;text-decoration:underline"><img id="uImagemLicenca" src="styles/estudiolivre/h_{$licenca.linkImagem}" alt="Escolha uma licença"/></span>
 	{assign var="upload" value=1}
 	{include file="el-license.tpl"}
 	
@@ -123,7 +123,7 @@
 	
     <div id="gUpEditTags">
       {if $feature_freetags eq 'y' && $tiki_p_freetags_tag eq 'y'}
-        <span>Tags</span>
+        <span>{tr}Tags{/tr}</span>
 	{* O ideal eh que tenha suggest aqui nesse campo *}
 	{tooltip text="Escreva aqui as tags desse arquivo (separadas por <b>vírgula</b>)"}{ajax_input permission=$permission class="freetags" id="tags" value="$taglist" noclear=1 display="inline"}{/tooltip}<br>
 	  <div id="gUpTagSugest">
@@ -147,7 +147,7 @@
     
     <div id="gUpMoreOptions">
       {tooltip text="Clique para definir outras propriedades do arquivo"}
-      	<a class="gUpmore pointer" id="gUpmoreoptionsLink" onclick="javascript:flip('gUpMoreOptionsContent'); toggleImage(document.getElementById('moreOptionArrow'),'iArrowGreyDown.png');return false;"> opções <img id="moreOptionArrow" src="styles/estudiolivre/iArrowGreyLeft.png"> </a>{/tooltip}<br/>
+      	<a class="gUpmore pointer" id="gUpmoreoptionsLink" onclick="javascript:flip('gUpMoreOptionsContent'); toggleImage(document.getElementById('moreOptionArrow'),'iArrowGreyDown.png');return false;">{tr}mais opções{/tr} <img id="moreOptionArrow" src="styles/estudiolivre/iArrowGreyLeft.png"> </a>{/tooltip}<br/>
       <div style="display:none" id="gUpMoreOptionsContent">
       	{include file="el-gallery_metadata.tpl"}
       </div>

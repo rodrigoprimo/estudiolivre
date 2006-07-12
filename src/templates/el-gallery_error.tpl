@@ -1,4 +1,4 @@
 <div id="gUpError" style="display: none; width: 500px">
-  Erro no formulário:
+  {tr}Erro no formulário{/tr}:
   <div id="gUpErrorList"></div>
 </div>
