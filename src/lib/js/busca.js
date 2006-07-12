@@ -31,7 +31,7 @@ function marcaBusca(name) {
 }
 
 function busca(category, value) {
-	if (category == 'gallery' && selectedBusca == 'gallery') {
+	if (/.*el-gallery_home.*/.test(document.location) && selectedBusca == 'gallery') {
 		xajax_get_files(tipos, 0, 5, sortMode+sortDirection, '', value); 
 		findValue = value; 
 	} else {
