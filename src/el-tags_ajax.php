@@ -11,6 +11,7 @@ function get_more_tags($offset, $maxRecords) {
     $objResponse = new xajaxResponse();
 
     $smarty->assign('tag_suggestion', $freetaglib->get_distinct_tag_suggestion('', $offset, $maxRecords));
+    $objResponse->addAppend("gUpTagListItem", "innerHTML", ",");
     $objResponse->addAppend("gUpTagListItem", "innerHTML", $smarty->fetch("el-tag_suggest_list.tpl"));
     
     if(($offset + $maxRecords) < $freetaglib->count_distinct_tags()) {
