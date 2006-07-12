@@ -178,8 +178,8 @@ class ELGalLib extends TikiLib {
       
 	  $types = array();
 	  $types['Imagem'] = array('png','jpg','jpeg','gif','tiff','svg','bmp','psd','xcf','eps');
-	  $types['Audio'] = array('mp3','ogg','wav','aiff');
-	  $types['Video'] = array('mpg','mpeg','avi','ogg','theora','mp4','yuv','mp2');
+	  $types['Audio'] = array('mp3','ogg','wav','aiff','avi','flac','mp2','mid','mxf');
+	  $types['Video'] = array('mpg','mpeg','avi','ogg','theora','mp4','yuv','mp2','mkv','mxf','mov');
 	  $types['Texto'] = true;
 
 	  if (!$types[$tipo]) {
