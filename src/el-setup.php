@@ -5,6 +5,12 @@ if (strpos($_SERVER["SCRIPT_NAME"],basename(__FILE__)) !== false) {
   exit;
 }
 
+ini_set('session.cookie_lifetime',  2000000);
+ini_set('session.gc_maxlifetime',   200000);
+ini_set('session.save_handler',     'user');
+ini_set('session.use_only_cookies', 1);
+ini_set('session.use_trans_sid',    0);
+
 $feature_tooltip = $userlib->get_user_preference($user, 'feature_tooltip', 'y');
 $feature_tooltip_max_clicks = $userlib->get_user_preference($user,'feature_tooltip_max_clicks', 5);
 
