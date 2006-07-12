@@ -18,8 +18,9 @@
     {if $feature_wiki eq 'y'} 
      <a class="linkbut{if $where eq 'wikis'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=wikis">{tr}wiki{/tr}</a>
     {/if}
-
+{* isso não rola!!
      <a class="linkbut{if $where eq 'wikis'} selected{/if}" href="el-gallery_search.php?highlight={$words}">acervo</a>
+     *}
 {*    
     {if $feature_galleries eq 'y'}
      <a class="linkbut{if $where eq 'galleries'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=galleries">{tr}galleries{/tr}</a>
