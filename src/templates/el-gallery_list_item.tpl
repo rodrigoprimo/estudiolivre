@@ -49,11 +49,11 @@
 
 		  <div id="gPlay">
 		  	{if $arquivo.tipo eq "Video"}
-		  		{if $arquivo.formato eq "application/ogg"}
+		  		{if $arquivo.formato eq "application/ogg" || $arquivo.formato eq "application/octet-stream"}
 			    	{assign var=tooltipText value="Assita a esse vídeo"}
 			    {/if}
 		    {elseif $arquivo.tipo eq "Audio"}
-		    	{if $arquivo.formato eq "application/ogg"}
+		    	{if $arquivo.formato eq "application/ogg" || $arquivo.formato eq "application/octet-stream"}
 			    	{assign var=tooltipText value="Ouça essa música"}
 			    {/if}
 		    {elseif $arquivo.tipo eq "Imagem"}
