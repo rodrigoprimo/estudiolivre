@@ -16,7 +16,7 @@ if (strpos($_SERVER["SCRIPT_NAME"],basename(__FILE__)) !== false) {
  * -------------------------------------------------------------
  */
 function smarty_block_tooltip($params, $text) {
- 	$tip = $params['text'];
+ 	$tip = tra($params['text']);
  	$tipName = $params['name'];
  	
  	global $tooltiplib, $feature_tooltip, $feature_tooltip_max_clicks;
