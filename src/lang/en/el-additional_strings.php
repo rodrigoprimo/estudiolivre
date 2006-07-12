@@ -239,7 +239,8 @@ $extra_strings = array(
  "Seja @ primeir@ a enviar uma mensagem para esse(a) usuári@!" => "Be the first to send a message to this user!", // ## MODULES ./templates/el-user_msg.tpl<br />
  "Você não pode enviar recados pois não está logado no site" => "You can't send messages because you are not logged in", // ## MODULES ./templates/el-user_msg.tpl<br />
  "nenhum comentário" => "no comment", // ## MODULES ./templates/ie_el-gallery_list_item.tpl<br />
-
+ "Escreva aqui a descrição da sua obra"=>"Describe your work",
+ "Autor da obra"=>"Work's Author",
 );
 
 global $lang;
