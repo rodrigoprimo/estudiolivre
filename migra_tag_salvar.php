@@ -107,9 +107,9 @@ function migra_acervo($arquivoId, $objId_from) {
     $thumbnail = preg_replace("/ /","\ ",$arquivo['thumbnail']);
  
     if (!empty($arq))
-	system("cp /noe/data/vhost/teste.estudiolivre.org/htdocs/repo/$arq /noe/data/vhost/estudiolivre.org/htdocs/repo");
+	system("mv /noe/data/vhost/teste.estudiolivre.org/htdocs/repo/$arq /noe/data/vhost/estudiolivre.org/htdocs/repo");
     if (!empty($thumbnail))
-	system("cp /noe/data/vhost/teste.estudiolivre.org/htdocs/repo/$thumbnail /noe/data/vhost/estudiolivre.org/htdocs/repo");
+	system("mv /noe/data/vhost/teste.estudiolivre.org/htdocs/repo/$thumbnail /noe/data/vhost/estudiolivre.org/htdocs/repo");
     
 }
 
