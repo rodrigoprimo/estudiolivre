@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.16 2006-07-12 03:40:20 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.17 2006-07-12 16:07:01 lfagundes Exp $ *}
 
 {popup_init src="lib/overlib.js"}
 
@@ -168,10 +168,12 @@
 							{/section}
 						</select>
 						<br/>
+						{*
 						{tr}Is a translation of this page:{/tr}
 						<br/>
 						<input style="width:95%;" type="text" name="translation" value="{$translation|escape}" />
 						<br/>
+						*}
 					{/if}
 					
 					{*os smileys são un FEATURE!!!!!! era só desabilitar!....*}
