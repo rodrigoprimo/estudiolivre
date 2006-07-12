@@ -34,7 +34,7 @@
 {if $cantobjects eq 0}
   <h3>nenhum resultado</h3>
 {else}
-  <h3>{$cantobjects} resultado{if $cantobjects != 1}s{/if} {include file="browseFreeTags-pagination.tpl"}</h3>
+  <h3>{$cantobjects} {tr}resultado{/tr}{if $cantobjects != 1}s{/if} {include file="browseFreeTags-pagination.tpl"}</h3>
 
   {cycle values="odd,even" print=false}
   {section name=ix loop=$objects}

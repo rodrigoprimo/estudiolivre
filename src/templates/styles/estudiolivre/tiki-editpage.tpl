@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.14 2006-07-11 19:35:09 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.15 2006-07-12 01:34:35 rhwinter Exp $ *}
 
 {popup_init src="lib/overlib.js"}
 
@@ -20,11 +20,11 @@
 	<div id="wikiEditCont">	
 		
 		<span id="labelRight" class="pointer" name="preview" onclick="setPreview();">
-			gerar {if $preview}nova {/if}{tr}preview{/tr}
+			{tr}gerar{/tr} {if $preview}{tr}nova{/tr} {/if}{tr}preview{/tr}
 		</span>
 		<span id="label" class="wikiEdit hiddenPointer" onclick="javascript:flip('editCont');javascript:flip('editLabelLine');toggleImage(document.getElementById('edTArrow'),'iArrowGreyRight.png');">
 			<img id="edTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
-			Edição da página <b>{$page|escape|truncate:20:"(...)":true}{if $pageAlias ne ''}&nbsp;({$pageAlias|escape}){/if}</b>
+			{tr}Edição da página{/tr} <b>{$page|escape|truncate:20:"(...)":true}{if $pageAlias ne ''}&nbsp;({$pageAlias|escape}){/if}</b>
 		</span>
 		<div class="wikiEdit" id="editCont" style="display:block">
 			<!--input type="submit" class="wikiaction" name="preview" value="{tr}preview{/tr}" style="float:right"/-->
@@ -85,7 +85,7 @@
 				
 				<span class="hiddenPointer" onclick="javascript:flip('maisOpcoes');toggleImage(document.getElementById('edtOptTArrow'),'iArrowGreyDown.png');" >
 					<img class="pointer" id="edtOptTArrow" src="styles/estudiolivre/iArrowGreyRight.png">
-					<b>Mais opções</b>
+					<b>{tr}Mais opções{/tr}</b>
 				</span>
 				<div id="maisOpcoes" style="display:none">
 					{if $page_ref_id}
@@ -162,12 +162,16 @@
 					{if $feature_multilingual eq 'y'}
 						{tr}Language{/tr}:
 						<select name="lang">
-							<option value="">Escolha o idioma dessa página...</option>
+							<option value="">{tr}Escolha o idioma dessa página...{/tr}</option>
 							{section name=ix loop=$languages}
 								<option value="{$languages[ix].value|escape}"{if $lang eq $languages[ix].value} selected="selected"{/if}>{$languages[ix].name}</option>
 							{/section}
 						</select>
-						{*<tr class="formcolor"><td>{tr}Is a translation of this page:{/tr}</td><td><input style="width:95%;" type="text" name="translation" value="{$translation|escape}" /></td></tr>*}
+						<br/>
+						{tr}Is a translation of this page:{/tr}
+						<br/>
+						<input style="width:95%;" type="text" name="translation" value="{$translation|escape}" />
+						<br/>
 					{/if}
 					
 					{*os smileys são un FEATURE!!!!!! era só desabilitar!....*}
@@ -308,7 +312,7 @@
 		
 			<div id="attention">
 			    <span class="pointer" name="preview" onclick="setPreview();">
-					<div id="edtPreviewAtt">Gerar {if $preview}nova {/if}{tr}preview{/tr}</div>
+					<div id="edtPreviewAtt">{tr}Gerar{/tr} {if $preview}{tr}nova{/tr} {/if}{tr}preview{/tr}</div>
 				</span>
 				{if $page|lower neq 'sandbox'}
 					<div id="edtComentario">
@@ -332,9 +336,9 @@
 				{if $page|lower neq 'sandbox' or $tiki_p_admin eq 'y'}
 					{if $tiki_p_minor eq 'y' and $page|lower ne 'sandbox'}
 						<div id="edtIsMinor">
-							<div>A modificação foi:</div>					
-							{tooltip text="Selecione se essa modificação foi <b>pequena</b> (ela não vai aparecer na página das ultimas alterações do site)"}<input type="radio" name="isminor" value="on" />Pequena<br>{/tooltip}
-							{tooltip text="Selecione se essa modificação foi <b>grande</b> e você quer que tod@s a vejam"}<input type="radio" name="isminor" value="" checked="checked"/>Grande<br>{/tooltip}
+							<div>{tr}A modificação foi{tr}:</div>					
+							{tooltip text="Selecione se essa modificação foi <b>pequena</b> (ela não vai aparecer na página das ultimas alterações do site)"}<input type="radio" name="isminor" value="on" />{tr}Pequena{/tr}<br>{/tooltip}
+							{tooltip text="Selecione se essa modificação foi <b>grande</b> e você quer que tod@s a vejam"}<input type="radio" name="isminor" value="" checked="checked"/>{tr}Grande{/tr}<br>{/tooltip}
 
 						</div>
 					{/if}
@@ -359,14 +363,14 @@
 </form>
 
 <div id="precisaComentar" style="display:none;width:200px;padding:5px">
-  		É <b>recomendável</b> comentar as modificações realizadas. Assim todos podem saber qual modificação foi feita na página.
+  		{tr}É <b>recomendável</b> comentar as modificações realizadas. Assim todos podem saber qual modificação foi feita na página.{/tr}
   		<br/>
   		<br>
-  		Faça o comentário no campo abaixo:
+  		{tr}Faça o comentário no campo abaixo{/tr}:
   		<br/>
 		<input class="wikitext" id="lightComment" type="text" name="lightComment" value="" onkeypress="key(event)"/>
 		<div id="edtSaveCancel">
-			<img src="styles/estudiolivre/bSave.png" onclick="comment()"/>
+			<img src="styles/estudiolivre/bSave.png" value="{tr}save{/tr}" onclick="comment()"/>
 		</div>
 	</form>
 </div>

@@ -7,27 +7,27 @@
 	<div id="localMenu">
 	<ul>
     {if $page eq "Softwares de Edição de Áudio"}
-       <li class="selectedAudio">softwares</li>
+       <li class="selectedAudio">{tr}softwares{/tr}</li>
     {else}
        <li><a href="tiki-index.php?page=Softwares de Áudio">softwares</li>
     {/if}
 
     {if $page eq "Equipamentos para Produção Multimídia"}
-       <li class="selectedAudio">equipamentos</li>
+       <li class="selectedAudio">{tr}equipamentos{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=Equipamentos+para+Produ%C3%A7%C3%A3o+Multim%C3%ADdia">equipamentos</a></li>
+       <li><a href="tiki-index.php?page=Equipamentos+para+Produ%C3%A7%C3%A3o+Multim%C3%ADdia">{tr}equipamentos{/tr}</a></li>
     {/if}
 
     {if $page eq "Produzindo Áudio"}
-       <li class="selectedAudio">produzindo</li>
+       <li class="selectedAudio">{tr}produzindo{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=Produzindo+%C3%81udio">produzindo</a></li>
+       <li><a href="tiki-index.php?page=Produzindo+%C3%81udio">{tr}produzindo{/tr}</a></li>
     {/if}
     
     {if $page eq "Links de Áudio"}
        <li class="selectedAudio">links</li>
     {else}
-        <li><a href="tiki-index.php?page=Links+de+%C3%81udio">links</a></li>
+        <li><a href="tiki-index.php?page=Links+de+%C3%81udio">{tr}links{/tr}</a></li>
     {/if}
 	</ul>
 	</div>
@@ -37,27 +37,27 @@
 	<div id="localMenu">
 	<ul>
     {if $page eq "Softwares de Gráfico"}
-       <li class="selectedGraf">softwares</li>
+       <li class="selectedGraf">{tr}softwares{/tr}</li>
     {else}
        <li><a href="tiki-index.php?page=Softwares de Gráfico">softwares</a></li>
     {/if}
     
     {if $page eq "Equipamentos para Produção Multimídia"}
-       <li class="selectedGraf">equipamentos</li>
+       <li class="selectedGraf">{tr}equipamentos{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=Equipamentos+para+Produ%C3%A7%C3%A3o+Multim%C3%ADdia">equipamentos</a></li>
+       <li><a href="tiki-index.php?page=Equipamentos+para+Produ%C3%A7%C3%A3o+Multim%C3%ADdia">{tr}equipamentos{/tr}</a></li>
     {/if}
 
     {if $page eq "Produzindo Gráfico"}
-       <li class="selectedGraf">produzindo</li>
+       <li class="selectedGraf">{tr}produzindo{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=Produzindo Gráfico">produzindo</a></li>
+       <li><a href="tiki-index.php?page=Produzindo Gráfico">{tr}produzindo{/tr}</a></li>
     {/if}
 
     {if $page eq "Links de Gráfico"}
-       <li class="selectedGraf">links</li>
+       <li class="selectedGraf">{tr}links{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=Links de Gráfico">links</a></li>
+       <li><a href="tiki-index.php?page=Links de Gráfico">{tr}links{/tr}</a></li>
     {/if}
 	</ul>
 	</div>
@@ -67,27 +67,27 @@
 	<div id="localMenu">
 	<ul>
     {if $page eq "Softwares de Vídeo"}
-       <li class="selectedVideo">softwares</li>
+       <li class="selectedVideo">{tr}softwares{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=Softwares de Vídeo">softwares</a></li>
+       <li><a href="tiki-index.php?page=Softwares de Vídeo">{tr}softwares{/tr}</a></li>
     {/if}
 
     {if $page eq "Equipamentos para Produção Multimídia"}
-       <li class="selectedVideo">equipamentos</li>
+       <li class="selectedVideo">{tr}equipamentos{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=Equipamentos+para+Produ%C3%A7%C3%A3o+Multim%C3%ADdia">equipamentos</a></li>
+       <li><a href="tiki-index.php?page=Equipamentos+para+Produ%C3%A7%C3%A3o+Multim%C3%ADdia">{tr}equipamentos{/tr}</a></li>
     {/if}
     
     {if $page eq "Produzindo Vídeo"}
-       <li class="selectedVideo">produzindo</li>
+       <li class="selectedVideo">{tr}produzindo{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=Produzindo Vídeo">produzindo</a></li>
+       <li><a href="tiki-index.php?page=Produzindo Vídeo">{tr}produzindo{/tr}</a></li>
     {/if}
 
     {if $page eq "Links de Vídeo"}
-       <li class="selectedVideo">links</li>
+       <li class="selectedVideo">{tr}links{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=Links de Vídeo">links</a></li>
+       <li><a href="tiki-index.php?page=Links de Vídeo">{tr}links{/tr}</a></li>
     {/if}
 	</ul>
 	</div>
@@ -97,33 +97,33 @@
 	<div id="localMenu">
 	<ul>
     {if $current_location eq "el-gallery_upload.php"}      
-      	<li class="selectedAcervo">compartilhe sua obra</li>
+      	<li class="selectedAcervo">{tr}compartilhe sua obra{/tr}</li>
     {else}
     	{if $user}
-        	<li><a href="el-gallery_upload.php">compartilhe sua obra</a></li>
+        	<li><a href="el-gallery_upload.php">{tr}compartilhe sua obra{/tr}</a></li>
         {else}
       		<div id="precisaLogar" style="display:none;width:200px;padding:5px">
-      			Para compartilhar a sua obra no <b>Acervo Livre</b> é necessário se <a href="tiki-register.php">cadastrar</a> no site.<br><br>
-      			Se for cadastrado, efetue o login:<br>
+      			{tr}Para compartilhar a sua obra no <b>Acervo Livre</b> é necessário se <a href="tiki-register.php">cadastrar</a> no site.{/tr}<br><br>
+      			{tr}Se for cadastrado, efetue o login{/tr}:<br>
 
 					    <form id="uLoginBox" action="tiki-login.php" method="post">
 					      <input type="hidden" name="redirect" value="el-gallery_upload.php">
-					      <input class="uText" type="text" name="user" id="login-user" size="12" value="usuári@" onFocus="this.value=''"/>
-					      <input class="uText" type="text" name="pass" id="login-pass" size="10" value="senha" onFocus="this.value='';this.type='password'"/>
+					      <input class="uText" type="text" name="user" id="login-user" size="12" value="{tr}user{/tr}" onFocus="this.value=''"/>
+					      <input class="uText" type="text" name="pass" id="login-pass" size="10" value="{tr}senha{/tr}" onFocus="this.value='';this.type='password'"/>
 					      <input type="image" name="login" src="styles/estudiolivre/iLogin.png" />      
 					      <div id="uLoginOptions">
-					        <a href="tiki-remind_password.php">&raquo; recuperar senha</a><br>
+					        <a href="tiki-remind_password.php">&raquo; {tr}recuperar{/tr} {tr}senha{/tr}</a><br>
 					      </div>
 					   </form>
 
 			  <br><br>
-				Se preferir, <a href="tiki-view_faq.php?faqId=3">leia mais</a> sobre o <b>Acervo Livre</b>.
+				{tr}Se preferir{/tr}, <a href="tiki-view_faq.php?faqId=3">{tr}leia mais{/tr}</a> {tr}sobre o <b>Acervo Livre</b>{/tr}.
       		</div>
-      		<li onclick="showLightbox('precisaLogar')" style="cursor:pointer"><a>compartilhe sua obra</a></li>
+      		<li onclick="showLightbox('precisaLogar')" style="cursor:pointer"><a>{tr}compartilhe sua obra{/tr}</a></li>
         {/if}   
     {/if}
     
-     <li><a href="tiki-view_forum.php?forumId=16">sobre o acervo</a></li>
+     <li><a href="tiki-view_forum.php?forumId=16">{tr}sobre o{/tr} {tr}acervo{/tr}</a></li>
 	</ul>
 	</div>
   {/if}
@@ -133,7 +133,7 @@
 {if $user}
   
   <div id="topMenuContainer">
-    <a href="tiki-logout.php?page={$current_location}">Logout</a>
+    <a href="tiki-logout.php?page={$current_location}">{tr}Logout{/tr}</a>
   </div>
 
   <div id="userMenuContainer">
@@ -148,7 +148,7 @@
 
       <br>
       <span id="uStats">
-        <img src="styles/estudiolivre/iOnline.png"> online
+        <img src="styles/estudiolivre/iOnline.png"> {tr}online{/tr}
       </span>
       <br>
       <span id="uKarma">
@@ -167,13 +167,13 @@
     <div id="moduleLastChanges">
        <span class="hiddenPointer" onclick="javascript:flip('moduleLastChangesMore');toggleImage(document.getElementById('chaTArrow'),'iArrowGreyDown.png')">
         <img id="chaTArrow"  src="styles/estudiolivre/iArrowGreyRight.png">
-      	Últimas Alterações
+      	{tr}Últimas Alterações{/tr}
       </span>
       <div id='moduleLastChangesMore' style="display:none;">
       	{foreach from=$modLastModif item='page'}
-			<a href="tiki-index.php?page={$page.pageName}" onMouseover="tooltip('{if $page.comment}{$page.comment|escape:'quotes'|escape:'htmlall'}{else}<i>Modificação não comentada</i>{/if}<br>editado por: <b>{$page.user}</b>')" onMouseout="nd()">{$page.pageName}</a><br/>
+			<a href="tiki-index.php?page={$page.pageName}" onMouseover="tooltip('{if $page.comment}{$page.comment|escape:'quotes'|escape:'htmlall'}{else}<i>{tr}Modificação não comentada{/tr}</i>{/if}<br>{tr}editado por{/tr}: <b>{$page.user}</b>')" onMouseout="nd()">{$page.pageName}</a><br/>
      	{/foreach}
-     	<div id="moduleLastChangesViewAll"><a href="tiki-lastchanges.php?days=0">ver todas</a></div>
+     	<div id="moduleLastChangesViewAll"><a href="tiki-lastchanges.php?days=0">{tr}ver mais{/tr}</a></div>
       </div>
     </div>
     
@@ -182,7 +182,7 @@
     {if sizeof($online_users) > 1}
       <span class="hiddenPointer" onclick="javascript:flip('moduleWhoIsThereMore');toggleImage(document.getElementById('whoTArrow'),'iArrowGreyDown.png')">
     	  <img id="whoTArrow" src="styles/estudiolivre/iArrowGreyRight.png">
-	      Usuári@s Online
+	      {tr}Usuári@s Online{/tr}
       </span>
       <div id='moduleWhoIsThereMore' style="display:none;">
 		{foreach from=$online_users item='onlineUser'}
@@ -192,19 +192,19 @@
 		{/foreach}
       </div>
     {else}
-    	Não há usuári@s online
+    	{tr}Não há usuári@s online{/tr}
     {/if}
     </div>
     
     <hr>
     <div id="moduleGallery">
-    	Acervo: {tooltip text="Veja os arquivos que você publicou"}<a href="el-user.php?view_user={$user}#gallery">ver</a>{/tooltip} | {tooltip text="Publique <b>sua obra</b> no Estúdio Livre!"}<a href="el-gallery_upload.php">publicar</a>{/tooltip}
+    	{tr}Acervo{/tr}: {tooltip text="Veja os arquivos que você publicou"}<a href="el-user.php?view_user={$user}#gallery">{tr}ver{/tr}</a>{/tooltip} | {tooltip text="Publique <b>sua obra</b> no Estúdio Livre!"}<a href="el-gallery_upload.php">{tr}publicar{/tr}</a>{/tooltip}
     </div>
 	
 	{if  $tiki_p_admin eq 'y'}
 	    <hr>
 		<div style="text-align:left">
-			<a href="tiki-admin.php">Administrar</a> o TikiWiki
+			{tr}<a href="tiki-admin.php">Administrar</a> o TikiWiki{/tr}
 	    </div>
 	{/if}
         
@@ -212,18 +212,18 @@
 
 {else}
 
-  <div id="topMenuContainer">Login
+  <div id="topMenuContainer">{tr}Login{/tr}
   </div>
 
   <div id="userMenuContainer">
     <form id="uLoginBox" action="tiki-login.php" method="post">
-      {if $isIE}Usuário: {/if}<input class="{if !$isIE}uText{/if}" type="text" name="user" id="login-user" size="12" {if $isIE}style="width:60%"{/if} value="usuári@" onFocus="if(this.value=='usuári@')this.value=''"/>
-      {if $isIE}Senha: {/if}<input class="{if !$isIE}uText{/if}" type="{if $isIE}password{else}text{/if}" name="pass" id="login-pass" size="10"	{if $isIE}style="width:70%"{/if} value="{if !$isIE}senha{/if}" onFocus="if(this.value=='senha')this.value='';this.type='password'"/>
+      {if $isIE}{tr}Usuário{/tr}: {/if}<input class="{if !$isIE}uText{/if}" type="text" name="user" id="login-user" size="12" {if $isIE}style="width:60%"{/if} value="{tr}user{/tr}" onFocus="if(this.value=='usuári@')this.value=''"/>
+      {if $isIE}{tr}Senha{/tr}: {/if}<input class="{if !$isIE}uText{/if}" type="{if $isIE}password{else}text{/if}" name="pass" id="login-pass" size="10"	{if $isIE}style="width:70%"{/if} value="{if !$isIE}{tr}senha{/tr}{/if}" onFocus="if(this.value=='{tr}senha{/tr}')this.value='';this.type='password'"/>
       {tooltip text="Clique aqui ou aperte <i>Enter</i> para efetuar o login"}<input type="image" name="login" src="styles/estudiolivre/iLogin.png" />{/tooltip}
       
       <div id="uLoginOptions">
-        <a href="tiki-remind_password.php">&raquo; recuperar senha</a><br>
-        <a href="tiki-register.php">&raquo; cadastrar-se</a>
+        <a href="tiki-remind_password.php">&raquo; {tr}recuperar senha{/tr}</a><br>
+        <a href="tiki-register.php">&raquo; {tr}cadastrar-se{/tr}</a>
       </div>
       
       

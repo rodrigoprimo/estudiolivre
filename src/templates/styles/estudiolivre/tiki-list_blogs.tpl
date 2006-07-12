@@ -3,7 +3,7 @@
 		{if !$find}
 			{tr}Blogs{/tr}
 		{else}
-			Busca em blogs
+			{tr}Busca em blogs{/tr}
 		{/if}
 		{if $tiki_p_admin eq 'y'}
 			<a href="tiki-admin.php?page=blogs">
@@ -225,7 +225,7 @@
 			</a>
 		{/if}
 		
-		{tr}Page{/tr} {$actual_page} de {$cant_pages}
+		{tr}Page{/tr} {$actual_page} {tr}de{/tr} {$cant_pages}
 		
 		{if $next_offset >= 0}
 			<a class="userprevnext" href="tiki-list_blogs.php?find={$find}&amp;offset={$next_offset}&amp;sort_mode={$sort_mode}">

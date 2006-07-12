@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.16 2006-07-05 23:33:41 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.17 2006-07-12 01:34:35 rhwinter Exp $ *}
 <!--script language="JavaScript" src="lib/js/contextualMenu.js"></script-->
 
 <!-- menu contextual>
@@ -71,6 +71,13 @@
 	     {tooltip name="show-page-traduzir-pagina" text="<b>Traduzir</b> página"}<span class="tabbut"><a href="tiki-edit_translation.php?page={$page|escape:'url'}" class="tablink"><img src="styles/estudiolivre/iWikiTranslate.png"></a></span>{/tooltip}
 	{/if}
 	
+	{if $feature_multilingual == 'y' and count($trads) > 1}
+		{tooltip text="<b>Traduções</b> dessa página"}<img src="styles/estudiolivre/iWikiTranslations.png" onclick="document.getElementById('transHide').style.display='inline'" style="cursor:pointer">{/tooltip}
+		<span id="transHide" style="display:none">
+			&nbsp;&nbsp;{include file="translated-lang.tpl" td='y'}
+		</span>
+	{/if}
+	
 	{if $feature_backlinks eq 'y' and $backlinks}
 		{tooltip name="show-page-ver-referencias" text="Ver as páginas que referenciam esta página. Ou seja, que possuem links que trazem cá"}<img src="styles/estudiolivre/iWikiRef.png" onclick="document.getElementById('backlinksId').style.display='inline'" style="cursor:pointer">{/tooltip}
 		<form action="tiki-index.php" method="get" style="display:none" id="backlinksId">
@@ -120,10 +127,6 @@
 		</form>
 	{/if*}
 
-	{* FEATURE DESABILITADO NO EL: if $feature_multilingual == 'y'}
-		{include file="translated-lang.tpl" td='y'}
-	{/if*}
-	
 	{* if $feature_wiki_undo eq 'y' and $canundo eq 'y'}
 		<span class="tabbut"><a href="tiki-index.php?page={$page|escape:"url"}&amp;undo=1" class="tablink">{tr}undo{/tr}</a></span>
 	{/if *}
@@ -151,7 +154,6 @@
 	{* if $feature_wiki_attachments eq 'y' and $tiki_p_wiki_view_attachments eq 'y' and $show_page eq 'y'}
 	<span class="tabbut"><a href="#attachments" onclick="javascript:flip('attzone{if $atts_show eq 'y'}open{/if}');" class="tablink">{if $atts_count eq 0}{tr}attach file{/tr}{elseif $atts_count eq 1}1 {tr}attachment{/tr}{else}{$atts_count} {tr}attachments{/tr}{/if}</a></span>
 	{/if *}
-	
 	
 {/if}
 

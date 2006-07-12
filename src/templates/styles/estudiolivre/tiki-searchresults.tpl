@@ -19,7 +19,7 @@
      <a class="linkbut{if $where eq 'wikis'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=wikis">{tr}wiki{/tr}</a>
     {/if}
 {* isso não rola!!
-     <a class="linkbut{if $where eq 'wikis'} selected{/if}" href="el-gallery_search.php?highlight={$words}">acervo</a>
+     <a class="linkbut{if $where eq 'wikis'} selected{/if}" href="el-gallery_search.php?highlight={$words}">{tr}acervo{/tr}</a>
      *}
 {*    
     {if $feature_galleries eq 'y'}
@@ -106,10 +106,10 @@
 			<br />
 				{if $where ne 'forums' and $user}{tr}Não existe uma página chamada {$words}, mas você pode{/tr} 
 					{tooltip text="Clique para criar a página e editá-la"}
-						<a href="tiki-editpage.php?page={$words}">criá-la.</a>
+						<a href="tiki-editpage.php?page={$words}">{tr}criá-la{/tr}.</a>
 					{/tooltip}
 					{tooltip name="searchresult-pagina-orfa" text="Nenhuma outra página do wiki levará a essa página. Assim ela estará, de certo modo, inacessível. Para resolver isso basta colocar um link para esta página em alguma outra página"}
-					  (a página será órfã)
+					  {tr}(a página será órfã){/tr}
 					{/tooltip}</a>
 				{/if}
 			{/if}
@@ -127,7 +127,7 @@
 						<a href="tiki-editpage.php?page={$words}">{$words}</a>
 					{/tooltip}
 					{tooltip name="searchresult-pagina-orfa" text="Nenhuma outra página do wiki levará a essa página. Assim ela estará, de certo modo, inacessível. Para resolver isso basta colocar um link para esta página em alguma outra página"}
-					  (a página será órfã)
+					  {tr}(a página será órfã){/tr}
 					{/tooltip}</a>
 				{/if}
 			</div>

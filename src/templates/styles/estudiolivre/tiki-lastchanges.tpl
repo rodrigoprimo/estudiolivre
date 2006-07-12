@@ -1,7 +1,7 @@
 <div id="listLastChanges">
 	<h1>
 		{if $findwhat != ""}
-				Busca nas últimas alterações
+				{tr}Busca nas últimas alterações{/tr}
 		{else} 
 			{tr}Last Changes{/tr}
 		{/if}
@@ -11,9 +11,9 @@
 		Busca <img class="pointer" onclick="javascript:flip('lastChangesOptions');toggleImage(this,'iArrowGreyDown.png')" src="styles/estudiolivre/iArrowGreyLeft.png">
 		<div id="lastChangesOptions" style="display:none">
 			<form method="get" action="tiki-lastchanges.php">
-				Modificações com texto: <br/>
+				{tr}Modificações com texto{/tr}: <br/>
 				{tooltip text="Dica: não escreva nada se quiser listar <b>todas</b> as modificções"}<input name="find" value="" type="text" class="input">{/tooltip}<br>
-			    <b>Ou</b> nos últimos: {tooltip text="Dica: coloque <b>0</b> para buscar em todos os dias"}<input name="days" value="0" size="2" type="text" class="input">{/tooltip} dias<br>
+			    {tr}<b>Ou</b> nos últimos{/tr}: {tooltip text="Dica: coloque <b>0</b> para buscar em todos os dias"}<input name="days" value="0" size="2" type="text" class="input">{/tooltip} {tr}dias{/tr}<br>
 			    <input value="buscar" name="search" type="submit">
 			    <input name="sort_mode" value="lastModif_desc" type="hidden">
 		    </form>
@@ -22,13 +22,13 @@
 	
 	{if $findwhat!=""}
 		<h5>
-			{$cant_records} resultados{if $cant_users > 1}s{/if} para "<b>{$findwhat}</b>"<br>
-			<a href="tiki-lastchanges.php?days=0">Veja todas as alterações</a>
+			{$cant_records} {tr}resultado{/tr}{if $cant_users > 1}s{/if} {tr}para{/tr} "<b>{$findwhat}</b>"<br>
+			<a href="tiki-lastchanges.php?days=0">{tr}Veja todas as alterações{/tr}</a>
 		</h5>
 	{elseif $days > 0}
 		<h4>
-			<b>Atenção:</b> listando somente as modificações feitas no{if $days > 1}s{/if} último{if $days > 1}s{/if} <b>{$days}</b> dia{if $days > 1}s{/if}.<br>
-			<a href="tiki-lastchanges.php?days=0">Veja as alterações feitas em qualquer dia</a>
+			{tr}<b>Atenção:</b> listando somente as modificações feitas no{/tr}{if $days > 1}s{/if} {tr}último{/tr}{if $days > 1}s{/if} <b>{$days}</b> dia{if $days > 1}s{/if}.<br>
+			<a href="tiki-lastchanges.php?days=0">{tr}Veja as alterações feitas em qualquer dia{/tr}</a>
 		</h4>
 	{/if}		
 		
@@ -136,7 +136,7 @@
 				</a>
 			{/if}
 			
-			{tr}Page{/tr} {$actual_page} de {$cant_pages}
+			{tr}Page{/tr} {$actual_page} {tr}de{/tr} {$cant_pages}
 			
 			{if $next_offset >= 0}
 				<a class="prevnext" href="tiki-lastchanges.php?find={$find}&amp;days={$days}&amp;offset={$next_offset}&amp;sort_mode={$sort_mode}">

@@ -28,7 +28,7 @@
 				<input type="checkbox" name="cat_categorize" id="cat-check" {if $cat_categorize eq 'y' or $categ_checked eq 'y'}checked="checked"{/if}/>
 	   	    </div>
 	   		<div id="selected" style="float:right">
-	   			Remover categorias:<BR/>
+	   			{tr}Remover{/tr} {tr}categorias{/tr}:<BR/>
 	   			{section name=ix loop=$categories}
 			    	{if $categories[ix].incat eq 'y'}
 				    	<span class="pointer" id="linkToRemove{$categories[ix].categId|escape}" onclick="removeCategory({$categories[ix].categId|escape})" style="display:block">
@@ -42,7 +42,7 @@
 			   	{/section}
 	   		</div>
 	   		<div id="notSelected" style="float:left">
-	   			Adicionar categorias:<BR/>
+	   			{tr}Adicionar{/tr} {tr}categorias{/tr}:<BR/>
 	   			{section name=ix loop=$categories}
 			    	{if $categories[ix].incat eq 'n'}
 				    	<span class="pointer" id="linkToAdd{$categories[ix].categId|escape}" onclick="addCategory('{$categories[ix].categpath}',{$categories[ix].categId|escape})" style="display:block">

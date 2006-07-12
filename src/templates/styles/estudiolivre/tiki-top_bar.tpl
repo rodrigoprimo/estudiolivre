@@ -67,25 +67,25 @@
 		{if $category eq "Áudio"}{assign var='audioStyle' value="opacity:0.3"}{/if}
         <a style="{$audioStyle}" href="tiki-index.php?page=Áudio" {if $isIE}title="AUDIO||LAB"{/if}>
           <img src="styles/estudiolivre/cube{$audio}{if $isIE}IE{/if}.png">
-	      <span id="audiolab">áudio</span>
+	      <span id="audiolab">{tr}áudio{/tr}</span>
         </a>
 	        
 	    {if $category eq "Gráfico"}{assign var='graficoStyle' value="opacity:0.3"}{/if}
         <a style="{$graficoStyle}"  href="tiki-index.php?page=Gráfico" {if $isIE}title="GRAFI||LAB"{/if}>
           <img src="styles/estudiolivre/cube{$grafico}{if $isIE}IE{/if}.png">
-		  <span id="grafilab">gráfico</span>
+		  <span id="grafilab">{tr}gráfico{/tr}</span>
         </a>
 
 	    {if $category eq "Vídeo"}{assign var='videoStyle' value="opacity:0.3"}{/if}
         <a style="{$videoStyle}"  href="tiki-index.php?page=Vídeo" {if $isIE}title="VIDEO||LAB"{/if}>
           <img src="styles/estudiolivre/cube{$video}{if $isIE}IE{/if}.png">
-	      <span id="videolab">vídeo</span>
+	      <span id="videolab">{tr}vídeo{/tr}</span>
         </a>
 	    
 	    {if $category eq "gallery"}{assign var='galleryStyle' value="opacity:0.3"}{/if}
         <a style="{$galleryStyle}" href="el-gallery_home.php" {if $isIE}title="ACERVO.LIVRE"{/if}>
 	        <img src="styles/estudiolivre/cube{$gallery}{if $isIE}IE{/if}.png">
-	        <span id="acervolivre">acervo</span>      
+	        <span id="acervolivre">{tr}acervo{/tr}</span>      
         </a> 
         
 	</div>

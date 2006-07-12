@@ -1,10 +1,10 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-list_users.tpl,v 1.4 2006-06-29 19:54:47 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-list_users.tpl,v 1.5 2006-07-12 01:34:35 rhwinter Exp $ *}
 <div id="users">
 <h1>
 	{if !$find}
-		Lista de usuári@s
+		{tr}Lista de usuári@s{/tr}
 	{else}
-		Busca de usuári@s	
+		{tr}Busca de usuári@s{/tr}	
 	{/if}
 </h1>
 {*================
@@ -19,8 +19,8 @@
 		{if !$find}
 			{tr}users registered{/tr}
 		{else}
-			resultado{if $cant_users > 1}s{/if} para "{$find}"<br>
-			Veja <a href="tiki-list_users.php">a lista de todos os usuári@s</a>.
+			{tr}resultado{/tr}{if $cant_users > 1}s{/if} {tr}para{/tr} "{$find}"<br>
+			{tr}Veja{/tr} <a href="tiki-list_users.php">{tr}a lista de todos os usuári@s{/tr}</a>.
 		{/if}
 </h5>
 
@@ -70,7 +70,7 @@
 				<img src="styles/estudiolivre/sort{if $sort_mode eq 'country_desc'}ArrowUp{elseif $sort_mode eq 'country_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 			</a>
 			{/tooltip}
-			Localização
+			{tr}Localização{/tr}
 		</td>
 {if $feature_score eq 'y'}
   <td class="heading"><a class="userlistheading" href="tiki-list_users.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'score_desc'}score_asc{else}score_desc{/if}">{tr}Score{/tr}</a>&nbsp;</td>
@@ -139,7 +139,7 @@
 		</a>
 	{/if}
 	
-	{tr}Page{/tr} {$actual_page} de {$cant_pages}
+	{tr}Page{/tr} {$actual_page} {tr}de{/tr} {$cant_pages}
 	
 	{if $next_offset >= 0}
 		<a class="userprevnext" href="tiki-list_users.php?find={$find}&amp;offset={$next_offset}&amp;sort_mode={$sort_mode}">

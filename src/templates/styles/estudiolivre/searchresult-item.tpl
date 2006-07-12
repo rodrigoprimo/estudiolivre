@@ -1,6 +1,6 @@
 <div class="searchResultItem">
-	{if $feature_search_fulltext eq 'y'}{if $result.relevance <= 0}{assign var=tiptext value="Busca Simples"}{else}{assign var=tiptext value="Relevância: "|cat:$result.relevance}{/if}{/if}
-	{tooltip text=$tiptext|cat:" - Hits: "|cat:$result.hits}
+	{if $feature_search_fulltext eq 'y'}{if $result.relevance <= 0}{assign var=tiptext value="{tr}Busca Simples{/tr}"}{else}{assign var=tiptext value="{tr}Relevância{/tr}: "|cat:$result.relevance}{/if}{/if}
+	{tooltip text=$tiptext|cat:" - {tr}Hits{/tr}: "|cat:$result.hits}
 	<a href="{$result.href}&amp;highlight={$words}" class="searchResultItemLink">
 		{$result.pageName|strip_tags}
 	</a>
