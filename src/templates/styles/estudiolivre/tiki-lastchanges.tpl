@@ -8,7 +8,7 @@
 	</h1>
 	
 	<h5>
-		Busca <img class="pointer" onclick="javascript:flip('lastChangesOptions');toggleImage(this,'iArrowGreyDown.png')" src="styles/estudiolivre/iArrowGreyLeft.png">
+		{tr}Busca{/tr} <img class="pointer" onclick="javascript:flip('lastChangesOptions');toggleImage(this,'iArrowGreyDown.png')" src="styles/estudiolivre/iArrowGreyLeft.png">
 		<div id="lastChangesOptions" style="display:none">
 			<form method="get" action="tiki-lastchanges.php">
 				{tr}Modificações com texto{/tr}: <br/>

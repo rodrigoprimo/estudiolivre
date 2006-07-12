@@ -21,7 +21,7 @@
 <div id="uMsgSend">
 {if $user}
 	<form onSubmit="sendMsg(); return false;">
-		<input type="submit" name="" value="enviar" label="{tr}enviar{/tr}" id="uMsgSendSubmit" onClick="sendMsg()">
+		<input type="submit" name="" value="{tr}enviar{/tr}" label="enviar" id="uMsgSendSubmit" onClick="sendMsg()">
 	   	<input type="text" id="uMsgSendInput">
 	</form>
 {else}

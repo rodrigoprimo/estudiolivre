@@ -10,12 +10,12 @@
 	  <input style="width: auto;" type="radio" name="resposta1" value="1" onclick="resposta1 = 1; testLicense();">&nbsp;{tr}Sim{/tr}<br />
 	  <br />
 
-	  <b>{tr}Permitir o uso de trechos de sua obra para a criação de obras derivadas (sampling, colagem etc.)?</b><br />
+	  <b>{tr}Permitir o uso de trechos de sua obra para a criação de obras derivadas (sampling, colagem etc.)?{/tr}</b><br />
 	  <input style="width: auto;" type="radio" name="resposta2" value="2" onClick="resposta2 = 0; enableAttribution(); testLicense();">&nbsp;{tr}Não{/tr}<br />
 	  <input style="width: auto;" type="radio" name="resposta2" value="1" onClick="resposta2 = 1; disableAttribution(); testLicense();">&nbsp;{tr}Sim{/tr}<br />
 	  <br />
 
-	  <b>{tr}Permitir modificações em sua obra?</b><br />
+	  <b>{tr}Permitir modificações em sua obra?{/tr}</b><br />
 	  <input style="width: auto;" type="radio" id="resposta3-0" name="resposta3" value="2" onclick="resposta3 = 0; testLicense();" disabled>&nbsp;{tr}Não{/tr}<br />
 	  <input style="width: auto;" type="radio" id="resposta3-1" name="resposta3" value="1" onclick="resposta3 = 1; testLicense();" disabled>&nbsp;{tr}Sim{/tr}<br />
 	  <input style="width: auto;" type="radio" id="resposta3-2" name="resposta3" value="3" onclick="resposta3 = 2; testLicense();" disabled>&nbsp;{tr}Sim, contanto que outros compartilhem pela mesma licença{/tr}<br />

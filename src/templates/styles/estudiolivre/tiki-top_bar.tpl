@@ -27,7 +27,7 @@
      {* <li id="busca-forum" class="">{tooltip name="buscar-forum" text="Buscar nos <b>fóruns</b> do EstúdioLivre"}<a onclick="marcaBusca('forum')">f&oacute;rum</a>{/tooltip}</li>
       *}
       </ul>
-      <input id="searchField" name="highlight" size="15" type="text" accesskey="s" value="Buscar" onFocus="limpaBusca(this);"/><input class="submit" type="image" name="search" src="styles/estudiolivre/bSearch.png"/>
+      <input id="searchField" name="highlight" size="15" type="text" accesskey="s" value="{tr}Buscar{/tr}" onFocus="if(this.value=='{tr}Buscar{/tr}')this.value=''"/><input class="submit" type="image" name="search" src="styles/estudiolivre/bSearch.png"/>
 {*      <a class="searchMore" href="tiki-searchresults.php">mais opções de busca <span>+</span></a> *}
     </form>
   </div>

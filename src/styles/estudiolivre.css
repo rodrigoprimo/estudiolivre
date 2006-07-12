@@ -1555,7 +1555,7 @@ A.gUpmore {
 }
 
 #aName {
-	font-size:16px;
+	font-size:18px;
 	font-weight:bold;
 }
 
@@ -1574,6 +1574,7 @@ A.gUpmore {
 
 #aAuthorDate {
 	font-size: 14px;
+	text-align:right;
 }
 
 #aAuthorDate A {
@@ -1588,14 +1589,14 @@ A.gUpmore {
 }
 
 #aActions {
-	margint-top:50px;
+/*	margint-top:50px;*/
 	min-height:40px;
 	margin-bottom:20px;
 	vertical-align:middle;
 }
 
 #aActions DIV {
-	margin-top:20px;
+	margin-top:10px;
 	display:block;
 	text-align:center;
 }

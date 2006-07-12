@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.15 2006-07-12 01:34:35 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.16 2006-07-12 03:40:20 rhwinter Exp $ *}
 
 {popup_init src="lib/overlib.js"}
 
@@ -336,7 +336,7 @@
 				{if $page|lower neq 'sandbox' or $tiki_p_admin eq 'y'}
 					{if $tiki_p_minor eq 'y' and $page|lower ne 'sandbox'}
 						<div id="edtIsMinor">
-							<div>{tr}A modificação foi{tr}:</div>					
+							<div>{tr}A modificação foi{/tr}:</div>					
 							{tooltip text="Selecione se essa modificação foi <b>pequena</b> (ela não vai aparecer na página das ultimas alterações do site)"}<input type="radio" name="isminor" value="on" />{tr}Pequena{/tr}<br>{/tooltip}
 							{tooltip text="Selecione se essa modificação foi <b>grande</b> e você quer que tod@s a vejam"}<input type="radio" name="isminor" value="" checked="checked"/>{tr}Grande{/tr}<br>{/tooltip}
 

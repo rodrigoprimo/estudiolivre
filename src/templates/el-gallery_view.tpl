@@ -86,7 +86,7 @@
 						{/if}
 					</div>
 					<div id="aAuthorDate">
-						<b>{tr}autor{/tr}:</b> {ajax_input permission=$permission id="autor" value=$arquivo.autor default="Autor da Obra" display="inline"} <br><b>{tr}enviado por{/tr}:</b> <a href="el-user.php?view_user={$arquivo.user}">{$arquivo.user}</a><br><b{tr}em{/tr}</b> <i>{$arquivo.data_publicacao|date_format:"%d/%m/%Y"}</i>
+						<b>{tr}autor{/tr}:</b> {ajax_input permission=$permission id="autor" value=$arquivo.autor default="Autor da Obra" display="inline"} <b>{tr}enviado por{/tr}:</b> <a href="el-user.php?view_user={$arquivo.user}">{$arquivo.user}</a><br><b>{tr}em{/tr}:</b> <i>{$arquivo.data_publicacao|date_format:"%d/%m/%Y"}</i>
 					</div>
 				</div>
 			</div>
@@ -174,7 +174,7 @@
 						    <input type="hidden" name="{$comments_request_data[i].name|escape}" value="{$comments_request_data[i].value|escape}" />
 					    {/section}
 						<input type="hidden" name="comments_title" value="foobar" />
-						<input type="submit" name="comments_postComment" value="enviar" label="{tr}enviar{/tr}" id="uMsgSendSubmit" />
+						<input type="submit" name="comments_postComment" value="{tr}enviar{/tr}" label="enviar" id="uMsgSendSubmit" />
 						{if !$comments_cant}
 							{tooltip text="Seja @ primeir@ a comentar! Digite aqui o seu comentário e clique em <b>enviar</b>"}
 								<input type="text" id="uMsgSendInput" name="comments_data" value="{$comment_data|escape}"/>
