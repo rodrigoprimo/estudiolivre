@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-list_users.tpl,v 1.5 2006-07-12 01:34:35 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-list_users.tpl,v 1.6 2006-07-13 06:48:56 rhwinter Exp $ *}
 <div id="users">
 <h1>
 	{if !$find}
@@ -37,7 +37,7 @@
 </tr>
 </table>
 ==================*}
-{*debug*}
+
 <table width="100%">
 	<tr>
 		<td class="heading">
@@ -72,6 +72,17 @@
 			{/tooltip}
 			{tr}Localização{/tr}
 		</td>
+		<td class="heading">
+			{* LEIA: pq o score_desc é o sorting por data de entrada do membro eu não sei! mas É!!! *}
+			{if $sort_mode eq 'score_desc'}
+				<img src="styles/estudiolivre/sortArrowDown.png">
+			{else}
+				<a class="userlistheading" href="tiki-list_users.php">
+					<img src="styles/estudiolivre/sortGreyArrowDown.png">
+				</a>
+			{/if}
+			{tr}Membro desde{/tr}
+		</td>		
 {if $feature_score eq 'y'}
   <td class="heading"><a class="userlistheading" href="tiki-list_users.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'score_desc'}score_asc{else}score_desc{/if}">{tr}Score{/tr}</a>&nbsp;</td>
 {/if}
@@ -122,6 +133,10 @@
 				  &nbsp;</td>
 				  <td>&nbsp;{$listdistance[changes]}&nbsp;</td>
 			 =========================*}
+			 <td>
+			 	{assign var=listusersreg value=$listusers[changes].registrationDate}
+				 {$listusersreg|date_format:"%d/%m/%Y"}
+			 </td>
 		</tr>
 	{sectionelse}
 		<tr>
