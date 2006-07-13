@@ -123,7 +123,7 @@
         {/if}   
     {/if}
     
-     <li><a href="tiki-view_forum.php?forumId=16">{tr}sobre o{/tr} {tr}acervo{/tr}</a></li>
+     <li><a href="tiki-index.php?page=faq">{tr}sobre o{/tr} {tr}acervo{/tr}</a></li>
 	</ul>
 	</div>
   {/if}
