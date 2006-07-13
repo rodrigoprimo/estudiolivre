@@ -93,7 +93,7 @@ $extra_strings = array(
  "páginas que citam esta:" => "pages that link here:", // ## MODULES ./templates/styles/estudiolivre/tiki-show_page.tpl<br />
  // "tag" => "tag", // ## MODULES ./templates/styles/estudiolivre/tiki-top_bar.tpl<br />
  "sobre" => "about", // ## MODULES ./templates/styles/estudiolivre/tiki-top_bar.tpl<br />
- "fóruns" => "foruns", // ## MODULES ./templates/styles/estudiolivre/tiki-top_bar.tpl<br />
+ "fóruns" => "forums", // ## MODULES ./templates/styles/estudiolivre/tiki-top_bar.tpl<br />
  "contato" => "contact", // ## MODULES ./templates/styles/estudiolivre/tiki-top_bar.tpl<br />
  "<a href=\"tiki-admin.php\">Administrar</a> o TikiWiki" => "TikiWiki <a href=\"tiki-admin.php\">Administration</a>", // ## MODULES ./templates/styles/estudiolivre/sideContent.tpl<br />
  "Para compartilhar a sua obra no <b>Acervo Livre</b> é necessário se <a href=\"tiki-register.php\">cadastrar</a> no site." =>
@@ -248,7 +248,7 @@ $extra_strings = array(
 "Apagar esse arquivo" => "Delete this file",
 "Apagar esse arquivo do acervo" => "Delete this file from the gallery",
 "Avaliação atual" => "Current rating",
-"Avaliação - entre na página do arquivo para votar" => "Rating - go to the file's page to vote",
+"Avaliação - entre na página do arquivo para votar" => "Rating - go to the file\'s page to vote",
 "A versão atual dessa página é <b>" => "The current version of this page is <b>",
 "<b>Aumentar</b> a altura da caixa de edição de texto" => "<b>Increase</b> the editing text area height",
 "<b>Comente</b> suscintamente as modificações feitas na edição" => "<b>Comment</b> briefly the changes you made",
@@ -263,7 +263,7 @@ $extra_strings = array(
 "<b>Título:</b><i> " => "<b>Title:</b><i> ",
 "<b>Traduzir</b> página" => "<b>Translate</b> page",
 "<b>Travar</b> essa página" => "<b>Lock</b> page",
-"Buscar <b>blogs</b> do EstúdioLivre" => "Search into EstúdioLivre's <b>blogs</b>",
+"Buscar <b>blogs</b> do EstúdioLivre" => "Search into EstúdioLivre\'s <b>blogs</b>",
 "Buscar <b>usuári@s</b> do EstúdioLivre" => "Search for a <b>user</b>",
 "Buscar conteúdos com uma <b>tag</b>" => "Search contents <b>tagged</b>...",
 "Buscar no <b>acervo</b> do EstúdioLivre" => "Search the <b>gallery</b>",
@@ -278,18 +278,18 @@ $extra_strings = array(
 "Clique aqui ou aperte <i>Enter</i> para efetuar o login" => "Click here or press <i>Enter</i> to login",
 
 "Clique aqui para modificar a descri&ccedil;&atilde;o do arquivo" =>
- "Click here to change the file's description",
+ "Click here to change the file\'s description",
 
 "Clique aqui para selecionar um novo <b>avatar</b>" => "Click here to upload a new <b>avatar</b>",
 "Clique nas tags para adiocioná-las ao campo acima" => "Click these tags to add them to the field above",
-"Clique para continuar o envio desse arquivo" => "Click to continue this file's upload",
+"Clique para continuar o envio desse arquivo" => "Click to continue this file\'s upload",
 "Clique para criar a página e editá-la" => "Click here to create and edit the page",
 "Clique para definir outras propriedades do arquivo" => "Click here to define other properties for this file",
-"Clique para ir para a página do arquivo" => "Click to go the the file's page",
+"Clique para ir para a página do arquivo" => "Click to go the the file\'s page",
 "Clique para ler os comentários" => "Click to read the comments",
 "Clique para modificar a sua <b>localização</b>" => "Click to change your <b>location</b>",
 "Clique para modificar a sua licença padrão" => "Click to change your standard license",
-"Clique para modificar o nome desse arquivo" => "Click to change the file's name",
+"Clique para modificar o nome desse arquivo" => "Click to change the file\'s name",
 "Clique para modificar o seu <b>email</b>" => "Click to change your <b>email</b>",
 "Clique para modificar o seu <b>nome</b>" => "Click to change your <b>name</b>",
 "Clique para modificar o seu <b>site</b>" => "Click to change your <b>site</b>",
@@ -314,20 +314,20 @@ $extra_strings = array(
  "Tip: leave this field blank to list <b>all</b> changes",
  
 "Digite o seu comentário e clique em <b>enviar</b>" => "Type your comment and click <b>send</b>",
-"Editar informações do arquivo" => "Edit file's info",
-"Entre em contato - descubra os <b>canais de comunicação</b> com a comunidade" => "Get in touch - find you out how to communicate with the community",
-"Escreva aqui as tags desse arquivo (separadas por <b>vírgula</b>)" => "Write this file's tags here, (separated by <b>commas</b>)",
+"Editar informações do arquivo" => "Edit file\'s info",
+"Entre em contato - descubra os <b>canais de comunicação</b> com a comunidade" => "Get in touch - find you out <b>how to communicate</b> with the community",
+"Escreva aqui as tags desse arquivo (separadas por <b>vírgula</b>)" => "Write this file\'s tags here, (separated by <b>commas</b>)",
 "Esse arquivo não tem tags" => "This file has no tags",
 "Filtrar arquivos de áudio" => "Filter audio files",
 "Filtrar arquivos de vídeo" => "Filter video files ",
 "Filtrar imagens" => "Filter images",
 "Filtrar textos" => "Filter texts",
 "Fórum sem descrição" => "This forum has no description",
-"Fóruns de <b>discussões</b> - tire suas dúvidas aqui" => "<b>Discussion</b> Foruns - get your questions answered here",
-"<i>Feed</i> &nbsp;<b>RSS</b> do acervo.livre" => "Gallery's <b>RSS</b> <i>feed</i>",
+"Fóruns de <b>discussões</b> - tire suas dúvidas aqui" => "<b>Discussion</b> forums - get your questions answered here",
+"<i>Feed</i> &nbsp;<b>RSS</b> do acervo.livre" => "Gallery\'s <b>RSS</b> <i>feed</i>",
 "Ir para a Página Inicial" => "Go to the front page",
-"Licença padrão desse(a) usuári@: " => "This user's standard licence: ",
-"Licença padrão desse usuário: " => "This user's standard licence: ",
+"Licença padrão desse(a) usuári@: " => "This user\'s standard licence: ",
+"Licença padrão desse usuário: " => "This user\'s standard licence: ",
 "Modifica critério da ordenação" => "Change ordering criteria",
 "Modificar <b>permissões</b>" => "Change <b>permissions</b>",
 "Modifique as suas preferências" => "Change your preferences",
@@ -369,7 +369,7 @@ $extra_strings = array(
 "Veja a lista de <b>pessoas</b> que fazem parte da comunidade" => "Check out who are the <b>people</b> that are a part of this community",
 "Veja os arquivos que você publicou" => "View the files you published",
 
-"Veja os <b>blogs</b> dos usuári@s do EstúdioLivre" => "Check out users' <b>blogs</b>",
+"Veja os <b>blogs</b> dos usuári@s do EstúdioLivre" => "Check out users\' <b>blogs</b>",
 
 "Ver as páginas que referenciam esta página. Ou seja, que possuem links que trazem cá" => "View which pages link here",
 "Ver ou esconder a <b>ajuda</b> do wiki" => "View/Hide wiki <b>help</b>",
