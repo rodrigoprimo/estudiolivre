@@ -1,10 +1,10 @@
 <!-- tiki-top_bar.tpl begin -->
 <div id="tiki-top">
   <div id="topContainer">
-  	{* Logo TESTE *}
+  	{* Logo TESTE 
   	 <a href="http://dev.estudiolivre.org/tiki-view_tracker.php?status=o&trackerId=13&offset=0&sort_mode=created_desc">
   	  {tooltip text="Clique aqui e <b>relate os bugs</b> encontrados! Ajude-nos a <b>melhorar</b> o EstúdioLivre!!!"}<img src="styles/estudiolivre/faixaTeste.{if $isIE}gif{else}png{/if}" style="position:absolute; top:-25px; left:0px; z-index:5"/>{/tooltip}
-  	 </a>
+  	 </a> *}
   	<div id="logo">
       <a href="/">
         {tooltip name="navegue-home" text="Ir para a Página Inicial"}
