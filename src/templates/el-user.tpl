@@ -176,7 +176,7 @@
 	        {/foreach}
 		{else}
 		  	{if $permission}
-			  	<p> {tr}Você ainda não possui blogs{/tr}. <a href="tiki-edit_blog.php">Crie</a> um blog ou veja a <a href="tiki-list_blogs.php">{tr}lista{/tr}</a> {tr}dos existentes{/tr}.</p>
+			  	<p> {tr}Você ainda não possui blogs{/tr}. <a href="tiki-edit_blog.php">{tr}Crie</a> um blog ou veja a {/tr}<a href="tiki-list_blogs.php">{tr}lista{/tr}</a> {tr}dos existentes{/tr}.</p>
 		  	{else}
 		  		<p> {tr}Esse(a) usuári@ ainda não possui posts em blogs{/tr}.</p>
 			{/if}
