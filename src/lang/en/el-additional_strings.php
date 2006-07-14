@@ -31,6 +31,7 @@ $extra_strings = array(
  "sobre o <b>Acervo Livre</b>" => "about the <b>Gallery</b>", // ## MODULES ./templates/styles/estudiolivre/sideContent.tpl<br />
  "sobre o" => "about the", // ## MODULES ./templates/styles/estudiolivre/sideContent.tpl<br />
  "acervo" => "gallery", // ## MODULES ./templates/styles/estudiolivre/sideContent.tpl, ./templates/styles/estudiolivre/tiki-top_bar.tpl<br />
+ "às"=>"at",
  "Últimas Alterações" => "Recent Changes", // ## MODULES ./templates/styles/estudiolivre/sideContent.tpl<br />
  "Modificação não comentada" => "No comment", // ## MODULES ./templates/styles/estudiolivre/sideContent.tpl<br />
  "editado por" => "edited by", // ## MODULES ./templates/styles/estudiolivre/sideContent.tpl<br />
