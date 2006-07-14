@@ -30,7 +30,7 @@ if ($isIE) {
 
 $smarty->assign('showIeMsg',$showIeMsg);
 
-$smarty->assign('showTeste', $_SERVER['SERVER_NAME'] == 'teste.estudiolivre.org');
+$smarty->assign('showTeste', preg_match('/teste\.estudioli.re\.org/',$ownurl));
 
 // TODO: Fazer ieGIF2PNG q substitui o {if $isIE}gif{else}png{/if}
 
