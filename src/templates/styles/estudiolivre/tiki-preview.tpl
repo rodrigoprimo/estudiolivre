@@ -1,4 +1,9 @@
 <!-- templates/tiki-preview.tpl start -->
+{literal}
+	<script language="javascript" type="text/javascript">
+	var preview=1;
+	</script>
+{/literal}
 <div id="wikiPreviewCont">
 	<span id="label" class="wikiPreview hiddenPointer" onclick="javascript:flip('previewCont');javascript:flip('labelLine');toggleImage(document.getElementById('pTArrow'),'iArrowGreyRight.png');">
 		<img id="pTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
@@ -21,7 +26,7 @@
 					<div id="edtComentario">
 					{tooltip text="<b>Comente</b> suscintamente as modificações feitas na edição"}
 						<div>{tr}Comentário{/tr}:</div>
-						<input class="wikitext" type="text" name="comment" value="{$commentdata|escape}" />
+						<input id="iComP" class="wikitext" type="text" name="commentP" value="{$commentdata|escape}" />
 					{/tooltip}
 					</div>
 					{if $wiki_feature_copyrights  eq 'y'}
@@ -38,10 +43,10 @@
 				
 				{if $page|lower neq 'sandbox' or $tiki_p_admin eq 'y'}
 					{if $tiki_p_minor eq 'y' and $page|lower ne 'sandbox'}
-						<div id="edtIsMinor">
+						<div id="edtIsMinorP">
 							<div>{tr}A modificação foi{/tr}:</div>					
-							{tooltip text="Selecione se essa modificação foi <b>pequena</b> (ela não vai aparecer na página das ultimas alterações do site)"}<input type="radio" name="isminor" value="on" />{tr}Pequena{/tr}<br>{/tooltip}
-							{tooltip text="Selecione se essa modificação foi <b>grande</b> e você quer que tod@s a vejam"}<input type="radio" name="isminor" value="" checked="checked"/>{tr}Grande{/tr}<br>{/tooltip}
+							{tooltip text="Selecione se essa modificação foi <b>pequena</b> (ela não vai aparecer na página das ultimas alterações do site)"}<input type="radio" name="isminorPreview" value="on" />{tr}Pequena{/tr}<br>{/tooltip}
+							{tooltip text="Selecione se essa modificação foi <b>grande</b> e você quer que tod@s a vejam"}<input type="radio" name="isminorPreview" value="" checked="checked"/>{tr}Grande{/tr}<br>{/tooltip}
 
 						</div>
 					{/if}
@@ -53,7 +58,7 @@
 					</div>
 					*}
 					<div id="edtSaveCancel">
-					<input class="image" name="save" src="styles/estudiolivre/bSave.png" type="image" value="{tr}save{/tr}" /> &nbsp;&nbsp;
+					<img class="pointer" src="styles/estudiolivre/bSave.png" onclick="if(checkForm()) savePage()" /> &nbsp;&nbsp;
 					{if $page|lower ne 'sandbox'}
 						<input class="image" name="cancel_edit" src="styles/estudiolivre/bCancelar.png" type="image" value="{tr}cancel edit{/tr}"  onclick="cancelar=1"/>
 					{/if}

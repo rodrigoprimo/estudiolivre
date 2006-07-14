@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.18 2006-07-13 06:15:27 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.19 2006-07-14 00:59:51 rhwinter Exp $ *}
 <!--script language="JavaScript" src="lib/js/contextualMenu.js"></script-->
 
 <!-- menu contextual>
@@ -12,6 +12,14 @@
 <map class="menu" name="wiki3dMap"><area class="menu" shape="poly" coords="8,6,11,15,14,22,19,28,23,36,30,46,42,54,52,57,63,60,59,73,51,72,40,68,26,62,14,48,7,37,4,29,0,19,0,7" href="javascript:wiki3d_open('{$page|escape}',{$wiki_3d_width}, {$wiki_3d_height})" onmouseover="hoverSubMenu('wiki3d')" onmouseout="outSubMenu('wiki3d')" onClick="forceHideMenu(event)">
 </map>
 -->
+{literal}
+<style type="text/css">
+#wikitext p {
+	text-align:justify;
+	text-indent:0em;
+}
+</style>
+{/literal}
 <div {if $user_dbl eq 'y' and $dblclickedit eq 'y' and $tiki_p_edit eq 'y'}ondblclick="location.href='tiki-editpage.php?page={$page|escape:"url"}';"{/if}>	
 	<div class="wikitopline" style="text-align:right;padding-top:5px"><!--do contextualMenu onclick="cancelBubble(event)"-->
 	

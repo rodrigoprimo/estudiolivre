@@ -171,7 +171,7 @@
       </span>
       <div id='moduleLastChangesMore' style="display:none;">
       	{foreach from=$modLastModif item='page'}
-			<a href="tiki-index.php?page={$page.pageName}" onMouseover="tooltip('{if $page.comment}{$page.comment|escape:'quotes'|escape:'htmlall'}{else}<i>{tr}Modificação não comentada{/tr}</i>{/if}<br>{tr}editado por{/tr}: <b>{$page.user}</b>')" onMouseout="nd()">{$page.pageName}</a><br/>
+			<a href="tiki-index.php?page={$page.pageName}" onMouseover="tooltip('{if $page.comment}{$page.comment|escape:'quotes'}{else}<i>{tr}Modificação não comentada{/tr}</i>{/if}<br>{tr}editado por{/tr}: <b>{$page.user}</b>')" onMouseout="nd()">{$page.pageName}</a><br/>
      	{/foreach}
      	<div id="moduleLastChangesViewAll"><a href="tiki-lastchanges.php?days=0">{tr}ver mais{/tr}</a></div>
       </div>

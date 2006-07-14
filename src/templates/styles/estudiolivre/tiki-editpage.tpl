@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.19 2006-07-13 06:15:19 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.20 2006-07-14 00:59:51 rhwinter Exp $ *}
 
 {popup_init src="lib/overlib.js"}
 
@@ -320,7 +320,7 @@
 					<div id="edtComentario">
 					{tooltip text="<b>Comente</b> suscintamente as modificações feitas na edição"}
 						<div>{tr}Comentário{/tr}:</div>
-						<input class="wikitext" type="text" name="comment" value="{$commentdata|escape}" />
+						<input class="wikitext" id="iCom" type="text" name="comment" value="{$commentdata|escape}" />
 					{/tooltip}
 					</div>
 					{if $wiki_feature_copyrights  eq 'y'}
@@ -382,15 +382,32 @@
 	<script language="javascript" type="text/javascript">
 	
 	function checkForm() {
+		//if the minor check was made in the preview area
+		if(self.preview){
+			if(document.editPage.isminorPreview[0].checked){
+				document.editPage.isminor[0].checked=true;
+			}
+		}
+
+		//for minor changes
 		if (document.editPage.isminor[0].checked){
 			return true;
 		}
+		
+		//if the comment was made in the preview area
+		if(self.preview){
+			if(document.getElementById('iComP').value != ""){
+				document.editPage.comment.value = document.getElementById('iComP').value;
+			}
+		}
+		
 		if(!document.editPage.comment.value && !cancelar){
 			showLightbox('precisaComentar');
 			// so that this gets the input focus!
 			document.getElementById('lightComment').focus();
 			return false;
 		}
+
 		//alert(document.editPage.comment.value);
 		return true;
 	}
