@@ -214,6 +214,7 @@ $extra_strings = array(
  "padrão" => "always", // ## MODULES ./templates/el-license.tpl<br />
  "Você deve escolher uma licença!" => "You must choose a license!", // ## MODULES ./templates/el-license.tpl<br />
  "Escolher" => "Choose", // ## MODULES ./templates/el-license.tpl<br />
+ "Assinar RSS do acervo" => "Gallery's RSS Feed",
  "Nome completo" => "Full Name", // ## MODULES ./templates/el-user.tpl<br />
  "Localização" => "Location", // ## MODULES ./templates/el-user.tpl, ./templates/styles/estudiolivre/tiki-list_users.tpl<br />
  "Selecione sua licença Padrão" => "Choose a standard license", // ## MODULES ./templates/el-user.tpl<br />
