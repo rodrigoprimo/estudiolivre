@@ -1,15 +1,16 @@
---- ../estudiolivre_base/lib/tikilib.php	2006-04-29 11:56:19.000000000 -0300
-+++ lib/tikilib.php	2006-06-26 20:04:18.000000000 -0300
-@@ -4488,6 +4489,8 @@
- 	// This section matches [...].
- 	// Added handling for [[foo] sections.  -rlpowell
- 	if (!$simple_wiki) {
-+	        // ESTUDIOLIVRE HACK - wiki template
-+	        $this->getWikiTemplate($data);
- 		preg_match_all("/(?<!\[)\[([^\[][^\]]+)\]/", $data, $noparseurl);
+--- ../estudiolivre_base/lib/tikilib.php	2006-05-12 16:53:06.000000000 -0300
++++ lib/tikilib.php	2006-07-14 14:02:32.000000000 -0300
+@@ -4480,6 +4481,9 @@
+ 	    }
+ 	}
  
- 		foreach (array_unique($noparseurl[1])as $np) {
-@@ -5541,6 +5545,41 @@
++	// ESTUDIOLIVRE HACK - wiki template
++	$this->getWikiTemplate($data);
++
+ 	$this->parse_first($data, $preparsed, $noparsed);
+ 
+ 	// Extract [link] sections (to be re-inserted later)
+@@ -5541,6 +5559,42 @@
  	return $data;
      }
  
@@ -27,14 +28,15 @@
 +		
 +		if(isset($templateStack[$template[1][$j]]) && $templateStack[$template[1][$j]]) {
 +		    global $smarty;
-+		    $smarty->assign('msg', tra("ha!, queria me pegar em um loop infinito ein?"));
++		    $smarty->assign('msg', tra("Você tentou inserir um template dentro dele mesmo, isso causaria um loop infinito. Por favor conserte isso na edição da página."));
 +		    $smarty->display("error.tpl");
 +		    die;
 +		}
 +		
 +		$templateStack[$template[1][$j]] = true;
 +		$info = $this->get_page_info($template[1][$j]);
-+		$pdata = $this->parse_data($info["data"],$info["is_html"]);
++		$pdata = $info["data"];
++		$this->getWikiTemplate($pdata);
 +		$templateStack[$template[1][$j]] = false;
 +		if(isset($template[2][$j])){
 +		    preg_match_all("/(?s)(.+?)\=(.+?)(?:\|\||$)/", $template[2][$j], $matches);
