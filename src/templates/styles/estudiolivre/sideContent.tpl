@@ -12,10 +12,10 @@
        <li><a href="tiki-index.php?page=Softwares de Áudio">softwares</li>
     {/if}
 
-    {if $page eq "Equipamentos para Produção Multimídia"}
+    {if $page eq "equipamentos audio"}
        <li class="selectedAudio">{tr}equipamentos{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=Equipamentos+para+Produ%C3%A7%C3%A3o+Multim%C3%ADdia">{tr}equipamentos{/tr}</a></li>
+       <li><a href="tiki-index.php?page=equipamentos audio">{tr}equipamentos{/tr}</a></li>
     {/if}
 
     {if $page eq "Produzindo Audio"}
@@ -42,10 +42,10 @@
        <li><a href="tiki-index.php?page=Softwares de Gráfico">softwares</a></li>
     {/if}
     
-    {if $page eq "Equipamentos para Produção Multimídia"}
+    {if $page eq "equipamentos grafico"}
        <li class="selectedGraf">{tr}equipamentos{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=Equipamentos+para+Produ%C3%A7%C3%A3o+Multim%C3%ADdia">{tr}equipamentos{/tr}</a></li>
+       <li><a href="tiki-index.php?page=equipamentos grafico">{tr}equipamentos{/tr}</a></li>
     {/if}
 
     {if $page eq "Produzindo Gráfico"}
@@ -72,10 +72,10 @@
        <li><a href="tiki-index.php?page=Softwares de Vídeo">{tr}softwares{/tr}</a></li>
     {/if}
 
-    {if $page eq "Equipamentos para Produção Multimídia"}
+    {if $page eq "equipamentos video"}
        <li class="selectedVideo">{tr}equipamentos{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=Equipamentos+para+Produ%C3%A7%C3%A3o+Multim%C3%ADdia">{tr}equipamentos{/tr}</a></li>
+       <li><a href="tiki-index.php?page=equipamentos video">{tr}equipamentos{/tr}</a></li>
     {/if}
     
     {if $page eq "Produzindo Vídeo"}
