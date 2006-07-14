@@ -104,7 +104,7 @@
 			    	   		<img id="uLicence" src="styles/estudiolivre/h_{$licenca.linkImagem}"/>
 			    	   	{/tooltip}
 			    	{else}
-	    		    	({tr}Selecione sua licença Padrão{/tr})
+	    		    	<img id="uLicence" src="" alt="({tr}Selecione sua licença Padrão{/tr})"/>
 	    		    {/if}
 	    		    </span>
 	        {else}
