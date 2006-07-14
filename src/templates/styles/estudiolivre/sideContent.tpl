@@ -18,10 +18,10 @@
        <li><a href="tiki-index.php?page=Equipamentos+para+Produ%C3%A7%C3%A3o+Multim%C3%ADdia">{tr}equipamentos{/tr}</a></li>
     {/if}
 
-    {if $page eq "Produzindo Áudio"}
+    {if $page eq "Produzindo Audio"}
        <li class="selectedAudio">{tr}produzindo{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=Produzindo+%C3%81udio">{tr}produzindo{/tr}</a></li>
+       <li><a href="tiki-index.php?page=Produzindo+Audio">{tr}produzindo{/tr}</a></li>
     {/if}
     
     {if $page eq "Links de Áudio"}
@@ -51,7 +51,7 @@
     {if $page eq "Produzindo Gráfico"}
        <li class="selectedGraf">{tr}produzindo{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=Produzindo Gráfico">{tr}produzindo{/tr}</a></li>
+       <li><a href="tiki-index.php?page=Produzindo+Gráfico">{tr}produzindo{/tr}</a></li>
     {/if}
 
     {if $page eq "Links de Gráfico"}
@@ -81,7 +81,7 @@
     {if $page eq "Produzindo Vídeo"}
        <li class="selectedVideo">{tr}produzindo{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=Produzindo Vídeo">{tr}produzindo{/tr}</a></li>
+       <li><a href="tiki-index.php?page=Produzindo+Vídeo">{tr}produzindo{/tr}</a></li>
     {/if}
 
     {if $page eq "Links de Vídeo"}
