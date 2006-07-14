@@ -38,7 +38,7 @@
 
 <div id="topMenu">
   <div id="topMenuGeneral">
-    {tooltip name="saiba-estudiolivre" text="Saiba <b>o que é</b> o EstúdioLivre"}<a href="tiki-index.php?page=sobre">{tr}sobre{/tr}</a>{/tooltip}
+    {tooltip name="saiba-estudiolivre" text="Saiba <b>o que é</b> o EstúdioLivre"}<a href="tiki-index.php?page=sobre&bl">{tr}sobre{/tr}</a>{/tooltip}
     | 
   	{tooltip name="forum-discussoes" text="Fóruns de <b>discussões</b> - tire suas dúvidas aqui"}<a href="tiki-forums.php">{tr}fóruns{/tr}</a>{/tooltip}
     | 
@@ -46,9 +46,9 @@
     | 
     {tooltip text="Veja os <b>blogs</b> dos usuári@s do EstúdioLivre"}<a href="tiki-list_blogs.php">{tr}blogs{/tr}</a>{/tooltip}
     | 
-    {tooltip name="perguntas-frequentes" text="<b>Perguntas</b> mais freqüêntes"}<a href="tiki-index.php?page=faq">{tr}faq{/tr}</a>{/tooltip}
+    {tooltip name="perguntas-frequentes" text="<b>Perguntas</b> mais freqüêntes"}<a href="tiki-index.php?page=faq&bl">{tr}faq{/tr}</a>{/tooltip}
     | 
-    {tooltip name="entre-contato" text="Entre em contato - descubra os <b>canais de comunicação</b> com a comunidade"}<a href="tiki-index.php?page=contato">{tr}contato{/tr}</a>{/tooltip}
+    {tooltip name="entre-contato" text="Entre em contato - descubra os <b>canais de comunicação</b> com a comunidade"}<a href="tiki-index.php?page=contato&bl">{tr}contato{/tr}</a>{/tooltip}
     
   </div>
  {* <div id="topMenuLoading">
@@ -67,19 +67,19 @@
 		{assign var=grafico value="Purple"}
 		
 		{if $category eq "Áudio"}{assign var='audioStyle' value="opacity:0.3"}{/if}
-        <a style="{$audioStyle}" href="tiki-index.php?page=Áudio" {if $isIE}title="AUDIO||LAB"{/if}>
+        <a style="{$audioStyle}" href="tiki-index.php?page=Áudio&bl" {if $isIE}title="AUDIO||LAB"{/if}>
           <img src="styles/estudiolivre/cube{$audio}{if $isIE}IE{/if}.png">
 	      <span id="audiolab">{tr}áudio{/tr}</span>
         </a>
 	        
 	    {if $category eq "Gráfico"}{assign var='graficoStyle' value="opacity:0.3"}{/if}
-        <a style="{$graficoStyle}"  href="tiki-index.php?page=Gráfico" {if $isIE}title="GRAFI||LAB"{/if}>
+        <a style="{$graficoStyle}"  href="tiki-index.php?page=Gráfico&bl" {if $isIE}title="GRAFI||LAB"{/if}>
           <img src="styles/estudiolivre/cube{$grafico}{if $isIE}IE{/if}.png">
 		  <span id="grafilab">{tr}gráfico{/tr}</span>
         </a>
 
 	    {if $category eq "Vídeo"}{assign var='videoStyle' value="opacity:0.3"}{/if}
-        <a style="{$videoStyle}"  href="tiki-index.php?page=Vídeo" {if $isIE}title="VIDEO||LAB"{/if}>
+        <a style="{$videoStyle}"  href="tiki-index.php?page=Vídeo&bl" {if $isIE}title="VIDEO||LAB"{/if}>
           <img src="styles/estudiolivre/cube{$video}{if $isIE}IE{/if}.png">
 	      <span id="videolab">{tr}vídeo{/tr}</span>
         </a>

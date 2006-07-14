@@ -3,7 +3,7 @@
 <div id="sideContent">
   {if $category eq "Áudio"}
   {********AUDIO*********}
-    <a href="tiki-index.php?page=Áudio"><img src="styles/estudiolivre/logoAudio.png"></a>
+    <a href="tiki-index.php?page=Áudio&bl"><img src="styles/estudiolivre/logoAudio.png"></a>
 	<div id="localMenu">
 	<ul>
     {if $page eq "Softwares de Edição de Áudio"}
@@ -15,79 +15,79 @@
     {if $page eq "equipamentos audio"}
        <li class="selectedAudio">{tr}equipamentos{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=equipamentos audio">{tr}equipamentos{/tr}</a></li>
+       <li><a href="tiki-index.php?page=equipamentos audio&bl">{tr}equipamentos{/tr}</a></li>
     {/if}
 
     {if $page eq "Produzindo Audio"}
        <li class="selectedAudio">{tr}produzindo{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=Produzindo+Audio">{tr}produzindo{/tr}</a></li>
+       <li><a href="tiki-index.php?page=Produzindo+Audio&bl">{tr}produzindo{/tr}</a></li>
     {/if}
     
     {if $page eq "Links de Áudio"}
        <li class="selectedAudio">links</li>
     {else}
-        <li><a href="tiki-index.php?page=Links+de+%C3%81udio">{tr}links{/tr}</a></li>
+        <li><a href="tiki-index.php?page=Links+de+%C3%81udio&bl">{tr}links{/tr}</a></li>
     {/if}
 	</ul>
 	</div>
   {elseif $category eq "Gráfico"}
   {*********GRAFICO********}
-    <a href="tiki-index.php?page=Gráfico"><img src="styles/estudiolivre/logoGrafi.png"></a>
+    <a href="tiki-index.php?page=Gráfico&bl"><img src="styles/estudiolivre/logoGrafi.png"></a>
 	<div id="localMenu">
 	<ul>
     {if $page eq "Softwares de Gráfico"}
        <li class="selectedGraf">{tr}softwares{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=Softwares de Gráfico">softwares</a></li>
+       <li><a href="tiki-index.php?page=Softwares de Gráfico&bl">softwares</a></li>
     {/if}
     
     {if $page eq "equipamentos grafico"}
        <li class="selectedGraf">{tr}equipamentos{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=equipamentos grafico">{tr}equipamentos{/tr}</a></li>
+       <li><a href="tiki-index.php?page=equipamentos grafico&bl">{tr}equipamentos{/tr}</a></li>
     {/if}
 
     {if $page eq "Produzindo Gráfico"}
        <li class="selectedGraf">{tr}produzindo{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=Produzindo+Gráfico">{tr}produzindo{/tr}</a></li>
+       <li><a href="tiki-index.php?page=Produzindo+Gráfico&bl">{tr}produzindo{/tr}</a></li>
     {/if}
 
     {if $page eq "Links de Gráfico"}
        <li class="selectedGraf">{tr}links{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=Links de Gráfico">{tr}links{/tr}</a></li>
+       <li><a href="tiki-index.php?page=Links de Gráfico&bl">{tr}links{/tr}</a></li>
     {/if}
 	</ul>
 	</div>
   {elseif $category eq "Vídeo"}
   {*********VIDEO********}
-    <a href="tiki-index.php?page=Vídeo"><img src="styles/estudiolivre/logoVideo.png"></a>
+    <a href="tiki-index.php?page=Vídeo&bl"><img src="styles/estudiolivre/logoVideo.png"></a>
 	<div id="localMenu">
 	<ul>
     {if $page eq "Softwares de Vídeo"}
        <li class="selectedVideo">{tr}softwares{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=Softwares de Vídeo">{tr}softwares{/tr}</a></li>
+       <li><a href="tiki-index.php?page=Softwares de Vídeo&bl">{tr}softwares{/tr}</a></li>
     {/if}
 
     {if $page eq "equipamentos video"}
        <li class="selectedVideo">{tr}equipamentos{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=equipamentos video">{tr}equipamentos{/tr}</a></li>
+       <li><a href="tiki-index.php?page=equipamentos video&bl">{tr}equipamentos{/tr}</a></li>
     {/if}
     
     {if $page eq "Produzindo Vídeo"}
        <li class="selectedVideo">{tr}produzindo{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=Produzindo+Vídeo">{tr}produzindo{/tr}</a></li>
+       <li><a href="tiki-index.php?page=Produzindo+Vídeo&bl">{tr}produzindo{/tr}</a></li>
     {/if}
 
     {if $page eq "Links de Vídeo"}
        <li class="selectedVideo">{tr}links{/tr}</li>
     {else}
-       <li><a href="tiki-index.php?page=Links de Vídeo">{tr}links{/tr}</a></li>
+       <li><a href="tiki-index.php?page=Links de Vídeo&bl">{tr}links{/tr}</a></li>
     {/if}
 	</ul>
 	</div>
@@ -117,7 +117,7 @@
 					   </form>
 
 			  <br><br>
-				{tr}Se preferir{/tr}, <a href="tiki-view_faq.php?faqId=3">{tr}leia mais{/tr}</a> {tr}sobre o <b>Acervo Livre</b>{/tr}.
+				{tr}Se preferir{/tr}, <a href="tiki-index.php?page=faq Acervo&bl">{tr}leia mais{/tr}</a> {tr}sobre o <b>Acervo Livre</b>{/tr}.
       		</div>
       		<li onclick="showLightbox('precisaLogar')" style="cursor:pointer"><a>{tr}compartilhe sua obra{/tr}</a></li>
         {/if}   
