@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.20 2006-07-14 06:21:42 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.21 2006-07-14 18:55:30 nano Exp $ *}
 <!--script language="JavaScript" src="lib/js/contextualMenu.js"></script-->
 
 <!-- menu contextual>
@@ -299,7 +299,7 @@
 	{else}
 	<p class="editdate">
 	  {*tr}Created by{/tr}: {$creator|userlink*}
-	  {tr}Last modification{/tr}: <i>{$lastModif|date_format:"%d/%m/%Y {tr}às{/tr} %H:%M"}</i>, {tr}by{/tr}: {$lastUser|userlink}
+	  {tr}Last modification{/tr}: <i>{$lastModif|date_format:"%d/%m/%Y {tr}às{/tr} %H:%M"}</i>, {tr}by{/tr}: <a href="el-user.php?view_user={$lastUser}">{$lastUser}</a>
 	</p>
 	{/if}
 	

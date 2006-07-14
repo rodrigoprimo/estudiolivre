@@ -44,9 +44,8 @@
         	{tooltip text="Clique para modificar o seu <b>site</b>"}
 		        {ajax_input permission=$permission id="site" class="uContactItem" value=$site default="{tr}Site{/tr}" display="block" truncate='17'}        
 		    {/tooltip}
-        {else}		
-            {*TODO: mudar isso pra um a href!!*}
-	        {ajax_input permission=$permission id="site" class="uContactItem" value=$site default="{tr}Site{/tr}" display="block" truncate='17'}
+        {else}
+	        <a class="uContactItem" href="http://{$site|replace:'http://':''}" display="block">{$site|replace:'http://':''|truncate:22:"(...)":true}</a>
 	    {/if}
 		<br />
         {if $permission}
