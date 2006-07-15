@@ -380,6 +380,10 @@ $extra_strings = array(
 "Ver <strong>apenas</strong> <b>paginas wiki</b> com a tag" => "View <strong>only</strong> <b>wiki pages</b> tagged",
 "Ver todos os Itens com a tag" => "View all items tagged",
 "Aperte <b>control + enter</b> para salvar as modificações feitas na página."=>"Press <b>control + enter</b> to save the modifications you made.",
+
+"Assita a esse vídeo"=>"Watch this video (stream)",
+"Ouça essa música"=>"Listen to this song (stream)",
+"Veja essa imagem"=>"View this image",
 );
 
 global $lang;
