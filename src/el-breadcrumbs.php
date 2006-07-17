@@ -23,7 +23,7 @@ function elAddCrumb($title) {
 	
 	$crumbs[] = array('title' => $title, 'url' => $url);
 	
-	if (sizeof($crumbs) > $userbreadCrumb) {
+	while (sizeof($crumbs) > $userbreadCrumb) {
 		array_shift($crumbs);
 	}
 	

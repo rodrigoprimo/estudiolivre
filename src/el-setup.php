@@ -15,6 +15,8 @@ if ($feature_tooltip == 'y') {
 
 require_once("el-gallery_stream_ajax.php");
 
+$userbreadCrumb = $tikilib->get_user_preference($user,'userbreadCrumb',$userbreadCrumb);
+$smarty->assign('userbreadCrumb',$userbreadCrumb);
 require_once("el-breadcrumbs.php");
 
 $isIE = preg_match('/MSIE/', $_SERVER['HTTP_USER_AGENT']) && !preg_match('/Opera/', $_SERVER['HTTP_USER_AGENT']);
