@@ -129,7 +129,129 @@
   {/if}
 
 
+<div id="userMenu">
+{if $user}
 
-	{include file='sideModules.tpl'}
+  <div id="topMenuContainer">
+    <a href="tiki-logout.php?page={$current_location}">{tr}Logout{/tr}</a>
+  </div>
+
+  <div id="userMenuContainer">
+
+	<span id="uMenuName">
+		{tooltip text="Navegue para a sua página pessoal para ver seus blogs, arquivos, mensagens e mudar as suas preferências."}<a href="el-user.php?view_user={$user}">{$user}</a>{/tooltip}
+	</span>
+
+    <img alt="" id="uOnlineThumb" class="uThumb" src="tiki-show_user_avatar.php?user={$user}"/>
+  
+    <div id="userNameStatsKarma">
+
+      <br>
+      <span id="uStats">
+        <img src="styles/estudiolivre/iOnline.png"> {tr}online{/tr}
+      </span>
+      <br>
+      <span id="uKarma">
+      	{*
+        <img alt="" src="styles/estudiolivre/iKarma.png">
+	<img alt="" src="styles/estudiolivre/iKarma.png">
+	<img alt="" src="styles/estudiolivre/iKarma.png">
+	<img alt="" src="styles/estudiolivre/iKarmaInactive.png">
+	<img alt="" src="styles/estudiolivre/iKarmaInactive.png">
+	     *}
+      </span>
+    </div>
+    <br style="line-height:10px;">
+     <hr>
+    
+    <div id="moduleLastChanges">
+       <span class="hiddenPointer" onclick="javascript:flip('moduleLastChangesMore');toggleImage(document.getElementById('chaTArrow'),'iArrowGreyDown.png')">
+        <img id="chaTArrow"  src="styles/estudiolivre/iArrowGreyRight.png">
+      	{tr}Últimas Alterações{/tr}
+      </span>
+      <div id='moduleLastChangesMore' style="display:none;">
+      	{foreach from=$modLastModif item='page'}
+			<a href="tiki-index.php?page={$page.pageName}" onMouseover="tooltip('{if $page.comment}{$page.comment|escape:'quotes'}{else}<i>{tr}Modificação não comentada{/tr}</i>{/if}<br>{tr}editado por{/tr}: <b>{$page.user}</b>')" onMouseout="nd()">{$page.pageName}</a><br/>
+     	{/foreach}
+     	<div id="moduleLastChangesViewAll"><a href="tiki-lastchanges.php?days=0">{tr}ver mais{/tr}</a></div>
+      </div>
+    </div>
+    
+    <hr>
+    <div id="moduleWhoIsThere">
+    {if sizeof($online_users) > 1}
+      <span class="hiddenPointer" onclick="javascript:flip('moduleWhoIsThereMore');toggleImage(document.getElementById('whoTArrow'),'iArrowGreyDown.png')">
+    	  <img id="whoTArrow" src="styles/estudiolivre/iArrowGreyRight.png">
+	      {tr}Usuári@s Online{/tr}
+      </span>
+      <div id='moduleWhoIsThereMore' style="display:none;">
+		{foreach from=$online_users item='onlineUser'}
+		  {if $onlineUser.user neq $user}
+		    <a href="el-user.php?view_user={$onlineUser.user}">{$onlineUser.user}</a><br/>
+		  {/if}
+		{/foreach}
+      </div>
+    {else}
+    	{tr}Não há usuári@s online{/tr}
+    {/if}
+    </div>
+    
+    <hr>
+    <div id="moduleGallery">
+    	{tr}Acervo{/tr}: {tooltip text="Veja os arquivos que você publicou"}<a href="el-user.php?view_user={$user}#gallery">{tr}ver{/tr}</a>{/tooltip} | {tooltip text="Publique <b>sua obra</b> no Estúdio Livre!"}<a href="el-gallery_upload.php">{tr}publicar{/tr}</a>{/tooltip}
+    </div>
+	
+	{if  $tiki_p_admin eq 'y'}
+	    <hr>
+		<div style="text-align:left">
+			{tr}<a href="tiki-admin.php">Administrar</a> o TikiWiki{/tr}
+	    </div>
+	{/if}
+        
+  </div>
+
+{else}
+
+  <div id="topMenuContainer">{tr}Login{/tr}
+  </div>
+
+  <div id="userMenuContainer">
+    <form id="uLoginBox" action="tiki-login.php" method="post">
+      {if $isIE}{tr}Usuário{/tr}: {/if}<input class="{if !$isIE}uText{/if}" type="text" name="user" id="login-user" size="12" {if $isIE}style="width:60%"{/if} value="{tr}user{/tr}" onFocus="if(this.value=='{tr}usuári@{/tr}')this.value=''"/>
+      {if $isIE}{tr}Senha{/tr}: {/if}<input class="{if !$isIE}uText{/if}" type="{if $isIE}password{else}text{/if}" name="pass" id="login-pass" size="10"	{if $isIE}style="width:70%"{/if} value="{if !$isIE}{tr}senha{/tr}{/if}" onFocus="if(this.value=='{tr}senha{/tr}')this.value='';this.type='password'"/>
+      {tooltip text="Clique aqui ou aperte <i>Enter</i> para efetuar o login"}<input type="image" name="login" src="styles/estudiolivre/iLogin.png" />{/tooltip}
+      
+      <div id="uLoginOptions">
+        <a href="tiki-remind_password.php">&raquo; {tr}recuperar senha{/tr}</a><br>
+        <a href="tiki-register.php">&raquo; {tr}cadastrar-se{/tr}</a>
+      </div>
+      
+      
+   </form>
+  </div>
+
+{/if}
+	<div id="userMenu">
+		<div id="topMenuContainer">{tr}Language{/tr}
+		</div>
+		<div id="userMenuContainer">
+			<a href="#">English</a><br>
+			<a href="#">Español</a><br>
+			<a href="#">Français</a><br>
+			<a href="#">Italiano</a><br>
+			<a href="#">Português</a>
+		</div>
+	</div>
+	
+	{if $elCrumbs}
+	<div id="userMenu">
+		<div id="topMenuContainer">{tr}Bread Crumbs{/tr}
+		</div>
+		<div id="userMenuContainer">
+			{elcrumbs crumbs=$elCrumbs}
+		</div>
+	</div>
+	{/if}
+</div>
 
 </div>

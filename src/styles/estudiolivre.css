@@ -959,7 +959,7 @@ p.editdate {
 
 /* User Menu */
 
-#topMenuContainer {
+.topMenuContainer {
 	-moz-border-radius:8px 8px 0px 0px;
 	color:#9d9d9d;
 	background-color:#e5e5e5;
@@ -970,18 +970,18 @@ p.editdate {
 	font-size:11px;
 }
 
-#topMenuContainer a {
+.topMenuContainer a {
 	color:#aaa;
 	font-size:12px;
 	font-weight:bolder;
 	padding:2px;
 }
 
-#topMenuContainer a:hover {
+.topMenuContainer a:hover {
 	color:white;
 }
 
-#userMenuContainer {
+.userMenuContent {
 	text-align:center;
 	background-color:white;
 	padding:5px;
@@ -992,13 +992,13 @@ p.editdate {
 	font-size:12px;
 }
 
-#userMenuContainer img.uThumb {
+.userMenuContent img.uThumb {
 	height:50px;
 	float:left;
 	margin: 5px 5px 5px 15px; 
 }
 
-#userMenuContainer hr {
+.userMenuContent hr {
 	width:80px;
 }
 
