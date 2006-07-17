@@ -1,0 +1,2 @@
+# name             | position | ord  | type | title | cache_time | rows | params | groups
+insert into tiki_modules values('switch_lang', 'l', 3, '', '', 0, 10, '', 'a:2:{i:0;s:9:"Anonymous";i:1;s:10:"Registered";}');
