@@ -261,7 +261,12 @@ INPUT.editable {
 .wikiEdit {
 	margin:0px;
 	padding:10px 5px 0px 5px;
-	border:1px solid grey;	
+	border:1px solid grey;
+}
+
+.blogEdit {
+	border: 1px solid grey;
+	max-width: 450px;
 }
 
 #label.wikiEdit {
