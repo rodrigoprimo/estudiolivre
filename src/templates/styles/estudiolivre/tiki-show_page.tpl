@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.21 2006-07-14 18:55:30 nano Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.22 2006-07-18 19:35:44 rhwinter Exp $ *}
 <!--script language="JavaScript" src="lib/js/contextualMenu.js"></script-->
 
 <!-- menu contextual>
@@ -55,7 +55,7 @@
 		
 		{if $page|lower ne 'sandbox'}
 			{if $lock and ($tiki_p_admin_wiki eq 'y' or ($user and ($user eq $page_user or $user eq "admin") and ($tiki_p_lock eq 'y') and ($feature_wiki_usrlock eq 'y')))}
-				{tooltip name="show-page-observar-pagina" text="<b>Destravar</b> a página"}<span class="tabbut"><a href="tiki-index.php?page={$page|escape:"url"}&amp;action=unlock" class="tablink"><img src="styles/estudiolivre/iWikiUnlock.png"></a></span>{/tooltip}
+				{tooltip name="show-page-observar-pagina" text="<b>Destravar</b> a página"}<span class="tabbut"><a href="tiki-index.php?page={$page|escape:"url"}&amp;action=unlock" class="tablink"><img src="styles/estudiolivre/iWikiUnLock.png"></a></span>{/tooltip}
 			{/if}
 			{if !$lock and ($tiki_p_admin_wiki eq 'y' or (($tiki_p_lock eq 'y') and ($feature_wiki_usrlock eq 'y')))}
 				{tooltip name="show-page-travar-pagina" text="<b>Travar</b> essa página"}<span class="tabbut"><a href="tiki-index.php?page={$page|escape:"url"}&amp;action=lock" class="tablink"><img src="styles/estudiolivre/iWikiLock.png"></a></span>{/tooltip}
