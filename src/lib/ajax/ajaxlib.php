@@ -137,6 +137,7 @@ if ($feature_ajax == 'y') {
 	function __construct() {}
 	function registerFunction() {}
 	function registerTemplate() {}
+	function setLogFile() {}
 	function templateIsRegistered() { return false; }
 	function processRequests() {}
 	function getJavascript() { return ''; }
