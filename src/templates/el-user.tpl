@@ -15,6 +15,9 @@
 			{tooltip text="Modifique as suas preferências"}
 				<a href="tiki-user_preferences.php"><img src="img/mytiki/prefs.gif" height="15"></a>
 			{/tooltip}
+			{tooltip text="Modifique a organização de seus módulos"}
+				<a href="tiki-user_assigned_modules.php"><img src="img/mytiki/modules.gif" height="15"></a>
+			{/tooltip}
 		{else}
 			{$userinfo.login}
 		{/if}
@@ -147,7 +150,7 @@
     </div>
     <div id="uBlog" class="uMainContainer">
       <div id="uBlogTitle" class="sectionTitle uMainTitle">
-        <a name="messages" class="uRssCont" href="el-userblogs_rss.php?user={$userinfo.login}&ver=2"><img src="styles/estudiolivre/iRss.png"></a>
+        <a name="blogs" class="uRssCont" href="el-userblogs_rss.php?user={$userinfo.login}&ver=2"><img src="styles/estudiolivre/iRss.png"></a>
         <h1>
           <span class="pointer" onclick="javascript:flip('uBlogItems');toggleImage(document.getElementById('bTArrow'),'iArrowGreyRight.png')" >
             <img id="bTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
@@ -185,7 +188,7 @@
     {if $allowMsgs || $permission}
     <div id="uMsgs" class="uMainContainer">
       <div id="uMsgsTitle" class="sectionTitle uMainTitle">
-        <a class="uRssCont" href="el-usermsgs_rss.php?user={$userinfo.login}&ver=2"><img src="styles/estudiolivre/iRss.png"></a>
+        <a name="messages" class="uRssCont" href="el-usermsgs_rss.php?user={$userinfo.login}&ver=2"><img src="styles/estudiolivre/iRss.png"></a>
         <h1>
         	<span class="pointer" onclick="javascript:flip('uMsgItems');toggleImage(document.getElementById('rTArrow'),'iArrowGreyRight.png')">
         	  	<img id="rTArrow" src="styles/estudiolivre/iArrowGreyDown.png">

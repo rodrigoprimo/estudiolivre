@@ -1,11 +1,22 @@
 {foreach from=$userMessages.data item='msg'}
-	<div class="uMsgItem">
+	<div 
+		class="uMsgItem{if $msg.isRead ne "y"} uUnreadMsgItem"{else} "{/if}
+		{if $msg.isRead ne "y" && $permission}
+			onmouseover="xajax_markMsgRead({$msg.msgId});setTimeout('nd();',2000);tooltip('{tr}Marcando mensagem{/tr} {$msg.msgId} {tr}como <b>lida</b>{/tr}');"
+		{/if}
+	>
     	<div class="uMsgAvatar">
         	<img alt="" title="" src="tiki-show_user_avatar.php?user={$msg.user_from}">
         </div>
 	<div class="uMsgTxt">
 		<div class="uMsgDel">
-        	{if $permission || $user eq $msg.user_from}<a onClick="xajax_delMsg('{$msg.user_from}', {$msg.msgId})"><img alt="" title="{tr}Deletar Mensagem{/tr}" src="styles/estudiolivre/iDelete.png"></a>{/if}
+        	{if $permission || $user eq $msg.user_from}
+        	 {tooltip text="Deletar Mensagem"}
+        	 	<a class="pointer" onClick="xajax_delMsg('{$msg.user_from}', {$msg.msgId})">
+        	 		<img alt="" src="styles/estudiolivre/iDelete.png">
+        	 	</a>
+        	 {/tooltip}
+        	{/if}
         </div>
         	<div class="uMsgDate">
               {$msg.date|date_format:"%H:%M"}<br />

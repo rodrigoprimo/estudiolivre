@@ -112,7 +112,7 @@
 					{/if}
 					</td>
 					<td>
-						{$lastchanges[changes].user}
+						<a href="el-user.php?view_user={$lastchanges[changes].user}">{$lastchanges[changes].user}</a>
 					</td>
 					{*<td>
 						{$lastchanges[changes].ip}

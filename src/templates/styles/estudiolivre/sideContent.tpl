@@ -1,5 +1,3 @@
-
-
 <div id="sideContent">
   {if $category eq "Áudio"}
   {********AUDIO*********}
@@ -127,9 +125,16 @@
 	</ul>
 	</div>
   {/if}
-
-
-
-	{include file='sideModules.tpl'}
-
+  
+  {literal}
+    <script language="javascript" type="text/javascript">
+		function storeState(id){
+			var d = document.getElementById('module'+id).style.display;
+			setCookie(id,d);
+		}
+	</script>
+  {/literal}
+  {foreach from=$right_modules item=module}
+    {$module.data}
+  {/foreach}
 </div>

@@ -229,7 +229,7 @@ $extra_strings = array(
  "Esse(a) usuári@ ainda não possui arquivos no acervo livre" => "This user has not yet published any works on the Gallery", // ## MODULES ./templates/el-user.tpl<br />
  "comentaram" => "have commented", // ## MODULES ./templates/el-user.tpl<br />
  "Você ainda não possui blogs" => "You don't have any blog posts yet", // ## MODULES ./templates/el-user.tpl<br />
- "Crie</a> um blog ou veja a" =>"Create</a> a blog or check out the", // ## MODULES ./templates/el-user.tpl<br />  
+ "Crie</a> um blog ou veja a " =>"Create</a> a blog or check out the ", // ## MODULES ./templates/el-user.tpl<br />  
  "lista" => "list", // ## MODULES ./templates/el-user.tpl<br />
  "dos existentes" => "of the existing ones", // ## MODULES ./templates/el-user.tpl<br />
  "Esse(a) usuári@ ainda não possui posts em blogs" => "This user has no blog posts", // ## MODULES ./templates/el-user.tpl<br />
@@ -285,7 +285,7 @@ $extra_strings = array(
 
 "Clique aqui para selecionar um novo <b>avatar</b>" => "Click here to upload a new <b>avatar</b>",
 "Clique nas tags para adiocioná-las ao campo acima" => "Click these tags to add them to the field above",
-"Clique para continuar o envio desse arquivo" => "Click to continue this file\'s upload",
+"Clique para continuar o envio desse arquivo" => "Click to continue uploading this file",
 "Clique para criar a página e editá-la" => "Click here to create and edit the page",
 "Clique para definir outras propriedades do arquivo" => "Click here to define other properties for this file",
 "Clique para ir para a página do arquivo" => "Click to go the the file\'s page",
@@ -339,7 +339,7 @@ $extra_strings = array(
  "The next time you send a file this is the license that will be used",
  
 "Navegue para a sua página pessoal para ver seus blogs, arquivos, mensagens e mudar as suas preferências." =>
- "Go to your user page to see yout blog posts, files, messages and change yout preferences",
+ "Go to your user page to see your blog posts, files, messages and change yout preferences",
  
 "Nenhuma outra página do wiki levará a essa página. Assim ela estará, de certo modo, inacessível. Para resolver isso basta colocar um link para esta página em alguma outra página" =>
  "This means that no other wiki page will link to the newly created one, making it, in a way, inacessible. To solve this all you have to do is add a link to it on another page",
@@ -384,6 +384,14 @@ $extra_strings = array(
 "Assita a esse vídeo"=>"Watch this video (stream)",
 "Ouça essa música"=>"Listen to this song (stream)",
 "Veja essa imagem"=>"View this image",
+
+"Modifique a organização de seus módulos"=>"Change your modules\' organization",
+"ver todas"=>"view all",
+"Enviada às"=>"Sent at",
+"Marcando mensagem"=>"Marking message",
+"como <b>lida</b>" => "as <b>read</b>",
+"Meus arquivos"=>"My files",
+"Publicar"=>"Publish",
 );
 
 global $lang;

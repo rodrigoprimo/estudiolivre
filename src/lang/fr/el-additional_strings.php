@@ -6,9 +6,9 @@
  
 $extra_strings = array(
  "Buscar" => "Buscar", // ## MODULES ./templates/el-gallery_list_filters.tpl, ./templates/ie_el-gallery_list_filters.tpl, ./templates/styles/estudiolivre/tiki-top_bar.tpl<br />
- "áudio" => "áudio", // ## MODULES ./templates/el-gallery_list_filters.tpl, ./templates/ie_el-gallery_list_filters.tpl, ./templates/styles/estudiolivre/tiki-top_bar.tpl<br />
- "gráfico" => "gráfico", // ## MODULES ./templates/el-gallery_list_filters.tpl, ./templates/ie_el-gallery_list_filters.tpl, ./templates/styles/estudiolivre/tiki-top_bar.tpl<br />
- "vídeo" => "vídeo", // ## MODULES ./templates/el-gallery_list_filters.tpl, ./templates/ie_el-gallery_list_filters.tpl, ./templates/styles/estudiolivre/tiki-top_bar.tpl<br />
+ "áudio" => "audio", // ## MODULES ./templates/el-gallery_list_filters.tpl, ./templates/ie_el-gallery_list_filters.tpl, ./templates/styles/estudiolivre/tiki-top_bar.tpl<br />
+ "gráfico" => "grafique", // ## MODULES ./templates/el-gallery_list_filters.tpl, ./templates/ie_el-gallery_list_filters.tpl, ./templates/styles/estudiolivre/tiki-top_bar.tpl<br />
+ "vídeo" => "video", // ## MODULES ./templates/el-gallery_list_filters.tpl, ./templates/ie_el-gallery_list_filters.tpl, ./templates/styles/estudiolivre/tiki-top_bar.tpl<br />
  // "Tags" => "Tags", // ## MODULES ./templates/el-gallery_upload.tpl, ./templates/styles/estudiolivre/freetag.tpl<br />
  "Localização" => "Localização", // ## MODULES ./templates/el-user.tpl, ./templates/styles/estudiolivre/tiki-list_users.tpl<br />
  // "Browse related tags" => "Browse related tags", // ## MODULES ./templates/styles/estudiolivre/browseRelatedTags.tpl, ./templates/tiki-browse_freetags.tpl<br />
@@ -24,7 +24,7 @@ $extra_strings = array(
  // "links" => "links", // ## MODULES ./templates/styles/estudiolivre/sideContent.tpl<br />
  "compartilhe sua obra" => "compartilhe sua obra", // ## MODULES ./templates/styles/estudiolivre/sideContent.tpl<br />
  "Se for cadastrado, efetue o login" => "Se for cadastrado, efetue o login", // ## MODULES ./templates/styles/estudiolivre/sideContent.tpl, ./templates/styles/estudiolivre/tiki-poll.tpl<br />
- "senha" => "senha", // ## MODULES ./templates/styles/estudiolivre/sideContent.tpl, ./templates/styles/estudiolivre/tiki-poll.tpl<br />
+ "senha" => "mot de passe", // ## MODULES ./templates/styles/estudiolivre/sideContent.tpl, ./templates/styles/estudiolivre/tiki-poll.tpl<br />
  "recuperar" => "recuperar", // ## MODULES ./templates/styles/estudiolivre/sideContent.tpl<br />
  "Se preferir" => "Se preferir", // ## MODULES ./templates/styles/estudiolivre/sideContent.tpl<br />
  "leia mais" => "leia mais", // ## MODULES ./templates/styles/estudiolivre/sideContent.tpl<br />
@@ -92,7 +92,7 @@ $extra_strings = array(
  "Você pode colaborar criando a página" => "Você pode colaborar criando a página", // ## MODULES ./templates/styles/estudiolivre/tiki-searchresults.tpl<br />
  "páginas que citam esta:" => "páginas que citam esta:", // ## MODULES ./templates/styles/estudiolivre/tiki-show_page.tpl<br />
  // "tag" => "tag", // ## MODULES ./templates/styles/estudiolivre/tiki-top_bar.tpl<br />
- "sobre" => "sobre", // ## MODULES ./templates/styles/estudiolivre/tiki-top_bar.tpl<br />
+ "sobre" => "sur", // ## MODULES ./templates/styles/estudiolivre/tiki-top_bar.tpl<br />
  "fóruns" => "fóruns", // ## MODULES ./templates/styles/estudiolivre/tiki-top_bar.tpl<br />
  "contato" => "contato", // ## MODULES ./templates/styles/estudiolivre/tiki-top_bar.tpl<br />
  "<a href=\"tiki-admin.php\">Administrar</a> o TikiWiki" => "<a href=\"tiki-admin.php\">Administrar</a> o TikiWiki", // ## MODULES ./templates/styles/estudiolivre/sideContent.tpl<br />

@@ -157,7 +157,7 @@
   <tr><td class="form">{tr}Theme{/tr}:</td><td class="form"><select name="mystyle">
     {section name=ix loop=$styles}
       {if count($available_styles) == 0 || in_array($styles[ix], $available_styles)}
-        <option value="{$styles[ix]|escape}" {if $style eq $styles[ix]}selected="selected"{/if}>{$styles[ix]}</option>
+        <option value="{$styles[ix]|escape}" {if $style eq $styles[ix]}selected="selected"{/if}>{$styles[ix]|replace:".css":""}</option>
       {/if}
     {/section}
         </select>

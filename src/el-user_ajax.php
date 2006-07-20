@@ -72,6 +72,29 @@ function delMsg($userFrom, $msgId) {
 
 }
 
+$ajaxlib->setPermission('markMsgRead', $user);
+$ajaxlib->registerFunction('markMsgRead');
+function markMsgRead($msgId) {
+	
+	global $messulib, $user, $smarty, $permission, $view_user;
+	
+	$objResponse = new xajaxResponse();
+	
+	if ($permission) {
+
+		$messulib->flag_message($view_user, $msgId, 'isRead', 'y');
+		
+		$smarty->assign('permission', $permission);
+		$smarty->assign('userMessages', $messulib->list_user_messages($view_user, 0, 5, 'date_desc', '', '', '', '', 'messages'));
+		$objResponse->addAssign("uMsgItems", "innerHTML", $smarty->fetch("el-user_msg.tpl"));
+		// BUG: com isso aqui as opções do módulo são perdidas e o flip some (até rolar um reload, claro)...
+		$objResponse->addAssign("mod-el_msgs", "innerHTML", $smarty->fetch("modules/mod-el_msgs.tpl"));
+	}
+	
+	return $objResponse;
+
+}
+
 $ajaxlib->setPermission('set_licenca', $permission);
 $ajaxlib->registerFunction('set_licenca');
 function set_licenca($r1, $r2, $r3) {

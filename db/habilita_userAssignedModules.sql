@@ -1,0 +1,1 @@
+update tiki_preferences set value = 'y' where name = 'user_assigned_modules';
