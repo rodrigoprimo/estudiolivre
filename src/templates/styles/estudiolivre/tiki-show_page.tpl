@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.22 2006-07-18 19:35:44 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-show_page.tpl,v 1.23 2006-07-21 11:14:41 rhwinter Exp $ *}
 <!--script language="JavaScript" src="lib/js/contextualMenu.js"></script-->
 
 <!-- menu contextual>
@@ -96,6 +96,18 @@
 			{/section}
 			</select>
 			</form>
+		{/if}
+		
+		{if $feature_freetags eq 'y'}
+				{tooltip text="<b>Tags</b> dessa página"}<img src="styles/estudiolivre/iWikiTags.png" onclick="document.getElementById('tagsHide').style.display='block'" style="cursor:pointer">{/tooltip}
+				<span id="tagsHide" style="display:none">
+					<b>{tr}Tags{/tr}:</b>
+					{foreach from=$freetags.data item='tag'}
+						<a href="tiki-browse_freetags.php?tag={$tag.tag}">{$tag.tag}</a>&nbsp;
+					{foreachelse}
+						{tr}Essa página ainda não tem tags{/tr}
+					{/foreach}
+				</span>
 		{/if}
 		
 		{* DESNECESSARIO if !$lock and ($tiki_p_edit eq 'y' or $page|lower eq 'sandbox') and $beingEdited ne 'y'}

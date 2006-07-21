@@ -22,7 +22,7 @@ function smarty_function_elcrumbs($params, &$smarty) {
 	foreach ($crumbs as $crumb) {
 		
 		$output .= '<a href="' . $crumb['url'] . '">' . $crumb['title'] . '</a>';
-		$output .= ' > ';
+		$output .= ' <br> ';
 	}
 	
 	$output = preg_replace("/> $/", '', $output);

@@ -125,7 +125,7 @@
 						</td>
 					{else}
 						<td>
-							&nbsp;{$listpages[changes].user}&nbsp;
+							&nbsp;<a href="el-user.php?view_user={$listpages[changes].user}">{$listpages[changes].user}</a>&nbsp;
 						</td>
 					{/if}
 				{/if}
