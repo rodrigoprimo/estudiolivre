@@ -19,3 +19,8 @@ function toggleImage(image, alternatePath){
 	this.blur();
 	//alert(this.src);
 }
+
+function storeState(id){
+	var d = document.getElementById('module'+id).style.display;
+	setCookie(id,d);
+}

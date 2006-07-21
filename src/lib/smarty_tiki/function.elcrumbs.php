@@ -5,8 +5,6 @@ if (strpos($_SERVER["SCRIPT_NAME"],basename(__FILE__)) !== false) {
   exit;
 }
 
-include_once("function.truncate.php");
-
 /*
  * Smarty plugin
  * -------------------------------------------------------------

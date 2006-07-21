@@ -126,14 +126,6 @@
 	</div>
   {/if}
   
-  {literal}
-    <script language="javascript" type="text/javascript">
-		function storeState(id){
-			var d = document.getElementById('module'+id).style.display;
-			setCookie(id,d);
-		}
-	</script>
-  {/literal}
   {foreach from=$right_modules item=module}
     {$module.data}
   {/foreach}

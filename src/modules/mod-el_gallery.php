@@ -5,12 +5,7 @@ if (strpos($_SERVER["SCRIPT_NAME"],basename(__FILE__)) !== false) {
   exit;
 }
 
-
-/*ISSO NAO FUNCIONOU :( ......
-require_once("lib/ajax/ajaxlib.php");
-require_once("el-gallery_upload_ajax.php");
-require_once("lib/elgal/elgallib.php");
-$ajaxlib->processRequests();
+/*require_once("lib/elgal/elgallib.php");
 $smarty->assign('pendingUploadFiles', $elgallib->list_pending_uploads($user));
 */
 ?>

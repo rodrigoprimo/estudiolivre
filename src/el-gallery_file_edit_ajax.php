@@ -124,13 +124,12 @@ function restore_edit($arquivoId) {
 	if ($arquivo["arquivo"]) {
 	    preg_match("/\d+_\d+-(.+)$/", $arquivo['arquivo'], $nome);
 	    $objResponse->addAssign("gUpFileName", "innerHTML", $nome[1]);
-	    if (!$cache['thumbnail']) {
-		$objResponse->addAssign("thumbnail", "src", "styles/estudiolivre/iThumb" . $arquivo['tipo'] . ".png");			
-	    }
-    	} else {
-	    $objResponse->addAssign("thumbnail", "src", "styles/estudiolivre/iThumb" . $arquivo['tipo'] . ".png");
 	}
-	
+	if (!$arquivo['thumbnail']) {
+		$objResponse->addAssign("thumbnail", "src", "styles/estudiolivre/iThumb" . $arquivo['tipo'] . ".png");			
+	} else {
+		$objResponse->addAssign("thumbnail", "src", "styles/estudiolivre/iThumb" . $arquivo['thumbnail'] . ".png");
+	}
 	return $objResponse;
 }
 

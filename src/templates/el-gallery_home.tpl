@@ -4,16 +4,24 @@
 <script language="JavaScript" src="lib/elgal/el_home.js"></script>
 <script language="JavaScript" src="lib/js/delete_file.js"></script>
 
+{if $smarty.cookies.gHomeWikiToggle eq 'none'}
+	{assign var=display value="none"}
+	{assign var=imgCurrent value="iGreenArrowLeft"}
+	{assign var=imgChange value="sortArrowDown"}	
+{else}
+	{assign var=display value="block"}
+	{assign var=imgCurrent value="sortArrowDown"}
+	{assign var=imgChange value="iGreenArrowLeft"}	
+{/if}
+
 <!-- Feature Wiki Begin -->
 <div id="gHomeWiki" {if $tiki_p_edit eq 'y'} ondblclick="location.href='tiki-editpage.php?page=destak'"{/if}>
 	<span id="gHomeWikiTitle">
 		{tooltip name="home-flip-destaques" text="Alternar a visualização dos destaques"}
-			<a onclick="javascript:flip('gHomeWikiToggle');return false;" href="#">
-				<img onclick="toggleImage(this,'iGreenArrowLeft.png');" src="styles/estudiolivre/sortArrowDown.png">
-			</a>
+			<img onclick="flip('modulegHomeWikiToggle');toggleImage(this,'{$imgChange}.png');storeState('gHomeWikiToggle')" src="styles/estudiolivre/{$imgCurrent}.png">
 		{/tooltip}
 	</span>
-	<div id="gHomeWikiToggle" style="display:block;">
+	<div id="modulegHomeWikiToggle" style="display:{$display};">
 		{$destak}
 	</div>
 	

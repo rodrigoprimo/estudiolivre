@@ -47,7 +47,16 @@ if ($licencaId = $tikilib->get_user_preference($user, 'licencaPadrao')) {
 	$smarty->assign('licenca', $licenca);
 }
 
-$smarty->assign('pending', $elgallib->list_pending_uploads($user));
+$pending = $elgallib->list_pending_uploads($user);
+$restore = -1;
+if(isset($_REQUEST['restore'])) {
+	foreach ($pending as $key => $p) {
+		if($p['arquivoId'] == $_REQUEST['restore'])
+			$restore = $key;
+	} 
+}
+$smarty->assign('restore', $restore);
+$smarty->assign('pending', $pending);
 
 $smarty->assign('uploadId',rand() . '.' . time());
 

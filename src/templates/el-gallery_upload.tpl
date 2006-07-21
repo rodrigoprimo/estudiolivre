@@ -168,5 +168,7 @@
 {include file="el-gallery_error.tpl"}
 <div id="errorDiv" style="display:none; width:200px"></div>
 
+{if $restore > -1}
+	<script language="JavaScript">restoreForm({$pending.$restore.arquivoId}, '{$pending.$restore.tipo}', '{$pending.$restore.arquivo}', '{$pending.$restore.thumbnail}');flip('fileAltered');</script>
+{/if}
 <!-- el-gallery_upload_general.tpl end -->
-
