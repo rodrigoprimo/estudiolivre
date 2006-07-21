@@ -144,7 +144,7 @@ function selecionaTipo(tipo) {
 		document.getElementById("icone" + tipo).src = "styles/estudiolivre/iUp" + tipo + ".png";
 		show('gUpList');
 	} else {
-		fixedTooltip('Você não pode mudar o tipo de arquivo depois de começar o upload');
+		fixedTooltip('Voc? n?o pode mudar o tipo de arquivo depois de come?ar o upload');
 	}
 }
 
@@ -201,9 +201,12 @@ function restoreForm (id, tipo, arquivo, thumbnail) {
 		document.getElementById('gUpStatusBar').style.width = originalWidth + 'px';
 		document.getElementById('gUpPercent').style.backgroundColor = '#ffe475';
 		document.getElementById('gUpPercent').innerHTML = '100%';
+		document.getElementById('gUpFileName').innerHTML = arquivo.replace(/\d+_\d+-/,"");
 	}
 	if (thumbnail) {
 		document.getElementById('thumbnail').src = 'repo/' + thumbnail;
+	} else {
+		document.getElementById('thumbnail').src = 'styles/estudiolivre/iThumb' + tipo + '.png';
 	}
 	restoreEdit(id);
 }

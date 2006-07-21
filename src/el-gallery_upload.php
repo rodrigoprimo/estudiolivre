@@ -49,9 +49,9 @@ if ($licencaId = $tikilib->get_user_preference($user, 'licencaPadrao')) {
 
 $pending = $elgallib->list_pending_uploads($user);
 $restore = -1;
-if(isset($_REQUEST['restore'])) {
+if(isset($_REQUEST['arquivoId'])) {
 	foreach ($pending as $key => $p) {
-		if($p['arquivoId'] == $_REQUEST['restore'])
+		if($p['arquivoId'] == $_REQUEST['arquivoId'])
 			$restore = $key;
 	} 
 }

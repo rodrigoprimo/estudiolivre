@@ -43,7 +43,7 @@
     {/if}
 
     <div id="tiki-mid">
-    {include file=$mid}
+    {$mid_data}
     </div>
 
    

@@ -49,11 +49,11 @@
 
 		  <div id="gPlay">
 		  	{if $arquivo.tipo eq "Video"}
-		  		{if $arquivo.formato eq "application/ogg" || $arquivo.formato eq "application/octet-stream"}
+		  		{if preg_match("/.*\.ogg$/", $arquivo.arquivo)}
 			    	{assign var=tooltipText value="{tr}Assita a esse vídeo{/tr}"}
 			    {/if}
 		    {elseif $arquivo.tipo eq "Audio"}
-		    	{if $arquivo.formato eq "application/ogg" || $arquivo.formato eq "application/octet-stream"}
+		    	{if preg_match("/.*\.ogg$/", $arquivo.arquivo)}
 			    	{assign var=tooltipText value="{tr}Ouça essa música{/tr}"}
 			    {/if}
 		    {elseif $arquivo.tipo eq "Imagem"}

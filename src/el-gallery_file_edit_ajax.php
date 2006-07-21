@@ -121,15 +121,6 @@ function restore_edit($arquivoId) {
   		$objResponse->addScriptCall('restoreField', $field, $value);
   	}
 	
-	if ($arquivo["arquivo"]) {
-	    preg_match("/\d+_\d+-(.+)$/", $arquivo['arquivo'], $nome);
-	    $objResponse->addAssign("gUpFileName", "innerHTML", $nome[1]);
-	}
-	if (!$arquivo['thumbnail']) {
-		$objResponse->addAssign("thumbnail", "src", "styles/estudiolivre/iThumb" . $arquivo['tipo'] . ".png");			
-	} else {
-		$objResponse->addAssign("thumbnail", "src", "styles/estudiolivre/iThumb" . $arquivo['thumbnail'] . ".png");
-	}
 	return $objResponse;
 }
 

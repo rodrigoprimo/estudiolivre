@@ -29,7 +29,7 @@
 
 <!--HIGHLIGHT BEGIN-->
 
-    {include file=$mid}
+    {$mid_data}
 
 <!--HIGHLIGHT END-->
 <!-- sasquatch -->

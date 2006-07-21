@@ -5,7 +5,8 @@ if (strpos($_SERVER["SCRIPT_NAME"],basename(__FILE__)) !== false) {
   exit;
 }
 
-/*require_once("lib/elgal/elgallib.php");
+global $elgallib;
+require_once("lib/elgal/elgallib.php");
 $smarty->assign('pendingUploadFiles', $elgallib->list_pending_uploads($user));
-*/
+
 ?>
