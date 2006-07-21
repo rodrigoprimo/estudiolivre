@@ -30,16 +30,6 @@ function smarty_function_ajax_textarea($params, &$smarty) {
 
 	$show_value = $wikiParsed ? $tikilib->parse_data($value) : $value;
 
-	if (!$permission) {
-		$output .= '<div id="show-'. $id .'" class="'.$class.'" style="display:' . ($edit ? 'none' : $display ) . '">';
-		$output .= ($value ? $show_value : $default);
-		$output .= "</div>";
-		
-		return $output;	
-	} else {
-		$class .= " editable";
-	}
-
 	if ($mode == 'edit') {
 	    $edit = 1;
 	} elseif ($mode == 'show') {
@@ -47,9 +37,18 @@ function smarty_function_ajax_textarea($params, &$smarty) {
 	} else {
 	    $edit = $value ? 0 : 1;
 	}
-	
-	
+
 	if (!$display) $display = 'block';
+	
+	if (!$permission) {
+		$output .= '<div id="show-'. $id .'" class="'.$class.'" style="display:' . $display . '">';
+		$output .= ($value ? $show_value : $default);
+		$output .= "</div>";
+		
+		return $output;	
+	} else {
+		$class .= " editable";
+	}
 	
 	$output = '';
 	$output .= '<div id="show-'. $id .'" class="'.$class.'" style="display:' . ($edit ? 'none' : $display ) . '" onClick="editaCampo(' . "'" . $id . "'" . ');">';
@@ -60,9 +59,9 @@ function smarty_function_ajax_textarea($params, &$smarty) {
 	
 	$output .= '<textarea id="input-'.$id. '"  onBlur="saveField(this)" style="display:' . ($edit ? $display : "none") . '; ' . $style . '" '; 
 	if (!$value && !$noclear) { 
-	    $output .= " onFocus=\"limpaCampo('$id');\" onChange=\"mudado['$id']=1;\"";
+	    $output .= " onFocus=\"limpaCampo('$id');\"";
 	}
-	$output .= '>'. ($value ? htmlspecialchars($value) : $default) .'</textarea>';
+	$output .= " onChange=\"mudado['$id']=1;\">" . ($value ? htmlspecialchars($value) : $default) .'</textarea>';
 	
 	$output .= '<script language="JavaScript">display["'.$id.'"] = "'.$display.'";errorMsg_'.$id.' = "";</script>';
 	

@@ -10,13 +10,12 @@ include_once("function.truncate.php");
 /*
  * Smarty plugin
  * -------------------------------------------------------------
- * Type:     function
- * Name:     ajax_input
- * Purpose:  TODO
+ * Type:     block
+ * Name:     ajax_select
+ * Purpose:  SELECT block
  * -------------------------------------------------------------
- * {ajax_input class="gUpTitle" id="titulo" value=$arquivo.titulo default="Titulo"}
  */
-function smarty_function_ajax_input($params, &$smarty) {
+function smarty_block_ajax_select($params, $text) {
 	$id = $params['id'];
 	$class = $params['class'];
 	$value = $params['value'];
@@ -24,10 +23,7 @@ function smarty_function_ajax_input($params, &$smarty) {
 	$display = $params['display'];
 	$mode = $params['mode'];
 	$noclear = $params['noclear'];
-	$truncate = (int)$params['truncate'];
 	$permission = $params['permission'];
-
-	$trucated = truncate($value, $truncate);
 
 	if ($mode == 'edit') {
 	    $edit = 1;
@@ -40,8 +36,8 @@ function smarty_function_ajax_input($params, &$smarty) {
 	if (!$display) $display = 'block';
 	
 	if (!$permission) {
-		$output .= '<div id="show-'. $id .'" class="'.$class.'" style="display:' . $display . '">';
-		$output .= ($trucated ? $trucated : $default);
+		$output .= '<div id="show-'. $id .'" class="'.$class.'" style="display:' . $display .'">';
+		$output .= ($value ? $value : $default);
 		$output .= "</div>";
 		return $output;	
 	} else {
@@ -50,24 +46,22 @@ function smarty_function_ajax_input($params, &$smarty) {
 	
 	$output = '';
 	$output .= '<div id="show-'. $id .'" class="'.$class.'" style="display:' . ($edit ? 'none' : $display ) . '" onClick="editaCampo(' . "'" . $id . "'" . ');">';
-	$output .= ($edit ? $default : $trucated);
+	$output .= ($edit ? $default : $value);
 	$output .= "</div>";
 	// TODO: escape value
-	$output .= '<input class="'.$class.'" id="input-'.$id.'" value="'. ($value ? $value : $default) .'" ';
-	if (!$value && !$noclear) { 
-	    $output .= " onFocus=\"limpaCampo('$id');\"";
-	}
-	$output .= " onChange=\"mudado['$id']=1;\" onBlur=\"saveField(this)\" style=\"display:" . ($edit ? $display : 'none') . "\">";
+	$output .= '<select class="'.$class.'" id="input-'.$id.'" value="'. ($value ? $value : $default) .'"';
 	
-	$output .= "<img id=\"error-$id\" class=\"gUpErrorImg\" style=\"display: none\" src=\"styles/estudiolivre/errorImg.png\" onMouseover=\"tooltip(errorMsg_$id);\" onMouseout=\"nd();\"> ";
+	$output .= " onChange=\"mudado['$id']=1; saveField(this)\" style=\"display:" . ($edit ? $display : 'none') . "\">";
+	$output .= $text;
+	$output .= "</select>";
+	
+	$output .= "<img id=\"error-$id\" class=\"gUpErrorImg\" style=\"display: none\" src=\"styles/mapsys/errorImg.png\" onMouseover=\"tooltip(errorMsg_$id);\" onMouseout=\"nd();\"> ";
 	
 	$output .= '<script language="JavaScript">';
 	$output .= '  display["'.$id.'"] = "'.$display.'";errorMsg_'.$id.' = "";';
-	if ($truncate) {
-    	$output .= '  truncations["'.$id.'"] = "'.$truncate.'";';
-	}
-    $output .= '</script>';
-		
+	
+	$output .= '</script>';
+	
 	return $output;
 }
 
