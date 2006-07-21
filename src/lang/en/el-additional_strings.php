@@ -391,7 +391,7 @@ $extra_strings = array(
 "Marcando mensagem"=>"Marking message",
 "como <b>lida</b>" => "as <b>read</b>",
 "Meus arquivos"=>"My files",
-"Publicar"=>"Publish",
+"Publicar"=>"Publish"
 );
 
 global $lang;

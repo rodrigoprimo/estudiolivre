@@ -12,7 +12,7 @@
  
 -$bbreadCrumb = array_reverse($_SESSION["breadCrumb"]);
 -$smarty->assign('breadCrumb', $bbreadCrumb);
-+$bbreadCrumb = array_reverse($_SESSION["elBreadCrumbs"]);
++$bbreadCrumb = $_SESSION["elBreadCrumbs"];
 +$smarty->assign('elCrumbs', $bbreadCrumb);
  $smarty->assign('maxlen', isset($module_params["maxlen"]) ? $module_params["maxlen"] : 0);
  ?>
