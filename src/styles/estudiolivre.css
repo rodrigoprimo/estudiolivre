@@ -48,12 +48,20 @@ img {
 	width:205px;
 }
 
+.tooltipTop {
+	height:18px;
+	background-image:url(estudiolivre/tooltipTop.png);	
+}
+
 .tooltipMid {
 	padding: 0 7px 0 7px;
 	background-image:url(estudiolivre/tooltipMid.png);	
-	background-repeat:repeat-y;
 }
 
+.tooltipBottom {
+	height:15px;
+	background-image:url(estudiolivre/tooltipBottom.png);	
+}
 .center {
 	text-align:center;
 	
