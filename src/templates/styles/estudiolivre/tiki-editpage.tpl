@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.20 2006-07-14 00:59:51 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.21 2006-07-22 00:20:54 rhwinter Exp $ *}
 
 {popup_init src="lib/overlib.js"}
 
@@ -396,7 +396,7 @@
 		
 		//if the comment was made in the preview area
 		if(self.preview){
-			if(document.getElementById('iComP').value != ""){
+			if(document.getElementById('iComP').value == ""){
 				document.editPage.comment.value = document.getElementById('iComP').value;
 			}
 		}
