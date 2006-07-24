@@ -124,6 +124,7 @@ function showLightbox(divId) {
 	//objLightbox.appendChild(content);
 	// now we will append the content before the second child
 	var container=document.getElementById('lightboxCont');
+	content.className=content.className+" lightContent";
 	container.insertBefore(content,container.childNodes[2]);
 	////container.firstChild.appendChild(content);
 	//container.appendChild(content);
