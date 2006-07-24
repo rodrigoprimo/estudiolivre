@@ -77,8 +77,10 @@
 			<a class="link" href="tiki-view_blog_post.php?blogId={$blogId}&amp;postId={$post.postId}">
 				{tr}permalink{/tr}
 			</a>
-			
-			{*({tr}referenced by{/tr}: {$post.trackbacks_from_count} {tr}posts{/tr} / {tr}references{/tr}: {$post.trackbacks_to_count} {tr}posts{/tr})*}
+
+			{*
+			({tr}referenced by{/tr}: {$post.trackbacks_from_count} {tr}posts{/tr} / {tr}references{/tr}: {$post.trackbacks_to_count} {tr}posts{/tr})
+			*}
 			
 			{if $allow_comments eq 'y' and $feature_blogposts_comments eq 'y'}
 				{if $post.comments > 0}
@@ -92,7 +94,7 @@
 					{tr}add comment{/tr}
 				</a>
 			{/if}
-			
+
 			{if $feature_blogposts_comments == 'y'
 			  && $blog_data.allow_comments == 'y'
 			  && (($tiki_p_read_comments  == 'y'
