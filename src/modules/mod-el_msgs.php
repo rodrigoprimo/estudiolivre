@@ -1,6 +1,6 @@
 <?php
 if ($user) {
-	global $messulib;
+	global $messulib, $tikilib;
 	require_once('lib/messu/messulib.php');
 	$mod_allowMsgs = $tikilib->get_user_preference($user,'allowMsgs',1);
 	$smarty->assign('mod_allowMsgs',$mod_allowMsgs);
