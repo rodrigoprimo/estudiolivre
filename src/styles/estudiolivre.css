@@ -644,6 +644,8 @@ h1 .flipper {
 
 .wikitopline {
 	margin-bottom: 5px;
+	text-align:right;
+	padding-top:5px;
 }
 
 .wikitopline img {
@@ -1058,6 +1060,11 @@ p.editdate {
 	text-align:left;
 }
 
+
+.mod-el_msg-msg {
+	text-decoration:none;
+	color:black;
+}
 /* Login Box */
 
 #uLoginBox{
