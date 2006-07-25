@@ -43,7 +43,7 @@ function editTags($tag_string) {
 	
 	$objResponse->addAssign("show-tags", "innerHTML", $smarty->fetch("el-gallery_tags.tpl"));
     $objResponse->addAssign("input-tags", "value", $tagString);
-    $objResponse->addScript("document.getElementById('input-tags').style.display = 'none'; document.getElementById('show-tags').style.display = 'inline'");
+    $objResponse->addScript("document.getElementById('input-tags').style.display = 'none'; document.getElementById('show-tags').style.display = 'block'");
     
     return $objResponse;
     

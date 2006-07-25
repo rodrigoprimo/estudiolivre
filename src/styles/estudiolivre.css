@@ -1646,7 +1646,15 @@ A.gUpmore {
 	float:right;
 	margin-top:7px;
 }
+
+.aTagsInput {
+	background:#eff8e9;
+	width:98%;
+	padding: 2px 20px 2px 10px;
+	margin-top:5px;	
+}
 	
+
 #aMiddle {
 	position:relative;
 }
