@@ -111,18 +111,21 @@
 				    </div>
 			    {/if}
 			</div>
-			
-			{assign var=fileTags value=$arquivo.tags}
-			<div class="aTags" id="show-tags" {if $permission}onClick="editaCampo('tags')"{/if}>
-				{include file="el-gallery_tags.tpl"}
-			</div>
-			{if $permission}
-				<input class="aTags" id="input-tags" value="{$arquivo.tagString}" onBlur="xajax_editTags(this.value)" style="display:none; width:80%; padding-left:5px">
-				<img id="error-tags" class="gUpErrorImg" style="display: none" src="styles/estudiolivre/errorImg.png" onMouseover="tooltip(errorMsg_tags);" onMouseout="nd();"> 
-				<script language="JavaScript">  display["tags"] = "inline";errorMsg_tags = "";</script>
-			{/if}
 		</div>
 	</div>
+	{assign var=fileTags value=$arquivo.tags}
+	{if $permission}
+		{tooltip text="Clique para editar as <b>tags</b> desse arquivo"}<img class="aTagsEdit pointer" src="styles/estudiolivre/iTagEdit.png" onClick="editaCampo('tags')">{/tooltip}
+	{/if}
+	<div class="aTags" id="show-tags">
+		{include file="el-gallery_tags.tpl"}
+	</div>
+	
+	{if $permission}
+		<input class="aTags" id="input-tags" value="{$arquivo.tagString}" onBlur="xajax_editTags(this.value)" style="display:none; width:80%; padding-left:5px">
+		<img id="error-tags" class="gUpErrorImg" style="display: none" src="styles/estudiolivre/errorImg.png" onMouseover="tooltip(errorMsg_tags);" onMouseout="nd();"> 
+		<script language="JavaScript">  display["tags"] = "inline";errorMsg_tags = "";</script>
+	{/if}
 	<br style="line-height: 25px"/>
 	<div id="aMiddle">
 		

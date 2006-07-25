@@ -1,6 +1,6 @@
---- ../estudiolivre_base/tiki-show_user_avatar.php	2006-05-12 16:52:58.000000000 -0300
-+++ tiki-show_user_avatar.php	2006-06-22 12:53:29.000000000 -0300
-@@ -22,7 +22,12 @@
+--- tiki-show_user_avatar.php	2006-07-25 14:52:28.000000000 -0300
++++ /root/tiki-show_user_avatar.php	2006-07-25 14:53:05.000000000 -0300
+@@ -22,7 +22,14 @@
  $type = $info["avatarFileType"];
  $content = $info["avatarData"];
  
@@ -11,7 +11,9 @@
 +	echo "$content";
 +} else{
 +	header ("Content-type: image/png");
-+	readfile("styles/estudiolivre/iThumbUser.png");
++	$user_style = $tikilib->get_user_preference($user, 'theme', $style);
++	$curstyle=str_replace(".css", "", $user_style);
++	readfile("styles/".$curstyle."/iThumbUser.png");
 +}
  
  ?>
