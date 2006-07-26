@@ -12,7 +12,7 @@
 </div>
 
 <div id="gPlayerImagem" style="display:none">
-	<div><img id="gImagem" src=""/></div>
+	<div><img id="gImagem"/></div>
 </div>
 
 <script language="JavaScript" src="lib/elgal/player/cortado.js"></script>
