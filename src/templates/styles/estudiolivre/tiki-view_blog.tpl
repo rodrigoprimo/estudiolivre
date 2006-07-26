@@ -7,7 +7,6 @@
 	
 	{include file="blog-heading.tpl"}
 	
-	
 	{*this too!
 	 if $use_find eq 'y'}
 		<div class="blogtools">

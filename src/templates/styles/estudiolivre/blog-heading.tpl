@@ -1,6 +1,6 @@
 <div id="blogHead">
 	<h1 onmouseover="tooltip('<b>{tr}Blog{/tr} {tr}Created by{/tr}:</b> {$creator} <br><b>{tr} on {/tr}:</b> {$created|date_format:"%H:%M - %d/%m/%y"}')" onmouseout="nd();">
-		<a href="tiki-view_blog.php?blogId={$id}">{$title}</a>
+		{tr}Blog{/tr}: <a href="tiki-view_blog.php?blogId={$id}">{$title}</a>
 	</h1>
 	{if $printingPost}
 			{*TODO: mudar pra uma variável ao invés de estudiolivre.org!!!... *}

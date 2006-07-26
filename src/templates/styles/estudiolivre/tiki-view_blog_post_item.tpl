@@ -117,7 +117,7 @@
 		{/if}			
 	</div>
 	{* inclui os comentários caso estejamos imprimindo *}
-	{if $printingPost}
+	{if $printingPost && !$previewingPost}
 					{if $feature_blogposts_comments == 'y'
 				  && $blog_data.allow_comments == 'y'
 				  && (($tiki_p_read_comments  == 'y'
