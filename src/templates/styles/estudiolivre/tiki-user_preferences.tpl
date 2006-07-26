@@ -213,6 +213,11 @@
   <input type="checkbox" name="user_dbl" {if $user_dbl eq 'y'}checked="checked"{/if} />
   </td>
   </tr>
+  <tr><td class="form">{tr}Usar 'ctrl-enter' para salvar a página sendo editada (pode tornar a edição mais lenta){/tr}:</td>
+  <td class="form">
+  <input type="checkbox" name="user_useEditJs" {if $user_useEditJs eq 'y'}checked="checked"{/if} />
+  </td>
+  </tr>
   {* not used {if $feature_history eq 'y'}
   <tr><td class="form">Use new diff any version interface:</td>
   <td class="form">

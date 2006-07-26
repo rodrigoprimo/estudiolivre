@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.21 2006-07-22 00:20:54 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.22 2006-07-26 06:10:08 rhwinter Exp $ *}
 
 {popup_init src="lib/overlib.js"}
 
@@ -370,121 +370,126 @@
   		<br>
   		{tr}Faça o comentário no campo abaixo{/tr}:
   		<br/>
-		<input class="wikitext" id="lightComment" type="text" name="lightComment" value="" onkeydown="lightBoxKey(event)"/>
+		<input class="wikitext" id="lightComment" type="text" name="lightComment" value="" {if $useJavascript eq "y"}onkeydown="lightBoxKey(event){/if}"/>
 		<div id="edtSaveCancel">
 			<img src="styles/estudiolivre/bSave.png" value="{tr}save{/tr}" onclick="comment()"/>
 		</div>
 	</form>
 </div>
 
-
-{literal}
-	<script language="javascript" type="text/javascript">
-	
-	function checkForm() {
-		//if the minor check was made in the preview area
-		if(self.preview){
-			if(document.editPage.isminorPreview[0].checked){
-				document.editPage.isminor[0].checked=true;
+	{literal}
+		<script language="javascript" type="text/javascript">
+		
+		function checkForm() {
+			//if the minor check was made in the preview area
+			if(self.preview){
+				if(document.editPage.isminorPreview[0].checked){
+					document.editPage.isminor[0].checked=true;
+				}
 			}
-		}
-
-		//for minor changes
-		if (document.editPage.isminor[0].checked){
+	
+			//for minor changes
+			if (document.editPage.isminor[0].checked){
+				return true;
+			}
+			
+			//if the comment was made in the preview area
+			if(self.preview){
+				if(document.getElementById('iComP').value == ""){
+					document.editPage.comment.value = document.getElementById('iComP').value;
+				}
+			}
+			
+			if(!document.editPage.comment.value && !cancelar){
+				showLightbox('precisaComentar');
+				// so that this gets the input focus!
+				document.getElementById('lightComment').focus();
+				return false;
+			}
+	
+			//alert(document.editPage.comment.value);
 			return true;
 		}
 		
-		//if the comment was made in the preview area
-		if(self.preview){
-			if(document.getElementById('iComP').value == ""){
-				document.editPage.comment.value = document.getElementById('iComP').value;
+		function savePage(){
+			var inputSave = document.createElement('input');
+			inputSave.type = "hidden";
+			inputSave.name = "save";
+			inputSave.value = "1";
+			document.getElementById('editpageform').appendChild(inputSave);
+			document.getElementById('editpageform').submit();
+		}
+		
+		function comment(){
+			document.editPage.comment.value=document.getElementById('lightComment').value;
+			savePage();
+			hideLightbox();
+		}
+		
+		//returns the keycode of the key associated with the given event
+		function getKeyCode(e){
+			var code=0;
+			if (!e) var e = window.event;
+			if (e.keyCode) code = e.keyCode;
+			else if (e.which) code = e.which;		
+			return code;
+		}
+		
+		//used in the commenting lightbox
+		function lightBoxKey(e){
+			//alert('uha!');
+			var code = getKeyCode(e);
+			if(code==13){
+				//we pressed enter!
+				comment();
 			}
 		}
 		
-		if(!document.editPage.comment.value && !cancelar){
-			showLightbox('precisaComentar');
-			// so that this gets the input focus!
-			document.getElementById('lightComment').focus();
-			return false;
+		//used in the whole page!
+		function keyDown(e){
+			doCtrlToggle(e);
+			doSave(e);
 		}
-
-		//alert(document.editPage.comment.value);
-		return true;
-	}
-	
-	function savePage(){
-		var inputSave = document.createElement('input');
-		inputSave.type = "hidden";
-		inputSave.name = "save";
-		inputSave.value = "1";
-		document.getElementById('editpageform').appendChild(inputSave);
-		document.getElementById('editpageform').submit();
-	}
-	
-	function comment(){
-		document.editPage.comment.value=document.getElementById('lightComment').value;
-		savePage();
-		hideLightbox();
-	}
-	
-	//returns the keycode of the key associated with the given event
-	function getKeyCode(e){
-		var code=0;
-		if (!e) var e = window.event;
-		if (e.keyCode) code = e.keyCode;
-		else if (e.which) code = e.which;		
-		return code;
-	}
-	
-	//used in the commenting lightbox
-	function lightBoxKey(e){
-		//alert('uha!');
-		var code = getKeyCode(e);
-		if(code==13){
-			//we pressed enter!
-			comment();
-		}
-	}
-	
-	//used in the whole page!
-	function keyDown(e){
-		doCtrlToggle(e);
-		doSave(e);
-	}
-	
-	//control key was pressed
-	function doCtrlToggle(e) {
-		var code= getKeyCode(e);
-			if (code == 17){
-			ctrlToggle=ctrlToggle*-1;
-			tooltip('{tr}Aperte <b>control + enter</b> para salvar as modificações feitas na página.{/tr}');
-		}
-	}
-
-	//control key was released
-	function undoCtrlToggle(e) {
-		if (ctrlToggle == 1){
-			ctrlToggle=-1;
-			nd();
-		}
-	}
-
-	//saves pages if enter was pressed whilst control key was down
-	function doSave(e) {
-		var code= getKeyCode(e);
-		if (code == 13 && ctrlToggle == 1){
-			if(checkForm()){
-				savePage();	
+		
+		//control key was pressed
+		function doCtrlToggle(e) {
+			var code= getKeyCode(e);
+				if (code == 17){
+				ctrlToggle=ctrlToggle*-1;
+				tooltip('{tr}Aperte <b>control + enter</b> para salvar as modificações feitas na página.{/tr}');
 			}
 		}
-	}
-
-	var cancelar=0;	
-	var ctrlToggle=-1;
 	
-	document.onkeydown=keyDown;
-	document.onkeyup=undoCtrlToggle;
-	</script>
-{/literal}
+		//control key was released
+		function undoCtrlToggle(e) {
+			if (ctrlToggle == 1){
+				ctrlToggle=-1;
+				nd();
+			}
+		}
+	
+		//saves pages if enter was pressed whilst control key was down
+		function doSave(e) {
+			var code= getKeyCode(e);
+			if (code == 13 && ctrlToggle == 1){
+				if(checkForm()){
+					savePage();	
+				}
+			}
+		}
+	
+		var cancelar=0;	
+		var ctrlToggle=-1;
 
+		</script>
+	{/literal}
+	
+{if $useJavascript eq "y"}
+	{literal}
+		<script language="javascript" type="text/javascript">	
+			document.onkeydown=keyDown;
+			document.onkeyup=undoCtrlToggle;			
+		</script>
+	{/literal}		
+{/if}
 <br />

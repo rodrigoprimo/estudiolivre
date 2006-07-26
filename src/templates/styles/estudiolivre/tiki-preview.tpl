@@ -58,7 +58,7 @@
 					</div>
 					*}
 					<div id="edtSaveCancel">
-					<img class="pointer" src="styles/estudiolivre/bSave.png" onclick="if(checkForm()) savePage()" /> &nbsp;&nbsp;
+					<img class="pointer" src="styles/estudiolivre/bSave.png" onclick="if(checkForm()) savePage()"/> &nbsp;&nbsp;
 					{if $page|lower ne 'sandbox'}
 						<input class="image" name="cancel_edit" src="styles/estudiolivre/bCancelar.png" type="image" value="{tr}cancel edit{/tr}"  onclick="cancelar=1"/>
 					{/if}
