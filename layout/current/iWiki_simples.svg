@@ -1481,5 +1481,85 @@
            id="path3403" />
       </g>
     </g>
+    <g
+       id="g2117"
+       transform="matrix(1.001789,0,0,1.001822,-63.65209,-18.89041)"
+       inkscape:export-filename="/home/livre/Desktop/iWikiEdit.png"
+       inkscape:export-xdpi="90.000000"
+       inkscape:export-ydpi="90.000000">
+      <rect
+         rx="2.9886732"
+         ry="1.5517416"
+         transform="matrix(0.69917,0.714955,0.707916,-0.706296,0,0)"
+         y="-58.840416"
+         x="116.26044"
+         height="6.551949"
+         width="3.98874"
+         id="rect2119"
+         style="fill:#3fb220;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.78611344px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         inkscape:export-filename="/home/rhwinter/docs/cdig/cvs/estudiolivre/src/styles/estudiolivre/iTagEdit.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <rect
+         transform="matrix(0.69917,0.714955,-0.707916,0.706296,0,0)"
+         y="55.923843"
+         x="116.26044"
+         height="10.602307"
+         width="3.98874"
+         id="rect2121"
+         style="fill:#3fb220;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         inkscape:export-filename="/home/rhwinter/docs/cdig/cvs/estudiolivre/src/styles/estudiolivre/iTagEdit.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <rect
+         transform="matrix(0.69917,0.714955,-0.707916,0.706296,0,0)"
+         y="55.699551"
+         x="116.26044"
+         height="1.7963896"
+         width="3.98874"
+         id="rect2123"
+         style="fill:white;fill-opacity:1;fill-rule:evenodd;stroke:#3fb220;stroke-width:0.38583052px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         inkscape:export-filename="/home/rhwinter/docs/cdig/cvs/estudiolivre/src/styles/estudiolivre/iTagEdit.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         transform="matrix(0.197994,0.202465,-0.339561,0.338784,139.9188,0.97114)"
+         d="M 66.586247,357.06458 L 63.593269,351.30472 L 60.02794,345.88049 L 66.512608,346.16843 L 72.992793,345.79287 L 69.501102,351.2648 L 66.586247,357.06458 z "
+         inkscape:randomized="0"
+         inkscape:rounded="0"
+         inkscape:flatsided="false"
+         sodipodi:arg2="2.6112358"
+         sodipodi:arg1="1.5640382"
+         sodipodi:r2="3.4109664"
+         sodipodi:r1="7.4854321"
+         sodipodi:cy="349.57932"
+         sodipodi:cx="66.53566"
+         sodipodi:sides="3"
+         id="path2125"
+         style="fill:white;fill-opacity:1;fill-rule:evenodd;stroke:#3fb220;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         sodipodi:type="star"
+         inkscape:export-filename="/home/rhwinter/docs/cdig/cvs/estudiolivre/src/styles/estudiolivre/iTagEdit.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         transform="matrix(5.119405e-2,5.938823e-2,-0.116777,0.120476,69.67863,88.78963)"
+         d="M 66.253754,357.10618 L 63.103229,351.11202 L 60.158155,345.57174 L 66.924511,345.84039 L 73.195071,346.06002 L 69.57924,351.78553 L 66.253754,357.10618 z "
+         inkscape:randomized="0"
+         inkscape:rounded="0"
+         inkscape:flatsided="false"
+         sodipodi:arg2="2.7216221"
+         sodipodi:arg1="1.6082321"
+         sodipodi:r2="3.7590926"
+         sodipodi:r1="7.5321441"
+         sodipodi:cy="349.57932"
+         sodipodi:cx="66.53566"
+         sodipodi:sides="3"
+         id="path2127"
+         style="fill:#3fb220;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         sodipodi:type="star"
+         inkscape:export-filename="/home/rhwinter/docs/cdig/cvs/estudiolivre/src/styles/estudiolivre/iTagEdit.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+    </g>
   </g>
 </svg>
