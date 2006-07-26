@@ -59,9 +59,11 @@
     </h6>	
     <div id="gTags">
     {foreach from=$arquivo.tags.data item=t name=tags}
-      {tooltip text="Clique para ver outros arquivos com a tag <b>"|cat:$t.tag|cat:"</b>"}<a href="tiki-browse_freetags.php?tag={$t.tag}">{$t.tag}</a>{if not $smarty.foreach.tags.last},{/if}{/tooltip}
+    	{if $smarty.foreach.tags.iteration <= 4}
+	    	{tooltip text="Clique para ver outros arquivos com a tag <b>"|cat:$t.tag|cat:"</b>"}<a href="tiki-browse_freetags.php?tag={$t.tag}">{$t.tag|truncate:10:"(...)"}</a>{/tooltip}{if $smarty.foreach.tags.iteration < 4 && !$smarty.foreach.tags.last},{elseif $smarty.foreach.tags.total > 4} ({$smarty.foreach.tags.total} tags){/if}
+	    {/if}
     {foreachelse}
-      {tooltip text="Esse arquivo não tem tags"}&nbsp;{/tooltip}
+      {tooltip text="Esse arquivo não tem tags"}<div width="100%">&nbsp;</div>{/tooltip}
     {/foreach}
    </div>
 </div>
