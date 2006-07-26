@@ -64,9 +64,10 @@
 					</tr>
 				</table>
 			{/if}
-			<h2>
-				{tr}Posted messages{/tr}
-			</h2>
+			<div class="comMainTitle">
+				{tr}Comentários{/tr}
+			</div>
+			{*
 	 		<table class="normal">
 				<tr>
 				    <td class="heading">
@@ -126,20 +127,12 @@
 					{/if}
 				</tr>
 			</table>
-			<table class="normal">
-				{if $comments_style != 'commentStyle_plain'}
-					<tr>
-						<td class="odd">
-				{/if}
+			*}
 				{section name=rep loop=$comments_coms}
-					{include file="comment.tpl"  comment=$comments_coms[rep]}
-					{if $comments_style != 'commentStyle_plain'}
-						<br />
-					{/if}
+					<div id="comzoneItems">
+						{include file="comment_item.tpl"  comment=$comments_coms[rep]}
+					</div>
 			  	{/section}
-						</td>
-					</tr>
-			</table>
 		</form>
 	
 		<br />
@@ -148,237 +141,38 @@
 	  		{if $comments_threshold ne 0}
 	  			{$comments_below}&nbsp;{if $comments_below eq 1}{tr}reply{/tr}{else}{tr}replies{/tr}{/if} {tr}below your current threshold{/tr}
 			{/if}
-	  		<div class="mini">
-		  		{if $comments_prev_offset >= 0}
-	  				[<a class="prevnext" href="{$comments_complete_father}comments_threshold={$comments_threshold}&amp;comments_parentId={$comments_parentId}&amp;comments_offset={$comments_prev_offset}{$comments_sort_mode_param}&amp;comments_maxComments={$comments_maxComments}&amp;comments_style={$comments_style}">{tr}prev{/tr}</a>]&nbsp;
-			  	{/if}
-			  	{tr}Page{/tr}: {$comments_actual_page}/{$comments_cant_pages}
-			  	{if $comments_next_offset >= 0}
-			  		&nbsp;[<a class="prevnext" href="{$comments_complete_father}comments_threshold={$comments_threshold}&amp;comments_parentId={$comments_parentId}&amp;comments_offset={$comments_next_offset}{$comments_sort_mode_param}&amp;comments_maxComments={$comments_maxComments}&amp;comments_style={$comments_style}">{tr}next{/tr}</a>]
-			  	{/if}
-			  	{if $direct_pagination eq 'y'}
+	  		<div class="paginacao">
+				{if $comments_prev_offset >= 0}
+					<a class="prevnext" href="{$comments_complete_father}comments_threshold={$comments_threshold}&amp;comments_parentId={$comments_parentId}&amp;comments_offset={$comments_prev_offset}{$comments_sort_mode_param}&amp;comments_maxComments={$comments_maxComments}&amp;comments_style={$comments_style}">
+						<img src="styles/estudiolivre/iArrowGreyLeft.png">
+					</a>
+				{/if}
+				
+				{tr}Page{/tr} {$comments_actual_page} {tr}de{/tr} {$comments_cant_pages}
+				
+				{if $comments_next_offset >= 0}
+					<a class="prevnext" href="{$comments_complete_father}comments_threshold={$comments_threshold}&amp;comments_parentId={$comments_parentId}&amp;comments_offset={$comments_next_offset}{$comments_sort_mode_param}&amp;comments_maxComments={$comments_maxComments}&amp;comments_style={$comments_style}">
+						<img src="styles/estudiolivre/iArrowGreyRight.png">
+					</a>
+				{/if}
+				{if $direct_pagination eq 'y'}
 					<br />
 					{section loop=$comments_cant_pages name=foo}
 						{assign var=selector_offset value=$smarty.section.foo.index|times:$comments_maxComments}
-						<a class="prevnext" href="{$comments_complete_father}comments_threshold={$comments_threshold}&amp;comments_parentId={$comments_parentId}&amp;comments_offset={$selector_offset}{$comments_sort_mode_param}&amp;comments_maxComments={$comments_maxComments}&amp;comments_style={$comments_style}">
-						{$smarty.section.foo.index_next}</a>&nbsp;
+							<a class="prevnext" href="{$comments_complete_father}comments_threshold={$comments_threshold}&amp;comments_parentId={$comments_parentId}&amp;comments_offset={$selector_offset}{$comments_sort_mode_param}&amp;comments_maxComments={$comments_maxComments}&amp;comments_style={$comments_style}">
+						{$smarty.section.foo.index_next}</a>
 					{/section}
 				{/if}
-	  		</div>
+			</div>		
 			<br />
 		</div>  
 	{/if}
 {/if}
 {* end read comment *}
 
+
 {* Post dialog *}
-{if ($tiki_p_forum_post eq 'y' and $forum_mode eq 'y') or ($tiki_p_post_comments eq 'y' and $forum_mode ne 'y')}
-    {if $forum_mode eq 'y'}
-		{if $post_reply > 0 || $edit_reply > 0 || $comment_preview}
-		{* posting a reply or editing or previwing a reply: show form *}
-			<div id='{$postclass}open' class="threadpost">
-		{else}
-			<input type="button" name="comments_postComment" value="{tr}new reply{/tr}" onclick="flip('{$postclass}');"/>
-			<div id='{$postclass}' class="threadpost">
-		{/if}
-    {/if}
-	<a name="form"></a>
-	<div>
-    	<h2 style="text-align: left">
-		    {if $forum_mode eq 'y'}
-			    {if $comments_threadId > 0}
-			    	{tr}Editing reply{/tr}
-			    {elseif $parent_com}
-			    	{tr}Reply to the selected post{/tr}
-		    	{else}
-		    		{tr}Post new message{/tr}
-		    	{/if}
-	    	{else}
-		    	{if $comments_threadId > 0}
-		    		{tr}Editing comment{/tr}
-		    	{elseif $parent_com}
-		    		{tr}Comment on the selected post{/tr}
-		    	{else}
-		    		{tr}Post new comment{/tr}
-		    	{/if}
-		    {/if}
-    	</h2>
-	</div>
-
-	{if $comment_preview eq 'y'}
-		<b>
-			{tr}Preview{/tr}
-		</b>
-		<table class="normal">
-  			<tr>
-  				<td class="odd">
-  					<span class="commentstitle">
-  						{$comments_preview_title}
-  					</span>
-  					<br />
-					{tr}by{/tr} {$user|userlink}
-		  		</td>
-  			</tr>
-  			<tr>
-  				<td class="even">
-  					{$comments_preview_data}
-		  		</td>
-			</tr>
-		</table>
-	{/if}
-
-    <form enctype="multipart/form-data" method="post" action="{$comments_father}" id='editpostform'>
-	    <input type="hidden" name="comments_reply_threadId" value="{$comments_reply_threadId|escape}" />    
-	    <input type="hidden" name="comments_grandParentId" value="{$comments_grandParentId|escape}" />    
-	    <input type="hidden" name="comments_parentId" value="{$comments_parentId|escape}" />
-	    <input type="hidden" name="comments_offset" value="{$comments_offset|escape}" />
-	    <input type="hidden" name="comments_threadId" value="{$comments_threadId|escape}" />
-	    <input type="hidden" name="comments_threshold" value="{$comments_threshold|escape}" />
-	    <input type="hidden" name="comments_sort_mode" value="{$comments_sort_mode|escape}" />
-	    {* Traverse request variables that were set to this page adding them as hidden data *}
-    	{section name=i loop=$comments_request_data}
-	    	<input type="hidden" name="{$comments_request_data[i].name|escape}" value="{$comments_request_data[i].value|escape}" />
-    	{/section}
-    	<table class="normal">
-    		<tr>
-      			{if $parent_coms}
-					<td class="formcolor">
-						{tr}Reply to parent post{/tr}
-					</td>
-				{else}
-					<td class="formcolor">
-						{if $forum_mode eq 'y'}
-							{tr}Post new reply{/tr}
-						{else}
-							{tr}Post new comment{/tr}
-						{/if}
-					</td>
-				{/if}
-				<td class="formcolor">
-					<input type="submit" name="comments_previewComment" value="{tr}preview{/tr}"/>
-					<input type="submit" name="comments_postComment" value="{tr}post{/tr}"/>
-					{if $forum_mode eq 'y'}
-						<input type="button" name="comments_cancelComment" value="{tr}cancel{/tr}" onclick="hide('{$postclass}');"/>
-				    {/if}
-				</td>
-			</tr>
-			<tr>
-				<td class="formcolor">
-					<label for="comments-title">
-						{tr}Title{/tr}: 
-					</label>
-					<div class="attention">
-						{tr}Required{/tr}
-					</div>
-				</td>
-      			<td class="formcolor">
-      				<input type="text" size="40" name="comments_title" id="comments-title" value="{$comment_title|escape}" />
-      			</td>
-			</tr>
-
-			{* Start: Xenfasa adding and testing article ratings in comments here. Not fully functional yet *}
-			{if $comment_can_rate_article eq 'y'}
-				<tr>
-					<td class="formcolor">
-						<label for="comments-rating">
-							{tr}Rating{/tr}
-						</label>
-					</td>
-					<td class="formcolor">
-				        <select name="comment_rating" id="comments-rating">
-					        <option value="" {if $comment_rating eq ''}selected="selected"{/if}>No</option>
-					        <option value="0" {if $comment_rating eq 0}selected="selected"{/if}>0</option>
-					        <option value="1" {if $comment_rating eq 1}selected="selected"{/if}>1</option>
-					        <option value="2" {if $comment_rating eq 2}selected="selected"{/if}>2</option>
-					        <option value="3" {if $comment_rating eq 3}selected="selected"{/if}>3</option>
-					        <option value="4" {if $comment_rating eq 4}selected="selected"{/if}>4</option>
-					        <option value="5" {if $comment_rating eq 5}selected="selected"{/if}>5</option>
-					        <option value="6" {if $comment_rating eq 6}selected="selected"{/if}>6</option>
-					        <option value="7" {if $comment_rating eq 7}selected="selected"{/if}>7</option>
-					        <option value="8" {if $comment_rating eq 8}selected="selected"{/if}>8</option>
-					        <option value="9" {if $comment_rating eq 9}selected="selected"{/if}>9</option>
-					        <option value="10" {if $comment_rating eq 10}selected="selected"{/if}>10</option>
-				        </select> Rate this Article (10=best, 0=worse)
-					</td>
-				</tr>
-			{/if}
-			{* End: Xenfasa adding and testing article ratings in comments here *}
-
-		    {if $feature_smileys eq 'y'}
-			    <tr>
-					<td class="formcolor">
-						<label>
-							{tr}Smileys{/tr}
-						</label>
-					</td>
-					<td class="formcolor">
-						{include file="tiki-smileys.tpl" area_name="editpost2"}
-					</td>
-			    </tr>
-		    {/if}
-		    <tr>
-				<td class="formcolor">
-					<label for="editpost2">
-				      	{if $forum_mode eq 'y'}
-					      	{tr}Reply{/tr}
-				      	{else}
-					      	{tr}Comment{/tr}
-				      	{/if}
-      				</label>
-      				<br />
-      				<br />
-      				{include file="textareasize.tpl" area_name='editpost2' formId='editpostform'}
-      				<br />
-      				<br />
-      				{if $quicktags}
-      					{include file=tiki-edit_help_tool.tpl area_name='editpost2'}
-			      	{/if}
-				</td>
-      			<td class="formcolor">
-      				<textarea id="editpost2" name="comments_data" rows="{$rows}" cols="{$cols}">
-      					{$comment_data|escape}
-      				</textarea>
-					<input type="hidden" name="rows" value="{$rows}"/>
-					<input type="hidden" name="cols" value="{$cols}"/>
-				</td>
-			</tr>
-			{if $forum_mode == "y" and (($forum_info.att eq 'att_all') or ($forum_info.att eq 'att_admin' and ($tiki_p_admin_forum eq 'y'  or $forum_info.moderator == $user)) or ($forum_info.att eq 'att_perm' and $tiki_p_forum_attach eq 'y'))}
-				<tr>
-					<td class="formcolor">
-						{tr}Attach file{/tr}
-					</td>
-					<td class="formcolor">
-						<input type="hidden" name="MAX_FILE_SIZE" value="{$forum_info.att_max_size|escape}" />
-						<input name="userfile1" type="file" />
-					</td>  
-				</tr>
-			{/if}
-	    </table>
-    </form>
-	<br />
-  
-	<table class="normal" id="commentshelp">
-		<tr>
-			<td class="even">
-				<b>
-				  	{if $forum_mode eq 'y'}
-					  	{tr}Posting replies{/tr}:
-				  	{else}
-					  	{tr}Posting comments{/tr}:
-				  	{/if}
-				</b>
-				<br />
-				<br />
-				{tr}Use{/tr} [http://www.foo.com] {tr}or{/tr} [http://www.foo.com|{tr}description{/tr}] {tr}for links{/tr}.<br />
-				{tr}HTML tags are not allowed inside posts{/tr}.<br />
-			</td>
-		</tr>
-	</table>
-	<br />
-	{if $forum_mode eq 'y'}
-    	</div>
-	{/if}
-{/if}
+	{include file="comment_post.tpl"}
 {* End of Post dialog *}
 
 
