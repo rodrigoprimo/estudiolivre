@@ -11,5 +11,5 @@ replace into tiki_modules values('user_blogs', 'r', 8, '', '', 0, 10, 'flip=y', 
 
 replace into tiki_modules values('el_msgs', 'r', 9, '', '', 0, 10, 'flip=y', 'a:1:{i:0;s:10:"Registered";}');
 # replace into tiki_modules values('shoutbox', 'r', 10, '', '', 0, 10, 'flip=y', 'a:1:{i:0;s:10:"Registered";}');
-replace into tiki_modules values('switch_theme', 'r', 11, '', '', 0, 10, 'flip=y', 'a:1:{i:0;s:10:"Registered";}');
+replace into tiki_modules values('switch_theme', 'r', 10, '', '', 0, 10, 'flip=y', 'a:1:{i:0;s:10:"Registered";}');
 # replace into tiki_modules values('wiki_last_comments', 'r', 12, '', '', 0, 10, 'flip=y', 'a:1:{i:0;s:10:"Registered";}');
