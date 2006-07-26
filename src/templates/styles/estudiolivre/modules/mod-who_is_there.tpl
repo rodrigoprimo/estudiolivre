@@ -1,7 +1,7 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/modules/mod-who_is_there.tpl,v 1.1 2006-07-20 02:33:08 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/modules/mod-who_is_there.tpl,v 1.2 2006-07-26 20:44:48 rhwinter Exp $ *}
 {math equation="count-1" count=$online_users|@count assign=numberOfUsers}
 {tikimodule title="{tr}Usuári@s Online{/tr} ($numberOfUsers)" name="who_is_there" flip=$module_params.flip}
-	{if $numberOfUsers > 1}
+	{if $numberOfUsers >= 1}
       <div id='moduleWhoIsThereMore' style="display:none;">
 		{foreach from=$online_users item='onlineUser'}
 		  {if $onlineUser.user neq $user}
