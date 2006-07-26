@@ -8,10 +8,10 @@
 	 		<span style="text-align:left">{tr}Arquivos não publicados{/tr}:</span><br/>
 			{foreach from=$pendingUploadFiles item=pendente}
 				<span id="pendente-{$pendente.arquivoId}">
-					<a href="el-gallery_delete.php?arquivoId={$pendente.arquivoId}"><img src="styles/estudiolivre/iDelete.png"></a>
+					{tooltip text="<b>Apaque</b> esse arquivo da lista (e do sevidor)"}<a href="el-gallery_delete.php?arquivoId={$pendente.arquivoId}"><img src="styles/estudiolivre/iDelete.png"></a>{/tooltip}
 					{tooltip text="Clique para continuar o envio desse arquivo"}
 						<a href="el-gallery_upload.php?arquivoId={$pendente.arquivoId}">
-							{$pendente.titulo|default:$pendente.arquivo|default:$pendente.arquivoId}
+							{$pendente.titulo|default:$pendente.arquivo|default:$pendente.arquivoId|truncate:20:"(...)"}
 						</a>
 					{/tooltip}
 				</span>
