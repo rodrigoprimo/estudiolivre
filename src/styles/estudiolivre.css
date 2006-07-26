@@ -268,13 +268,9 @@ INPUT.editable {
 
 .wikiEdit {
 	margin:0px;
+	margin-top:1px;
 	padding:10px 5px 0px 5px;
 	border:1px solid grey;
-}
-
-.blogEdit {
-	border: 1px solid grey;
-	max-width: 450px;
 }
 
 #label.wikiEdit {
@@ -1856,12 +1852,14 @@ A.gUpmore {
 
 .uMsgTxt {
 	padding: 0 5px 0 0;
+	min-height:50px;
 }
 
 .uMsgDate, .uMsgDel {
 	text-align:center;
 	float:right;
-	height:40px;
+	height:3em;
+	margin-right:2px;
 }
 
 .uMsgDate{
@@ -1906,52 +1904,55 @@ A.gUpmore {
 /******************************************************/
 
 /*o título da página e a paginacao*/
-#users h1, #users .paginacao, #forum h1, #forum .paginacao, #blogs h1, #blogs .paginacao,  #listLastChanges .paginacao,  #listLastChanges h1, #blogHead h1, #vBlog .paginacao {
+#users h1, #forum h1, #blogs h1, #listLastChanges h1, #blogHead h1, #viewForum h1 {
 	text-align:center;
 	background-color:#f9f9f9;
 	border:1px solid gray;
 }
 
-/*para dar uma margenzinha e um padding na paginação*/
-#users .paginacao, #forum .paginacao, #blogs .paginacao,  #listLastChanges paginacao, #vBlog .paginacao {
-	padding:3px;
-	margin-bottom:10px;
-}
-
-/* para que as flechas da paginacao nao fiquem coladas no texto*/
-#users .paginacao img, #forum .paginacao img,  #blogs .paginacao img,  #listLastChanges .paginacao img,  #vBlog .paginacao img{
-	margin:0 15px 0 15px;
-}
-
 /* para que a contagem de usuários fique na direita */
-#users h5, #blogs h5, #listLastChanges h5 {
+#users h5, #blogs h5, #listLastChanges h5, #viewForum h5 {
 	text-align:right;
 }
 
 /*margens e largura da tabela*/
-#users table, #forum table, #blogs table,  #listLastChanges table, #editMods table{
+#users table, #forum table, #blogs table,  #listLastChanges table, #editMods table, #viewForum table{
 	margin: 0 0 20px 0;	
 	width:100%;
 }
 
 /*para que o título da coluna seja diferente*/
-#users td.heading, #forum td.heading, #blogs td.heading,  #listLastChanges td.heading, #editMods td.heading{
+#users td.heading, #forum td.heading, #blogs td.heading,  #listLastChanges td.heading, #editMods td.heading, #viewForum td.heading{
 	font-weight:bold;
 }
 
 /*padding nos elementos da tabela: legibilidade*/
-#users td, #forum td, #blogs td,  #listLastChanges td, , #editMods td{
+#users td, #forum td, #blogs td,  #listLastChanges td, #editMods td, #viewForum td{
 	padding: 4px 0 4px 3px;	
 }
 
 /*para que os links da tabela sejam mais legíveis*/
-#users table a, #forum table a, #blogs table a, #listLastChanges a, #editMods a{
+#users table a, #forum table a, #blogs table a, #listLastChanges a, #editMods a, #viewForum table a{
 	text-decoration:underline;
 	color:black;
 }
 /*para que as linhas da tabela tenham cores diferentes nas linhas pares*/
-#users .odd, #forum .odd, #blogs .odd,  #listLastChanges .odd, #editMods .odd{
+#users .odd, #forum .odd, #blogs .odd,  #listLastChanges .odd, #editMods .odd, #viewForum .odd{
 	background-color:#e9e9e9
+}
+
+/* paginacoes usadas por aí... */
+.paginacao {
+	text-align:center;
+	background-color:#f9f9f9;
+	border:1px solid gray;
+	padding:3px;
+	margin-bottom:10px;
+}
+
+/* para que as flechas da paginacao nao fiquem coladas no texto*/
+.paginacao img {
+	margin:0 15px 0 15px;
 }
 
 /*******************************/
@@ -2195,4 +2196,137 @@ td.forumName {
 	border:1px solid gray;
 }
 
-/* footer */
+/* comentários */
+
+.comMainTitle	{
+	background-color:#f9f9f9;
+	border:1px solid gray;
+	text-align:center;
+	font-size:16pt;	
+	margin:5px 0 5px 0;
+	padding:2px;
+}
+
+#comzoneItems {
+	padding:10px;	
+}
+
+.comment .commentTitle {
+	text-align:left;
+	background:#eee;
+	font-size:12pt;	
+	margin:0;
+}
+
+.subcomment {
+	margin-left:20%;
+}
+
+.commReply {
+	text-align:right;
+}
+
+.commPreview {
+	border:1px solid black;
+	margin:10px;
+	padding:5px;
+}
+
+#comPostCont {
+	padding:5px;	
+}
+
+#editpostform h3 {
+	margin:0;	
+}
+
+#comments-title, #editpost2 {
+	width:95%;
+	border: 1px inset rgb(233, 233, 174);
+	padding: 3px 0px 3px 3px;
+	background-color: #f1f1f1;
+	margin-left:5px;
+}
+
+#comButtons	{
+	text-align:right;	
+	padding:3px;
+}
+
+#comButtons INPUT {
+	border:0px;
+	font-size:12px;
+	background-color:#d9d9d9;
+}
+
+
+/*******************/
+/*    blog         */
+/*******************/
+
+.blogEdit {
+	border: 1px solid grey;
+	width: 100%;
+}
+
+#blogeditCont{
+	margin: 10px 5px 10px 5px;	
+}
+
+#blogPosting .button {
+	border:0px;
+	font-size:12px;
+	background-color:#d9d9d9;
+}
+
+#blogPosting h3 {
+	margin:0;	
+}
+
+#editpageform {
+	padding:0 10px 0 10px;
+}
+
+#blogPosting h2 {
+	background-color:#f9f9f9;
+	border:1px solid gray;
+	text-align:center;
+	font-size:16pt;	
+	width:90%;
+	margin-right:auto;
+	margin-left:auto;
+	margin-top:10px;
+	margin-bottom:10px;
+	padding:2px;	
+}
+
+#blogPostPrev {
+	padding:10px;
+	margin-bottom:15px;
+}
+
+#blogPostPrev h3 {
+	display:inline;
+	margin:0;
+	padding:3px;
+	border:1px solid gray;
+	border-bottom:1px solid white;
+	z-index:10;
+}
+#postPrevCont {
+	border:1px solid gray;
+	margin-top:2px;
+}
+
+
+/***************/
+/*   FORUM     */
+/***************/
+#viewForum TEXTAREA{
+		width:100%;
+}
+
+#viewForum td.heading {
+	font-weight:bold;
+	background:#c1c1c1;
+}
