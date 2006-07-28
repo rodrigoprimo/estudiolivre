@@ -4,7 +4,7 @@ global $el_p_view;
 
 $ajaxlib->setPermission('streamFile', $el_p_view == 'y');
 $ajaxlib->registerFunction("streamFile");
-function streamFile($arquivoId, $type) {
+function streamFile($arquivoId, $type, $screenSize) {
 	global $elgallib;
 
     $objResponse = new xajaxResponse();
@@ -16,9 +16,15 @@ function streamFile($arquivoId, $type) {
     $elgallib->add_stream_hit($arquivoId);
     $arquivo = $elgallib->get_arquivo($arquivoId);
     
-    
+    $screenSize-=250;
     if ($type == 'Imagem') {
     	$objResponse->addAssign('gImagem', 'src', 'repo/' . $arquivo['arquivo']);
+    	$objResponse->addScript("document.getElementById('gImagem').style.maxWidth = '" .$screenSize. "px';");
+    	if($arquivo['tamanhoImagemX'] > $screenSize){
+    		$arquivo['tamanhoImagemY'] = $screenSize*($arquivo['tamanhoImagemY']/$arquivo['tamanhoImagemX']);
+    		$arquivo['tamanhoImagemX'] = $screenSize;
+    		$objResponse->addScript("document.getElementById('gPlayerNote').innerHTML= '(".tra("Imagem redimensionada").")';");
+    	}
     	$objResponse->addScript("document.getElementById('gPlayerImagem').style.width = '" . $arquivo['tamanhoImagemX'] . "px';");
     	$objResponse->addScript("document.getElementById('gPlayerImagem').style.height = '" . $arquivo['tamanhoImagemY'] . "px';");
     	$objResponse->addScript("showLightbox('gPlayerImagem')");

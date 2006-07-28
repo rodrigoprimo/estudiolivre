@@ -73,7 +73,7 @@
 								{$arquivo.streamHits}
 							</span>
 							{tooltip name="view-iplay-" text=$tooltipText}
-								<img class="pointer" alt="" src="styles/estudiolivre/iPlay.png" onClick="xajax_streamFile({$arquivo.arquivoId}, '{$arquivo.tipo}')">
+								<img class="pointer" alt="" src="styles/estudiolivre/iPlay.png" onClick="xajax_streamFile({$arquivo.arquivoId}, '{$arquivo.tipo}',getPageSize()[0])">
 							{/tooltip}
 						{/if}
 					</div>

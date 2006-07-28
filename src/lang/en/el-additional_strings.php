@@ -392,7 +392,8 @@ $extra_strings = array(
 "como <b>lida</b>" => "as <b>read</b>",
 "Meus arquivos"=>"My files",
 "Publicar"=>"Publish",
-"Clique para editar as <b>tags</b> desse arquivo"=>"Click to edit this file\'s <b>tags</b>"
+"Clique para editar as <b>tags</b> desse arquivo"=>"Click to edit this file\'s <b>tags</b>",
+"Imagem redimensionada" => "Image shrunk to fit window",
 );
 
 global $lang;

@@ -894,6 +894,9 @@ p.editdate {
 	text-align:center;
 }
 
+#gPlayerImagem h4 {
+	text-align:right;
+}
 /* User Menu */
 
 .userMenu {

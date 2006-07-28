@@ -50,7 +50,7 @@
 	    {if $tooltipText}
 	    	{$arquivo.streamHits}
 	    	{tooltip name="list-i-play" text=$tooltipText}
-		    	<a onClick="xajax_streamFile({$arquivo.arquivoId}, '{$arquivo.tipo}')">{tr}streams{/tr}</a>
+		    	<a onClick="xajax_streamFile({$arquivo.arquivoId}, '{$arquivo.tipo}', getPageSize()[0])">{tr}streams{/tr}</a>
 		    {/tooltip}
 		{else}
 			<br/>

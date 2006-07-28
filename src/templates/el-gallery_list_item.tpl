@@ -62,7 +62,7 @@
 		    {if $tooltipText}
 		    	<span class="gStreamCount">{$arquivo.streamHits}</span>
 		    	{tooltip name="list-i-play" text=$tooltipText}
-			    	<img class="pointer" alt="" src="styles/estudiolivre/iPlay.png" onClick="xajax_streamFile({$arquivo.arquivoId}, '{$arquivo.tipo}')">
+			    	<img class="pointer" alt="" src="styles/estudiolivre/iPlay.png" onClick="xajax_streamFile({$arquivo.arquivoId}, '{$arquivo.tipo}', getPageSize()[0])">
 			    {/tooltip}
 		    {else}
    		    	<div style="width:19px">&nbsp;</div>
