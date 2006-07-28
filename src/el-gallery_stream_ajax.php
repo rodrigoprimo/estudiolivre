@@ -24,6 +24,8 @@ function streamFile($arquivoId, $type, $screenSize) {
     		$arquivo['tamanhoImagemY'] = $screenSize*($arquivo['tamanhoImagemY']/$arquivo['tamanhoImagemX']);
     		$arquivo['tamanhoImagemX'] = $screenSize;
     		$objResponse->addScript("document.getElementById('gPlayerNote').innerHTML= '(".tra("Imagem redimensionada").")';");
+    	} else {
+    		$objResponse->addScript("document.getElementById('gPlayerNote').innerHTML= '';");
     	}
     	$objResponse->addScript("document.getElementById('gPlayerImagem').style.width = '" . $arquivo['tamanhoImagemX'] . "px';");
     	$objResponse->addScript("document.getElementById('gPlayerImagem').style.height = '" . $arquivo['tamanhoImagemY'] . "px';");
