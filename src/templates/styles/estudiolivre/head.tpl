@@ -175,4 +175,14 @@ You are most likely wanting to modify the top of your Tiki site. Please consider
   </script>
   {/literal}
   
+		<!-- ## GOOGLE ANALYTICS ## -->
+	{literal}
+		<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+		</script>
+		<script type="text/javascript">
+		_uacct = "UA-533065-3";
+		urchinTracker();
+		</script>
+	{/literal}
+  
 <!-- head.tpl end -->
