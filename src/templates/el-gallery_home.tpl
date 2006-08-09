@@ -50,5 +50,5 @@
 	{* include file="el-gallery_list_filters.tpl" *}
 	
 {include file="el-gallery_confirm_delete.tpl"}
-	
+{include file="el-player.tpl"}
 <!-- el-gallery_home.tpl end -->

@@ -32,8 +32,6 @@
 	      <center>
 	  {/if}
 	  
-	  {include file="el-player.tpl"}
-	  
 </body>
 
 <!-- body.tpl end -->
