@@ -58,15 +58,17 @@
 					</div>
 					<div id="gPlay">
 						{if $arquivo.tipo eq "Video"}
-							{if preg_match("/.*\.ogg$/", $arquivo.arquivo)}
+							{if preg_match("/.*\.ogg$/i", $arquivo.arquivo)}
 			    				{assign var='tooltipText' value="Assita a esse vídeo"}
 						    {/if}
 						{elseif $arquivo.tipo eq "Audio"}
-							{if preg_match("/.*\.ogg$/", $arquivo.arquivo)}
+							{if preg_match("/.*\.ogg$/i", $arquivo.arquivo)}
 						    	{assign var='tooltipText' value="Ouça essa música"}
 						    {/if}
 						{elseif $arquivo.tipo eq "Imagem"}
-							{assign var='tooltipText' value="Veja essa imagem"}
+							{if !preg_match("/.*\.svg$/i", $arquivo.arquivo)}
+						    	{assign var=tooltipText value="{tr}Veja essa imagem{/tr}"}
+						    {/if}
 						{/if}
 						{if $tooltipText}
 							<span class="gStreamCount">

@@ -712,7 +712,7 @@ class ELGalLib extends TikiLib {
 			return $this->save_thumb($thumbData, $arquivoId, $user, '.gif');
 		}
     }
-    elseif ($arquivo['tipo'] == "Imagem") {
+    elseif ($arquivo['tipo'] == "Imagem" && !preg_match("/.*\.svg$/i", $arquivo['arquivo'])) {
 		$thumbData = $this->create_thumb_imagem("repo/".$arquivo['arquivo']);
 		if ($thumbData) {
 			return $this->save_thumb($thumbData, $arquivoId, $user, '.png');
