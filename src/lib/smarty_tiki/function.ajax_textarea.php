@@ -61,7 +61,7 @@ function smarty_function_ajax_textarea($params, &$smarty) {
 	if (!$value && !$noclear) { 
 	    $output .= " onFocus=\"limpaCampo('$id');\"";
 	}
-	$output .= " onChange=\"mudado['$id']=1;\">" . ($value ? htmlspecialchars($value) : $default) .'</textarea>';
+	$output .= " onChange=\"mudado['$id']=1; editing['$id'] = false;\">" . ($value ? htmlspecialchars($value) : $default) .'</textarea>';
 	
 	$output .= '<script language="JavaScript">display["'.$id.'"] = "'.$display.'";errorMsg_'.$id.' = "";</script>';
 	

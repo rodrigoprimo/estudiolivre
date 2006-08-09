@@ -2,6 +2,7 @@ var saveFieldCache = new Array();
 var display = new Array();
 var truncations = new Array();
 var mudado = new Array();
+var editing = new Array();
 var thumbTimerId = null;
 var thumbUpId;
 var upThumbStarted = false;
@@ -34,8 +35,9 @@ function setWaiting(field, waiting) {
 }
 
 function limpaCampo(field) {
+	editing[field] = true;
     if (mudado[field] == null) {
-	document.getElementById('input-'+field).value = '';
+		document.getElementById('input-'+field).value = '';
     }
 }
 

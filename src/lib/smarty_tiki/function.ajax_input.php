@@ -57,7 +57,7 @@ function smarty_function_ajax_input($params, &$smarty) {
 	if (!$value && !$noclear) { 
 	    $output .= " onFocus=\"limpaCampo('$id');\"";
 	}
-	$output .= " onChange=\"mudado['$id']=1;\" onBlur=\"saveField(this)\" style=\"display:" . ($edit ? $display : 'none') . "\">";
+	$output .= " onChange=\"mudado['$id']=1; editing['$id'] = false;\" onBlur=\"saveField(this)\" style=\"display:" . ($edit ? $display : 'none') . "\">";
 	
 	$output .= "<img id=\"error-$id\" class=\"gUpErrorImg\" style=\"display: none\" src=\"styles/estudiolivre/errorImg.png\" onMouseover=\"tooltip(errorMsg_$id);\" onMouseout=\"nd();\"> ";
 	

@@ -95,7 +95,9 @@ function get_file_info() {
 	$result = $elgallib->extract_file_info($arquivoId);
 	
 	// merge com as infos basicas
-	$basicInfos = array('autor' => $elgallib->get_user_preference($user, 'realName'), 'titulo' => $elgallib->get_file_name($arquivoId));
+	$basicInfos = array('titulo' => $elgallib->get_file_name($arquivoId));
+	if ($autor = $elgallib->get_user_preference($user, 'realName'))
+		 $basicInfos['autor'] = $autor;
 	$result = array_merge($result, $basicInfos);
 
 	// deixa o foreach no php, q js eh uma bosta pra isso

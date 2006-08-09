@@ -51,7 +51,7 @@ function smarty_block_ajax_select($params, $text) {
 	// TODO: escape value
 	$output .= '<select class="'.$class.'" id="input-'.$id.'" value="'. ($value ? $value : $default) .'"';
 	
-	$output .= " onChange=\"mudado['$id']=1; saveField(this)\" style=\"display:" . ($edit ? $display : 'none') . "\">";
+	$output .= " onChange=\"mudado['$id']=1;  editing['$id'] = false; saveField(this)\" style=\"display:" . ($edit ? $display : 'none') . "\">";
 	$output .= $text;
 	$output .= "</select>";
 	

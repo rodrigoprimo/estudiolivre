@@ -78,7 +78,7 @@ function finishUpload() {
 
 function setAutoFields(result) {
 	for (var i=0; i<result.length; i += 2) {
-		if (mudado[result[i]] == null) {
+		if (!editing[result[i]]) {
 			setEditData(result[i], result[i+1]);
 			exibeCampo(result[i], result[i+1]);		
 		}
