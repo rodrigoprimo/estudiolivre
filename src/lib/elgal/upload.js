@@ -78,8 +78,10 @@ function finishUpload() {
 
 function setAutoFields(result) {
 	for (var i=0; i<result.length; i += 2) {
-		setEditData(result[i], result[i+1]);
-		exibeCampo(result[i], result[i+1]);		
+		if (mudado[result[i]] == null) {
+			setEditData(result[i], result[i+1]);
+			exibeCampo(result[i], result[i+1]);		
+		}
 	}
 }
 
