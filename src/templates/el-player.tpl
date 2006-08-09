@@ -10,11 +10,3 @@
       <param name="bufferSize" value="100"/>
 	</applet>
 </div>
-
-<div id="gPlayerImagem" style="display:none">
-	<div><img id="gImagem"/></div>
-	<h4 id="gPlayerNote"></h4>
-</div>
-
-<script language="JavaScript" src="lib/elgal/player/cortado.js"></script>
-

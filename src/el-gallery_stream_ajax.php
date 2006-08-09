@@ -5,7 +5,8 @@ global $el_p_view;
 $ajaxlib->setPermission('streamFile', $el_p_view == 'y');
 $ajaxlib->registerFunction("streamFile");
 function streamFile($arquivoId, $type, $screenSize) {
-	global $elgallib;
+	global $elgallib, $smarty;
+	require_once("lib/elgal/elgallib.php");
 
     $objResponse = new xajaxResponse();
     
@@ -18,17 +19,19 @@ function streamFile($arquivoId, $type, $screenSize) {
     
     $screenSize-=250;
     if ($type == 'Imagem') {
-    	$objResponse->addAssign('gImagem', 'src', 'repo/' . $arquivo['arquivo']);
-    	$objResponse->addScript("document.getElementById('gImagem').style.maxWidth = '" .$screenSize. "px';");
+    	$smarty->assign('src', 'repo/' . $arquivo['arquivo']);
     	if($arquivo['tamanhoImagemX'] > $screenSize){
     		$arquivo['tamanhoImagemY'] = $screenSize*($arquivo['tamanhoImagemY']/$arquivo['tamanhoImagemX']);
     		$arquivo['tamanhoImagemX'] = $screenSize;
-    		$objResponse->addScript("document.getElementById('gPlayerNote').innerHTML= '(".tra("Imagem redimensionada").")';");
+    		$smarty->assign('note', tra("Imagem redimensionada"));
     	} else {
-    		$objResponse->addScript("document.getElementById('gPlayerNote').innerHTML= '';");
+    		$smarty->assign('note', '');
     	}
-    	$objResponse->addScript("document.getElementById('gPlayerImagem').style.width = '" . $arquivo['tamanhoImagemX'] . "px';");
-    	$objResponse->addScript("document.getElementById('gPlayerImagem').style.height = '" . $arquivo['tamanhoImagemY'] . "px';");
+    	$objResponse->addRemove('gPlayerImagem');
+    	$objResponse->addAppend('contentBubble', 'innerHTML', $smarty->fetch('el-playerImage.tpl'));
+    	$objResponse->addAssign('gImagem', 'style.maxWidth', $screenSize . "px");
+    	$objResponse->addAssign('gPlayerImagem', 'style.width', $arquivo['tamanhoImagemX'] . "px");
+    	$objResponse->addAssign('gPlayerImagem', 'style.height', $arquivo['tamanhoImagemY'] . "px");
     	$objResponse->addScript("showLightbox('gPlayerImagem')");
     	
     	return $objResponse;
@@ -48,6 +51,8 @@ function streamFile($arquivoId, $type, $screenSize) {
     	$video = "false";
     }
         
+    $objResponse->addRemove('gPlayer');
+   	$objResponse->addAppend('contentBubble', 'innerHTML', $smarty->fetch('el-player.tpl'));
     $objResponse->addScript("loadFile('$validUrl', $width, $height, '$video')");
     
     return $objResponse;

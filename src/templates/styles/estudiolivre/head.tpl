@@ -134,6 +134,7 @@ You are most likely wanting to modify the top of your Tiki site. Please consider
   {* ------------ scripts do el --------------*}
   {$xajax_js}
   <script language="JavaScript" type="text/javascript" src="lib/js/tooltip.js"></script>
+  <script language="JavaScript" src="lib/elgal/player/cortado.js"></script>
   <script language="JavaScript" type="text/javascript" src="lib/ajax/tiki-ajax.js"></script>
   
   {* ------- fim -------- *}

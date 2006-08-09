@@ -265,6 +265,5 @@
 {/if}
 
 {include file="el-gallery_confirm_delete.tpl"}
-{include file="el-player.tpl"}
 
 <!-- el-gallery_view.rpl end -->

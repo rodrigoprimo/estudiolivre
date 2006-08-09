@@ -1,6 +1,5 @@
-var player = document.applets[0];
-
 function loadFile(url, width, height, video) {
+	var player = document.applets[0];
 	document.getElementById('gPlayer').style.width = width + 'px';
 	document.getElementById('gPlayer').style.height = height + 'px';
 	player.height = height;
