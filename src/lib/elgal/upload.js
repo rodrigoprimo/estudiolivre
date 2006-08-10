@@ -146,7 +146,7 @@ function selecionaTipo(tipo) {
 		document.getElementById("icone" + tipo).src = "styles/estudiolivre/iUp" + tipo + ".png";
 		show('gUpList');
 	} else {
-		fixedTooltip('Voc? n?o pode mudar o tipo de arquivo depois de come?ar o upload');
+		fixedTooltip('Você não pode mudar o tipo de arquivo depois de começar o upload');
 	}
 }
 

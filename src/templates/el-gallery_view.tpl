@@ -59,7 +59,7 @@
 					<div id="gPlay">
 						{if $arquivo.tipo eq "Video"}
 							{if preg_match("/.*\.ogg$/i", $arquivo.arquivo)}
-			    				{assign var='tooltipText' value="Assita a esse vídeo"}
+			    				{assign var='tooltipText' value="Assista a esse vídeo"}
 						    {/if}
 						{elseif $arquivo.tipo eq "Audio"}
 							{if preg_match("/.*\.ogg$/i", $arquivo.arquivo)}

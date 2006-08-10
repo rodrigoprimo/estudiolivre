@@ -37,7 +37,7 @@
 	    {/tooltip}
 	  	{if $arquivo.tipo eq "Video"}
 	  		{if preg_match("/.*\.ogg$/", $arquivo.arquivo)}
-		    	{assign var=tooltipText value="{tr}Assita a esse vídeo{/tr}"}
+		    	{assign var=tooltipText value="{tr}Assista a esse vídeo{/tr}"}
 		    {/if}
 	    {elseif $arquivo.tipo eq "Audio"}
 	    	{if preg_match("/.*\.ogg$/", $arquivo.arquivo)}

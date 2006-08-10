@@ -5,6 +5,7 @@
  */
  $extra_strings = array(
  "No new messages"=>"Nenhuma mensagem nova",
+ "Post new message"=>"Enviar mensagem"
 );
 
 global $lang;

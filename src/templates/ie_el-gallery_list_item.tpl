@@ -39,7 +39,7 @@
 			<td colspan="1" rowspan="2" style="width: 22px;">
 				<div id="gPlay">
 					{if $arquivo.tipo eq "Video"}
-						{assign var=tooltipText value="Assita a esse vídeo"}
+						{assign var=tooltipText value="Assista a esse vídeo"}
 					{elseif $arquivo.tipo eq "Audio"}
 						{assign var=tooltipText value="Ouça essa música"}
 					{elseif $arquivo.tipo eq "Imagem"}

@@ -381,7 +381,7 @@ $extra_strings = array(
 "Ver todos os Itens com a tag" => "View all items tagged",
 "Aperte <b>control + enter</b> para salvar as modificações feitas na página."=>"Press <b>control + enter</b> to save the modifications you made.",
 
-"Assita a esse vídeo"=>"Watch this video (stream)",
+"Assista a esse vídeo"=>"Watch this video (stream)",
 "Ouça essa música"=>"Listen to this song (stream)",
 "Veja essa imagem"=>"View this image",
 
