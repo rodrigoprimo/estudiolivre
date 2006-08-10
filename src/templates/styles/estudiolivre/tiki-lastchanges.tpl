@@ -3,7 +3,7 @@
 		{if $findwhat != ""}
 				{tr}Busca nas últimas alterações{/tr}
 		{else} 
-			{tr}Last Changes{/tr}
+			{tr}Last Changes{/tr} &nbsp;&nbsp;&nbsp; <a href="tiki-wiki_rss.php?ver=2"><img src="styles/estudiolivre/iRss.png"></a>
 		{/if}
 	</h1>
 	
