@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.23 2006-08-10 21:19:35 nano Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.24 2006-08-14 23:17:15 nano Exp $ *}
 
 {popup_init src="lib/overlib.js"}
 
@@ -60,7 +60,9 @@
 				{include file=tiki-edit_help_tool.tpl area_name='editwiki'}
 			{/if}
 			
-			<textarea id='editwiki' class="wikiedit" name="edit" rows="40">{$pagedata|escape}</textarea>
+			{assign var='rows' value=$smarty.cookies.editwikiRows} {if !$rows}{assign var='rows' value=40}{/if}
+			
+			<textarea id='editwiki' class="wikiedit" name="edit" rows="{$rows}">{$pagedata|escape}</textarea>
 			
 			{if $feature_freetags eq 'y' and $tiki_p_freetags_tag eq 'y'}
 				<br/>
