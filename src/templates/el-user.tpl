@@ -124,18 +124,29 @@
         <span class="uContactItem uLittle">{tr}Membro desde{/tr} {$userinfo.registrationDate|date_format:"%d/%m/%Y"}</span>
       </div>  
     </div>
+    
+    {if $smarty.cookies.uGalleryItems eq 'none'}
+		{assign var=display value="none"}
+		{assign var=imgCurrent value="iArrowGreyRight.png"}
+		{assign var=imgChange value="iArrowGreyDown.png"}	
+	{else}
+		{assign var=display value="block"}
+		{assign var=imgCurrent value="iArrowGreyDown.png"}
+		{assign var=imgChange value="iArrowGreyRight.png"}	
+	{/if}
+	    
     <div id="uGallery" class="uMainContainer">
       <div id="uGalleryTitle" class="sectionTitle uMainTitle uSectionsTitle">
 		<a name="gallery" class="uRssCont" href="el-gallery_rss.php?user={$userinfo.login}&ver=2"><img src="styles/estudiolivre/iRss.png"></a>
         <h1>
-           <span class="pointer" onclick="javascript:flip('uGalleryItems');toggleImage(document.getElementById('gTArrow'),'iArrowGreyRight.png')">
-           	<img id="gTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
+           <span class="pointer" onclick="javascript:flip('moduleuGalleryItems');toggleImage(document.getElementById('gTArrow'),'{$imgChange}'); storeState('uGalleryItems')">
+           	<img id="gTArrow" src="styles/estudiolivre/{$imgCurrent}">
         	&nbsp;
 	        {tr}Galeria pessoal{/tr}
 	       </span>
         </h1>
       </div>
-      <div id="uGalleryItems" class="uMainItemContainer" style="display:block">
+      <div id="moduleuGalleryItems" class="uMainItemContainer" style="display:{$display}">
       {if sizeof($arquivos)}
       	<div id="listNav" class="ulistNav">{include file="el-gallery_pagination.tpl"}</div>
 		<div id="gListCont">{include file="el-gallery_section.tpl"}</div>
@@ -148,18 +159,29 @@
 	  {/if}
       </div>
     </div>
+    
+    {if $smarty.cookies.uBlogItems eq 'none'}
+		{assign var=display value="none"}
+		{assign var=imgCurrent value="iArrowGreyRight.png"}
+		{assign var=imgChange value="iArrowGreyDown.png"}	
+	{else}
+		{assign var=display value="block"}
+		{assign var=imgCurrent value="iArrowGreyDown.png"}
+		{assign var=imgChange value="iArrowGreyRight.png"}	
+	{/if}
+
     <div id="uBlog" class="uMainContainer">
       <div id="uBlogTitle" class="sectionTitle uMainTitle">
         <a name="blogs" class="uRssCont" href="el-userblogs_rss.php?user={$userinfo.login}&ver=2"><img src="styles/estudiolivre/iRss.png"></a>
         <h1>
-          <span class="pointer" onclick="javascript:flip('uBlogItems');toggleImage(document.getElementById('bTArrow'),'iArrowGreyRight.png')" >
-            <img id="bTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
+          <span class="pointer" onclick="javascript:flip('moduleuBlogItems');toggleImage(document.getElementById('bTArrow'),'{$imgChange}'); storeState('uBlogItems')" >
+            <img id="bTArrow" src="styles/estudiolivre/{$imgCurrent}">
 	        &nbsp;
           	{tr}Blogs{/tr}
           </span>
         </h1>
       </div>
-      <div id="uBlogItems" class="uMainItemContainer" style="display:block">
+      <div id="moduleuBlogItems" class="uMainItemContainer" style="display:{$display}">
         {if sizeof($userPosts.data)}
 	      	{foreach from=$userPosts.data item='post'}
 	        <div class="uBlogItem">
@@ -186,12 +208,23 @@
       </div>
     </div>
     {if $allowMsgs || $permission}
+
+    {if $smarty.cookies.uMsgItems eq 'none'}
+		{assign var=display value="none"}
+		{assign var=imgCurrent value="iArrowGreyRight.png"}
+		{assign var=imgChange value="iArrowGreyDown.png"}	
+	{else}
+		{assign var=display value="block"}
+		{assign var=imgCurrent value="iArrowGreyDown.png"}
+		{assign var=imgChange value="iArrowGreyRight.png"}	
+	{/if}
+
     <div id="uMsgs" class="uMainContainer">
       <div id="uMsgsTitle" class="sectionTitle uMainTitle">
         <a name="messages" class="uRssCont" href="el-usermsgs_rss.php?user={$userinfo.login}&ver=2"><img src="styles/estudiolivre/iRss.png"></a>
         <h1>
-        	<span class="pointer" onclick="javascript:flip('uMsgItems');toggleImage(document.getElementById('rTArrow'),'iArrowGreyRight.png')">
-        	  	<img id="rTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
+        	<span class="pointer" onclick="javascript:flip('moduleuMsgItems');toggleImage(document.getElementById('rTArrow'),'{$imgChange}'); storeState('uMsgItems')">
+        	  	<img id="rTArrow" src="styles/estudiolivre/{$imgCurrent}">
 		        &nbsp;
 		        {tr}Recados{/tr}
 	        </span>
@@ -203,25 +236,36 @@
 			{/tooltip}
 		{/if}
       </div>
-      <div id="uMsgItems" class="uMainItemContainer" style="display:block">
+      <div id="moduleuMsgItems" class="uMainItemContainer" style="display:{$display}">
       	{if $allowMsgs}
 	      	{include file="el-user_msg.tpl"}
 	    {/if}
       </div>
     </div>
     {/if}
+    
+    {if $smarty.cookies.uWikiMid eq 'none'}
+		{assign var=display value="none"}
+		{assign var=imgCurrent value="iArrowGreyRight.png"}
+		{assign var=imgChange value="iArrowGreyDown.png"}	
+	{else}
+		{assign var=display value="block"}
+		{assign var=imgCurrent value="iArrowGreyDown.png"}
+		{assign var=imgChange value="iArrowGreyRight.png"}	
+	{/if}
+
     <div id="uWiki" class="uMainContainer">
     	<div id="uWikiTitle" class="sectionTitle uMainTitle">
     		<a class="uRssCont" href="tiki-wiki_rss.php?ver=2"><img src="styles/estudiolivre/iRss.png"></a>
     		<h1>
-    		  <span class="pointer" title="Wiki de {$userinfo.login}" onclick="javascript:flip('uWikiMid');toggleImage(document.getElementById('wTArrow'),'iArrowGreyRight.png')" >
-	    	 	<img id="wTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
+    		  <span class="pointer" title="Wiki de {$userinfo.login}" onclick="javascript:flip('moduleuWikiMid');toggleImage(document.getElementById('wTArrow'),'{$imgChange}'); storeState('uWikiMid')" >
+	    	 	<img id="wTArrow" src="styles/estudiolivre/{$imgCurrent}">
     	    	&nbsp;
     		  	{tr}Wiki{/tr}
     		  </span>
     		</h1>
     	</div>
-    	<div id="uWikiMid" style="display:block">
+    	<div id="moduleuWikiMid" style="display:{$display}">
 		  {if $userWiki}
 	    	{include file=tiki-show_page.tpl parsed=$userWiki page=$pageName lastUser=$modifUser}
 	      {else}
