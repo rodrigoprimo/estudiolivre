@@ -27,7 +27,7 @@
 	
 	<div id="gHomeWikiBottom">
 		{tooltip text="<i>Feed</i> &nbsp;<b>RSS</b> do acervo.livre"}
-			<a href="http://estudiolivre.org/el-gallery_rss.php?ver=2">
+			<a href="tiki-index.php?page=RSS+do+Acervo+Livre">
 				<up style="position:relative; top:-4px;">{tr}Assinar RSS do acervo{/tr}</up> <img src="styles/estudiolivre/iRss.png">
 			</a>
 		{/tooltip}

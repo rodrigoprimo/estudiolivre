@@ -24,8 +24,15 @@ if (isset($_REQUEST['user'])) {
 	$userName = '';
 }
 
+if (isset($_REQUEST['type']) && $_REQUEST['type']) {
+	$type = array($_REQUEST['type']);
+	$title .= " - " . $_REQUEST['type'];
+} else {
+	$type = array('Audio', 'Video', 'Imagem', 'Texto');
+}
+
 $changes = array();
-$changes["data"] = $elgallib->list_all_uploads(array('Audio', 'Video', 'Imagem', 'Texto'), 0, 10, $dateId.'_desc', $userName);
+$changes["data"] = $elgallib->list_all_uploads($type, 0, 10, $dateId.'_desc', $userName);
 
 
 $fileLink = preg_replace("/\/?$/","/",$feature_server_name);
@@ -35,7 +42,6 @@ for ($i=0; $i < sizeof($changes["data"]); $i++) {
 	$changes["data"][$i]["enclosure"] = array("url"=>$fileLink.$changes["data"][$i]["arquivoId"],
 			  	   							  "lenght"=>$changes["data"][$i]["tamanho"],
 			       							  "type"=>$changes["data"][$i]["formato"]);
-	
 }
 
 $output = $rsslib->generate_feed($feed, $uniqueid, '', $changes, $readrepl, $urlparam, $id, $title, $titleId, $desc, $descId, $dateId, $authorId);
