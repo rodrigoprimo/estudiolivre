@@ -3,21 +3,27 @@
 use strict;
 use DBI;
 
-my $dbh = DBI->connect("dbi:mysql:estudiolivre:localhost","root")
+my $dbh = DBI->connect("dbi:mysql:mapsys:localhost","root")
     or die "cant connect";
 
 our %wordList = ('Á' => [ qw(COMUNIT?RIA ?CUSTICO EST? FORMUL?RIO ?frica ?lbum P?GINA
-				R?DIO ?rea ?rvore ?udio) ],
+				R?DIO ?rea ?rvore ?udio ?gua ?frika ?caros ?lvares amap?
+				?ustria burocr?tico calend?rio cinematogr?fic di?rio f?brica
+				 dram?tic gr?fic inform?tic infom?tic it?lia j? m?quinas
+				 pal?cio priorit?rio program?tic respons?vel s?bado
+				 semin?rio secret?ri tumbalal? tupinamb? van:?) ],
 
 		 'Í' => [ qw(ESPEC?FICOS GARANT?A IL?CITOS IMPL?CITAS M?DIAS ?ndia ?ndice
-				?ndice POL?TICA V?DEO ) ]);
+				?ndice POL?TICA V?DEO MULTIM?DI ?cones ?ndios bras?lia
+				 ?ris ?talo cec?lia incr?vel pa?s l?ngua log?stica
+				 per?odo poss?vel sapuca? a?) ]);
 
 #my ($x) = $dbh->selectrow_array("select data from tiki_pages where pageName='teste'");
 
 my %tables = ('tiki_pages' => [ qw(page_id pageName description data comment) ],
-	      'tiki_categories' => [ qw(name description) ],
-	      'tiki_forums' => [ qw(name description) ],
-	      'tiki_comments' => [ qw(data) ]);
+	      'tiki_categories' => [ qw(categId name description) ],
+	      'tiki_forums' => [ qw(forumId name description) ],
+	      'tiki_comments' => [ qw(threadId data) ]);
 
 #%tables = ('tiki_pages' => [ qw(page_id pageName) ]);
 
@@ -41,27 +47,31 @@ foreach my $table (keys %tables) {
 sub convert {
     my $text = shift;
 
-    my @patt = (195, 63);
+    my @patt1 = (195, 63);
+    my @patt2 = (226, 128, 63);
 
     my $buf = '';
     my $changed = 0;
     for (my $i=0; $i<length($text)-1; $i++) {
 	if (substr($text,$i,1) =~ /\s/) {
-	    # print $buf if $changed;
+	    print $buf if $changed;
 	    $buf = '';
 	    $changed = 0;
 	} else {
 	    $buf .= substr($text,$i,1);
 	}
-	if (ord(substr($text,$i,1)) == $patt[0] && ord(substr($text,$i+1,1)) == $patt[1]) {
+	if (ord(substr($text,$i,1)) == $patt1[0] && ord(substr($text,$i+1,1)) == $patt1[1]) {
 	    my $repl = getReplacement($text, $i);
 	    if ($repl) {
 		substr $text, $i, 2, $repl;
 	    } else {
 		$changed = 1;
 	    }
+	} elsif (ord(substr($text,$i,1)) == $patt2[0] && ord(substr($text,$i+1,1)) == $patt2[1] && ord(substr($text,$i+2,1)) == $patt2[2]) {
+	    substr $text, $i+2, 1, chr(157);
 	}
     }
+
     print $buf if $changed;
 
     return $text;
