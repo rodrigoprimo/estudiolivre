@@ -177,7 +177,7 @@ class ELGalLib extends TikiLib {
 	  // TODO: completar lista
       
 	  $types = array();
-	  $types['Imagem'] = array('png','jpg','jpeg','gif','tiff','svg','bmp','psd','xcf','eps','swf');
+	  $types['Imagem'] = array('png','jpg','jpeg','gif','tiff','svg','bmp','psd','xcf','eps','swf','xar');
 	  $types['Audio'] = array('mp3','ogg','wav','aiff','avi','flac','mp2','mid','mxf');
 	  $types['Video'] = array('mpg','mpeg','avi','ogg','theora','mp4','yuv','mp2','mkv','mxf','mov','swf');
 	  $types['Texto'] = true;
