@@ -26,7 +26,8 @@ You are most likely wanting to modify the top of your Tiki site. Please consider
   
   {* --- tikiwiki block --- *}
   {php} include("lib/tiki-dynamic-js.php"); {/php}
-  <script type="text/javascript" src="lib/tiki-js.js"></script>
+  {*<script type="text/javascript" src="lib/tiki-js.js"></script>*}
+  <script type="text/javascript" src="lib/js/general_mini.js"></script>
   <script type="text/javascript" src="lib/js/toggleImage.js"></script>
   {include file="bidi.tpl"}
   <title>
@@ -46,9 +47,11 @@ You are most likely wanting to modify the top of your Tiki site. Please consider
   {/if}
   </title>
   
-  {if $transition_style ne '' and $transition_style ne 'none' }
+  {*
+  if $transition_style ne '' and $transition_style ne 'none' }
   <link rel="StyleSheet"  href="styles/transitions/{$transition_style}" type="text/css" />
-  {/if}
+  {/if
+  *}
   
   <link rel="StyleSheet"  href="styles/{$style}" type="text/css" />
   
@@ -81,18 +84,20 @@ You are most likely wanting to modify the top of your Tiki site. Please consider
   {/if}
   
   {* --- phplayers block --- *}
-  {if $feature_phplayers eq 'y'}
+  {*
+  if $feature_phplayers eq 'y'}
   <link rel="StyleSheet" href="lib/phplayers/layerstreemenu.css" type="text/css"></link>
-  <style type="text/css"><!-- @import url("lib/phplayers/layerstreemenu-hidden.css"); //--></style>
+  <style type="text/css">
+  <!-- @import url("lib/phplayers/layerstreemenu-hidden.css"); //-->
+  </style>
   <script language="JavaScript" type="text/javascript"><!--
   {php} include_once ("lib/phplayers/libjs/layersmenu-browser_detection.js"); {/php}
   // --></script>
   <script language="JavaScript" type="text/javascript" src="lib/phplayers/libjs/layersmenu-library.js"></script>
-  {*
   <script language="JavaScript" type="text/javascript" src="lib/phplayers/libjs/layersmenu.js"></script>
-  *}
   <script language="JavaScript" type="text/javascript" src="lib/phplayers/libjs/layerstreemenu-cookies.js"></script>
-  {/if}
+  {/if
+  *}
   
   {* --- Integrator block --- *}
   {if strlen($integrator_css_file) > 0}
@@ -142,8 +147,9 @@ You are most likely wanting to modify the top of your Tiki site. Please consider
   {$trl}
   
   
+
+  {*literal}
   <!-- script para transparencia de pngs no browser Internet Explorer -->
-  {literal}
   <script language="JavaScript" type="text/javascript">
   // Correctly handle PNG transparency in Win IE 5.5 or higher.
   // http://homepage.ntlworld.com/bobosola. Updated 02-March-2004
@@ -174,16 +180,16 @@ You are most likely wanting to modify the top of your Tiki site. Please consider
   }
   //window.attachEvent("onload", correctPNG);
   </script>
-  {/literal}
+  {/literal*}
   
 		<!-- ## GOOGLE ANALYTICS ## -->
-	{literal}
+	{*literal}
 		<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
 		</script>
 		<script type="text/javascript">
 		_uacct = "UA-533065-3";
 		urchinTracker();
 		</script>
-	{/literal}
+	{/literal*}
   
 <!-- head.tpl end -->

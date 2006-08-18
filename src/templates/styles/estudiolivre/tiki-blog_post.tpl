@@ -1,4 +1,4 @@
-{popup_init src="lib/overlib.js"}
+{*popup_init src="lib/overlib.js"*}
 
 {if $blogId > 0 }
 	{include file="blog-heading.tpl" nameOnly=1 id=$blogId creator=$blog_data.user created=$blog_data.created title=$blog_data.title}

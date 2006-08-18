@@ -1,6 +1,6 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.24 2006-08-14 23:17:15 nano Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-editpage.tpl,v 1.25 2006-08-18 20:54:45 rhwinter Exp $ *}
 
-{popup_init src="lib/overlib.js"}
+{*popup_init src="lib/overlib.js"*}
 
 {* Check to see if there is an editing conflict *}
 {if $editpageconflict == 'y'}

@@ -10,7 +10,7 @@
   {/if}
 
   {if $feature_community_mouseover}
-    {popup_init src="lib/overlib.js"}
+    {popup_init src="lib/js/overlib_mini.js"}
   {/if}
   
 	{* Tiki main contains all page *}
