@@ -394,6 +394,7 @@ $extra_strings = array(
 "Publicar"=>"Publish",
 "Clique para editar as <b>tags</b> desse arquivo"=>"Click to edit this file\'s <b>tags</b>",
 "Imagem redimensionada" => "Image shrunk to fit window",
+"Tamanho máximo de upload" => "Maximum allowed upload size",
 );
 
 global $lang;

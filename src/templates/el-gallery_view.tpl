@@ -149,10 +149,10 @@
 				{foreach from=$comments_coms item='comment'}
 					<div class="uMsgItem">
 						<div class="uMsgAvatar">
-							<img alt="" title="" src="tiki-show_user_avatar.php?user={$comment.userName}">
+							<img src="tiki-show_user_avatar.php?user={$comment.userName}">
 						</div>
 						<div class="uMsgTxt">
-							{if ($tiki_p_remove_comments eq 'y' && $forum_mode ne 'y') || ($tiki_p_admin_forum eq 'y' and $forum_mode eq 'y')}
+							{if ($tiki_p_remove_comments eq 'y' && $forum_mode ne 'y') || ($tiki_p_admin_forum eq 'y' and $forum_mode eq 'y') || ($user eq $comment.userName)}
 							<div class="uMsgDel">
 								<a href="{$comments_complete_father}comments_threshold={$comments_threshold}&amp;comments_threadId={$comment.threadId}&amp;comments_remove=1&amp;comments_offset={$comments_offset}&amp;comments_sort_mode={$comments_sort_mode}&amp;comments_maxComments={$comments_maxComments}&amp;comments_parentId={$comments_parentId}&amp;comments_style={$comments_style}"><img alt="" title="Deletar Mensagem" src="styles/estudiolivre/iDelete.png"></a>
 							</div>

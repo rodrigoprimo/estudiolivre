@@ -47,10 +47,9 @@
 	      <form name="uploadForm" target="uploadTarget" action="el-gallery_upload_file.php?UPLOAD_IDENTIFIER={$uploadId}" method="post" enctype="multipart/form-data">
   		    <input type="hidden" name="UPLOAD_IDENTIFIER" value="{$uploadId}">  		    <input type="hidden" name="arquivoId" value="">
   		    <input type="hidden" name="tipo" value="">
-   	   	    <input type="file" name="arquivo" onMouseOver="document.getElementById('gUpButton').className='gUpButtonHover'" onMouseOut="document.getElementById('gUpButton').className='gUpButton'" onChange="changeStatus(this.value);">
+   	   	    <input type="file" name="arquivo" onMouseOver="document.getElementById('gUpButton').className='gUpButtonHover';tooltip('{tr}Tamanho máximo de upload{/tr}: <b>125Mb</b>.');" onMouseOut="document.getElementById('gUpButton').className='gUpButton';nd()" onChange="changeStatus(this.value);">
    	      </form>
          </div>
-   
      </div>
     <center>
 	    <img class="separator" src="styles/estudiolivre/separator.png">
