@@ -75,7 +75,7 @@
       
         <div id="gRatingComments">
           <div id="gRating">
-	    {tooltip name="list-avaliacao-votar" text="Avaliação - entre na página do arquivo para votar"}<img alt="{$arquivo.rating} estrelas" src="styles/estudiolivre/star{math equation="round(x)" x=$arquivo.rating|default:"blk"}.png">{/tooltip}
+	    {tooltip name="list-avaliacao-votar" text="Avaliação - entre na página do arquivo para votar"}<img alt="{$arquivo.rating} estrelas" src="styles/estudiolivre/star{math equation="round(x)" x=$arquivo.rating|default:"blk"}.png">{/tooltip}({$arquivo.ratings})
 	  </div>
 	  <div id="gComments">
 	    {if $arquivo.commentsCount == 0}

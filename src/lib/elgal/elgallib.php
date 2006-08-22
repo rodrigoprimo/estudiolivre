@@ -123,9 +123,7 @@ class ELGalLib extends TikiLib {
 		$bindvals[] = '%'.$value.'%';
       }
 
-      $tables = " from `el_arquivo` a, `el_licenca` l ";
-      
-      $query = "select a.*, l.`descricao` descricaoLicenca, `linkImagem`, `linkHumanReadable` $tables $mid and a.`licencaId`=l.`licencaId` and `publicado`=1 order by ".$this->convert_sortmode($sort_mode);
+      $query = "select a.*, l.`descricao` descricaoLicenca, `linkImagem`, `linkHumanReadable` from `el_arquivo` a, `el_licenca` l $mid and a.`licencaId`=l.`licencaId` and `publicado`=1 order by ".$this->convert_sortmode($sort_mode);
       $result = $this->query($query,$bindvals,$maxRecords,$offset);
     
       if ($result) {
@@ -134,6 +132,7 @@ class ELGalLib extends TikiLib {
 		  while ($row = $result->fetchRow()) {
 		  	  $row['commentsCount'] = $commentslib->count_comments('arquivo:' . $row['arquivoId']);
 		  	  $row['tags'] = $freetaglib->get_tags_on_object($row['arquivoId'], 'gallery');
+			  $row['ratings'] = $this->getOne("select count(*) from `el_arquivo_rating` where `arquivoId`=?", array($row['arquivoId']));
 		      $ret[] = $row;
 		  }
 		  return $ret;
@@ -483,6 +482,7 @@ class ELGalLib extends TikiLib {
       $metadata = $result->fetchRow();
       $arquivo = array_merge($metadata, $arquivo);
     }
+    $arquivo['ratings'] = $this->getOne("select count(*) from `el_arquivo_rating` where `arquivoId`=?", array($arquivoId));
     return $arquivo;
   }
 
