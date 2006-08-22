@@ -51,9 +51,18 @@ function streamFile($arquivoId, $type, $screenSize) {
     	$video = "false";
     }
         
-    $objResponse->addRemove('gPlayer');
-   	$objResponse->addAppend('contentBubble', 'innerHTML', $smarty->fetch('el-player.tpl'));
-    $objResponse->addScript("loadFile('$validUrl', $width, $height, '$video')");
+    /*pra quando rolar tutoriais em swf
+     * if (preg_match('/.*\.swf$/i', $arquivo.arquivo)) {
+    	$smarty->assign('src', 'repo/' . $arquivo['arquivo']);
+    	$objResponse->addRemove('gPlayerSwf');
+    	$objResponse->addAppend('contentBubble', 'innerHTML', $smarty->fetch('el-playerSwf.tpl'));
+    	$objResponse->addScript("showLightbox('gPlayerSwf')");	
+    } else {
+    */
+    	$objResponse->addRemove('gPlayer');
+   		$objResponse->addAppend('contentBubble', 'innerHTML', $smarty->fetch('el-player.tpl'));
+    	$objResponse->addScript("loadFile('$validUrl', $width, $height, '$video')");
+    //}
     
     return $objResponse;
     

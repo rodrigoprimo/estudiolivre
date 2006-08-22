@@ -395,6 +395,8 @@ $extra_strings = array(
 "Clique para editar as <b>tags</b> desse arquivo"=>"Click to edit this file\'s <b>tags</b>",
 "Imagem redimensionada" => "Image shrunk to fit window",
 "Tamanho máximo de upload" => "Maximum allowed upload size",
+"Total de votos desse arquivo"=>"Number of votes",
+"Veja esse swf"=>"View this swf",
 );
 
 global $lang;

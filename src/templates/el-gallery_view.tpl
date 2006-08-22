@@ -61,6 +61,11 @@
 							{if preg_match("/.*\.ogg$/i", $arquivo.arquivo)}
 			    				{assign var='tooltipText' value="Assista a esse vídeo"}
 						    {/if}
+						    {*PRA QUANDO ROLAR COLOCAR TUTORIAIS em SWF
+						    if preg_match("/.*\.swf$/i", $arquivo.arquivo)}
+						    	{assign var='tooltipText' value="Veja esse swf"}
+						    {/if
+						    *}
 						{elseif $arquivo.tipo eq "Audio"}
 							{if preg_match("/.*\.ogg$/i", $arquivo.arquivo)}
 						    	{assign var='tooltipText' value="Ouça essa música"}
@@ -75,7 +80,7 @@
 								{$arquivo.streamHits}
 							</span>
 							{tooltip name="view-iplay-" text=$tooltipText}
-								<img class="pointer" alt="" src="styles/estudiolivre/iPlay.png" onClick="xajax_streamFile({$arquivo.arquivoId}, '{$arquivo.tipo}',getPageSize()[0])">
+								<img class="pointer" alt="" src="styles/estudiolivre/iPlay.png" onClick="xajax_streamFile({$arquivo.arquivoId}, '{$arquivo.tipo}', getPageSize()[0])">
 							{/tooltip}
 						{/if}
 					</div>
@@ -112,6 +117,9 @@
 				    {/section}
 				    </div>
 			    {/if}
+			    <center>
+	  				{tr}Total de votos desse arquivo{/tr}: {$arquivo.ratings}
+  				</center>
 			</div>
 		</div>
 	</div>
