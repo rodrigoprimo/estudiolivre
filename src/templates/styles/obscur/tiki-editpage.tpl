@@ -1,6 +1,6 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/obscur/tiki-editpage.tpl,v 1.1 2006-07-26 06:15:07 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/obscur/tiki-editpage.tpl,v 1.2 2006-08-28 18:53:31 rhwinter Exp $ *}
 
-{popup_init src="lib/overlib.js"}
+{*popup_init src="lib/overlib.js"*}
 
 {* Check to see if there is an editing conflict *}
 {if $editpageconflict == 'y'}
@@ -60,7 +60,9 @@
 				{include file=tiki-edit_help_tool.tpl area_name='editwiki'}
 			{/if}
 			
-			<textarea id='editwiki' class="wikiedit" name="edit" rows="40">{$pagedata|escape}</textarea>
+			{assign var='rows' value=$smarty.cookies.editwikiRows} {if !$rows}{assign var='rows' value=40}{/if}
+			
+			<textarea id='editwiki' class="wikiedit" name="edit" rows="{$rows}">{$pagedata|escape}</textarea>
 			
 			{if $feature_freetags eq 'y' and $tiki_p_freetags_tag eq 'y'}
 				<br/>
@@ -320,7 +322,7 @@
 					<div id="edtComentario">
 					{tooltip text="<b>Comente</b> suscintamente as modificações feitas na edição"}
 						<div>{tr}Comentário{/tr}:</div>
-						<input class="wikitext" id="iCom" type="text" name="comment" value="{$commentdata|escape}" />
+						<input class="wikitext" id="iCom" type="text" name="comment" value="{$commentdata|escape}" onChange="if(self.preview)document.getElementById('iComP').value=this.value"/>
 					{/tooltip}
 					</div>
 					{if $wiki_feature_copyrights  eq 'y'}
@@ -339,8 +341,8 @@
 					{if $tiki_p_minor eq 'y' and $page|lower ne 'sandbox'}
 						<div id="edtIsMinor">
 							<div>{tr}A modificação foi{/tr}:</div>					
-							{tooltip text="Selecione se essa modificação foi <b>pequena</b> (ela não vai aparecer na página das ultimas alterações do site)"}<input type="radio" name="isminor" value="on" />{tr}Pequena{/tr}<br>{/tooltip}
-							{tooltip text="Selecione se essa modificação foi <b>grande</b> e você quer que tod@s a vejam"}<input type="radio" name="isminor" value="" checked="checked"/>{tr}Grande{/tr}<br>{/tooltip}
+							{tooltip text="Selecione se essa modificação foi <b>pequena</b> (ela não vai aparecer na página das ultimas alterações do site)"}<input type="radio" name="isminor" value="on" onChange="if(self.preview)document.editPage.isminorPreview[0].checked=document.editPage.isminor[0].checked"/>{tr}Pequena{/tr}<br>{/tooltip}
+							{tooltip text="Selecione se essa modificação foi <b>grande</b> e você quer que tod@s a vejam"}<input type="radio" name="isminor" value="" checked="checked" onChange="if(self.preview)document.editPage.isminorPreview[1].checked=document.editPage.isminor[1].checked"/>{tr}Grande{/tr}<br>{/tooltip}
 
 						</div>
 					{/if}
@@ -381,33 +383,18 @@
 		<script language="javascript" type="text/javascript">
 		
 		function checkForm() {
-			//if the minor check was made in the preview area
-			if(self.preview){
-				if(document.editPage.isminorPreview[0].checked){
-					document.editPage.isminor[0].checked=true;
-				}
-			}
-	
 			//for minor changes
 			if (document.editPage.isminor[0].checked){
 				return true;
 			}
 			
-			//if the comment was made in the preview area
-			if(self.preview){
-				if(document.getElementById('iComP').value == ""){
-					document.editPage.comment.value = document.getElementById('iComP').value;
-				}
-			}
-			
+			//comments
 			if(!document.editPage.comment.value && !cancelar){
 				showLightbox('precisaComentar');
 				// so that this gets the input focus!
 				document.getElementById('lightComment').focus();
 				return false;
 			}
-	
-			//alert(document.editPage.comment.value);
 			return true;
 		}
 		
@@ -437,7 +424,6 @@
 		
 		//used in the commenting lightbox
 		function lightBoxKey(e){
-			//alert('uha!');
 			var code = getKeyCode(e);
 			if(code==13){
 				//we pressed enter!

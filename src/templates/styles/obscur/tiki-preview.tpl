@@ -26,7 +26,7 @@
 					<div id="edtComentario">
 					{tooltip text="<b>Comente</b> suscintamente as modificações feitas na edição"}
 						<div>{tr}Comentário{/tr}:</div>
-						<input id="iComP" class="wikitext" type="text" name="commentP" value="{$commentdata|escape}" />
+						<input id="iComP" class="wikitext" type="text" name="commentP" value="{$commentdata|escape}" onChange="document.editPage.comment.value=this.value"/>
 					{/tooltip}
 					</div>
 					{if $wiki_feature_copyrights  eq 'y'}
@@ -45,8 +45,8 @@
 					{if $tiki_p_minor eq 'y' and $page|lower ne 'sandbox'}
 						<div id="edtIsMinorP">
 							<div>{tr}A modificação foi{/tr}:</div>					
-							{tooltip text="Selecione se essa modificação foi <b>pequena</b> (ela não vai aparecer na página das ultimas alterações do site)"}<input type="radio" name="isminorPreview" value="on" />{tr}Pequena{/tr}<br>{/tooltip}
-							{tooltip text="Selecione se essa modificação foi <b>grande</b> e você quer que tod@s a vejam"}<input type="radio" name="isminorPreview" value="" checked="checked"/>{tr}Grande{/tr}<br>{/tooltip}
+							{tooltip text="Selecione se essa modificação foi <b>pequena</b> (ela não vai aparecer na página das ultimas alterações do site)"}<input type="radio" name="isminorPreview" value="on" onChange="document.editPage.isminor[0].checked=document.editPage.isminorPreview[0].checked"/>{tr}Pequena{/tr}<br>{/tooltip}
+							{tooltip text="Selecione se essa modificação foi <b>grande</b> e você quer que tod@s a vejam"}<input type="radio" name="isminorPreview" value="" checked="checked" onChange="document.editPage.isminor[1].checked=document.editPage.isminorPreview[1].checked" />{tr}Grande{/tr}<br>{/tooltip}
 
 						</div>
 					{/if}
