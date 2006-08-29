@@ -1,15 +1,12 @@
 --- setup_smarty.php	2006-08-28 18:51:22.000000000 -0300
 +++ setup_smarty.php	2006-08-28 19:11:42.000000000 -0300
-@@ -60,6 +60,13 @@
+@@ -60,6 +60,10 @@
  			    $params['smarty_include_tpl_file'] = 'ie-' . $params['smarty_include_tpl_file'];
  			}
  		}
 +
 +		global $currentTpl;
-+		if(!$currentTpl){
-+		    $currentTpl=array();
-+		}
-+		array_push($currentTpl, $params['smarty_include_tpl_file']);
++		$currentTpl = $params['smarty_include_tpl_file'];
 +
  		return parent::_smarty_include($params);
  	}

@@ -45,7 +45,7 @@ function sendMsg($subject = '', $body = '', $priority = 3, $cc = '') {
 	$smarty->assign('permission', $permission);
 	$smarty->assign('userMessages', $messulib->list_user_messages($view_user, 0, 5, 'date_desc', '', '', '', '', 'messages'));
 	
-	$objResponse->addAssign("uMsgItems", "innerHTML", $smarty->fetch("el-user_msg.tpl"));
+	$objResponse->addAssign("moduleuMsgItems", "innerHTML", $smarty->fetch("el-user_msg.tpl"));
 	
 	return $objResponse;
 
@@ -65,7 +65,7 @@ function delMsg($userFrom, $msgId) {
 		
 		$smarty->assign('permission', $permission);
 		$smarty->assign('userMessages', $messulib->list_user_messages($view_user, 0, 5, 'date_desc', '', '', '', '', 'messages'));
-		$objResponse->addAssign("uMsgItems", "innerHTML", $smarty->fetch("el-user_msg.tpl"));
+		$objResponse->addAssign("moduleuMsgItems", "innerHTML", $smarty->fetch("el-user_msg.tpl"));
 	
 	}
 	
@@ -87,7 +87,7 @@ function markMsgRead($msgId) {
 		
 		$smarty->assign('permission', $permission);
 		$smarty->assign('userMessages', $messulib->list_user_messages($view_user, 0, 5, 'date_desc', '', '', '', '', 'messages'));
-		$objResponse->addAssign("uMsgItems", "innerHTML", $smarty->fetch("el-user_msg.tpl"));
+		$objResponse->addAssign("moduleuMsgItems", "innerHTML", $smarty->fetch("el-user_msg.tpl"));
 		include_once("modules/mod-el_msgs.php");
 		$objResponse->addAssign("mod-el_msgs", "innerHTML", $smarty->fetch("modules/mod-el_msgs.tpl"));
 	}

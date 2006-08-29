@@ -13,6 +13,7 @@ if (strpos($_SERVER["SCRIPT_NAME"],basename(__FILE__)) !== false) {
  * Purpose:  insert the css for the tpl which called it, preserving theme scope.
  * you may want to include another css, but not the one relative to the current
  * tpl, for this use 'only'
+ * WARNING: always put the {css} function at the start of the tpl
  * -------------------------------------------------------------
  * {css extra=css1,css2} or {css} or {css only=general}
  */
@@ -26,8 +27,7 @@ function smarty_function_css($params, &$smarty) {
 	}
 	
 	if (!$params['only']) {
-		$currentTplStrip = preg_replace("/\.tpl/","",array_shift($currentTpl));
-		$currentTplStrip = preg_replace("/.*\//","",$currentTplStrip);
+		$currentTplStrip = preg_replace("/(.*\/)?(.*)\.tpl/","$2",$currentTpl);
 		$output .= cssLinkRel($currentTplStrip);
 	} else {
 		$extras = $params['only'];
