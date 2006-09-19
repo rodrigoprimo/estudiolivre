@@ -34,12 +34,8 @@ if (isset($_REQUEST['type']) && $_REQUEST['type']) {
 $changes = array();
 $changes["data"] = $elgallib->list_all_uploads($type, 0, 10, $dateId.'_desc', $userName);
 
-
-$fileLink = preg_replace("/\/?$/","/",$feature_server_name);
-$fileLink = preg_replace("/^(http:\/\/)?/","http://",$fileLink);
-$fileLink .= "el-download.php?action=download&arquivo=";
 for ($i=0; $i < sizeof($changes["data"]); $i++) {
-	$changes["data"][$i]["enclosure"] = array("url"=>$fileLink.$changes["data"][$i]["arquivoId"],
+	$changes["data"][$i]["enclosure"] = array("url"=>"repo/" . $changes["data"][$i]["arquivo"],
 			  	   							  "lenght"=>$changes["data"][$i]["tamanho"],
 			       							  "type"=>$changes["data"][$i]["formato"]);
 }
