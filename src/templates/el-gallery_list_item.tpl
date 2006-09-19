@@ -7,7 +7,7 @@
     <div id="gThumb">
 	  <a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}">
       {if $arquivo.thumbnail}
-		  <img height="51" src="repo/{$arquivo.thumbnail}">
+		  <img height="51" src="repo/{$arquivo.thumbnail|escape:'url'}">
 	  {else}
 		  <img height="51" src="styles/estudiolivre/iThumb{$arquivo.tipo}.png">
       {/if}

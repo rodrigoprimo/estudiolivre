@@ -23,7 +23,7 @@
 				</div>
 
 				{if $arquivo.thumbnail}
-					<img id="thumbnail" src="repo/{$arquivo.thumbnail}" height="100" width="100">
+					<img id="thumbnail" src="repo/{$arquivo.thumbnail|escape:'url'}" height="100" width="100">
 				{else}
 					<img id="thumbnail" src="styles/estudiolivre/iThumb{$arquivo.tipo}.png" height="100" width="100">
 				{/if}

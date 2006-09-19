@@ -75,7 +75,7 @@ function generate_thumb() {
 	$objResponse->addAssign("thumbnail", "className", 'gUpThumbImg');	
 
 	if ($thumb) {
-	    $objResponse->addAssign("thumbnail", "src", 'repo/' . $thumb);
+	    $objResponse->addAssign("thumbnail", "src", 'repo/' . urlencode($thumb));
 	} else {
 	    $arquivo = $elgallib->get_arquivo($arquivoId);
 	    $objResponse->addAssign("thumbnail", "src", 'styles/estudiolivre/iThumb' . $arquivo["tipo"] . '.png');
