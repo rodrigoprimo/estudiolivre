@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-list_users.tpl,v 1.6 2006-07-13 06:48:56 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/tiki-list_users.tpl,v 1.7 2006-09-19 21:43:19 nano Exp $ *}
 <div id="users">
 <h1>
 	{if !$find}
@@ -66,8 +66,8 @@
 		====================*}
 		<td class="heading">
 			{tooltip text="Clique para que a listagem seja por <b>ordem alfabética</b> de localização"}
-			<a class="userlistheading" href="tiki-list_users.php?{if $find}find={$find}&amp;{/if}offset={$offset}&amp;sort_mode={if $sort_mode eq 'country_desc'}country_asc{else}country_desc{/if}">
-				<img src="styles/estudiolivre/sort{if $sort_mode eq 'country_desc'}ArrowUp{elseif $sort_mode eq 'country_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+			<a class="userlistheading" href="tiki-list_users.php?{if $find}find={$find}&amp;{/if}offset={$offset}&amp;sort_mode={if $sort_mode eq 'local_desc'}local_asc{else}local_desc{/if}">
+				<img src="styles/estudiolivre/sort{if $sort_mode eq 'local_desc'}ArrowUp{elseif $sort_mode eq 'local_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 			</a>
 			{/tooltip}
 			{tr}Localização{/tr}

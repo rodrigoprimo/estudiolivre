@@ -435,6 +435,10 @@ A.external{
 	text-decoration: underline;
 }
 
+#wikitext IMG {
+	max-width:93%;
+}
+
 /* classe usada para o que estiver entre '-=' e '=-', tipo '-=titulo=-'*/
 .titlebar {
 	/*display:inline;*/
