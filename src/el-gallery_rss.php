@@ -32,7 +32,19 @@ if (isset($_REQUEST['type']) && $_REQUEST['type']) {
 }
 
 $changes = array();
-$changes["data"] = $elgallib->list_all_uploads($type, 0, 10, $dateId.'_desc', $userName);
+if (isset($_REQUEST['tag'])) {
+	$objects = $freetaglib->get_objects_with_tag($_REQUEST['tag'], 'gallery');
+	$changes["data"] = array();
+    
+    foreach ($objects['data'] as $object) {
+		$arquivo = $elgallib->get_arquivo($object['itemId']);
+			if (in_array($arquivo['tipo'], $type) && (empty($userName) || $arquivo['user'] == $userName))
+				$changes["data"][] = $arquivo;
+    }
+}
+else {
+	$changes["data"] = $elgallib->list_all_uploads($type, 0, 10, $dateId.'_desc', $userName);
+}
 
 for ($i=0; $i < sizeof($changes["data"]); $i++) {
 	$changes["data"][$i]["enclosure"] = array("url"=>"repo/" . $changes["data"][$i]["arquivo"],
