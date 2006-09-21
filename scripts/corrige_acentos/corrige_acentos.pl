@@ -3,7 +3,7 @@
 use strict;
 use DBI;
 
-our $dbh = DBI->connect("dbi:mysql:mapsys:localhost","root",`cat /etc/senha_mysql`)
+our $dbh = DBI->connect("dbi:mysql:mapsys:localhost","root")
     or die "cant connect";
 
 our %charMap = ('Á' => "a",
@@ -153,7 +153,7 @@ sub getReplacement {
 
     foreach my $repl (keys %wordList) {
 	my @patterns = @{$wordList{$repl}};
-	foreach my $patt (@patterns) {
+	foreach my $patt (sort { length($b) <=> length($a) } @patterns) {
 	    my ($before, $after) = split /\?/, $patt;
 	    return $repl
 		if testWord($text, $pos, $before, $after);
@@ -199,6 +199,10 @@ sub testWord {
     my $pos = shift;
     my $before = shift;
     my $after = shift;
+
+    if (!$after && !$before) { 
+	return 0;
+    }
 
     if ($after && lc(substr($text, $pos+2, length($after))) ne lc($after)) {
 	return 0;
