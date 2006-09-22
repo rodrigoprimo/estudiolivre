@@ -39,9 +39,11 @@
 						<td class="odd">
 							<input type="submit" name="delsel" value="{tr}delete selected{/tr}" />
 						</td>
+					</tr>
+					<tr>
 						<td class="odd">
 							{tr}Move to topic:{/tr}
-							<select name="moveto">
+							<select name="moveto" style="width:70%">
 								{section name=ix loop=$topics}
 									{if $topics[ix].threadId ne $comments_parentId}
 										<option value="{$topics[ix].threadId|escape}">{$topics[ix].title}</option>

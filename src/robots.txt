@@ -3,3 +3,4 @@ Crawl-delay: 900
 disallow: /el-download.php
 disallow: /el-gallery_stream_ajax.php
 disallow: /tiki-download_file.php
+disallow: /repo
