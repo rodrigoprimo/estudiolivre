@@ -56,7 +56,7 @@ sub convert {
     my $text = shift || '';
 
     #so muda esse padrao do banco pro dump
-    my @patt1 = (195, 131, 63);
+    my @patt1 = (195, 63);
 
     my @patt2 = (226, 128, 63);
 
@@ -71,10 +71,10 @@ sub convert {
 	    $buf .= substr($text,$i,1);
 	}
 	
-	if (ord(substr($text,$i,1)) == $patt1[0] && ord(substr($text,$i+1,1)) == $patt1[1] && ord(substr($text,$i+2,1)) == $patt1[2]) {
+	if (ord(substr($text,$i,1)) == $patt1[0] && ord(substr($text,$i+1,1)) == $patt1[1]) {
 	    my $repl = getReplacement($text, $i);
 	    if ($repl) {
-		substr $text, $i, 3, $repl;
+		substr $text, $i, 2, $repl;
 	    } else {
 		$changed = 1;
 	    }
@@ -111,7 +111,7 @@ sub askWord {
     my $pos = shift;
 
     my $before = substr($text,$pos-20,20);
-    my $after  = substr($text,$pos+3,20);
+    my $after  = substr($text,$pos+2,20);
 
     my $suggestion = '';
     if ($before =~ /([a-z]+)$/i) {
@@ -147,7 +147,7 @@ sub testWord {
 	return 0;
     }
 
-    if ($after && lc(substr($text, $pos+3, length($after))) ne lc($after)) {
+    if ($after && lc(substr($text, $pos+2, length($after))) ne lc($after)) {
 	return 0;
     }
 
