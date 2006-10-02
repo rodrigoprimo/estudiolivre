@@ -3,7 +3,7 @@ diff -Naur ../void/freetag_apply.php ./freetag_apply.php
 +++ ./freetag_apply.php	2006-04-26 12:33:35.000000000 -0300
 @@ -0,0 +1,39 @@
 +<?php 
-+// $Header: /home/rodrigo/devel/arca/estudiolivre/patch/tiki-1.10/_freetag-new_files.patch,v 1.1 2006-06-27 03:53:51 lfagundes Exp $
++// $Header: /home/rodrigo/devel/arca/estudiolivre/patch/tiki-1.10/_freetag-new_files.patch,v 1.2 2006-10-02 22:40:21 nano Exp $
 +
 +// Copyright (c) 2002-2005, Luis Argerich, Garland Foster, Eduardo Polidor, et. al.
 +// All Rights Reserved. See copyright.txt for details and a complete list of authors.
@@ -47,7 +47,7 @@ diff -Naur ../void/freetag_list.php ./freetag_list.php
 @@ -0,0 +1,43 @@
 +<?php
 +
-+// $Header: /home/rodrigo/devel/arca/estudiolivre/patch/tiki-1.10/_freetag-new_files.patch,v 1.1 2006-06-27 03:53:51 lfagundes Exp $
++// $Header: /home/rodrigo/devel/arca/estudiolivre/patch/tiki-1.10/_freetag-new_files.patch,v 1.2 2006-10-02 22:40:21 nano Exp $
 +
 +// Copyright (c) 2002-2005, Luis Argerich, Garland Foster, Eduardo Polidor, et. al.
 +// All Rights Reserved. See copyright.txt for details and a complete list of authors.
@@ -93,7 +93,7 @@ diff -Naur ../void/freetag.php ./freetag.php
 +++ ./freetag.php	2006-04-26 12:33:35.000000000 -0300
 @@ -0,0 +1,37 @@
 +<?php 
-+// $Header: /home/rodrigo/devel/arca/estudiolivre/patch/tiki-1.10/_freetag-new_files.patch,v 1.1 2006-06-27 03:53:51 lfagundes Exp $
++// $Header: /home/rodrigo/devel/arca/estudiolivre/patch/tiki-1.10/_freetag-new_files.patch,v 1.2 2006-10-02 22:40:21 nano Exp $
 +
 +// Copyright (c) 2002-2005, Luis Argerich, Garland Foster, Eduardo Polidor, et. al.
 +// All Rights Reserved. See copyright.txt for details and a complete list of authors.
@@ -210,7 +210,7 @@ diff -Naur ../void/lib/freetag/freetag_ajax.js ./lib/freetag/freetag_ajax.js
 diff -Naur ../void/lib/freetag/freetaglib.php ./lib/freetag/freetaglib.php
 --- ../void/lib/freetag/freetaglib.php	1969-12-31 21:00:00.000000000 -0300
 +++ ./lib/freetag/freetaglib.php	2006-04-26 12:33:35.000000000 -0300
-@@ -0,0 +1,926 @@
+@@ -0,0 +1,920 @@
 +<?php
 +
 +/**
@@ -383,7 +383,7 @@ diff -Naur ../void/lib/freetag/freetaglib.php ./lib/freetag/freetaglib.php
 +     * @return An array of Object ID numbers that reference your original objects.
 +     */
 +    
-+    function get_objects_with_tag_combo($tagArray, $user = '', $offset = 0, $maxRecords = -1) {
++    function get_objects_with_tag_combo($tagArray, $type = '', $user = '', $offset = 0, $maxRecords = -1) {
 +	if (!isset($tagArray) || !is_array($tagArray)) {
 +	    return false;
 +	}
@@ -394,12 +394,17 @@ diff -Naur ../void/lib/freetag/freetaglib.php ./lib/freetag/freetaglib.php
 +	}
 +	
 +	$bindvals = $tagArray;
++
++   $mid = '';
 +	
 +	if (isset($user) && !empty($user)) {
 +	    $mid = "AND `user` = ?";
 +	    $bindvals[] = $user;
-+	} else {
-+	    $mid = '';
++	}
++
++	if (isset($type) && !empty($type)) {
++	    $mid .= " AND `type` = ?";
++	    $bindvals[] = $type;
 +	}
 +	
 +	$tag_sql = "?";
@@ -411,10 +416,7 @@ diff -Naur ../void/lib/freetag/freetaglib.php ./lib/freetag/freetaglib.php
 +	// We must adjust for duplicate normalized tags appearing multiple times in the join by 
 +	// counting only the distinct tags. It should also work for an individual user.
 +	
-+	$query = "SELECT o.*, t.`tag`, COUNT(DISTINCT t.`tag`) AS uniques ";
-+	$query_cant = "SELECT COUNT(*) ";
-+	
-+	$query_end = "
++	$query = "SELECT o.*, t.`tag`, COUNT(DISTINCT t.`tag`) AS uniques
 +			FROM `tiki_objects` o,
 +                             `tiki_freetagged_objects` fto,
 +			     `tiki_freetags` t
@@ -423,20 +425,16 @@ diff -Naur ../void/lib/freetag/freetaglib.php ./lib/freetag/freetaglib.php
 +                              fto.`objectId` = o.`objectId`                              
 +                        $mid
 +			GROUP BY o.`objectId`
-+			HAVING uniques = ?
-+			";
-+	
-+	$query      .= $query_end;
-+	$query_cant .= $query_end;
++			HAVING uniques = ?";
 +	
 +	$result = $this->query($query, $bindvals, $maxRecords, $offset);
 +	
 +	$ret = array();
++	$cant = 0;
 +	while ($row = $result->fetchRow()) {
 +	    $ret[] = $row;
++		$cant++;
 +	}
-+	
-+	$cant = $this->getOne($query_cant, $bindvals);
 +	
 +	return array('data' => $ret,
 +		     'cant' => $cant);
@@ -849,10 +847,6 @@ diff -Naur ../void/lib/freetag/freetaglib.php ./lib/freetag/freetaglib.php
 +    }
 +
 +    function update_tags($user, $itemId, $type, $tag_string) {
-+	if($tag_string == '') {
-+	    return true;
-+	}
-+
 +	// Perform tag parsing
 +	$tagArray = $this->_parse_tag($tag_string);
 + 	
@@ -1142,7 +1136,7 @@ diff -Naur ../void/lib/objectlib.php ./lib/objectlib.php
 +++ ./lib/objectlib.php	2006-04-26 12:33:35.000000000 -0300
 @@ -0,0 +1,124 @@
 +<?php
-+// CVS: $Id: _freetag-new_files.patch,v 1.1 2006-06-27 03:53:51 lfagundes Exp $
++// CVS: $Id: _freetag-new_files.patch,v 1.2 2006-10-02 22:40:21 nano Exp $
 +//this script may only be included - so its better to die if called directly.
 +if (strpos($_SERVER["SCRIPT_NAME"],basename(__FILE__)) !== false) {
 +  header("location: index.php");
@@ -1362,7 +1356,7 @@ diff -Naur ../void/templates/tiki-browse_freetags.tpl ./templates/tiki-browse_fr
 --- ../void/templates/tiki-browse_freetags.tpl	1969-12-31 21:00:00.000000000 -0300
 +++ ./templates/tiki-browse_freetags.tpl	2006-04-26 12:33:35.000000000 -0300
 @@ -0,0 +1,175 @@
-+{* $Header: /home/rodrigo/devel/arca/estudiolivre/patch/tiki-1.10/_freetag-new_files.patch,v 1.1 2006-06-27 03:53:51 lfagundes Exp $ *}
++{* $Header: /home/rodrigo/devel/arca/estudiolivre/patch/tiki-1.10/_freetag-new_files.patch,v 1.2 2006-10-02 22:40:21 nano Exp $ *}
 +
 +{if $feature_ajax eq 'y'}
 +<script src="lib/cpaint/cpaint2.inc.compressed.js" type="text/javascript"></script>
@@ -1544,14 +1538,14 @@ diff -Naur ../void/tiki-browse_freetags.php ./tiki-browse_freetags.php
 @@ -0,0 +1,110 @@
 +<?php
 +
-+// $Header: /home/rodrigo/devel/arca/estudiolivre/patch/tiki-1.10/_freetag-new_files.patch,v 1.1 2006-06-27 03:53:51 lfagundes Exp $
++// $Header: /home/rodrigo/devel/arca/estudiolivre/patch/tiki-1.10/_freetag-new_files.patch,v 1.2 2006-10-02 22:40:21 nano Exp $
 +
 +// Copyright (c) 2002-2005, Luis Argerich, Garland Foster, Eduardo Polidor, et. al.
 +// All Rights Reserved. See copyright.txt for details and a complete list of authors.
 +// Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
 +
 +//
-+// $Header: /home/rodrigo/devel/arca/estudiolivre/patch/tiki-1.10/_freetag-new_files.patch,v 1.1 2006-06-27 03:53:51 lfagundes Exp $
++// $Header: /home/rodrigo/devel/arca/estudiolivre/patch/tiki-1.10/_freetag-new_files.patch,v 1.2 2006-10-02 22:40:21 nano Exp $
 +//
 +
 +// Initialization

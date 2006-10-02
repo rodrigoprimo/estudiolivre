@@ -7,7 +7,7 @@ require_once ('lib/rss/rsslib.php');
 
 $feed = "acervo";
 $id = "arquivoId";
-$title = tra("Feed RSS para o acervo livre");
+$title = tra("Acervo Livre");
 $desc = "Os 10 arquivos mais novos do acervo livre!";
 $now = date("U");
 $descId = "descricao";
@@ -31,14 +31,17 @@ if (isset($_REQUEST['type']) && $_REQUEST['type']) {
 	$type = array('Audio', 'Video', 'Imagem', 'Texto');
 }
 
+if(!isset($_REQUEST['tag']) && isset($_REQUEST['tags'])) { $_REQUEST['tag'] = $_REQUEST['tags']; }
+
 $changes = array();
 if (isset($_REQUEST['tag'])) {
-	$objects = $freetaglib->get_objects_with_tag($_REQUEST['tag'], 'gallery');
+	$tagArray = split(",", $_REQUEST['tag']);
+	$objects = $freetaglib->get_objects_with_tag_combo($tagArray, 'gallery', $userName);
 	$changes["data"] = array();
     
     foreach ($objects['data'] as $object) {
 		$arquivo = $elgallib->get_arquivo($object['itemId']);
-			if (in_array($arquivo['tipo'], $type) && (empty($userName) || $arquivo['user'] == $userName))
+			if (in_array($arquivo['tipo'], $type))
 				$changes["data"][] = $arquivo;
     }
 }

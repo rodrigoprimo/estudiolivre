@@ -35,8 +35,8 @@ function wikiplugin_acervotag($data, $params) {
 		$result .= $smarty->fetch('el-gallery_list_item.tpl');
 	    return "~np~$result~/np~";
     }
-    
-    $objects = $freetaglib->get_objects_with_tag($params['tag'], 'gallery');
+    if(!isset($params['tag']) && isset($params['tags'])) { $params['tag'] = $params['tags']; }
+    $objects = $freetaglib->get_objects_with_tag_combo(split(",",$params['tag']), 'gallery');
     $result = "";
     
     foreach ($objects['data'] as $object) {

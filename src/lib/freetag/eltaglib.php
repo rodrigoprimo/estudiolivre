@@ -81,6 +81,64 @@ class ElTagLib extends FreetagLib {
     
     }
 
+	function get_objects_with_tag_union($tagArray, $type = '', $user = '', $offset = 0, $maxRecords = -1) {
+	
+		if (!isset($tagArray) || !is_array($tagArray)) {
+		    return false;
+		}
+		
+		if (count($tagArray) == 0) {
+		    return array('data' => array(),
+				 'cant' => 0);
+		}
+		
+		$bindvals = $tagArray;
+		
+		$mid = '';
+		
+		if (isset($user) && !empty($user)) {
+		    $mid = "AND `user` = ?";
+		    $bindvals[] = $user;
+		}
+		
+		if (isset($type) && !empty($type)) {
+		    $mid .= " AND `type` = ?";
+		    $bindvals[] = $type;
+		}
+		
+		$tag_sql = "?";
+		for ($i=1; $i<count($tagArray); $i++) { $tag_sql .= ",?"; }
+		
+		// We must adjust for duplicate normalized tags appearing multiple times in the join by 
+		// counting only the distinct tags. It should also work for an individual user.
+		
+		$query = "SELECT o.*, t.`tag`";
+		
+		$query_end = "
+				FROM `tiki_objects` o,
+					 `tiki_freetagged_objects` fto,
+				     `tiki_freetags` t
+				WHERE t.`tag` IN ($tag_sql) AND
+	                              fto.`tagId` = t.`tagId` AND
+	                              fto.`objectId` = o.`objectId`                              
+	                        $mid";
+		
+		$query .= $query_end . " GROUP BY o.`objectId`";
+		$query_cant = "SELECT COUNT(DISTINCT o.`objectId`) " . $query_end;
+		
+		$result = $this->query($query, $bindvals, $maxRecords, $offset);
+		
+		$ret = array();
+		while ($row = $result->fetchRow()) {
+		    $ret[] = $row;
+		}
+		
+		$cant = $this->getOne($query_cant, $bindvals);
+		
+		return array('data' => $ret,
+			     'cant' => $cant);
+    }
+
 }
 
 global $dbTiki;
