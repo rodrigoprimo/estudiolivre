@@ -55,7 +55,7 @@ for ($i=0; $i < sizeof($changes["data"]); $i++) {
 			       							  "type"=>$changes["data"][$i]["formato"]);
 	
 	if($changes["data"][$i]["thumbnail"]){
-		$changes["data"][$i]["$descId"]='<img src="'.$changes["data"][$i]["thumbnail"].'" align="left">'.$changes["data"][$i]["$descId"];	
+		$changes["data"][$i]["$descId"]='<img src="/repo/'.$changes["data"][$i]["thumbnail"].'" align="left">'.$changes["data"][$i]["$descId"];	
 	}
 }
 
