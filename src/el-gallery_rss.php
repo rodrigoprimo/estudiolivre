@@ -53,6 +53,10 @@ for ($i=0; $i < sizeof($changes["data"]); $i++) {
 	$changes["data"][$i]["enclosure"] = array("url"=>"repo/" . $changes["data"][$i]["arquivo"],
 			  	   							  "lenght"=>$changes["data"][$i]["tamanho"],
 			       							  "type"=>$changes["data"][$i]["formato"]);
+	
+	if($changes["data"][$i]["thumbnail"]){
+		$changes["data"][$i]["$descId"]='<img src="'.$changes["data"][$i]["thumbnail"].'" align="left">'.$changes["data"][$i]["$descId"];	
+	}
 }
 
 $output = $rsslib->generate_feed($feed, $uniqueid, '', $changes, $readrepl, $urlparam, $id, $title, $titleId, $desc, $descId, $dateId, $authorId);
