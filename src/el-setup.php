@@ -34,6 +34,9 @@ $smarty->assign('showIeMsg',$showIeMsg);
 
 $smarty->assign('showTeste', preg_match('/teste\.estudioli.re\.org/',$ownurl));
 
+//TODO descobrir pq precisa dessa bosta aqui pra traducao funcionar
+tra();
+
 // TODO: Fazer ieGIF2PNG q substitui o {if $isIE}gif{else}png{/if}
 
 ?>
