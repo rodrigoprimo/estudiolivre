@@ -18,7 +18,7 @@ $urlparam = "arquivoId";
 $readrepl = "el-gallery_view.php?arquivoId=%s";
 $uniqueid = $feed;
 
-if (isset($_REQUEST['user'])) {
+if (isset($_REQUEST['user']) && $_REQUEST['user']) {
 	$userName = $_REQUEST['user'];
 } else {
 	$userName = '';
@@ -34,7 +34,7 @@ if (isset($_REQUEST['type']) && $_REQUEST['type']) {
 if(!isset($_REQUEST['tag']) && isset($_REQUEST['tags'])) { $_REQUEST['tag'] = $_REQUEST['tags']; }
 
 $changes = array();
-if (isset($_REQUEST['tag'])) {
+if (isset($_REQUEST['tag']) && $_REQUEST['tag']) {
 	$tagArray = split(",", $_REQUEST['tag']);
 	$objects = $freetaglib->get_objects_with_tag_combo($tagArray, 'gallery', $userName);
 	$changes["data"] = array();
