@@ -6,6 +6,7 @@
 	
 	{include file="tiki-view_blog_post_item.tpl" text=$parsed_data post=$post_info use_title=$blog_data.use_title showPages=1}
 	
+	{*
 	{if $post_info.trackbacks_from_count > 0}
 		<h3>{tr}Trackback pings{/tr}:</h3>
 		{cycle values="odd,even" print=false}
@@ -21,6 +22,7 @@
 			{$item.blog_name}
 		{/foreach}
 	{/if}
+	*}
 	
 	{if $feature_blogposts_comments == 'y'
 	  && $blog_data.allow_comments == 'y'
