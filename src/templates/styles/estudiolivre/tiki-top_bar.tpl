@@ -51,6 +51,8 @@
     | 
     {tooltip text="Veja os <b>blogs</b> dos usuári@s do EstúdioLivre"}<a href="tiki-list_blogs.php">{tr}blogs{/tr}</a>{/tooltip}
     | 
+    {tooltip text="Navegue pelas <b>tags</b> mais populares do EstúdioLivre"}<a href="el-tag_cloud.php">{tr}tags{/tr}</a>{/tooltip}
+    | 
     {tooltip name="perguntas-frequentes" text="<b>Perguntas</b> mais freqüêntes"}<a href="tiki-index.php?page=faq&bl">{tr}faq{/tr}</a>{/tooltip}
     | 
     {tooltip name="entre-contato" text="Entre em contato - descubra os <b>canais de comunicação</b> com a comunidade"}<a href="tiki-index.php?page=contato&bl">{tr}contato{/tr}</a>{/tooltip}

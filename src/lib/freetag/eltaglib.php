@@ -64,29 +64,6 @@ class ElTagLib extends FreetagLib {
 
     }
     
-    // TODO: continuar... nao funfa ainda (milho)
-    function parse_cloud($tagList, $maxDepth = 6, $maxRecords = -1, $offset = 0) {
-	$query = "select distinct t.`tagId`,count(tfo.`objectId`) as qtdTags, t.`tag` from `tiki_freetags` t left join `tiki_freetagged_objects` tfo on t.`tagId`=tfo.`tagId` group by tfo.`tagId`";
-	$result = $this->query($query, array(), $maxRecords, $offset);
-	
-	$tags = $array();
-	$index = $array();
-	
-	while ($row = $result->fetchRow()) {
-	    $tag = $row['tag'];
-	    $tagId = $row['tagId'];
-	    $qtdTags = $row['qtdTags'];
-	    
-	    if (!isset($index[$tag]) && !preg_match("/$tag/",$exclude)) {
-		$tags[] = $tag;
-		$index[$tag] = 1;
-	    }
-	}
-	
-	return $tags;	
-
-    }
-    
     //TODO: move to objectlib
     function delete_object($type, $itemId) {
     	$objId = $this->getOne("select `objectId` from `tiki_objects` where `type`=? and `itemId`=?", array($type, $itemId));

@@ -120,6 +120,7 @@
         </span>
         <br />
         <span class="uContactItem"><a href="tiki-lastchanges.php?find={$userinfo.login}&sort_mode=lastModif_desc&days=0">{tr}Contribuições Recentes{/tr}</a></span>
+        <span class="uContactItem"><a href="el-tag_cloud.php?tagsForUser={$userinfo.login}">{tr}Tags desse usuário{/tr}</a></span>
         <br />
         <span class="uContactItem uLittle">{tr}Membro desde{/tr} {$userinfo.registrationDate|date_format:"%d/%m/%Y"}</span>
       </div>  
