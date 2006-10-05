@@ -1,4 +1,4 @@
-// $Header: /home/rodrigo/devel/arca/estudiolivre/src/lib/js/general.js,v 1.1 2006-08-18 20:54:45 rhwinter Exp $
+// $Header: /home/rodrigo/devel/arca/estudiolivre/src/lib/js/general.js,v 1.2 2006-10-05 01:06:33 rhwinter Exp $
 var feature_no_cookie = 'n';
 
 function browser() {
@@ -742,6 +742,21 @@ function insertImg(elementId, fileId, oldfileId) {
 /* opens wiki 3d browser */
 function wiki3d_open (page, width, height) {
     window.open('tiki-wiki3d.php?page='+page,'wiki3d','width='+width+',height='+height+',scrolling=no');
+}
+
+/* preload the images given as array from given theme */
+var imgs = new Array();
+var allImgs = new Array();
+function preloadImgs(fewImgs){
+	allImgs=allImgs.concat(fewImgs);
+}
+function preloadImgsNow(tema){
+	for (x=0; x<allImgs.length; x++){
+		imgs[x] = new Image();
+		imgs[x].src = "/estudiolivre/styles/"+tema+"/"+allImgs[x];
+		//alert(imgs[x].src);
+	}
+	//alert('cucucucuc');
 }
 
 // This was added to allow wiki3d to change url on tiki's window

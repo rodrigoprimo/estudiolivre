@@ -1,7 +1,15 @@
 <!-- body.tpl begin -->
 
 
-<body {if $show_comzone eq 'y'}onload="javascript:flip('comzone');"{/if}{if $section} class="tiki_{$section}"{/if}>
+<body 
+	onload="preloadImgsNow('{$style|replace:".css":""}');
+	{if $show_comzone eq 'y'}
+		flip('comzone');
+	{/if}
+	"
+	{if $section}
+		class="tiki_{$section}"
+	{/if}>
 
   {include file="el-lightbox.tpl"}
 

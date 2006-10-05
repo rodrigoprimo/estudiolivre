@@ -1,6 +1,8 @@
 /*
 	Based on Lokesh Dhakar's lightbox - http://huddletogether.com/projects/lightbox/
 */
+//images
+preloadImgs(new Array("lBox_tl.png","lBox_t.png","lBox_tr.png","lBox_l.png","lBox_r.png","lBox_lb.png","lBox_b.png","lBox_rb.png","overlay.png"));
 
 var currentLightBoxDiv = null;
 var checkFunction = new Array();

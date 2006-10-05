@@ -58,12 +58,12 @@ You are most likely wanting to modify the top of your Tiki site. Please consider
 	{* ---- END ---- *}
   
 	{* ---- JavaScripts ----*}
+		<script language="JavaScript" type="text/javascript" src="lib/ajax/tiki-ajax.js"></script>
 		{$xajax_js}
+		<script type="text/javascript" src="lib/js/general.js"></script>		
+		<script type="text/javascript" src="lib/js/toggleImage.js"></script>
 		<script language="JavaScript" type="text/javascript" src="lib/js/tooltip.js"></script>
 		<script language="JavaScript" src="lib/elgal/player/cortado.js"></script>
-		<script language="JavaScript" type="text/javascript" src="lib/ajax/tiki-ajax.js"></script>
-		<script type="text/javascript" src="lib/js/general_mini.js"></script>
-		<script type="text/javascript" src="lib/js/toggleImage.js"></script>
 	{* ---- END ---- *}
 	
 	{if $favicon}
