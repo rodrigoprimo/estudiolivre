@@ -7,7 +7,7 @@ require_once ('lib/rss/rsslib.php');
 
 $feed = "acervo";
 $id = "arquivoId";
-$title = tra("Acervo Livre");
+$title = tra("Estúdio Livre: Acervo");
 $desc = "Os 10 arquivos mais novos do acervo livre!";
 $now = date("U");
 $descId = "descricao";
@@ -20,13 +20,14 @@ $uniqueid = $feed;
 
 if (isset($_REQUEST['user']) && $_REQUEST['user']) {
 	$userName = $_REQUEST['user'];
+	$title .= " - ". $userName;
 } else {
 	$userName = '';
 }
 
 if (isset($_REQUEST['type']) && $_REQUEST['type']) {
 	$type = array($_REQUEST['type']);
-	$title .= " - " . $_REQUEST['type'];
+	$title .= " ($type)";
 } else {
 	$type = array('Audio', 'Video', 'Imagem', 'Texto');
 }
@@ -36,9 +37,10 @@ if(!isset($_REQUEST['tag']) && isset($_REQUEST['tags'])) { $_REQUEST['tag'] = $_
 $changes = array();
 if (isset($_REQUEST['tag']) && $_REQUEST['tag']) {
 	$tagArray = split(",", $_REQUEST['tag']);
+	$title .= " - Tags: " . $type;
 	$objects = $freetaglib->get_objects_with_tag_combo($tagArray, 'gallery', $userName);
 	$changes["data"] = array();
-    
+     
     foreach ($objects['data'] as $object) {
 		$arquivo = $elgallib->get_arquivo($object['itemId']);
 			if (in_array($arquivo['tipo'], $type))
@@ -49,13 +51,15 @@ else {
 	$changes["data"] = $elgallib->list_all_uploads($type, 0, 10, $dateId.'_desc', $userName);
 }
 
+$base_url = "http://" . $_SERVER['HTTP_HOST'] .  $_SERVER['REQUEST_URI'] . "repo/";
+
 for ($i=0; $i < sizeof($changes["data"]); $i++) {
-	$changes["data"][$i]["enclosure"] = array("url"=>"repo/" . $changes["data"][$i]["arquivo"],
+	$changes["data"][$i]["enclosure"] = array("url"=>$base_url . $changes["data"][$i]["arquivo"],
 			  	   							  "lenght"=>$changes["data"][$i]["tamanho"],
 			       							  "type"=>$changes["data"][$i]["formato"]);
 	
 	if($changes["data"][$i]["thumbnail"]){
-		$changes["data"][$i]["$descId"]='<img src="/repo/'.$changes["data"][$i]["thumbnail"].'" align="left">'.$changes["data"][$i]["$descId"];	
+		$changes["data"][$i]["$descId"]='<img src="' . $base_url . $changes["data"][$i]["thumbnail"].'" align="left">'.$changes["data"][$i]["$descId"];	
 	}
 }
 
