@@ -50,6 +50,7 @@
 		<option value="rating" {if $sortMode eq 'rating'}selected{/if}>{tr}Estrelas{/tr}</option>
 		<option value="hits" {if $sortMode eq 'hits'}selected{/if}>{tr}Downloads{/tr}</option>
 		<option value="titulo" {if $sortMode eq 'titulo'}selected{/if}>{tr}Título{/tr}</option>
+		<option value="streamHits" {if $sortMode eq 'streamHits'}selected{/if}>{tr}Visualizações{/tr}</option>
       </select>{/tooltip}
     </div>
     <div  id="listNav">
