@@ -1,0 +1,28 @@
+span.hiddenPointer {
+	cursor: pointer;
+	color:black;
+}
+
+DIV.editable:hover {
+	background-color:#ffffd3;
+}
+
+.uLittle, .uTitle2 img, img.bla3 tag {
+	font-size:90%
+}
+
+#searchField, #searchFieldResults {
+	height:15px;
+	width:220px;
+	background-color:white;
+	position:relative;
+	top: -5px;
+	margin: 0px;
+	padding: 0px;
+	font-size: 10px;
+	border-left: 1px solid #bebebe;
+	border-top: 1px solid #bebebe;
+	border-bottom: 1px solid #bebebe;
+	border-right: 0px;
+}
+
