@@ -1,0 +1,75 @@
+.tabcontent {
+	padding:	5px;
+}
+
+.cbox-title {
+	padding-left:		5px;
+	font-weight:		bold;
+	font-size:		16px;
+	margin:			10px 0 10px 0;
+	background-color:	#f9f9f9;
+	border:			1px solid gray;
+}
+
+#userPrefs .form INPUT, #userPrefs .form SELECT {
+	border:			1px inset rgb(233, 233, 174);
+	padding:		1px 0px 1px 0px;
+	background-color:	#f1f1f1;
+}
+
+#userPrefs .form SELECT {
+	padding:	0px;
+}
+
+.tabmark {
+	padding:	2px;
+	font-weight:	bold;
+	font-size:	14px;
+	border:		1px solid white;
+}
+
+.simplebox {
+	background:	#efefef;
+	border:		1pt dashed #aaa;
+	font-family:	monospace;
+	margin:		5px;
+	margin-left:	40px;
+	margin-right:	40px;
+	padding:	2px;
+	font-weight:	bold;
+}
+
+.hide {
+	display:	none;
+}
+
+#userPrefs td.button {
+	text-align:	center;
+}
+
+#userPrefs .button INPUT {
+	font-size:		12px;
+	background-color:	#d9d9d9;
+}
+
+#blogPosting .button {
+	border:			0px;
+	font-size:		12px;
+	background-color:	#d9d9d9;
+}
+
+#userPrefs {
+	width:	95%;
+	margin:	0 auto;
+}
+
+#userPrefs FORM TABLE {
+	width:	100%;
+}
+
+#userPrefs H1 {
+	text-align:	center;
+	font-size:	20px;
+	margin:		10px;
+}
+

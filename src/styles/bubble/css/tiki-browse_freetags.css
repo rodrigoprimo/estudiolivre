@@ -1,0 +1,44 @@
+#searchOptionsCont a.linkbut {
+	color:			#a1a1a1;
+	font-size:		11px;
+	font-weight:		bold;
+	background-color:	#ebebeb;
+	display:		inline;
+	padding:		0px 2px 1px 2px;
+}
+
+.listFiltersButtons {
+	list-style-type:	none;
+	display:		inline;
+	font-size:		12px;
+}
+
+.listFiltersButtons li {
+	float:	left;
+}
+
+.listFiltersButtons img {
+	float:	left;
+}
+
+.listFiltersButtons A {
+	position:	relative;
+	top:		2px;
+	color:		black;
+}
+
+.buttonInactiveRight {
+	border-right:	0px solid gray;
+}
+
+#browseFreeTags H2 {
+	font-size:	12px;
+	font-weight:	normal;
+}
+
+#currentTag2 {
+	font-size:	16px;
+	font-weight:	bold;
+	text-transform:	uppercase;
+}
+

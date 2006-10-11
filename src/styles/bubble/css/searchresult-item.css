@@ -1,0 +1,22 @@
+.searchResultItem .searchdesc {
+	margin-left:	10px;
+}
+
+#searchResults .searchdesc {
+	margin-left:	10px;
+}
+
+.searchResultItem {
+	position:	relative;
+	font-size:	12px;
+	height:		100%;
+	margin:		5px 5px 5px 5px;
+	padding:	5px 5px 0px 5px;
+}
+
+.searchResultItemLink {
+	font-size:	14px;
+	font-weight:	bold;
+	color:		grey;
+}
+

@@ -1,0 +1,76 @@
+#lastChangesOptions .input {
+	border:			1px inset rgb(233, 233, 174);
+	background-color:	#f1f1f1;
+	font-size:		12px;
+}
+
+#users td.heading, #forum td.heading, #blogs td.heading, #listLastChanges td.heading, #editMods td.heading, #viewForum td.heading {
+	font-weight:	bold;
+}
+
+#viewForum td.heading {
+	font-weight:	bold;
+	background:	#c1c1c1;
+}
+
+.paginacao {
+	text-align:		center;
+	background-color:	#f9f9f9;
+	border:			1px solid gray;
+	padding:		3px;
+	margin-bottom:		10px;
+}
+
+.paginacao img {
+	margin:	0 15px 0 15px;
+}
+
+#lastChangesOptions {
+	padding:	7px 2px 7px 2px;
+	margin-left:	68%;
+	width:		170px;
+	text-align:	center;
+	border:		1px solid #e9e9e9;
+	font-size:	12px;
+}
+
+#lastChangesOptions INPUT {
+	border:			1px outset rgb(233, 233, 174);
+	margin:			2px;
+	background-color:	#c1c1c1;
+	font-size:		12px;
+}
+
+/* estilos para as páginas que listam: 	- usuários (tiki-list_users.tpl) 	- forums (tiki-list_forums.tpl) 	- blogs (tiki-list_blogs.tpl) 	- modulos (tiki-user_assigned_modules.tpl)  */    #users h1, #forum h1, #blogs h1, #listLastChanges h1, #blogHead h1, #viewForum h1 {
+	text-align:		center;
+	background-color:	#f9f9f9;
+	border:			1px solid gray;
+}
+
+#users h5, #blogs h5, #listLastChanges h5, #viewForum h5 {
+	text-align:	right;
+}
+
+#users table, #forum table, #blogs table, #listLastChanges table, #editMods table, #viewForum table {
+	margin:	0 0 20px 0;
+	width:	100%;
+}
+
+#users td, #forum td, #blogs td, #listLastChanges td, #editMods td, #viewForum td {
+	padding:	4px 0 4px 3px;
+}
+
+#users table a, #forum table a, #blogs table a, #listLastChanges a, #editMods a, #viewForum table a {
+	text-decoration:	underline;
+	color:			black;
+}
+
+#users .odd, #forum .odd, #blogs .odd, #listLastChanges .odd, #editMods .odd, #viewForum .odd {
+	background-color:	#e9e9e9;
+}
+
+#listLastChanges h4 {
+	font-weight:	normal;
+	text-align:	center;
+}
+

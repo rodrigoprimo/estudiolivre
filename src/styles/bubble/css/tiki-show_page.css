@@ -1,0 +1,67 @@
+p.editdate {
+	float:		right;
+	border-top:	1px solid #ececec;
+	padding-top:	5px;
+	font-size:	10px;
+	text-align:	right;
+}
+
+#tiki-mid .wikitext {
+	text-align:	justify;
+}
+
+.wikitopline {
+	margin-bottom:	5px;
+	text-align:	right;
+	padding-top:	5px;
+}
+
+.wikitopline img {
+	margin-left:	10px;
+}
+
+#wikitext H1 {
+	font-weight:	normal;
+	font-variant:	small-caps;
+	border-bottom:	1px solid grey;
+}
+
+#wikitext h2 {
+	font-size:	14px;
+	text-transform:	uppercase;
+	font-weight:	bold;
+}
+
+#wikitext h3 {
+	font-weight:	bold;
+}
+
+#wikitext p {
+	text-align:	justify;
+	text-indent:	2em;
+}
+
+#wikitext a:link {
+	color:			#808080;
+	text-decoration:	underline;
+}
+
+#wikitext a:hover {
+	color:			grey;
+	text-decoration:	none;
+}
+
+#wikitext a:visited {
+	color:			#93a3b2;
+	text-decoration:	underline;
+}
+
+#wikitext IMG {
+	max-width:	93%;
+}
+
+#wikitext a.wikinew {
+	color:		red;
+	font-size:	14px;
+}
+
