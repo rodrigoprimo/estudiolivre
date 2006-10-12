@@ -64,7 +64,7 @@
 		    {if $tooltipText}
 		    	<span class="gStreamCount">{$arquivo.streamHits}</span>
 		    	{tooltip name="list-i-play" text=$tooltipText}
-			    	<img class="pointer" alt="" src="styles/{$style|replace:".css":""}/img/iPlay.png" onClick="xajax_streamFile({$arquivo.arquivoId}, '{$arquivo.tipo}', getPageSize()[0])">
+			    	<img class="pointer" alt="" src="styles/{$style|replace:".css":""}/img/iPlay.png" onClick="xajax_streamFile({$arquivo.arquivoId},'{$arquivo.tipo}', getPageSize()[0])">
 			    {/tooltip}
 		    {else}
    		    	<div style="width:19px">&nbsp;</div>
@@ -102,7 +102,7 @@
     {if $arquivo.user eq $user or $el_p_admin_gallery eq "y"}
       {tooltip name="list-editar-informacoes-arquivo" text="Editar informações do arquivo"}<a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}"><img src="styles/{$style|replace:".css":""}/img/iEdit.png"></a>{/tooltip}
       <br>
-      {tooltip name="list-apagar-arquivo-acervo" text="Apagar esse arquivo do acervo"}<img class="pointer" onClick="deleteFile({$arquivo.arquivoId}, {$dontAskDelete}, 0);" src="styles/{$style|replace:".css":""}/img/iDelete.png">{/tooltip}
+      {tooltip name="list-apagar-arquivo-acervo" text="Apagar esse arquivo do acervo"}<img class="pointer" onClick="deleteFile({$arquivo.arquivoId},{$dontAskDelete},0);" src="styles/{$style|replace:".css":""}/img/iDelete.png">{/tooltip}
     {/if}
   </div>  
 </div>

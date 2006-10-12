@@ -88,6 +88,8 @@ $smarty->assign_by_ref('arquivos',$uploads);
 
 $total = $elgallib->count_all_uploads(array('Audio', 'Video', 'Imagem', 'Texto'), $view_user);
 
+$smarty->assign('dontAskDelete', $tikilib->get_user_preference($user, 'el_dont_check_delete', 0));
+
 $smarty->assign('permission', $permission);
 $smarty->assign('userName', $view_user);
 $smarty->assign('maxRecords', 5);

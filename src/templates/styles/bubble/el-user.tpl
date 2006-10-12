@@ -4,7 +4,8 @@
 <script language="JavaScript" src="lib/js/license.js"></script>
 <script language="JavaScript" src="lib/js/user_edit.js"></script>
 <script language="JavaScript" src="lib/js/edit_field_ajax.js"></script>
-
+<script language="JavaScript" src="lib/js/delete_file.js"></script>
+{include file="el-gallery_confirm_delete.tpl"}
 <div id="userPage">
   <div id="uGeneralInfo">
     <div id="uName">
