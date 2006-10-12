@@ -41,7 +41,11 @@ foreach my $id (sort keys %$selec){
 =cut
 
 ######TPLs INTRO
-chomp(my @tpls = `find ../../src/templates/styles/$theme |grep \.tpl`);
+## esse pega os tpls de um tema especifico
+#chomp(my @tpls = `find ../../src/templates/styles/$theme |grep \.tpl`);
+## esse pega os tpls da raiz
+chomp(my @tpls = `find ../../src/templates |grep -v styles |grep \.tpl`);
+
 #@tpls = ("../../src/templates/styles/estudiolivre/tiki-user_preferences.tpl");
 my %tpls_parsed;
 
@@ -54,17 +58,20 @@ foreach my $tpl (@tpls){
 # anda pelos tpls vendo os tags
 foreach my $tpl_parsed (keys %tpls_parsed) {
 
-    $tpl_parsed =~ /.*$theme\/(.*)/;
+
+    $tpl_parsed =~ /.*\/(.*)/; #esse eh para quando usar tpl da raiz
+    #$tpl_parsed =~ /.*$theme\/(.*)/; #esse eh para tpls de temas
     my $current_tpl_name = $1;
-    $current_tpl_name =~ /.*\/(.*)/;
+    #$current_tpl_name =~ /.*\/(.*)/; #esse eh para tpls de temas
     my $current_css_name = $1;
     $current_css_name =~ s/.tpl//;
     $current_css_name.=".css";
 
+
     my $css = CSS->new();
     my $a = $tpls_parsed{$tpl_parsed}->getAllClasses();
     my $b = $tpls_parsed{$tpl_parsed}->getAllUniqueClasses();
-    if(%$b){
+    if(@$a){
 	print BOLD,$1."\n\t",RESET;
 	print UNDERLINE,"Classes:",RESET;
 	print "\t";
@@ -114,6 +121,7 @@ foreach my $tpl_parsed (keys %tpls_parsed) {
 	#print $css->output('CSS::Adaptor::Pretty');
 	#print "----------\n";
 	#print "\n";
+	print YELLOW,"> css/".$current_css_name."\n",RESET;
 	open(FILE,">css/".$current_css_name) || die "$!: $current_css_name";
 	print FILE $css->output('CSS::Adaptor::Pretty');
 	close(FILE);
