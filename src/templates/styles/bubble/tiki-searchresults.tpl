@@ -94,7 +94,7 @@
 {/if*}
     {* input type="submit" class="wikiaction" name="search" value="{tr}go{/tr}"/> *}
 
-    <input id="searchFieldResults" name="highlight" size="15" type="text" accesskey="s" value="{$words}" /><input class="wikiaction" type="image" name="search" src="styles/estudiolivre/bSearch.png">
+    <input id="searchFieldResults" name="highlight" size="15" type="text" accesskey="s" value="{$words}" /><input class="wikiaction" type="image" name="search" src="styles/{$style|replace:".css":""}/img/bSearch.png">
 
 </form>
 

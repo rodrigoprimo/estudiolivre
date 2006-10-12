@@ -1,4 +1,4 @@
-{css}
+{css extra='tiki-view_blog_post_item'}
 <div id="vBlog">
 	{*this is really nasty stuff!
 	if strlen($heading) > 0}
@@ -28,7 +28,7 @@
 	<div class="paginacao">
 		{if $prev_offset >= 0}
 			<a class="prevnext" href="tiki-view_blog.php?find={$find}&amp;blogId={$blogId}&amp;offset={$prev_offset}&amp;sort_mode={$sort_mode}">
-				<img src="styles/estudiolivre/iArrowGreyLeft.png">
+				<img src="styles/{$style|replace:".css":""}/img/iArrowGreyLeft.png">
 			</a>
 		{/if}
 		
@@ -36,7 +36,7 @@
 		
 		{if $next_offset >= 0}
 			<a class="prevnext" href="tiki-view_blog.php?find={$find}&amp;blogId={$blogId}&amp;offset={$next_offset}&amp;sort_mode={$sort_mode}">
-				<img src="styles/estudiolivre/iArrowGreyRight.png">
+				<img src="styles/{$style|replace:".css":""}/img/iArrowGreyRight.png">
 			</a>
 		{/if}
 		{if $direct_pagination eq 'y'}

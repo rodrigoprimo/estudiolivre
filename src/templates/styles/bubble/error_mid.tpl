@@ -1,4 +1,3 @@
-{css}
 <div id="tiki-mid">
 <br>
 {if ($errortype eq "404")}

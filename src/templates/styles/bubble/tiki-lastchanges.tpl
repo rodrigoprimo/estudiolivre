@@ -4,12 +4,12 @@
 		{if $findwhat != ""}
 				{tr}Busca nas últimas alterações{/tr}
 		{else} 
-			{tr}Last Changes{/tr} &nbsp;&nbsp;&nbsp; <a href="tiki-wiki_rss.php?ver=2"><img src="styles/estudiolivre/iRss.png"></a>
+			{tr}Last Changes{/tr} &nbsp;&nbsp;&nbsp; <a href="tiki-wiki_rss.php?ver=2"><img src="styles/{$style|replace:".css":""}/img/iRss.png"></a>
 		{/if}
 	</h1>
 	
 	<h5>
-		{tr}Busca{/tr} <img class="pointer" onclick="javascript:flip('lastChangesOptions');toggleImage(this,'iArrowGreyDown.png')" src="styles/estudiolivre/iArrowGreyLeft.png">
+		{tr}Busca{/tr} <img class="pointer" onclick="javascript:flip('lastChangesOptions');toggleImage(this,'iArrowGreyDown.png')" src="styles/{$style|replace:".css":""}/img/iArrowGreyLeft.png">
 		<div id="lastChangesOptions" style="display:none">
 			<form method="get" action="tiki-lastchanges.php">
 				{tr}Modificações com texto{/tr}: <br/>
@@ -38,36 +38,36 @@
 			<tr>
 				<td class="heading">
 					<a class="tableheading" href="tiki-lastchanges.php?days={$days}&amp;offset={$offset}&amp;sort_mode={if $sort_mode eq 'lastModif_desc'}lastModif_asc{else}lastModif_desc{/if}">
-						<img src="styles/estudiolivre/sort{if $sort_mode eq 'lastModif_desc'}ArrowUp{elseif $sort_mode eq 'lastModif_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+						<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'lastModif_desc'}ArrowUp{elseif $sort_mode eq 'lastModif_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 					</a>{tr}Date{/tr}
 				</td>
 				<td class="heading">
 					<a class="tableheading" href="tiki-lastchanges.php?days={$days}&amp;offset={$offset}&amp;sort_mode={if $sort_mode eq 'pageName_desc'}pageName_asc{else}pageName_desc{/if}">
-						<img src="styles/estudiolivre/sort{if $sort_mode eq 'pageName_desc'}ArrowUp{elseif $sort_mode eq 'pageName_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+						<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'pageName_desc'}ArrowUp{elseif $sort_mode eq 'pageName_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 					</a>{tr}Page{/tr}
 				</td>
 				{*
 				<td class="heading">
 					<a class="tableheading" href="tiki-lastchanges.php?days={$days}&amp;offset={$offset}&amp;sort_mode={if $sort_mode eq 'action_desc'} action_asc{else}action_desc{/if}">
-						<img src="styles/estudiolivre/sort{if $sort_mode eq 'action_desc'}ArrowUp{elseif $sort_mode eq 'action_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+						<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'action_desc'}ArrowUp{elseif $sort_mode eq 'action_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 					</a>{tr}Action{/tr}
 				</td>
 				*}
 				<td class="heading">
 					<a class="tableheading" href="tiki-lastchanges.php?days={$days}&amp;offset={$offset}&amp;sort_mode={if $sort_mode eq 'user_desc'}user_asc{else}user_desc{/if}">
-						<img src="styles/estudiolivre/sort{if $sort_mode eq 'user_desc'}ArrowUp{elseif $sort_mode eq 'user_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+						<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'user_desc'}ArrowUp{elseif $sort_mode eq 'user_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 					</a>{tr}User{/tr}
 				</td>
 				{*
 				<td class="heading">
 					<a class="tableheading" href="tiki-lastchanges.php?days={$days}&amp;offset={$offset}&amp;sort_mode={if $sort_mode eq 'ip_desc'}ip_asc{else}ip_desc{/if}">
-						<img src="styles/estudiolivre/sort{if $sort_mode eq 'ip_desc'}ArrowUp{elseif $sort_mode eq 'ip_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+						<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'ip_desc'}ArrowUp{elseif $sort_mode eq 'ip_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 					</a>{tr}Ip{/tr}
 				</td>
 				*}
 				<td class="heading">
 					<a class="tableheading" href="tiki-lastchanges.php?days={$days}&amp;offset={$offset}&amp;sort_mode={if $sort_mode eq 'comment_desc'}comment_asc{else}comment_desc{/if}">
-						<img src="styles/estudiolivre/sort{if $sort_mode eq 'comment_desc'}ArrowUp{elseif $sort_mode eq 'comment_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+						<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'comment_desc'}ArrowUp{elseif $sort_mode eq 'comment_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 					</a>{tr}Comment{/tr}
 				</td>
 			</tr>
@@ -133,7 +133,7 @@
 		<div class="paginacao">
 			{if $prev_offset >= 0}
 				<a class="prevnext" href="tiki-lastchanges.php?find={$find}&amp;days={$days}&amp;offset={$prev_offset}&amp;sort_mode={$sort_mode}">
-					<img src="styles/estudiolivre/iArrowGreyLeft.png">
+					<img src="styles/{$style|replace:".css":""}/img/iArrowGreyLeft.png">
 				</a>
 			{/if}
 			
@@ -141,7 +141,7 @@
 			
 			{if $next_offset >= 0}
 				<a class="prevnext" href="tiki-lastchanges.php?find={$find}&amp;days={$days}&amp;offset={$next_offset}&amp;sort_mode={$sort_mode}">
-					<img src="styles/estudiolivre/iArrowGreyRight.png">
+					<img src="styles/{$style|replace:".css":""}/img/iArrowGreyRight.png">
 				</a>
 			{/if}
 			{if $direct_pagination eq 'y'}

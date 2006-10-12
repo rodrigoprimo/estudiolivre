@@ -1,4 +1,4 @@
-{css}
+{css extra='tiki-view_blog_post_item'}
 {*popup_init src="lib/overlib.js"*}
 
 {if $blogId > 0 }
@@ -16,7 +16,7 @@
 	<div id="blogPostPrev">
 		<h3>
 			<span class="pointer" onclick="javascript:flip('postPrevCont');toggleImage(document.getElementById('TArrowBlogPr'),'iArrowGreyRight.png');">
-				<img id="TArrowBlogPr" src="styles/estudiolivre/iArrowGreyDown.png" />{tr}Preview{/tr}
+				<img id="TArrowBlogPr" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png" />{tr}Preview{/tr}
 			</span>
 		</h3>
 		<div id="postPrevCont" style="display:block">

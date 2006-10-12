@@ -1,26 +1,25 @@
-{css}
 <div class="blogpost">
 	<div class="posthead">
 		{if !$printingPost}
 			<div class="icons">
 				{if ($ownsblog eq 'y') or ($user and $post.user eq $user) or $tiki_p_blog_admin eq 'y'}
 					<a class="blogt" href="tiki-blog_post.php?blogId={$post.blogId}&amp;postId={$post.postId}">
-						<img src="styles/estudiolivre/iWikiEdit.png" alt="{tr}Edit{/tr}"/>
+						<img src="styles/{$style|replace:".css":""}/img/iWikiEdit.png" alt="{tr}Edit{/tr}"/>
 					</a>
 					<a class="blogt" href="tiki-view_blog.php?blogId={$blogId}&amp;remove={$post.postId}">
-						<img src="styles/estudiolivre/iWikiRemove.png" alt="{tr}Remove{/tr}"/>
+						<img src="styles/{$style|replace:".css":""}/img/iWikiRemove.png" alt="{tr}Remove{/tr}"/>
 					</a>
 				{/if}
 				{if $user and $feature_notepad eq 'y' and $tiki_p_notepad eq 'y'}
 					<a title="{tr}Save to notepad{/tr}" href="tiki-view_blog.php?blogId={$blogId}&amp;savenotepad={$post.postId}">
-						<img src="styles/estudiolivre/iSave.png" alt="{tr}Save{/tr}"/>
+						<img src="styles/{$style|replace:".css":""}/img/iSave.png" alt="{tr}Save{/tr}"/>
 					</a>
 				{/if}
 				<a href='tiki-send_blog_post.php?postId={$post.postId}'>
-					<img src="styles/estudiolivre/iEmail.png" alt="{tr}email this post{/tr}"/>
+					<img src="styles/{$style|replace:".css":""}/img/iEmail.png" alt="{tr}email this post{/tr}"/>
 				</a>
 				<a href='tiki-print_blog_post.php?postId={$post.postId}'>
-					<img src="styles/estudiolivre/iWikiPrint.png" alt="{tr}print{/tr}" />
+					<img src="styles/{$style|replace:".css":""}/img/iWikiPrint.png" alt="{tr}print{/tr}" />
 				</a>
 			</div>				
 		{/if}

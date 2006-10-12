@@ -1,5 +1,5 @@
 {css}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bubble/Attic/tiki-editpage.tpl,v 1.1 2006-10-11 02:05:12 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bubble/Attic/tiki-editpage.tpl,v 1.2 2006-10-12 00:29:24 rhwinter Exp $ *}
 
 {*popup_init src="lib/overlib.js"*}
 
@@ -24,7 +24,7 @@
 			{tr}gerar{/tr} {if $preview}{tr}nova{/tr} {/if}{tr}preview{/tr}
 		</span>
 		<span id="label" class="wikiEdit hiddenPointer" onclick="javascript:flip('editCont');javascript:flip('editLabelLine');toggleImage(document.getElementById('edTArrow'),'iArrowGreyRight.png');">
-			<img id="edTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
+			<img id="edTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png">
 			{tr}Edição da página{/tr} <b>{$page|escape|truncate:20:"(...)":true}{if $pageAlias ne ''}&nbsp;({$pageAlias|escape}){/if}</b>
 		</span>
 		<div class="wikiEdit" id="editCont" style="display:block">
@@ -87,7 +87,7 @@
 				<br/>
 				
 				<span class="hiddenPointer" onclick="javascript:flip('maisOpcoes');toggleImage(document.getElementById('edtOptTArrow'),'iArrowGreyDown.png');" >
-					<img class="pointer" id="edtOptTArrow" src="styles/estudiolivre/iArrowGreyRight.png">
+					<img class="pointer" id="edtOptTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyRight.png">
 					<b>{tr}Mais opções{/tr}</b>
 				</span>
 				<div id="maisOpcoes" style="display:none">
@@ -350,14 +350,14 @@
 
 					{*ISSO NAO FUNCIONA!...
 					<div id="save-exit" class="aSaveCancel" style="z-index: 10;">
-					  {tooltip text="Salve as modificações que acaba de fazer"}<img name="save" src="styles/estudiolivre/bSave.png" onClick="document.forms.namedItem('form-edit-wiki').submit()" style="cursor: pointer">{/tooltip}&nbsp;&nbsp;&nbsp;
-					  {tooltip text="Cancele as modificações que acaba de fazer"}<img name="cancel_edit" src="styles/estudiolivre/bCancelar.png" onClick="document.forms.namedItem('form-edit-wiki').submit()" style="cursor: pointer">{/tooltip}
+					  {tooltip text="Salve as modificações que acaba de fazer"}<img name="save" src="styles/{$style|replace:".css":""}/img/bSave.png" onClick="document.forms.namedItem('form-edit-wiki').submit()" style="cursor: pointer">{/tooltip}&nbsp;&nbsp;&nbsp;
+					  {tooltip text="Cancele as modificações que acaba de fazer"}<img name="cancel_edit" src="styles/{$style|replace:".css":""}/img/bCancelar.png" onClick="document.forms.namedItem('form-edit-wiki').submit()" style="cursor: pointer">{/tooltip}
 					</div>
 					*}
 					<div id="edtSaveCancel">
-					<input class="image" name="save" src="styles/estudiolivre/bSave.png" type="image" value="{tr}save{/tr}" /> &nbsp;&nbsp;
+					<input class="image" name="save" src="styles/{$style|replace:".css":""}/img/bSave.png" type="image" value="{tr}save{/tr}" /> &nbsp;&nbsp;
 					{if $page|lower ne 'sandbox'}
-						<input class="image" name="cancel_edit" src="styles/estudiolivre/bCancelar.png" type="image" value="{tr}cancel edit{/tr}"  onclick="cancelar=1"/>
+						<input class="image" name="cancel_edit" src="styles/{$style|replace:".css":""}/img/bCancelar.png" type="image" value="{tr}cancel edit{/tr}"  onclick="cancelar=1"/>
 					{/if}
 					</div>
 				{/if}
@@ -375,7 +375,7 @@
   		<br/>
 		<input class="wikitext" id="lightComment" type="text" name="lightComment" value="" {if $useJavascript eq "y"}onkeydown="lightBoxKey(event){/if}"/>
 		<div id="edtSaveCancel">
-			<img src="styles/estudiolivre/bSave.png" value="{tr}save{/tr}" onclick="comment()"/>
+			<img src="styles/{$style|replace:".css":""}/img/bSave.png" value="{tr}save{/tr}" onclick="comment()"/>
 		</div>
 	</form>
 </div>

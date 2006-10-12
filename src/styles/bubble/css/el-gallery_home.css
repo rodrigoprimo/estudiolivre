@@ -1,0 +1,20 @@
+#gHomeWikiTitle {
+	margin-top:3px;
+	float:right;
+}
+
+#gHomeWikiBottom {
+	text-align:right;
+	clear:both;
+}
+
+#gListCont {
+	padding-right:10px;
+}
+
+#gHomeWiki {
+	background:#eff9ea;
+	overflow:hidden;
+	padding:0 10px 0px 10px;
+}
+

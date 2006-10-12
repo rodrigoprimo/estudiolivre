@@ -1,0 +1,61 @@
+.buttonInactive {
+	float:left;
+	height:20px;
+	background-image:url(../bMidInac.png);
+	cursor:pointer;
+	padding:0px 4px 0px 4px;
+	border-right:1px solid gray;
+}
+
+.listFiltersButtons {
+	list-style-type:none;
+	display:inline;
+	font-size:12px;
+}
+
+.listFiltersButtons li {
+	float:left;
+}
+
+.listFiltersButtons img {
+	float:left;
+}
+
+.listFiltersButtons A {
+	position:relative;
+	top:2px;
+	color:black;
+}
+
+#rightContainerTop {
+	width:55%;
+	float:right;
+}
+
+#listFilters {
+	float:left;
+}
+
+#listOptions {
+	margin:10px 5px 10px 5px;
+	overflow:hidden;
+}
+
+#listOrder {
+	float:right;
+	font-size:12px;
+	margin-left:10px;
+}
+
+#listOrder select {
+	border:1px solid white;
+}
+
+#listNav {
+	font-size:12px;
+}
+
+#listNav .selected {
+	font-weight:bold;
+}
+

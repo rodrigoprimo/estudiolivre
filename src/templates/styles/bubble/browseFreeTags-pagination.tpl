@@ -1,4 +1,3 @@
-{css}
 <div id="freeTagsPagination">
   	{if $prev_offset >= 0}
     	[<a class="prevnext" href="tiki-browse_freetags.php?find={$find}&amp;tag={$tag}&amp;type={$type}&amp;offset={$prev_offset}">{tr}prev{/tr}</a>]&nbsp;

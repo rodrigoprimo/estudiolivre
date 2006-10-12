@@ -1,8 +1,8 @@
-{css}
+{css extra='modules'}
 <div id="sideContent">
   {if $category eq "Áudio"}
   {********AUDIO*********}
-    <a href="tiki-index.php?page=Áudio&bl"><img src="styles/estudiolivre/logoAudio.png"></a>
+    <a href="tiki-index.php?page=Áudio&bl"><img src="styles/{$style|replace:".css":""}/img/logoAudio.png"></a>
 	<div id="localMenu">
 	<ul>
     {if $page eq "Softwares de Edição de Áudio"}
@@ -32,7 +32,7 @@
 	</div>
   {elseif $category eq "Gráfico"}
   {*********GRAFICO********}
-    <a href="tiki-index.php?page=Gráfico&bl"><img src="styles/estudiolivre/logoGrafi.png"></a>
+    <a href="tiki-index.php?page=Gráfico&bl"><img src="styles/{$style|replace:".css":""}/img/logoGrafi.png"></a>
 	<div id="localMenu">
 	<ul>
     {if $page eq "Softwares de Gráfico"}
@@ -62,7 +62,7 @@
 	</div>
   {elseif $category eq "Vídeo"}
   {*********VIDEO********}
-    <a href="tiki-index.php?page=Vídeo&bl"><img src="styles/estudiolivre/logoVideo.png"></a>
+    <a href="tiki-index.php?page=Vídeo&bl"><img src="styles/{$style|replace:".css":""}/img/logoVideo.png"></a>
 	<div id="localMenu">
 	<ul>
     {if $page eq "Softwares de Vídeo"}
@@ -92,7 +92,7 @@
 	</div>
   {elseif $category eq "gallery"}
   {*********ACERVO********}
-    <a href="el-gallery_home.php"><img src="styles/estudiolivre/logoAcervo.png"></a>
+    <a href="el-gallery_home.php"><img src="styles/{$style|replace:".css":""}/img/logoAcervo.png"></a>
 	<div id="localMenu">
 	<ul>
     {if $current_location eq "el-gallery_upload.php"}      
@@ -109,7 +109,7 @@
 					      <input type="hidden" name="redirect" value="el-gallery_upload.php">
 					      <input class="uText" type="text" name="user" id="login-user" size="12" value="{tr}user{/tr}" onFocus="this.value=''"/>
 					      <input class="uText" type="text" name="pass" id="login-pass" size="10" value="{tr}senha{/tr}" onFocus="this.value='';this.type='password'"/>
-					      <input type="image" name="login" src="styles/estudiolivre/iLogin.png" />      
+					      <input type="image" name="login" src="styles/{$style|replace:".css":""}/img/iLogin.png" />      
 					      <div id="uLoginOptions">
 					        <a href="tiki-remind_password.php">&raquo; {tr}recuperar{/tr} {tr}senha{/tr}</a><br>
 					      </div>

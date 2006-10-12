@@ -28,7 +28,7 @@
 			{if $blog_list_title eq 'y'}
 				<td class="heading">
 					<a class="heading" href="tiki-list_blogs.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'title_desc'}title_asc{else}title_desc{/if}">
-						<img src="styles/estudiolivre/sort{if $sort_mode eq 'title_desc'}ArrowUp{elseif $sort_mode eq 'title_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+						<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'title_desc'}ArrowUp{elseif $sort_mode eq 'title_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 					</a>{tr}Title{/tr}
 				</td>
 			{/if}
@@ -36,7 +36,7 @@
 			{if $blog_list_user ne 'disabled'}
 				<td class="heading">
 					<a class="heading" href="tiki-list_blogs.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'user_desc'}user_asc{else}user_desc{/if}">
-						<img src="styles/estudiolivre/sort{if $sort_mode eq 'user_desc'}ArrowUp{elseif $sort_mode eq 'user_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+						<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'user_desc'}ArrowUp{elseif $sort_mode eq 'user_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 					</a>{tr}User{/tr}
 				</td>
 			{/if}
@@ -50,7 +50,7 @@
 			{if $blog_list_created eq 'y'}
 				<td class="heading">
 					<a class="heading" href="tiki-list_blogs.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'created_desc'}created_asc{else}created_desc{/if}">
-						<img src="styles/estudiolivre/sort{if $sort_mode eq 'created_desc'}ArrowUp{elseif $sort_mode eq 'created_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+						<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'created_desc'}ArrowUp{elseif $sort_mode eq 'created_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 					</a>{tr}Created{/tr}
 				</td>
 			{/if}
@@ -58,7 +58,7 @@
 			{if $blog_list_lastmodif eq 'y'}
 				<td class="heading">
 					<a class="heading" href="tiki-list_blogs.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'lastModif_desc'}lastModif_asc{else}lastModif_desc{/if}">
-						<img src="styles/estudiolivre/sort{if $sort_mode eq 'lastModif_desc'}ArrowUp{elseif $sort_mode eq 'lastModif_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+						<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'lastModif_desc'}ArrowUp{elseif $sort_mode eq 'lastModif_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 					</a>{tr}Last Modified{/tr}
 				</td>
 			{/if}
@@ -66,21 +66,21 @@
 			{if $blog_list_posts eq 'y'}
 				<td class="heading">
 					<a class="heading" href="tiki-list_blogs.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'posts_desc'}posts_asc{else}posts_desc{/if}">
-						<img src="styles/estudiolivre/sort{if $sort_mode eq 'posts_desc'}ArrowUp{elseif $sort_mode eq 'posts_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+						<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'posts_desc'}ArrowUp{elseif $sort_mode eq 'posts_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 					</a>{tr}Posts{/tr}
 				</td>
 			{/if}
 			{if $blog_list_visits eq 'y'}
 				<td class="heading">
 					<a class="heading" href="tiki-list_blogs.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'hits_desc'}hits_asc{else}hits_desc{/if}">
-						<img src="styles/estudiolivre/sort{if $sort_mode eq 'hits_desc'}ArrowUp{elseif $sort_mode eq 'hits_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+						<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'hits_desc'}ArrowUp{elseif $sort_mode eq 'hits_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 					</a>{tr}Visits{/tr}
 				</td>
 			{/if}
 			{*if $blog_list_activity eq 'y'}
 				<td class="heading">
 					<a class="bloglistheading" href="tiki-list_blogs.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'activity_desc'}activity_asc{else}activity_desc{/if}">
-						<img src="styles/estudiolivre/sort{if $sort_mode eq 'activity_desc'}ArrowUp{elseif $sort_mode eq 'activity_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+						<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'activity_desc'}ArrowUp{elseif $sort_mode eq 'activity_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 					</a>{tr}Activity{/tr}
 				</td>
 			{/if*}
@@ -222,7 +222,7 @@
 	<div class="paginacao">
 		{if $prev_offset >= 0}
 			<a class="userprevnext" href="tiki-list_blogs.php?find={$find}&amp;offset={$prev_offset}&amp;sort_mode={$sort_mode}">
-				<img src="styles/estudiolivre/iArrowGreyLeft.png">
+				<img src="styles/{$style|replace:".css":""}/img/iArrowGreyLeft.png">
 			</a>
 		{/if}
 		
@@ -230,7 +230,7 @@
 		
 		{if $next_offset >= 0}
 			<a class="userprevnext" href="tiki-list_blogs.php?find={$find}&amp;offset={$next_offset}&amp;sort_mode={$sort_mode}">
-				<img src="styles/estudiolivre/iArrowGreyRight.png">
+				<img src="styles/{$style|replace:".css":""}/img/iArrowGreyRight.png">
 			</a>
 		{/if}
 		{if $direct_pagination eq 'y'}

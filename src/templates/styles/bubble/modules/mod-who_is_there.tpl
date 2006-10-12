@@ -1,5 +1,4 @@
-{css}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bubble/modules/Attic/mod-who_is_there.tpl,v 1.1 2006-10-11 02:05:14 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bubble/modules/Attic/mod-who_is_there.tpl,v 1.2 2006-10-12 00:29:28 rhwinter Exp $ *}
 {math equation="count-1" count=$online_users|@count assign=numberOfUsers}
 {tikimodule title="{tr}Usuári@s Online{/tr} ($numberOfUsers)" name="who_is_there" flip=$module_params.flip}
 	{if $numberOfUsers >= 1}

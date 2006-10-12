@@ -1,0 +1,138 @@
+.uBlogItem {
+	margin-top:10px;
+	border-bottom:1px solid grey;
+}
+
+.ulistNav {
+	position:relative;
+	top:-23px;
+	left:270px;
+	display:inline;
+}
+
+.uKarmaImg {
+	margin-left:2px;
+}
+
+.uMainContainer {
+	width:100%;
+	margin-bottom:10px;
+}
+
+.uContactItem {
+	display:block;
+	max-width:100%;
+}
+
+#aDescriptionInfo .sectionTitle {
+	padding-left:20px;
+	padding-right:10px;
+}
+
+.gUserThumbFormButton {
+	height:90px;
+}
+
+.uMainItemContainer {
+	margin-left:10px;
+}
+
+.uContactInfoCont {
+	margin:2px;
+	padding:5px;
+	float:left;
+	width:30%;
+}
+
+.uMainTitle {
+	padding:3px;
+	border-top:1px solid #e3e3e1;
+	border-bottom:1px solid #e3e3e1;
+	background-color:#f0f0ef;
+}
+
+.uRssCont {
+	float:right;
+	filter:alpha(opacity=40);
+	-moz-opacity:.40;
+	opacity:.40;
+}
+
+.uRssCont:hover {
+	filter:alpha(opacity=100);
+	-moz-opacity:1.0;
+	opacity:1.0;
+}
+
+#uBlogItemText {
+	margin-left:10px;
+}
+
+#gUserThumbForm {
+	position:absolute;
+	left:-120px;
+	top:-90px;
+	clip:rect(0px, 255px, 90px, 165px);
+	z-index:20;
+	filter:alpha(opacity=0);
+	-moz-opacity:0.0;
+	opacity:0.0;
+}
+
+#uBlogItemBottom {
+	text-align:right;
+}
+
+#gUserThumbStatus {
+	position:relative;
+	top:-55px;
+	left:55px;
+	font-size:14px;
+	display:none;
+	z-index:5;
+}
+
+#gUserThumbFormContainer {
+	position:relative;
+	cursor:pointer;
+}
+
+#uBlogItemTitle h1 {
+	font-size:12px;
+	display:inline;
+}
+
+#uName {
+	text-align:center;
+	font-size:18px;
+	font-weight:bold;
+	margin-top:10px;
+}
+
+#uKarma {
+	margin-top:-5px;
+	margin-bottom:10px;
+}
+
+#gListCont {
+	padding-right:10px;
+}
+
+#uContactKarmaAccount {
+	overflow:hidden;
+	margin:10px 0px 10px 0px;
+}
+
+#listNav {
+	font-size:12px;
+}
+
+#listNav .selected {
+	font-weight:bold;
+}
+
+#uKarmaThumb {
+	border-right:2px solid #e3e3e1;
+	border-left:2px solid #e3e3e1;
+}
+

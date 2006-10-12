@@ -1,67 +1,134 @@
 p.editdate {
-	float:		right;
-	border-top:	1px solid #ececec;
-	padding-top:	5px;
-	font-size:	10px;
-	text-align:	right;
+	float:right;
+	border-top:1px solid #ececec;
+	padding-top:5px;
+	font-size:10px;
+	text-align:right;
 }
 
 #tiki-mid .wikitext {
-	text-align:	justify;
+	text-align:justify;
 }
 
 .wikitopline {
-	margin-bottom:	5px;
-	text-align:	right;
-	padding-top:	5px;
+	margin-bottom:5px;
+	text-align:right;
+	padding-top:5px;
 }
 
 .wikitopline img {
-	margin-left:	10px;
+	margin-left:10px;
 }
 
 #wikitext H1 {
-	font-weight:	normal;
-	font-variant:	small-caps;
-	border-bottom:	1px solid grey;
+	font-weight:normal;
+	font-variant:small-caps;
+	border-bottom:1px solid grey;
 }
 
 #wikitext h2 {
-	font-size:	14px;
-	text-transform:	uppercase;
-	font-weight:	bold;
+	font-size:14px;
+	text-transform:uppercase;
+	font-weight:bold;
 }
 
 #wikitext h3 {
-	font-weight:	bold;
+	font-weight:bold;
 }
 
 #wikitext p {
-	text-align:	justify;
-	text-indent:	2em;
+	text-align:justify;
+	text-indent:2em;
 }
 
 #wikitext a:link {
-	color:			#808080;
-	text-decoration:	underline;
+	color:#808080;
+	text-decoration:underline;
 }
 
 #wikitext a:hover {
-	color:			grey;
-	text-decoration:	none;
+	color:grey;
+	text-decoration:none;
 }
 
 #wikitext a:visited {
-	color:			#93a3b2;
-	text-decoration:	underline;
+	color:#93a3b2;
+	text-decoration:underline;
 }
 
 #wikitext IMG {
-	max-width:	93%;
+	max-width:93%;
 }
 
 #wikitext a.wikinew {
-	color:		red;
-	font-size:	14px;
+	color:red;
+	font-size:14px;
 }
 
+/* classe usada para o que estiver entre '-=' e '=-', tipo '-=titulo=-'*/
+.titlebar {
+	/*display:inline;*/
+	/*height:10px;*/
+	padding-left:10px;
+	margin: 0 auto;
+	margin-bottom:20px;
+	font-size:24px;
+	font-variant: small-caps;
+	text-align:center;
+	border-top: 1px solid #aaaaaa;
+	/*border-bottom: 1px solid grey;*/
+	background-color:#eeeeee;
+}
+
+.titlebar:first-letter {
+    text-transform: uppercase;
+   	font-size:28px;
+   	text-weight:bold;
+}
+
+#wikitext a.wikinew {
+	color: red;
+	font-size:14px;
+}
+
+/* classe das coisas dentro de '^' do wiki (fica uma caixa em volta)*/
+.simplebox {
+  background: #efefef;
+  border: 1pt dashed #aaa;
+  font-family: monospace;
+/*  white-space: pre;*/
+/*  margin: 1.33em 0px;*/
+  margin:5px;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding: 2px;
+  font-weight:bold;
+}
+
+/* classe das linhas que começam com espaço no wiki, são as linhas de 'código'*/
+tt {
+	display:block;
+	font-family: courier, serif, monospace;
+	margin:2px;
+	margin-left:15px;
+	margin-bottom:5px;
+	/*border: 1px solid green;	*/
+}
+
+/*classe dos [+] e [-] que aparecem ao lado das tags wiki '!+' ou '!-' ou '!!+' e assim por diante */
+.flipper{
+	cursor:pointer;
+	margin-left:5px;
+	margin-right:5px;
+	margin-bottom:0.2em;
+	/*font-size:12px;*/
+	/*font-weight:normal;*/
+	/*float:left;*/
+	/*margin-right:5px;*/
+	/*margin-top:2px;*/
+}
+
+/*pois o [+] no h1 fica muito em cima*/
+h1 .flipper {
+	margin-top:8px;
+}

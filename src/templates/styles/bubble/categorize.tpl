@@ -1,7 +1,6 @@
-{css}
 {if $feature_categories eq 'y' and (count($categories) gt 0 or $tiki_p_admin_categories eq 'y')}
 	<span class="hiddenPointer"  onclick="javascript:flip('categorizator');toggleImage(document.getElementById('catTArrow'),'iArrowGreyDown.png');">
-		<img id="catTArrow" class="pointer" src="styles/estudiolivre/iArrowGreyRight.png">
+		<img id="catTArrow" class="pointer" src="styles/{$style|replace:".css":""}/img/iArrowGreyRight.png">
 		<b>{tr}Categorize{/tr}</b>
 	</span>
 	  {*

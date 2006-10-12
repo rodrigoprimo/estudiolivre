@@ -1,5 +1,5 @@
 {css}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bubble/Attic/tiki-forums.tpl,v 1.1 2006-10-11 02:05:12 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bubble/Attic/tiki-forums.tpl,v 1.2 2006-10-12 00:29:24 rhwinter Exp $ *}
 
 <div id="forum">
 	<h1>
@@ -20,20 +20,20 @@
 			<tr>
 				<td  class="heading">
 					<a class="tableheading" href="tiki-forums.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'name_desc'}name_asc{else}name_desc{/if}">
-						<img src="styles/estudiolivre/sort{if $sort_mode eq 'name_desc'}ArrowUp{elseif $sort_mode eq 'name_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+						<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'name_desc'}ArrowUp{elseif $sort_mode eq 'name_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 					</a>{tr}Name{/tr}
 				</td>
 				{if $forum_list_topics eq 'y'}
 					<td class="heading">
 						<a class="tableheading" href="tiki-forums.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'threads_desc'}threads_asc{else}threads_desc{/if}">
-							<img src="styles/estudiolivre/sort{if $sort_mode eq 'threads_desc'}ArrowUp{elseif $sort_mode eq 'threads_asc'}ArrowDown{else}GreyArrowDown{/if}.png">	
+							<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'threads_desc'}ArrowUp{elseif $sort_mode eq 'threads_asc'}ArrowDown{else}GreyArrowDown{/if}.png">	
 						</a>{tr}Topics{/tr}
 					</td>
 				{/if}	
 				{if $forum_list_posts eq 'y'}
 					<td class="heading">
 						<a class="tableheading" href="tiki-forums.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'comments_desc'}comments_asc{else}comments_desc{/if}">
-							<img src="styles/estudiolivre/sort{if $sort_mode eq 'comments_desc'}ArrowUp{elseif $sort_mode eq 'comments_asc'}ArrowDown{else}GreyArrowDown{/if}.png">	
+							<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'comments_desc'}ArrowUp{elseif $sort_mode eq 'comments_asc'}ArrowDown{else}GreyArrowDown{/if}.png">	
 						</a>{tr}Posts{/tr}
 					</td>
 				{/if}
@@ -46,14 +46,14 @@
 				{if $forum_list_lastpost eq 'y'}	
 					<td class="heading">
 						<a class="tableheading" href="tiki-forums.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'lastPost_desc'}lastPost_asc{else}lastPost_desc{/if}">
-							<img src="styles/estudiolivre/sort{if $sort_mode eq 'lastPost_desc'}ArrowUp{elseif $sort_mode eq 'lastPost_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+							<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'lastPost_desc'}ArrowUp{elseif $sort_mode eq 'lastPost_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 						</a>{tr}Last post{/tr}
 					</td>
 				{/if}
 				{if $forum_list_visits eq 'y'}
 					<td class="heading">
 						<a class="tableheading" href="tiki-forums.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'hits_desc'}hits_asc{else}hits_desc{/if}">
-							<img src="styles/estudiolivre/sort{if $sort_mode eq 'hits_desc'}ArrowUp{elseif $sort_mode eq 'hits_asc'}ArrowDown{else}GreyArrowDown{/if}.png">	
+							<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'hits_desc'}ArrowUp{elseif $sort_mode eq 'hits_asc'}ArrowDown{else}GreyArrowDown{/if}.png">	
 						</a>{tr}Visits{/tr}
 					</td>
 				{/if}	
@@ -142,7 +142,7 @@
 		<div class="paginacao">
 			{if $prev_offset >= 0}
 				<a class="forumprevnext" href="tiki-forums.php?find={$find}&amp;offset={$prev_offset}&amp;sort_mode={$sort_mode}">
-					<img src="styles/estudiolivre/iArrowGreyLeft.png">
+					<img src="styles/{$style|replace:".css":""}/img/iArrowGreyLeft.png">
 				</a>
 			{/if}
 			
@@ -150,7 +150,7 @@
 			
 			{if $next_offset >= 0}
 				<a class="forumprevnext" href="tiki-forums.php?find={$find}&amp;offset={$next_offset}&amp;sort_mode={$sort_mode}">
-					<img src="styles/estudiolivre/iArrowGreyRight.png">
+					<img src="styles/{$style|replace:".css":""}/img/iArrowGreyRight.png">
 				</a>
 			{/if}
 			{if $direct_pagination eq 'y'}

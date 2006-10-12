@@ -1,4 +1,3 @@
-{css}
 <!-- begin freetag.tpl -->
 {if $feature_freetags eq 'y'}
 	<script language="JavaScript">

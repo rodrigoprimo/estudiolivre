@@ -1,5 +1,4 @@
-{css}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bubble/modules/Attic/mod-login_box.tpl,v 1.1 2006-10-11 02:05:14 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bubble/modules/Attic/mod-login_box.tpl,v 1.2 2006-10-12 00:29:28 rhwinter Exp $ *}
 {if !$user}
 	{tikimodule title="{tr}Login{/tr}" name='login'}
 		<form id="uLoginBox" action="tiki-login.php" method="post">

@@ -1,5 +1,4 @@
-{css}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bubble/modules/Attic/mod-switch_lang.tpl,v 1.1 2006-10-11 02:05:14 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bubble/modules/Attic/mod-switch_lang.tpl,v 1.2 2006-10-12 00:29:28 rhwinter Exp $ *}
 {*: {/tr}`$language`*}
 
 {tikimodule title="{tr}Language{/tr}" name="switch_lang" flip=$module_params.flip decorations=$module_params.decorations}

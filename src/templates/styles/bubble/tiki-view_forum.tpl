@@ -1,5 +1,5 @@
 {css}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bubble/Attic/tiki-view_forum.tpl,v 1.1 2006-10-11 02:05:12 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bubble/Attic/tiki-view_forum.tpl,v 1.2 2006-10-12 00:29:24 rhwinter Exp $ *}
 <div id="viewForum">
 <h1>
 	{tr}Forum{/tr}: 
@@ -356,7 +356,7 @@ a moderator approves it.{/tr}</small>
   		<div class="paginacao">
 			{if $comments_prev_offset >= 0}
 				<a href="tiki-view_forum.php?forumId={$forum_info.forumId}&amp;comments_threshold={$comments_threshold}&amp;comments_offset={$comments_prev_offset}&amp;comments_sort_mode={$comments_sort_mode}&amp;comments_maxComments={$comments_maxComments}">
-					<img src="styles/estudiolivre/iArrowGreyLeft.png">
+					<img src="styles/{$style|replace:".css":""}/img/iArrowGreyLeft.png">
 				</a>
 			{/if}
 			
@@ -364,7 +364,7 @@ a moderator approves it.{/tr}</small>
 			
 			{if $comments_next_offset >= 0}
 				<a class="prevnext" href="tiki-view_forum.php?forumId={$forum_info.forumId}&amp;comments_threshold={$comments_threshold}&amp;comments_offset={$comments_next_offset}&amp;comments_sort_mode={$comments_sort_mode}&amp;comments_maxComments={$comments_maxComments}">
-					<img src="styles/estudiolivre/iArrowGreyRight.png">
+					<img src="styles/{$style|replace:".css":""}/img/iArrowGreyRight.png">
 				</a>
 			{/if}
 			{if $comments_pagination eq 'y'}

@@ -1,0 +1,15 @@
+.searchOptions li.selected a {
+	color:black;
+	background-color:#bebebe;
+	cursor:pointer;
+}
+
+#searchOptionsCont a.selected {
+	color:black;
+	background-color:#bebebe;
+}
+
+#listNav .selected {
+	font-weight:bold;
+}
+

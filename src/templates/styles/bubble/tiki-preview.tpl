@@ -1,4 +1,4 @@
-{css}
+{css extra='tiki-show_page'}
 <!-- templates/tiki-preview.tpl start -->
 {literal}
 	<script language="javascript" type="text/javascript">
@@ -7,7 +7,7 @@
 {/literal}
 <div id="wikiPreviewCont">
 	<span id="label" class="wikiPreview hiddenPointer" onclick="javascript:flip('previewCont');javascript:flip('labelLine');toggleImage(document.getElementById('pTArrow'),'iArrowGreyRight.png');">
-		<img id="pTArrow" src="styles/estudiolivre/iArrowGreyDown.png">
+		<img id="pTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png">
 		{tr}Preview{/tr} {tr}da página{/tr} <b>{$page|escape|truncate:15:"(...)":true}</b>
 	</span>
 
@@ -54,14 +54,14 @@
 
 					{*ISSO NAO FUNCIONA!...
 					<div id="save-exit" class="aSaveCancel" style="z-index: 10;">
-					  {tooltip text="Salve as modificações que acaba de fazer"}<img name="save" src="styles/estudiolivre/bSave.png" onClick="document.forms.namedItem('form-edit-wiki').submit()" style="cursor: pointer">{/tooltip}&nbsp;&nbsp;&nbsp;
-					  {tooltip text="Cancele as modificações que acaba de fazer"}<img name="cancel_edit" src="styles/estudiolivre/bCancelar.png" onClick="document.forms.namedItem('form-edit-wiki').submit()" style="cursor: pointer">{/tooltip}
+					  {tooltip text="Salve as modificações que acaba de fazer"}<img name="save" src="styles/{$style|replace:".css":""}/img/bSave.png" onClick="document.forms.namedItem('form-edit-wiki').submit()" style="cursor: pointer">{/tooltip}&nbsp;&nbsp;&nbsp;
+					  {tooltip text="Cancele as modificações que acaba de fazer"}<img name="cancel_edit" src="styles/{$style|replace:".css":""}/img/bCancelar.png" onClick="document.forms.namedItem('form-edit-wiki').submit()" style="cursor: pointer">{/tooltip}
 					</div>
 					*}
 					<div id="edtSaveCancel">
-					<img class="pointer" src="styles/estudiolivre/bSave.png" onclick="if(checkForm()) savePage()"/> &nbsp;&nbsp;
+					<img class="pointer" src="styles/{$style|replace:".css":""}/img/bSave.png" onclick="if(checkForm()) savePage()"/> &nbsp;&nbsp;
 					{if $page|lower ne 'sandbox'}
-						<input class="image" name="cancel_edit" src="styles/estudiolivre/bCancelar.png" type="image" value="{tr}cancel edit{/tr}"  onclick="cancelar=1"/>
+						<input class="image" name="cancel_edit" src="styles/{$style|replace:".css":""}/img/bCancelar.png" type="image" value="{tr}cancel edit{/tr}"  onclick="cancelar=1"/>
 					{/if}
 					</div>
 				{/if}

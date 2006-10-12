@@ -1,0 +1,278 @@
+DIV.gUpSelected {
+	margin-right:0px;
+	border-right:1px solid white;
+	border-top:1px solid #91cd6d;
+	border-left:1px solid #91cd6d;
+	border-bottom:1px solid #91cd6d;
+	-moz-border-radius:8px 0px 0px 8px;
+}
+
+.gUpThumbImg {
+	width:60px;
+	height:60px;
+}
+
+DIV.gUpStatus {
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:14px;
+	width:159px;
+	z-index:2;
+}
+
+.gUpThumbFormButton {
+	height:62px;
+	cursor:pointer;
+	border:30px solid blue;
+}
+
+IMG.separator {
+	width:140px;
+	height:2px;
+	margin:10px 0px 10px 0;
+}
+
+DIV.gUpListItem {
+	position:relative;
+	right:2px;
+	padding:1px 3px 1px 3px;
+	min-height:24px;
+	margin-bottom:5px;
+	margin-right:3px;
+}
+
+.gUpPercent {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:158px;
+	text-align:center;
+	z-index:3;
+	color:#505050;
+	font-weight:bold;
+}
+
+A.gUpButton, A.gUpButtonHover {
+	display:block;
+	position:absolute;
+	right:3px;
+	top:5px;
+	width:57px;
+	height:16px;
+	font-size:10px;
+	background-image:url(../img/bActive.png);
+	background-repeat:no-repeat;
+	text-align:center;
+	overflow:hidden;
+}
+
+A.gUpButtonHover {
+	background-image:url(../img/bInactive.png);
+}
+DIV.gUpListItemField {
+	
+	position:absolute;
+	top:5px;
+	left:23px;
+	height:14px;
+	width:156px;
+	padding-right:3px;
+	border:1px solid #c9c9c9;
+	font-size:11px;
+	background-color:#f1f1f1;
+	text-align:right;
+	z-index:1;
+}
+
+A.gUpmore {
+	font-size:11px;
+	margin-right:5px;
+}
+
+DIV.gUpForm {
+	position:absolute;
+	top:0px;
+	left:20px;
+	filter:alpha(opacity=0);
+	-moz-opacity:0.0;
+	opacity:0.0;
+	z-index:10;
+	clip:rect( 0px, 225px, 30px,170px);
+}
+
+DIV.gUpIcon {
+	float:left;
+	margin:0px 8px 0px 8px;
+	font-size:12px;
+	text-align:center;
+}
+
+#gUpDescription {
+	margin-top:10px;
+}
+
+#gUpDescription DIV {
+	overflow:auto;
+}
+
+#gUpDescription DIV DIV {
+	padding:3px;
+	border:1px solid #FFF;
+	width:250px;
+	height:125px;
+	font-size:12px;
+	float:left;
+	font-weight:normal;
+}
+
+#gUpTagSuggestMore {
+	float:right;
+	margin-top:4px;
+}
+
+#gUpTagSuggestUser {
+	margin-top:3px;
+	margin-left:35px;
+	font-size:9px;
+	text-align:left;
+	overflow:hidden;
+}
+
+#gUpIcons {
+	overflow:hidden;
+	margin:0 0 0 0;
+}
+
+#gUpIcons IMG {
+	margin-bottom:3px;
+}
+
+#gUpPending {
+	list-style-type:none;
+}
+
+#gUpList {
+	position:relative;
+	left:3px;
+	text-align:left;
+}
+
+#gUpList IMG {
+	position:relative;
+	top:4px;
+}
+
+#gUpmoreoptionsLink {
+	float:right;
+}
+
+#gUpTagSugest {
+	text-align:right;
+}
+
+#gUpThumb {
+	float:left;
+	margin:0px 7px 5px 0px;
+	overflow:hidden;
+	padding:4px;
+	border-top:1px solid #e7e7e7;
+	border-left:1px solid #e7e7e7;
+	border-right:2px solid #e7e7e7;
+	border-bottom:2px solid #e7e7e7;
+	width:60px;
+	height:60px;
+	position:relative;
+	cursor:pointer;
+}
+
+#gUpload {
+	padding:10px 0px 10px 0px;
+	overflow:hidden;
+}
+
+#gUpLeft {
+	float:left;
+	min-width:250px;
+	margin-right:10px;
+	margin-left:10px;
+	border-right:1px solid #91cd6d;
+	text-align:center;
+	padding-bottom:50px;
+}
+
+#gUpRight {
+	overflow:hidden;
+}
+
+#gUpThumbImgForm {
+	position:relative;
+	cursor:pointer;
+}
+
+#gUpPercent {
+	background-color:#e1a7a4;
+}
+
+#gUpMoreOptionsContent {
+	padding-top:10px;
+}
+
+#gUpThumbStatus {
+	font-size:14px;
+	margin-top:23px;
+	width:60px;
+	text-align:center;
+}
+
+#gUpAuthorCont {
+	position:relative;
+	top:8px;
+}
+
+#gUpThumbForm {
+	position:absolute;
+	left:-175px;
+	top:2px;
+	clip:rect(0px, 255px, 62px, 175px);
+	z-index:20;
+	filter:alpha(opacity=0);
+	-moz-opacity:0.0;
+	opacity:0.0;
+	cursor:pointer;
+}
+
+#gUpEditTags {
+	width:259px;
+	font-size:12px;
+}
+
+#gUpEditTags INPUT {
+	border:1px inset rgb(233, 233, 174);
+	height:14px;
+	width:220px;
+	padding-right:3px;
+	background-color:#f1f1f1;
+	font-size:12px;
+}
+
+#gUpTagListItem {
+	width:85%;
+	border-right:2px solid #f1f1f1;
+}
+
+#gUpTitleAuthor {
+	position:relative;
+	top:0px;
+}
+
+#gUpMoreOptions INPUT {
+	border:1px inset rgb(233, 233, 174);
+	padding:3px 0px 3px 3px;
+	font-size:12px;
+	font-family:Arial, Verdana, Helvetica, Lucida, Sans-Serif;
+	background-color:#f1f1f1;
+	margin-right:4px;
+	max-width:100px;
+}
+

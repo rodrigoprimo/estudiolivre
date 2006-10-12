@@ -20,7 +20,7 @@
 <div id="precisaLogar" style="display:none;width:200px;">
 	{tr}Para votar é necessário se {/tr}<a href="tiki-register.php">{tr}cadastrar{/tr}</a> {tr}no site{/tr}.<br><br>
 	{tr}Se for cadastrado, efetue o login{/tr}:<br>
-    <form id="uLoginBox" action="tiki-login.php" method="post"><input type="hidden" name="redirect" value="tiki-index.php?page={$page}"><input class="uText" type="text" name="user" id="login-user" size="12" value="{tr}usuári@{/tr}" onFocus="this.value=null"/><input class="uText" type="text" name="pass" id="login-pass" size="10" value="{tr}senha{/tr}" onFocus="this.value=null;this.type='password'"/><input type="image" name="login" src="styles/estudiolivre/iLogin.png" />
+    <form id="uLoginBox" action="tiki-login.php" method="post"><input type="hidden" name="redirect" value="tiki-index.php?page={$page}"><input class="uText" type="text" name="user" id="login-user" size="12" value="{tr}usuári@{/tr}" onFocus="this.value=null"/><input class="uText" type="text" name="pass" id="login-pass" size="10" value="{tr}senha{/tr}" onFocus="this.value=null;this.type='password'"/><input type="image" name="login" src="styles/{$style|replace:".css":""}/img/iLogin.png" />
     <div id="uLoginOptions">
         <a href="tiki-remind_password.php">&raquo; {tr}recuperar senha{/tr}</a><br>
     </div>

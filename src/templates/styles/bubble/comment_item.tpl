@@ -19,7 +19,7 @@
 			       	{if ($tiki_p_remove_comments eq 'y' && $forum_mode ne 'y') || ($tiki_p_admin_forum eq 'y' and $forum_mode eq 'y')}  	
 			        	 {tooltip text="Deletar Comentario"}
 			        	 	<a class="pointer" href="{$comments_complete_father}comments_threshold={$comments_threshold}&amp;comments_threadId={$comment.threadId}&amp;comments_remove=1&amp;comments_offset={$comments_offset}&amp;comments_sort_mode={$comments_sort_mode}&amp;comments_maxComments={$comments_maxComments}&amp;comments_parentId={$comments_parentId}&amp;comments_style={$comments_style}">
-			        	 		<img alt="" src="styles/estudiolivre/iWikiRemove.png">
+			        	 		<img alt="" src="styles/{$style|replace:".css":""}/img/iWikiRemove.png">
 			        	 	</a>
 			        	 {/tooltip}
 			       	{/if}
@@ -27,7 +27,7 @@
 					{if $tiki_p_edit_comments eq 'y' || $user == $comment.userName || ($tiki_p_admin_forum eq 'y' and $forum_mode eq 'y')}
 						{tooltip text="Editar Comentario"}
 							<a href="{$comments_complete_father}comments_threadId={$comment.threadId}&amp;comments_threshold={$comments_threshold}&amp;comments_offset={$comments_offset}&amp;comments_sort_mode={$comments_sort_mode}&amp;comments_maxComments={$comments_maxComments}&amp;comments_parentId={$comments_parentId}&amp;comments_style={$comments_style}&amp;edit_reply=1#form">
-								<img src="styles/estudiolivre/iWikiEdit.png"/>
+								<img src="styles/{$style|replace:".css":""}/img/iWikiEdit.png"/>
 							</a>
 						{/tooltip}				
 					{/if}

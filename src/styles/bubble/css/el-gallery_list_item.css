@@ -1,0 +1,114 @@
+.gDownloadCount, .gStreamCount {
+	position:absolute;
+	top:0px;
+	width:19px;
+	text-align:center;
+	font-size:10px;
+	font-weight:bold;
+	padding:0px;
+}
+
+#gPlay, #gDownload {
+	float:left;
+	margin-right:1px;
+	text-align:center;
+	overflow:hidden;
+}
+
+#gTagsInformationContainer, #gInformation, #gNameAuthor, #gDownloadRating, #gRatingComments {
+	position:relative;
+	float:left;
+}
+
+#gLicense {
+	margin-right:3px;
+	margin-top:4px;
+}
+
+#gTags {
+	width:100%;
+	height:1em;
+	display:block;
+	background:#eff8e9;
+	position:absolute;
+	padding:2px 0px 3px 10px;
+	bottom:-15px;
+	overflow:hidden;
+}
+
+#gRatingComments {
+	margin:5px 0px 0px 15px;
+}
+
+#gEditDelete {
+	position:absolute;
+	right:-7px;
+	margin-top:5px;
+	margin-right:2px;
+	padding:3px;
+}
+
+#gThumb {
+	width:51px;
+	height:51px;
+}
+
+#gThumb img {
+	width:51px;
+	height:51px;
+}
+
+#gComments, #gRating {
+	width:100px;
+	text-align:center;
+}
+
+#gDownloadPlay {
+	width:50px;
+	margin:5px 0px 0px 0px;
+}
+
+#gNameAuthor {
+	margin-right:20px;
+	width:240px;
+}
+
+#gListItem {
+	position:relative;
+	font-size:10px;
+	height:60px;
+	margin:5px 5px 5px 5px;
+	border-top:1px solid #eaeaea;
+	border-left:1px solid #eaeaea;
+	border-right:2px solid #eaeaea;
+	border-bottom:2px solid #eaeaea;
+	padding:5px;
+	overflow:hidden;
+}
+
+#gName, #gAuthor {
+	padding-left:5px;
+	text-align:right;
+}
+
+#gName A {
+	font-weight:bold;
+	font-size:13px;
+}
+
+#gLicenseThumbContainer {
+	float:left;
+}
+
+#gLicenseThumbContainer div {
+	float:left;
+}
+
+#gAuthor A {
+	font-style:italic;
+}
+
+#gDownloadRating {
+	width:160px;
+}
+

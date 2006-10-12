@@ -1,138 +1,166 @@
 #searchOptionsCont a.linkbut {
-	color:			#a1a1a1;
-	font-size:		11px;
-	font-weight:		bold;
-	background-color:	#ebebeb;
-	display:		inline;
-	padding:		0px 2px 1px 2px;
+	color:#a1a1a1;
+	font-size:11px;
+	font-weight:bold;
+	background-color:#ebebeb;
+	display:inline;
+	padding:0px 2px 1px 2px;
 }
 
 #tiki-mid .wikitext {
-	text-align:	justify;
+	text-align:justify;
 }
 
 .aSaveCancel {
-	margin:		10px;
-	margin-top:	20px;
-	border:		1px solid #c2c2be;
-	text-align:	center;
-	padding:	5px 0 3px 0;
+	margin:10px;
+	margin-top:20px;
+	border:1px solid #c2c2be;
+	text-align:center;
+	padding:5px 0 3px 0;
 }
 
 .wikiEdit {
-	margin:		0px;
-	margin-top:	1px;
-	padding:	10px 5px 0px 5px;
-	border:		1px solid grey;
+	margin:0px;
+	margin-top:1px;
+	padding:10px 5px 0px 5px;
+	border:1px solid grey;
 }
 
 #label.wikiEdit {
-	padding:	5px 5px 0px 5px;
-	font-size:	16px;
-	position:	relative;
-	bottom:		0px;
-	border-bottom:	1px solid white;
+	padding:5px 5px 0px 5px;
+	font-size:16px;
+	position:relative;
+	bottom:0px;
+	border-bottom:1px solid white;
 }
 
 #wikiPreviewCont .image, #wikiEditCont .image {
-	border:	0;
+	border:0;
 }
 
 #search {
-	height:		42px;
-	position:	absolute;
-	top:		-15px;
-	right:		5px;
-	float:		right;
+	height:42px;
+	position:absolute;
+	top:-15px;
+	right:5px;
+	float:right;
 }
 
 #search .searchForm:hover .searchOptions {
-	left:	0px;
+	left:0px;
 }
 
 #search .searchForm:hover .searchMore {
-	left:	0px;
+	left:0px;
 }
 
 #edtComentario DIV, #edtIsMinor DIV, #edtPreviewAtt {
-	text-align:	left;
-	margin-top:	15px;
-	font-weight:	bold;
+	text-align:left;
+	margin-top:15px;
+	font-weight:bold;
 }
 
 #edtComentario INPUT {
-	width:	100%;
+	width:100%;
 }
 
 #maisOpcoes {
-	margin:	5px 0px 5px 20px;
+	margin:5px 0px 5px 20px;
 }
 
 #editwiki {
-	margin:	5px 0px 10px 0px;
-	width:	99%;
+	margin:5px 0px 10px 0px;
+	width:99%;
 }
 
 #wikiEditCont {
-	overflow:	hidden;
-	margin:		0px;
-	padding-top:	7px;
+	overflow:hidden;
+	margin:0px;
+	padding-top:7px;
 }
 
 #wikiPreviewCont INPUT, #wikiEditCont INPUT, #wikiEditCont TEXTAREA {
-	border:			1px inset rgb(233, 233, 174);
-	background-color:	#f1f1f1;
+	border:1px inset rgb(233, 233, 174);
+	background-color:#f1f1f1;
 }
 
 #edtSaveCancel {
-	text-align:	center;
-	margin-top:	15px;
+	text-align:center;
+	margin-top:15px;
 }
 
 #attention {
-	text-align:	center;
-	padding:	5px;
-	width:		35%;
-	position:	relative;
-	top:		-1px;
-	margin-right:	10px;
-	border:		1px solid grey;
-	border-bottom:	1px solid grey;
-	border-top:	1px solid white;
-	margin-left:	60%;
+	text-align:center;
+	padding:5px;
+	width:35%;
+	position:relative;
+	top:-1px;
+	margin-right:10px;
+	border:1px solid grey;
+	border-bottom:1px solid grey;
+	border-top:1px solid white;
+	margin-left:60%;
 }
 
 #wikiPreviewCont #attention {
-	padding:	5px;
-	text-align:	justify;
-	font-weight:	bold;
-	width:		45%;
-	float:		right;
-	position:	relative;
-	top:		-1px;
-	margin:		0px;
-	border:		1px solid grey;
-	border-bottom:	1px solid grey;
-	border-top:	1px solid white;
+	padding:5px;
+	text-align:justify;
+	font-weight:bold;
+	width:45%;
+	float:right;
+	position:relative;
+	top:-1px;
+	margin:0px;
+	border:1px solid grey;
+	border-bottom:1px solid grey;
+	border-top:1px solid white;
 }
 
 #attention #attentionSave {
-	text-align:	center;
+	text-align:center;
 }
 
 #editpageform {
-	padding:	0 10px 0 10px;
+	padding:0 10px 0 10px;
 }
 
 #wikiEditExtra {
-	margin-bottom:	10px;
+	margin-bottom:10px;
 }
 
 #labelRight {
-	float:		right;
-	padding:	0px;
-	padding-top:	2px;
-	font-size:	12px;
-	border:		0;
+	float:right;
+	padding:0px;
+	padding-top:2px;
+	font-size:12px;
+	border:0;
 }
 
+/*categorize.tpl*/
+#categorizator {
+	margin:5px 0px 0px 20px;
+	overflow:hidden;
+	width:50%;
+}
+
+/*freetag.tpl*/
+.simplebox {
+	background:#efefef;
+	border:1pt dashed #aaa;
+	font-family:monospace;
+	margin:5px;
+	margin-left:40px;
+	margin-right:40px;
+	padding:2px;
+	font-weight:bold;
+}
+
+#freetager {
+	text-align:right;
+}
+
+/*tiki-edit_help.tpl*/
+#editHelp {
+	float:right;
+	margin-right:50px;
+}

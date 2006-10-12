@@ -147,7 +147,7 @@
 	  		<div class="paginacao">
 				{if $comments_prev_offset >= 0}
 					<a class="prevnext" href="{$comments_complete_father}comments_threshold={$comments_threshold}&amp;comments_parentId={$comments_parentId}&amp;comments_offset={$comments_prev_offset}{$comments_sort_mode_param}&amp;comments_maxComments={$comments_maxComments}&amp;comments_style={$comments_style}">
-						<img src="styles/estudiolivre/iArrowGreyLeft.png">
+						<img src="styles/{$style|replace:".css":""}/img/iArrowGreyLeft.png">
 					</a>
 				{/if}
 				
@@ -155,7 +155,7 @@
 				
 				{if $comments_next_offset >= 0}
 					<a class="prevnext" href="{$comments_complete_father}comments_threshold={$comments_threshold}&amp;comments_parentId={$comments_parentId}&amp;comments_offset={$comments_next_offset}{$comments_sort_mode_param}&amp;comments_maxComments={$comments_maxComments}&amp;comments_style={$comments_style}">
-						<img src="styles/estudiolivre/iArrowGreyRight.png">
+						<img src="styles/{$style|replace:".css":""}/img/iArrowGreyRight.png">
 					</a>
 				{/if}
 				{if $direct_pagination eq 'y'}

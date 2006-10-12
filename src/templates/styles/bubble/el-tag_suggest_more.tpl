@@ -1,0 +1,1 @@
+<a class="gUpmore pointer" onclick="xajax_get_more_tags({$moreTagsOffset}, 10);">+10</a>

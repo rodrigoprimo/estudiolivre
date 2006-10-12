@@ -1,4 +1,3 @@
-{css}
 <div class="userMenu">
 	{assign var=display value="block"}
 	{assign var=imgCurrent value="Down"}
@@ -18,7 +17,7 @@
 				{assign var=imgChange value="Down"}	
 			{/if}
 				<span class="pointer" onclick="javascript:flip('module{$module_name}');toggleImage(document.getElementById('TArrow{$module_name}'),'iArrowGrey{$imgChange}.png');storeState('{$module_name}');">
-			        {$module_title}<img id="TArrow{$module_name}"  src="styles/estudiolivre/iArrowGrey{$imgCurrent}.png">
+			        {$module_title}<img id="TArrow{$module_name}"  src="styles/{$style|replace:".css":""}/img/iArrowGrey{$imgCurrent}.png">
 				</span>
 		{else}
 			{$module_title}
