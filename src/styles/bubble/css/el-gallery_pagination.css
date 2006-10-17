@@ -4,11 +4,6 @@
 	cursor:pointer;
 }
 
-#searchOptionsCont a.selected {
-	color:black;
-	background-color:#bebebe;
-}
-
 #listNav .selected {
 	font-weight:bold;
 }

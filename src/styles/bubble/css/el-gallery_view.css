@@ -1,8 +1,3 @@
-.aTagsEdit {
-	float:right;
-	margin-top:7px;
-}
-
 .gDownloadCount, .gStreamCount {
 	position:absolute;
 	top:0px;
@@ -17,20 +12,31 @@
 	height:3em;
 }
 
-.uMsgTxt {
-	padding:0 5px 0 0;
-	min-height:50px;
-}
-
-.uMsgDate, .uMsgDel, .uMsgAvatar {
+.gUpMoreOptionsName {
+	text-align:right;
+	padding-right:5px;
 	float:left;
+	width:94px;
+	text-decoration:underline;
 }
 
-.uMsgDate, .uMsgDel {
-	text-align:center;
-	float:right;
-	height:3em;
-	margin-right:2px;
+#gUpMoreOptions INPUT {
+	border:1px inset rgb(233, 233, 174);
+	padding:3px 0px 3px 3px;
+	font-size:12px;
+	font-family:Arial, Verdana, Helvetica, Lucida, Sans-Serif;
+	background-color:#f1f1f1;
+	margin-right:4px;
+	max-width:100px;
+}
+
+#gUserThumbStatus {
+	position:relative;
+	top:-55px;
+	left:55px;
+	font-size:14px;
+	display:none;
+	z-index:5;
 }
 
 .aTitleContRight {
@@ -60,12 +66,9 @@
 	margin-top:5px;
 }
 
-.uMsgAvatar {
-	margin-right:5px;
-}
-
-.uMsgAvatar IMG {
-	height:50px;
+.aTagsEdit {
+	float:right;
+	margin-top:7px;
 }
 
 .aItemsCont {
@@ -90,49 +93,14 @@
 	padding:5px 0 3px 0;
 }
 
-.gUpMoreOptionsName {
-	text-align:right;
-	padding-right:5px;
-	float:left;
-	width:94px;
-	text-decoration:underline;
-}
-
-.uMsgDate {
-	font-size:10px;
-}
-
 #aCommentsItemsCont .uMsgItem {
 	text-align:left;
 	margin-bottom:10px;
 	padding-bottom:3px;
 }
 
-.uMsgItem {
-	margin-top:5px;
-	border-bottom:1px solid #adadad;
-	overflow:hidden;
-}
-
-#gUserThumbStatus {
-	position:relative;
-	top:-55px;
-	left:55px;
-	font-size:14px;
-	display:none;
-	z-index:5;
-}
-
 #aCommentSend #uMsgSend {
 	margin-right:8px;
-}
-
-#uMsgSend {
-	margin-top:10px;
-	text-align:right;
-}
-
-#aNameAuthorDown {
 }
 
 #aDelete {
@@ -216,10 +184,6 @@
 	border-left:2px solid #c2c2be;
 }
 
-#editpostform h3 {
-	margin:0;
-}
-
 #aDown {
 	position:relative;
 	float:right;
@@ -252,29 +216,6 @@
 	float:left;
 }
 
-#uMsgSendInput {
-	height:20px;
-	width:80%;
-	border-top:2px solid #e9e9e9;
-	border-bottom:2px solid #e9e9e9;
-	border-left:2px solid #e9e9e9;
-	-moz-border-radius:8px 0px 0px 8px;
-	background-color:white;
-}
-
-#uMsgSendSubmit {
-	float:right;
-	display:block;
-	position:relative;
-	left:-2px;
-	padding-left:3px;
-	height:26px;
-	border:0px;
-	background-color:#e9e9e9;
-	-moz-border-radius:0px 8px 8px 0px;
-	cursor:pointer;
-}
-
 #aThumbLic {
 	position:absolute;
 	bottom:opx;
@@ -290,18 +231,11 @@
 	position:relative;
 }
 
-#gUpMoreOptions INPUT {
-	border:1px inset rgb(233, 233, 174);
-	padding:3px 0px 3px 3px;
-	font-size:12px;
-	font-family:Arial, Verdana, Helvetica, Lucida, Sans-Serif;
-	background-color:#f1f1f1;
-	margin-right:4px;
-	max-width:100px;
-}
-
 #aName {
 	font-size:18px;
 	font-weight:bold;
 }
 
+#editpostform h3 {
+	margin:0;
+}

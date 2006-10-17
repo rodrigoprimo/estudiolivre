@@ -1,4 +1,4 @@
-{css extra=el-gallery_metadata}
+{css extra=el-gallery_metadata,el-user_msg}
 <!-- el-gallery_view.rpl begin -->
 
 <script language="JavaScript" src="lib/js/freetags.js"></script>

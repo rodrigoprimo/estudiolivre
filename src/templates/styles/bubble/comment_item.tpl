@@ -1,4 +1,4 @@
-{css}
+{css extra=el-user_msg}
 {if $comment.doNotShow != 1 }
 	<a name="threadId{$comment.threadId}"></a>
 	<div class="comment">

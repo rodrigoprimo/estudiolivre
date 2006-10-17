@@ -1,3 +1,6 @@
+/*esse css, além do el-user_msg.tpl, é usado pelos:
+ el-gallery_view.tpl
+ comment_item.tpl*/
 .uMsgDate, .uMsgDel, .uMsgAvatar {
 	float:left;
 }
@@ -20,6 +23,10 @@
 	float:right;
 	height:3em;
 	margin-right:2px;
+}
+
+.uMsgAvatar {
+	float:left;
 }
 
 .uMsgDate {
@@ -54,12 +61,18 @@
 	cursor:pointer;
 }
 
-#aCommentSend #uMsgSend {
-	margin-right:8px;
-}
-
 #uMsgSend {
 	margin-top:10px;
 	text-align:right;
 }
 
+#aCommentSend #uMsgSend {
+	margin-right:8px;
+}
+
+/*el-gallery-view.tpl*/
+.uMsgItem {
+	margin-top:5px;
+	border-bottom:1px solid #adadad;
+	overflow:hidden;
+}
