@@ -1,7 +1,3 @@
-#tiki-mid .wikitext {
-	text-align:justify;
-}
-
 .aSaveCancel {
 	margin:10px;
 	margin-top:20px;
@@ -25,34 +21,23 @@
 	border-bottom:1px solid white;
 }
 
-#wikiPreviewCont .image, #wikiEditCont .image {
+#wikiEditCont .image {
 	border:0;
 }
 
-#search {
-	height:42px;
-	position:absolute;
-	top:-15px;
-	right:5px;
-	float:right;
+#edtComentario INPUT {
+	width:100%;
 }
 
-#search .searchForm:hover .searchOptions {
-	left:0px;
-}
-
-#search .searchForm:hover .searchMore {
-	left:0px;
-}
-
-#edtComentario DIV, #edtIsMinor DIV, #edtPreviewAtt {
+#edtComentario DIV, #edtIsMinor DIV {
 	text-align:left;
 	margin-top:15px;
 	font-weight:bold;
 }
 
-#edtComentario INPUT {
-	width:100%;
+#edtSaveCancel {
+	text-align:center;
+	margin-top:15px;
 }
 
 #maisOpcoes {
@@ -70,14 +55,9 @@
 	padding-top:7px;
 }
 
-#wikiPreviewCont INPUT, #wikiEditCont INPUT, #wikiEditCont TEXTAREA {
+#wikiEditCont INPUT, #wikiEditCont TEXTAREA {
 	border:1px inset rgb(233, 233, 174);
 	background-color:#f1f1f1;
-}
-
-#edtSaveCancel {
-	text-align:center;
-	margin-top:15px;
 }
 
 #attention {
@@ -91,20 +71,6 @@
 	border-bottom:1px solid grey;
 	border-top:1px solid white;
 	margin-left:60%;
-}
-
-#wikiPreviewCont #attention {
-	padding:5px;
-	text-align:justify;
-	font-weight:bold;
-	width:45%;
-	float:right;
-	position:relative;
-	top:-1px;
-	margin:0px;
-	border:1px solid grey;
-	border-bottom:1px solid grey;
-	border-top:1px solid white;
 }
 
 #attention #attentionSave {

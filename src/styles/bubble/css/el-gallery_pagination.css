@@ -1,10 +1,15 @@
-.searchOptions li.selected a {
-	color:black;
-	background-color:#bebebe;
-	cursor:pointer;
+#listNav {
+	font-size:12px;
 }
 
 #listNav .selected {
 	font-weight:bold;
 }
 
+/* para o pagination que aparece na página do usuário*/
+#moduleuGalleryItems #listNav {
+	position:relative;
+	top:-23px;
+	left:270px;
+	display:inline;
+}

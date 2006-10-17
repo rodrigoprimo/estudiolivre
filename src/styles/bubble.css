@@ -1,12 +1,12 @@
-/* general tags */
-html {
+/* tags gerais */
+HTML {
 	background-image:url(estudiolivre/bgGradientBlue.png);
 	background-repeat:repeat-x;
 	/*height:99.3%;*/
 	height:100%;
 }
 
-body {
+BODY {
 	min-height:100%;
 	margin: 0;
 	
@@ -28,7 +28,7 @@ A:hover {
 	color: black;
 }
 
-img {
+IMG {
 	border:0px;
 }
 
@@ -37,89 +37,22 @@ img {
 	margin:0px auto;
 	background-color:#FFF;
 	padding-top:21px;
-	padding-bottom:21px;
 }
 
-.tooltipCont {
-	margin-top:5px;
-	width:205px;
-}
-
-.tooltipTop {
-	height:18px;
-	background-image:url(estudiolivre/tooltipTop.png);	
-}
-
-.tooltipMid {
-	padding: 0 7px 0 7px;
-	background-image:url(estudiolivre/tooltipMid.png);	
-}
-
-.tooltipBottom {
-	height:15px;
-	background-image:url(estudiolivre/tooltipBottom.png);	
-}
-.center {
-	text-align:center;
-	
-}
-
-.right {
-	text-align:right;
-}
-
-.left {
-	text-align:left;
-}
-
-.uLittle {
-	font-size:90%
-}
-
-.sectionTitle {
-	padding-top: 3px;
-	margin:0 0 5px 0;
-	border-top: 2px solid #c2c2be;
-}
-
-.sectionTitle h1 {
-	display:inline;
-	font-size:13px;
-	font-weight:bold;
-}
-
-.sectionTitle h2 {
-	display:inline;
-	font-size:12px;
-	color: grey;
-}
-
+/* para fazer links 'falsos'*/
 .pointer {
 	cursor: pointer;
 }
 
-/* para fazer links 'falsos' com span*/
 span.pointer {
 	text-decoration:none;
 	color:grey;
+}
+span.pointer:hover {
+	color: black;
 }
 
 span.hiddenPointer {
 	cursor: pointer;
 	color:black;
-}
-
-span.pointer:hover {
-	color: black;
-}
-
-DIV.editable:hover {
-	background-color:#ffffd3;
-}
-
-INPUT.editable {
-	border: 1px inset rgb(233, 233, 174);
-	padding: 3px 0px 3px 3px;
-	background-color: #f1f1f1;
-	margin-right:4px;
 }

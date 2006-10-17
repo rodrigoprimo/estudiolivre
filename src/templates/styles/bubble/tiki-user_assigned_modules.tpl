@@ -1,4 +1,4 @@
-{css extra=list}
+{css only=list,tiki-user_preferences}
 <div id="userPrefs">
 <h1>
 	{tr}Modules{/tr}</a>

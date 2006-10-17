@@ -13,10 +13,6 @@
 	padding:2px;
 }
 
-#editpostform h3 {
-	margin:0;
-}
-
 #comments-title, #editpost2 {
 	width:95%;
 	border:1px inset rgb(233, 233, 174);
@@ -40,3 +36,6 @@
 	background-color:#d9d9d9;
 }
 
+#editpostform h3 {
+	margin:0;
+}

@@ -16,7 +16,7 @@ p.editdate {
 	padding-top:5px;
 }
 
-.wikitopline img {
+.wikitopline IMG {
 	margin-left:10px;
 }
 
@@ -26,32 +26,32 @@ p.editdate {
 	border-bottom:1px solid grey;
 }
 
-#wikitext h2 {
+#wikitext H2 {
 	font-size:14px;
 	text-transform:uppercase;
 	font-weight:bold;
 }
 
-#wikitext h3 {
+#wikitext H3 {
 	font-weight:bold;
 }
 
-#wikitext p {
+#wikitext P {
 	text-align:justify;
 	text-indent:2em;
 }
 
-#wikitext a:link {
+#wikitext A:link {
 	color:#808080;
 	text-decoration:underline;
 }
 
-#wikitext a:hover {
+#wikitext A:hover {
 	color:grey;
 	text-decoration:none;
 }
 
-#wikitext a:visited {
+#wikitext A:visited {
 	color:#93a3b2;
 	text-decoration:underline;
 }
@@ -60,15 +60,13 @@ p.editdate {
 	max-width:93%;
 }
 
-#wikitext a.wikinew {
+#wikitext A.wikinew {
 	color:red;
 	font-size:14px;
 }
 
 /* classe usada para o que estiver entre '-=' e '=-', tipo '-=titulo=-'*/
 .titlebar {
-	/*display:inline;*/
-	/*height:10px;*/
 	padding-left:10px;
 	margin: 0 auto;
 	margin-bottom:20px;
@@ -76,7 +74,6 @@ p.editdate {
 	font-variant: small-caps;
 	text-align:center;
 	border-top: 1px solid #aaaaaa;
-	/*border-bottom: 1px solid grey;*/
 	background-color:#eeeeee;
 }
 
@@ -86,7 +83,7 @@ p.editdate {
    	text-weight:bold;
 }
 
-#wikitext a.wikinew {
+#wikitext A.wikinew {
 	color: red;
 	font-size:14px;
 }
@@ -97,7 +94,6 @@ p.editdate {
   border: 1pt dashed #aaa;
   font-family: monospace;
 /*  white-space: pre;*/
-/*  margin: 1.33em 0px;*/
   margin:5px;
   margin-left: 40px;
   margin-right: 40px;
@@ -121,14 +117,4 @@ tt {
 	margin-left:5px;
 	margin-right:5px;
 	margin-bottom:0.2em;
-	/*font-size:12px;*/
-	/*font-weight:normal;*/
-	/*float:left;*/
-	/*margin-right:5px;*/
-	/*margin-top:2px;*/
-}
-
-/*pois o [+] no h1 fica muito em cima*/
-h1 .flipper {
-	margin-top:8px;
 }

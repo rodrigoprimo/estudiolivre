@@ -11,6 +11,19 @@
 	border:1px solid gray;
 }
 
+#userPrefs {
+	width:95%;
+	margin:0 auto;
+}
+
+#userPrefs FORM TABLE {
+	width:100%;
+}
+
+#userPrefs td.button {
+	text-align:center;
+}
+
 #userPrefs .form INPUT, #userPrefs .form SELECT {
 	border:1px inset rgb(233, 233, 174);
 	padding:1px 0px 1px 0px;
@@ -21,50 +34,9 @@
 	padding:0px;
 }
 
-.tabmark {
-	padding:2px;
-	font-weight:bold;
-	font-size:14px;
-	border:1px solid white;
-}
-
-.simplebox {
-	background:#efefef;
-	border:1pt dashed #aaa;
-	font-family:monospace;
-	margin:5px;
-	margin-left:40px;
-	margin-right:40px;
-	padding:2px;
-	font-weight:bold;
-}
-
-.hide {
-	display:none;
-}
-
-#userPrefs td.button {
-	text-align:center;
-}
-
 #userPrefs .button INPUT {
 	font-size:12px;
 	background-color:#d9d9d9;
-}
-
-#blogPosting .button {
-	border:0px;
-	font-size:12px;
-	background-color:#d9d9d9;
-}
-
-#userPrefs {
-	width:95%;
-	margin:0 auto;
-}
-
-#userPrefs FORM TABLE {
-	width:100%;
 }
 
 #userPrefs H1 {
@@ -73,3 +45,7 @@
 	margin:10px;
 }
 
+/*tiki-user_asigned_modules.css*/
+#editMods .centerCellCont {
+	text-align:center;
+}

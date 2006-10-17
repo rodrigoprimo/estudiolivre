@@ -1,4 +1,4 @@
-{css}
+{css extra=ajax_inputs}
 <!-- tiki-user_information.tpl begin -->
 
 <script language="JavaScript" src="lib/js/license.js"></script>
@@ -151,7 +151,7 @@
       </div>
       <div id="moduleuGalleryItems" class="uMainItemContainer" style="display:{$display}">
       {if sizeof($arquivos)}
-      	<div id="listNav" class="ulistNav">{include file="el-gallery_pagination.tpl"}</div>
+      	<div  id="listNav">{include file="el-gallery_pagination.tpl"}</div>
 		<div id="gListCont">{include file="el-gallery_section.tpl"}</div>
 	  {else}
 	  	{if $permission}

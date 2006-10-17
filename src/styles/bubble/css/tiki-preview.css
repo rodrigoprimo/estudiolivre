@@ -11,43 +11,19 @@
 	border-bottom:1px solid white;
 }
 
-#tiki-mid .wikitext {
-	text-align:justify;
+#wikiPreviewCont {
+	overflow:hidden;
+	padding-top:7px;
+	margin:10px 0px 20px 0px;
 }
 
-.aSaveCancel {
-	margin:10px;
-	margin-top:20px;
-	border:1px solid #c2c2be;
-	text-align:center;
-	padding:5px 0 3px 0;
-}
-
-#wikiPreviewCont .image, #wikiEditCont .image {
+#wikiPreviewCont .image {
 	border:0;
 }
 
-#edtComentario DIV, #edtIsMinor DIV, #edtPreviewAtt {
-	text-align:left;
-	margin-top:15px;
-	font-weight:bold;
-}
-
-#edtComentario INPUT {
-	width:100%;
-}
-
-#attention {
-	text-align:center;
-	padding:5px;
-	width:35%;
-	position:relative;
-	top:-1px;
-	margin-right:10px;
-	border:1px solid grey;
-	border-bottom:1px solid grey;
-	border-top:1px solid white;
-	margin-left:60%;
+#wikiPreviewCont INPUT {
+	border:1px inset rgb(233, 233, 174);
+	background-color:#f1f1f1;
 }
 
 #wikiPreviewCont #attention {
@@ -64,23 +40,8 @@
 	border-top:1px solid white;
 }
 
-#attention #attentionSave {
-	text-align:center;
-}
-
-#edtSaveCancel {
-	text-align:center;
+#edtPreviewAtt {
+	text-align:left;
 	margin-top:15px;
+	font-weight:bold;
 }
-
-#wikiPreviewCont INPUT, #wikiEditCont INPUT, #wikiEditCont TEXTAREA {
-	border:1px inset rgb(233, 233, 174);
-	background-color:#f1f1f1;
-}
-
-#wikiPreviewCont {
-	overflow:hidden;
-	padding-top:7px;
-	margin:10px 0px 20px 0px;
-}
-

@@ -50,7 +50,7 @@ You are most likely wanting to modify the top of your Tiki site. Please consider
 	</title>
     
 	<link rel="StyleSheet"  href="styles/{$style}" type="text/css" />
-  
+	<link rel="StyleSheet"  href="styles/{$style|replace:".css":""}/css/tooltip.css" type="text/css" />
 	{* --- CSS com fixes do IE --- *}
 	<!--[if lte IE 6]>
 		<link rel="StyleSheet"  href="styles/bubble/css/ie.css" type="text/css" />

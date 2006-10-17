@@ -1,3 +1,8 @@
+#searchContainer {
+	padding:5px 0px 0px 0px;
+	text-align:center;
+}
+
 #searchOptionsCont a.linkbut {
 	color:#a1a1a1;
 	font-size:11px;
@@ -13,11 +18,6 @@
 
 #searchResults .searchdesc {
 	margin-left:10px;
-}
-
-#searchContainer {
-	padding:5px 0px 0px 0px;
-	text-align:center;
 }
 
 #searchNoResults {

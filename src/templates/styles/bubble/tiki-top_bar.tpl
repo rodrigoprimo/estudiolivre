@@ -16,7 +16,7 @@
   	<div id="logo">
       <a href="/">
         {tooltip name="navegue-home" text="Ir para a Página Inicial"}
-          <img src="styles/{$style|replace:".css":""}/img/logoTop.png">
+          <img src="styles/{$style|replace:".css":""}/img/logoTop.png" alt="estudiolivre.org">
         {/tooltip}
       </a>
     </div>
@@ -32,11 +32,8 @@
         <li id="busca-usuarios" class="">{tooltip text="Buscar <b>usuári@s</b> do EstúdioLivre"}<a onclick="marcaBusca('usuarios')">{tr}user{/tr}</a>{/tooltip}</li>
 		<li id="busca-tags" class="">{tooltip text="Buscar conteúdos com uma <b>tag</b>"}<a onclick="marcaBusca('tags')">{tr}tag{/tr}</a>{/tooltip}</li>
 		<li id="busca-blogs" class="">{tooltip text="Buscar <b>blogs</b> do EstúdioLivre"}<a onclick="marcaBusca('blogs')">{tr}blog{/tr}</a>{/tooltip}</li>
-     {* <li id="busca-forum" class="">{tooltip name="buscar-forum" text="Buscar nos <b>fóruns</b> do EstúdioLivre"}<a onclick="marcaBusca('forum')">f&oacute;rum</a>{/tooltip}</li>
-      *}
       </ul>
       <input id="searchField" name="highlight" size="15" type="text" accesskey="s" value="{tr}Buscar{/tr}" onFocus="if(this.value=='{tr}Buscar{/tr}')this.value=''"/><input class="submit" type="image" name="search" src="styles/{$style|replace:".css":""}/img/bSearch.png"/>
-{*      <a class="searchMore" href="tiki-searchresults.php">mais opções de busca <span>+</span></a> *}
     </form>
   </div>
 </div>
@@ -59,15 +56,9 @@
     {tooltip name="entre-contato" text="Entre em contato - descubra os <b>canais de comunicação</b> com a comunidade"}<a href="tiki-index.php?page=contato&bl">{tr}contato{/tr}</a>{/tooltip}
     
   </div>
- {* <div id="topMenuLoading">
-	  <img src="styles/{$style|replace:".css":""}/img/iProgress.gif">
-  </div> *}
     
 	<div id="topMenuCubesContainer">
-		{*
-	      <li><div class="hiddenDescript" id="metareciclagem">metareciclagem</div><a href="http://xango.metareciclagem.org/"><img src="styles/{$style|replace:".css":""}/img/cubeBlue.png"></a></li>
-	      *}
-		
+	
 		{* Cores das Categorias *}
 		{assign var=gallery value="Green"}
 		{assign var=audio value="Orange"}

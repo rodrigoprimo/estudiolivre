@@ -1,27 +1,71 @@
-.uBlogItem {
-	margin-top:10px;
-	border-bottom:1px solid grey;
+.uMainContainer {
+	width:100%;
+	margin-bottom:10px;
 }
 
-.ulistNav {
-	position:relative;
-	top:-23px;
-	left:270px;
-	display:inline;
+#uContactKarmaAccount {
+	overflow:hidden;
+	margin:10px 0px 10px 0px;
+}
+
+#uContact {
+	text-align:left;
+}
+
+#uName {
+	text-align:center;
+	font-size:18px;
+	font-weight:bold;
+	margin-top:10px;
+}
+
+#uKarma {
+	margin-top:-5px;
+	margin-bottom:10px;
+}
+
+#uKarmaThumb {
+	border-right:2px solid #e3e3e1;
+	border-left:2px solid #e3e3e1;
+	text-align:center;
+}
+
+#uAccountInfo {
+	text-align:right;
 }
 
 .uKarmaImg {
 	margin-left:2px;
 }
 
-.uMainContainer {
-	width:100%;
-	margin-bottom:10px;
+.uContactInfoCont {
+	margin:2px;
+	padding:5px;
+	float:left;
+	width:30%;
 }
 
 .uContactItem {
 	display:block;
 	max-width:100%;
+}
+
+.uBlogItem {
+	margin-top:10px;
+	border-bottom:1px solid grey;
+}
+
+#uBlogItemText {
+	margin-left:10px;
+}
+
+#uBlogItemTitle h1 {
+	font-size:12px;
+	display:inline;
+}
+
+#uBlogItemBottom {
+	text-align:right;
 }
 
 #aDescriptionInfo .sectionTitle {
@@ -35,13 +79,6 @@
 
 .uMainItemContainer {
 	margin-left:10px;
-}
-
-.uContactInfoCont {
-	margin:2px;
-	padding:5px;
-	float:left;
-	width:30%;
 }
 
 .uMainTitle {
@@ -64,8 +101,8 @@
 	opacity:1.0;
 }
 
-#uBlogItemText {
-	margin-left:10px;
+.uLittle {
+	font-size:90%
 }
 
 #gUserThumbForm {
@@ -77,10 +114,6 @@
 	filter:alpha(opacity=0);
 	-moz-opacity:0.0;
 	opacity:0.0;
-}
-
-#uBlogItemBottom {
-	text-align:right;
 }
 
 #gUserThumbStatus {
@@ -97,42 +130,23 @@
 	cursor:pointer;
 }
 
-#uBlogItemTitle h1 {
-	font-size:12px;
-	display:inline;
-}
-
-#uName {
-	text-align:center;
-	font-size:18px;
-	font-weight:bold;
-	margin-top:10px;
-}
-
-#uKarma {
-	margin-top:-5px;
-	margin-bottom:10px;
-}
-
 #gListCont {
 	padding-right:10px;
 }
 
-#uContactKarmaAccount {
-	overflow:hidden;
-	margin:10px 0px 10px 0px;
+.sectionTitle {
+	padding-top: 3px;
+	margin:0 0 5px 0;
 }
 
-#listNav {
-	font-size:12px;
-}
-
-#listNav .selected {
+.sectionTitle h1 {
+	display:inline;
+	font-size:13px;
 	font-weight:bold;
 }
 
-#uKarmaThumb {
-	border-right:2px solid #e3e3e1;
-	border-left:2px solid #e3e3e1;
+.sectionTitle h2 {
+	display:inline;
+	font-size:12px;
+	color: grey;
 }
-

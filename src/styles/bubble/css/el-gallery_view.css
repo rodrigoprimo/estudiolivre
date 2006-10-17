@@ -239,3 +239,21 @@
 #editpostform h3 {
 	margin:0;
 }
+
+.sectionTitle {
+	padding-top: 3px;
+	margin:0 0 5px 0;
+	border-top: 2px solid #c2c2be;
+}
+
+.sectionTitle h1 {
+	display:inline;
+	font-size:13px;
+	font-weight:bold;
+}
+
+.sectionTitle h2 {
+	display:inline;
+	font-size:12px;
+	color: grey;
+}

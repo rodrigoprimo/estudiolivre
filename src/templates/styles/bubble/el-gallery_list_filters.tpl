@@ -46,17 +46,17 @@
     <div id="listOrder">
       {tooltip name="home-crescente-decrescente" text="Define ordenação crescente ou decrescente"}<img alt="" onClick="toggleSortArrow(this,'{if $sortDirection eq 'Up'}sortArrowDown.png{else}sortArrowUp.png{/if}')" 
       	   src="styles/{$style|replace:".css":""}/img/sortArrow{$sortDirection}.png" />{/tooltip}
-      {tooltip name="home-criterio-ordenacao" text="Modifica critério da ordenação"}<select style="decoration:none" onChange="setSortMode(this)">
-        <option value="data_publicacao" {if $sortMode eq 'data_publicacao'}selected{/if}>{tr}Date{/tr}</option>
-		<option value="rating" {if $sortMode eq 'rating'}selected{/if}>{tr}Estrelas{/tr}</option>
-		<option value="hits" {if $sortMode eq 'hits'}selected{/if}>{tr}Downloads{/tr}</option>
-		<option value="titulo" {if $sortMode eq 'titulo'}selected{/if}>{tr}Título{/tr}</option>
-		<option value="streamHits" {if $sortMode eq 'streamHits'}selected{/if}>{tr}Visualizações{/tr}</option>
-      </select>{/tooltip}
+      {tooltip name="home-criterio-ordenacao" text="Modifica critério da ordenação"}
+	      <select style="decoration:none" onChange="setSortMode(this)">
+	        <option value="data_publicacao" {if $sortMode eq 'data_publicacao'}selected{/if}>{tr}Date{/tr}</option>
+			<option value="rating" {if $sortMode eq 'rating'}selected{/if}>{tr}Estrelas{/tr}</option>
+			<option value="hits" {if $sortMode eq 'hits'}selected{/if}>{tr}Downloads{/tr}</option>
+			<option value="titulo" {if $sortMode eq 'titulo'}selected{/if}>{tr}Título{/tr}</option>
+			<option value="streamHits" {if $sortMode eq 'streamHits'}selected{/if}>{tr}Visualizações{/tr}</option>
+	      </select>
+      {/tooltip}
     </div>
-    <div  id="listNav">
-    	{include file="el-gallery_pagination.tpl"}
-    </div>
+   	<div  id="listNav">{include file="el-gallery_pagination.tpl"}</div>
   </div>
 </div>
 

@@ -1,4 +1,4 @@
-{css extra='tiki-view_blog_post_item'}
+{css only=tiki-view_blog_post_item,tiki-show_page}
 {include file='header.tpl'}
 
 {include file="blog-heading.tpl" nameOnly="y" title=$blog_data.title creator=$blog_data.user created=$blog_data.created id=$blogId postId=$postId}

@@ -34,21 +34,22 @@
 		{/tooltip}
 	</div>
 </div>
+
 <!-- Feature Wiki End -->
 	
-	{if $isIE}
-		{include file="ie_el-gallery_list_filters.tpl"}
-	{else}
-		{include file="el-gallery_list_filters.tpl"}
-	{/if}
+{if $isIE}
+	{include file="ie_el-gallery_list_filters.tpl"}
+{else}
+	{include file="el-gallery_list_filters.tpl"}
+{/if}
 
 <div id="gListCont">
 	{include file="el-gallery_section.tpl"}
 </div>
 <script language="JavaScript">init('{$find}')</script>
 
-	{* isso não rola por causa do AJAX. mas o nano vai arrumar.*}
-	{* include file="el-gallery_list_filters.tpl" *}
+{* isso não rola por causa do AJAX. mas o nano vai arrumar.*}
+{* include file="el-gallery_list_filters.tpl" *}
 	
 {include file="el-gallery_confirm_delete.tpl"}
 

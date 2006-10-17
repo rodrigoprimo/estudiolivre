@@ -1,33 +1,85 @@
+#tiki-top {
+	background-color:#FFF;
+}
+
+#topContainer {
+	position:relative;
+	height:15px;
+	background-color:#FFF;
+	padding:10px;
+}
+
+#logo {
+	position:absolute;
+	top:-15px;
+	left:10px;
+	float:left;
+	z-index:3;
+}
+
+/*os links do menu do site geral*/
+#topMenuGeneral {
+	margin-top:3px;
+	float:left;
+}
+
+#topMenu {
+	height:22px;
+	padding:0px 5px 0px 5px;
+	border-top:1px solid #c1dfeb;
+	border-bottom:1px solid #c1dfeb;
+	background-color:#f6fafc;
+	color:grey;
+	text-align:right;
+	overflow:hidden;
+}
+
+#topMenu A {
+	font-size:13px;
+	font-weight:bold;
+}
+
+/*a parte dos labs*/
+#topMenuCubesContainer {
+	position:relative;
+	margin-top:1px;
+	float:right;
+}
+
+#topMenuCubesContainer A {
+	margin-left:8px;
+}
+
+#grafilab, #videolab, #audiolab, #acervolivre {
+	position:relative;
+	top:-0.4em;
+}
+#audiolab {
+	color:#ffbc43;
+}
+#videolab {
+	color:#ff5247;
+}
+#grafilab {
+	color:#8c6db9;
+}
+#acervolivre {
+	color:#5a9834;
+}
+
+/*a busca*/
+#search {
+	height:42px;
+	position:absolute;
+	top:-15px;
+	right:5px;
+	float:right;
+}
+
 .searchForm {
 	float:right;
 	margin:0px;
 	padding:0px;
-}
-
-#search .searchForm:hover .searchOptions {
-	left:0px;
-}
-
-#search .searchForm:hover .searchMore {
-	left:0px;
-}
-
-.hiddenDescript {
-	display:inline;
-}
-
-.searchMore {
-	position:relative;
-	left:-9999px;
-	top:-5px;
-	width:220px;
-	display:block;
-	text-align:right;
-}
-
-.searchMore span {
-	font-size:12px;
-	background-color:#ebebeb;
 }
 
 .searchOptions {
@@ -57,85 +109,17 @@
 	cursor:pointer;
 }
 
-#topMenuGeneral {
-	margin-top:3px;
-	float:left;
+#search .searchForm:hover .searchOptions {
+	left:0px;
 }
 
-#search {
-	height:42px;
-	position:absolute;
-	top:-15px;
-	right:5px;
-	float:right;
+#search .searchForm:hover .searchMore {
+	left:0px;
 }
 
-#topMenu {
-	height:22px;
-	padding:0px 5px 0px 5px;
-	border-top:1px solid #c1dfeb;
-	border-bottom:1px solid #c1dfeb;
-	background-color:#f6fafc;
-	color:grey;
-	text-align:right;
-	overflow:hidden;
-}
-
-#topMenu A {
-	font-size:13px;
-	font-weight:bold;
-}
-
-#topMenuCubesContainer {
-	position:relative;
-	margin-top:1px;
-	float:right;
-}
-
-#topMenuCubesContainer A {
-	margin-left:8px;
-}
-
-#tiki-top {
-	background-color:#FFF;
-}
-
-#grafilab, #videolab, #audiolab, #acervolivre {
-	position:relative;
-	top:-0.4em;
-}
-
-#audiolab {
-	color:#ffbc43;
-}
-
-#topMenuLoading {
-	display:none;
-	margin-left:110px;
-	float:left;
-}
-
-#grafilab {
-	color:#8c6db9;
-}
-
-#logo {
-	position:absolute;
-	top:-15px;
-	left:10px;
-	float:left;
-	z-index:3;
-}
-
-#topContainer {
-	position:relative;
-	height:15px;
-	background-color:#FFF;
-	padding:10px;
-}
-
-#acervolivre {
-	color:#5a9834;
+.searchMore span {
+	font-size:12px;
+	background-color:#ebebeb;
 }
 
 #searchField, #searchFieldResults {
@@ -152,8 +136,3 @@
 	border-bottom:1px solid #bebebe;
 	border-right:0px;
 }
-
-#videolab {
-	color:#ff5247;
-}
-
