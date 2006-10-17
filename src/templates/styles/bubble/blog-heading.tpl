@@ -1,4 +1,4 @@
-{css}
+{css extra=list}
 <div id="blogHead">
 	<h1 onmouseover="tooltip('<b>{tr}Blog{/tr} {tr}Created by{/tr}:</b> {$creator} <br><b>{tr} on {/tr}:</b> {$created|date_format:"%H:%M - %d/%m/%y"}')" onmouseout="nd();">
 		{tr}Blog{/tr}: <a href="tiki-view_blog.php?blogId={$id}">{$title}</a>
