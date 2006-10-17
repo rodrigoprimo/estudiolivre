@@ -1,5 +1,5 @@
-{css}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bubble/Attic/tiki-view_forum.tpl,v 1.2 2006-10-12 00:29:24 rhwinter Exp $ *}
+{css extra=list}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bubble/Attic/tiki-view_forum.tpl,v 1.3 2006-10-17 17:45:48 rhwinter Exp $ *}
 <div id="viewForum">
 <h1>
 	{tr}Forum{/tr}: 

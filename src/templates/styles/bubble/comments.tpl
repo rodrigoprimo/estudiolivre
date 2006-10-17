@@ -1,4 +1,4 @@
-{css}
+{css extra=list}
 {if $forum_mode eq 'y'}
     <tr>
     <td>

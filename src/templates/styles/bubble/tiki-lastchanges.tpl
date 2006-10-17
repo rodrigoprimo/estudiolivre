@@ -1,4 +1,4 @@
-{css}
+{css extra=list}
 <div id="listLastChanges">
 	<h1>
 		{if $findwhat != ""}

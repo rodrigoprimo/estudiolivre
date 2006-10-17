@@ -1,4 +1,4 @@
-{css}
+{css extra=list}
 <div id="userPrefs">
 <h1>
 	{tr}Modules{/tr}</a>

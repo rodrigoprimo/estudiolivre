@@ -1,4 +1,4 @@
-{css}
+{css extra=list}
 <div id="blogs">
 	<h1>
 		{if !$find}
