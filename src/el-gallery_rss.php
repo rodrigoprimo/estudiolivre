@@ -51,7 +51,9 @@ else {
 	$changes["data"] = $elgallib->list_all_uploads($type, 0, 10, $dateId.'_desc', $userName);
 }
 
-$base_url = "http://" . $_SERVER['HTTP_HOST'] .  $_SERVER['REQUEST_URI'] . "repo/";
+$base_url = 'http://' . $_SERVER['HTTP_HOST'] .  $_SERVER['REQUEST_URI'];
+$base_url = preg_replace('/\/el-gallery_rss.php.*$/','',$base_url);
+$base_url .= '/repo/';
 
 for ($i=0; $i < sizeof($changes["data"]); $i++) {
 	$changes["data"][$i]["enclosure"] = array("url"=>$base_url . $changes["data"][$i]["arquivo"],
