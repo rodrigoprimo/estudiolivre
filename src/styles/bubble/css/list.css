@@ -24,6 +24,10 @@
 	font-weight:bold;
 }
 
+#users td.heading a {
+	text-decoration:none;
+}
+
 #viewForum td.heading {
 	font-weight:bold;
 	background:#c1c1c1;

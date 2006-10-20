@@ -1,5 +1,5 @@
 {css only=list}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bubble/Attic/tiki-list_users.tpl,v 1.3 2006-10-17 17:45:48 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bubble/Attic/tiki-list_users.tpl,v 1.4 2006-10-20 19:58:03 rhwinter Exp $ *}
 <div id="users">
 <h1>
 	{if !$find}
@@ -45,17 +45,17 @@
 			{tooltip text="Clique para que a listagem seja por <b>ordem alfabética</b> de nome de usuári@"}
 			<a href="tiki-list_users.php?{if $find}find={$find}&amp;{/if}offset={$offset}&amp;sort_mode={if $sort_mode eq 'login_desc'}login_asc{else}login_desc{/if}" class="userlistheading">
 				<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'login_desc'}ArrowUp{elseif $sort_mode eq 'login_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+				{tr}User{/tr}
 			</a>
 			{/tooltip}
-			{tr}User{/tr}
 		</td>
 		<td class="heading">
 			{tooltip text="Clique para que a listagem seja por <b>ordem alfabética</b> de nome completo"}
 			<a class="userlistheading" href="tiki-list_users.php?{if $find}find={$find}&amp;{/if}offset={$offset}&amp;sort_mode={if $sort_mode eq 'realName_desc'}realName_asc{else}realName_desc{/if}">
 				<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'realName_desc'}ArrowUp{elseif $sort_mode eq 'realName_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+				{tr}Real Name{/tr}
 			</a>
 			{/tooltip}
-			{tr}Real Name{/tr}
 		</td>
 		{*================
 		<td class="heading">
@@ -69,24 +69,21 @@
 			{tooltip text="Clique para que a listagem seja por <b>ordem alfabética</b> de localização"}
 			<a class="userlistheading" href="tiki-list_users.php?{if $find}find={$find}&amp;{/if}offset={$offset}&amp;sort_mode={if $sort_mode eq 'local_desc'}local_asc{else}local_desc{/if}">
 				<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'local_desc'}ArrowUp{elseif $sort_mode eq 'local_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+				{tr}Localização{/tr}
 			</a>
 			{/tooltip}
-			{tr}Localização{/tr}
 		</td>
 		<td class="heading">
-			{* LEIA: pq o score_desc é o sorting por data de entrada do membro eu não sei! mas É!!! *}
-			{if $sort_mode eq 'score_desc'}
-				<img src="styles/{$style|replace:".css":""}/img/sortArrowDown.png">
-			{else}
-				<a class="userlistheading" href="tiki-list_users.php">
-					<img src="styles/{$style|replace:".css":""}/img/sortGreyArrowDown.png">
+			{tooltip text="Clique para que a listagem seja por <b>ordem cronológica</b> de filiação ao site"}
+				<a class="userlistheading" href="tiki-list_users.php?{if $find}find={$find}&amp;{/if}offset={$offset}&amp;sort_mode={if $sort_mode eq 'registrationDate_asc'}registrationDate_desc{else}registrationDate_asc{/if}">
+					<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'registrationDate_asc'}ArrowUp{elseif $sort_mode eq 'score_desc' || $sort_mode eq 'registrationDate_desc'}ArrowDown{else}GreyArrowDown{/if}.png">
+					{tr}Membro desde{/tr}
 				</a>
-			{/if}
-			{tr}Membro desde{/tr}
+			{/tooltip}				
 		</td>		
-{if $feature_score eq 'y'}
+{*if $feature_score eq 'y'}
   <td class="heading"><a class="userlistheading" href="tiki-list_users.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'score_desc'}score_asc{else}score_desc{/if}">{tr}Score{/tr}</a>&nbsp;</td>
-{/if}
+{/if*}
 
 {*==============
   <td class="heading">{tr}Country{/tr}&nbsp;</td>
