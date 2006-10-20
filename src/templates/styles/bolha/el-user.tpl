@@ -50,7 +50,7 @@
 		        {ajax_input permission=$permission id="site" class="uContactItem" value=$site default="{tr}Site{/tr}" display="block" truncate='17'}        
 		    {/tooltip}
         {else}
-	        <a class="uContactItem" href="http://{$site|replace:'http://':''}" display="block">{$site|replace:'http://':''|truncate:22:"(...)":true}</a>
+	        <a class="uContactItem" href="{if preg_match('/https?:\/\//',$site)}{$site}{else}http://{$site}{/if}" display="block">{$site|replace:'http://':''|truncate:22:"(...)":true}</a>
 	    {/if}
 		<br />
         {if $permission}
