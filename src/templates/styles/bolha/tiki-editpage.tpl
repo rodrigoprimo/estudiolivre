@@ -1,5 +1,5 @@
 {css}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bubble/Attic/tiki-editpage.tpl,v 1.2 2006-10-12 00:29:24 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/tiki-editpage.tpl,v 1.1 2006-10-20 21:11:33 rhwinter Exp $ *}
 
 {*popup_init src="lib/overlib.js"*}
 

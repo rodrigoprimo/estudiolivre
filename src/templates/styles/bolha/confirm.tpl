@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bubble/Attic/confirm.tpl,v 1.2 2006-10-12 00:29:24 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/confirm.tpl,v 1.1 2006-10-20 21:11:33 rhwinter Exp $ *}
 <br/>
 <br/>
 <div class="cbox">

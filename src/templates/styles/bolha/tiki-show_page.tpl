@@ -1,5 +1,5 @@
 {css}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bubble/Attic/tiki-show_page.tpl,v 1.2 2006-10-12 00:29:24 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/tiki-show_page.tpl,v 1.1 2006-10-20 21:11:33 rhwinter Exp $ *}
 
 <div {if $user_dbl eq 'y' and $dblclickedit eq 'y' and $tiki_p_edit eq 'y'}ondblclick="location.href='tiki-editpage.php?page={$page|escape:"url"}';"{/if}>	
 	<div class="wikitopline"><!--do contextualMenu onclick="cancelBubble(event)"-->
