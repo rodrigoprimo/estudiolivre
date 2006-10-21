@@ -34,7 +34,7 @@
 		{if $tooltipText}
 		<br />
 			{tooltip name="list-i-play" text=$tooltipText}
-				<span class="pointer" alt="" onClick="xajax_streamFile({$arquivo.arquivoId},'{$arquivo.tipo}', getPageSize()[0])">
+				<span class="pointer" alt="" onClick="xajax_streamFile({$arquivo.arquivoId},'{$arquivo.tipo}', getPageSize()[0]);nd();">
 					ver
 				</span>
 			{/tooltip}
