@@ -1,4 +1,4 @@
-{css}
+{css extra=tiki-show_page}
 <!-- el-gallery_home.tpl begin -->
 
 <script language="JavaScript" src="lib/js/el_array.js"></script>
@@ -43,9 +43,8 @@
 	{include file="el-gallery_list_filters.tpl"}
 {/if}
 
-<div id="gListCont">
-	{include file="el-gallery_section.tpl"}
-</div>
+{include file="el-gallery_section.tpl"}
+
 <script language="JavaScript">init('{$find}')</script>
 
 {* isso não rola por causa do AJAX. mas o nano vai arrumar.*}

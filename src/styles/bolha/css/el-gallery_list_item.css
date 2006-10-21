@@ -1,114 +1,83 @@
-.gDownloadCount, .gStreamCount {
-	position:absolute;
-	top:0px;
-	width:19px;
-	text-align:center;
-	font-size:10px;
-	font-weight:bold;
-	padding:0px;
-}
-
-#gPlay, #gDownload {
-	float:left;
-	margin-right:1px;
-	text-align:center;
-	overflow:hidden;
-}
-
-#gTagsInformationContainer, #gInformation, #gNameAuthor, #gDownloadRating, #gRatingComments {
+.listItem {
 	position:relative;
-	float:left;
+	border-top:1px solid #91cd6d;
+	/*border-bottom:1px solid #91cd6d;*/
+	margin:0 0 5px 0;
+	padding:5px 0 5px 0;
 }
 
-#gLicense {
-	margin-right:3px;
-	margin-top:4px;
-}
-
-#gTags {
-	width:100%;
-	height:1.7em;
-	display:block;
-	background:#eff8e9;
+.listLeft {
 	position:absolute;
-	padding:0 0 0 10px;
-	bottom:-15px;
-	overflow:hidden;
-}
-
-#gRatingComments {
-	margin:5px 0px 0px 15px;
-}
-
-#gEditDelete {
-	position:absolute;
-	right:-7px;
-	margin-top:5px;
-	margin-right:2px;
-	padding:3px;
-}
-
-#gThumb {
-	width:51px;
-	height:51px;
-}
-
-#gThumb img {
-	width:51px;
-	height:51px;
-}
-
-#gComments, #gRating {
+	font-size:14pt;
+	text-align:center;
 	width:100px;
-	text-align:center;
+	line-height:1.5em;
 }
 
-#gDownloadPlay {
-	width:50px;
-	margin:5px 0px 0px 0px;
+.listLeft .listRating{
+	position:absolute;
+	top:2px;
+	left:5px;
 }
 
-#gNameAuthor {
-	margin-right:20px;
-	width:240px;
+.listItem h2 {
+	margin:0;
+	padding:0;
+	padding-left:111px;
+	width:420px;
+	margin-left:2px;
+	font-family:Verdana;
 }
 
-#gListItem {
-	position:relative;
-	font-size:10px;
-	height:60px;
-	margin:5px 5px 5px 5px;
-	border-top:1px solid #eaeaea;
-	border-left:1px solid #eaeaea;
-	border-right:2px solid #eaeaea;
-	border-bottom:2px solid #eaeaea;
-	padding:5px;
-	overflow:hidden;
+.listItem h2 a {
+	line-height:1.5em;
 }
 
-#gName, #gAuthor {
-	padding-left:5px;
-	text-align:right;
+.listItem .listInfo {
+	padding-left:101px;
+	width:400px;
+	margin-left:20px;
 }
 
-#gName A {
-	font-weight:bold;
-	font-size:13px;
-}
 
-#gLicenseThumbContainer {
-	float:left;
-}
-
-#gLicenseThumbContainer div {
-	float:left;
-}
-
-#gAuthor A {
+.listItem .listInfo h3{
+	font-family:Trebuchet MS;
+	font-size:12pt;
+	font-weight:normal;
 	font-style:italic;
+	margin-top:0.5em;
+	margin-bottom:0.2em;
 }
 
-#gDownloadRating {
-	width:160px;
+.listItem .listInfo h4 {
+display:table;
+width:100%;
+	margin:0;
+	margin-top:10px;
+	font-size:8pt;
+	color:#79c245;
+	font-family:Arial Black;
 }
 
+.listItem .asRow {
+display:table-row;
+}
+
+.listItem .listInfo h4 span.lef, .listItem .listInfo h4 span.mid, .listItem .listInfo h4 span.rig{
+display:table-cell;
+width:33%;
+vertical-align:middle;
+}
+.listItem .listInfo h4 span.mid{
+text-align:center;
+}
+.listItem .listInfo h4 span.rig{
+text-align:right;
+}
+
+.listItem .listInfo h4 span em {
+	color:black;
+	font-style:normal;
+	font-family:Arial;
+	font-weight:normal;
+}
