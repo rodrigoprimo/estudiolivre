@@ -14,6 +14,10 @@
 	line-height:1.5em;
 }
 
+.listLeft img {
+	max-width:100px;
+}
+
 .listLeft .listRating{
 	position:absolute;
 	top:2px;
