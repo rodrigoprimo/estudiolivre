@@ -106,14 +106,10 @@
 #aDelete {
 	height:15px;
 	float:right;
-	filter:alpha(opacity=40);
-	-moz-opacity:.40;
 	opacity:.40;
 }
 
 #aDelete:hover {
-	filter:alpha(opacity=100);
-	-moz-opacity:1;
 	opacity:1;
 }
 
