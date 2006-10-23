@@ -64,8 +64,10 @@ for ($i=0; $i < sizeof($changes["data"]); $i++) {
 			  	   							  "lenght"=>$changes["data"][$i]["tamanho"],
 			       							  "type"=>$changes["data"][$i]["formato"]);
 	
+	$changes["data"][$i][$descId] = $elgallib->parse_data($changes["data"][$i][$descId]);
+	
 	if($changes["data"][$i]["thumbnail"]){
-		$changes["data"][$i]["$descId"]='<img src="' . $base_url . $changes["data"][$i]["thumbnail"].'" align="left">'.$changes["data"][$i]["$descId"];	
+		$changes["data"][$i][$descId]='<img src="' . $base_url . $changes["data"][$i]["thumbnail"].'" align="left">'.$changes["data"][$i][$descId];	
 	}
 }
 
