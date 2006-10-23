@@ -25,9 +25,13 @@ if (isset($_REQUEST['user']) && $_REQUEST['user']) {
 	$userName = '';
 }
 
+if(isset($_REQUEST['types'])) { $_REQUEST['type'] = $_REQUEST['types']; }
+if(isset($_REQUEST['tipos'])) { $_REQUEST['type'] = $_REQUEST['tipos']; }
+if(isset($_REQUEST['tipo'])) { $_REQUEST['type'] = $_REQUEST['tipo']; }
+
 if (isset($_REQUEST['type']) && $_REQUEST['type']) {
-	$type = array($_REQUEST['type']);
-	$title .= " ($type)";
+	$type = split(',', $_REQUEST['type']);
+	$title .= " (" . $_REQUEST['type'] . ")";
 } else {
 	$type = array('Audio', 'Video', 'Imagem', 'Texto');
 }
