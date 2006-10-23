@@ -11,15 +11,19 @@
 	{if !preg_match("/.*\.svg$/i", $arquivo.arquivo)}
 		{assign var=tooltipText value="{tr}Veja essa imagem{/tr}"}
 	{/if}
+{else}
+	{assign var=tooltipText value=0}
 {/if}
 
 <div class="listItem">
 	<div class="listLeft">
-		{if $arquivo.thumbnail}
-			<img src="repo/{$arquivo.thumbnail|escape:'url'}">
-		{else}
-			<img src="styles/{$style|replace:".css":""}/img/iThumb{$arquivo.tipo}.png">
-		{/if}	
+		<a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}">
+			{if $arquivo.thumbnail}
+				<img src="repo/{$arquivo.thumbnail|escape:'url'}">
+			{else}
+				<img src="styles/{$style|replace:".css":""}/img/iThumb{$arquivo.tipo}.png">
+			{/if}
+		</a>
 		<img onmouseout="nd();" 
 			 onmouseover="tooltip('{$arquivo.ratings} {tr}voto{/tr}{if ($arquivo.ratings>1 || $arquivo.ratings<1) }s{/if}<br>{tr}Avaliação - entre na página do arquivo para votar{/tr}')"
 			 alt="{$arquivo.rating} estrelas"
@@ -78,15 +82,17 @@
 				<a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}">
 					({tr}ler mais{/tr}...)
 				</a>
-			{else}
+			{elseif $arquivo.descricao}
 				{$arquivo.descricao}
+			{else}
+				{tr}Arquivo sem descrição{/tr}!
 			{/if}
 		</h3>
 		
 		<h4>
 			<div class="asRow">
 				<span class="lef">
-					{tr}baixado{/tr}: <em>{$arquivo.hits} {if $arquivo.streamHits == 1 }{tr}vez{/tr}{else}{tr}vezes{/tr}{/if}</em>
+					{tr}baixado{/tr}: <em>{$arquivo.hits} {if $arquivo.hits == 1 }{tr}vez{/tr}{else}{tr}vezes{/tr}{/if}</em>
 					{if $tooltipText}
 						<br />
 						{tr}visto{/tr}: <em>{$arquivo.streamHits} {if $arquivo.streamHits == 1 }{tr}vez{/tr}{else}{tr}vezes{/tr}{/if}</em>

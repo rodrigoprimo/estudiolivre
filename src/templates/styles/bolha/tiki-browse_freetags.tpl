@@ -1,4 +1,4 @@
-{css}
+{css extra=el-gallery_list_item,el-gallery_list_filters}
 <!-- tiki-browse_freetags.tpl Begin -->
 
 <div id="browseFreeTags">

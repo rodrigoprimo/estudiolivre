@@ -25,6 +25,9 @@
 }
 
 .forumpost h1#threadTitle {
+	border:none;
+	text-align:left;
+	background:none;
 	font-weight:normal;
 	font-variant:small-caps;
 	border-bottom:1px solid grey;

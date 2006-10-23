@@ -50,7 +50,7 @@
 				{/if}
 			</div>
 			<h1 id="threadTitle">
-					{$thread_info.title}
+					<span style="float:left">{$thread_info.userName|avatarize}</span>{$thread_info.title}
 			</h1>
 		</div>
 	</div>	  

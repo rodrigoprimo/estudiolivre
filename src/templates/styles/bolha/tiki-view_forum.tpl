@@ -1,5 +1,5 @@
-{css extra=list}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/tiki-view_forum.tpl,v 1.1 2006-10-20 21:11:33 rhwinter Exp $ *}
+{css extra=list,tiki-view_forum_thread}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/tiki-view_forum.tpl,v 1.2 2006-10-23 21:43:08 rhwinter Exp $ *}
 <div id="viewForum">
 <h1>
 	{tr}Forum{/tr}: 
@@ -49,28 +49,19 @@ a moderator approves it.{/tr}</small>
 
 
 {if $tiki_p_forum_post_topic eq 'y'}
-  {if $comment_preview eq 'y'}
-  <b>{tr}Preview{/tr}</b>
-  <div class="commentscomment">
-  <div class="commentheader">
-
-  <div class="commentheader">
-  <span class="commentstitle">{$comments_preview_title}</span><br />
-  {tr}by{/tr} {$user}
-  </div>
-
-  
-  <div class="commentheader">
-  </div>
-
-
-  </div>
-  <div class="commenttext">
-  {$comments_preview_data}
-  <br />
-  </div>
-  </div>
-  {/if}
+<div id='forumpost' {if ($comment_preview neq 'y' && $openpost neq 'y' )}style="display:none"{/if}>
+	{if $comment_preview eq 'y'}
+		<h1>{tr}Preview{/tr}</h1>
+		<div class="forumpost">
+			<h1 id="threadTitle">{$comments_preview_title}</h1>
+			<div class="postbody">
+				{$comments_preview_data}
+			</div>
+			<div class="postbottom">
+				{tr}posted by{/tr}: {$user}
+			</div>
+		</div>
+	{/if}
 
   {if $warning eq 'y'}
   <br /><br />
@@ -78,11 +69,11 @@ a moderator approves it.{/tr}</small>
   </div>
   <br />
   {/if}
+  
 
-<div id='forumpost' style="display:none">
   <br />
   {if $comments_threadId > 0}
-    {tr}Editing comment{/tr}: {$comments_threadId} (<a class="forumbutlink" href="tiki-view_forum.php?openpost=1&amp;forumId={$forum_info.forumId}&amp;comments_threadId=0&amp;comments_threshold={$comments_threshold}&amp;comments_offset={$comments_offset}&amp;comments_sort_mode={$comments_sort_mode}&amp;comments_maxComments={$comments_maxComments}">{tr}post new comment{/tr}</a>)
+    <h1>{tr}Editing comment{/tr}: {$comment_title|escape}</h1> {*(<a class="forumbutlink" href="tiki-view_forum.php?openpost=1&amp;forumId={$forum_info.forumId}&amp;comments_threadId=0&amp;comments_threshold={$comments_threshold}&amp;comments_offset={$comments_offset}&amp;comments_sort_mode={$comments_sort_mode}&amp;comments_maxComments={$comments_maxComments}">{tr}post new comment{/tr}</a>)*}
     {/if}
     <form method="post" enctype="multipart/form-data" action="tiki-view_forum.php" id="editpageform">
     <input type="hidden" name="comments_offset" value="{$comments_offset|escape}" />
@@ -91,38 +82,31 @@ a moderator approves it.{/tr}</small>
     <input type="hidden" name="comments_sort_mode" value="{$comments_sort_mode|escape}" />
     <input type="hidden" name="forumId" value="{$forumId|escape}" />
 
-      {tr}Title{/tr}
-	  <input type="text" name="comments_title" value="{$comment_title|escape}" />
-	  &nbsp;&nbsp;&nbsp;&nbsp;
-    {if $forum_info.forum_use_password ne 'n'}
-      {tr}Password{/tr}  	
-    		<input type="password" name="password" />
-      &nbsp;&nbsp;&nbsp;&nbsp;
-    {/if}
-	  {tr}Type{/tr}
-      <select name="comment_topictype">
+      {tr}Title{/tr}: <input type="text" name="comments_title" value="{$comment_title|escape}" />
+	  {tr}Type{/tr}: 
+	  	<select name="comment_topictype">
 	      <option value="n" {if $comment_topictype eq 'n'}selected="selected"{/if}>{tr}normal{/tr}</option>
 	      {if $tiki_p_admin_forum eq 'y'}
-	      <option value="a" {if $comment_topictype eq 'a'}selected="selected"{/if}>{tr}announce{/tr}</option>
-	      <option value="h" {if $comment_topictype eq 'h'}selected="selected"{/if}>{tr}hot{/tr}</option>
-	      <option value="s" {if $comment_topictype eq 's'}selected="selected"{/if}>{tr}sticky{/tr}</option>
-	      <option value="l" {if $comment_topictype eq 'l'}selected="selected"{/if}>{tr}locked{/tr}</option>
+		      <option value="a" {if $comment_topictype eq 'a'}selected="selected"{/if}>{tr}announce{/tr}</option>
+		      <option value="h" {if $comment_topictype eq 'h'}selected="selected"{/if}>{tr}hot{/tr}</option>
+		      <option value="s" {if $comment_topictype eq 's'}selected="selected"{/if}>{tr}sticky{/tr}</option>
+		      <option value="l" {if $comment_topictype eq 'l'}selected="selected"{/if}>{tr}locked{/tr}</option>
 	      {/if}
-	      </select>
-	      {if $forum_info.topic_smileys eq 'y'}
-	      <select name="comment_topicsmiley">
-	      <option value="" {if $comment_topicsmiley eq ''}selected="selected"{/if}>{tr}no feeling{/tr}</option>
-	      <option value="icon_frown.gif" {if $comment_topicsmiley eq 'icon_frown.gif'}selected="selected"{/if}>{tr}frown{/tr}</option>
-	      <option value="icon_exclaim.gif" {if $comment_topicsmiley eq 'icon_exclaim.gif'}selected="selected"{/if}>{tr}exclaim{/tr}</option>
-	      <option value="icon_idea.gif" {if $comment_topicsmiley eq 'icon_idea.gif'}selected="selected"{/if}>{tr}idea{/tr}</option>
-	      <option value="icon_mad.gif" {if $comment_topicsmiley eq 'icon_mad.gif'}selected="selected"{/if}>{tr}mad{/tr}</option>      
-	      <option value="icon_neutral.gif" {if $comment_topicsmiley eq 'icon_neutral.gif'}selected="selected"{/if}>{tr}neutral{/tr}</option>      
-	      <option value="icon_question.gif" {if $comment_topicsmiley eq 'icon_question.gif'}selected="selected"{/if}>{tr}question{/tr}</option>      
-	      <option value="icon_sad.gif" {if $comment_topicsmiley eq 'icon_sad.gif'}selected="selected"{/if}>{tr}sad{/tr}</option>      
-	      <option value="icon_smile.gif" {if $comment_topicsmiley eq 'icon_smile.gif'}selected="selected"{/if}>{tr}happy{/tr}</option>
-	      <option value="icon_wink.gif" {if $comment_topicsmiley eq 'icon_wink.gif'}selected="selected"{/if}>{tr}wink{/tr}</option>
-      </select>
-      {/if}
+	   </select>
+		      {if $forum_info.topic_smileys eq 'y'}
+			      <select name="comment_topicsmiley">
+				      <option value="" {if $comment_topicsmiley eq ''}selected="selected"{/if}>{tr}no feeling{/tr}</option>
+				      <option value="icon_frown.gif" {if $comment_topicsmiley eq 'icon_frown.gif'}selected="selected"{/if}>{tr}frown{/tr}</option>
+				      <option value="icon_exclaim.gif" {if $comment_topicsmiley eq 'icon_exclaim.gif'}selected="selected"{/if}>{tr}exclaim{/tr}</option>
+				      <option value="icon_idea.gif" {if $comment_topicsmiley eq 'icon_idea.gif'}selected="selected"{/if}>{tr}idea{/tr}</option>
+				      <option value="icon_mad.gif" {if $comment_topicsmiley eq 'icon_mad.gif'}selected="selected"{/if}>{tr}mad{/tr}</option>      
+				      <option value="icon_neutral.gif" {if $comment_topicsmiley eq 'icon_neutral.gif'}selected="selected"{/if}>{tr}neutral{/tr}</option>      
+				      <option value="icon_question.gif" {if $comment_topicsmiley eq 'icon_question.gif'}selected="selected"{/if}>{tr}question{/tr}</option>      
+				      <option value="icon_sad.gif" {if $comment_topicsmiley eq 'icon_sad.gif'}selected="selected"{/if}>{tr}sad{/tr}</option>      
+				      <option value="icon_smile.gif" {if $comment_topicsmiley eq 'icon_smile.gif'}selected="selected"{/if}>{tr}happy{/tr}</option>
+				      <option value="icon_wink.gif" {if $comment_topicsmiley eq 'icon_wink.gif'}selected="selected"{/if}>{tr}wink{/tr}</option>
+			      </select>
+		      {/if}
       <br />
     {if $forum_info.topic_summary eq 'y'}
     	{tr}Summary{/tr}
@@ -135,14 +119,11 @@ a moderator approves it.{/tr}</small>
 		{tr}Smileys{/tr}
 		{include file="tiki-smileys.tpl" area_name='editpost'} 
     {/if}
-      {tr}Comment{/tr}
     	<br />
-			{include file="textareasize.tpl" area_name='editpost' formId='editpageform'}
-
+		{include file="textareasize.tpl" area_name='editpost' formId='editpageform'}
 	{if $feature_forum_parse eq 'y'}
-	{include file=tiki-edit_help_tool.tpl area_name="editpost"}
-	{/if}
-			
+		{include file=tiki-edit_help_tool.tpl area_name="editpost"}
+	{/if}		
       <textarea id='editpost' name="comments_data" rows="{$rows}" cols="{$cols}">{$comment_data|escape}</textarea>
       <input type="hidden" name="rows" value="{$rows}"/>
 	  <input type="hidden" name="cols" value="{$cols}"/>    
@@ -158,8 +139,7 @@ a moderator approves it.{/tr}</small>
       <br>
       <input type="submit" name="comments_previewComment" value="{tr}preview{/tr}"/>
       <input type="submit" name="comments_postComment" value="{tr}post{/tr}"/>
-      <input type="button" name="comments_postComment" value="{tr}cancel{/tr}" onclick="hide('{$postclass}');"/>
-      
+      <input type="button" name="comments_postComment" value="{tr}cancel{/tr}" onclick="window.location='tiki-view_forum.php?forumId={$forumId|escape}'"/>
     
     
     </form>

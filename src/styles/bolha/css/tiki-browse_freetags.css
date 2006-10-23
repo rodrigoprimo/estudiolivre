@@ -22,7 +22,7 @@
 	border-right:0px solid gray;
 }
 
-#browseFreeTags H2 {
+#browseFreeTags > H2 {
 	font-size:12px;
 	font-weight:normal;
 }
