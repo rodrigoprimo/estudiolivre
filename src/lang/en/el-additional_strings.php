@@ -135,6 +135,7 @@ $extra_strings = array(
  "ver"=>"stream",
  "vez"=>"time",
  "vezes"=>"times",
+ "apagar"=>"delete",
 // "bpm" => "bpm", // ## MODULES ./templates/el-gallery_metadata_Audio.tpl<br />
 // "Sample Rate" => "Sample Rate", // ## MODULES ./templates/el-gallery_metadata_Audio.tpl<br />
 // "hertz" => "hertz", // ## MODULES ./templates/el-gallery_metadata_Audio.tpl<br />
