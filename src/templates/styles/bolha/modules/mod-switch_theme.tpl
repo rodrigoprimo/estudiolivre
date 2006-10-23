@@ -4,7 +4,7 @@
 		{section name=ix loop=$styleslist}
 			{if count($available_styles) == 0 || in_array($styleslist[ix], $available_styles)}
 				{if $style neq $styleslist[ix]}
-			        <a href="tiki-switch_theme.php?theme={$styleslist[ix]|escape}">{$styleslist[ix]|replace:".css":""}</a>
+			        <a onmouseout="nd();" onmouseover="tooltip('<img src=\'styles/{$style|replace:".css":""}/img/{$styleslist[ix]|replace:".css":""}Icon.png\'/>')" href="tiki-switch_theme.php?theme={$styleslist[ix]|escape}">{$styleslist[ix]|replace:".css":""}</a>
 		        {else}
 		        	{$styleslist[ix]|replace:".css":""} ({tr}current{/tr})
 			    {/if}

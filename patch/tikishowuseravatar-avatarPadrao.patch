@@ -13,7 +13,7 @@
 +	header ("Content-type: image/png");
 +	$user_style = $tikilib->get_user_preference($user, 'theme', $style);
 +	$curstyle=str_replace(".css", "", $user_style);
-+	readfile("styles/".$curstyle."/iThumbUser.png");
++	readfile("styles/".$curstyle."/img/iThumbUser.png");
 +}
  
  ?>
