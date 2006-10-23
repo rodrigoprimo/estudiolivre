@@ -1,5 +1,5 @@
 {css extra=list,tiki-view_forum_thread}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/tiki-view_forum.tpl,v 1.2 2006-10-23 21:43:08 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/tiki-view_forum.tpl,v 1.3 2006-10-23 22:50:01 rhwinter Exp $ *}
 <div id="viewForum">
 <h1>
 	{tr}Forum{/tr}: 
@@ -93,7 +93,7 @@ a moderator approves it.{/tr}</small>
 		      <option value="l" {if $comment_topictype eq 'l'}selected="selected"{/if}>{tr}locked{/tr}</option>
 	      {/if}
 	   </select>
-		      {if $forum_info.topic_smileys eq 'y'}
+		      {*if $forum_info.topic_smileys eq 'y'}
 			      <select name="comment_topicsmiley">
 				      <option value="" {if $comment_topicsmiley eq ''}selected="selected"{/if}>{tr}no feeling{/tr}</option>
 				      <option value="icon_frown.gif" {if $comment_topicsmiley eq 'icon_frown.gif'}selected="selected"{/if}>{tr}frown{/tr}</option>
@@ -106,7 +106,7 @@ a moderator approves it.{/tr}</small>
 				      <option value="icon_smile.gif" {if $comment_topicsmiley eq 'icon_smile.gif'}selected="selected"{/if}>{tr}happy{/tr}</option>
 				      <option value="icon_wink.gif" {if $comment_topicsmiley eq 'icon_wink.gif'}selected="selected"{/if}>{tr}wink{/tr}</option>
 			      </select>
-		      {/if}
+		      {/if*}
       <br />
     {if $forum_info.topic_summary eq 'y'}
     	{tr}Summary{/tr}
@@ -169,9 +169,9 @@ a moderator approves it.{/tr}</small>
   <td class="heading">&nbsp;</td>
   {/if}
   <td class="heading"><a class="tableheading" href="tiki-view_forum.php?comments_threshold={$comments_threshold}&amp;forumId={$forum_info.forumId}&amp;comments_offset={$comments_offset}&amp;comments_sort_mode={if $comments_sort_mode eq 'type_desc'}type_asc{else}type_desc{/if}">{tr}type{/tr}</a></td>
-  {if $forum_info.topic_smileys eq 'y'}
+  {*if $forum_info.topic_smileys eq 'y'}
   <td class="heading"><a class="tableheading" href="tiki-view_forum.php?comments_threshold={$comments_threshold}&amp;forumId={$forum_info.forumId}&amp;comments_offset={$comments_offset}&amp;comments_sort_mode={if $comments_sort_mode eq 'smiley_desc'}smiley_asc{else}smiley_desc{/if}">{tr}emot{/tr}</a></td>
-  {/if}
+  {/if*}
   <td class="heading"><a class="tableheading" href="tiki-view_forum.php?comments_threshold={$comments_threshold}&amp;forumId={$forum_info.forumId}&amp;comments_offset={$comments_offset}&amp;comments_sort_mode={if $comments_sort_mode eq 'title_desc'}title_asc{else}title_desc{/if}">{tr}title{/tr}</a></td>
   {if $forum_info.topics_list_replies eq 'y'}
   	<td class="heading"><a class="tableheading" href="tiki-view_forum.php?comments_threshold={$comments_threshold}&amp;forumId={$forum_info.forumId}&amp;comments_offset={$comments_offset}&amp;comments_sort_mode={if $comments_sort_mode eq 'replies_desc'}replies_asc{else}replies_desc{/if}">{tr}replies{/tr}</a></td>
@@ -207,7 +207,7 @@ a moderator approves it.{/tr}</small>
   {if $comments_coms[ix].type eq 's'}<img src="img/icons/folder_sticky{$newtopic}.gif" alt="{tr}sticky{/tr}" />{/if}
   {if $comments_coms[ix].type eq 'l'}<img src="img/icons/folder_locked{$newtopic}.gif" alt="{tr}locked{/tr}" />{/if}
   </td>
-  {if $forum_info.topic_smileys eq 'y'}
+  {*if $forum_info.topic_smileys eq 'y'}
   <td style="text-align:center;" class="{cycle advance=false}">
   	{if strlen($comments_coms[ix].smiley) > 0}
   		<img src='img/smiles/{$comments_coms[ix].smiley}' alt=''/>
@@ -215,7 +215,7 @@ a moderator approves it.{/tr}</small>
   	&nbsp;{$comments_coms[ix].smiley}
   	{/if}
   </td>
-  {/if}  
+  {/if*}  
   
   <td class="{cycle advance=false}">
   <table width="100%"><tr><td>

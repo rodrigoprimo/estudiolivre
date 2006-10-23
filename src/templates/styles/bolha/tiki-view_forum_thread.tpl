@@ -81,7 +81,7 @@
 		{tr}reads{/tr}: <i>{$thread_info.hits}</i>
 		&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 		{if $tiki_p_forum_post eq 'y'}
-			<a class="linkbut" href="#form">{tr}reply{/tr}</a>
+			<a class="linkbut" href="#form" onclick="flip('comzone')">{tr}reply{/tr}</a>
 		{/if}
 	</div>
 	

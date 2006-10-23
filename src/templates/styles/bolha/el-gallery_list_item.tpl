@@ -32,14 +32,14 @@
 		<br />
 		{tooltip name="list-baixe-arquivo" text="Copie o arquivo (para o seu computador)"}
 			<a href="el-download.php?arquivo={$arquivo.arquivoId}&action=download">
-				baixar
+				{tr}baixar{/tr}
 			</a>
 		{/tooltip}	
 		{if $tooltipText}
 		<br />
 			{tooltip name="list-i-play" text=$tooltipText}
 				<span class="pointer" alt="" onClick="xajax_streamFile({$arquivo.arquivoId},'{$arquivo.tipo}', getPageSize()[0]);nd();">
-					ver
+					{tr}ver{/tr}
 				</span>
 			{/tooltip}
 		{/if}
@@ -71,7 +71,7 @@
 					{tr}em{/tr}: <em>{$arquivo.data_publicacao|date_format:"%d/%m/%y"}</em>
 				</span>
 				<span class="rig">
-					{tr}tipo{/tr}: <em>{$arquivo.tipo}</em>
+					{tr}tipo{/tr}: <em>{tr}{$arquivo.tipo}{/tr}</em>
 				</span>
 			</div>
 		</h4>

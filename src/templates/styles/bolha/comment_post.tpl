@@ -1,11 +1,12 @@
 {css}
+{assign var=postclass value='comzone'}
+{if $user}
    {if $forum_mode eq 'y'}
-		{if $post_reply > 0 || $edit_reply > 0 || $comment_preview}
+		{if $post_reply > 0 || $edit_reply > 0 || $comment_preview eq 'y'}
 			{* posting a reply or editing or previwing a reply: show form *}
-			<div id='{$postclass}open' class="threadpost">
+			<div id='{$postclass}' class="threadpost" >
 		{else}
-			<input type="button" name="comments_postComment" value="{tr}new reply{/tr}" onclick="flip('{$postclass}');"/>
-			<div id='{$postclass}' class="threadpost">
+			<div id='{$postclass}' class="threadpost" style="display:none">
 		{/if}
    {/if}
 	<a name="form"></a>
@@ -122,3 +123,4 @@
     	</div>
 	{/if}
 </div>
+{/if}

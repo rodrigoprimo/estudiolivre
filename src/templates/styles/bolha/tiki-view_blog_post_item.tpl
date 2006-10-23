@@ -91,7 +91,7 @@
 				{/if}
 				&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 				<a class="link" href="tiki-view_blog_post.php?find={$find}&amp;blogId={$blogId}&amp;offset={$offset}&amp;sort_mode={$sort_mode}&amp;postId={$post.postId}&amp;show_comments=1">
-					{tr}add comment{/tr}
+					{tr}comentar{/tr}
 				</a>
 			{/if}
 
@@ -111,7 +111,7 @@
 				</a>
 				    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 				<a href="#comments" onclick="javascript:flip('comzone{if $comments_show eq 'y'}open{/if}');" class="linkbut">
-				    {tr}add comment{/tr}
+				    {tr}comentar{/tr}
 				</a>
 			{/if}
 		{/if}			
