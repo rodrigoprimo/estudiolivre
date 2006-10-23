@@ -7,7 +7,7 @@ global $el_p_view;
 $ajaxlib->setPermission('get_files', $el_p_view == 'y');
 $ajaxlib->registerFunction("get_files");
 function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $find = '', $filters = array()) {
-    global $elgallib, $smarty;
+    global $elgallib, $smarty, $user;
 
     $objResponse = new xajaxResponse();
 	$total = $elgallib->count_all_uploads($tipos, $userName, $find);
@@ -23,7 +23,8 @@ function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $fi
 	$smarty->assign('filters', $filters);
 	$smarty->assign('page', ($offset/$maxRecords)+1);
 	$smarty->assign('lastPage', ceil($total/$maxRecords));
-
+	$smarty->assign('dontAskDelete', $elgallib->get_user_preference($user, 'el_dont_check_delete', 0));
+	
     if ($find) {
 		$smarty->load_filter('output','highlight');
 		$_REQUEST['highlight'] = $find;
