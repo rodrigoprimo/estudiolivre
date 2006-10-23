@@ -1,0 +1,11 @@
+--- lib/smarty_tiki/modifier.avatarize.php	2006-10-23 20:59:05.000000000 -0200
++++ lib/smarty_tiki/modifier.avatarize.php	2006-10-23 20:59:09.000000000 -0200
+@@ -20,7 +20,7 @@
+   global $userlib;
+   $avatar = $tikilib->get_user_avatar($user);
+   if($userlib->user_exists($user)&&$tikilib->get_user_preference($user,'user_information','public')=='public') {
+-  	$avatar = "<a title='$user' href='tiki-user_information.php?view_user=$user'>".$avatar.'</a>';
++  	$avatar = "<a title='$user' href='el-user.php?view_user=$user'>".$avatar.'</a>';
+   } 
+   return $avatar;	
+ }
