@@ -25,19 +25,24 @@ function retrieveFileInfo($id) {
 
 function wikiplugin_acervotag($data, $params) {
 
-    global $smarty, $freetaglib; 
+    global $smarty, $freetaglib, $style; 
     
     require_once("lib/freetag/freetaglib.php");
-        
+    
+    $styleUrl = "styles/" . preg_replace('/\.css/', '', $style) . "/css/el-gallery_list_item.css";
+	if (file_exists($styleUrl)) {
+	    $result = "<link rel='StyleSheet'  href='$styleUrl' type='text/css' />";
+	} else {
+		$result = "";
+	}
+    
     if(isset($params['id']) && $params['id'] > 0) {
-    	$result = "";
 		$smarty->assign_by_ref("arquivo", retrieveFileInfo($params['id']));
 		$result .= $smarty->fetch('el-gallery_list_item.tpl');
 	    return "~np~$result~/np~";
     }
     if(!isset($params['tag']) && isset($params['tags'])) { $params['tag'] = $params['tags']; }
     $objects = $freetaglib->get_objects_with_tag_combo(split(",",$params['tag']), 'gallery');
-    $result = "";
     
     foreach ($objects['data'] as $object) {
 		$smarty->assign_by_ref("arquivo", retrieveFileInfo($object['itemId']));
