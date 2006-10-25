@@ -50,6 +50,7 @@ for($i = 0; $i < sizeof($localTipos); $i++) {
 if(!sizeof($tipos)) {
 	$tipos = $localTipos;
 }
+$smarty->assign('tipos', $tipos);
 
 if(isset($_REQUEST['highlight'])) {
 	$find = $_REQUEST['highlight'];

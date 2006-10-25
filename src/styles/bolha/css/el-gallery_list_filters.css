@@ -40,24 +40,15 @@
 	border-right:0px solid gray;
 }
 
-#rightContainerTop {
-	width:55%;
-	float:right;
-}
-
-#listFilters {
-	float:left;
-}
 
 #listOptions {
-	margin:10px 5px 10px 5px;
-	overflow:hidden;
+	margin:10px 0;
+	padding:0 5px;
+	width:100%;
 }
 
 #listOrder {
-	float:right;
 	font-size:12px;
-	margin-left:10px;
 }
 
 #listOrder select {
@@ -72,3 +63,14 @@
 	font-weight:bold;
 }
 
+.left {
+	text-align:left;
+}
+
+.right {
+	text-align:right;
+}
+
+.center {
+	text-align:center;
+}

@@ -5,6 +5,11 @@
 <script language="JavaScript" src="lib/elgal/el_home.js"></script>
 <script language="JavaScript" src="lib/js/delete_file.js"></script>
 
+<script language="JavaScript">
+	init('{$find}');
+	{foreach from=$tipos item=tipo}tipos.add('{$tipo}');{/foreach}
+</script>
+
 {if $smarty.cookies.gHomeWikiToggle eq 'none'}
 	{assign var=display value="none"}
 	{assign var=imgCurrent value="iGreenArrowLeft"}
@@ -37,16 +42,11 @@
 
 <!-- Feature Wiki End -->
 	
-{if $isIE}
-	{include file="ie_el-gallery_list_filters.tpl"}
-{else}
-	{include file="el-gallery_list_filters.tpl"}
-{/if}
+{include file="el-gallery_list_filters.tpl"}
 
 <div id="gListCont">
 	{include file="el-gallery_section.tpl"}
 </div>
-<script language="JavaScript">init('{$find}')</script>
 
 {* isso não rola por causa do AJAX. mas o nano vai arrumar.*}
 {* include file="el-gallery_list_filters.tpl" *}

@@ -53,6 +53,6 @@ span.pointer:hover {
 }
 
 span.hiddenPointer {
-	cursor: pointer;
+	cursor:pointer;
 	color:black;
 }
