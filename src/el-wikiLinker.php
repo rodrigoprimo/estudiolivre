@@ -1,7 +1,5 @@
 <?php
 
-require_once ("tiki-setup.php");
-
 if ($tiki_p_admin == 'y') {
 	$amb = array('sobre', 'projeto', 'vídeo', 'áudio', 'Áudio', 'gráfico', 'tradução', 'tutoriais', 'texto', 'equipamentos', 'teste', 'sistema', 'colabore', 'contato', 'distribuição', 'links', 'se', 'performance', 'computadores', 'to', 'instalação', 'textos', 'rede', 'particular', 'minc', 'about', 'participantes', 'premio', 'homepage', 'bahia', 'recife', 'explorando', 'osasco', 'vassouras', 'bagulho', 'cameras', 'ficção', 'al', 'es', 'configure', 'ma', 'go', 'ac', 'cozinha', 'sp', 'rs', 'pa', 'pr', 'mg', 'rio', 'rn', 'ce', 'pe', 'kitchen', 'pós-produção', 'dev', 'hardware');
 	
@@ -39,7 +37,7 @@ if ($tiki_p_admin == 'y') {
 			print($page['pageName'] . '<br><br>' . $page['data'] . '<br><br>' . $data); exit;
 			$tikilib->update_page($page['pageName'], 
 							      $page[$data],
-							      $page[''],
+							      $page['linkando conteúdo wiki'],
 							      $page['robôDeLinks'],
 							      $page['ip'],
 							      $page['description']);

@@ -117,4 +117,21 @@ function set_licenca($r1, $r2, $r3) {
 	return $objResponse;			
 }
 
+$ajaxlib->setPermission('set_mount_point', $permission);
+$ajaxlib->registerFunction('set_mount_point');
+function set_mount_point($pass) {
+	global $elgallib, $user;
+	
+	//TODO nao funciona, nao sei porque, mas o script nujm roda.....
+	
+	$objResponse = new xajaxResponse();
+	if ( false && $elgallib->get_user_preference($user,'elMountPoint',0)) {
+		system("perl lib/elgal/iceWriter.pl update $user $pass");
+	} else {
+		$objResponse->addAlert(system("perl /home/nano/iceWriter.pl add $user $pass"));
+		$elgallib->set_user_preference($user,'elMountPoint',1);
+	}
+	return $objResponse;		
+}
+
 ?>
