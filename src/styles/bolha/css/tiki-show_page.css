@@ -60,6 +60,10 @@ p.editdate {
 	width:100%;	
 }
 
+#wikitext TD {
+	max-width:100%;	
+}
+
 #wikitext IMG {
 	max-width:93%;
 }
@@ -105,7 +109,7 @@ p.editdate {
   font-weight:bold;
 }
 
-/* classe das linhas que começam com espaço no wiki, são as linhas de 'código'*/
+/* classe das linhas que comecam com espaco no wiki, sao as linhas de 'codigo'*/
 tt {
 	display:block;
 	font-family: courier, serif, monospace;
