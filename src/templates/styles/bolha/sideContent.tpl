@@ -122,6 +122,7 @@
         {/if}   
     {/if}
     
+     <li><a href="elIce.php">{tr}Ao vivo{/tr}</a></li>
      <li><a href="tiki-index.php?page=faq">{tr}sobre o{/tr} {tr}acervo{/tr}</a></li>
 	</ul>
 	</div>

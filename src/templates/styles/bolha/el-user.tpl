@@ -127,7 +127,35 @@
         <span class="uContactItem uLittle">{tr}Membro desde{/tr} {$userinfo.registrationDate|date_format:"%d/%m/%Y"}</span>
       </div>  
     </div>
-    
+
+    {if $smarty.cookies.uLiveInfo eq 'none'}
+		{assign var=display value="none"}
+		{assign var=imgCurrent value="iArrowGreyRight.png"}
+		{assign var=imgChange value="iArrowGreyDown.png"}	
+	{else}
+		{assign var=display value="block"}
+		{assign var=imgCurrent value="iArrowGreyDown.png"}
+		{assign var=imgChange value="iArrowGreyRight.png"}	
+	{/if}
+	    
+	{if $permission}
+	    <div id="uLive" class="uMainContainer">
+	    	<div class="sectionTitle uMainTitle uSectionsTitle">
+	        <h1>
+	        	<span class="pointer" onclick="javascript:flip('moduleuLiveInfo');toggleImage(document.getElementById('lTArrow'),'{$imgChange}'); storeState('uLiveInfo')">
+	           	<img id="lTArrow" src="styles/{$style|replace:".css":""}/img/{$imgCurrent}">
+	        	&nbsp;
+		        {tr}Canal de transmissão ao vivo{/tr}
+		       </span>
+	        </h1>
+	      </div>
+	    	<div id="moduleuLiveInfo" class="uMainItemContainer" style="display:{$display}">
+	    		Explicações sobre o que é e como funciona...
+	    		senha: <input type="text" id="livePass"/> <input type="button" onClick="xajax_set_mount_point(document.getElementById('livePass').value)" value="{tr}Submit{/tr}"/>
+	    	</div>
+	    </div>
+	{/if}
+
     {if $smarty.cookies.uGalleryItems eq 'none'}
 		{assign var=display value="none"}
 		{assign var=imgCurrent value="iArrowGreyRight.png"}

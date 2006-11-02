@@ -114,24 +114,28 @@ function set_licenca($r1, $r2, $r3) {
 		$objResponse->addAssign('uLicence', 'src', 'styles/estudiolivre/h_' . $licenca['linkImagem'] . '?rand='.rand());
 	}
 
-	return $objResponse;			
+	return $objResponse;
 }
 
 $ajaxlib->setPermission('set_mount_point', $permission);
 $ajaxlib->registerFunction('set_mount_point');
 function set_mount_point($pass) {
 	global $elgallib, $user;
-	
-	//TODO nao funciona, nao sei porque, mas o script nujm roda.....
-	
 	$objResponse = new xajaxResponse();
-	if ( false && $elgallib->get_user_preference($user,'elMountPoint',0)) {
-		system("perl lib/elgal/iceWriter.pl update $user $pass");
+	
+	if (!preg_match('/^[a-zA-Z0-9]+$/', $pass)) {
+		$objResponse->addAlert(tra('Sua senha deve ser apenas composta por letras (sem acento) e numeros, sem espaços.'));
+		return $objResponse;	
+	}
+	
+	if ($elgallib->get_user_preference($user,'elMountPoint',0)) {
+		system("./lib/elgal/elIce/iceWriter.pl update $user $pass");
 	} else {
-		$objResponse->addAlert(system("perl /home/nano/iceWriter.pl add $user $pass"));
+		system("./lib/elgal/elIce/iceWriter.pl add $user $pass");
 		$elgallib->set_user_preference($user,'elMountPoint',1);
 	}
-	return $objResponse;		
+	$objResponse->addAlert(tra('sua senha já foi enviada!'));
+	return $objResponse;
 }
 
 ?>
