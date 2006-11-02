@@ -56,18 +56,6 @@ p.editdate {
 	text-decoration:underline;
 }
 
-#wikitext TABLE {
-	width:100%;	
-}
-
-#wikitext TD {
-	max-width:100%;	
-}
-
-#wikitext IMG {
-	max-width:93%;
-}
-
 #wikitext A.wikinew {
 	color:red;
 	font-size:14px;
