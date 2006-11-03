@@ -50,7 +50,7 @@ class IceStats{
 	function componi($parser,$dato) {
 		if (is_null($this->objcomp) || is_null($this->temp)) 
 			return;
-		$field = $this->objcomp;
+		$field = strtolower($this->objcomp);
 		$this->temp->$field = $dato;
 	}
 	

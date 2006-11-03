@@ -150,8 +150,8 @@
 	        </h1>
 	      </div>
 	    	<div id="moduleuLiveInfo" class="uMainItemContainer" style="display:{$display}">
-	    		Explicações sobre o que é e como funciona...
-	    		senha: <input type="text" id="livePass"/> <input type="button" onClick="xajax_set_mount_point(document.getElementById('livePass').value)" value="{tr}Submit{/tr}"/>
+	    		Explicações sobre o que é e como funciona...<br/>
+	    		{tr}password{/tr}: <input type="text" id="livePass"/> <input type="button" onClick="xajax_set_mount_point(document.getElementById('livePass').value)" value="{tr}Submit{/tr}"/>
 	    	</div>
 	    </div>
 	{/if}
