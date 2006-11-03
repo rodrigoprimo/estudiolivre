@@ -113,6 +113,13 @@ for($i = 0; $i < sizeof($userPosts['data']); $i++) {
 }
 $smarty->assign('userPosts', $userPosts);
 
+$liveChannels = array();
+$result = $elgallib->query('select * from el_ice where user = ?', array($view_user));
+while($row = $result->fetchRow()) {
+	$liveChannels[] = $row;
+}
+$smarty->assign('liveChannels', $liveChannels);
+
 $smarty->assign('userMessages', $messulib->list_user_messages($view_user, 0, 5, 'date_desc', '', '', '', '', 'messages'));
 
 $smarty->assign('uploadId',rand() . '.' . time());

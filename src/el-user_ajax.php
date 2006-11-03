@@ -119,22 +119,62 @@ function set_licenca($r1, $r2, $r3) {
 
 $ajaxlib->setPermission('set_mount_point', $permission);
 $ajaxlib->registerFunction('set_mount_point');
-function set_mount_point($pass) {
+function set_mount_point($mountPoint, $pass) {
+	global $elgallib, $user, $smarty;
+	$objResponse = new xajaxResponse();
+
+	if (!preg_match('/^[a-zA-Z0-9]+$/', $pass) || !preg_match('/^[a-zA-Z0-9]+$/', $mountPoint)) {
+		$objResponse->addAssign('ajax-liveError', 'innerHTML', tra('O ponto de montagem e a senha devem ser apenas compostos por letras (sem acento) e numeros, sem espaços.'));
+		return $objResponse;
+	}
+	
+	if ($elgallib->getOne('select mountPoint from el_ice where user != ? and mountPoint = ?', array($user, $mountPoint))) {
+		$objResponse->addAssign('ajax-liveError', 'innerHTML', tra('Esse ponto de montagem já existe, por favor escolha outro.'));
+		return $objResponse;
+	}
+	
+	if ($elgallib->getOne('select mountPoint from el_ice where user = ? and mountPoint = ?', array($user, $mountPoint))) {
+		system("./iceWrapper update $mountPoint $pass", $out);
+		$action = 'modificado';
+	} else {
+		system("./iceWrapper add $mountPoint $pass", $out);
+		$action = 'criado';
+	}
+	// se tiver saida = 0, nao deu erro (herdado de shell, porque die no perl retorna 255)
+	if (!$out) {
+		$elgallib->query("replace into el_ice values(?, ?, ?)", array($user, $mountPoint, $pass));
+		$objResponse->addAlert(tra("Seu ponto de transmissão no EstúdioLivre foi $action com sucesso!"));
+		$objResponse->addScript("hideLightbox();document.getElementById('ajax-livePoint').value='';document.getElementById('ajax-livePass').value='';");
+		$objResponse->addAssign('ajax-liveError', 'innerHTML', '');
+		if($action == 'criado') {
+			$smarty->assign('channel', array('mountPoint' => $mountPoint, 'password' => $pass));
+			$smarty->assign('permission', true);
+			$objResponse->addAppend('ajax-liveCont', 'innerHTML', $smarty->fetch('elLiveChannels.tpl'));
+		}
+	} else {
+		$objResponse->addAssign('ajax-liveError', 'innerHTML', tra('Esse ponto de montagem já existe, por favor escolha outro.'));
+	}
+
+	return $objResponse;
+}
+
+$ajaxlib->setPermission('delete_mount_point', $permission);
+$ajaxlib->registerFunction('delete_mount_point');
+function delete_mount_point($mountPoint) {
 	global $elgallib, $user;
 	$objResponse = new xajaxResponse();
 	
-	if (!preg_match('/^[a-zA-Z0-9]+$/', $pass)) {
-		$objResponse->addAlert(tra('Sua senha deve ser apenas composta por letras (sem acento) e numeros, sem espaços.'));
-		return $objResponse;	
+	if (!$elgallib->getOne('select mountPoint from el_ice where user = ? and mountPoint = ?', array($user, $mountPoint))) {
+		return $objResponse;
 	}
 	
-	if ($elgallib->get_user_preference($user,'elMountPoint',0)) {
-		system("./lib/elgal/elIce/iceWriter.pl update $user $pass");
-	} else {
-		system("./lib/elgal/elIce/iceWriter.pl add $user $pass");
-		$elgallib->set_user_preference($user,'elMountPoint',1);
+	system("./iceWrapper delete $mountPoint", $out);
+	if (!$out) {
+		$elgallib->query("delete from el_ice where mountPoint = ?", array($mountPoint));
+		$objResponse->addAlert(tra("Seu ponto de transmissão no EstúdioLivre foi removido com sucesso!"));
+		$objResponse->addRemove("ajax-live$mountPoint");
 	}
-	$objResponse->addAlert(tra('sua senha já foi enviada!'));
+	
 	return $objResponse;
 }
 

@@ -3,63 +3,72 @@
 use strict;
 require XML::Simple;
 
-$ARGV[0] and $ARGV[1] and $ARGV[2] or die 'must supply action username password';
+$ARGV[0] and $ARGV[1] or die 'must at least supply action mountPoint';
+die "action must be add, update or delete"
+    unless $ARGV[0] =~ /add|update|delete/;
+if ($ARGV[0] =~ /add|update/) {
+	$ARGV[2] or die "add or update must supply password";
+	die 'mountPoint and password must be plain text without blank spaces'
+	    unless $ARGV[1] =~ /^[a-zA-Z0-9]+$/ and $ARGV[2] =~ /^[a-zA-Z0-9]+$/;
+}
 
-our $user = $ARGV[1];
+our $mountPoint = $ARGV[1];
 our $pass = $ARGV[2];
 
 our $xs = new XML::Simple();
 our $ref = $xs->XMLin('/etc/icecast2/icecast.xml');
 
-open ARQ, '>/etc/icecast2/icecast.xml' or die "open(): $!";
-our $fh = \*ARQ;
-
 my $action = $ARGV[0];
 
 if ($action eq 'add') {
-    add();
+    exit 1 unless add();
 } elsif ($action eq 'update') {
-    update();
+    exit 1 unless update();
+} elsif ($action eq 'delete') {
+	exit 1 unless deleteMount();
 }
 
+open ARQ, '>/etc/icecast2/icecast.xml' or die "open(): $!";
+our $fh = \*ARQ;
+my $xml = $xs->XMLout($ref, NoAttr => 1, RootName => 'icecast', OutputFile => $fh);
 close ARQ;
 
-`sudo killall -HUP icecast2 >/tmp/ret`;
+`killall -HUP icecast2`;
 
 exit 0;
 
 sub add {
+    foreach my $mount (@{$ref->{mount}}) {
+		if ($mount->{'mount-name'} eq "/$mountPoint") {
+		    return 0;
+		}
+    }
 
-
-#    my $auth;
-#    $auth->{'type'} = 'url';
-#    $auth->{'option'} = {'listener_add' => {'value' => 'http://estudiolivre.org/elIce.php'},
-#			 'listener_remove' => {'value' => 'http://estudiolivre.org/elIce.php'},
-#			 'mount_add' => {'value' => 'http://estudiolivre.org/elIce.php'},
-#			 'mount_remove' => {'value' => 'http://estudiolivre.org/elIce.php'}
-#		     };
-
-    my $new_point = {'mount-name' => "/$user",
-#		     'authentication' => $auth,
+    my $new_point = {'mount-name' => "/$mountPoint",
 		     'password' => $pass};
 
     my $mounts = $ref->{mount};
     
     $mounts->[@$mounts] = $new_point;
     $ref->{mount} = $mounts;
-
-    my $xml = $xs->XMLout($ref, NoAttr => 1, RootName => 'icecast', OutputFile => $fh);
-
+    return 1;
 }
 
 sub update {
-
     foreach my $mount (@{$ref->{mount}}) {
-		if ($mount->{'mount-name'} eq "/$user") {
+		if ($mount->{'mount-name'} eq "/$mountPoint") {
 		    $mount->{'password'} = $pass;
 		}
     }
-    
-    my $xml = $xs->XMLout($ref, NoAttr => 1, RootName => 'icecast', OutputFile => $fh);
+    return 1;
+}
 
+sub deleteMount {
+	my $mounts = $ref->{mount};
+	for (my $i = 0; $i < @$mounts; $i++) {
+		if ($mounts->[$i]->{'mount-name'} eq "/$mountPoint") {
+		    splice(@{$mounts}, $i, 1);
+		}
+    }
+    return 1;
 }
