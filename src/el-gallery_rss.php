@@ -25,6 +25,16 @@ if (isset($_REQUEST['user']) && $_REQUEST['user']) {
 	$userName = '';
 }
 
+if(isset($_REQUEST['max'])) {
+	if ($_REQUEST['max'] == '0') {
+		$maxRecords = -1;
+	} else {
+		$maxRecords = (int)$_REQUEST['max'];
+	}
+} else {
+	$maxRecords = 10;
+}
+
 if(isset($_REQUEST['types'])) { $_REQUEST['type'] = $_REQUEST['types']; }
 if(isset($_REQUEST['tipos'])) { $_REQUEST['type'] = $_REQUEST['tipos']; }
 if(isset($_REQUEST['tipo'])) { $_REQUEST['type'] = $_REQUEST['tipo']; }
@@ -52,7 +62,7 @@ if (isset($_REQUEST['tag']) && $_REQUEST['tag']) {
     }
 }
 else {
-	$changes["data"] = $elgallib->list_all_uploads($type, 0, 10, $dateId.'_desc', $userName);
+	$changes["data"] = $elgallib->list_all_uploads($type, 0, $maxRecords, $dateId.'_desc', $userName);
 }
 
 $base_url = 'http://' . $_SERVER['HTTP_HOST'] .  $_SERVER['REQUEST_URI'];
