@@ -55,14 +55,6 @@
 	border:1px solid white;
 }
 
-#listNav {
-	font-size:12px;
-}
-
-#listNav .selected {
-	font-weight:bold;
-}
-
 .left {
 	text-align:left;
 }

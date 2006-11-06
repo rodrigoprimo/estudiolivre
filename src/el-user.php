@@ -120,7 +120,15 @@ while($row = $result->fetchRow()) {
 }
 $smarty->assign('liveChannels', $liveChannels);
 
-$smarty->assign('userMessages', $messulib->list_user_messages($view_user, 0, 5, 'date_desc', '', '', '', '', 'messages'));
+$userMessages = $messulib->list_user_messages($view_user, 0, 5, 'date_desc', '', '', '', '', 'messages');
+$total = $userMessages['cant'];
+
+$smarty->assign('userMessages', $userMessages);	
+$smarty->assign('msgMaxRecords', 5);
+$smarty->assign('msgOffset', 0);
+$smarty->assign('msgTotal', $total);
+$smarty->assign('msgPage', 1);
+$smarty->assign('msgLastPage', ceil($total/5));
 
 $smarty->assign('uploadId',rand() . '.' . time());
 

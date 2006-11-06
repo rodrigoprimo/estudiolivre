@@ -1,4 +1,4 @@
-{css}
+{css extra=el-gallery_pagination}
 <!-- List Options Begin -->
 <table id="listOptions">
 <tr>
@@ -28,7 +28,7 @@
 	</td>
 <!-- Filters End -->
 
-	<td><div  id="listNav">{include file="el-gallery_pagination.tpl"}</div></td>
+	<td><div id="ajax-listNav" class="listNav">{include file="el-gallery_pagination.tpl"}</div></td>
   
     <td id="listOrder" class="right">
       {tooltip name="home-crescente-decrescente" text="Define ordenação crescente ou decrescente"}<img alt="" onClick="toggleSortArrow(this,'{if $sortDirection eq 'Up'}sortArrowDown.png{else}sortArrowUp.png{/if}')" 

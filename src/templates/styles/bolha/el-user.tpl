@@ -1,4 +1,4 @@
-{css extra=ajax_inputs}
+{css extra=ajax_inputs,el-gallery_pagination}
 <!-- tiki-user_information.tpl begin -->
 
 <script language="JavaScript" src="lib/js/license.js"></script>
@@ -181,7 +181,7 @@
       </div>
       <div id="moduleuGalleryItems" class="uMainItemContainer" style="display:{$display}">
       {if sizeof($arquivos)}
-      	<div  id="listNav">{include file="el-gallery_pagination.tpl"}</div>
+      	<div class="listNav" id="ajax-listNav">{include file="el-gallery_pagination.tpl"}</div>
 		<div id="gListCont">{include file="el-gallery_section.tpl"}</div>
 	  {else}
 	  	{if $permission}
@@ -271,7 +271,8 @@
       </div>
       <div id="moduleuMsgItems" class="uMainItemContainer" style="display:{$display}">
       	{if $allowMsgs}
-	      	{include file="el-user_msg.tpl"}
+      		<div class="listNav" id="ajax-msgListNav">{include file="el-msg_pagination.tpl"}</div>
+	      	<span id="ajax-userMsgs">{include file="el-user_msg.tpl"}</span>
 	    {/if}
       </div>
     </div>

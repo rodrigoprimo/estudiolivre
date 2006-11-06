@@ -45,7 +45,7 @@ function sendMsg($subject = '', $body = '', $priority = 3, $cc = '') {
 	$smarty->assign('permission', $permission);
 	$smarty->assign('userMessages', $messulib->list_user_messages($view_user, 0, 5, 'date_desc', '', '', '', '', 'messages'));
 	
-	$objResponse->addAssign("moduleuMsgItems", "innerHTML", $smarty->fetch("el-user_msg.tpl"));
+	$objResponse->addAssign("ajax-userMsgs", "innerHTML", $smarty->fetch("el-user_msg.tpl"));
 	
 	return $objResponse;
 
@@ -65,7 +65,7 @@ function delMsg($userFrom, $msgId) {
 		
 		$smarty->assign('permission', $permission);
 		$smarty->assign('userMessages', $messulib->list_user_messages($view_user, 0, 5, 'date_desc', '', '', '', '', 'messages'));
-		$objResponse->addAssign("moduleuMsgItems", "innerHTML", $smarty->fetch("el-user_msg.tpl"));
+		$objResponse->addAssign("ajax-userMsgs", "innerHTML", $smarty->fetch("el-user_msg.tpl"));
 	
 	}
 	
@@ -87,10 +87,35 @@ function markMsgRead($msgId) {
 		
 		$smarty->assign('permission', $permission);
 		$smarty->assign('userMessages', $messulib->list_user_messages($view_user, 0, 5, 'date_desc', '', '', '', '', 'messages'));
-		$objResponse->addAssign("moduleuMsgItems", "innerHTML", $smarty->fetch("el-user_msg.tpl"));
+		$objResponse->addAssign("ajax-userMsgs", "innerHTML", $smarty->fetch("el-user_msg.tpl"));
 		include_once("modules/mod-el_msgs.php");
 		$objResponse->addAssign("mod-el_msgs", "innerHTML", $smarty->fetch("modules/mod-el_msgs.tpl"));
 	}
+	
+	return $objResponse;
+
+}
+
+$ajaxlib->registerFunction('pgMsg');
+function pgMsg($offset = 0, $maxRecords = 5) {
+	
+	global $messulib, $view_user, $smarty, $permission;
+	$objResponse = new xajaxResponse();
+
+	$userMessages = $messulib->list_user_messages($view_user, $offset, $maxRecords, 'date_desc', '', '', '', '', 'messages');
+	$total = $userMessages['cant'];
+	
+	$smarty->assign('msgMaxRecords', $maxRecords);
+    $smarty->assign('msgOffset', $offset);
+	$smarty->assign('msgTotal', $total);
+	$smarty->assign('msgPage', ($offset/$maxRecords)+1);
+	$smarty->assign('msgLastPage', ceil($total/$maxRecords));
+	
+	$smarty->assign('permission', $permission);
+	$smarty->assign('userMessages', $userMessages);
+	
+	$objResponse->addAssign("ajax-msgListNav", "innerHTML", $smarty->fetch("el-msg_pagination.tpl"));
+	$objResponse->addAssign("ajax-userMsgs", "innerHTML", $smarty->fetch("el-user_msg.tpl"));
 	
 	return $objResponse;
 

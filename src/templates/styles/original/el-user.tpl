@@ -135,7 +135,7 @@
       </div>
       <div id="uGalleryItems" class="uMainItemContainer" style="display:block">
       {if sizeof($arquivos)}
-      	<div id="listNav" class="ulistNav">{include file="el-gallery_pagination.tpl"}</div>
+      	<div id="ajax-listNav" class="ulistNav">{include file="el-gallery_pagination.tpl"}</div>
 		<div id="gListCont">{include file="el-gallery_section.tpl"}</div>
 	  {else}
 	  	{if $permission}
