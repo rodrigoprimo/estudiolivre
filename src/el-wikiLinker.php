@@ -3,8 +3,6 @@
 if ($tiki_p_admin == 'y') {
 	$amb = array('sobre', 'projeto', 'vídeo', 'áudio', 'Áudio', 'gráfico', 'tradução', 'tutoriais', 'texto', 'equipamentos', 'teste', 'sistema', 'colabore', 'contato', 'distribuição', 'links', 'se', 'performance', 'computadores', 'to', 'instalação', 'textos', 'rede', 'particular', 'minc', 'about', 'participantes', 'premio', 'homepage', 'bahia', 'recife', 'explorando', 'osasco', 'vassouras', 'bagulho', 'cameras', 'ficção', 'al', 'es', 'configure', 'ma', 'go', 'ac', 'cozinha', 'sp', 'rs', 'pa', 'pr', 'mg', 'rio', 'rn', 'ce', 'pe', 'kitchen', 'pós-produção', 'dev', 'hardware');
 	
-	$mayb = array('handbrake', 'navalha', 'dev', 'kitchen', 'não-linear', 'rn', 'ce', 'pe', 'relatoshabib', 'mg', 'pós-produção','pr','rio','sc','rs','pa','configure','al','es','ma','go','ac','sp','cozinha');
-	
 	$result = $tikilib->query('select pageName, data, ip, description from tiki_pages;');
 	
 	$pages = array();
@@ -14,6 +12,38 @@ if ($tiki_p_admin == 'y') {
 	
 	$links = 0;
 	
+	$totalModif = 0;
+		
+	foreach ($pages as $page) {
+		
+		$data = $page['data'];
+		
+		$total = 0;
+		foreach ($pages as $pageName) {
+			$pageName = $pageName['pageName'];
+			
+			if (in_array(strtolower($pageName), $amb)) {
+				next;
+			}
+			
+			$regex = preg_replace('/([^a-zA-Z0-9])/', "\\$1", $pageName);
+			
+			$regex = '/(?<!\(\([^\)]*)' . $regex . '(?![^\(]*\)\))/';
+			
+			preg_match_all($regex, $data, $matches);
+			
+			if ($total = count($matches[0])) {
+				preg_replace($regex, "(($pageName))", $data);
+				$totalModif += $total;
+				// faz qq coisa com $total
+			}
+		}
+		
+		if ($total) {
+			print "$pageName<br>$page['data']<br><hr>$data<br><br><hr><hr>";
+		}
+	}
+	/*
 	foreach ($pages as $page) {
 		preg_match_all('/[^ ,.:\'\";&\n\/!?\-][^ ,.:\'\";&\n\/!?\-]+/', $page['data'], $matches);
 		
@@ -43,9 +73,10 @@ if ($tiki_p_admin == 'y') {
 							      $page['description']);
 		}
 	}
+	*/
 }
 
-print("<br><center><h1>Pronto para fazer $links links</h1></center><br>");
+print("<br><center><h1>Pronto para fazer $totalModif links</h1></center><br>");
 
 exit;
 ?>
