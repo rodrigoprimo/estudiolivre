@@ -1,7 +1,7 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/modules/mod-el_msgs.tpl,v 1.2 2006-07-24 14:04:37 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/modules/mod-el_msgs.tpl,v 1.3 2006-11-08 05:37:55 nano Exp $ *}
 
 {if $mod_allowMsgs}
-<div id="mod-el_msgs">
+<div id="ajax-mod-el_msgs">
 	{tikimodule title="{tr}Messages{/tr} ($modUnread)" name="messages_unread_messages" flip=$module_params.flip decorations=$module_params.decorations}
 		{if $modUnread > 0}
 			{foreach from=$mod_userMessages.data item='mod_msg'}

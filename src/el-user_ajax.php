@@ -89,7 +89,7 @@ function markMsgRead($msgId) {
 		$smarty->assign('userMessages', $messulib->list_user_messages($view_user, 0, 5, 'date_desc', '', '', '', '', 'messages'));
 		$objResponse->addAssign("ajax-userMsgs", "innerHTML", $smarty->fetch("el-user_msg.tpl"));
 		include_once("modules/mod-el_msgs.php");
-		$objResponse->addAssign("mod-el_msgs", "innerHTML", $smarty->fetch("modules/mod-el_msgs.tpl"));
+		$objResponse->addAssign("ajax-mod-el_msgs", "innerHTML", $smarty->fetch("modules/mod-el_msgs.tpl"));
 	}
 	
 	return $objResponse;
@@ -136,7 +136,7 @@ function set_licenca($r1, $r2, $r3) {
 	}
 	else {
 		$licenca = $elgallib->get_licenca($licencaId);
-		$objResponse->addAssign('uLicence', 'src', 'styles/estudiolivre/h_' . $licenca['linkImagem'] . '?rand='.rand());
+		$objResponse->addAssign('ajax-uLicence', 'src', 'styles/estudiolivre/h_' . $licenca['linkImagem'] . '?rand='.rand());
 	}
 
 	return $objResponse;

@@ -56,7 +56,7 @@ if ($arquivoId && isset($_FILES['thumb']) && !empty($_FILES['thumb']['name'])) {
     }
     
     $arquivo = $elgallib->get_arquivo($arquivoId);
-    echo "<script>parent.document.getElementById('thumbnail').src = 'repo/".$arquivo['thumbnail']."?rand=".rand()."';</script>";
+    echo "<script>parent.document.getElementById('ajax-thumbnail').src = 'repo/".$arquivo['thumbnail']."?rand=".rand()."';</script>";
     
 }
 

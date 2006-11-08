@@ -13,7 +13,7 @@
 		<div id="aThumbRatingLic">		
 			<div id="aRating">
 				{tooltip name="view-avaliacao" text="Avaliação atual"}
-					<img id="aRatingImg" src="styles/estudiolivre/star{math equation="round(x)" x=$arquivo.rating|default:"blk"}.png">
+					<img id="ajax-aRatingImg" src="styles/estudiolivre/star{math equation="round(x)" x=$arquivo.rating|default:"blk"}.png">
 				{/tooltip}
 			</div>
 			<div id="aThumbLic">
@@ -24,9 +24,9 @@
 				</div>
 
 				{if $arquivo.thumbnail}
-					<img id="thumbnail" src="repo/{$arquivo.thumbnail}" height="100" width="100">
+					<img id="ajax-thumbnail" src="repo/{$arquivo.thumbnail}" height="100" width="100">
 				{else}
-					<img id="thumbnail" src="styles/estudiolivre/iThumb{$arquivo.tipo}.png" height="100" width="100">
+					<img id="ajax-thumbnail" src="styles/estudiolivre/iThumb{$arquivo.tipo}.png" height="100" width="100">
 				{/if}
 				<div id="gUserThumbStatus"></div>
 				{if $permission}

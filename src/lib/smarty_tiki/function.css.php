@@ -46,7 +46,15 @@ function smarty_function_css($params, &$smarty) {
 function cssLinkRel ($css) {
 	global $style;
 	$currentStyle=preg_replace("/\.css/","",$style);
-	return "<link rel=\"StyleSheet\"  href=\"styles/".$currentStyle."/css/".$css.".css\" type=\"text/css\" />\n";
+	$path = "styles/$currentStyle/css/$css.css";
+	
+	// verify that the css file exists. this allows the use off {css} on the default template 
+	// without forcing the theme to include a corresponding css file  
+	if (file_exists($path)) {
+		return "<link rel=\"StyleSheet\"  href=\"$path\" type=\"text/css\" />\n";
+	} else {
+		return '';
+	}
 }
 
 ?>

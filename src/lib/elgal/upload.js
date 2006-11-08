@@ -67,9 +67,9 @@ function finishUpload() {
 		document.getElementById('gUpPercent').style.backgroundColor = '#ffe475';
 		document.getElementById('gUpPercent').innerHTML = '100%';
 		if (thumbUpId == null && (tipoSelecionado == 'Imagem' || tipoSelecionado == 'Video')) {
-			document.getElementById('thumbnail').src = "";			
-			document.getElementById('thumbnail').className = "gUpThumbImgCreating";
-			setTimeout('document.getElementById("thumbnail").src = "styles/estudiolivre/iProgress.gif"',100);
+			document.getElementById('ajax-thumbnail').src = "";			
+			document.getElementById('ajax-thumbnail').className = "gUpThumbImgCreating";
+			setTimeout('document.getElementById("ajax-thumbnail").src = "styles/estudiolivre/iProgress.gif"',100);
 			xajax_generate_thumb();
 		}
 		xajax_get_file_info();
@@ -100,7 +100,7 @@ function changeStatus(value) {
     hide('fileAltered');
     uploadStartTimer = setTimeout("upload()",500);
     document.uploadForm.tipo.value = tipoSelecionado;
-    document.getElementById('thumbnail').src = 'styles/estudiolivre/iThumb'+tipoSelecionado+'.png';
+    document.getElementById('ajax-thumbnail').src = 'styles/estudiolivre/iThumb'+tipoSelecionado+'.png';
 }
 
 function removeUpload() {
@@ -164,7 +164,7 @@ function changeThumbStatus() {
 function updateThumbUpInfo() {
 	if (!upThumbStarted) {
 		upThumbStarted = true;
-		hide('thumbnail');
+		hide('ajax-thumbnail');
 		show('gUpThumbStatus');
 		hide('gUpThumbForm');
 		document.getElementById('gUpThumbStatus').innerHTML = '0%';
@@ -178,7 +178,7 @@ function finishUpThumb() {
 		clearTimeout(thumbTimerId);
 	}
 	upThumbStarted = false;
-	show('thumbnail');
+	show('ajax-thumbnail');
 	show('gUpThumbForm');
 	hide('gUpThumbStatus');
 }
@@ -206,9 +206,9 @@ function restoreForm (id, tipo, arquivo, thumbnail) {
 		document.getElementById('gUpFileName').innerHTML = arquivo.replace(/\d+_\d+-/,"");
 	}
 	if (thumbnail) {
-		document.getElementById('thumbnail').src = 'repo/' + thumbnail;
+		document.getElementById('ajax-thumbnail').src = 'repo/' + thumbnail;
 	} else {
-		document.getElementById('thumbnail').src = 'styles/estudiolivre/iThumb' + tipo + '.png';
+		document.getElementById('ajax-thumbnail').src = 'styles/estudiolivre/iThumb' + tipo + '.png';
 	}
 	restoreEdit(id);
 }

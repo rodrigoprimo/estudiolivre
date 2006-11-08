@@ -34,7 +34,7 @@
 		{include file="el-gallery_list_filters.tpl"}
 	{/if}
 
-<div id="gListCont">
+<div id="ajax-gListCont">
 	{include file="el-gallery_section.tpl"}
 </div>
 <script language="JavaScript">init('{$find}')</script>

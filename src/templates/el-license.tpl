@@ -20,7 +20,7 @@
 	  <input style="width: auto;" type="radio" id="resposta3-1" name="resposta3" value="1" onclick="resposta3 = 1; testLicense();" disabled>&nbsp;{tr}Sim{/tr}<br />
 	  <input style="width: auto;" type="radio" id="resposta3-2" name="resposta3" value="3" onclick="resposta3 = 2; testLicense();" disabled>&nbsp;{tr}Sim, contanto que outros compartilhem pela mesma licença{/tr}<br />
 	  <br />
-	  <div id="licenseCont" style="display: none"><img id="licenseImg"><div id="licenseDesc"></div><br /></div>
+	  <div id="ajax-licenseCont" style="display: none"><img id="ajax-licenseImg"><div id="ajax-licenseDesc"></div><br /></div>
       {if $upload}
 	  <input id="uLicencaPadrao" type="checkbox" {if !$licenca}checked{/if}/> {tr}Definir como licença {/tr}{tooltip text="Nas próximas vezes que você for enviar um arquivo a licença utilizada será essa"}{tr}padrão{/tr}{/tooltip}.
       {/if}

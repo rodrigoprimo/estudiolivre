@@ -1,3 +1,4 @@
+{css}
 <script language="JavaScript" src="lib/js/el_array.js"></script>
 <script language="JavaScript" src="lib/js/license.js"></script>
 <script language="JavaScript" src="lib/elgal/upload.js"></script>
@@ -8,35 +9,35 @@
   <div id="gUpLeft">
     <div id="gUpIcons">
       <div class="gUpIcon pointer">
-        {*tooltiX text="Clique aqui para enviar um arquivo de <b>áudio</b>"*}<img id="iconeAudio" onMouseOver="acendeTipo('Audio');" onMouseOut="apagaTipo('Audio'); return nd();" onClick="selecionaTipo('Audio')" alt="" src="styles/estudiolivre/iUpAudioOff.png"><br />
+        {*tooltiX text="Clique aqui para enviar um arquivo de <b>áudio</b>"*}<img id="iconeAudio" onMouseOver="acendeTipo('Audio');" onMouseOut="apagaTipo('Audio'); return nd();" onClick="selecionaTipo('Audio')" alt="" src="styles/{$style|replace:".css":""}/img/iUpAudioOff.png"><br />
         {tr}Áudio{/tr}{*/tooltip*}
       </div>
     
       <div class="gUpIcon pointer">
-        {*tooltiX text="Clique aqui para enviar uma <b>imagem</b>"*}<img id="iconeImagem" onMouseOver="acendeTipo('Imagem');" onMouseOut="apagaTipo('Imagem'); return nd();" onClick="selecionaTipo('Imagem')" alt="" src="styles/estudiolivre/iUpImagemOff.png"><br />
+        {*tooltiX text="Clique aqui para enviar uma <b>imagem</b>"*}<img id="iconeImagem" onMouseOver="acendeTipo('Imagem');" onMouseOut="apagaTipo('Imagem'); return nd();" onClick="selecionaTipo('Imagem')" alt="" src="styles/{$style|replace:".css":""}/img/iUpImagemOff.png"><br />
         {tr}Imagem{/tr}{*/tooltip*}
       </div>
     
       <div class="gUpIcon pointer">
-        {*tooltiX text="Clique aqui para enviar um arquivo de <b>texto</b>"*}<img id="iconeTexto" onMouseOver="acendeTipo('Texto');" onMouseOut="apagaTipo('Texto'); return nd();" onClick="selecionaTipo('Texto')" alt="" src="styles/estudiolivre/iUpTextoOff.png"><br />
+        {*tooltiX text="Clique aqui para enviar um arquivo de <b>texto</b>"*}<img id="iconeTexto" onMouseOver="acendeTipo('Texto');" onMouseOut="apagaTipo('Texto'); return nd();" onClick="selecionaTipo('Texto')" alt="" src="styles/{$style|replace:".css":""}/img/iUpTextoOff.png"><br />
         {tr}Texto{/tr}{*/tooltip*}
       </div>
     
       <div class="gUpIcon pointer">
-		{*tooltiX text="Clique aqui para enviar um arquivo de <b>vídeo</b>."*}<img id="iconeVideo" onMouseOver="acendeTipo('Video');" onMouseOut="apagaTipo('Video'); return nd();" onClick="selecionaTipo('Video')" alt="" src="styles/estudiolivre/iUpVideoOff.png"><br />
+		{*tooltiX text="Clique aqui para enviar um arquivo de <b>vídeo</b>."*}<img id="iconeVideo" onMouseOver="acendeTipo('Video');" onMouseOut="apagaTipo('Video'); return nd();" onClick="selecionaTipo('Video')" alt="" src="styles/{$style|replace:".css":""}/img/iUpVideoOff.png"><br />
         {tr}Vídeo{/tr}{*/tooltip*}
       </div>
     
     </div>
     
-    <img class="separator" src="styles/estudiolivre/separator.png">
+    <img class="separator" src="styles/{$style|replace:".css":""}/img/separator.png">
     
     <div id="gUpList" style="display:none">
   	<iframe name="uploadTarget" style="display:none" onLoad="finishUpload();"></iframe>
 
       <div class="gUpListItem gUpSelected">
         
-        <img class="gUpListEdit" src="styles/estudiolivre/iSelect.png">
+        <img class="gUpListEdit" src="styles/{$style|replace:".css":""}/img/iSelect.png">
     	<div id="gUpBackground" class="gUpListItemField">
     	  <div id="gUpFileName"></div>
     	  <div id="gUpPercentContainer" class="gUpPercent"><span id="gUpPercent"></span></div>
@@ -52,7 +53,7 @@
          </div>
      </div>
     <center>
-	    <img class="separator" src="styles/estudiolivre/separator.png">
+	    <img class="separator" src="styles/{$style|replace:".css":""}/img/separator.png">
     </center>
     
     </div>
@@ -62,8 +63,8 @@
 	 		{tr}Arquivos não publicados{/tr}:<br/>
 		 	<ul id="gUpPending">
 				{foreach from=$pending item=pendente}
-					<li id="pendente-{$pendente.arquivoId}">
-						<span class="pointer" onClick="xajax_delete_file({$pendente.arquivoId})"><img src="styles/estudiolivre/iDelete.png"></span>
+					<li id="ajax-pendente-{$pendente.arquivoId}">
+						<span class="pointer" onClick="xajax_delete_file({$pendente.arquivoId})"><img src="styles/{$style|replace:".css":""}/img/iDelete.png"></span>
 						{tooltip text="Clique para continuar o envio desse arquivo"}
 							<span class="pointer" onClick="restoreForm({$pendente.arquivoId}, '{$pendente.tipo}', '{$pendente.arquivo}', '{$pendente.thumbnail}');flip('fileAltered');nd();">
 								{$pendente.titulo|default:$pendente.arquivo|default:$pendente.arquivoId}
@@ -84,7 +85,7 @@
     <div id="gUpThumbImgForm">
       <div id="gUpThumb">
 	    <div id="gUpThumbImg">
-	      <img id="thumbnail" alt="" class="gUpThumbImg">
+	      <img id="ajax-thumbnail" alt="" class="gUpThumbImg">
 	      <div id="gUpThumbStatus"></div>
 	    </div>
       </div>
@@ -113,7 +114,7 @@
     </div>
     
     <br style=" line-height:20px;">
-	{tr}Licença{/tr}: <span onClick="showLightbox('el-license')" style="cursor: pointer;text-decoration:underline"><img id="uImagemLicenca" src="styles/estudiolivre/h_{$licenca.linkImagem}" alt="Escolha uma licença"/></span>
+	{tr}Licença{/tr}: <span onClick="showLightbox('el-license')" style="cursor: pointer;text-decoration:underline"><img id="ajax-uImagemLicenca" src="styles/{$style|replace:".css":""}/img/h_{$licenca.linkImagem}" alt="Escolha uma licença"/></span>
 	{assign var="upload" value=1}
 	{include file="el-license.tpl"}
 	
@@ -130,11 +131,11 @@
 	    Primeiro as 10 mais usadas, com um botão "exibir +" e outro "exibir todas" *}
 
 	    <div id="gUpTagSuggestUser" >
-	      <div id="gUpTagSuggestMore" style="display:block">
+	      <div id="ajax-gUpTagSuggestMore" style="display:block">
 	        {include file="el-tag_suggest_more.tpl"}
 	      </div>
 	   	  {tooltip text="Clique nas tags para adiocioná-las ao campo acima"}
-	      <div id="gUpTagListItem">
+	      <div id="ajax-gUpTagListItem">
 	        {include file="el-tag_suggest_list.tpl"}
 	      </div> 
     	  {/tooltip}
@@ -146,8 +147,8 @@
     
     <div id="gUpMoreOptions">
       {tooltip text="Clique para definir outras propriedades do arquivo"}
-      	<a class="gUpmore pointer" id="gUpmoreoptionsLink" onclick="javascript:flip('gUpMoreOptionsContent'); toggleImage(document.getElementById('moreOptionArrow'),'iArrowGreyDown.png');return false;">{tr}mais opções{/tr} <img id="moreOptionArrow" src="styles/estudiolivre/iArrowGreyLeft.png"> </a>{/tooltip}<br/>
-      <div style="display:none" id="gUpMoreOptionsContent">
+      	<a class="gUpmore pointer" id="gUpmoreoptionsLink" onclick="javascript:flip('ajax-gUpMoreOptionsContent'); toggleImage(document.getElementById('moreOptionArrow'),'iArrowGreyDown.png');return false;">{tr}mais opções{/tr} <img id="moreOptionArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyLeft.png"> </a>{/tooltip}<br/>
+      <div style="display:none" id="ajax-gUpMoreOptionsContent">
       	{include file="el-gallery_metadata.tpl"}
       </div>
     </div>
@@ -155,7 +156,7 @@
      <br style="clear:both; line-height:20px;">
     
     <div id="save-exit">
-       <img src="styles/estudiolivre/bPublicar.png" class="pointer" onClick="checkWaiting('xajax_check_publish()')"/>
+       <img src="styles/{$style|replace:".css":""}/img/bPublicar.png" class="pointer" onClick="checkWaiting('xajax_check_publish()')"/>
     </div>
 
 

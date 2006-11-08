@@ -579,7 +579,7 @@ h1 .flipper {
 
 /* content */
 
-#contentBubble{
+#ajax-contentBubble{
 	overflow:hidden;
 	/*height:300px;*/
 	background-color:black;
@@ -794,7 +794,7 @@ p.editdate {
 
 /*LISTAGEM DO ACERVO*/
 
-#gListCont {
+#ajax-gListCont {
 	padding-right:10px;
 	overflow:hidden;
 }
@@ -899,7 +899,7 @@ p.editdate {
 	text-align:center;
 }
 
-#gPlayerImagem h4 {
+#ajax-gPlayerImagem h4 {
 	text-align:right;
 }
 /* User Menu */
@@ -1428,12 +1428,12 @@ DIV.gUpAuthor {
 	overflow:hidden;
 }
 
-#gUpTagListItem {
+#ajax-gUpTagListItem {
 	width:85%;
 	border-right:2px solid #f1f1f1
 }
 
-#gUpTagSuggestMore {
+#ajax-gUpTagSuggestMore {
 	float:right;
 	margin-top:4px;
 }
@@ -1458,7 +1458,7 @@ A.gUpmore {
 	max-width: 100px;
 }
 
-#gUpMoreOptionsContent {
+#ajax-gUpMoreOptionsContent {
 	padding-top:10px;
 }
 

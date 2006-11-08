@@ -1,4 +1,4 @@
-<div id="el-publish" style="display: none; width: 400px">
+<div id="ajax-el-publish" style="display: none; width: 400px">
   <p>{tr}Acionando o botão "CONCORDO" abaixo, você está concordando com todos os Termos e Política de Uso deste site.{/tr}</p>
 
   <p>{tr}Informo ser o titular do material (fonogramas, imagens, audiovisual, softwares, textos, samples, etc.) que envio para o ESTUDIOLIVRE.ORG, e autorizo, sem exclusividade, a sua exibição e distribuição eletrônica no endereço www.estudiolivre.org segundo as condições no <a href="tiki-index.php?page=pol%C3%ADtica+de+uso">Termo de Política de Uso do site</a> e da licença escolhida.{/tr}</p>
@@ -10,6 +10,6 @@
   <p><input type="checkbox" id="disclaimerCheck">{tr}Não mostrar este aviso novamente{/tr}</p>
   <center>
    <a onClick="xajax_check_publish(0, (document.getElementById('disclaimerCheck').checked ? 1 : 0))">{tr}CONCORDO{/tr}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   <a onClick="hideLightbox('el-publish')">{tr}NÃO CONCORDO{/tr}</a>
+   <a onClick="hideLightbox('ajax-el-publish')">{tr}NÃO CONCORDO{/tr}</a>
   </center>
 </div>

@@ -10,7 +10,7 @@
 	
 	<h5>
 		<span class="pointer" onclick="javascript:flip('tagOptions');toggleImage(document.getElementById('TArrowTag'),'iArrowGreyDown.png');">
-			Especificar... {$module_title}<img id="TArrowTag"  src="styles/estudiolivre/iArrowGreyLeft.png">
+			Especificar... {$module_title}<img id="TArrowTag"  src="styles/{$style|replace:".css":""}/img/iArrowGreyLeft.png">
 		</span>
 		<div id="tagOptions" style="display: none;">
 			<form method="get" action="el-tag_cloud.php">

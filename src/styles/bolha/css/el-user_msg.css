@@ -33,6 +33,10 @@
 	font-size:10px;
 }
 
+.uUnreadMsgItem {
+	border-right:2px solid tomato;	
+}
+
 #aCommentSend #uMsgSendInput {
 	width:75%;
 	background-color:white;

@@ -27,12 +27,12 @@ function streamFile($arquivoId, $type, $screenSize) {
     	} else {
     		$smarty->assign('note', '');
     	}
-    	$objResponse->addRemove('gPlayerImagem');
-    	$objResponse->addAppend('contentBubble', 'innerHTML', $smarty->fetch('el-playerImage.tpl'));
-    	$objResponse->addAssign('gImagem', 'style.maxWidth', $screenSize . "px");
-    	$objResponse->addAssign('gPlayerImagem', 'style.width', $arquivo['tamanhoImagemX'] . "px");
-    	$objResponse->addAssign('gPlayerImagem', 'style.height', $arquivo['tamanhoImagemY'] . "px");
-    	$objResponse->addScript("showLightbox('gPlayerImagem')");
+    	$objResponse->addRemove('ajax-gPlayerImagem');
+    	$objResponse->addAppend('ajax-contentBubble', 'innerHTML', $smarty->fetch('el-playerImage.tpl'));
+    	$objResponse->addAssign('ajax-gImagem', 'style.maxWidth', $screenSize . "px");
+    	$objResponse->addAssign('ajax-gPlayerImagem', 'style.width', $arquivo['tamanhoImagemX'] . "px");
+    	$objResponse->addAssign('ajax-gPlayerImagem', 'style.height', $arquivo['tamanhoImagemY'] . "px");
+    	$objResponse->addScript("showLightbox('ajax-gPlayerImagem')");
     	
     	return $objResponse;
     }
@@ -55,12 +55,12 @@ function streamFile($arquivoId, $type, $screenSize) {
      * if (preg_match('/.*\.swf$/i', $arquivo.arquivo)) {
     	$smarty->assign('src', 'repo/' . $arquivo['arquivo']);
     	$objResponse->addRemove('gPlayerSwf');
-    	$objResponse->addAppend('contentBubble', 'innerHTML', $smarty->fetch('el-playerSwf.tpl'));
+    	$objResponse->addAppend('ajax-contentBubble', 'innerHTML', $smarty->fetch('el-playerSwf.tpl'));
     	$objResponse->addScript("showLightbox('gPlayerSwf')");	
     } else {
     */
-    	$objResponse->addRemove('gPlayer');
-   		$objResponse->addAppend('contentBubble', 'innerHTML', $smarty->fetch('el-player.tpl'));
+    	$objResponse->addRemove('ajax-gPlayer');
+   		$objResponse->addAppend('ajax-contentBubble', 'innerHTML', $smarty->fetch('el-player.tpl'));
     	$objResponse->addScript("loadFile('$validUrl', $width, $height, '$video')");
     //}
     

@@ -103,7 +103,7 @@
         			<span class="pointer" onClick="showLightbox('el-license')">
         			{if $licenca}
 			    	   	{tooltip text="Clique para modificar a sua licença padrão"}
-			    	   		<img id="uLicence" src="styles/estudiolivre/h_{$licenca.linkImagem}"/>
+			    	   		<img id="ajax-uLicence" src="styles/estudiolivre/h_{$licenca.linkImagem}"/>
 			    	   	{/tooltip}
 			    	{else}
 	    		    	(Selecione sua licença Padrão)
@@ -111,7 +111,7 @@
 	    		    </span>
 	        {else}
 		        {if $licenca}
-			    	   	{tooltip text="Licença padrão desse usuário: "|cat:$licenca.descricao}<img id="uLicence" src="styles/estudiolivre/h_{$licenca.linkImagem}"/>{/tooltip}
+			    	   	{tooltip text="Licença padrão desse usuário: "|cat:$licenca.descricao}<img id="ajax-uLicence" src="styles/estudiolivre/h_{$licenca.linkImagem}"/>{/tooltip}
 		    	{else}
 		        	(Usuário sem Licença Padrão)
 		        {/if}
@@ -136,7 +136,7 @@
       <div id="uGalleryItems" class="uMainItemContainer" style="display:block">
       {if sizeof($arquivos)}
       	<div id="ajax-listNav" class="ulistNav">{include file="el-gallery_pagination.tpl"}</div>
-		<div id="gListCont">{include file="el-gallery_section.tpl"}</div>
+		<div id="ajax-gListCont">{include file="el-gallery_section.tpl"}</div>
 	  {else}
 	  	{if $permission}
 		  	<p> Você ainda não possui arquivos no acervo livre. <a href="el-gallery_upload.php">Compartilhe</a> sua obra!</p>
@@ -197,7 +197,8 @@
       </div>
       <div id="uMsgItems" class="uMainItemContainer" style="display:block">
       	{if $allowMsgs}
-	      	{include file="el-user_msg.tpl"}
+	      	<div class="listNav" id="ajax-msgListNav">{include file="el-msg_pagination.tpl"}</div>
+	      	<span id="ajax-userMsgs">{include file="el-user_msg.tpl"}</span>
 	    {/if}
       </div>
     </div>

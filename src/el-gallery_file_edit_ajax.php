@@ -72,13 +72,13 @@ function generate_thumb() {
 	$objResponse = new xajaxResponse();
 	$thumb = $elgallib->generate_thumb($arquivoId);
 
-	$objResponse->addAssign("thumbnail", "className", 'gUpThumbImg');	
+	$objResponse->addAssign("ajax-thumbnail", "className", 'gUpThumbImg');	
 
 	if ($thumb) {
-	    $objResponse->addAssign("thumbnail", "src", 'repo/' . urlencode($thumb));
+	    $objResponse->addAssign("ajax-thumbnail", "src", 'repo/' . urlencode($thumb));
 	} else {
 	    $arquivo = $elgallib->get_arquivo($arquivoId);
-	    $objResponse->addAssign("thumbnail", "src", 'styles/estudiolivre/iThumb' . $arquivo["tipo"] . '.png');
+	    $objResponse->addAssign("ajax-thumbnail", "src", 'styles/estudiolivre/iThumb' . $arquivo["tipo"] . '.png');
 	}
 
 	return $objResponse;
@@ -103,7 +103,7 @@ function restore_edit($arquivoId) {
 		$templateName = 'el-gallery_metadata_' . $arquivo['tipo'] . '.tpl';
 		$smarty->assign('permission', true);
 		$content = $smarty->fetch($templateName);
-		$objResponse->addAppend('gUpMoreOptionsContent', 'innerHTML', $content);
+		$objResponse->addAppend('ajax-gUpMoreOptionsContent', 'innerHTML', $content);
 		$objResponse->addScript(_extractScripts($content));
 	}
 	

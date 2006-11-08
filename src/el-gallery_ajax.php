@@ -31,7 +31,7 @@ function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $fi
 	}
 
 	$objResponse->addAssign("ajax-listNav", "innerHTML", $smarty->fetch("el-gallery_pagination.tpl"));
-    $objResponse->addAssign("gListCont", "innerHTML", $smarty->fetch("el-gallery_section.tpl"));
+    $objResponse->addAssign("ajax-gListCont", "innerHTML", $smarty->fetch("el-gallery_section.tpl"));
     $objResponse->addScript("nd()");
     //$objResponse->addScript("acervoCache('$tiposHr', $offset, $maxRecords, '$sort_mode', '$find', '$filtersHr')");
     

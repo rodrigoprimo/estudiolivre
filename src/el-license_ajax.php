@@ -11,9 +11,9 @@ function get_license($r1, $r2, $r3) {
     $licencaId = $elgallib->id_licenca($r1, $r2, $r3);
 	    
     $licenca = $elgallib->get_licenca($licencaId);
-    $objResponse->addAssign('licenseImg', 'src', 'styles/estudiolivre/h_' . $licenca['linkImagem'] . '?rand='.rand());
-    $objResponse->addAssign('licenseDesc', 'innerHTML', $licenca['descricao']);
-    $objResponse->addScript("show('licenseCont');");
+    $objResponse->addAssign('ajax-licenseImg', 'src', 'styles/estudiolivre/h_' . $licenca['linkImagem'] . '?rand='.rand());
+    $objResponse->addAssign('ajax-licenseDesc', 'innerHTML', $licenca['descricao']);
+    $objResponse->addScript("show('ajax-licenseCont');");
 
     return $objResponse;			
 }

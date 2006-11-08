@@ -11,7 +11,7 @@ function acervoCache(tipo, offset, maxRecords, sort_mode, find, filters) {
 
 function el_get_files(tipo, offset, maxRecords, sort_mode, find, filters) {
     if(acervo_cache[tipo+offset+maxRecords+sort_mode+find+filters]) {
-	document.getElementById('gListCont').innerHTML = acervo_cache[tipo+offset+maxRecords+sort_mode+find+filters];
+	document.getElementById('ajax-gListCont').innerHTML = acervo_cache[tipo+offset+maxRecords+sort_mode+find+filters];
     }
     else {
 	xajax_get_files(tipo, offset, maxRecords, sort_mode, find, filters);

@@ -147,7 +147,7 @@ SPAN.page-title {
 	padding: 5px;
 }
 
-#el-arquivo .el-list #thumbnail {
+#el-arquivo .el-list #ajax-thumbnail {
 	float: left;
 	opacity: 1;
 	margin-right: 10px;

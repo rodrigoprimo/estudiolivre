@@ -126,7 +126,7 @@ DIV.gUpIcon {
 	font-weight:normal;
 }
 
-#gUpTagSuggestMore {
+#ajax-gUpTagSuggestMore {
 	float:right;
 	margin-top:4px;
 }
@@ -214,7 +214,7 @@ DIV.gUpIcon {
 	background-color:#e1a7a4;
 }
 
-#gUpMoreOptionsContent {
+#ajax-gUpMoreOptionsContent {
 	padding-top:10px;
 }
 
@@ -256,7 +256,7 @@ DIV.gUpIcon {
 	font-size:12px;
 }
 
-#gUpTagListItem {
+#ajax-gUpTagListItem {
 	width:85%;
 	border-right:2px solid #f1f1f1;
 }

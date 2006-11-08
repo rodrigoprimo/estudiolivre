@@ -1,6 +1,6 @@
 <!-- content.tpl begin -->
 
-<div id="contentBubble">
+<div id="ajax-contentBubble">
         
     <div id="tiki-mid">
  

@@ -1,5 +1,7 @@
 <?php
 
+require_once "tiki-setup.php";
+
 if ($tiki_p_admin == 'y') {
 	$amb = array('sobre', 'projeto', 'vídeo', 'áudio', 'Áudio', 'gráfico', 'tradução', 'tutoriais', 'texto', 'equipamentos', 'teste', 'sistema', 'colabore', 'contato', 'distribuição', 'links', 'se', 'performance', 'computadores', 'to', 'instalação', 'textos', 'rede', 'particular', 'minc', 'about', 'participantes', 'premio', 'homepage', 'bahia', 'recife', 'explorando', 'osasco', 'vassouras', 'bagulho', 'cameras', 'ficção', 'al', 'es', 'configure', 'ma', 'go', 'ac', 'cozinha', 'sp', 'rs', 'pa', 'pr', 'mg', 'rio', 'rn', 'ce', 'pe', 'kitchen', 'pós-produção', 'dev', 'hardware');
 	
@@ -23,13 +25,13 @@ if ($tiki_p_admin == 'y') {
 			$pageName = $pageName['pageName'];
 			
 			if (in_array(strtolower($pageName), $amb)) {
-				next;
+				break;
 			}
 			
 			$regex = preg_replace('/([^a-zA-Z0-9])/', "\\$1", $pageName);
 			
 			$regex = '/(?<!\(\([^\)]*)' . $regex . '(?![^\(]*\)\))/';
-			
+			print($regex);exit;
 			preg_match_all($regex, $data, $matches);
 			
 			if ($total = count($matches[0])) {
@@ -40,7 +42,7 @@ if ($tiki_p_admin == 'y') {
 		}
 		
 		if ($total) {
-			print "$pageName<br>$page['data']<br><hr>$data<br><br><hr><hr>";
+			print "$pageName<br> " . $page['data'] . "<br><hr>$data<br><br><hr><hr>";
 		}
 	}
 	/*
@@ -74,9 +76,9 @@ if ($tiki_p_admin == 'y') {
 		}
 	}
 	*/
+	print("<br><center><h1>Pronto para fazer $totalModif links</h1></center><br>");
 }
 
-print("<br><center><h1>Pronto para fazer $totalModif links</h1></center><br>");
 
 exit;
 ?>

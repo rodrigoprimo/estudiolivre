@@ -1,3 +1,4 @@
+{css extra=ajax_inputs,el-gallery_pagination}
 <!-- tiki-user_information.tpl begin -->
 
 <script language="JavaScript" src="lib/js/license.js"></script>
@@ -49,7 +50,7 @@
 		        {ajax_input permission=$permission id="site" class="uContactItem" value=$site default="{tr}Site{/tr}" display="block" truncate='17'}        
 		    {/tooltip}
         {else}
-	        <a class="uContactItem" href="http://{$site|replace:'http://':''}" display="block">{$site|replace:'http://':''|truncate:22:"(...)":true}</a>
+	        <a class="uContactItem" href="{if preg_match('/https?:\/\//',$site)}{$site}{else}http://{$site}{/if}" display="block">{$site|replace:'http://':''|truncate:22:"(...)":true}</a>
 	    {/if}
 		<br />
         {if $permission}
@@ -65,11 +66,11 @@
       <div id="uKarmaThumb" class="uContactInfoCont center">
 		<div id="uKarma">
 		  {* TODO quando tiver karma
-		  <img class="uKarmaImg" src="styles/estudiolivre/iKarma.png">
-		  <img class="uKarmaImg" class="uKarmaImg" src="styles/estudiolivre/iKarma.png">
-		  <img class="uKarmaImg" src="styles/estudiolivre/iKarmaInactive.png">
-		  <img class="uKarmaImg" src="styles/estudiolivre/iKarmaInactive.png">
-		  <img class="uKarmaImg" src="styles/estudiolivre/iKarmaInactive.png"> *}
+		  <img class="uKarmaImg" src="styles/{$style|replace:".css":""}/img/iKarma.png">
+		  <img class="uKarmaImg" class="uKarmaImg" src="styles/{$style|replace:".css":""}/img/iKarma.png">
+		  <img class="uKarmaImg" src="styles/{$style|replace:".css":""}/img/iKarmaInactive.png">
+		  <img class="uKarmaImg" src="styles/{$style|replace:".css":""}/img/iKarmaInactive.png">
+		  <img class="uKarmaImg" src="styles/{$style|replace:".css":""}/img/iKarmaInactive.png"> *}
 		</div>
 
 	    <div id="gUserThumb">
@@ -104,15 +105,15 @@
         			<span class="pointer" onClick="showLightbox('el-license')">
         			{if $licenca}
 			    	   	{tooltip text="Clique para modificar a sua licença padrão"}
-			    	   		<img id="uLicence" src="styles/estudiolivre/h_{$licenca.linkImagem}"/>
+			    	   		<img id="ajax-uLicence" src="styles/{$style|replace:".css":""}/img/h_{$licenca.linkImagem}"/>
 			    	   	{/tooltip}
 			    	{else}
-	    		    	<img id="uLicence" alt="({tr}Selecione sua licença Padrão{/tr})"/>
+	    		    	<img id="ajax-uLicence" alt="({tr}Selecione sua licença Padrão{/tr})"/>
 	    		    {/if}
 	    		    </span>
 	        {else}
 		        {if $licenca}
-			    	   	{tooltip text="Licença padrão desse(a) usuári@: "|cat:$licenca.descricao}<img id="uLicence" src="styles/estudiolivre/h_{$licenca.linkImagem}"/>{/tooltip}
+			    	   	{tooltip text="Licença padrão desse(a) usuári@: "|cat:$licenca.descricao}<img id="ajax-uLicence" src="styles/{$style|replace:".css":""}/img/h_{$licenca.linkImagem}"/>{/tooltip}
 		    	{else}
 		        	({tr}Usuári@ sem Licença Padrão{/tr})
 		        {/if}
@@ -126,7 +127,37 @@
         <span class="uContactItem uLittle">{tr}Membro desde{/tr} {$userinfo.registrationDate|date_format:"%d/%m/%Y"}</span>
       </div>  
     </div>
-    
+
+    {if $smarty.cookies.uLiveInfo eq 'none'}
+		{assign var=display value="none"}
+		{assign var=imgCurrent value="iArrowGreyRight.png"}
+		{assign var=imgChange value="iArrowGreyDown.png"}	
+	{else}
+		{assign var=display value="block"}
+		{assign var=imgCurrent value="iArrowGreyDown.png"}
+		{assign var=imgChange value="iArrowGreyRight.png"}	
+	{/if}
+	    
+    <div id="uLive" class="uMainContainer">
+    	<div class="sectionTitle uMainTitle uSectionsTitle">
+		    <h1>
+		    	<span class="pointer" onclick="javascript:flip('moduleuLiveInfo');toggleImage(document.getElementById('lTArrow'),'{$imgChange}'); storeState('uLiveInfo')">
+		       	<img id="lTArrow" src="styles/{$style|replace:".css":""}/img/{$imgCurrent}">
+		    	&nbsp;
+		        {tr}Canais de transmissão ao vivo{/tr}
+		       </span>
+		    </h1>
+      	</div>
+    	<div id="moduleuLiveInfo" class="uMainItemContainer" style="display:{$display}">
+    		<span id="ajax-liveCont">
+	    		{foreach from=$liveChannels item=channel}
+	    			{include file="elLiveChannels.tpl"}
+	    		{/foreach}
+	    	</span>
+   			{if $permission}<a href="#" onClick="showLightbox('elIce')">{tr}Criar um canal de transmissão ao vivo.{/tr}</a>{/if}
+    	</div>
+    </div>
+
     {if $smarty.cookies.uGalleryItems eq 'none'}
 		{assign var=display value="none"}
 		{assign var=imgCurrent value="iArrowGreyRight.png"}
@@ -139,10 +170,10 @@
 	    
     <div id="uGallery" class="uMainContainer">
       <div id="uGalleryTitle" class="sectionTitle uMainTitle uSectionsTitle">
-		<a name="gallery" class="uRssCont" href="el-gallery_rss.php?user={$userinfo.login}&ver=2"><img src="styles/estudiolivre/iRss.png"></a>
+		<a name="gallery" class="uRssCont" href="el-gallery_rss.php?user={$userinfo.login}&ver=2"><img src="styles/{$style|replace:".css":""}/img/iRss.png"></a>
         <h1>
            <span class="pointer" onclick="javascript:flip('moduleuGalleryItems');toggleImage(document.getElementById('gTArrow'),'{$imgChange}'); storeState('uGalleryItems')">
-           	<img id="gTArrow" src="styles/estudiolivre/{$imgCurrent}">
+           	<img id="gTArrow" src="styles/{$style|replace:".css":""}/img/{$imgCurrent}">
         	&nbsp;
 	        {tr}Galeria pessoal{/tr}
 	       </span>
@@ -150,8 +181,8 @@
       </div>
       <div id="moduleuGalleryItems" class="uMainItemContainer" style="display:{$display}">
       {if sizeof($arquivos)}
-      	<div id="listNav" class="ulistNav">{include file="el-gallery_pagination.tpl"}</div>
-		<div id="gListCont">{include file="el-gallery_section.tpl"}</div>
+      	<div class="listNav" id="ajax-listNav">{include file="el-gallery_pagination.tpl"}</div>
+		<div id="ajax-gListCont">{include file="el-gallery_section.tpl"}</div>
 	  {else}
 	  	{if $permission}
 		  	<p> {tr}Você ainda não possui arquivos no acervo livre{/tr}. <a href="el-gallery_upload.php">{tr}Compartilhe{/tr}</a> {tr}sua obra{/tr}!</p>
@@ -174,10 +205,10 @@
 
     <div id="uBlog" class="uMainContainer">
       <div id="uBlogTitle" class="sectionTitle uMainTitle">
-        <a name="blogs" class="uRssCont" href="el-userblogs_rss.php?user={$userinfo.login}&ver=2"><img src="styles/estudiolivre/iRss.png"></a>
+        <a name="blogs" class="uRssCont" href="el-userblogs_rss.php?user={$userinfo.login}&ver=2"><img src="styles/{$style|replace:".css":""}/img/iRss.png"></a>
         <h1>
           <span class="pointer" onclick="javascript:flip('moduleuBlogItems');toggleImage(document.getElementById('bTArrow'),'{$imgChange}'); storeState('uBlogItems')" >
-            <img id="bTArrow" src="styles/estudiolivre/{$imgCurrent}">
+            <img id="bTArrow" src="styles/{$style|replace:".css":""}/img/{$imgCurrent}">
 	        &nbsp;
           	{tr}Blogs{/tr}
           </span>
@@ -223,10 +254,10 @@
 
     <div id="uMsgs" class="uMainContainer">
       <div id="uMsgsTitle" class="sectionTitle uMainTitle">
-        <a name="messages" class="uRssCont" href="el-usermsgs_rss.php?user={$userinfo.login}&ver=2"><img src="styles/estudiolivre/iRss.png"></a>
+        <a name="messages" class="uRssCont" href="el-usermsgs_rss.php?user={$userinfo.login}&ver=2"><img src="styles/{$style|replace:".css":""}/img/iRss.png"></a>
         <h1>
         	<span class="pointer" onclick="javascript:flip('moduleuMsgItems');toggleImage(document.getElementById('rTArrow'),'{$imgChange}'); storeState('uMsgItems')">
-        	  	<img id="rTArrow" src="styles/estudiolivre/{$imgCurrent}">
+        	  	<img id="rTArrow" src="styles/{$style|replace:".css":""}/img/{$imgCurrent}">
 		        &nbsp;
 		        {tr}Recados{/tr}
 	        </span>
@@ -240,7 +271,8 @@
       </div>
       <div id="moduleuMsgItems" class="uMainItemContainer" style="display:{$display}">
       	{if $allowMsgs}
-	      	{include file="el-user_msg.tpl"}
+      		<div class="listNav" id="ajax-msgListNav">{include file="el-msg_pagination.tpl"}</div>
+	      	<span id="ajax-userMsgs">{include file="el-user_msg.tpl"}</span>
 	    {/if}
       </div>
     </div>
@@ -258,10 +290,10 @@
 
     <div id="uWiki" class="uMainContainer">
     	<div id="uWikiTitle" class="sectionTitle uMainTitle">
-    		<a class="uRssCont" href="tiki-wiki_rss.php?ver=2"><img src="styles/estudiolivre/iRss.png"></a>
+    		<a class="uRssCont" href="tiki-wiki_rss.php?ver=2"><img src="styles/{$style|replace:".css":""}/img/iRss.png"></a>
     		<h1>
     		  <span class="pointer" title="Wiki de {$userinfo.login}" onclick="javascript:flip('moduleuWikiMid');toggleImage(document.getElementById('wTArrow'),'{$imgChange}'); storeState('uWikiMid')" >
-	    	 	<img id="wTArrow" src="styles/estudiolivre/{$imgCurrent}">
+	    	 	<img id="wTArrow" src="styles/{$style|replace:".css":""}/img/{$imgCurrent}">
     	    	&nbsp;
     		  	{tr}Wiki{/tr}
     		  </span>
@@ -284,6 +316,13 @@
 
 {if $permission}
 	{include file="el-license.tpl"}
+	<div id="elIce" style="display:none;width:300px;">
+		O ponto de montagem e a senha devem ser apenas compostos por letras (sem acento) e numeros, sem espaços.<br/>
+		{tr}ponto de montagem{/tr}: <input type="text" id="ajax-livePoint"/><br/>
+		{tr}password{/tr}: <input type="text" id="ajax-livePass"/><br/>
+		<input type="button" onClick="xajax_set_mount_point(document.getElementById('ajax-livePoint').value,document.getElementById('ajax-livePass').value)" value="{tr}Submit{/tr}"/>
+		<div id="ajax-liveError"></div>
+	</div>
 {/if}
 
 <!-- tiki-user_information.tpl end -->

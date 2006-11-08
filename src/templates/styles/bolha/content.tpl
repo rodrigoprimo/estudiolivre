@@ -1,7 +1,7 @@
 {css}
 <!-- content.tpl begin -->
 
-<div id="contentBubble">
+<div id="ajax-contentBubble">
 
     {if $feature_usermenu eq 'y'}	
       <div id="usermenu">

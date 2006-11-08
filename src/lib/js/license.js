@@ -23,6 +23,6 @@ function testLicense() {
     if (resposta1 != null && resposta2 != null && (resposta2 == 1 || resposta3 != null)) {
 	xajax_get_license(resposta1, resposta2, resposta3);
     } else {
-	hide('licenseCont');
+	hide('ajax-licenseCont');
     }
 }

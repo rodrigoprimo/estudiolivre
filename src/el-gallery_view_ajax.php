@@ -19,7 +19,7 @@ function vota($nota) {
     $rating = round($elgallib->vote_arquivo($arquivoId, $user, $nota));
 
     $objResponse = new xajaxResponse();
-    $objResponse->addAssign('aRatingImg', 'src', 'styles/estudiolivre/star'.$rating.'.png');
+    $objResponse->addAssign('ajax-aRatingImg', 'src', 'styles/estudiolivre/star'.$rating.'.png');
     return $objResponse;
 } 
 

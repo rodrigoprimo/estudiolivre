@@ -1,5 +1,4 @@
 <!-- el-gallery_pagination.tpl begin -->
-
 {if $total > $maxRecords}
 	{if $page-2 > 1}
 		{tooltip name="pagination-primeira-pagina" text="Primeira página"}<a class="pointer" onClick="xajax_get_files(tipos, 0, {$maxRecords}, '{$sort_mode}', '{$userName}', '{$find}')">&laquo;</a>{/tooltip}
@@ -27,5 +26,4 @@
 		{tooltip text="Última página"}<a class="pointer" onClick="xajax_get_files(tipos, {$maxRecords*$lastPage-$maxRecords}, {$maxRecords}, '{$sort_mode}', '{$userName}', '{$find}')">&raquo;</a>{/tooltip}
 	{/if}
 {/if}
-
 <!-- el-gallery_pagination.tpl end -->

@@ -1,3 +1,4 @@
+{css}
 {foreach from=$userMessages.data item='msg'}
 	<div 
 		class="uMsgItem{if $msg.isRead ne "y"} uUnreadMsgItem"{else} "{/if}
@@ -13,7 +14,7 @@
         	{if $permission || $user eq $msg.user_from}
         	 {tooltip text="Deletar Mensagem"}
         	 	<a class="pointer" onClick="xajax_delMsg('{$msg.user_from}', {$msg.msgId})">
-        	 		<img alt="" src="styles/estudiolivre/iDelete.png">
+        	 		<img alt="" src="styles/{$style|replace:".css":""}/img/iDelete.png">
         	 	</a>
         	 {/tooltip}
         	{/if}

@@ -20,12 +20,12 @@ function init(findVal) {
 }
 
 function acervoCache(tipos,offet, maxRecords, sort_mode, findValue, filters) {
-    acervo_cache[tipos+offset+maxRecords+sort_mode+findValue+filters] = document.getElementById('gListCont').innerHTML;
+    acervo_cache[tipos+offset+maxRecords+sort_mode+findValue+filters] = document.getElementById('ajax-gListCont').innerHTML;
 }
 
 function el_get_files(tipos, offset, maxRecords, sort_mode, findValue, filters) {
     if(acervo_cache[tipos+offset+maxRecords+sort_mode+findValue+filters]) {
-		document.getElementById('gListCont').innerHTML = acervo_cache[tipos+offset+maxRecords+sort_mode+findValue+filters];
+		document.getElementById('ajax-gListCont').innerHTML = acervo_cache[tipos+offset+maxRecords+sort_mode+findValue+filters];
     }
     else {
 		xajax_get_files(tipos, offset, maxRecords, sort_mode, findValue, filters);

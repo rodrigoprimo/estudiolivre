@@ -1,8 +1,14 @@
+{css extra=tiki-show_page}
 <!-- el-gallery_home.tpl begin -->
 
 <script language="JavaScript" src="lib/js/el_array.js"></script>
 <script language="JavaScript" src="lib/elgal/el_home.js"></script>
 <script language="JavaScript" src="lib/js/delete_file.js"></script>
+
+<script language="JavaScript">
+	init('{$find}');
+	{foreach from=$tipos item=tipo}tipos.add('{$tipo}');{/foreach}
+</script>
 
 {if $smarty.cookies.gHomeWikiToggle eq 'none'}
 	{assign var=display value="none"}
@@ -18,7 +24,7 @@
 <div id="gHomeWiki" {if $tiki_p_edit eq 'y'} ondblclick="location.href='tiki-editpage.php?page=destak'"{/if}>
 	<span id="gHomeWikiTitle">
 		{tooltip name="home-flip-destaques" text="Alternar a visualização dos destaques"}
-			<img onclick="flip('modulegHomeWikiToggle');toggleImage(this,'{$imgChange}.png');storeState('gHomeWikiToggle')" src="styles/estudiolivre/{$imgCurrent}.png">
+			<img class="pointer" onclick="flip('modulegHomeWikiToggle');toggleImage(this,'{$imgChange}.png');storeState('gHomeWikiToggle')" src="styles/{$style|replace:".css":""}/img/{$imgCurrent}.png">
 		{/tooltip}
 	</span>
 	<div id="modulegHomeWikiToggle" style="display:{$display};">
@@ -28,26 +34,22 @@
 	<div id="gHomeWikiBottom">
 		{tooltip text="<i>Feed</i> &nbsp;<b>RSS</b> do acervo.livre"}
 			<a href="tiki-index.php?page=RSS+do+Acervo+Livre">
-				<up style="position:relative; top:-4px;">{tr}Assinar RSS do acervo{/tr}</up> <img src="styles/estudiolivre/iRss.png">
+				<up style="position:relative; top:-4px;">{tr}Assinar RSS do acervo{/tr}</up> <img src="styles/{$style|replace:".css":""}/img/iRss.png">
 			</a>
 		{/tooltip}
 	</div>
 </div>
+
 <!-- Feature Wiki End -->
 	
-	{if $isIE}
-		{include file="ie_el-gallery_list_filters.tpl"}
-	{else}
-		{include file="el-gallery_list_filters.tpl"}
-	{/if}
+{include file="el-gallery_list_filters.tpl"}
 
-<div id="gListCont">
+<div id="ajax-gListCont">
 	{include file="el-gallery_section.tpl"}
 </div>
-<script language="JavaScript">init('{$find}')</script>
 
-	{* isso não rola por causa do AJAX. mas o nano vai arrumar.*}
-	{* include file="el-gallery_list_filters.tpl" *}
+{* isso não rola por causa do AJAX. mas o nano vai arrumar.*}
+{* include file="el-gallery_list_filters.tpl" *}
 	
 {include file="el-gallery_confirm_delete.tpl"}
 

@@ -36,7 +36,7 @@ function create_file($tipo, $fileName, $uploadId) {
 		$templateName = 'el-gallery_metadata_' . $tipo . '.tpl';
 		$smarty->assign('permission', true);
 		$content = $smarty->fetch($templateName);
-		$objResponse->addAppend('gUpMoreOptionsContent', 'innerHTML', $content);
+		$objResponse->addAppend('ajax-gUpMoreOptionsContent', 'innerHTML', $content);
 		$objResponse->addScript(_extractScripts($content));
 	}
 			
@@ -69,7 +69,7 @@ function delete_file($arquivoId) {
 	
 	$elgallib->delete_arquivo($arquivoId);
 	
-	$objResponse->addRemove("pendente-$arquivoId");
+	$objResponse->addRemove("ajax-pendente-$arquivoId");
 	
 	return $objResponse;
 }
@@ -140,7 +140,7 @@ function set_arquivo_licenca ($resposta1, $resposta2, $resposta3, $padrao = fals
 		$objResponse->addAlert("Não foi possivel editar o campo licencaId");
 	} else {
 	  	$licenca = $elgallib->get_licenca($licencaId);
-	  	$objResponse->addAssign('uImagemLicenca', 'src', 'styles/estudiolivre/h_' . $licenca['linkImagem'] . '?rand='.rand());
+	  	$objResponse->addAssign('ajax-uImagemLicenca', 'src', 'styles/estudiolivre/h_' . $licenca['linkImagem'] . '?rand='.rand());
 	}
 		
 	return $objResponse;
@@ -172,8 +172,8 @@ function check_publish($showDisclaimer = true, $dontShowAgain = false) {
     		$errorMsgs .= $error . "<br>\n";
     		$objResponse->addScriptCall('exibeErro',$field, $error);
     	}
-    	$objResponse->addAssign("gUpErrorList", "innerHTML", $errorMsgs);
-    	$objResponse->addScript("showLightbox('gUpError')");
+    	$objResponse->addAssign("ajax-gUpErrorList", "innerHTML", $errorMsgs);
+    	$objResponse->addScript("showLightbox('ajax-gUpError')");
     } else {
 		if (!$showDisclaimer || $userlib->get_user_preference($user, 'el_disclaimer_seen', false)) {
 		    if ($dontShowAgain) {
@@ -182,7 +182,7 @@ function check_publish($showDisclaimer = true, $dontShowAgain = false) {
 		    }
 		    return _publish_arquivo();
 		} else {
-		    $objResponse->addScript("showLightbox('el-publish')");
+		    $objResponse->addScript("showLightbox('ajax-el-publish')");
 		}
     }
     return $objResponse;    
