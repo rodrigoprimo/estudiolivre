@@ -138,26 +138,35 @@
 		{assign var=imgChange value="iArrowGreyRight.png"}	
 	{/if}
 	    
-    <div id="uLive" class="uMainContainer">
-    	<div class="sectionTitle uMainTitle uSectionsTitle">
-		    <h1>
-		    	<span class="pointer" onclick="javascript:flip('moduleuLiveInfo');toggleImage(document.getElementById('lTArrow'),'{$imgChange}'); storeState('uLiveInfo')">
-		       	<img id="lTArrow" src="styles/{$style|replace:".css":""}/img/{$imgCurrent}">
-		    	&nbsp;
-		        {tr}Canais de transmissão ao vivo{/tr}
-		       </span>
-		    </h1>
-      	</div>
-    	<div id="moduleuLiveInfo" class="uMainItemContainer" style="display:{$display}">
-    		<span id="ajax-liveCont">
-	    		{foreach from=$liveChannels item=channel}
-	    			{include file="elLiveChannels.tpl"}
-	    		{/foreach}
-	    	</span>
-   			{if $permission}<a href="#" onClick="showLightbox('elIce')">{tr}Criar um canal de transmissão ao vivo.{/tr}</a>{/if}
-    	</div>
-    </div>
-
+	{if count($liveChannels) > 0 || $permission}
+	
+	    <div id="uLive" class="uMainContainer">
+	    	<div class="sectionTitle uMainTitle uSectionsTitle">
+			    <h1>
+			    	<span class="pointer" onclick="javascript:flip('moduleuLiveInfo');toggleImage(document.getElementById('lTArrow'),'{$imgChange}'); storeState('uLiveInfo')">
+			       	<img id="lTArrow" src="styles/{$style|replace:".css":""}/img/{$imgCurrent}">
+			    	&nbsp;
+			        {tr}Canais de transmissão ao vivo{/tr}
+			       </span>
+			    </h1>
+	      	</div>
+	    	<div id="moduleuLiveInfo" class="uMainItemContainer" style="display:{$display}">
+	    		<span id="ajax-liveCont" class="liveChannels">
+		    		{foreach from=$liveChannels item=channel}
+		    			{include file="el-live_channels.tpl"}
+		    		{/foreach}
+		    	</span>
+	   			{if $permission}
+		   			<h4 id="liveChannelsAdd">
+			   			<a href="#" onClick="showLightbox('elIce')">
+				   			{tr}Criar novo canal{/tr}
+			   			</a>
+		   			</h4>
+	   			{/if}
+	    	</div>
+	    </div>
+	{/if}
+	
     {if $smarty.cookies.uGalleryItems eq 'none'}
 		{assign var=display value="none"}
 		{assign var=imgCurrent value="iArrowGreyRight.png"}

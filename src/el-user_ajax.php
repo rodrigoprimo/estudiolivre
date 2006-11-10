@@ -174,7 +174,7 @@ function set_mount_point($mountPoint, $pass) {
 		if($action == 'criado') {
 			$smarty->assign('channel', array('mountPoint' => $mountPoint, 'password' => $pass));
 			$smarty->assign('permission', true);
-			$objResponse->addAppend('ajax-liveCont', 'innerHTML', $smarty->fetch('elLiveChannels.tpl'));
+			$objResponse->addAppend('ajax-liveCont', 'innerHTML', $smarty->fetch('el-live_channels.tpl'));
 		}
 	} else {
 		$objResponse->addAssign('ajax-liveError', 'innerHTML', tra('Esse ponto de montagem já existe, por favor escolha outro.'));

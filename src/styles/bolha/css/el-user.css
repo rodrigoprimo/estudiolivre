@@ -150,3 +150,13 @@
 	font-size:12px;
 	color: grey;
 }
+
+.liveChannels {
+	font-size:11pt;
+}
+
+#liveChannelsAdd{
+	text-align:right;
+	padding:0;
+	margin:0;
+}
