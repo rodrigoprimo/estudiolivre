@@ -15,10 +15,10 @@
 			{/tooltip}
 			{$userinfo.login}
 			{tooltip text="Modifique as suas preferências"}
-				<a href="tiki-user_preferences.php"><img src="img/mytiki/prefs.gif" height="15"></a>
+				<a href="tiki-user_preferences.php"><img src="styles/{$style|replace:".css":""}/img/iConf.png" height="15"></a>
 			{/tooltip}
 			{tooltip text="Modifique a organização de seus módulos"}
-				<a href="tiki-user_assigned_modules.php"><img src="img/mytiki/modules.gif" height="15"></a>
+				<a href="tiki-user_assigned_modules.php"><img src="styles/{$style|replace:".css":""}/img/iMod.png" height="15"></a>
 			{/tooltip}
 		{else}
 			{$userinfo.login}
