@@ -101,7 +101,8 @@
         {* TODO falar a descricao da licenca no tooltip *}
         <span class="uContactItem">
         	<span class="uContactItem">
-        	{if $permission}        		
+        	{if $permission}
+		        	{include file="el-license.tpl"}    		
         			<span class="pointer" onClick="showLightbox('el-license')">
         			{if $licenca}
 			    	   	{tooltip text="Clique para modificar a sua licença padrão"}
@@ -139,7 +140,6 @@
 	{/if}
 	    
 	{if count($liveChannels) > 0 || $permission}
-	
 	    <div id="uLive" class="uMainContainer">
 	    	<div class="sectionTitle uMainTitle uSectionsTitle">
 			    <h1>
@@ -157,8 +157,23 @@
 		    		{/foreach}
 		    	</span>
 	   			{if $permission}
+					<div id="ajax-elIce" style="display:none;">
+						<h4>Novo Canal</h4>
+						<label for="ponto">{tr}ponto de montagem{/tr}:</label>
+						<input class="editable" type="text" name="ponto" id="ajax-livePoint"/><br/>
+						
+						<label for="senha">{tr}password{/tr}:</label>
+						<input class="editable" type="text" id="ajax-livePass"/><br/>
+						
+						<small>
+						O ponto de montagem e a senha devem ser compostos apenas por letras (sem acento) e números, sem espaços.<br/>
+						</small>						
+						<input type="button" onClick="xajax_set_mount_point(document.getElementById('ajax-livePoint').value,document.getElementById('ajax-livePass').value)" value="{tr}Submit{/tr}"/>
+						<br/>
+						<div id="ajax-liveError" class="w"></div>
+					</div>
 		   			<h4 id="liveChannelsAdd">
-			   			<a href="#" onClick="showLightbox('elIce')">
+			   			<a href="#" onClick="flip('ajax-elIce')">
 				   			{tr}Criar novo canal{/tr}
 			   			</a>
 		   			</h4>
@@ -322,16 +337,5 @@
     </div>
   </div>
 </div>
-
-{if $permission}
-	{include file="el-license.tpl"}
-	<div id="elIce" style="display:none;width:300px;">
-		O ponto de montagem e a senha devem ser apenas compostos por letras (sem acento) e numeros, sem espaços.<br/>
-		{tr}ponto de montagem{/tr}: <input type="text" id="ajax-livePoint"/><br/>
-		{tr}password{/tr}: <input type="text" id="ajax-livePass"/><br/>
-		<input type="button" onClick="xajax_set_mount_point(document.getElementById('ajax-livePoint').value,document.getElementById('ajax-livePass').value)" value="{tr}Submit{/tr}"/>
-		<div id="ajax-liveError"></div>
-	</div>
-{/if}
 
 <!-- tiki-user_information.tpl end -->

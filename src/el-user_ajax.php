@@ -149,7 +149,7 @@ function set_mount_point($mountPoint, $pass) {
 	$objResponse = new xajaxResponse();
 
 	if (!preg_match('/^[a-zA-Z0-9]+$/', $pass) || !preg_match('/^[a-zA-Z0-9]+$/', $mountPoint)) {
-		$objResponse->addAssign('ajax-liveError', 'innerHTML', tra('O ponto de montagem e a senha devem ser apenas compostos por letras (sem acento) e numeros, sem espaços.'));
+		$objResponse->addAssign('ajax-liveError', 'innerHTML', tra('O ponto de montagem e a senha devem ser compostos apenas por letras (sem acento) e números, sem espaços.'));
 		return $objResponse;
 	}
 	
@@ -168,8 +168,9 @@ function set_mount_point($mountPoint, $pass) {
 	// se tiver saida = 0, nao deu erro (herdado de shell, porque die no perl retorna 255)
 	if (!$out) {
 		$elgallib->query("replace into el_ice values(?, ?, ?)", array($user, $mountPoint, $pass));
-		$objResponse->addAlert(tra("Seu ponto de transmissão no EstúdioLivre foi $action com sucesso!"));
-		$objResponse->addScript("hideLightbox();document.getElementById('ajax-livePoint').value='';document.getElementById('ajax-livePass').value='';");
+		//$objResponse->addAlert();
+		//tra("Seu ponto de transmissão no EstúdioLivre foi $action com sucesso!")
+		$objResponse->addScript("flip('ajax-elIce');document.getElementById('ajax-livePoint').value='';document.getElementById('ajax-livePass').value='';");
 		$objResponse->addAssign('ajax-liveError', 'innerHTML', '');
 		if($action == 'criado') {
 			$smarty->assign('channel', array('mountPoint' => $mountPoint, 'password' => $pass));
@@ -196,7 +197,7 @@ function delete_mount_point($mountPoint) {
 	system("./iceWrapper delete $mountPoint", $out);
 	if (!$out) {
 		$elgallib->query("delete from el_ice where mountPoint = ?", array($mountPoint));
-		$objResponse->addAlert(tra("Seu ponto de transmissão no EstúdioLivre foi removido com sucesso!"));
+		$objResponse->addScript('fixedTooltip("Seu ponto de transmissão no EstúdioLivre foi removido com sucesso!")');
 		$objResponse->addRemove("ajax-live$mountPoint");
 	}
 	

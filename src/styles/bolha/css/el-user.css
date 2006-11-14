@@ -160,3 +160,38 @@
 	padding:0;
 	margin:0;
 }
+#ajax-elIce {
+	width:400px;
+	margin:0 auto;
+}
+
+#ajax-elIce input[type = button] {
+	text-align:right;
+	display:block;	
+}
+
+#ajax-elIce label, #ajax-elIce input[type = text] {
+	display: block;
+	width: 200px;
+	float: left;
+	margin-bottom: 10px;
+}
+
+#ajax-elIce label {
+	text-align: right;
+	width: 75px;
+	padding-right: 20px;
+}
+
+#ajax-elIce br {
+	clear: left;
+}
+
+#ajax-elIce .w {
+	color:#800;
+}
+
+#ajax-elIce SMALL {
+	margin-left:95px;
+	display:block;
+}
