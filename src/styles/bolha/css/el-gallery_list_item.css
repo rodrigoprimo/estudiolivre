@@ -34,6 +34,16 @@
 	font-family:Verdana;
 }
 
+.listItem h5 {
+	margin:0;
+	padding:0;
+	padding-left:111px;
+	width:420px;
+	margin-left:2px;
+	font-family:Verdana;
+	text-align:right;
+}
+
 .listItem h2 a {
 	line-height:1.5em;
 }

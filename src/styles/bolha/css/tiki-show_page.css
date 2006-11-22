@@ -84,6 +84,11 @@ p.editdate {
 	font-size:14px;
 }
 
+A.external{
+	background:url(../img/externalLink.png) center right no-repeat;
+	padding-right:13px;
+}
+
 /* classe das coisas dentro de '^' do wiki (fica uma caixa em volta)*/
 .simplebox {
   background: #efefef;

@@ -167,7 +167,7 @@
 
 #ajax-elIce input[type = button] {
 	text-align:right;
-	display:block;	
+	margin:5px;
 }
 
 #ajax-elIce label, #ajax-elIce input[type = text] {

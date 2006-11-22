@@ -158,9 +158,11 @@
 		    	</span>
 	   			{if $permission}
 					<div id="ajax-elIce" style="display:none;">
-						<h4>Novo Canal</h4>
+						<h4 id="ajax-elIceNome">Novo Canal</h4>
+						<span id="ajax-elIcePto">
 						<label for="ponto">{tr}ponto de montagem{/tr}:</label>
 						<input class="editable" type="text" name="ponto" id="ajax-livePoint"/><br/>
+						</span>
 						
 						<label for="senha">{tr}password{/tr}:</label>
 						<input class="editable" type="text" id="ajax-livePass"/><br/>
@@ -168,12 +170,22 @@
 						<small>
 						O ponto de montagem e a senha devem ser compostos apenas por letras (sem acento) e números, sem espaços.<br/>
 						</small>						
-						<input type="button" onClick="xajax_set_mount_point(document.getElementById('ajax-livePoint').value,document.getElementById('ajax-livePass').value)" value="{tr}Submit{/tr}"/>
+						<input type="button" onClick="xajax_set_mount_point(document.getElementById('ajax-livePoint').value,document.getElementById('ajax-livePass').value)" value="{tr}Submit{/tr}"/><input type="button" onClick="flip('ajax-elIce')" value="{tr}Cancel{/tr}"/>
 						<br/>
 						<div id="ajax-liveError" class="w"></div>
 					</div>
 		   			<h4 id="liveChannelsAdd">
-			   			<a href="#" onClick="flip('ajax-elIce')">
+			   			<a href="#" onClick="
+			   			{literal}
+				   			if(document.getElementById('ajax-elIce').style.display == 'none'){
+				   				flip('ajax-elIce');
+				   			}
+			   			{/literal}
+			   			document.getElementById('ajax-elIceNome').innerHTML='{tr}Novo Canal{/tr}';
+			   			document.getElementById('ajax-elIcePto').style.display='';
+			   			document.getElementById('ajax-livePass').value='';
+			   			document.getElementById('ajax-livePoint').value='';   				
+			   				">
 				   			{tr}Criar novo canal{/tr}
 			   			</a>
 		   			</h4>

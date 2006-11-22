@@ -39,10 +39,11 @@
 
 /*headers*/
 
-#users h1, #forum h1, #blogs h1, #listLastChanges h1, #blogHead h1, #viewForum h1 {
+#users h1, #forum h1, #blogs h1, #listLastChanges h1, #blogHead h1, #viewForum h1, #live h1 {
 	text-align:center;
-	background-color:#f9f9f9;
-	border:1px solid gray;
+	background-color:#eee/*f9f9f9*/;
+	/*border:1px solid gray;*/
+	-moz-border-radius:10px 10px 10px 10px;
 }
 
 #users h5, #blogs h5, #listLastChanges h5, #viewForum h5 {
@@ -53,8 +54,9 @@
 
 .paginacao {
 	text-align:center;
-	background-color:#f9f9f9;
-	border:1px solid gray;
+	background-color:#eee;/*f9f9f9;*/
+	-moz-border-radius:10px 10px 10px 10px;
+	/*border:1px solid gray;*/
 	padding:3px;
 	margin-bottom:10px;
 }

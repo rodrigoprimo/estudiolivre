@@ -122,7 +122,11 @@
         {/if}   
     {/if}
     
-     <li><a href="elIce.php">{tr}canais ao vivo{/tr}</a></li>
+    {if $current_location eq "el-gallery_upload.php"}      
+      	<li class="selectedAcervo">{tr}canais ao vivo{/tr}</li>
+    {else}
+     	<li><a href="elIce.php">{tr}canais ao vivo{/tr}</a></li>
+    {/if}
      <li><a href="tiki-index.php?page=faq">{tr}sobre o{/tr} {tr}acervo{/tr}</a></li>
 	</ul>
 	</div>

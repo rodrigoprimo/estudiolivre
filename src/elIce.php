@@ -3,6 +3,7 @@
 require_once('tiki-setup.php');
 require_once('lib/elgal/elIce/IceStats.php');
 
+$smarty->assign('category', 'gallery');
 
 $iceStats = new IceStats();
 $sources = $iceStats->iceinfo('jaime', '8000', 'admin', 'admin');

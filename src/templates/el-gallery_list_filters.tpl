@@ -5,23 +5,23 @@
 <!-- Filters Begin -->
 	<td class="left">
 		
-		{tooltip  text="Visualizar áudios"}
+		{tooltip  text="Alternar visualização de áudios"}
 			<img id="Audio" name="filterButton" class="pointer" alt="audio" src="styles/{$style|replace:".css":""}/img/iAudioFilter{if !in_array('Audio', $tipos)}Off{/if}.png" onClick="toggleFilter(this)"/>
 		{/tooltip}
 		
-		{tooltip  text="Visualizar videos"}
+		{tooltip  text="Alternar visualização de vídeos"}
 			<img id="Video" name="filterButton" class="pointer" alt="video" src="styles/{$style|replace:".css":""}/img/iVideoFilter{if !in_array('Video', $tipos)}Off{/if}.png" onClick="toggleFilter(this)"/>
 		{/tooltip}
 		
-		{tooltip  text="Visualizar imagems"}
+		{tooltip  text="Alternar visualização de imagens"}
 			<img id="Imagem" name="filterButton" class="pointer" alt="imagem" src="styles/{$style|replace:".css":""}/img/iImagemFilter{if !in_array('Imagem', $tipos)}Off{/if}.png" onClick="toggleFilter(this)"/>
 		{/tooltip}
 		
-		{tooltip  text="Visualizar textos"}
+		{tooltip  text="Alternar visualização de textos"}
 			<img id="Texto" name="filterButton" class="pointer" alt="texto" src="styles/{$style|replace:".css":""}/img/iTextoFilter{if !in_array('Texto', $tipos)}Off{/if}.png" onClick="toggleFilter(this)"/>
 		{/tooltip}
 		
-		{tooltip  text="Visualizar todos os ítens"}
+		{tooltip  text="Alternar visualização entre todos/nenhum item"}
 			<img id="Tudo" class="pointer" alt="tudo" src="styles/{$style|replace:".css":""}/img/iTudoFilter{if count($tipos) < 4}Off{/if}.png" onClick="toggleAll()"/>
 		{/tooltip}
 	
