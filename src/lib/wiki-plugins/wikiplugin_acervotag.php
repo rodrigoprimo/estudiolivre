@@ -1,56 +1,21 @@
 <?php
 
 function wikiplugin_acervotag_help() {
-    $help = tra("Mostra lista de arquivos do acervo com determinada tag ou por id") . "<br/>";
-    $help.= "~np~{ACERVOTAG(tag=>MinhaTag)}{ACERVOTAG}~/np~" . "<br/>";
-    $help.= "~np~{ACERVOTAG(id=>idDoArquivo)}{ACERVOTAG}~/np~";
+    $help = tra("Este wikiplugin ficou obsoleto e foi substituído pelo ACERVO") . "<br/>";
     return $help;
 }
 
-function retrieveFileInfo($id) {
-	
-	global $freetaglib, $elgallib, $commentslib;
-	
-	require_once("lib/elgal/elgallib.php");
-		
-	$arquivo = $elgallib->get_arquivo($id);
-	$arquivo['commentsCount'] = $commentslib->count_comments('arquivo:' . $id);
-	$arquivo['tags'] = $freetaglib->get_tags_on_object($id, 'gallery');
-	$arquivo['descricaoLicenca'] = $arquivo['licenca']['descricao'];
-	$arquivo['linkImagem'] = $arquivo['licenca']['linkImagem'];
-	$arquivo['linkHumanReadable'] = $arquivo['licenca']['linkHumanReadable'];
-	
-	return $arquivo;
-}
-
 function wikiplugin_acervotag($data, $params) {
-
-    global $smarty, $freetaglib, $style; 
+    $help = 'O plugin ACERVOTAG foi renomeado para ACERVO. Use:<br><br>';
     
-    require_once("lib/freetag/freetaglib.php");
-    
-    $styleUrl = "styles/" . preg_replace('/\.css/', '', $style) . "/css/el-gallery_list_item.css";
-	if (file_exists($styleUrl)) {
-	    $result = "<link rel='StyleSheet'  href='$styleUrl' type='text/css' />";
-	} else {
-		$result = "";
-	}
-    
-    if(isset($params['id']) && $params['id'] > 0) {
-		$smarty->assign_by_ref("arquivo", retrieveFileInfo($params['id']));
-		$result .= $smarty->fetch('el-gallery_list_item.tpl');
-	    return "~np~$result~/np~";
+    $help.= "~np~{ACERVO(";
+    foreach ($params as $key => $value) {
+	$help .= "$key => $value, ";
     }
-    if(!isset($params['tag']) && isset($params['tags'])) { $params['tag'] = $params['tags']; }
-    $objects = $freetaglib->get_objects_with_tag_combo(split(",",$params['tag']), 'gallery');
-    
-    foreach ($objects['data'] as $object) {
-		$smarty->assign_by_ref("arquivo", retrieveFileInfo($object['itemId']));
-		$result .= $smarty->fetch('el-gallery_list_item.tpl');
-    }
+    $help = preg_replace('/, $/', '', $help);
+    $help .= ")}{ACERVO}~/np~" . "<br/>";
 
-    return "~np~$result~/np~";
-    
+    return '<div style="border: 1px solid red">'.$help.'</div>';
 }
 
 ?>
