@@ -1,5 +1,18 @@
---- lang/pt-br/language.php	2006-05-12 16:53:05.000000000 -0300
-+++ lang/pt-br/language.php	2006-07-11 18:18:08.000000000 -0300
+--- ../el196_base/lang/pt-br/language.php	2006-10-18 00:09:55.000000000 -0200
++++ lang/pt-br/language.php	2006-11-24 16:25:02.000000000 -0200
+@@ -44,6 +44,12 @@
+ // ### Please remove manually!
+ // ### N.B. Legitimate strings may be marked// ### as unused!
+ // ### Please see http://tikiwiki.org/tiki-index.php?page=UnusedWords for further info
++
++// ################################ ESTUDIO LIVRE HACK #######################
++"since_last_visit_new" => "Últimas Alterações",
++"who_is_there" => "amigos online",
++// ################################ ESTUDIO LIVRE HACK END ###################
++
+ "categorize" => "categorizar",
+ "Set prefs" => "Definir prefs",
+ "creation date" => "data de criação",
 @@ -69,13 +75,13 @@
  "assign_perms" => "definir_perms",
  "assign group" => "definir grupo",
@@ -37,7 +50,7 @@
  "Are you sure you want to delete this directory?" => "Você tem certeza que deseja remover este diretório?",
  "Are you sure you want to delete this file?" => "Você tem certeza que deseja remover este arquivo?",
  "You can view the page following this link:" => "Você pode ver a página pelo seguinte link:",
-@@ -219,7 +225,7 @@
+@@ -217,7 +223,7 @@
  "use square brackets for an" => "utilize colchetes para um",
  "link_description" => "descricao_do_link",
  "Prevents parsing data" => "Evita a interpretação de dados",
@@ -46,7 +59,7 @@
  "Add New Group" => "Adicionar Novo Grupo",
  "Edit this group:" => "Editar este grupo:",
  "Return to messages" => "Retornar para mensagens",
-@@ -235,7 +241,7 @@
+@@ -233,7 +239,7 @@
  "Show suggested questions/suggest a question" => "Exibir perguntas sugeridas/sugerir uma pergunta",
  "Hide suggested questions" => "Esconder perguntas sugeridas",
  "save a custom copy" => "salvar uma cópia personalizada",
@@ -55,7 +68,7 @@
  "Reuse question" => "Reutilizar a pergunta",
  "WebMail accounts" => "Contas de WebMail",
  "Create New Survey:" => "Criar uma Nova Pesquisa:",
-@@ -329,9 +335,9 @@
+@@ -325,9 +331,9 @@
  "You can view the page by following this link:\n {\$mail_machine}/tiki-index.php?page={\$mail_page|escape:\"url\"}" => "Você pode ver a página pelo seguinte link:\n {\$mail_machine}/tiki-index.php?page={\$mail_page|escape:\"url\"}",
  "You can edit the page by following this link:\n {\$mail_machine}/tiki-editpage.php?page={\$mail_page|escape:\"url\"}" => "Você pode editar a página pelo seguinte link:\n {\$mail_machine}/tiki-editpage.php?page={\$mail_page|escape:\"url\"}",
  "You can view a diff back to the previous version by following\nthis link:\n {\$mail_machine}/tiki-pagehistory.php?page={\$mail_page|escape:\"url\"}&diff2={\$mail_last_version}" => "Você pode ver as diferenças de uma versão anterior pelo link\n:\n {\$mail_machine}/tiki-pagehistory.php?page={\$mail_page|escape:\"url\"}&diff2={\$mail_last_version}",
@@ -67,7 +80,7 @@
  "Note: if you want to use images please save the post first and you\nwill be able to edit/post images. Use the <img> snippet to include uploaded images in the textarea editor\nor use the image URL to include images using the WYSIWYG editor. " => "Nota: Se você deseja usar imagens, por favor, salve a postagem antes e você\npoderá editar/postar imagens. Use a tag <img> para incluir imagens carregadas na área de texto\nou use a URL da imagem para incluir imagens usando o editor WYSIWYG. ",
  "Invalid password.  You current password is required to change your email address." => "Senha inválida.  Sua senha atual é necessária para alterar seu endereço de e-mail.",
  "For more information, please see <a\nhref=\"http://www.tikiwiki.org/tiki-index.php?page=WikiSyntax\">WikiSyntax</a>\non <a href=\"http://www.tikiwiki.org\">TikiWiki.org</a>." => "Para maiores informações, por favor veja <a\nhref=\"http://www.tikiwiki.org/tiki-index.php?page=WikiSyntax\">WikiSyntax</a>\nno <a href=\"http://www.tikiwiki.org\">TikiWiki.org</a>.",
-@@ -355,7 +361,7 @@
+@@ -351,7 +357,7 @@
  "Projects Menu" => "Menu de projetos",
  "Register New Project" => "Registrar novo projeto",
  "to add/remove blogs, go to \"Create/Edit blog\" under \"Blogs\" on the application menu, or" => "para adicionar/remover blogs, vá para \"Create/Edit blog\" em \"Blogs\" no menu de aplicações, ou",
@@ -76,7 +89,7 @@
  "look under \"Articles\" on the application menu for links to" => "olhe em \"Articles\" no menu de aplicações para links para",
  "Friendship network" => "Rede de amigos",
  "Allow permissions for friendship network" => "Habilitar permissões para a rede de amigos",
-@@ -368,11 +374,11 @@
+@@ -364,11 +370,11 @@
  "Create New Group" => "Criar novo grupo",
  "<b>Title</b>" => "<b>Título</b>",
  "<b>Description</b>" => "<b>Descrição</b>",
@@ -90,7 +103,7 @@
  "Create/edit events" => "Criar/editar eventos",
  "send event" => "enviar evento",
  "Event ID" => "ID do evento",
-@@ -388,7 +394,7 @@
+@@ -383,7 +389,7 @@
  "First Name:" => "Primeiro nome:",
  "Last Name:" => "Último nome:",
  "Company:" => "Empresa:",
@@ -99,7 +112,7 @@
  "Project Created:" => "Projeto criado:",
  "Project Info" => "Informações do projeto",
  "Project Admins:" => "Administradores do projeto:",
-@@ -439,7 +445,7 @@
+@@ -434,7 +440,7 @@
  "end date" => "data de término",
  "The tile must have at lease three characters!" => "O título precisa ter pelo menos três caracteres!",
  "The end date must be after the start date!" => "A data de término precisa ser depois da data de início!",
@@ -108,7 +121,7 @@
  "Sorry the creator has no right to send tasks" => "Desculpe, o criador não tem permissão para enviar tarefas",
  "Publisher" => "Publisher",
  "-1m" => "-1m",
-@@ -454,8 +460,8 @@
+@@ -449,8 +455,8 @@
  "Error: Invalid" => "Erro: Inválido",
  "Error: Call to hw_page_fetch_by_id failed!" => "Erro: Chamada para hw_page_fetch_by_id falhou!",
  "Textarea options: options,width,height,max with option is 1 or 0, rest is size indicated in chars and lines, max is the maximum number of characters that can be saved." => "Opções da área do texto: opções,largura,altura,max com opções 1 ou 0, tamanho indicado em caracteres e linhas, max é o número máximo de caracteres que podem ser salvos.",
@@ -119,7 +132,7 @@
  "requested a reminder of the password for the" => "requisitar um lembrete da senha para a",
  "since this is your registered email address we inform that the" => "uma vez que este é o seu endereço de email registrado informamos que a",
  "password for this account is" => "senha para esta conta é",
-@@ -484,7 +490,7 @@
+@@ -478,7 +484,7 @@
  "Administration" => "Administração",
  "List Calendars" => "Listar Calendários",
  "admin Drawings" => "administrar Desenhos",
@@ -128,7 +141,7 @@
  "Batch upload (CSV file)" => "Carga em lote (arquivo CSV)",
  "today" => "hoje",
  "Add Calendar Item" => "Adicionar Item ao Calendário",
-@@ -500,7 +506,7 @@
+@@ -494,7 +500,7 @@
  "Editing tracker item" => "Editando item de acompanhamento",
  "You must be a student to edit homework pages." => "Você precisa ser um estudante para editar as páginas de Tarefa de casa.",
  "Error: Invalid id for hw_pages table." => "Erro: Id inválido para tabela hw_pages.",
@@ -137,7 +150,7 @@
  "Permission denied: Students may only view or edit their own work." => "Permissão negada: Estudantes só podem ver ou editar suas tarefas.",
  "Permission denied: Students may NOT edit their work after the due date." => "Permissão negada: Estudantes NÃO podem editar seus próprios trabalhos depois da data da entrega.",
  "Permission denied: The teacher must wait until the due date to edit students' work." => "Permissão negada: O professor deve aguardar até a data de entrega para editar a tarefa dos estudantes.",
-@@ -524,7 +530,7 @@
+@@ -518,7 +524,7 @@
  "slideshow_n" => "slide_n",
  "Not rated yet" => "Ainda não ranqueado",
  "Removed %s from group %s" => "%s removido do grupo %s",
@@ -145,25 +158,17 @@
 +"Invalid username or activation code" => "Usuári@ ou código de ativação inválido",
  "Category: wiki, trackers, etc." => "Categoria: wiki, acompanhamentos, etc.",
  "Information:" => "Informações:",
- // ### end of unused words
-@@ -628,12 +634,12 @@
- // "Path disclosure" => "Path disclosure",
- // "Path disclosure through error message" => "Path disclosure through error message",
- "SQL injection" => "Injeção SQL",
--"SQL injection by authenticated user" => "Injeção SQL para usuários autenticados",
--"SQL injection by authenticated user with special privileges" => "Injeção SQL apenas para usuários autenticados e com privilégios especiais.",
-+"SQL injection by authenticated user" => "Injeção SQL para usuári@s autenticados",
-+"SQL injection by authenticated user with special privileges" => "Injeção SQL apenas para usuári@s autenticados e com privilégios especiais.",
- "SQL injection without authentication" => "Injeção SQL sem autenticação",
- "PHP command injection" => "Injeção de comando PHP",
--"PHP command injection by authenticated user" => "Injeção de comando PHP para usuário autenticado",
--"PHP command injection by authenticated user with special privileges" => "Injeção de comando PHP apenas para usuários autenticados e com privilégios especiais.",
-+"PHP command injection by authenticated user" => "Injeção de comando PHP para usuári@ autenticado",
-+"PHP command injection by authenticated user with special privileges" => "Injeção de comando PHP apenas para usuári@s autenticados e com privilégios especiais.",
- "PHP command injection without authentication" => "Injeção de comando PHP sem autenticação",
- "File upload" => "Subir arquivo",
- // "No valid renderer found. GD or PDFLib required." => "No valid renderer found. GD or PDFLib required.",
-@@ -1084,7 +1090,7 @@
+ "Jukebox" => "Jukebox",
+@@ -528,7 +534,7 @@
+ "~np~{~/np~ARTICLES(max=>3,topic=>topicName)}{ARTICLES} Insert articles into a wikipage" => "~np~{~/np~ARTICLES(max=>3,topic=>topicName)}{ARTICLES} Insere artigos na página wiki",
+ "You need to supply information for : " => "Você precisa fornecer informação para: ",
+ "Lists ''wanted'' Wiki pages" => "Listar páginas Wiki ''procuradas''",
+-"Please follow the steps below to have your password properly reset:\n\n1. Click the following link to confirm you wish to reset your password:\n{\$mail_machine}/tiki-remind_password.php?user={\$mail_user|escape:'url'}&actpass={\$mail_apass}\n\n2. Click the following link to go to the screen where you must enter a new \"permanent\" password. Please pick a password only you will know, and don't share it with anyone else.\n{\$mail_machine}/tiki-change_password.php?user={\$mail_user}&oldpass={\$mail_pass}\n\nAlternatively, go to {\$mail_site} and login using your username and temporary password:\n Username:   {\$mail_user}\n Temporary password:  {\$mail_pass}\n\n3. Done! You should be logged in." => "Por favor siga os passos abaixos para alterar sua senha:\n\n1. Clique no link para confirmar que pretende alterar sua senha:\n{\$mail_machine}/tiki-remind_password.php?user={\$mail_user|escape:'url'}&actpass={\$mail_apass}\n\n2. Clique no link abaixo que te levará a página onde você deve colocar a nova senha \"permanente\". Por favor, escolha uma senha que apenas você terá conhecimento, e não compartilhe ela com ninguém.\n{\$mail_machine}/tiki-change_password.php?user={\$mail_user}&oldpass={\$mail_pass}\n\nOu, vá para {\$mail_site} e entre usando seu usuário e a senha temporária:\n Usuário:   {\$mail_user}\n Senha temporária:  {\$mail_pass}\n\n3. Pronto! Você já deve estar logado.",
++"Please follow the steps below to have your password properly reset:\n\n1. Click the following link to confirm you wish to reset your password:\n{\$mail_machine}/tiki-remind_password.php?user={\$mail_user|escape:'url'}&actpass={\$mail_apass}\n\n2. Click the following link to go to the screen where you must enter a new \"permanent\" password. Please pick a password only you will know, and don't share it with anyone else.\n{\$mail_machine}/tiki-change_password.php?user={\$mail_user}&oldpass={\$mail_pass}\n\nAlternatively, go to {\$mail_site} and login using your username and temporary password:\n Username:   {\$mail_user}\n Temporary password:  {\$mail_pass}\n\n3. Done! You should be logged in." => "Por favor siga os passos abaixos para alterar sua senha:\n\n1. Clique no link para confirmar que pretende alterar sua senha:\n{\$mail_machine}/tiki-remind_password.php?user={\$mail_user|escape:'url'}&actpass={\$mail_apass}\n\n2. Clique no link abaixo que te levará a página onde você deve colocar a nova senha \"permanente\". Por favor, escolha uma senha que apenas você terá conhecimento, e não compartilhe ela com ninguém.\n{\$mail_machine}/tiki-change_password.php?user={\$mail_user}&oldpass={\$mail_pass}\n\nOu, vá para {\$mail_site} e entre usando seu usuári@ e a senha temporária:\n Usuári@:   {\$mail_user}\n Senha temporária:  {\$mail_pass}\n\n3. Pronto! Você já deve estar logado.",
+ "New blog post: {\$mail_title}: {\$title} by {\$mail_user} at {\$mail_date|tiki_short_datetime}" => "Nova mensagem no blog: {\$mail_title}: {\$title} por {\$mail_user} às {\$mail_date|tiki_short_datetime}",
+ "List Courses" => "Listar cursos",
+ "Please" => "Por favor",
+@@ -1341,7 +1347,7 @@
  "Could not create \$tdo.mif in data directory" => "Não foi possível criar \$tdo.mif no diretório data",
  "Could not create \$tdo.mid in data directory" => "Não foi possível criar \$tdo.mid no diretório data",
  "unknown" => "desconhecido",
@@ -172,24 +177,22 @@
  "Image Map Generated in:" => "Mapa da imagem Gerado em:",
  "NONE" => "NENHUM",
  "File %s not found" => "Arquivos %s não encontrados",
-@@ -1128,8 +1134,8 @@
+@@ -1385,7 +1391,7 @@
  "Pages" => "Páginas",
  "Top article authors" => "Autores de artigos mais produtivos",
  "tikiwiki logo" => "logo do tikiwiki",
 -"See other user's profile" => "Veja outro perfil de usuário",
--"Have your profile seen" => "Mostre o seu perfil para outros",
 +"See other user's profile" => "Veja outro perfil de usuári@",
-+"Have your profile seen" => "Mostre o seu perfil para outr@s",
+ "Have your profile seen" => "Mostre o seu perfil para outros",
  "Make friends" => "Fazer amigos",
  "Receive message" => "Receber mensagem",
- "Send message" => "Enviar mensagem",
-@@ -1138,17 +1144,17 @@
+@@ -1395,17 +1401,17 @@
  "Have your article read" => "Mostre seus artigos para outros",
  "Create new file gallery" => "Criar nova galeria de arquivos",
  "Upload new file to gallery" => "Subir novo arquivo para a galeria",
 -"Download other user's file" => "Baixar outro arquivo do usuário",
 +"Download other user's file" => "Baixar outro arquivo d@ usuári@",
- "Have your file downloaded" => "",
+ "Have your file downloaded" => "Permita que outros baixem seus arquivos",
  "Create a new image gallery" => "Criar nova galeria de imagem",
  "Upload new image to gallery" => "Subir um novo arquivo para a galeria",
 -"See other user's gallery" => "Veja outra galeria do usuário",
@@ -206,7 +209,7 @@
  "Have your blog read" => "Mostre seu blog para outros",
  "Create a new wiki page" => "Criar nova página wiki",
  "Edit an existing page" => "Editar uma página existente",
-@@ -1182,7 +1188,7 @@
+@@ -1439,7 +1445,7 @@
  "Friend" => "Amigo",
  "Last seen on " => "Visto pela última vez em ",
  "(idle for %s seconds)" => "(inativo por  %s segundos)",
@@ -215,7 +218,7 @@
  "More info about \$other_user" => "Mais informação sobre \$other_user",
  "(idle for \$idletime seconds)" => "(inativo por \$idletime segundos)",
  "unlocked" => "destravada",
-@@ -1234,10 +1240,10 @@
+@@ -1487,10 +1493,10 @@
  "Numeric options: 1,size,prepend,append with size in chars, prepend will be displayed before the field append will be displayed just after, and initial 1 to make that next text field or checkbox is in same row. If you indicate only 1 it means next field is in same row too." => "Opções Numéricas: 1,tamanho,prepend,append with size in chars, prepend will be displayed before the field append will be displayed just after, and initial 1 to make that next text field or checkbox is in same row. If you indicate only 1 it means next field is in same row too.",
  "drop down" => "caixa de seleção",
  "Dropdown options: list of items separated with commas." => "Opções da Caixa de Seleção: lista de Itens separados por vírgulas.",
@@ -229,7 +232,7 @@
  "country selector" => "selecionador de país",
  "Country Selector options: 1|2 where 1 show only country name and 2 show only country flag. By default show both country name and flag" => "Opções ao selecionar o país: 1|2 onde 1 mostra apenas o nome do país e 2 mostra apenas a bandeira do país. Por padrão mostra os dois.",
  "date and time" => "data e hora",
-@@ -1281,8 +1287,8 @@
+@@ -1535,8 +1541,8 @@
  "Displays an attachment or a list of them" => "Mostra um anexo ou uma lista deles",
  "comment" => "comentário",
  "num is optional and is the order number of the attachment in the list. If not provided, a list of all attachments is displayed.  Inline makes the comment be the text of the link." => "num é opcional e é a ordem númerica dos anexos na lista. Se não for definido, uma lista com todos os anexos será mostrada.  Dentro da linha faz o comentário ser o texto do link.",
@@ -238,21 +241,23 @@
 +"Displays the user Avatar" => "Exibe a fotografia d@ usuári@",
 +"username" => "usuári@",
  "List all pages which link to specific pages" => "Listar todas as páginas que possuem links para as páginas especificadas",
+ "Page cannot be found" => "A página não foi encontrada",
  "No pages links to" => "Nenhuma página com link para",
- "One page links to" => "Uma página com link para",
-@@ -1369,19 +1375,19 @@
+@@ -1620,7 +1626,7 @@
  "Error in tracker ID" => "Erro no ID do acompanhamento",
  "No field indicated" => "Sem campo indicado",
  "Links to a translated content" => "Links para um conteúdo traduzido",
 -"Displays the number of registered users" => "Mostrar o número de usuários registrados",
-+"Displays the number of registered users" => "Mostrar o número de usuári@s registrados",
++"Displays the number of registered users" => "Mostrar o número de usuári@s registrad@s",
  "Split the text in parts visible only under some conditions" => "Dividir o texto em partes visíveis apenas em algumas situações",
- "Lists ''wanted'' Wiki pages" => "Listar páginas Wiki ''procuradas''",
- "failed" => "falhou",
+ "^Parameters: key=>value,...\n" => "^Parâmetros: chave=>valor,...\n",
+ "__key__ | __default__ | __comments__\n" => "__chave__ | __padrão__ | __comentários__\n",
+@@ -1631,13 +1637,13 @@
+ "Permission denied" => "Permissão negada",
  "ERROR: Either the subject or body must be non-empty" => "ERRO: Ou o assunto ou o corpo tem que ser preenchido",
  "ERROR: No valid users to send the message" => "ERRO: Nenhum destinatário válido para a mensagem",
 -"Invalid user" => "Usuário inválido",
-+"Invalid user" => "Usuári@ inválido",
++"Invalid user" => "Usuári@ inválid@",
  "Message will be sent to: " => "A mensagem será enviada para: ",
  "Sent box is full. Archive or delete some sent messages first if you want to send more messages." => "A caixa de saída esta cheia. Arquive ou delete algumas mensagens antes de enviar novas mensagens.",
 -"You have to be able to receive messages in order to send them. Goto your user preferences and enable 'Allow messages from other users'" => "Para poder enviar mensagens, você primeiro precisa habilitar a opção para recebe-las. Nas preferências de usuário habilite 'Permitir mensagens de outros usuários'.",
@@ -262,11 +267,11 @@
 +"You have to be able to receive messages in order to send them. Goto your user preferences and enable 'Allow messages from other users'" => "Para poder enviar mensagens, você primeiro precisa habilitar a opção para recebe-las. Nas preferências de usuári@ habilite 'Permitir mensagens de outr@s usuári@s'.",
 +"User %s can not receive messages, mailbox is full" => "@s usuári@s %s não podem receber mensagens pois a caixa de entrada deles esta cheia",
 +"User %s can not receive messages" => "@s usuári@s %s não podem receber mensagens",
-+"Invalid user: %s" => "Usuári@ inválido: %s",
++"Invalid user: %s" => "Usuári@ inválid@: %s",
  "Archive is full. Delete some messages from archive first." => "O arquivo esta cheio. Delete algumas mensagens antes de arquivar novas.",
  "No more messages" => "Nenhuma outra mensagem",
  "move %s in %s" => "mover %s para %s",
-@@ -1405,7 +1411,7 @@
+@@ -1661,11 +1667,11 @@
  "new file galleries" => "Novas galeria de arquivos",
  "new files" => "novos arquivos",
  "new polls" => "nova enquete",
@@ -275,7 +280,12 @@
  "no such file" => "arquivo inexistente",
  "Error" => "Erro",
  "The task title must have at least 3 characters" => "O título da tarefa deve conter pelo menos 3 caracteres",
-@@ -1429,11 +1435,11 @@
+-"Invalid username or password" => "Usuário ou senha inválidos",
++"Invalid username or password" => "Usuári@ ou senha inválidos",
+ "List of attached files" => "Lista de arquivos anexados",
+ "name" => "nome",
+ "uploaded" => "carregado",
+@@ -1699,11 +1705,11 @@
  "browse category" => "navegar na categoria",
  "author" => "autor",
  "stars" => "estrelas",
@@ -285,13 +295,13 @@
 -"send email to user" => "enviar email ao usuário",
 -"user online" => "usuário on-line",
 -"user offline" => "usuário offline",
-+"send email to user" => "enviar email a@ usuári@",
++"send email to user" => "enviar email ao usuári@",
 +"user online" => "usuári@ on-line",
 +"user offline" => "usuári@ offline",
  "on" => "em",
  "score" => "pontuação",
  "Vote" => "Votar",
-@@ -1510,7 +1516,7 @@
+@@ -1782,7 +1788,7 @@
  "RSS Maps" => "RSS Mapas",
  "RSS Directories" => "RSS Diretórios",
  "Information" => "Informação",
@@ -300,7 +310,7 @@
  "Blog post:" => "Mensagem de blog:",
  "at:" => "em:",
  "Somebody or you tried to subscribe this email address at our site:" => "Alguém (possivelmente você) tentou registrar este endereço de email no nosso site:",
-@@ -1532,17 +1538,17 @@
+@@ -1803,18 +1809,18 @@
  "New message arrived from %s" => "Nova mensagem chegou de %s",
  "Hi" => "Olá",
  "Your Tiki account registration request for {\$mail_site} was validated by the site admin and your account is active now." => "Seu pedido de registro de conta no Tiki para {\$mail_site} foi validade pelo administrados e sua conta está ativa agora.",
@@ -314,8 +324,9 @@
  "best regards" => "de nossa maior consideração",
  "your Tikiwiki" => "seu Tikiwiki",
 -"Tiki User Registration Request" => "Solicitação de registro de usuário tiki",
--"The user" => "O usuário",
 +"Tiki User Registration Request" => "Solicitação de registro de usuári@ tiki",
+ "You're invited to join my network of friends!" => "Convite para entrar na minha rede de amigos!",
+-"The user" => "O usuário",
 +"The user" => "@ usuári@",
  "registered at your site" => "registrou-se no seu site",
 -"New user registration" => "Cadastramento de novo usuário",
@@ -323,27 +334,25 @@
  "Bye bye!" => "Até logo!",
  "This email address has been removed to the list of subscriptors of:" => "Este endereço de email foi removido da lista de assinantes de:",
  "Newsletter:" => "Comunicado:",
-@@ -1557,8 +1563,8 @@
+@@ -1829,7 +1835,7 @@
  "requested a reminder of the password for your account" => "solicitou um lembrete de senha da sua conta",
  "requested password reset for your account" => "solicitou que a senha para sua conta fosse recriada",
  "Since this is your registered email address we inform that the password for this account is" => "Sendo esse o seu endereço eletrônico a sua senha é",
--"Please follow the steps below to have your password properly reset:\n\n1. Click the following link to confirm you wish to reset your password:\n{\$mail_machine}/tiki-remind_password.php?user={\$mail_user|escape:'url'}&actpass={\$mail_apass}\n\n2. Click the following link to go to the screen where you must enter a new \"permanent\" password. Please pick a password only you will know, and don't share it with anyone else.\n{\$mail_machine}/tiki-change_password.php?user={\$mail_user}&oldpass={\$mail_pass}\n\nAlternatively, go to {\$mail_site} and login using your username and temporary password:\n Username:   {\$mail_user}\n Temporary password:  {\$mail_pass}\n\n3. Done! You should be logged in." => "Por favor siga os passos abaixos para alterar sua senha:\n\n1. Clique no link para confirmar que pretende alterar sua senha:\n{\$mail_machine}/tiki-remind_password.php?user={\$mail_user|escape:'url'}&actpass={\$mail_apass}\n\n2. Clique no link abaixo que te levará a página onde você deve colocar a nova senha \"permanente\". Por favor, escolha uma senha que apenas você terá conhecimento, e não compartilhe ela com ninguém.\n{\$mail_machine}/tiki-change_password.php?user={\$mail_user}&oldpass={\$mail_pass}\n\nOu, vá para {\$mail_site} e entre usando seu usuário e a senha temporária:\n Usuário:   {\$mail_user}\n Senha temporária:  {\$mail_pass}\n\n3. Pronto! Você já deve estar logado.",
 -"Important: Username & password are CaSe SenSitiVe" => "Importante: Usuário e senha são sensíveis a caixa ALTA/baixa",
-+"Please follow the steps below to have your password properly reset:\n\n1. Click the following link to confirm you wish to reset your password:\n{\$mail_machine}/tiki-remind_password.php?user={\$mail_user|escape:'url'}&actpass={\$mail_apass}\n\n2. Click the following link to go to the screen where you must enter a new \"permanent\" password. Please pick a password only you will know, and don't share it with anyone else.\n{\$mail_machine}/tiki-change_password.php?user={\$mail_user}&oldpass={\$mail_pass}\n\nAlternatively, go to {\$mail_site} and login using your username and temporary password:\n Username:   {\$mail_user}\n Temporary password:  {\$mail_pass}\n\n3. Done! You should be logged in." => "Por favor siga os passos abaixos para alterar sua senha:\n\n1. Clique no link para confirmar que pretende alterar sua senha:\n{\$mail_machine}/tiki-remind_password.php?user={\$mail_user|escape:'url'}&actpass={\$mail_apass}\n\n2. Clique no link abaixo que te levará a página onde você deve colocar a nova senha \"permanente\". Por favor, escolha uma senha que apenas você terá conhecimento, e não compartilhe ela com ninguém.\n{\$mail_machine}/tiki-change_password.php?user={\$mail_user}&oldpass={\$mail_pass}\n\nOu, vá para {\$mail_site} e entre usando seu usuári@ e a senha temporária:\n Usuári@:   {\$mail_user}\n Senha temporária:  {\$mail_pass}\n\n3. Pronto! Você já deve estar logado.",
 +"Important: Username & password are CaSe SenSitiVe" => "Importante: Usuári@ e senha são sensíveis a caixa ALTA/baixa",
  "Important: The old password remains active if you don't click the link above." => "Importante: a senha velha permanecerá ativa se você não clicar no link acima.",
  "Your Tiki account information for %s" => "A sua informação da conta Tiki para %s",
  "A new article was submitted by {\$mail_user} to {\$mail_site} at {\$mail_date|tiki_short_datetime}" => "Um novo artigo foi enviado por \$mail_user} para {\$mail_site} em {\$mail_date|tiki_short_datetime}",
-@@ -1569,7 +1575,7 @@
+@@ -1840,7 +1846,7 @@
  "New article submitted at %s" => "Novo artigo enviado em %s",
  "View the tracker item at:" => "Visualizar item do acompanhamento em:",
  "you or someone registered this email address at" => "alguém (possivelmente você) registrou este endereço de email em",
 -"If you want to be a registered user in this site you will have to use the following link to login for the first time:" => "Se você deseja ser um usuário registrado neste site, utilize o seguinte link para logar-se pela primeira vez:",
-+"If you want to be a registered user in this site you will have to use the following link to login for the first time:" => "Se você deseja ser um usuári@ registrado neste site, utilize o seguinte link para logar-se pela primeira vez:",
++"If you want to be a registered user in this site you will have to use the following link to login for the first time:" => "Se você deseja ser um usuári@ registrad@ neste site, utilize o seguinte link para logar-se pela primeira vez:",
  "Your Tiki information registration" => "Instruções para cadastramento no Tiki",
  "You will receive an email with information to login for the first time into this site" => "Você receberá um email com instruções sobre como logar-se pela primeira vez neste site",
  "Your account request have been stored and will be activated by the admin as soon as possible." => "Seu pedido de conta você registrado e será ativado pelo administrador o mais rápido possível.",
-@@ -1661,7 +1667,7 @@
+@@ -1935,7 +1941,7 @@
  "Full side-by-side diff" => "Comparar diferentes versões lado-a-lado completo",
  "Unified diff" => "Comparar diferentes versões unificado",
  "Side-by-side view" => "Visualizar lado a lado",
@@ -352,25 +361,25 @@
  "Action" => "Ação",
  "view" => "ver",
  "diff" => "difer",
-@@ -1694,7 +1700,7 @@
+@@ -1968,7 +1974,7 @@
  "Message Broadcast" => "Mensagem Global",
  "edit template" => "editar modelo",
  "Group" => "Grupo",
 -"All users" => "Todos os usuários",
-+"All users" => "Todos @s usuári@s",
++"All users" => "Tod@s @s usuári@s",
  "Lowest" => "Mínima",
  "Low" => "Baixa",
  "High" => "Alta",
-@@ -1702,7 +1708,7 @@
+@@ -1976,7 +1982,7 @@
  "send" => "enviar",
  "Compose message" => "Escreva mensagem",
  "Compose Message" => "Compor mensagem",
--"If you people want to be able to reply to you, you have to check <a href='tiki-user_preferences.php'>Allow messages from other users</a>" => "Para que as pessoas possam enviar mensagens para você e responder as mensagens que você enviar é necessário habilitar <a href='tiki-user_preferences.php'>Permitir mensagens de outros usuários</a>",
-+"If you people want to be able to reply to you, you have to check <a href='tiki-user_preferences.php'>Allow messages from other users</a>" => "Para que as pessoas possam enviar mensagens para você e responder as mensagens que você enviar é necessário habilitar <a href='tiki-user_preferences.php'>Permitir mensagens de outr@s usuári@s</a>",
+-"If you want people to be able to reply to you, you have to check <a href='tiki-user_preferences.php'>Allow messages from other users</a>" => "Para que as pessoas possam enviar mensagens para você e responder as mensagens que você enviar é necessário habilitar <a href='tiki-user_preferences.php'>Permitir mensagens de outros usuários</a>",
++"If you want people to be able to reply to you, you have to check <a href='tiki-user_preferences.php'>Allow messages from other users</a>" => "Para que as pessoas possam enviar mensagens para você e responder as mensagens que você enviar é necessário habilitar <a href='tiki-user_preferences.php'>Permitir mensagens de outr@s usuári@s</a>",
  "To" => "Para",
  "No messages to download" => "Nenhuma mensagem para baixar",
  "Mailbox is full! Delete or archive some messages if you want to receive more messages." => "A caixa de entrada esta cheia! Delete ou arquive algumas mensagens para pode receber novas mensagens.",
-@@ -1751,7 +1757,7 @@
+@@ -2022,7 +2028,7 @@
  "Admin Menu" => "Administrar Menu",
  "Live support" => "Suporte On-line",
  "Banning" => "Banimento",
@@ -379,7 +388,7 @@
  "Groups" => "Grupos",
  "Modules" => "Módulos",
  "Hotwords" => "Palavras-chaves",
-@@ -1788,19 +1794,19 @@
+@@ -2060,19 +2066,19 @@
  "Newsreader" => "Notícias",
  "Notepad" => "Bloco de notas",
  "My files" => "Meus arquivos",
@@ -404,7 +413,7 @@
  "Friendship Network" => "Rede de amigos",
  "WikiMenu" => "MenuWiki",
  "Last changes" => "Últimas alterações",
-@@ -1879,9 +1885,9 @@
+@@ -2149,9 +2155,9 @@
  "Edit languages" => "Editar línguas",
  "Integrator" => "Integrador",
  "Mods Admin" => "Admin mods",
@@ -412,11 +421,11 @@
 +"UsrMenu" => "MenuUsuári@",
  "Click here to manage your personal menu" => "Clique aqui para editar seu menu pessoal",
 -"User Menu" => "Menu do Usuário",
-+"User Menu" => "Menu d@ usuári@",
++"User Menu" => "Menu d@ Usuári@",
  "TikiWiki Assistant" => "Assistente do TikiWiki",
  "Thank you for installing TikiWiki" => "Obrigado por instalar o TikiWiki",
  "Click the :: options in the Menu for more options." => "Clique em :: opções no menu para mais opções.",
-@@ -1975,12 +1981,12 @@
+@@ -2245,12 +2251,12 @@
  "Last `\$module_rows` visitors" => "Últimos `\$module_rows` visitantes",
  "Last visitors" => "Últimos visitantes",
  "Open operator console" => "Abrir o console de operador",
@@ -432,9 +441,9 @@
  "Login through CAS" => "Entrar com CAS",
  "Login as admin" => "Logar como administrador",
  "pass" => "senha",
-@@ -2003,11 +2009,11 @@
- "submissions waiting to be examined" => "Artigos com aprovação pendente",
- "Old articles" => "Artigos antigos",
+@@ -2275,11 +2281,11 @@
+ "Send a message to" => "Enviar uma mensagem para",
+ "Send a message" => "Enviar mensagem",
  "Random Pages" => "Páginas aleatórias",
 -"Register as a new user" => "Registrar-se como novo usuário",
 +"Register as a new user" => "Registrar-se como nov@ usuári@",
@@ -446,7 +455,7 @@
  "Passcode to register (not your user password)" => "Código para registro (não é sua senha pessoal)",
  "Registration code" => "Código de registro",
  "Password" => "Senha",
-@@ -2037,7 +2043,7 @@
+@@ -2314,7 +2320,7 @@
  "Top `\$module_rows` files" => "Melhores `\$module_rows` arquivos",
  "Top files" => "Melhores arquivos",
  "Top `\$module_rows` Forum Posters" => "Os mais `\$module_rows` ativos no fórum",
@@ -455,7 +464,7 @@
  "Top `\$module_rows` games" => "Melhores `\$module_rows` jogos",
  "Top games" => "Jogos mais populares",
  "Top `\$module_rows` galleries" => "`\$module_rows` melhores galerias",
-@@ -2055,15 +2061,15 @@
+@@ -2333,15 +2339,15 @@
  "My blogs" => "Meus Blogs",
  "My galleries" => "Minhas galerias",
  "My Pages" => "Minhas Páginas",
@@ -472,10 +481,10 @@
  "Whats related" => "O que está relacionado",
 -"online user" => "usuário on-line",
 +"online user" => "usuári@ on-line",
- "Send a message to" => "Enviar uma mensagem para",
- "Send a message" => "Enviar mensagem",
  "Last `\$module_rows` wiki comments" => "Últimos `\$module_rows` comentários no wiki",
-@@ -2073,7 +2079,7 @@
+ "Last wiki comments" => "Últimos comentários no wiki",
+ " on page " => " na página ",
+@@ -2349,7 +2355,7 @@
  "vote" => "votar",
  "Sent editions" => "Edições enviadas",
  "find" => "buscar",
@@ -484,10 +493,10 @@
  "sent" => "enviada",
  "use" => "usar",
  "Structures:" => "Estruturas:",
-@@ -2143,13 +2149,13 @@
- "Apply template" => "Aplicar um padrão",
- "Data" => "Dados",
- "Send Newsletters" => "Enviar Comunicados",
+@@ -2418,13 +2424,13 @@
+ "This is" => "Este é o",
+ "by the" => "criado pela",
+ "Tiki community" => "comunidade Tiki",
 -"User List" => "Lista de usuários",
 +"User List" => "Lista de usuári@s",
  "Homework" => "Tarefa de casa",
@@ -500,9 +509,9 @@
  "Favorites" => "Favoritos",
  "Watches" => "Notificações",
  "Show/Hide Left Menus" => "Mostrar/esconder menus do lado esquerdo",
-@@ -2204,16 +2210,16 @@
- "by the" => "criado pela",
- "Tiki community" => "comunidade Tiki",
+@@ -2472,16 +2478,16 @@
+ "cancel edit" => "cancelar edição",
+ "No attachments for this page" => "Nenhum anexo para esta página",
  "My Tiki" => "Meu Tiki",
 -"User Pages" => "Páginas de Usuários",
 +"User Pages" => "Páginas de Usuári@s",
@@ -517,10 +526,10 @@
  "Unread Messages" => "Mensagens não lidas",
 -"User Blogs" => "Blogs de Usuários",
 +"User Blogs" => "Blogs de Usuári@s",
- "Skip to navigation" => "Pular para a navegação",
  "left/right" => "esquerdo/direito",
  "Unassign module" => "Módulo não associado",
-@@ -2260,8 +2266,8 @@
+ "debugger console" => "console de depuração",
+@@ -2541,8 +2547,8 @@
  "Last modification time" => "Última hora de modificação",
  "Disabled" => "Desabilitado",
  "Plain text" => "Texto não formatado",
@@ -531,7 +540,7 @@
  "Blog comments settings" => "Configurações de comentários de Blog",
  "Default number of comments per page" => "Número padrão de comentários por página",
  "Comments default ordering" => "Ordenação padrão para comentários",
-@@ -2283,8 +2289,8 @@
+@@ -2565,8 +2571,8 @@
  "Expire Date" => "Data de Expiração",
  "Visible" => "Visível",
  "Size" => "Tamanho",
@@ -542,16 +551,16 @@
  "Picture" => "Figura",
  "Number of friends" => "Número de amigos",
  "Country" => "País",
-@@ -2345,23 +2351,23 @@
+@@ -2625,23 +2631,23 @@
  "Contact Us" => "Entre em Contato",
  "Contact Us (Anonymous)" => "Contate-nos (Anônimo)",
  "Redirect On Error" => "Redirecionar em caso de erro",
 -"User Features" => "Recursos do Usuário",
 -"User Preferences Screen" => "Tela de Preferências do Usuário",
 -"Users can Configure Modules" => "Usuários pode Configurar Módulos",
-+"User Features" => "Recursos d@ usuári@",
-+"User Preferences Screen" => "Tela de Preferências d@ usuári@",
-+"Users can Configure Modules" => "Usuári@s pode Configurar Módulos",
++"User Features" => "Recursos d@ Usuári@",
++"User Preferences Screen" => "Tela de Preferências d@ Usuári@",
++"Users can Configure Modules" => "Usuári@s podem Configurar Módulos",
  "always" => "sempre",
  "module decides" => "módulo decide",
  "never" => "nunca",
@@ -578,7 +587,7 @@
  "Layout per section" => "Layout por sessão",
  "Right column" => "Coluna da direita",
  "Admin layout per section" => "Administrar layout por sessão",
-@@ -2380,8 +2386,8 @@
+@@ -2660,8 +2666,8 @@
  "Uploaded filenames must match regex" => "Arquivos carregados devem seguir a expressão regular",
  "Uploaded filenames cannot match regex" => "Arquivos carregados não podem seguir a expressão regular",
  "Storing files in a directory" => "Guardando arquivos em um diretório",
@@ -589,7 +598,7 @@
  "To configure the directory path use UNIX like paths for example files/ or c:/foo/files or /www/files/" => "Para configurar o diretório do patch use patchs do UNIX, por exemplo files/ ou c:/foo/files ou /www/files/",
  "please read" => "por favor, leia",
  "Gallery listing configuration" => "Configuração da listagem de galeria",
-@@ -2468,7 +2474,7 @@
+@@ -2751,7 +2757,7 @@
  "output compression is active." => "saída compactada ativa.",
  "compression is handled by" => "compactação é feita por",
  "Count admin pageviews" => "Contar visitas do admin",
@@ -598,7 +607,7 @@
  "Server name (for absolute URIs)" => "Nome do servidor (para URIs absolutas)",
  "HTTPS Server" => "Servidor HTTPS",
  "Automatic (uses HTTPS variable)" => "Automático (usar variável HTTPS)",
-@@ -2478,8 +2484,8 @@
+@@ -2761,8 +2767,8 @@
  "Wiki_Tiki_Title" => "Titulo_Wiki_Tiki",
  "Temporary directory" => "Diretório temporário",
  "Sender Email" => "Remetente (e-mail)",
@@ -609,7 +618,16 @@
  "contact feature disabled" => "contato desabilitado",
  "Store session data in database" => "Armazenar sessões no banco de dados",
  "Session lifetime in minutes" => "Tempo de vida das sessões em minutos",
-@@ -2508,10 +2514,10 @@
+@@ -2788,7 +2794,7 @@
+ "Change admin password" => "Alterar a senha de admin",
+ "New password" => "Nova senha",
+ "Change password" => "Alterar senha",
+-"Reg users can change language" => "Usuários comuns podem alterar idioma",
++"Reg users can change language" => "Usuári@s comuns podem alterar idioma",
+ "Restrict available languages" => "Restringir línguas disponíveis",
+ "Available languages:" => "Línguas disponíveis:",
+ "Edit or ex/import Languages" => "Editar ou importar/exportar Línguas",
+@@ -2800,10 +2806,10 @@
  "Enable/disable Tiki features in " => "Habilitar/desabilitar recursos do Tiki em ",
  "Admin->Features" => "Administrar->Recursos",
  ", but configure them elsewhere" => ", mas configure em outro lugar",
@@ -623,7 +641,7 @@
  "Authentication method" => "Método de autenticação",
  "Just Tiki" => "Apenas autenticação do Tiki",
  "Web Server" => "Servidor Web",
-@@ -2520,23 +2526,23 @@
+@@ -2812,20 +2818,20 @@
  "CAS (Central Authentication Service)" => "CAS (Sistema de Autenticação Central)",
  "Tiki and HTTP Auth" => "Tiki e autenticação HTTP",
  "Use WebServer authentication for Tiki" => "Utilizar autenticação do servidor Web para o Tiki",
@@ -649,12 +667,8 @@
 +"Reg users can change theme" => "Usuári@s comuns podem alterar tema",
  "Restrict available themes" => "Restringir temas disponíveis",
  "Available styles:" => "Estilos disponíveis:",
--"Reg users can change language" => "Usuários comuns podem alterar idioma",
-+"Reg users can change language" => "Usuári@s comuns podem alterar idioma",
- "Restrict available languages" => "Restringir línguas disponíveis",
- "Available languages:" => "Línguas disponíveis:",
  "Maximum mailbox size (messages, 0=unlimited)" => "Tamanho máximo da caixa de entrada (mensagens, 0=ilimitado)",
-@@ -2556,8 +2562,8 @@
+@@ -2845,8 +2851,8 @@
  "HTTPS port" => "Porta HTTPS",
  "HTTPS URL prefix" => "Prefixo do endereço HTTPS",
  "Remember me feature" => "Lembre-me os recursos",
@@ -665,7 +679,7 @@
  "Duration:" => "Duração:",
  "day" => "dia",
  "week" => "semana",
-@@ -2568,23 +2574,23 @@
+@@ -2857,23 +2863,23 @@
  "Protect against CSRF with a ticket" => "Proteger contar CSRF com um ticket",
  "Highlight Group" => "Destacar grupo",
  "choose a group ..." => "escolher um grupo ...",
@@ -695,7 +709,7 @@
  "LDAP Admin Pwd" => "Senha de Administração LDAP",
  "PAM service" => "Serviço PAM",
  "Currently unused" => "Atualmente sem uso",
-@@ -2602,7 +2608,7 @@
+@@ -2891,7 +2897,7 @@
  "Full path to gdaltindex" => "Caminho completo para o gdaltindex",
  "Full path to ogr2ogr" => "Path completo para ogr2ogr",
  "Map Zone" => "Zona do mapa",
@@ -704,7 +718,7 @@
  "<b>Item</b>" => "<b>Ítem</b>",
  "<b>Value</b>" => "<b>Valor</b>",
  "Meta Keywords" => "Meta palavras-chaves",
-@@ -2636,7 +2642,7 @@
+@@ -2925,7 +2931,7 @@
  "Default RDF version" => "Versão RDF padrão",
  "Specification" => "Especificação",
  "Documentation" => "Documentação",
@@ -713,7 +727,7 @@
  "Admin modules" => "Administrar módulos",
  "Expiration" => "Expiração",
  "Search features" => "Recursos da busca",
-@@ -2696,8 +2702,8 @@
+@@ -2984,8 +2990,8 @@
  "Change all to db" => "Mudar tudo para a base de dados",
  "Change all to file" => "Mudar tudo para arquivo",
  "Quota (Mb)" => "Cota (Mb)",
@@ -724,7 +738,7 @@
  "Allow viewing HTML mails?" => "Permitir visualização de mensagens HTML?",
  "Maximum size for each attachment" => "Tamanho máximo para cada arquivo anexado",
  "Unlimited" => "Ilimitado",
-@@ -2760,7 +2766,7 @@
+@@ -3047,7 +3053,7 @@
  "Show page ID" => "Mostrar ID da página",
  "Cache wiki pages (global)" => "Armazenamento de páginas wiki (global)",
  "Individual cache" => "Armazenamento individual",
@@ -733,18 +747,18 @@
  "Use WikiWords" => "Usar WikiWords",
  "Accept dashes and underscores in WikiWords" => "Aceitar hífen e travessão em PalavrasWiki",
  "Link plural WikiWords to their singular forms" => "Conectar plurais de PalavrasWiki para suas formas singulares",
-@@ -2772,8 +2778,8 @@
- "Uses Slideshow" => "Usar Slideshow",
+@@ -3058,8 +3064,8 @@
+ "\\n for rows" => "\\n para linhas",
  "Open page as structure" => "Abrir página como estrutura",
  "Use external link icons" => "Usar links de ícones externos",
 -"User's Page" => "Página do Usuário",
 -"UserPage prefix" => "Prefixo da página do usuário (UserPage)",
-+"User's Page" => "Página d@ usuári@",
++"User's Page" => "Página d@ Usuári@",
 +"UserPage prefix" => "Prefixo da página d@ usuári@ (UserPage)",
  "Page creators are admin of their pages" => "Autores são admins de suas páginas",
  "Import HTML" => "Importar HTML",
  "List authors" => "Lista de autores",
-@@ -2804,15 +2810,15 @@
+@@ -3090,16 +3096,16 @@
  "admin banning tpl" => "administrar banir tpl",
  "Add or edit a rule" => "Adicionar ou editar uma regra",
  "Rule title" => "Título da regra",
@@ -752,6 +766,7 @@
 +"Username regex matching" => "Identificador de usuári@ por expressão regular",
  "IP regex matching" => "IP por expressão regular",
  "Banned from sections" => "Banido(a) das seções",
+ "check / uncheck all" => "marcar / desmarcar todos",
  "Rule activated by dates" => "Regra ativada por datas",
  "Rule active from" => "Regra ativa de",
  "Rule active until" => "Regra ativa até",
@@ -763,7 +778,7 @@
  "Sections" => "Seções",
  "Admin Calendars" => "Administrar Calendários",
  "Configure/Options" => "Configurar/Opções",
-@@ -2859,10 +2865,10 @@
+@@ -3146,10 +3152,10 @@
  "View template" => "Visualizar template",
  "Add or edit a chart" => "Adicionar ou editar um gráfico",
  "Active" => "Ativo",
@@ -778,18 +793,18 @@
  "Ranking shows" => "Ranking exibe",
  "All items" => "Todos os itens",
  "Top 10 items" => "10 itens superiores",
-@@ -2883,8 +2889,8 @@
+@@ -3170,8 +3176,8 @@
  "Monthly" => "Mensalmente",
  "Show Average" => "Exibir a Média",
  "Show Votes" => "Exibir Votos",
 -"Use Cookies for unregistered users" => "Utilizar cookies para usuários não registrados",
 -"Users can vote again after" => "Usuários podem votar novamente",
-+"Use Cookies for unregistered users" => "Utilizar cookies para usuári@s não registrados",
++"Use Cookies for unregistered users" => "Utilizar cookies para usuári@s não registrad@s",
 +"Users can vote again after" => "Usuári@s podem votar novamente",
  "Anytime" => "A qualquer hora",
  "5 minutes" => "Após 5 minutos",
  "1 day" => "Após 1 dia",
-@@ -2947,7 +2953,7 @@
+@@ -3233,7 +3239,7 @@
  "Topics per page" => "Assuntos por página",
  "Section" => "Seção",
  "Create new" => "Criar nova",
@@ -798,7 +813,7 @@
  "Moderator group" => "Grupo moderador",
  "Password protected" => "Protegido por senha",
  "Topics only" => "Apenas os assuntos",
-@@ -2977,7 +2983,7 @@
+@@ -3263,7 +3269,7 @@
  "POP3 server" => "Servidor POP3",
  "Use topic smileys" => "Usar emoticons nos assuntos",
  "Show topic summary" => "Exibir sumário dos assuntos",
@@ -806,8 +821,8 @@
 +"User information display" => "Exibição de informações d@s usuári@s",
  "avatar" => "fotografia",
  "flag" => "marca",
- "posts" => "mensagens",
-@@ -2989,7 +2995,7 @@
+ "online" => "on-line",
+@@ -3274,7 +3280,7 @@
  "Attachments" => "Arquivos anexados",
  "No attachments" => "Sem arquivos anexados",
  "Everybody can attach" => "Todos podem anexar",
@@ -816,7 +831,7 @@
  "Moderators and admin can attach" => "Moderadores e admin podem anexar",
  "Store attachments in:" => "Armazenar arquivos anexados em:",
  "Database" => "Banco de dados",
-@@ -3037,7 +3043,7 @@
+@@ -3321,7 +3327,7 @@
  "Start page" => "Página de início",
  "CSS file to load when browse this repository" => "Carregar arquivo CSS quando navegar este repositório",
  "CSS file" => "Arquivo CSS",
@@ -825,7 +840,7 @@
  "Can files from repository be cached" => "Arquivos do repositório podem ser armazenados",
  "Cacheable" => "Armazenáveis",
  "Are files from repository can be cached" => "Arquivos do repositório podem ser armazenados",
-@@ -3136,7 +3142,7 @@
+@@ -3420,7 +3426,7 @@
  "Home Image Gallery" => "Galeria de Imagens Principal",
  "Home File Gal" => "Gal. Arqs Principal",
  "Home File Gallery" => "Galeria de Arquivos Principal",
@@ -834,7 +849,7 @@
  "User prefs" => "Preferências",
  "List image galleries" => "Listar galerias de imagens",
  "Upload" => "Carregar",
-@@ -3172,7 +3178,7 @@
+@@ -3456,7 +3462,7 @@
  "right modules" => "módulos da direita",
  "edit/create" => "editar/criar",
  "clear cache" => "limpar o cache",
@@ -843,7 +858,7 @@
  "assign" => "atribuir",
  "Assign new module" => "Atribuir novo módulo",
  "Edit this assigned module:" => "Editar este módulo atribuído:",
-@@ -3184,18 +3190,18 @@
+@@ -3468,17 +3474,17 @@
  "Rows" => "Linhas",
  "Parameters" => "Parâmetros",
  "Visibility" => "Visibilidade",
@@ -858,7 +873,6 @@
  "Left Modules" => "Módulos da Esquerda",
  "order" => "ordem",
  "rows" => "linhas",
- "groups" => "grupos",
  "Right Modules" => "Módulos da Direita",
 -"Create new user module" => "Criar um novo módulo de usuário",
 -"Edit this user module:" => "Editar este módulo de usuário:",
@@ -867,7 +881,7 @@
  "Use wysiwyg editor" => "Usar editor WYSIWYG",
  "Use normal editor" => "Usar editor normal",
  "Must be wiki parsed" => "Interpretar código wiki (selecione se usou um código wiki)",
-@@ -3222,11 +3228,11 @@
+@@ -3504,19 +3510,19 @@
  "send newsletters" => "enviar comunicados",
  "Add a subscription newsletters" => "Adicionar uma assinatura ao comunicado",
  "Add email:" => "Adicionar email:",
@@ -881,8 +895,7 @@
 +"The user email will be refreshed at each newsletter sending" => "@ usuári@ de e-mail vai ser atualizado a cada newsletter que for enviada",
  "Subscribe group" => "Inscrever grupo",
  "Subscriptions" => "Assinaturas",
- "valid" => "válida",
-@@ -3234,8 +3240,8 @@
+ "subscribed" => "inscrita",
  "admin newsletters template" => "admin template de newsletters",
  "Create/edit newsletters" => "Criar/editar comunicados",
  "There are individual permissions set for this newsletter" => "Existem permissões individuais definidos para este comunicado",
@@ -893,19 +906,19 @@
  "Add unsubscribe instructions to each newsletter" => "Adicionar instruções de desinscrição em cada newsletter",
  "Validate email addresses" => "Validar endereços de e-mail",
  "editions" => "edições",
-@@ -3248,8 +3254,8 @@
+@@ -3529,8 +3535,8 @@
  "admin notifications template" => "admin template de notificações",
  "Add notification" => "Adicionar notificação",
  "Event" => "Evento",
 -"A user registers" => "Um usuário se registrou",
 -"A user submits an article" => "Um usuário submeteu um artigo",
-+"A user registers" => "Um usuári@ se registrou",
-+"A user submits an article" => "Um usuári@ submeteu um artigo",
++"A user registers" => "Um(a) usuári@ se registrou",
++"A user submits an article" => "Um(a) usuári@ submeteu um artigo",
  "Any wiki page is changed" => "Qualquer página wiki é alterada",
  "Any wiki page is changed, even minor changes" => "Qualquer página wiki é alterada, mesmo com pequenas mudanças",
  "PHP error" => "Erro de PHP",
-@@ -3422,7 +3428,7 @@
- "Authoritative status for modified items" => "",
+@@ -3702,7 +3708,7 @@
+ "Authoritative status for modified items" => "Estado obrigatório para itens modificados",
  "No change" => "Nenhuma mudança",
  "Item creator can modify his items?" => "O criador pode modificar os seus itens?",
 -"The tracker needs a user field with the option 1" => "O acompanhamento precisa de um campo para o usuário com a opção 1",
@@ -913,7 +926,7 @@
  "Member of the default group of creator can modify items?" => "Membro do grupo padrão do criador pode modificar itens?",
  "The tracker needs a group field with the option 1" => "O acompanhamento precisa de um campo para o grupo com a opção 1",
  "Show creation date when listing tracker items?" => "Exibir data de criação na lista de itens de acompanhamento?",
-@@ -3462,24 +3468,24 @@
+@@ -3742,24 +3748,24 @@
  "Group Information Tracker" => "Informação do grupo de acompanhamentos",
  "choose a group tracker ..." => "escolher um grupo de acompanhamentos ...",
  "choose a field ..." => "escolha um campo ...",
@@ -934,12 +947,12 @@
 -"Add a new user" => "Adicionar um novo usuário",
 +"admin users" => "administrar usuári@s",
 +"admin users template" => "administrar templates de usuári@s",
-+"Add a new user" => "Adicionar um nov@ usuári@",
++"Add a new user" => "Adicionar um(a) nov@ usuári@",
  "Batch Upload Results" => "Resultado da Carga em Lote",
 -"Added users" => "Usuários adicionados",
 -"Rejected users" => "Usuários rejeitados",
-+"Added users" => "Usuári@s adicionados",
-+"Rejected users" => "Usuári@s rejeitados",
++"Added users" => "Usuári@s adicionad@s",
++"Rejected users" => "Usuári@s rejeitad@s",
  "Reason" => "Motivo",
 -"Edit user" => "Editar usuário",
 -"Change user preferences" => "Alterar preferências do usuário",
@@ -948,15 +961,15 @@
  "edit account settings" => "editar configurações da conta",
  "Never" => "Nunca",
  "Assign Group" => "Designar Grupo",
-@@ -3491,15 +3497,15 @@
+@@ -3771,15 +3777,15 @@
  "Assign selected to" => "Associar selecionados para",
  "Remove selected from" => "Remover selecionados de",
  "the following groups:" => "os seguintes grupos:",
 -"Set the default group of the selected users to" => "Definir o grupo padrão dos usuários selecionados para",
-+"Set the default group of the selected users to" => "Definir o grupo padrão d@s usuári@s selecionados para",
++"Set the default group of the selected users to" => "Definir o grupo padrão d@s usuári@s selecionad@s para",
  "assign to groups" => "associar aos grupos",
 -"Warning: changing the username will require the user to change his password" => "Alerta: alterar o nome do usuário forçara o mesmo a alterar sua senha",
-+"Warning: changing the username will require the user to change his password" => "Alerta: alterar o nome d@ usuári@ forçara o mesmo a alterar sua senha",
++"Warning: changing the username will require the user to change his password" => "Alerta: alterar o nome d@ usuári@ forçará @ mesm@ a alterar sua senha",
  "Pass" => "Senha",
  "Again" => "Confirmar",
  "Registration" => "Inscrição",
@@ -967,7 +980,7 @@
  "Admin Article Types" => "Administrar Tipos de Artigos",
  "Article Types tpl" => "Tipos de artigos tpl",
  "Shows up in the drop down list of article types" => "Mostra no drop down uma lista de tipos de artigos",
-@@ -3554,9 +3560,9 @@
+@@ -3834,9 +3840,9 @@
  "all permissions in level" => "todas as permissões no nível",
  "all" => "todos",
  "level" => "nível",
@@ -975,32 +988,31 @@
 +"Assign user" => "Atribuir usuári@",
  "to groups" => "aos grupos",
 -"User Information" => "Informações do Usuário",
-+"User Information" => "Informações d@ usuári@",
++"User Information" => "Informações d@ Usuári@",
  "Default Group" => "Grupo Padrão",
  "Available groups" => "Grupos disponíveis",
  "assign perms to this group" => "associar permissões para esse grupo",
-@@ -3675,9 +3681,9 @@
- "Location" => "Local",
+@@ -3961,8 +3967,8 @@
+ "New Calendar Item" => "Novo Item no Calendário",
+ "or create a new category" => "ou crie uma nova categoria",
  "or create a new location" => "ou crie uma novo local",
- "Organized by" => "Ordenado por",
 -"comma separated usernames" => "usuários separados por vírgula",
-+"comma separated usernames" => "usuári@s separados por vírgula",
- "Participants" => "Participantes",
 -"comma separated username:role" => "usuário:perfil, separados por vírgula",
-+"comma separated username:role" => "usuári@:perfil, separados por vírgula",
++"comma separated usernames" => "usuári@s separad@s por vírgula",
++"comma separated username:role" => "usuári@:perfil, separad@s por vírgula",
  "with roles" => "com perfis",
  "Chair" => "Cadeira",
  "Optional" => "Opcional",
-@@ -3719,7 +3725,7 @@
- "There are no channels setup, please contact a site admin" => "Não existem canais configurados. Por favor contate um administrador do site",
+@@ -4000,7 +4006,7 @@
  "Chatroom" => "Sala de chat",
+ "Browser not supported" => "Navegador não suportado",
  "Active Channels" => "Canais ativos",
 -"Users in this channel" => "Usuários neste canal",
 +"Users in this channel" => "Usuári@s neste canal",
- "Browser not supported" => "Navegador não suportado",
  "Channel Information" => "Informações sobre o canal",
  "Channel" => "Canal",
-@@ -3769,9 +3775,9 @@
+ "Ratio" => "Taxa",
+@@ -4048,9 +4054,9 @@
  "There are" => "Existem",
  "invalid sites" => "sites inválidos",
  "valid sites" => "sites válidos",
@@ -1012,7 +1024,7 @@
  "times from the directory" => "vezes a partir do diretório",
  "Admin sites" => "Administrar sites",
  "Admin category relationships" => "Administrar relacionamentos de categorias",
-@@ -3886,11 +3892,11 @@
+@@ -4165,11 +4171,11 @@
  "Current heading" => "Cabeçalho atual",
  "There are individual permissions set for this blog" => "Existem permissões individuais definidas para este blog",
  "Number of posts to show" => "Número de mensagens a exibir",
@@ -1026,7 +1038,7 @@
  "Blog heading" => "Cabeçalho do Blog",
  "Edit Style Sheet" => "Editar Style Sheet",
  "Style Sheet" => "Folha de Estilo",
-@@ -4130,14 +4136,14 @@
+@@ -4392,14 +4398,14 @@
  "Edit this file gallery:" => "Editar esta galeria de arquivos:",
  "create new gallery" => "criar uma nova galeria",
  "There are individual permissions set for this file gallery" => "Existem permissões individuais definidas para esta galeria de arquivos",
@@ -1043,7 +1055,7 @@
  "You can access the file gallery using the following URL" => "Você pode acessar a galeria de arquivos pelo seguinte endereço",
  "Available File Galleries" => "Galerias de Arquivos Disponíveis",
  "Message queue for" => "Mensagem na fila para",
-@@ -4264,7 +4270,7 @@
+@@ -4525,7 +4531,7 @@
  "Add or edit a role" => "Adicionar ou editar um perfil",
  "Process roles" => "Perfis de processo",
  "No roles defined yet" => "Nenhum perfil definido ainda",
@@ -1052,7 +1064,7 @@
  "Map" => "Associar",
  "Roles" => "Perfis",
  "map" => "associar",
-@@ -4277,7 +4283,7 @@
+@@ -4538,7 +4544,7 @@
  "Admin process sources" => "Administrar fontes de processo",
  "select source" => "selecionar a fonte",
  "Shared code" => "Código compartilhado",
@@ -1061,10 +1073,10 @@
  "Get property" => "Obter propriedade",
  "Set property" => "Definir propriedade",
  "Complete" => "Completo",
-@@ -4333,17 +4339,17 @@
- "stop" => "parar",
+@@ -4589,17 +4595,17 @@
+ "My instances" => "Minhas instâncias",
+ "No instances found" => "Nenhuma instância encontrada",
  "activate" => "ativar",
- "graph" => "gráfico",
 -"User Activities" => "Atividades de Usuário",
 -"Galaxia User Activities" => "Atividades de Usuário do Galaxia",
 +"User Activities" => "Atividades de Usuári@",
@@ -1086,7 +1098,7 @@
  "Browsing Workitem" => "Visualizando Ítem de Trabalho",
  "Workitem information" => "Informação do ítem de trabalho",
  "rebuild cache" => "reconstruir cache",
-@@ -4366,7 +4372,7 @@
+@@ -4622,7 +4628,7 @@
  "default scale" => "escalar padrão",
  "No scales available" => "Nenhuma escala disponível",
  "Original image is default scale" => "A imagem original é a escala padrão",
@@ -1094,8 +1106,8 @@
 +"Other users can upload images to this gallery" => "Outr@s usuári@s podem carregar imagens nesta galeria",
  "You can access the gallery using the following URL" => "Você pode acessar esta galeria pelo seguinte endereço",
  "Available Galleries" => "Galerias Disponíveis",
- "Imgs" => "Imagens",
-@@ -4435,7 +4441,7 @@
+ "Choose a filter" => "Escolher filtro",
+@@ -4693,7 +4699,7 @@
  "Edit this FAQ:" => "Editar este FAQ:",
  "Create new FAQ" => "Criar um novo FAQ",
  "Create New FAQ:" => "Criar um novo FAQ:",
@@ -1104,16 +1116,16 @@
  "Available FAQs" => "FAQs Disponíveis",
  "Listing Gallery" => "Listando a galeria",
  "upload file" => "carregar um arquivo",
-@@ -4470,7 +4476,7 @@
+@@ -4728,7 +4734,7 @@
  "actions" => "ações",
  "take survey" => "pegar pesquisa",
  "list trackers tpl" => "listar acompanhamentos tpl",
 -"users registered" => "usuários registrados",
-+"users registered" => "usuári@s registrados",
++"users registered" => "usuári@s registrad@s",
  "Distance (km)" => "Distância (km)",
  "List Movies" => "Listar filmes",
  "Choose a movie" => "Escolha um filme",
-@@ -4490,12 +4496,12 @@
+@@ -4748,12 +4754,12 @@
  "transcripts" => "transcrição",
  "Offline operators" => "Operadores offline",
  "Add an operator to the system" => "Adicionar um operador ao sistema",
@@ -1129,10 +1141,10 @@
  "Request live support" => "Requisitar suporte on-line",
  "Request support" => "Requisitar suporte",
  "Open a support ticket instead" => "Obter um bilhete de suporte ao invés disto",
-@@ -4515,14 +4521,14 @@
- "started" => "iniciou",
+@@ -4774,14 +4780,14 @@
  "reason" => "motivo",
  "Transcript" => "Transcrição",
+ "Mail-in feature" => "Recurso mail-in",
 -"User Calendar" => "Calendário do usuário",
 -"User Calendar Doc tpl" => "documento do calendário do usuário tpl",
 +"User Calendar" => "Calendário d@ usuári@",
@@ -1148,16 +1160,16 @@
  "Calendar Interval in daily view" => "Intervalo do calendário na visão diária",
  "Start hour for days" => "Hora inicial para os dias",
  "End hour for days" => "Hora final para os dias",
-@@ -4537,7 +4543,7 @@
+@@ -4796,7 +4802,7 @@
  "Unpublish all" => "Despublicar todos",
  "Attention" => "Atenção",
- "Apache has the right to write in your file tree, which enables the installation, removal or \nupgrade of packages. When you are done with those operations, think to fix those permissions back to a safe state (by using \n\"./fixperms fix\" for example)." => "O Apache tem permissão para escrever na sua árvore de arquivos, o que permite a instalação, remoção ou atualização dos pacotes. Quando você terminar essas operações, é recomendável voltar as permissões para o modo mais seguro (usando \n\"./fixperms fix\" por exemplo).",
--"To install, remove or upgrade packages you need to give the apache user the right\nto write files in your web tree (you can use \"./fixperms.sh open\" to set it up). After installation you need to remove that\npermission (using \"./fixperms fix\")." => "Para instalar, remover ou atualizar pacotes é necessário que o usuário do Apache tenha permissão de escrita na árvore de arquivos da web (você pode usar \"./fixperms.sh open\" para fazer isso). Depois da instalação você deve remover essa permissão (usando \"./fixperms fix\").",
-+"To install, remove or upgrade packages you need to give the apache user the right\nto write files in your web tree (you can use \"./fixperms.sh open\" to set it up). After installation you need to remove that\npermission (using \"./fixperms fix\")." => "Para instalar, remover ou atualizar pacotes é necessário que @ usuári@ do Apache tenha permissão de escrita na árvore de arquivos da web (você pode usar \"./fixperms.sh open\" para fazer isso). Depois da instalação você deve remover essa permissão (usando \"./fixperms fix\").",
+ "Apache has the right to write in your file tree, which enables the installation, removal or \nupgrade of packages. When you are done with those operations, think to fix those permissions back to a safe state (by using \n\"./fixperms.sh fix\" for example)." => "O Apache tem permissão para escrever na sua árvore de arquivos, o que permite a instalação, remoção ou atualização dos pacotes. Quando você terminar essas operações, é recomendável voltar as permissões para o modo mais seguro (usando \n\"./fixperms.sh fix\" por exemplo).",
+-"To install, remove or upgrade packages you need to give the apache user the right\nto write files in your web tree (you can use \"./fixperms.sh open\" to set it up). After installation you need to remove that\npermission (using \"./fixperms.sh fix\")." => "Para instalar, remover ou atualizar pacotes é necessário que o usuário do Apache tenha permissão de escrita na árvore de arquivos da web (você pode usar \"./fixperms.sh open\" para fazer isso). Depois da instalação você deve remover essa permissão (usando \"./fixperms.sh fix\").",
++"To install, remove or upgrade packages you need to give the apache user the right\nto write files in your web tree (you can use \"./fixperms.sh open\" to set it up). After installation you need to remove that\npermission (using \"./fixperms.sh fix\")." => "Para instalar, remover ou atualizar pacotes é necessário que @ usuári@ do Apache tenha permissão de escrita na árvore de arquivos da web (você pode usar \"./fixperms.sh open\" para fazer isso). Depois da instalação você deve remover essa permissão (usando \"./fixperms.sh fix\").",
  "all types" => "todos os tipos",
  "Display only this type" => "Mostrar apenas esse tipo",
  "Unpublish" => "Não publicar",
-@@ -4669,7 +4675,7 @@
+@@ -4918,7 +4924,7 @@
  "Quiz result stats" => "Estatísticas de resultados do Teste",
  "Quiz" => "Teste",
  "Time" => "Tempo",
@@ -1166,7 +1178,7 @@
  "Stats for quizzes" => "Estats para testes",
  "taken" => "feitos",
  "Av score" => "Pontuação méd.",
-@@ -4830,9 +4836,9 @@
+@@ -5076,9 +5082,9 @@
  "Faq Stats" => "Estatísticas de FAQ",
  "Total questions" => "Total de perguntas",
  "Average questions per FAQ" => "Média de perguntas por FAQ",
@@ -1179,7 +1191,7 @@
  "Quiz Stats" => "Estatísticas de testes",
  "Average questions per quiz" => "Média de perguntas por teste",
  "Quizzes taken" => "Testes realizados",
-@@ -4861,8 +4867,8 @@
+@@ -5107,8 +5113,8 @@
  "If a theme is assigned to the individual object that theme is used." => "Se um tema for atribuído a um objeto individual o tema é utilizado",
  "If not then if a theme is assigned to the object's category that theme is used" => "Senão, então se um tema for atribuído à categoria do objeto o tema é utilizado",
  "If not then a theme for the section is used" => "Senão, um tema para a seção é utilizado",
@@ -1190,7 +1202,7 @@
  "Control by Objects" => "Controlado por objetos",
  "Control by Sections" => "Controlar por seções",
  "Assign themes to categories" => "Atribuir temas a categorias",
-@@ -4897,9 +4903,9 @@
+@@ -5142,9 +5148,9 @@
  "Thumbnail" => "Miniatura",
  "Image ID thumb" => "ID da miniatura da imagem",
  "You can include the image in an Wiki page using" => "Você pode incluir a imagem em uma página Wiki usando",
@@ -1198,21 +1210,21 @@
 -"User Assigned Modules" => "Módulos Atribuídos pelo Usuário",
 -"User Assigned Modules tpl" => "módulos associados pelo usuário tpl",
 +"User assigned modules" => "Módulos atribuídos pel@ usuári@",
-+"User Assigned Modules" => "Módulos Atribuídos pel@ usuári@",
++"User Assigned Modules" => "Módulos Atribuídos pel@ Usuári@",
 +"User Assigned Modules tpl" => "módulos associados pel@ usuári@ tpl",
  "Restore defaults" => "Restaurar padrões",
  "move to right column" => "mover para a coluna direita",
  "unassign" => "não atribuir mais",
-@@ -4907,7 +4913,7 @@
+@@ -5152,7 +5158,7 @@
  "Assign module" => "Definir módulo",
  "Module" => "Módulo",
  "Column" => "Coluna",
 -"User Bookmarks tpl" => "Favoritos do usuário tpl",
 +"User Bookmarks tpl" => "Favoritos d@ usuári@ tpl",
- "top" => "topo",
  "Current folder" => "Pasta atual",
  "Folders" => "Pastas",
-@@ -4919,20 +4925,20 @@
+ "Folder in" => "Pasta em",
+@@ -5163,20 +5169,20 @@
  "Add or edit a URL" => "Adicionar ou editar um endereço",
  "Avatar" => "Fotografia",
  "Homepage" => "Site pessoal ou institucional",
@@ -1239,16 +1251,16 @@
  "HomePage" => "Página inicial",
  "Your personal Wiki Page" => "Sua página Wiki pessoal",
  "Your personal tracker information" => "Informações do seu acompanhamento pessoal",
-@@ -4943,7 +4949,7 @@
+@@ -5186,7 +5192,7 @@
  "Unavailable - please set your e-mail below" => "Não disponível - por favor defina seu e-mail abaixo",
  "Does your mail reader need a special charset" => "Seu cliente de e-mail precisa de codificação específica",
  "Number of visited pages to remember" => "Número de páginas visitadas a lembrar",
 -"User information" => "Informação do Usuário",
-+"User information" => "Informação d@ usuári@",
++"User information" => "Informação d@ Usuári@",
  "private" => "privada",
  "public" => "pública",
  "Use double-click to edit pages" => "Clique-duplo para editar páginas",
-@@ -4954,14 +4960,14 @@
+@@ -5197,14 +5203,14 @@
  "Current password (required)" => "Senha atual (obrigatório)",
  "Change administrative info" => "Atualizar",
  "Messages per page" => "Mensagens por página",
@@ -1265,7 +1277,7 @@
  "New task" => "Nova tarefa",
  "Task list" => "Lista de tarefas",
  "Admin mode off" => "Administrar modo desligado",
-@@ -4970,19 +4976,19 @@
+@@ -5213,19 +5219,19 @@
  "Received task" => "Tarefa recebida",
  "You received this task, please read and execute it" => "Você recebeu essa tarefa, por favor leia e execute ela",
  "Send task" => "Enviar tarefa",
@@ -1279,11 +1291,11 @@
 -"not accepted by one user" => "não aceito por um usuário",
 -"not accepted user" => "usuário não aceito",
 -"Task is rejected by one user" => "Tarefa rejeitada por um usuário",
-+"accepted by task user and creator" => "aceito pel@ usuári@ e criador da tarefa",
-+"accepted user and creator" => "aceit@ usuári@ e criador",
-+"Task is accepted by user and creator" => "A tarefa foi aceito pel@ usuári@ e pelo criador",
++"accepted by task user and creator" => "aceito pel@ usuári@ e criador(a) da tarefa",
++"accepted user and creator" => "aceit@ usuári@ e criador(a)",
++"Task is accepted by user and creator" => "A tarefa foi aceito pel@ usuári@ e pel@ criador(a)",
 +"not accepted by one user" => "não aceito por um usuári@",
-+"not accepted user" => "usuári@ não aceito",
++"not accepted user" => "usuári@ não aceit@",
 +"Task is rejected by one user" => "Tarefa rejeitada por um usuári@",
  "waiting for me" => "esperando por mim",
  "Task is not accepted by you, read the task and accept or reject it" => "Status da tarefa ainda não definido por você, por favor leia e aceite ou rejeite a tarefa",
@@ -1294,7 +1306,7 @@
  "admin mode" => "modo de administração",
  "trash" => "lixeira",
  "empty trash" => "limpar lixeira",
-@@ -4996,7 +5002,7 @@
+@@ -5239,7 +5245,7 @@
  "View Task" => "Visualizar tarefa",
  "Open a new task" => "Abrir nova tarefa",
  "taskId" => "ID da tarefa",
@@ -1303,7 +1315,7 @@
  "Only the creator can delete this task" => "Apenas o proprietário pode deletar a tarefa",
  "use start date and time" => "data e hora do início",
  "use end date and time" => "data e hora do término",
-@@ -5005,15 +5011,15 @@
+@@ -5248,15 +5254,15 @@
  "Percentage completed" => "Porcentagem de realização",
  "waiting" => "esperando",
  "shared for group" => "compartilhado para o grupo",
@@ -1322,7 +1334,7 @@
  "reload" => "recarregar",
  "You can only view this task" => "Você pode apenas visualizar essa tarefa",
  "priority" => "prioridade",
-@@ -5028,18 +5034,18 @@
+@@ -5271,18 +5277,18 @@
  "all shared tasks" => "todas as tarefas compartilhadas",
  "completed (100%)" => "completa (100%)",
  "Public for group" => "Público para o grupo",
@@ -1334,10 +1346,10 @@
 -"A user posts a forum topic" => "Um usuário enviou um novo tópico no fórum",
 -"A user edited a wiki page" => "Um usuário editou uma página wiki",
 -"edit user files" => "editar arquivos do usuário",
-+"A user submits a blog post" => "Um usuári@ enviou uma mensagem no blog",
-+"A user posts a forum thread" => "Um usuári@ criou um novo assunto no fórum",
-+"A user posts a forum topic" => "Um usuári@ enviou um novo tópico no fórum",
-+"A user edited a wiki page" => "Um usuári@ editou uma página wiki",
++"A user submits a blog post" => "Um(a) usuári@ enviou uma mensagem no blog",
++"A user posts a forum thread" => "Um(a) usuári@ criou um novo assunto no fórum",
++"A user posts a forum topic" => "Um(a) usuári@ enviou um novo tópico no fórum",
++"A user edited a wiki page" => "Um(a) usuári@ editou uma página wiki",
 +"edit user files" => "editar arquivos d@ usuári@",
  "May need to refresh twice to see changes" => "Pode ser necessário atualizar duas vezes para ver as alterações",
  "Add top level bookmarks to menu" => "Adicionar bookmarks de nível superior ao menu",
@@ -1348,7 +1360,7 @@
  "Insert Row" => "Inserir linha",
  "Insert Column" => "Inserir coluna",
  "Remove Row" => "Remover linha",
-@@ -5172,7 +5178,7 @@
+@@ -5403,7 +5409,7 @@
  "Contacts" => "Contatos",
  "Edit mail account" => "Editar conta de e-mail",
  "Add new mail account" => "Adicionar nova conta de email",
@@ -1357,7 +1369,7 @@
  "account" => "conta",
  "View All" => "Ver Todas",
  "Msg" => "Mnsg",
-@@ -5196,7 +5202,7 @@
+@@ -5427,7 +5433,7 @@
  "%s disabled" => "%s desabilitado",
  "Enable/disable Tiki features here, but configure them elsewhere" => "Habilite/desabilite os recursos do tiki aqui, mas a configuração deve ser feita na parte específica de cada recurso",
  "General preferences and settings" => "Configurações e preferências gerais",
@@ -1366,7 +1378,24 @@
  "Wiki settings" => "Configurações Wiki",
  "Wiki Attachments" => "Anexos wiki",
  "Article/CMS settings" => "Artigos/Configurações do CMS",
-@@ -5273,13 +5279,13 @@
+@@ -5499,12 +5505,12 @@
+ "The \"Lsdir Wikiplugin\" is installed. It can be used by wiki editors to view the contents of any directory." => "O \"Wikiplugin Lsdir\" está instalado. Ele pode ser utilizado pelos editores para visualizar o conteúdo de diretórios.",
+ "The \"Bloglist Wikiplugin\" is installed. It can be used by wiki editors to disclose private blog posts." => "O \"Wikiplugin Bloglist\" esta instalado. Ele pode ser usado por editores wiki para mostrar blogs restritos.",
+ "SQL injection" => "Injeção SQL",
+-"SQL injection by authenticated user" => "Injeção SQL para usuários autenticados",
+-"SQL injection by authenticated user with special privileges" => "Injeção SQL apenas para usuários autenticados e com privilégios especiais.",
++"SQL injection by authenticated user" => "Injeção SQL para usuári@s autenticados",
++"SQL injection by authenticated user with special privileges" => "Injeção SQL apenas para usuári@s autenticados e com privilégios especiais.",
+ "SQL injection without authentication" => "Injeção SQL sem autenticação",
+ "PHP command injection" => "Injeção de comando PHP",
+-"PHP command injection by authenticated user" => "Injeção de comando PHP para usuário autenticado",
+-"PHP command injection by authenticated user with special privileges" => "Injeção de comando PHP apenas para usuários autenticados e com privilégios especiais.",
++"PHP command injection by authenticated user" => "Injeção de comando PHP para usuári@ autenticado",
++"PHP command injection by authenticated user with special privileges" => "Injeção de comando PHP apenas para usuári@s autenticados e com privilégios especiais.",
+ "PHP command injection without authentication" => "Injeção de comando PHP sem autenticação",
+ "File upload" => "Subir arquivo",
+ "File is not readable. Unable to check." => "Arquivo não esta disponível para a leitura. Impossível checar.",
+@@ -5521,13 +5527,13 @@
  "No tracker indicated" => "Nenhum acompanhamento foi indicado",
  "Group already exists" => "Grupo já existente",
  "No records were found. Check the file please!" => "Nenhum registro encontrado. Por favor, verifique o arquivo.",
@@ -1383,7 +1412,7 @@
  "New %s created with %s %s." => "Novo %s criado com %s %s.",
  "Impossible to create new %s with %s %s." => "Impossível criar novo %s com %s %s.",
  "%s %s successfully deleted." => "%s %s deletado com sucesso.",
-@@ -5287,8 +5293,8 @@
+@@ -5535,8 +5541,8 @@
  "%s <b>%s</b> successfully deleted." => "%s <b>%s</b> deletado com sucesso.",
  "%s <b>%s</b> assigned to %s <b>%s</b>." => "%s <b>%s</b> associado a %s <b>%s</b>.",
  "%s <b>%s</b> removed from %s <b>%s</b>." => "%s <b>%s</b> removido de %s <b>%s</b>.",
@@ -1394,7 +1423,7 @@
  "The passwords dont match" => "As senhas não coincidem",
  "Password must contain both letters and numbers" => "A senha deve ser composta de letras e algarismos",
  "%s modified successfully." => "%s modificado com sucesso.",
-@@ -5301,8 +5307,8 @@
+@@ -5549,8 +5555,8 @@
  "Last articles." => "Últimos Artigos.",
  "Unknown group" => "Grupo desconhecido",
  "Group doesnt exist" => "O grupo não existe",
@@ -1405,16 +1434,16 @@
  "You have to indicate a group" => "Você precisa indicar um grupo",
  "This group is invalid" => "Esse grupo não é válido",
  "Permission denied you cannot view backlinks for this page" => "Permissão negada: você não pode ver referências a esta página",
-@@ -5438,7 +5444,7 @@
+@@ -5685,7 +5691,7 @@
+ "You must be logged in to use this feature" => "Você precisa estar logado para usar essa função",
  "Friendship request sent to %s" => "Pedido de amizade enviado para %s",
- "You're invited to join my network of friends!" => "Convite para entrar na minha rede de amigos!",
  "You're already friend of %s" => "Você já é amigo de %s",
 -"Invalid username" => "Usuário inválido",
 +"Invalid username" => "Usuári@ inválido",
  "I have accepted your friendship request!" => "Eu aceitei seu convite para entrar na sua rede de amigos!",
  "I have refused your friendship request!" => "Eu recusei o seu convite para entrar na sua rede de amigos!",
  "No process indicated" => "Nenhum processo indicado",
-@@ -5451,7 +5457,7 @@
+@@ -5698,7 +5704,7 @@
  "You cant execute this activity" => "Você não pode editar esta atividade",
  "You couldn't abort a instance" => "Você não pode abortar uma instância",
  "You couldn't exception a instance" => "Você não pode fazer uma exceção em uma instância",
@@ -1423,16 +1452,7 @@
  "No title indicated" => "Nenhum título indicado",
  "No comment indicated" => "Nenhum comentário indicado",
  "No date indicated" => "Nenhuma data indicada",
-@@ -5488,7 +5494,7 @@
- "Permission denied you cannot view pages" => "Permissão negada: você não pode ver páginas",
- "Permission denied you cannot remove pages" => "Permissão negada: você não pode remover páginas",
- "You have to enable cookies to be able to login to this site" => "Você deve habilitar os cookies para se autenticar neste site",
--"Invalid username or password" => "Usuário ou senha inválidos",
-+"Invalid username or password" => "Usuári@ ou senha inválidos",
- "Account validated successfully." => "Validação da conta confirmada.",
- "Sorry, you can't use this feature." => "Desculpe, você não pode usar essa função.",
- "changed" => "alterada",
-@@ -5521,10 +5527,10 @@
+@@ -5770,10 +5776,10 @@
  "This TikiWiki site is prepared for access from a lot of mobile devices, e.g. WAP phones, PDA's, i-mode devices and much more." => "Este site TikiWiki está preparado para ser acessado de uma gama de dispositivos móveis, como celulares WAP, PDAs, dispositivos i-mode e muitos outros.",
  "You can browse this site on your mobile device by directing your device's browser towards the following URL here on this site:" => "Você pode navegar neste site com seu dispositivo móvel apontando o browser dele para o seguinte endereço deste site:",
  "About" => "Sobre",
@@ -1445,9 +1465,9 @@
  "You must be logged in to subscribe to newsletters" => "Você precisa se logar para assinar os comunicados",
  "No server indicated" => "Nenhum servidor indicado",
  "Cannot connect to" => "Impossível conectar-se a",
-@@ -5549,17 +5555,17 @@
- "No result indicated" => "Nenhum resultado indicado",
+@@ -5799,17 +5805,17 @@
  "Permision denied" => "Permissão negada",
+ "Registered" => "Registrado",
  "Wrong registration code" => "Código de registro incorreto",
 -"Username is too long" => "Identificador de usuário muito longo",
 -"Username cannot contain whitespace" => "Identificador de usuário não pode conter espaços",
@@ -1468,7 +1488,7 @@
  "Permission denied you cannot remove versions from this page" => "Permissão negada: você não pode remover versões desta página",
  "Permission denied you cannot rename this page" => "Você não tem permissão para renomear essa página",
  "Cannot rename page because the new name begins with reserved prefix" => "Não foi possível renomear a página pois o novo nome começa com um prefixo que está reservado",
-@@ -5601,8 +5607,8 @@
+@@ -5852,8 +5858,8 @@
  "cannot process upload" => "impossível processar a carga",
  "Usage" => "Uso",
  "No url indicated" => "Nenhum endereço indicado",
@@ -1479,7 +1499,7 @@
  "Invalid password.  Your current password is required to change administrative information" => "Senha inválida. Sua senha é necessária para mudar as informações administrativas",
  "Email is set to %s" => "E-mail definido como %s",
  "The passwords did not match" => "As senhas não coincidem",
-@@ -5611,16 +5617,16 @@
+@@ -5862,16 +5868,16 @@
  "Rights by creator" => "Direitos do criador",
  "END" => "Fim",
  "Percentage" => "Porcentagem",
@@ -1501,7 +1521,7 @@
  "Changes on Task" => "Mudanças na tarefa",
  "You received a new task" => "Você recebeu uma nova tarefa",
  "The priority is" => "A prioridade é",
-@@ -5634,7 +5640,7 @@
+@@ -5885,7 +5891,7 @@
  "Please read the task and work on it!" => "Por favor leia as tarefas e trabalhe nelas!",
  "Sorry, there was an error while trying to write data into the database" => "Desculpe, houve um erro ao tentar escrever na base de dados",
  "Cannot upload this file not enough quota" => "Impossível carregar este arquivo: cota máxima atingida",

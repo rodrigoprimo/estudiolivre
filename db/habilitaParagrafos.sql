@@ -1,1 +1,0 @@
-UPDATE tiki_preferences SET value='y' WHERE name='feature_wiki_paragraph_formatting';

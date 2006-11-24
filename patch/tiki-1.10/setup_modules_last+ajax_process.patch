@@ -1,13 +1,14 @@
 --- tiki-setup.php	2006-05-12 16:52:58.000000000 -0300
 +++ tiki-setup.php	2006-07-21 12:37:46.000000000 -0300
-@@ -1672,8 +1678,6 @@
-     }
+@@ -1708,9 +1708,6 @@
  }
- 
+ $smarty->assign('page', $page);
+
+-// We include Tiki modules here (any idea why right here ?)
 -include_once ("tiki-modules.php");
 -
  if ($feature_warn_on_edit == 'y') {
-     
+
      if (strstr($_SERVER['REQUEST_URI'], 'tiki-editpage')) {
 --- setup_smarty.php	2006-05-12 16:52:56.000000000 -0300
 +++ setup_smarty.php	2006-07-21 13:40:26.000000000 -0300
