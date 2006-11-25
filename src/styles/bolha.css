@@ -1,6 +1,6 @@
 /* tags gerais */
 HTML {
-	background-image:url(estudiolivre/bgGradientBlue.png);
+	/*background-image:url(estudiolivre/bgGradientBlue.png);*/
 	background-repeat:repeat-x;
 	/*height:99.3%;*/
 	height:100%;
@@ -14,7 +14,7 @@ BODY {
 	font-family: arial,verdana,helvetica,lucida,sans-serif; /*BitStream Vera Sans, Verdana;*/
 	font-size:12px;
 	
-	background-image:url(estudiolivre/bgShadow.png);
+	background-image:url(./bolha/img/bgShadow.png);
 	background-repeat:repeat-y;
 	background-position: center;
 }
