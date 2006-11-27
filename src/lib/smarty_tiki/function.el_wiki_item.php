@@ -27,7 +27,7 @@ function smarty_function_el_wiki_item($params, &$smarty) {
 	$result['pageName'] = $info['pageName'];
 	$result['data'] = substr(strip_tags($info['data']), 0, 250);
 	$result['lastModif'] = $info['lastModif'];
-	$result['href'] = $id;
+	$result['href'] = "tiki-index.php?page=".$info['pageName'];
 	$smarty->assign('feature_search_fulltext', "n");
 	$smarty->assign_by_ref('result', $result);
 	return $smarty->fetch('searchresult-item.tpl');
