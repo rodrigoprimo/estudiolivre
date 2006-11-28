@@ -1,8 +1,8 @@
 #tiki-mid, #tiki-midAudio, #tiki-midVideo, #tiki-midGraf {
-		width:747px;
+	width:747px;
 }
 
-#tiki-midAcervo {
+#tiki-midAcervo, #tiki-midNaoWiki {
 	width:558px;
 }
 

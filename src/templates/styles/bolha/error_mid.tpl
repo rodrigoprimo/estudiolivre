@@ -1,4 +1,3 @@
-<div id="tiki-mid">
 <br>
 {if ($errortype eq "404")}
 	{if $likepages}
@@ -24,4 +23,3 @@
 {/if}
 <a href="javascript:history.back()" class="linkmenu">{tr}Go back{/tr}</a><br /><br />
 <a href="{$tikiIndex}" class="linkmenu">{tr}Return to home page{/tr}</a>
-</div>

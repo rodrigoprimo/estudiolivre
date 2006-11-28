@@ -1,38 +1,25 @@
 {css}
+
+{if $category eq "Áudio"}
+	{assign var="midId" value="tiki-midAudio"}
+{elseif $category eq "Gráfico"}
+	{assign var="midId" value="tiki-midGraf"}
+{elseif $category eq "Vídeo"}
+	{assign var="midId" value="tiki-midVideo"}
+{elseif $category eq "gallery"}
+	{assign var="midId" value="tiki-midAcervo"}
+{elseif $section eq "wiki"}
+	{assign var="midId" value="tiki-mid"}
+{else}
+	{assign var="midId" value="tiki-midNaoWiki"}
+{/if}
+
 <!-- content.tpl begin -->
-
 <div id="ajax-contentBubble">
-
-
-    
-    {* Index we display a wiki page here *}
-    {* tirei os  onclick="showMenu(event)"> do contextualMenu *}
-    {if $category eq "Áudio"}
-      <div id="tiki-midAudio">
-      {include file="sideContent.tpl"}
-    {elseif $category eq "Gráfico"}
-       <div id="tiki-midGraf">
-       {include file="sideContent.tpl"}
-    {elseif $category eq "Vídeo"}
-       <div id="tiki-midVideo">
-       {include file="sideContent.tpl"}
-    {elseif $category eq "gallery"}
-    	{include file="sideContent.tpl"}
-        <div id="tiki-midAcervo">
-    {else}
-        <div id="tiki-mid">
-        {include file="sideContent.tpl"}
-    {/if}
-    
-<!--HIGHLIGHT BEGIN-->
-
-    {$mid_data}
-
-<!--HIGHLIGHT END-->
-<!-- sasquatch -->
+	{if $section neq "wiki"}{include file="sideContent.tpl"}{/if}
+	<div id="{$midId}">
+		{if $section eq "wiki"}{include file="sideContent.tpl"}{/if}
+	    {$mid_data}
     </div>
-    
-
-    
 </div>
 <!-- content.tpl end -->
