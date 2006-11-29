@@ -1,5 +1,5 @@
 {css only=list}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/tiki-list_users.tpl,v 1.1 2006-10-20 21:11:33 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/tiki-list_users.tpl,v 1.2 2006-11-29 02:54:06 rhwinter Exp $ *}
 <div id="users">
 <h1>
 	{if !$find}
@@ -41,6 +41,9 @@
 
 <table width="100%">
 	<tr>
+		<td class="heading">
+				{tr}Avatar{/tr}
+		</td>
 		<td class="heading">
 			{tooltip text="Clique para que a listagem seja por <b>ordem alfabética</b> de nome de usuári@"}
 			<a href="tiki-list_users.php?{if $find}find={$find}&amp;{/if}offset={$offset}&amp;sort_mode={if $sort_mode eq 'login_desc'}login_asc{else}login_desc{/if}" class="userlistheading">
@@ -93,6 +96,11 @@
 	{section name=changes loop=$listusers}
 	{cycle values="odd,even" assign="currentClass" print=false}
 		<tr class="{$currentClass}">
+			<td class="foto">
+				<a href="el-user.php?view_user={$listusers[changes].login}">
+					{$listusers[changes].login|avatarize}
+				</a>
+			</td>
 			<td>
 				<a href="el-user.php?view_user={$listusers[changes].login}">
 					{$listusers[changes].login}
