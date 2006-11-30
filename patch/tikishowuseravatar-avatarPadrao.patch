@@ -1,5 +1,5 @@
 --- tiki-show_user_avatar.php	2006-07-25 14:52:28.000000000 -0300
-+++ /root/tiki-show_user_avatar.php	2006-07-25 14:53:05.000000000 -0300
++++ tiki-show_user_avatar.php	2006-07-25 14:53:05.000000000 -0300
 @@ -22,7 +22,14 @@
  $type = $info["avatarFileType"];
  $content = $info["avatarData"];

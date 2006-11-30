@@ -6,25 +6,25 @@
 
 /*tabela*/
 
-#users table, #forum table, #blogs table, #listLastChanges table, #editMods table, #viewForum table {
+#tracker table, #users table, #forum table, #blogs table, #listLastChanges table, #editMods table, #viewForum table {
 	margin:0 0 20px 0;
 	width:100%;
 }
 
-#users td, #forum td, #blogs td, #listLastChanges td, #editMods td, #viewForum td {
+#tracker table, #users td, #forum td, #blogs td, #listLastChanges td, #editMods td, #viewForum td {
 	padding:4px 0 4px 3px;
 }
 
-#users table a, #forum table a, #blogs table a, #listLastChanges a, #editMods a, #viewForum table a {
+#tracker table a, #users table a, #forum table a, #blogs table a, #listLastChanges a, #editMods a, #viewForum table a {
 	text-decoration:underline;
 	color:black;
 }
  	
-#users td.heading, #forum td.heading, #blogs td.heading, #listLastChanges td.heading, #editMods td.heading, #viewForum td.heading {
+#tracker td.heading, #users td.heading, #forum td.heading, #blogs td.heading, #listLastChanges td.heading, #editMods td.heading, #viewForum td.heading {
 	font-weight:bold;
 }
 
-#users td.heading a {
+#tracker td.heading a, #users td.heading a {
 	text-decoration:none;
 }
 
@@ -33,7 +33,7 @@
 	background:#c1c1c1;
 }
 
-#users .odd, #forum .odd, #blogs .odd, #listLastChanges .odd, #editMods .odd, #viewForum .odd {
+#tracker .odd, #users .odd, #forum .odd, #blogs .odd, #listLastChanges .odd, #editMods .odd, #viewForum .odd {
 	background-color:#e9e9e9;
 }
 
@@ -43,7 +43,7 @@
 
 /*headers*/
 
-#users h1, #forum h1, #blogs h1, #listLastChanges h1, #blogHead h1, #viewForum h1, #live h1 {
+#tracker h1, #users h1, #forum h1, #blogs h1, #listLastChanges h1, #blogHead h1, #viewForum h1, #live h1 {
 	text-align:center;
 	background-color:#eee/*f9f9f9*/;
 	/*border:1px solid gray;*/
