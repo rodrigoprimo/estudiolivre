@@ -24,8 +24,8 @@ class PersistentObject extends TikiDB {
 	    $this->table = get_class($this);
 	    if (is_array($fields)) {
 	    	if (count($fields)) {
-		    	$this->id = $this->insert($fields);
 		    	$this->_populateObject($fields);
+		    	$this->id = $this->insert($fields);
 	    	} else trigger_error("Incorrect parameters, need array with at least one field to create object", E_USER_ERROR);
 	    } elseif (is_int($fields)) {
 	    	$this->id = $fields;
@@ -36,9 +36,20 @@ class PersistentObject extends TikiDB {
 	
 	function _populateObject($fields) {
 		foreach ($fields as $key => $value) {
+			$this->_checkField($key, $value);
 			$this->$key = $value;
 		}
 		return $this;
+	}
+	
+	// this does not check anything, an actual method 
+	// per field must be implemented in subclasses
+	// the check methods should trigger errors
+	function _checkField($name, $value) {
+		$methodName = "checkField_" . $name;
+	  	if (method_exists($this, $methodName)) {
+	  		$this->$methodName($value);
+	  	}
 	}
 	
 	function __array_diff_key($a1, $a2) {
@@ -134,7 +145,7 @@ class PersistentObject extends TikiDB {
 		$fields[] = $this->id;
 		$this->query($query, $fields);
 	}
-	
+		
 	function delete() {
 		$this->query("delete from $this->table where id = ?", array($this->id));
 		for ($table = get_parent_class($this->table); $table != 'persistentobject'; $table = get_parent_class($table)) {
