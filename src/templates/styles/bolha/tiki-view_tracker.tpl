@@ -3,17 +3,16 @@
 		{*tr}Tracker{/tr*} {$tracker_info.name}
 	</a>
 </h1>
-
-{* ****
-<span class="button2"><a href="tiki-list_trackers.php" class="linkbut">{tr}List trackers{/tr}</a></span>
-
-{if $filtervalue}
-	<span class="button2"><a href="tiki-view_tracker.php?trackerId={$trackerId}" class="linkbut">{tr}View this tracker items{/tr}</a></span>
-{/if}
-{if $user}
-	<span class="button2"><a href="tiki-view_tracker.php?trackerId={$trackerId}&amp;monitor=1" class="linkbut">{tr}{$email_mon}{/tr}</a></span>
-{/if}
-***** *}
+{*
+	<span class="button2"><a href="tiki-list_trackers.php" class="linkbut">{tr}List trackers{/tr}</a></span>
+	
+	{if $filtervalue}
+		<span class="button2"><a href="tiki-view_tracker.php?trackerId={$trackerId}" class="linkbut">{tr}View this tracker items{/tr}</a></span>
+	{/if}
+	{if $user}
+		<span class="button2"><a href="tiki-view_tracker.php?trackerId={$trackerId}&amp;monitor=1" class="linkbut">{tr}{$email_mon}{/tr}</a></span>
+	{/if}
+*}
 
 {if $tiki_p_admin_trackers eq 'y'}
 	&nbsp;&nbsp;
@@ -30,23 +29,24 @@
 
 {$tracker_info.description}
 
-{****
-if $mail_msg}
-	{$mail_msg}
-{/if
-*****}
+{*
+	if $mail_msg}
+		{$mail_msg}
+	{/if
+*}
 
 {***  Display warnings about incorrect values and missing mandatory fields ***}
-{if count($err_mandatory) > 0}
-	<div class="simplebox highlight">
-		{tr}Following mandatory fields are missing{/tr}&nbsp;:
-		<br/>
-		{section name=ix loop=$err_mandatory}
-			{$err_mandatory[ix].name}{if !$smarty.section.ix.last},&nbsp;{/if}
-		{/section}
-	</div>
-	<br />
-{/if}
+	{if count($err_mandatory) > 0}
+		<div class="simplebox highlight">
+			{tr}Following mandatory fields are missing{/tr}&nbsp;:
+			<br/>
+			{section name=ix loop=$err_mandatory}
+				{$err_mandatory[ix].name}{if !$smarty.section.ix.last},&nbsp;{/if}
+			{/section}
+		</div>
+		<br />
+	{/if}
+{***}
 
 {if count($err_value) > 0}
 	<div class="simplebox highlight">
@@ -57,16 +57,17 @@ if $mail_msg}
 	</div>
 	<br />
 {/if}
+
 {if $feature_tabs eq 'y'}
-{cycle name=tabs values="1,2,3" print=false advance=false reset=true}
-<div id="page-bar">
-{if $tiki_p_view_trackers eq 'y'}
-<span id="tab{cycle name=tabs advance=false assign=tabi}{$tabi}" class="tabmark" style="border-color:{if $cookietab eq $tabi}black{else}white{/if};"><a href="javascript:tikitabs({cycle name=tabs},3);">{tr}Tracker{/tr} <i>{$tracker_info.name}</i></a></span>
-{/if}
-{if $tiki_p_create_tracker_items eq 'y'}
-<span id="tab{cycle name=tabs advance=false assign=tabi}{$tabi}" class="tabmark" style="border-color:{if $cookietab eq $tabi}black{else}white{/if};"><a href="javascript:tikitabs({cycle name=tabs},3);">{tr}Insert new item{/tr}</a></span>
-{/if}
-</div>
+	{cycle name=tabs values="1,2,3" print=false advance=false reset=true}
+	<div id="page-bar">
+		{if $tiki_p_view_trackers eq 'y'}
+			<span id="tab{cycle name=tabs advance=false assign=tabi}{$tabi}" class="tabmark" style="border-color:{if $cookietab eq $tabi}black{else}white{/if};"><a href="javascript:tikitabs({cycle name=tabs},3);">{tr}Tracker{/tr} <i>{$tracker_info.name}</i></a></span>
+		{/if}
+		{if $tiki_p_create_tracker_items eq 'y'}
+			<span id="tab{cycle name=tabs advance=false assign=tabi}{$tabi}" class="tabmark" style="border-color:{if $cookietab eq $tabi}black{else}white{/if};"><a href="javascript:tikitabs({cycle name=tabs},3);">{tr}Insert new item{/tr}</a></span>
+		{/if}
+	</div>
 {/if}
 		
 {cycle name=content values="1,2,3" print=false advance=false reset=true}
@@ -514,7 +515,6 @@ if $mail_msg}
 	<div id="content{cycle name=content assign=focustab}{$focustab}" class="tabcontent"{if $feature_tabs eq 'y'} style="display:{if $focustab eq $cookietab}block{else}none{/if};"{/if}>
 		<form enctype="multipart/form-data" action="tiki-view_tracker.php" method="post">
 			<input type="hidden" name="trackerId" value="{$trackerId|escape}" />
-			
 			<h2>{tr}Insert new item{/tr}</h2>
 			<table class="normal">
 				<tr class="formcolor">
@@ -533,185 +533,179 @@ if $mail_msg}
 						</td>
 					</tr>
 				{/if}
-				
-				
 				{section name=ix loop=$fields}
-				{assign var=fid value=$fields[ix].fieldId}
-				
-				{if $fields[ix].isHidden eq 'n' or $tiki_p_admin_trackers eq 'y'}
-					{if $fields[ix].type ne 'x' and $fields[ix].type ne 'l'}
-						{if $fields[ix].type eq 'h'}
-							</table>
-							
-							<h2>{$fields[ix].name}</h2>
-							<table class="normal">
-						{else}
-							{if ($fields[ix].type eq 'c' or $fields[ix].type eq 't' or $fields[ix].type eq 'n') and $fields[ix].options_array[0] eq '1'}
-								<tr class="formcolor">
-									<td class="formlabel">
+					{assign var=fid value=$fields[ix].fieldId}
+					{if $fields[ix].isHidden eq 'n' or $tiki_p_admin_trackers eq 'y'}
+						{if $fields[ix].type ne 'x' and $fields[ix].type ne 'l'}
+							{if $fields[ix].type eq 'h'}
+								</table>
+								
+								<h2>{$fields[ix].name}</h2>
+								<table class="normal">
+							{else}
+								{if ($fields[ix].type eq 'c' or $fields[ix].type eq 't' or $fields[ix].type eq 'n') and $fields[ix].options_array[0] eq '1'}
+									<tr class="formcolor">
+										<td class="formlabel">
+											{$fields[ix].name}
+											{if $fields[ix].isMandatory eq 'y'}
+												 *
+											{/if}
+										</td>
+										<td nowrap="nowrap">
+								{elseif $stick eq 'y'}
+									<td class="formlabel right">
 										{$fields[ix].name}
 										{if $fields[ix].isMandatory eq 'y'}
 											 *
 										{/if}
 									</td>
 									<td nowrap="nowrap">
-							{elseif $stick eq 'y'}
-								<td class="formlabel right">
-									{$fields[ix].name}
-									{if $fields[ix].isMandatory eq 'y'}
-										 *
-									{/if}
-								</td>
-								<td nowrap="nowrap">
-							{else}
-							<tr class="formcolor"><td class="formlabel">
-								{$fields[ix].name}
-								{if $fields[ix].isMandatory eq 'y'} *{/if}
-								{if $fields[ix].type eq 'a' and $fields[ix].options_array[0] eq 1}
-									<br />
-									{include file=tiki-edit_help_tool.tpl qtnum=$fid area_name=$fields[ix].ins_id}	
+								{else}
+									<tr class="formcolor"><td class="formlabel">
+										{$fields[ix].name}
+										{if $fields[ix].isMandatory eq 'y'} *{/if}
+										{if $fields[ix].type eq 'a' and $fields[ix].options_array[0] eq 1}
+											<br />
+											{include file=tiki-edit_help_tool.tpl qtnum=$fid area_name=$fields[ix].ins_id}	
+										{/if}
+									</td>
+									<td colspan="3" nowrap="nowrap">
 								{/if}
-							</td>
-							<td colspan="3" nowrap="nowrap">
+							{/if}
+							{* -------------------- system -------------------- *}
+							{if $fields[ix].type eq 's' and $fields[ix].name eq "Rating" and $tiki_p_tracker_vote_ratings eq 'y'}
+								{section name=i loop=$fields[ix].options_array}
+									<input name="{$fields[ix].ins_id}" type="radio" value="{$fields[ix].options_array[i]|escape}" />{$fields[ix].options_array[i]}
+								{/section}
+							{/if}
+							
+							{* -------------------- user selector -------------------- *}
+							{if $fields[ix].type eq 'u'}
+								{if !$fields[ix].options or ($fields[ix].options eq '1' and $tiki_p_admin_trackers eq 'y')}
+									<select name="{$fields[ix].ins_id}">
+										<option value="">{tr}None{/tr}</option>
+										{foreach key=id item=one from=$users}
+											{if $fields[ix].value}
+												<option value="{$one|escape}"{if $one eq $fields[ix].value} selected="selected"{/if}>{$one}</option>
+											{elseif $user}
+												<option value="{$one|escape}"{if $one eq $user} selected="selected"{/if}>{$one}</option>
+											{else}
+												<option value="{$one|escape}">{$one}</option>
+											{/if}
+										{/foreach}
+									</select>
+								{elseif $fields[ix].options eq 1 and $user}
+									{$user}
+								{/if}		
+							{* -------------------- group selector -------------------- *}
+							{elseif $fields[ix].type eq 'g'}
+								{if !$fields[ix].options or ($fields[ix].options eq '1' and $tiki_p_admin_trackers eq 'y')}
+									<select name="{$fields[ix].ins_id}">
+										<option value="">{tr}None{/tr}</option>
+										{section name=ux loop=$groups}
+											<option value="{$groups[ux]|escape}" {if $input_err and $fields[ix].value eq $groups[ux]} selected="selected"{/if}>{$groups[ux]}</option>
+										{/section}
+									</select>
+								{elseif $fields[ix].options eq 1 and $group}
+									{$group}
+								{/if}
+							{* -------------------- category -------------------- *}
+							{elseif $fields[ix].type eq 'e'}
+								{assign var=fca value=$fields[ix].options}
+								<table width="100%">
+									<tr>
+										{cycle name=2_$fca values=",</tr><tr>" advance=false print=false}
+										{foreach key=ku item=iu from=$fields[ix].categories}
+											{assign var=fcat value=$iu.categId }
+											<td width="50%" nowrap="nowrap"><input type="checkbox" name="ins_cat_{$fields[ix].fieldId}[]" value="{$iu.categId}" id="cat{$iu.categId}" {if $fields[ix].cat.$fcat eq 'y'}checked="checked"{/if}/><label for="cat{$i.categId}">{$iu.name}</label></td>{cycle name=2_$fca}
+										{/foreach}
+									</tr>
+								</table>
+							{* -------------------- image -------------------- *}
+							{elseif $fields[ix].type eq 'i'}
+								<input type="file" name="{$fields[ix].ins_id}" {if $input_err}value="{$fields[ix].value}"{/if}/>
+							{* -------------------- text field / email -------------------- *}
+							{elseif $fields[ix].type eq 't' || $fields[ix].type eq 'm'}
+								{if $fields[ix].options_array[2]}<span class="formunit">{$fields[ix].options_array[2]}&nbsp;</span>{/if}
+								<input type="text" name="{$fields[ix].ins_id}" {if $fields[ix].options_array[1]}size="{$fields[ix].options_array[1]}" maxlength="{$fields[ix].options_array[1]}"{/if} value="{if $input_err}{$fields[ix].value}{else}{$defaultvalues.$fid|escape}{/if}" />
+								{if $fields[ix].options_array[3]}<span class="formunit">&nbsp;{$fields[ix].options_array[3]}</span>{/if}
+							{* -------------------- numeric field -------------------- *}
+							{elseif $fields[ix].type eq 'n'}
+								{if $fields[ix].options_array[2]}<span class="formunit">{$fields[ix].options_array[2]}&nbsp;</span>{/if}
+								<input type="text" name="{$fields[ix].ins_id}" {if $fields[ix].options_array[1]}size="{$fields[ix].options_array[1]}" maxlength="{$fields[ix].options_array[1]}"{/if} value="{if $input_err}{$fields[ix].value}{else}{$defaultvalues.$fid|escape}{/if}" />
+								{if $fields[ix].options_array[3]}<span class="formunit">&nbsp;{$fields[ix].options_array[3]}</span>{/if}
+							{* -------------------- textarea -------------------- *}
+							{elseif $fields[ix].type eq 'a'}
+								<textarea id="{$fields[ix].ins_id}" name="{$fields[ix].ins_id}" cols="{if $fields[ix].options_array[1] gt 1}{$fields[ix].options_array[1]}{else}50{/if}" 
+								rows="{if $fields[ix].options_array[2] gt 1}{$fields[ix].options_array[2]}{else}4{/if}">{if $input_err}{$fields[ix].value}{else}{$defaultvalues.$fid|escape}{/if}</textarea>
+							{* -------------------- date and time -------------------- *}
+							{elseif $fields[ix].type eq 'f'}
+								{html_select_date prefix=$fields[ix].ins_id time=$fields[ix].value start_year="-4" end_year="+4"} {tr}at{/tr} {html_select_time prefix=$fields[ix].ins_id time=$fields[ix].value display_seconds=false}
+							{* -------------------- drop down -------------------- *}
+							{elseif $fields[ix].type eq 'd'}
+								<select name="{$fields[ix].ins_id}">
+									{if $fields[ix].isMandatory ne 'y'}<option value="" />{/if}
+									{section name=jx loop=$fields[ix].options_array}
+										<option value="{$fields[ix].options_array[jx]|escape}" {if $input_err}{if $fields[ix].value eq $fields[ix].options_array[jx]}selected="selected"{/if}{elseif $defaultvalues.$fid eq $fields[ix].options_array[jx]}selected="selected"{/if}>{$fields[ix].options_array[jx]}</option>
+									{/section}
+								</select>
+							{* -------------------- checkbox -------------------- *}
+							{elseif $fields[ix].type eq 'c'}
+								<input type="checkbox" name="{$fields[ix].ins_id}" {if $input_err}{if $fields[ix].value eq 'y'}checked="checked"{/if}{elseif $defaultvalues.$fid eq 'y'}checked="checked"{/if}/>
+							{* -------------------- jscalendar ------------------- *}
+							{elseif $fields[ix].type eq 'j'}
+								<input type="hidden" name="ins_{$fields[ix].ins_id}" value="" id="{$fields[ix].ins_id}" />
+								<span id="disp_{$fields[ix].ins_id}" class="daterow">{$fields[ix].value|default:$smarty.now|tiki_long_date}</span>
+								<script type="text/javascript">
+								{literal}Calendar.setup( { {/literal}
+								date        : "{$fields[ix].value|default:$now|date_format:"%B %e, %Y %H:%M"}",      // initial date
+								inputField  : "{$fields[ix].ins_id}",      // ID of the input field
+								ifFormat    : "%s",    // the date format
+								displayArea : "disp_{$fields[ix].ins_id}",       // ID of the span where the date is to be shown
+								daFormat    : "{$tiki_long_date}",  // format of the displayed date
+								showsTime   : true,
+								singleClick : true,
+								align       : "bR"
+								{literal} } );{/literal}
+								</script>
+							{* -------------------- item link -------------------- *}
+							{elseif $fields[ix].type eq 'r'}
+								<select name="{$fields[ix].ins_id}">
+									{if $fields[ix].isMandatory ne 'y'}<option value="" />{/if}
+									{foreach key=id item=label from=$fields[ix].list}
+										<option value="{$label|escape}" {if $input_err}{if $fields[ix].value eq $label}selected="selected"{/if}{elseif $defaultvalue eq $label}selected="selected"{/if}>{$label}</option>
+									{/foreach}
+								</select>
+							{* -------------------- country selector -------------------- *}
+							{elseif $fields[ix].type eq 'y'}
+								<select name="{$fields[ix].ins_id}">
+									{sortlinks}
+										{foreach item=flag from=$fields[ix].flags}
+											<option value="{$flag|escape}" {if $input_err}{if $fields[ix].value eq $flag}selected="selected"{/if}{elseif $flag eq $fields[ix].defaultvalue}selected="selected"{/if}
+											style="background-image:url('img/flags/{$flag}.gif');background-repeat:no-repeat;padding-left:25px;padding-bottom:3px;">{tr}{$flag}{/tr}</option>
+										{/foreach}
+									{/sortlinks}
+								</select>
+							
+							{/if}
+							{if (($fields[ix].type eq 'c' or $fields[ix].type eq 't' or $fields[ix].type eq 'n') and $fields[ix].options_array[0]) eq '1' and $stick ne 'y'}
+								</td>{assign var=stick value="y"}
+							{else}
+								</td></tr>{assign var=stick value="n"}
 							{/if}
 						{/if}
-				{* -------------------- system -------------------- *}
-				{if $fields[ix].type eq 's' and $fields[ix].name eq "Rating" and $tiki_p_tracker_vote_ratings eq 'y'}
-					{section name=i loop=$fields[ix].options_array}
-						<input name="{$fields[ix].ins_id}" type="radio" value="{$fields[ix].options_array[i]|escape}" />{$fields[ix].options_array[i]}
-					{/section}
-				{/if}
-				
-				{* -------------------- user selector -------------------- *}
-				{if $fields[ix].type eq 'u'}
-				{if !$fields[ix].options or ($fields[ix].options eq '1' and $tiki_p_admin_trackers eq 'y')}
-				<select name="{$fields[ix].ins_id}">
-				<option value="">{tr}None{/tr}</option>
-				{foreach key=id item=one from=$users}
-				{if $fields[ix].value}
-				<option value="{$one|escape}"{if $one eq $fields[ix].value} selected="selected"{/if}>{$one}</option>
-				{elseif $user}
-				<option value="{$one|escape}"{if $one eq $user} selected="selected"{/if}>{$one}</option>
-				{else}
-				<option value="{$one|escape}">{$one}</option>
-				{/if}
-				{/foreach}
-				</select>
-				{elseif $fields[ix].options eq 1 and $user}
-				{$user}
-				{/if}
-				
-				{* -------------------- group selector -------------------- *}
-				{elseif $fields[ix].type eq 'g'}
-				{if !$fields[ix].options or ($fields[ix].options eq '1' and $tiki_p_admin_trackers eq 'y')}
-				<select name="{$fields[ix].ins_id}">
-				<option value="">{tr}None{/tr}</option>
-				{section name=ux loop=$groups}
-				<option value="{$groups[ux]|escape}" {if $input_err and $fields[ix].value eq $groups[ux]} selected="selected"{/if}>{$groups[ux]}</option>
+					{/if}
 				{/section}
-				</select>
-				{elseif $fields[ix].options eq 1 and $group}
-				{$group}
-				{/if}
-				
-				{* -------------------- category -------------------- *}
-				{elseif $fields[ix].type eq 'e'}
-				{assign var=fca value=$fields[ix].options}
-				<table width="100%"><tr>{cycle name=2_$fca values=",</tr><tr>" advance=false print=false}
-				{foreach key=ku item=iu from=$fields[ix].categories}
-				{assign var=fcat value=$iu.categId }
-				<td width="50%" nowrap="nowrap"><input type="checkbox" name="ins_cat_{$fields[ix].fieldId}[]" value="{$iu.categId}" id="cat{$iu.categId}" {if $fields[ix].cat.$fcat eq 'y'}checked="checked"{/if}/><label for="cat{$i.categId}">{$iu.name}</label></td>{cycle name=2_$fca}
-				{/foreach}
-				</tr></table>
-				
-				{* -------------------- image -------------------- *}
-				{elseif $fields[ix].type eq 'i'}
-				<input type="file" name="{$fields[ix].ins_id}" {if $input_err}value="{$fields[ix].value}"{/if}/>
-				
-				{* -------------------- text field / email -------------------- *}
-				{elseif $fields[ix].type eq 't' || $fields[ix].type eq 'm'}
-				{if $fields[ix].options_array[2]}<span class="formunit">{$fields[ix].options_array[2]}&nbsp;</span>{/if}
-				<input type="text" name="{$fields[ix].ins_id}" {if $fields[ix].options_array[1]}size="{$fields[ix].options_array[1]}" maxlength="{$fields[ix].options_array[1]}"{/if} value="{if $input_err}{$fields[ix].value}{else}{$defaultvalues.$fid|escape}{/if}" />
-				{if $fields[ix].options_array[3]}<span class="formunit">&nbsp;{$fields[ix].options_array[3]}</span>{/if}
-				
-				{* -------------------- numeric field -------------------- *}
-				{elseif $fields[ix].type eq 'n'}
-				{if $fields[ix].options_array[2]}<span class="formunit">{$fields[ix].options_array[2]}&nbsp;</span>{/if}
-				<input type="text" name="{$fields[ix].ins_id}" {if $fields[ix].options_array[1]}size="{$fields[ix].options_array[1]}" maxlength="{$fields[ix].options_array[1]}"{/if} value="{if $input_err}{$fields[ix].value}{else}{$defaultvalues.$fid|escape}{/if}" />
-				{if $fields[ix].options_array[3]}<span class="formunit">&nbsp;{$fields[ix].options_array[3]}</span>{/if}
-				
-				{* -------------------- textarea -------------------- *}
-				{elseif $fields[ix].type eq 'a'}
-				<textarea id="{$fields[ix].ins_id}" name="{$fields[ix].ins_id}" cols="{if $fields[ix].options_array[1] gt 1}{$fields[ix].options_array[1]}{else}50{/if}" 
-				rows="{if $fields[ix].options_array[2] gt 1}{$fields[ix].options_array[2]}{else}4{/if}">{if $input_err}{$fields[ix].value}{else}{$defaultvalues.$fid|escape}{/if}</textarea>
-				
-				{* -------------------- date and time -------------------- *}
-				{elseif $fields[ix].type eq 'f'}
-				{html_select_date prefix=$fields[ix].ins_id time=$fields[ix].value start_year="-4" end_year="+4"} {tr}at{/tr} {html_select_time prefix=$fields[ix].ins_id time=$fields[ix].value display_seconds=false}
-				
-				{* -------------------- drop down -------------------- *}
-				{elseif $fields[ix].type eq 'd'}
-				<select name="{$fields[ix].ins_id}">
-				{if $fields[ix].isMandatory ne 'y'}<option value="" />{/if}
-				{section name=jx loop=$fields[ix].options_array}
-				<option value="{$fields[ix].options_array[jx]|escape}" {if $input_err}{if $fields[ix].value eq $fields[ix].options_array[jx]}selected="selected"{/if}{elseif $defaultvalues.$fid eq $fields[ix].options_array[jx]}selected="selected"{/if}>{$fields[ix].options_array[jx]}</option>
-				{/section}
-				</select>
-				
-				{* -------------------- checkbox -------------------- *}
-				{elseif $fields[ix].type eq 'c'}
-				<input type="checkbox" name="{$fields[ix].ins_id}" {if $input_err}{if $fields[ix].value eq 'y'}checked="checked"{/if}{elseif $defaultvalues.$fid eq 'y'}checked="checked"{/if}/>
-				
-				{* -------------------- jscalendar ------------------- *}
-				{elseif $fields[ix].type eq 'j'}
-				<input type="hidden" name="ins_{$fields[ix].ins_id}" value="" id="{$fields[ix].ins_id}" />
-				<span id="disp_{$fields[ix].ins_id}" class="daterow">{$fields[ix].value|default:$smarty.now|tiki_long_date}</span>
-				<script type="text/javascript">
-				{literal}Calendar.setup( { {/literal}
-				date        : "{$fields[ix].value|default:$now|date_format:"%B %e, %Y %H:%M"}",      // initial date
-				inputField  : "{$fields[ix].ins_id}",      // ID of the input field
-				ifFormat    : "%s",    // the date format
-				displayArea : "disp_{$fields[ix].ins_id}",       // ID of the span where the date is to be shown
-				daFormat    : "{$tiki_long_date}",  // format of the displayed date
-				showsTime   : true,
-				singleClick : true,
-				align       : "bR"
-				{literal} } );{/literal}
-				</script>
-				
-				{* -------------------- item link -------------------- *}
-				{elseif $fields[ix].type eq 'r'}
-				<select name="{$fields[ix].ins_id}">
-				{if $fields[ix].isMandatory ne 'y'}<option value="" />{/if}
-				{foreach key=id item=label from=$fields[ix].list}
-				<option value="{$label|escape}" {if $input_err}{if $fields[ix].value eq $label}selected="selected"{/if}{elseif $defaultvalue eq $label}selected="selected"{/if}>{$label}</option>
-				{/foreach}
-				</select>
-				
-				{* -------------------- country selector -------------------- *}
-				{elseif $fields[ix].type eq 'y'}
-				<select name="{$fields[ix].ins_id}">
-				{sortlinks}
-				{foreach item=flag from=$fields[ix].flags}
-				<option value="{$flag|escape}" {if $input_err}{if $fields[ix].value eq $flag}selected="selected"{/if}{elseif $flag eq $fields[ix].defaultvalue}selected="selected"{/if}
-				style="background-image:url('img/flags/{$flag}.gif');background-repeat:no-repeat;padding-left:25px;padding-bottom:3px;">{tr}{$flag}{/tr}</option>
-				{/foreach}
-				{/sortlinks}
-				</select>
-				
-				{/if}
-				
-				{if (($fields[ix].type eq 'c' or $fields[ix].type eq 't' or $fields[ix].type eq 'n') and $fields[ix].options_array[0]) eq '1' and $stick ne 'y'}
-				</td>{assign var=stick value="y"}
-				{else}
-				</td></tr>{assign var=stick value="n"}
-				{/if}
-				{/if}
-				{/if}
-				{/section}
-				<tr class="formcolor"><td>&nbsp;</td><td colspan="3"><input type="submit" name="save" value="{tr}save{/tr}" /> <input type="checkbox" name="viewitem"/> {tr}View inserted item{/tr}</td></tr>
+				<tr class="formcolor">
+					<td>&nbsp;</td>
+					<td colspan="3">
+						<input type="submit" name="save" value="{tr}save{/tr}" />
+						<input type="checkbox" name="viewitem"/> {tr}View inserted item{/tr}
+					</td>
+				</tr>
 			</table>
 		</form>
-		<br /><em>{tr}fields marked with a * are mandatory{/tr}</em>
+		<br />
+		<em>{tr}fields marked with a * are mandatory{/tr}</em>
 	</div>
 {/if}
