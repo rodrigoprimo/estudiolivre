@@ -1,5 +1,5 @@
 {css only=list}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/tiki-list_users.tpl,v 1.2 2006-11-29 02:54:06 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/tiki-list_users.tpl,v 1.3 2006-11-30 22:39:30 rhwinter Exp $ *}
 <div id="users">
 <h1>
 	{if !$find}
@@ -39,6 +39,26 @@
 </table>
 ==================*}
 
+{*===============
+para a sua apreciação: esse eh o codigo que era usado pelo tiki-view_trackers para colocar paginacao 'por letras'
+{if $cant_pages > 1 or $initial}
+	<div align="center">
+		{section name=ini loop=$initials}
+			{if $initial and $initials[ini] eq $initial}
+				<span class="button2">
+					<span class="linkbuton">{$initials[ini]|capitalize}</span>
+				</span> . 
+			{else}
+				<a href="tiki-view_tracker.php?initial={$initials[ini]}&amp;trackerId={$trackerId}{if $sort_mode}&amp;sort_mode={$sort_mode}{/if}{if $status}&amp;status={$status|escape:"url"}{/if}" 
+				class="prevnext">{$initials[ini]}</a> . 
+			{/if}
+		{/section}
+		<a href="tiki-view_tracker.php?initial=&amp;trackerId={$trackerId}{if $sort_mode}&amp;sort_mode={$sort_mode}{/if}{if $status}&amp;status={$status|escape:"url"}{/if}" 
+		class="prevnext">{tr}All{/tr}</a>
+	</div>
+{/if}
+==================*}			
+			
 <table width="100%">
 	<tr>
 		<td class="heading">

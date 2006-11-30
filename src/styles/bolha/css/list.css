@@ -50,7 +50,7 @@
 	-moz-border-radius:10px 10px 10px 10px;
 }
 
-#users h5, #blogs h5, #listLastChanges h5, #viewForum h5 {
+#tracker h5, #users h5, #blogs h5, #listLastChanges h5, #viewForum h5 {
 	text-align:right;
 }
 

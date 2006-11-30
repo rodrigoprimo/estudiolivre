@@ -1,10 +1,26 @@
 {css only=list}
 <div id="tracker">
 	<h1>
-		<a href="tiki-view_tracker.php?trackerId=1&amp;offset=0&amp;sort_mode=created_desc">
-			{$tracker_info.name}
-		</a>
+		{tooltip text="Total: "|cat:$item_count}
+			<a href="tiki-view_tracker.php?trackerId=1&amp;offset=0&amp;sort_mode=created_desc&ampstatus">
+				{$tracker_info.name} 
+			</a>
+		{/tooltip}
 	</h1>
+	<h5>
+		Ver bugs 
+		{if $status eq "c"}
+			<a href="tiki-view_tracker.php?trackerId={$trackerId}{if $filtervalue}&amp;filtervalue={$filtervalue|escape:"url"}{/if}{if $filterfield}&amp;filterfield={$filterfield|escape:"url"}{/if}{if $sort_mode}&amp;sort_mode={$sort_mode}{/if}&amp;status=o">resolvidos</a>
+		{else}
+			<a href="tiki-view_tracker.php?trackerId={$trackerId}{if $filtervalue}&amp;filtervalue={$filtervalue|escape:"url"}{/if}{if $filterfield}&amp;filterfield={$filterfield|escape:"url"}{/if}{if $sort_mode}&amp;sort_mode={$sort_mode}{/if}&amp;status=c">não resolvidos</a>			
+		{/if}
+		<br/>		
+		{if $tiki_p_create_tracker_items eq 'y'}
+			<a href="javascript:flip('JsInsert')">Inserir novo</a>
+		{else}
+			Efetue login para reportar
+		{/if}
+	</h5>
 	{*
 		<span class="button2"><a href="tiki-list_trackers.php" class="linkbut">{tr}List trackers{/tr}</a></span>
 		
@@ -17,10 +33,12 @@
 	*}
 	
 	{if $tiki_p_admin_trackers eq 'y'}
-		&nbsp;&nbsp;
-		<a href="tiki-admin_trackers.php" class="linkbut">{tr}Admin trackers{/tr}</a></span>
+		<b>Admin:</b>&nbsp;&nbsp;
 		<a href="tiki-admin_trackers.php?trackerId={$trackerId}" class="linkbut">{tr}Edit this tracker{/tr}</a></span>
+		&nbsp; | &nbsp;
 		<a href="tiki-admin_tracker_fields.php?trackerId={$trackerId}" class="linkbut">{tr}Edit fields{/tr}</a></span>
+		<br/>
+		<br/>
 	{/if}
 	
 	{if $rss_tracker eq "y"}
@@ -62,25 +80,8 @@
 	
 			
 	{* -------------------------------------------------- tab with list --- *}
-	{if $tiki_p_view_trackers eq 'y'}
-		<div id="content1" class="tabcontent">
-			{if $cant_pages > 1 or $initial}
-				<div align="center">
-					{section name=ini loop=$initials}
-						{if $initial and $initials[ini] eq $initial}
-							<span class="button2">
-								<span class="linkbuton">{$initials[ini]|capitalize}</span>
-							</span> . 
-						{else}
-							<a href="tiki-view_tracker.php?initial={$initials[ini]}&amp;trackerId={$trackerId}{if $sort_mode}&amp;sort_mode={$sort_mode}{/if}{if $status}&amp;status={$status|escape:"url"}{/if}" 
-							class="prevnext">{$initials[ini]}</a> . 
-						{/if}
-					{/section}
-					<a href="tiki-view_tracker.php?initial=&amp;trackerId={$trackerId}{if $sort_mode}&amp;sort_mode={$sort_mode}{/if}{if $status}&amp;status={$status|escape:"url"}{/if}" 
-					class="prevnext">{tr}All{/tr}</a>
-				</div>
-			{/if}
-			
+	<div id="content1" class="tabcontent">
+		{if $tiki_p_view_trackers eq 'y' & $items}
 			<table class="normal">
 				{*===============
 				 ------- list headings --- 
@@ -88,7 +89,7 @@
 				<tr>
 					{if $tracker_info.showStatus eq 'y' or ($tracker_info.showStatusAdminOnly eq 'y' and $tiki_p_admin_trackers eq 'y')}
 						<td class="heading">
-							&nbsp;
+							Status
 						</td>
 					{/if}
 					{section name=ix loop=$fields}
@@ -96,30 +97,45 @@
 							<td class="heading">{$fields[ix].name|default:"&nbsp;"}</td>
 						{elseif $fields[ix].type eq 's' and $fields[ix].name eq "Rating" and $fields[ix].isTblVisible eq 'y'}
 								<td class="heading"{if $tiki_p_tracker_vote_ratings eq 'y' and $user ne ''} colspan="2"{/if}>
-									<a class="tableheading" href="tiki-view_tracker.php?{if $status}status={$status}&amp;{/if}{if $initial}initial={$initial}&amp;{/if}trackerId={$trackerId}
-								        &amp;offset={$offset}&amp;sort_mode=f_{if $sort_mode eq 'f_'|cat:$fields[ix].fieldId|cat:'_asc'}
-									{$fields[ix].fieldId|escape:"url"}_desc{else}{$fields[ix].fieldId|escape:"url"}_asc{/if}">
-										{$fields[ix].name|truncate:255:"..."|default:"&nbsp;"}
+									<a class="tableheading" href="tiki-view_tracker.php?{if $status}status={$status}&amp;{/if}{if $initial}initial={$initial}&amp;{/if}trackerId={$trackerId}&amp;offset={$offset}
+								        &amp;sort_mode=f_{if $sort_mode eq 'f_'|cat:$fields[ix].fieldId|cat:'_asc'}
+										{$fields[ix].fieldId|escape:"url"}_desc{else}{$fields[ix].fieldId|escape:"url"}_asc{/if}">
+											{$fields[ix].name|truncate:255:"..."|default:"&nbsp;"}
 									</a>
 								</td>
 								{assign var=rateFieldId value=$fields[ix].fieldId}
 						{elseif $fields[ix].isTblVisible eq 'y' and $fields[ix].type ne 'x' and $fields[ix].type ne 'h'}
-							<td class="heading"><a class="tableheading" href="tiki-view_tracker.php?{if $status}status={$status}&amp;{/if}{if $initial}initial={$initial}&amp;{/if}trackerId={$trackerId}&amp;offset={$offset}&amp;sort_mode=f_{if $sort_mode eq
-							'f_'|cat:$fields[ix].fieldId|cat:'_asc'}{$fields[ix].fieldId|escape:"url"}_desc{else}{$fields[ix].fieldId|escape:"url"}_asc{/if}{if $filterfield}&amp;filterfield={$filterfield}&amp;filtervalue={$filtervalue}{/if}">{$fields[ix].name|truncate:255:"..."|default:"&nbsp;"}</a></td>
+							<td class="heading">
+								<a class="tableheading" href="tiki-view_tracker.php?{if $status}status={$status}&amp;{/if}{if $initial}initial={$initial}&amp;{/if}trackerId={$trackerId}&amp;offset={$offset}
+									{if $filterfield}&amp;filterfield={$filterfield}&amp;filtervalue={$filtervalue}{/if}
+									&amp;sort_mode=f_{if $sort_mode eq 'f_'|cat:$fields[ix].fieldId|cat:'_asc'}{$fields[ix].fieldId|escape:"url"}_desc{else}{$fields[ix].fieldId|escape:"url"}_asc{/if}
+									">
+									{if $sort_mode eq 'f_'|cat:$fields[ix].fieldId|cat:'_asc'}
+										<img src="styles/{$style|replace:".css":""}/img/sortArrowDown.png">
+									{elseif $sort_mode eq 'f_'|cat:$fields[ix].fieldId|cat:'_desc'}
+										<img src="styles/{$style|replace:".css":""}/img/sortArrowUp.png">
+									{else}
+										<img src="styles/{$style|replace:".css":""}/img/sortGreyArrowDown.png">
+									{/if}
+									{$fields[ix].name|truncate:255:"..."|default:"&nbsp;"}
+								</a>
+							</td>
 						{/if}
 					{/section}
 					{if $tracker_info.showCreated eq 'y'}
 						<td class="heading">
 							<a class="tableheading" href="tiki-view_tracker.php?{if $status}status={$status}&amp;{/if}{if $initial}initial={$initial}&amp;{/if}{if $find}find={$find}&amp;{/if}trackerId={$trackerId}&amp;offset={$offset}&amp;sort_mode={if 
 							$sort_mode eq 'created_desc'}created_asc{else}created_desc{/if}">
-								{tr}created{/tr}
+								<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'created_desc'}ArrowUp{elseif $sort_mode eq 'created_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+								{tr}Created{/tr}
 							</a>
 						</td>
 					{/if}
 					{if $tracker_info.showLastModif eq 'y'}
 						<td class="heading">
 							<a class="tableheading" href="tiki-view_tracker.php?status={$status}&amp;{if $initial}initial={$initial}&amp;{/if}find={$find}&amp;trackerId={$trackerId}&amp;offset={$offset}&amp;sort_mode={if $sort_mode eq 'lastModif_desc'}lastModif_asc{else}lastModif_desc{/if}">
-								{tr}lastModif{/tr}
+								<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'lastModif_desc'}ArrowUp{elseif $sort_mode eq 'lastModif_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+								{tr}Última modificação{/tr}
 							</a>
 						</td>
 					{/if}
@@ -391,13 +407,16 @@
 				{/section}
 			</table>
 			
-			<div class="paginacao">
-				{include file="tiki-pagination.tpl"}
-			</div>
-						
-		</div>
-	{/if}
-	
+			{include file="tiki-pagination.tpl"}
+		{else}
+			{if $status eq "c"}
+				Nenhum bug fechado.
+			{else}
+				Nenhum bug encontrado!!!
+			{/if}
+			
+		{/if}
+	</div>	
 	{* --------------------------------------------------------------------------------- tab with edit --- *}
 	{if $tiki_p_create_tracker_items eq 'y'}
 		<div id="JsInsert" class="tabcontent" style="display:none">
@@ -592,127 +611,6 @@
 			<em>{tr}fields marked with a * are mandatory{/tr}</em>
 		</div>
 	{/if}
-	
-	{if $tiki_p_create_tracker_items eq 'y'}
-		<span id="tab{cycle name=tabs advance=false assign=tabi}{$tabi}">
-			<a href="javascript:flip('JsInsert');">
-				{tr}Insert new item{/tr}
-			</a>
-		</span>
-	{/if}
 </div>
 
 <br/><br/>
-
-{**************************************************************************}
-	{**************************************************************************}
-		{**************************************************************************}
-
-		{if (($tracker_info.showStatus eq 'y' and $tracker_info.showStatusAdminOnly ne 'y') or $tiki_p_admin_trackers eq 'y') or $show_filters eq 'y'}
-			<form action="tiki-view_tracker.php" method="get">
-				<input type="hidden" name="trackerId" value="{$trackerId|escape}" />
-				{if $status}<input type="hidden" name="status" value="{$status}" />{/if}
-				{if $sort_mode}<input type="hidden" name="sort_mode" value="{$sort_mode}" />{/if}
-				<table class="normal">
-					<tr>
-						{if $tracker_info.showStatus eq 'y' or ($tracker_info.showStatusAdminOnly eq 'y' and $tiki_p_admin_trackers eq 'y')}
-							{foreach key=st item=stdata from=$status_types}
-								<td>
-									<div class="{$stdata.class}">
-										<a href="tiki-view_tracker.php?trackerId={$trackerId}{if $filtervalue}&amp;filtervalue={$filtervalue|escape:"url"}{/if}{if $filterfield}&amp;filterfield={$filterfield|escape:"url"}{/if}{if $sort_mode}&amp;sort_mode={$sort_mode}{/if}&amp;status={$stdata.statuslink}" class="statusimg">
-											<img src="{$stdata.image}" title="{$stdata.label}" alt="{$stdata.label}" align="top" border="0" width="12" height="12" />
-										</a>
-									</div>
-								</td>
-							{/foreach}
-						{/if}
-						<td class="formcolor" style="width:100%;">
-							{assign var=cnt value=0}
-							{foreach key=fid item=field from=$listfields}
-								{if $field.isSearchable eq 'y' and $field.type ne 'f' and $field.type ne 'j' and $field.type ne 'i'}
-									{if $field.type eq 'c'}
-										<div style="display:{if $filterfield eq $fid}block{else}none{/if};" id="fid{$fid}">
-											<select name="filtervalue[{$fid}]">
-												<option value="y"{if $filtervalue eq 'y'} selected="selected"{/if}>
-													{tr}Yes{/tr}
-												</option>
-												<option value="n"{if $filtervalue eq 'n'} selected="selected"{/if}>
-													{tr}No{/tr}
-												</option>
-											</select>
-										</div>
-									{elseif $field.type eq 'd'}
-										<div style="display:{if $filterfield eq $fid}block{else}none{/if};" id="fid{$fid}">
-											<select name="filtervalue[{$fid}]">
-												{section name=jx loop=$field.options_array}
-													<option value="{$field.options_array[jx]|escape}" {if $filtervalue eq $field.options_array[jx]}selected="selected"{/if}>
-														{$field.options_array[jx]}
-													</option>
-												{/section}
-											</select>
-										</div>
-									{elseif $field.type eq 'e'}{* category *}
-										<div style="display:{if $filterfield eq $fid}block{else}none{/if};" id="fid{$fid}">
-											<table>
-												<tr>
-													{cycle name=rows values=",</tr><tr>" advance=false print=false}
-													{foreach key=ku item=iu from=$field.categories}
-														<td width="50%" nowrap="nowrap">
-													    	<input type="checkbox" name="filtervalue[{$fid}][]" value="{$iu.categId}" id="cat{$iu.categId}" {if $fid == $filterfield && is_array($filtervalue) && in_array($iu.categId,$filtervalue)} checked{/if} />
-														    <label for="cat{$i.categId}">{$iu.name}</label>
-														</td>
-														{cycle name=rows}
-													{/foreach}
-			
-												</tr>
-											</table>
-										</div>
-									{else}
-										<div style="display:{if $filterfield eq $fid}block{else}none{/if};" id="fid{$fid}">
-											<input type="text" name="filtervalue[{$fid}]" value="{if $fid == $filterfield}{$filtervalue}{/if}" />
-										</div>
-									{/if}
-									{assign var=cnt value=$cnt+1}
-								{/if}
-							{/foreach}
-						</td>
-						
-						{if $show_filters eq 'y'}
-							<td>
-								<script type="text/javascript">
-									fields = new Array({$cnt})
-									{assign var=c value=0}
-									{foreach key=fid item=field from=$listfields}
-										{if $field.isSearchable eq 'y' and $field.type ne 'f' and $field.type ne 'j' and $field.type ne 'i'}
-											fields[{$c}] = '{$fid}'
-											{assign var=c value=$c+1}
-										{/if}
-									{/foreach}
-								</script>
-								<select name="filterfield" onchange="multitoggle(fields,this.options[selectedIndex].value);">
-									<option value="">{tr}Choose a filter{/tr}</option>
-									{foreach key=fid item=field from=$listfields}
-										{if $field.isSearchable eq 'y' and $field.type ne 'f' and $field.type ne 'j' and $field.type ne 'i'}
-											<option value="{$fid}"{if $fid eq $filterfield} selected="selected"{/if}>
-												{$field.name|truncate:65:"..."}
-											</option>
-											{assign var=filter_button value='y'}
-										{/if}
-									{/foreach}
-								</select>
-							</td>
-						{/if}
-	
-						{if $filter_button eq 'y'}
-							<td>
-								<input type="submit" name="filter" value="{tr}filter{/tr}" />
-							</td>
-						{/if}
-					</tr>
-				</table>
-				
-				<div align='left'>
-					{$item_count}{if $item_count eq 1}{tr} item found{/tr}{else}{tr} items found{/tr}{/if}
-				</div>
-			</form>
-		{/if}
