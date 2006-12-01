@@ -18,7 +18,14 @@ class PersistentObjectController extends TikiDB {
 	var $controlledClass;
 	
 	function PersistentObjectController($class) {
-		if (!class_exists($class) || (get_parent_class($class) != 'persistentobject')) trigger_error("Incorrect parameter, must provide a valid subclass of PersistentObject.");
+		if (!class_exists($class)) trigger_error("Incorrect parameter, must provide a valid subclass of PersistentObject.", E_USER_ERROR);
+		for ($super = get_parent_class($class); $super; $super = get_parent_class($super)) {
+			if ($super == 'persistentobject') {
+				$pass = true;
+				break;
+			}	
+		}
+		if (!$pass) trigger_error("Incorrect parameter, must provide a valid subclass of PersistentObject.");
 		global $dbTiki;
 	    $this->db = $dbTiki;
 		$this->controlledClass = strtolower($class);
