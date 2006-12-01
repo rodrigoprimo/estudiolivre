@@ -14,7 +14,7 @@
 	{/if}
 {***}
 	
-	<div id="newBug">
+	<div id="bugForm">
 		<form enctype="multipart/form-data" action="tiki-view_tracker.php" method="post">
 			<input type="hidden" name="trackerId" value="{$trackerId|escape}" />
 			<h2>{tr}Novo bug{/tr}</h2>
