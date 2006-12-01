@@ -456,7 +456,7 @@ class ELGalLib extends TikiLib {
   function check_field_sampleRate($value) { return $this->check_numeric_field($value, 'Sample rate deve ser um número'); } 
   function check_field_bitRate($value) { return $this->check_numeric_field($value, 'Bit rate deve ser um número'); } 
    
-  
+  // 2.0 esse num vai mais ser usado
   function get_arquivo($arquivoId) {
     $query = "select * from `el_arquivo` where `arquivoId`=?";
     $result = $this->query($query, array($arquivoId));
@@ -526,7 +526,7 @@ class ELGalLib extends TikiLib {
     $tipos['data'] = $ret;
     return $tipos;
   }
-  
+  // 2.0 re-implementado em FileReference
   function save_file($file,$arquivoId,$user) {
     $destination = "repo/";
     $arquivo = $this->get_arquivo($arquivoId);
@@ -666,6 +666,8 @@ class ELGalLib extends TikiLib {
   	return $ret_name[1];
   }
 
+
+	// 2.0 esse num vai mais ser usado
   function get_file($id) {
   	// TODO esse methodo nao eh usado, ou entao nao deveria ser.... o get_arquivo faz tudo e melhor.
     $dir = "repo/";
@@ -675,11 +677,13 @@ class ELGalLib extends TikiLib {
     return $result->fetchRow();
   }
   
+  // 2.0 re-implementado em FileReference
   function add_file_hit($id) {
     $query = "update el_arquivo set `hits`=`hits`+1 where `arquivoId`=?";
     $result = $this->query($query,array($id));
   }
 
+	// 2.0 re-implementado em FileReference
   function add_stream_hit($id) {
     $query = "update el_arquivo set `streamHits`=`streamHits`+1 where `arquivoId`=?";
     $result = $this->query($query,array($id));
