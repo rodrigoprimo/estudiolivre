@@ -45,11 +45,28 @@
 	margin:5px;	
 }
 
+#tracker h2#big {
+	background-color:#eee;
+	text-align:center;
+	font-size:12pt;
+	margin:5px 0 5px 0;
+	padding:2px;
+	-moz-border-radius:8px;
+}
+
+#tracker .comment {
+	margin:10px;
+}
+
 #view h2 {
 	border-bottom:1px solid #ccc;
+	background-color:#fff;
+	text-align:left;
+	font-size:12pt;
 	margin:0;
 	padding:0;
 }
+
 
 #view h4 {
 	font-weight:normal;

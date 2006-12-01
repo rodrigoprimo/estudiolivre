@@ -316,6 +316,10 @@
 				{elseif $cur_field.name eq "Versão"}
 					<h4 id="sistema">
 						Bug no sistema: <b>{$cur_field.value}</b>
+						<br/>
+						<a href="#comm" onclick="flip('JsComment')">Comentar</a>
+						&nbsp | &nbsp
+						<a href="#attach" onclick="flip('JsAttach')">Anexar um arquivo</a>
 					</h4>
 				{elseif $cur_field.name eq "Criador"}
 					<h4>
@@ -334,7 +338,7 @@
 {if $tracker_info.useComments eq 'y'}
 	<div>
 		{if count($comments) > 0}
-			<h2>{tr}Comments{/tr}</h2>
+			<h2 id="big">{tr}Comments{/tr}</h2>
 			{section name=ix loop=$comments}
 				<div class="comment">
 					<div class="commentTitle">
@@ -365,21 +369,23 @@
 			{/section}
 		{/if}
 		{if $tiki_p_comment_tracker_items eq 'y'}
-			<a href="javascript:flip('JsComment')">Comentar</a>
+			<a name="comm"></a>
 			<div id="JsComment" style="display:none">
-			<form action="tiki-view_tracker_item.php" method="post">
-				<input type="hidden" name="trackerId" value="{$trackerId|escape}" />
-				<input type="hidden" name="itemId" value="{$itemId|escape}" />
-				<input type="hidden" name="commentId" value="{$commentId|escape}" />
-				
-				<h4>{tr}Title{/tr}</h4>
-				<input type="text" name="comment_title" value="{$comment_title|escape}"/>
-				<h4>{tr}Comment{/tr}</h4>
-				<textarea rows="4" cols="50" name="comment_data">{$comment_data|escape}</textarea>
-				<div id="comButtons">
-					<input type="submit" name="save_comment" value="{tr}save{/tr}" />
-				</div>
-			</form>
+				<form action="tiki-view_tracker_item.php" method="post">
+					<input type="hidden" name="trackerId" value="{$trackerId|escape}" />
+					<input type="hidden" name="itemId" value="{$itemId|escape}" />
+					<input type="hidden" name="commentId" value="{$commentId|escape}" />
+					{tr}Title{/tr}
+					<input type="text" name="comment_title" value="{$comment_title|escape}"/>
+					<br/>
+					{tr}Comment{/tr}
+					<br/>
+					<textarea rows="4" cols="50" name="comment_data">{$comment_data|escape}</textarea>
+					<div id="comButtons">
+						<input type="submit" name="save_comment" value="{tr}save{/tr}" />
+					</div>
+				</form>
+			</div>
 		{/if}
 	</div>
 {/if}
@@ -388,7 +394,8 @@
 {if $tracker_info.useAttachments eq 'y'}
 	<div>
 		{if count($atts) > 0}
-			<h2>{tr}Attachments{/tr}</h2>
+			<h2 id="big">{tr}Attachments{/tr}</h2>
+			<div class="comment">
 			{section name=ix loop=$atts}
 				{if $tiki_p_wiki_admin_attachments eq 'y' or ($user and ($atts[ix].user eq $user))}
 					<a class="link" href="tiki-view_tracker_item.php?trackerId={$trackerId}&amp;itemId={$itemId}&amp;removeattach={$atts[ix].attId}&amp;offset={$offset}&amp;sort_mode={$sort_mode}" title="{tr}delete{/tr}">
@@ -403,13 +410,13 @@
 				</a>
 				({$atts[ix].filesize|kbsize}) - 
 				enviado: {$atts[ix].created|date_format:"%H:%M:%S de %d/%m"}
-				
 			<br/>
 			{/section}
+			</div>
 		{/if}
 		{if $tiki_p_attach_trackers eq 'y'}
 			<br/>
-			<a href="javascript:flip('JsAttach')">Anexar um arquivo</a>
+			<a name="attach"></a>
 			<div id="JsAttach" style="display:none">
 			<form enctype="multipart/form-data" action="tiki-view_tracker_item.php" method="post">
 				<input type="hidden" name="trackerId" value="{$trackerId|escape}" />
