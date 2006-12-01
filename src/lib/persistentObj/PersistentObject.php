@@ -18,7 +18,7 @@ class PersistentObject extends TikiDB {
 	var $table;
 	var $id;
 	
-	function construct($fields) {
+	function PersistentObject($fields) {
 		global $dbTiki;
 	    $this->db = $dbTiki;
 	    $this->table = get_class($this);

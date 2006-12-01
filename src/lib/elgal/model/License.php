@@ -19,10 +19,6 @@ class License extends PersistentObject {
 	var $humanReadableLink;
 	var $answer;
 
-	function License($fields) {
-		parent::construct($fields);
-	}
-		
 }
 
 ?>

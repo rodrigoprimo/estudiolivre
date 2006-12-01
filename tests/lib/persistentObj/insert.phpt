@@ -30,22 +30,12 @@ class SuperC extends PersistentObject {
 class Child extends SuperC {
 
     var $someText;
-
-    function Child($fields) {
-		parent::construct($fields);
-    }
-
   
 }
 
 class Child2 extends SuperC {
 
     var $anotherInt;
-
-    function Child2($fields) {
-		parent::construct($fields);
-    }
-
   
 }
 

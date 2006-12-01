@@ -29,10 +29,6 @@ class Child extends SuperC {
 
     var $someText;
 
-    function Child($fields) {
-		parent::construct($fields);
-    }
-
 	function checkField_someText($text) {
 		if ($text != 'lala') trigger_error("Campo someText deve ser = 'lala'!!!!", E_USER_ERROR);
 	}

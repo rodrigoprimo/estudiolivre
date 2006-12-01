@@ -33,33 +33,18 @@ class Child extends SuperC {
 
     var $someText;
 
-    function Child($fields) {
-		parent::construct($fields);
-    }
-
-  
 }
 
 class Child2 extends Child {
 
     var $anotherInt;
 
-    function Child2($fields) {
-		parent::construct($fields);
-    }
-
-  
 }
 
 class Child3 extends Child2 {
 
     var $bo;
 
-    function Child2($fields) {
-		parent::construct($fields);
-    }
-
-  
 }
 
 //testando insert
