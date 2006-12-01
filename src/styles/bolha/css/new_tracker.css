@@ -1,0 +1,42 @@
+#newBug{
+  border:1px solid #ccc;
+  padding:10px 0 10px 20px;
+  margin:5px;
+  margin-bottom:20px;
+-moz-border-radius:8px 8px 8px;
+}
+
+#tracker h3 {
+  border:1px solid #e11;
+  padding:10px 0 0 20px;
+  margin:5px;
+  margin-bottom:5px;
+  -moz-border-radius:8px 8px 8px;
+}
+
+#newBug h4 {
+	font-weight:normal;
+}
+
+#newBug h4 INPUT,#newBug h4 SELECT, #newBug h4 TEXTAREA{
+border-top:1px solid #eee;
+border-left:1px solid #eee;
+border-bottom:1px solid #ccc;
+border-right:1px solid #ccc;
+background-color:#fcfcfc;
+}
+
+#newBug h2 {
+  text-align:center;
+  padding:0;
+  margin:0;
+}
+
+#newBug h4#save {
+	text-align:center;
+	margin:0;
+}
+
+#newBug em {
+font-size:8pt;
+}
