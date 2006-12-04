@@ -8,12 +8,13 @@
  * 
  */
 
-require_once "lib/pesistentObj/PersistentObject.php";
+require_once "lib/persistentObj/PersistentObject.php";
 
 class Vote extends PersistentObject {
 	
 	var $user;
 	var $rating;
+	var $publicationId;
 	
 }
 

@@ -8,7 +8,7 @@
  * 
  */
 
-require_once "lib/pesistentObj/PersistentObject.php";
+require_once "lib/persistentObj/PersistentObject.php";
 
 class License extends PersistentObject {
 	

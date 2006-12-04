@@ -8,10 +8,11 @@
  * 
  */
 
-require_once "lib/pesistentObj/PersistentObject.php";
+require_once "lib/persistentObj/PersistentObject.php";
 
 class FileReference extends PersistentObject {
 	
+	var $publicationId;
 	var $fileName;
 	var $mimeType;
 	var $size;
@@ -19,20 +20,21 @@ class FileReference extends PersistentObject {
 	var $streams;
 	var $baseDir = 'repo/';
 	
-	function FileReference($file) {
+	function FileReference($fileRef) {
 		
 		global $user;
 		
-		if (is_int($file)) {
-			return parent::PersistentObject($file);
+		if (is_int($fileRef)) {
+			return parent::PersistentObject($fileRef);
 		}
-		$fields = array('mimeType' => $file['type'],
-						'size' => $file['size']);
+		$fields = array('mimeType' => $fileRef['type'],
+						'size' => $fileRef['size'],
+						'publicationId' => $fileRef['publicationId']);
 		parent::PersistentObject($fields);
-		$fileName = $this->id . '-' . $file['name'];
+		$fileName = $this->id . '-' . $fileRef['name'];
 		$this->update(array('fileName' => $fileName));
-		$path = $this->baseDir .$fileName;
-		if (!move_uploaded_file($file['tmp_name'], $path)) {
+		$path = $this->baseDir . $fileName;
+		if (!move_uploaded_file($fileRef['tmp_name'], $path)) {
 			// should never happen, unless the file directory (baseDir) doesn't exist
 			$this->delete();
 			trigger_error("Impossible to move file to $path.", E_USER_ERROR);
@@ -56,6 +58,11 @@ class FileReference extends PersistentObject {
 	function parseFileName() {
 		preg_match("/\d+-(.+)\..+$/", $this->fileName, $match);
   		return $match[1];
+	}
+	
+	function parseDownloadName() {
+		preg_match("/\d+-(.+)$/", $this->fileName, $match);
+		return $match[1];
 	}
 	
 }
