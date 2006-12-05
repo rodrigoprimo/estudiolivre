@@ -14,6 +14,7 @@ class FileReference extends PersistentObject {
 	
 	var $publicationId;
 	var $fileName;
+	var $thumbnail;
 	var $mimeType;
 	var $size;
 	var $downloads;
@@ -39,6 +40,8 @@ class FileReference extends PersistentObject {
 			$this->delete();
 			trigger_error("Impossible to move file to $path.", E_USER_ERROR);
 		}
+		$this->extractFileInfo();
+		$this->generateThumb();
 
  	}
 	
@@ -63,6 +66,19 @@ class FileReference extends PersistentObject {
 	function parseDownloadName() {
 		preg_match("/\d+-(.+)$/", $this->fileName, $match);
 		return $match[1];
+	}
+	
+	function extractFileInfo() {
+		trigger_error("Subclass should have implemented", E_USER_ERROR);
+	}
+	
+	function generateThumb() {
+		trigger_error("Subclass should have implemented", E_USER_ERROR);
+	}
+	
+	// this is a static method that must be implemented by subclasses
+	function validateExtension($filename) {
+		trigger_error("Subclass should have implemented", E_USER_ERROR);
 	}
 	
 }

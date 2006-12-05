@@ -12,6 +12,50 @@
 
 require_once "lib/persistentObj/PersistentObject.php";
 
+class Publication extends PersistentObject {
+	
+	var $licenseId;
+	var $user;
+	var $publishDate;
+	var $author;
+	var $title;
+	var $description;
+	var $thumbnail;
+	var $copyrightOwner;
+	var $producer;
+	var $contact;
+	var $site;
 
+	function checkRequiredField($value, $msg) {
+		if (preg_match('/^\s*$/',$value)) {
+			trigger_error($msg, E_USER_ERROR);
+		}
+	}
+
+	function checkField_title($value) {
+		return $this->checkRequiredField($value, tra('O título é obrigatório'));
+	}
+	function checkField_author($value) {
+		return $this->checkRequiredField($value, tra('O autor é obrigatório'));
+	}
+	function checkField_description($value) {
+		return $this->checkRequiredField($value, tra('A descrição é obrigatória'));
+	}
+	
+	function checkPublish() {
+		$this->checkField_author($this->author);
+		$this->checkField_title($this->author);
+		$this->checkField_description($this->author);
+		if (!is_array($this->fileReferences)) {
+			trigger_error(tra('Você não terminou de enviar o arquivo'), E_USER_ERROR);
+		}
+		return true;
+	}
+	
+	function publish() {
+		return $this->update(array('publishDate' => time()));
+	}
+	
+}
 
 ?>

@@ -170,7 +170,7 @@ class ELGalLib extends TikiLib {
 
       return $this->getOne($query, $bindvals);
   }
-
+	// 2.0 re-implementado nas subclasses de FileReference
   function validate_filename($tipo, $filename) {
 
 	  // TODO: completar lista
@@ -178,7 +178,7 @@ class ELGalLib extends TikiLib {
 	  $types = array();
 	  $types['Imagem'] = array('png','jpg','jpeg','gif','tiff','svg','bmp','psd','xcf','eps','swf','xar');
 	  $types['Audio'] = array('mp3','ogg','wav','aiff','avi','flac','mp2','mid','mxf');
-	  $types['Video'] = array('mpg','mpeg','avi','ogg','theora','mp4','yuv','mp2','mkv','mxf','mov','swf');
+	  $types['Video'] = array('mpg','mpeg','avi','ogg','theora','mp4','yuv','mp2','mkv','mxf','mov','swf','flv');
 	  $types['Texto'] = true;
 
 	  if (!$types[$tipo]) {
@@ -274,7 +274,7 @@ class ELGalLib extends TikiLib {
       return $id;
     }
   }
-
+  // 2.0 desnecessário
   function delete_arquivo($arquivoId) {
     $query = "select * from `el_arquivo` where `arquivoId` = ?";
     $result = $this->query($query,array($arquivoId));
@@ -314,7 +314,7 @@ class ELGalLib extends TikiLib {
     
   }
   
-  
+    // 2.0 re-implementado em PersistentObject
   function edit_field($arquivoId, $name, $value) {
   	if (!in_array($name, $this->basic_fields) && !in_array($name, $this->extension_fields)) {
 	    return "campo inexistente";
@@ -346,7 +346,7 @@ class ELGalLib extends TikiLib {
   		$query = "update `el_arquivo` set `editCache`=? where `arquivoId`=?";
 		$this->query($query, array(serialize($cache),$arquivoId));
   }
-  
+   // 2.0 desnecessário 
   function commit($arquivoId) {
   	$arquivo = $this->get_arquivo($arquivoId);
   	if (!$arquivo) return false;
@@ -417,11 +417,11 @@ class ELGalLib extends TikiLib {
       $freetaglib->add_object('gallery', $arquivoId, $arquivo['descricao'], $arquivo['titulo'], $href);	
       $freetaglib->update_tags($user, $arquivoId, 'gallery', $tag_string);
   }
-
+  // 2.0 desnecessário
   function rollback($arquivoId) {
   	return $this->query("update `el_arquivo` set `editCache`='' where `arquivoId`=?",array($arquivoId));
   }
-  
+    // 2.0 re-implementado em PersistentObject
   function check_field($name, $value) {
   	// verifica dados
   	
@@ -599,7 +599,7 @@ class ELGalLib extends TikiLib {
     $this->_update_arquivo($especificos, "el_arquivo_".$tipo, $gerais['arquivoId']);
 
   }
-  
+  // 2.0 re-implementado em Publication
   function publish_arquivo($arquivoId) {
   	global $user;
   	
@@ -611,7 +611,7 @@ class ELGalLib extends TikiLib {
   	$result = $this->query($query, array($arquivoId, $user));
   	return $result;
   }
-
+  // 2.0 re-implementado em Publication
   function check_publish($arquivoId) {
   	$arquivo = $this->get_arquivo($arquivoId);
   	$cache = unserialize($arquivo['editCache']);
@@ -704,7 +704,7 @@ class ELGalLib extends TikiLib {
     }
     return $id;
   }
-  
+    // 2.0 re-implementado em FileReference
   function generate_thumb($arquivoId) {	
     global $user;
     
@@ -869,7 +869,7 @@ class ELGalLib extends TikiLib {
       return $data;
   }
   
-  
+   // 2.0 re-implementado em FileReference
   function extract_file_info($arquivoId) {
   	$arquivo = $this->get_arquivo($arquivoId);
   	$tipo = $arquivo["tipo"];
@@ -888,7 +888,7 @@ class ELGalLib extends TikiLib {
 	list($result['tamanhoImagemX'], $result['tamanhoImagemY']) = getimagesize($path);
 	return $result;
   }
-
+	// 2.0 re-implementado em AudioFile
   function extract_file_info_audio($path) {
       if (!class_exists('ffmpeg_movie')) {
 	  	return array();
