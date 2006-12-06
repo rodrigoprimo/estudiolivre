@@ -198,7 +198,7 @@ class ELGalLib extends TikiLib {
     
       
   }
-  
+  // 2.0 desnecessário
   function validate_file($tipo, $filename) {
       
       if($tipo == "Texto")
@@ -245,7 +245,7 @@ class ELGalLib extends TikiLib {
     }
     return $data;
   }
-  
+  // 2.0 desnecessário
   function create_arquivo($obrigatorio,$user) {
     $valid_types = array('Video','Audio','Imagem','Texto');
     if (!in_array($obrigatorio['tipo'], $valid_types)) {
@@ -330,7 +330,7 @@ class ELGalLib extends TikiLib {
 	$this->set_edit_cache($arquivoId, $cache);
 
   }
-  
+  // 2.0 desnecessário
   function get_edit_cache($arquivoId) {
 	$arquivo = $this->get_arquivo($arquivoId);
 	$cache = $arquivo['editCache'];
@@ -341,7 +341,7 @@ class ELGalLib extends TikiLib {
 	}
   	return $cache;
   }
-  
+  // 2.0 desnecessário
   function set_edit_cache($arquivoId, $cache) {
   		$query = "update `el_arquivo` set `editCache`=? where `arquivoId`=?";
 		$this->query($query, array(serialize($cache),$arquivoId));
@@ -431,23 +431,23 @@ class ELGalLib extends TikiLib {
   		if ($error) return $error;
   	}
   }
-  
+  // 2.0 re-implementado em Publication
   function check_required_field($value, $msg = 'Campo obrigatório') {
   	if (preg_match('/^\s*$/',$value)) {
   		return "$msg";
   	}
   }
-  
+  // 2.0 re-implementado em Publication
   function check_field_titulo($name) { return $this->check_required_field($name, 'O título é obrigatório');  }
   function check_field_autor($value) { return $this->check_required_field($value, 'O autor é obrigatório');  }
   function check_field_descricao($value) { return $this->check_required_field($value, 'A descrição é obrigatória');  }
-  
+  // 2.0 re-implementado em Publication
   function check_numeric_field($value, $msg = 'Campo numérico') {
   	if (!preg_match('/^\d*$/', $value)) {
   		return $msg;
   	}
   }
-  
+  // 2.0 re-implementado em subclasses de publication
   function check_field_tamanhoImagemX($value) { return $this->check_numeric_field($value, 'Largura deve ser um número'); } 
   function check_field_tamanhoImagemY($value) { return $this->check_numeric_field($value, 'Altura deve ser um número'); } 
   function check_field_dpi($value) { return $this->check_numeric_field($value, 'DPI deve ser um número'); } 
@@ -485,7 +485,7 @@ class ELGalLib extends TikiLib {
     $arquivo['ratings'] = $this->getOne("select count(*) from `el_arquivo_rating` where `arquivoId`=?", array($arquivoId));
     return $arquivo;
   }
-
+// 2.0 ver direto no banco de license
   function id_licenca($resposta1, $resposta2, $resposta3) {
       $licenca = $this->licencas[$resposta1][$resposta2];
       if (is_array($licenca)) {
@@ -493,7 +493,7 @@ class ELGalLib extends TikiLib {
       }
       return $licenca;
   }
-    
+    // 2.0 desnecessário
   function set_licenca($arquivoId, $licencaId) {
     $query = "update `el_arquivo` set `licencaId` = ? where `arquivoId` = $arquivoId";
     return $this->query($query,array($licencaId));
@@ -515,7 +515,7 @@ class ELGalLib extends TikiLib {
     $result = $this->query($query);
     return $result->fetchRow();
   }
-  
+  // 2.0 desnecesário
   function get_tipos() {
     $query = 'select * from `el_tipos_arquivo`';
     $result = $this->query($query);
@@ -557,7 +557,7 @@ class ELGalLib extends TikiLib {
       return "impossivel mover o arquivo para: ".$destination;
     }
   }
-
+	// 2.0 re-implementado em FileReference
   function clear_uploaded_file($arquivoId) {
       $destination = "repo/";
       $arquivo = $this->get_arquivo($arquivoId);
@@ -571,7 +571,7 @@ class ELGalLib extends TikiLib {
       $query = "update `el_arquivo` set `arquivo`=?, `thumbnail`=? where `arquivoId`=?";
       $this->query($query, array('','',$arquivoId));
   }
-
+	//2.0 re-implementado em PersistentObject
   function _update_arquivo($dados, $tabela, $id) {
 
     $query = "update `".$tabela."` set ";
@@ -591,7 +591,7 @@ class ELGalLib extends TikiLib {
     $this->query($query, $bindvals);
 
   }
-    
+    // 2.0 desnecessário
   function set_metadata($gerais, $especificos, $tipo) {
     
     $this->_update_arquivo($gerais, "el_arquivo", $gerais['arquivoId']);
@@ -647,6 +647,7 @@ class ELGalLib extends TikiLib {
     case 0: //no error; possible file attack!
       return tra("There was a problem with your upload.");
     case 1: //uploaded file exceeds the upload_max_filesize directive in php.ini
+      return tra("The file you are trying to upload is too big.");
     case 2: //uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the html form
       return tra("The file you are trying to upload is too big.");
     case 3: //uploaded file was only partially uploaded
@@ -657,7 +658,7 @@ class ELGalLib extends TikiLib {
       return tra("There was a problem with your upload.");
     }
   }
-
+// 2.0 re-implementado em FileReference
   function get_file_name($id) {
   	$query = "select arquivo from `el_arquivo` where `arquivoId`=?";
     $bindvals = array($id);
@@ -688,7 +689,7 @@ class ELGalLib extends TikiLib {
     $query = "update el_arquivo set `streamHits`=`streamHits`+1 where `arquivoId`=?";
     $result = $this->query($query,array($id));
   }
-
+// 2.0 desnecessário
   function set_id_fisico($arquivoId) {
     $id = "";
     $mes = date("m");
@@ -726,7 +727,7 @@ class ELGalLib extends TikiLib {
     return false;
     
   }
-  
+  // 2.0 re-implementado em cada caso específico de FileReference
   function save_thumb($fileBlob,$arquivoId,$user, $ext) {
       $destination = "repo/";
       
@@ -748,7 +749,7 @@ class ELGalLib extends TikiLib {
       // rolooooowww
       return $fileName;
   }
-  
+  // 2.0 re-implementado em ImageFile
   function create_thumb_imagem($image) {
     
     $fp = fopen($image, 'rb');
@@ -822,7 +823,7 @@ class ELGalLib extends TikiLib {
     return $data;
   }
   
-  
+    // 2.0 re-implementado em VideoFile
   function create_thumb_video($path) {
      
       if (!class_exists('ffmpeg_movie')) {
@@ -882,7 +883,7 @@ class ELGalLib extends TikiLib {
   		return array();
   	}
   }
-  
+    // 2.0 re-implementado em ImageFile
   function extract_file_info_imagem($path) {
 	$result = array();
 	list($result['tamanhoImagemX'], $result['tamanhoImagemY']) = getimagesize($path);
@@ -905,7 +906,7 @@ class ELGalLib extends TikiLib {
       
       return $result;
   }  
-  
+    // 2.0 re-implementado em VideoFile
   function extract_file_info_video($path) {
       if (!class_exists('ffmpeg_movie')) {
 	  	return array();

@@ -9,6 +9,8 @@
  * 
  */
 
+require_once "FileReference.php";
+
 class VideoFile extends FileReference {
 	
 	var $duration;

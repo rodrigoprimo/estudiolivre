@@ -9,6 +9,8 @@
  * 
  */
 
+require_once "FileReference.php";
+
 class ImageFile extends FileReference {
 	
 	var $width;
@@ -88,7 +90,7 @@ class ImageFile extends FileReference {
 		}
 		
 		$thumbName = 'thumb_' . $this->fileName;
-		$thumbName = preg_replace('/\.(.+?)$/', 'gif', $thumbName);
+		$thumbName = preg_replace('/\.(.+?)$/', 'png', $thumbName);
 		
 		$fp = fopen($thumbName, "w");
 		if (!$fp) return;
@@ -103,10 +105,10 @@ class ImageFile extends FileReference {
 	function validateExtension($filename) {
 		$extensions = array('png','jpg','jpeg','gif','tiff','svg','bmp','psd','xcf','eps','swf','xar');
 		if (!preg_match('/\.([^.]{3,4}$)/', $filename, $m)) {
-	    	trigger_error(tra("Erro: extensão de arquivo inválida."), E_USER_ERROR);
+	    	trigger_error(tra("Atenção: extensão de arquivo desconhecida."), E_USER_ERROR);
 	  	}
 	  	if (!in_array(strtolower($m[1]), $extensions)) {
-	    	trigger_error(tra("Erro: extensão $m[1] não suportada para imagem."), E_USER_ERROR);
+	    	trigger_error(tra("Atenção: extensão $m[1] não conhecida para imagem."), E_USER_ERROR);
 	    }
 	}
 	

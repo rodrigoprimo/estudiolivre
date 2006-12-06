@@ -15,6 +15,7 @@ require_once "lib/persistentObj/PersistentObject.php";
 class Publication extends PersistentObject {
 	
 	var $licenseId;
+	var $collectionId;
 	var $user;
 	var $publishDate;
 	var $author;
@@ -25,6 +26,7 @@ class Publication extends PersistentObject {
 	var $producer;
 	var $contact;
 	var $site;
+	var $rating;
 
 	function checkRequiredField($value, $msg) {
 		if (preg_match('/^\s*$/',$value)) {

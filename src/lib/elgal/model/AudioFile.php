@@ -9,6 +9,8 @@
  * 
  */
 
+require_once "FileReference.php";
+
 class AudioFile extends FileReference {
 	
 	var $duration;
