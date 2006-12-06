@@ -86,6 +86,16 @@ class VideoFile extends FileReference {
 	    }
 	}
 	
+	function checkField_duration($value) {
+		return $this->checkNumericField($value, tra('Duração deve ser um número'));
+	}
+	function checkField_width($value) {
+		return $this->checkNumericField($value, tra('Largura deve ser um número'));
+	}
+	function checkField_height($value) {
+		return $this->checkNumericField($value, tra('Altura deve ser um número'));
+	}
+	
 }
 
 ?>

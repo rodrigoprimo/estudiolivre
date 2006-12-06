@@ -8,8 +8,5 @@ CREATE TABLE `videofile` (
   `width` int(11) NOT NULL,
   `height` int(11) NOT NULL,
   `dpi` int(11) NOT NULL,
-  PRIMARY KEY  (`id`),
-  KEY `width` (`width`),
-  KEY `height` (`height`),
-  KEY `dpi` (`dpi`)
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;

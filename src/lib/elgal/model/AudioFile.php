@@ -50,6 +50,19 @@ class AudioFile extends FileReference {
 	    }
 	}
 	
+	function checkField_duration($value) {
+		return $this->checkNumericField($value, tra('Duração deve ser um número'));
+	}
+	function checkField_bpm($value) {
+		return $this->checkNumericField($value, tra('BPM deve ser um número'));
+	}
+	function checkField_sampleRate($value) {
+		return $this->checkNumericField($value, tra('"Sample rate" deve ser um número'));
+	}
+	function checkField_bitRate($value) {
+		return $this->checkNumericField($value, tra('"Bit rate" deve ser um número'));
+	}
+	
 }
 
 ?>

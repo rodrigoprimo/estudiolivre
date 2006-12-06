@@ -17,8 +17,10 @@ class PersistentObject extends TikiDB {
 	
 	var $table;
 	var $id;
+	var $hasMany = array();
+	var $belongsTo = array();
 	
-	function PersistentObject($fields) {
+	function PersistentObject($fields, $referenced = false) {
 		global $dbTiki;
 	    $this->db = $dbTiki;
 	    $this->table = get_class($this);
@@ -29,7 +31,7 @@ class PersistentObject extends TikiDB {
 	    	} else trigger_error("Incorrect parameters, need array with at least one field to create object", E_USER_ERROR);
 	    } elseif (is_int($fields)) {
 	    	$this->id = $fields;
-	    	$this->select();
+	    	$this->select($referenced);
 	    } else trigger_error("Incorrect parameters, need array or integer of 'id' to fetch", E_USER_ERROR);
 	    return $this;
 	}
@@ -153,10 +155,12 @@ class PersistentObject extends TikiDB {
 		}
 	}
 	
-	function select() {
+	function select($referenced = false) {
 		$tables = "$this->table";
+		$super = get_parent_class($this);
+		$localProperties = $this->__array_diff_key(get_class_vars($this), get_class_vars($super));
 		$conditions = "where "; 
-		for ($table = get_parent_class($this->table); $table != 'persistentobject'; $table = get_parent_class($table)) {
+		for ($table = $super; $table != 'persistentobject'; $table = get_parent_class($table)) {
 			$tables .= ",$table";
 			$conditions .= "$this->table.id = $table.id and ";
 		}
@@ -164,6 +168,48 @@ class PersistentObject extends TikiDB {
 		$result = $this->query("select * from $tables $conditions", array($this->id));
 		if ($row = $result->fetchRow()) $this->_populateObject($row);
 		else trigger_error("Incorrect parameters, id doesn't exist", E_USER_ERROR);
+		foreach ($this->belongsTo as $parent) {
+			$varName = strtolower($parent);
+			$idName = $varName . "Id";
+			if ($this->$idName) {
+				$this->$varName = new $parent($this->$idName, true);
+			}
+		}
+		if (!$referenced) {
+			$this->_getChildren();
+		}
+	}
+	
+	function _getChildren() {
+		foreach ($this->hasMany as $parent => $child) {
+			$childName = strtolower($child);
+			$idName = strtolower($parent) . "Id";
+			$varName = $childName . "s";
+			$this->$varName = array();
+			
+			$result = $this->query("select id from $childName where $idName = ?", array($this->id));
+			eval('$subclassesOfChild = ' . $child . '::subclasses()'); 
+			if ($subclassesOfChild) {
+				while ($row = $result->fetchRow()) {
+					foreach ($subclassesOfChild as $sub) {
+						if ($this->getOne("select id from $sub where id = ?", array($row['id']))) {
+							array_push($this->$varName, new $sub((int)$row['id']));
+							break;
+						}
+					}
+				}
+			} else {
+				while ($row = $result->fetchRow()) {
+					array_push($this->$varName, new $child((int)$row['id']));
+				}
+			}
+		}
+	}
+	
+	// this method must be implemented as false in this class so as not
+	// to raise errors when evaluating above, when subclass does not have subclasses
+	function subclasses() {
+		return false;
 	}
 	
 }

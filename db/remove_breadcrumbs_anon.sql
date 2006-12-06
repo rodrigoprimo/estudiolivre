@@ -1,1 +1,0 @@
-update tiki_modules set groups='a:1:{i:0;s:10:"Registered";}' where name='breadcrumb';

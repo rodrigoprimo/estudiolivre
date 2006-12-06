@@ -11,9 +11,6 @@ CREATE TABLE `videofile` (
   `hasAudio` tinyint(1) NOT NULL DEFAULT 1,
   `hasColor` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY  (`id`),
-  KEY `duration` (`duration`),
-  KEY `width` (`width`),
-  KEY `height` (`height`),
   KEY `hasAudio` (`hasAudio`),
   KEY `hasColor` (`hasColor`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;

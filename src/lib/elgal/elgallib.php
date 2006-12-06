@@ -447,7 +447,7 @@ class ELGalLib extends TikiLib {
   		return $msg;
   	}
   }
-  // 2.0 re-implementado em subclasses de publication
+  // 2.0 re-implementado em subclasses de FileReference
   function check_field_tamanhoImagemX($value) { return $this->check_numeric_field($value, 'Largura deve ser um número'); } 
   function check_field_tamanhoImagemY($value) { return $this->check_numeric_field($value, 'Altura deve ser um número'); } 
   function check_field_dpi($value) { return $this->check_numeric_field($value, 'DPI deve ser um número'); } 

@@ -9,9 +9,5 @@ CREATE TABLE `audiofile` (
   `bpm` int(11) NOT NULL,
   `sampleRate` int(11) NOT NULL,
   `bitRate` int(11) NOT NULL,
-  PRIMARY KEY  (`id`),
-  KEY `duration` (`duration`),
-  KEY `bpm` (`bpm`),
-  KEY `sampleRate` (`sampleRate`),
-  KEY `bitRate` (`bitRate`)
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;

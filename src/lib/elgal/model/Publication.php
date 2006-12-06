@@ -48,7 +48,7 @@ class Publication extends PersistentObject {
 		$this->checkField_author($this->author);
 		$this->checkField_title($this->author);
 		$this->checkField_description($this->author);
-		if (!is_array($this->fileReferences)) {
+		if (!is_array($this->filereferences)) {
 			trigger_error(tra('Você não terminou de enviar o arquivo'), E_USER_ERROR);
 		}
 		return true;

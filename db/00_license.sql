@@ -5,13 +5,13 @@
 DROP TABLE IF EXISTS `license`;
 CREATE TABLE `license` (
   `id` int(11) NOT NULL auto_increment,
-  `type` varchar(64) NOT NULL default '',
+  `type` varchar(64) NOT NULL,
   `name` varchar(96) default NULL,
   `description` text,
   `imageName` varchar(150) default NULL,
   `humanReadableLink` varchar(150) default NULL,
   `answer` varchar(10) default NULL,
-  PRIMARY KEY  (`licencaId`),
+  PRIMARY KEY  (`id`),
   KEY `type` (`type`),
   KEY `name` (`name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;

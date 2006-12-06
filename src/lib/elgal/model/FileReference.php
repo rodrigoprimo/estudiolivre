@@ -21,17 +21,17 @@ class FileReference extends PersistentObject {
 	var $streams;
 	var $baseDir = 'repo/';
 	
-	function FileReference($fileRef) {
+	function FileReference($fileRef, $referenced = false) {
 		
 		global $user;
 		
 		if (is_int($fileRef)) {
-			return parent::PersistentObject($fileRef);
+			return parent::PersistentObject($fileRef, $referenced);
 		}
 		$fields = array('mimeType' => $fileRef['type'],
 						'size' => $fileRef['size'],
 						'publicationId' => $fileRef['publicationId']);
-		parent::PersistentObject($fields);
+		parent::PersistentObject($fields, $referenced);
 		$fileName = $this->id . '-' . $fileRef['name'];
 		$this->update(array('fileName' => $fileName));
 		$path = $this->baseDir . $fileName;
@@ -79,6 +79,12 @@ class FileReference extends PersistentObject {
 	// this is a static method that must be implemented by subclasses
 	function validateExtension($filename) {
 		trigger_error("Subclass should have implemented", E_USER_ERROR);
+	}
+	
+	function checkNumericField($value, $msg) {
+		if (!preg_match('/^\d*$/', $value)) {
+  			return $msg;
+		}
 	}
 	
 }
