@@ -5,11 +5,11 @@
  * by: nano
  * 
  * subclass of FileReference, must implement the superclass methods
- * has specific video properties
+ * has specific image properties
  * 
  */
 
-class VideoFile extends FileReference {
+class ImageFile extends FileReference {
 	
 	var $width;
 	var $height;

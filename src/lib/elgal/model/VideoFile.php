@@ -75,7 +75,7 @@ class VideoFile extends FileReference {
 	
 	// class method
 	function validateExtension($filename) {
-		$extensions = array('mpg','mpeg','avi','ogg','theora','mp4','yuv','mp2','mkv','mxf','mov','swf','flv');
+		$extensions = array('mpg','mpeg','avi','ogg','theora','mp4','yuv','mp2','mkv','mxf','mov','swf','flv','3gp','3gpp');
 		if (!preg_match('/\.([^.]{3,4}$)/', $filename, $m)) {
 	    	trigger_error(tra("Erro: extensão de arquivo inválida."), E_USER_ERROR);
 	  	}
