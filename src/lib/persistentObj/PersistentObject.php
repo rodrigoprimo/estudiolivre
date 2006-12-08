@@ -158,7 +158,6 @@ class PersistentObject extends TikiDB {
 	function select($referenced = false) {
 		$tables = "$this->table";
 		$super = get_parent_class($this);
-		$localProperties = $this->__array_diff_key(get_class_vars($this), get_class_vars($super));
 		$conditions = "where "; 
 		for ($table = $super; $table != 'persistentobject'; $table = get_parent_class($table)) {
 			$tables .= ",$table";
@@ -168,16 +167,16 @@ class PersistentObject extends TikiDB {
 		$result = $this->query("select * from $tables $conditions", array($this->id));
 		if ($row = $result->fetchRow()) $this->_populateObject($row);
 		else trigger_error("Incorrect parameters, id doesn't exist", E_USER_ERROR);
-		foreach ($this->belongsTo as $parent) {
-			$varName = strtolower($parent);
-			$idName = $varName . "Id";
-			if ($this->$idName) {
-				$this->$varName = new $parent($this->$idName, true);
+		if (!$referenced) {
+			foreach ($this->belongsTo as $parent) {
+				$varName = strtolower($parent);
+				$idName = $varName . "Id";
+				if ($this->$idName) {
+					$this->$varName = new $parent((int)$this->$idName);
+				}
 			}
 		}
-		if (!$referenced) {
-			$this->_getChildren();
-		}
+		$this->_getChildren();
 	}
 	
 	function _getChildren() {
@@ -188,19 +187,20 @@ class PersistentObject extends TikiDB {
 			$this->$varName = array();
 			
 			$result = $this->query("select id from $childName where $idName = ?", array($this->id));
-			eval('$subclassesOfChild = ' . $child . '::subclasses()'); 
+			eval('$subclassesOfChild = ' . $child . '::subclasses();'); 
 			if ($subclassesOfChild) {
 				while ($row = $result->fetchRow()) {
 					foreach ($subclassesOfChild as $sub) {
-						if ($this->getOne("select id from $sub where id = ?", array($row['id']))) {
-							array_push($this->$varName, new $sub((int)$row['id']));
+						$tableName = strtolower($sub);
+						if ($this->getOne("select id from $tableName where id = ?", array($row['id']))) {
+							array_push($this->$varName, new $sub((int)$row['id'], true));
 							break;
 						}
 					}
 				}
 			} else {
 				while ($row = $result->fetchRow()) {
-					array_push($this->$varName, new $child((int)$row['id']));
+					array_push($this->$varName, new $child((int)$row['id'], true));
 				}
 			}
 		}
