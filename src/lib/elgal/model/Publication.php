@@ -28,6 +28,16 @@ class Publication extends PersistentObject {
 	var $site;
 	var $rating;
 
+	/************************************************************/
+	/* this is configuration for the relations with publication */
+	var $belongsTo = array("License", "Collection");
+	var $hasMany = array("FileReference", "Vote");
+	
+	function subclasses() {
+		return array("AudioPublication", "VideoPublication", "ImagePublication", "TextPublication");
+	}
+	/************************************************************/
+
 	function checkRequiredField($value, $msg) {
 		if (preg_match('/^\s*$/',$value)) {
 			trigger_error($msg, E_USER_ERROR);

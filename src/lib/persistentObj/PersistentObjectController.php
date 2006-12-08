@@ -46,8 +46,21 @@ class PersistentObjectController extends TikiDB {
 		$class = $this->controlledClass;
 		$result = $this->query("select id from $class " . $this->_prepQueryConditions($filters), $filters);
 		$objs = array();
-		while ($row = $result->fetchRow()) {
-			$objs[] = new $class((int)$row['id']);
+		eval('$subclasses = ' . $class . '::subclasses();');
+		if ($subclasses) {
+			while ($row = $result->fetchRow()) {
+				foreach ($subclasses as $sub) {
+					$tableName = strtolower($sub);
+					if ($this->getOne("select id from $tableName where id = ?", array($row['id']))) {
+						$objs[] = new $sub((int)$row['id']);
+						break;
+					}
+				}
+			}
+		} else {
+			while ($row = $result->fetchRow()) {
+				$objs[] = new $class((int)$row['id']);
+			}
 		}
 		return $objs;
 	}

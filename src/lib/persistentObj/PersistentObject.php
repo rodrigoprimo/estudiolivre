@@ -168,15 +168,30 @@ class PersistentObject extends TikiDB {
 		if ($row = $result->fetchRow()) $this->_populateObject($row);
 		else trigger_error("Incorrect parameters, id doesn't exist", E_USER_ERROR);
 		if (!$referenced) {
-			foreach ($this->belongsTo as $parent) {
-				$varName = strtolower($parent);
-				$idName = $varName . "Id";
-				if ($this->$idName) {
+			$this->_getParent();
+		}
+		$this->_getChildren();
+	}
+	
+	function _getParent() {
+		foreach ($this->belongsTo as $parent) {
+			$varName = strtolower($parent);
+			$idName = $varName . "Id";
+			if ($this->$idName) {
+				eval('$subclassesOfParent = ' . $parent . '::subclasses();');
+				if ($subclassesOfParent) {
+					foreach ($subclassesOfParent as $sub) {
+						$tableName = strtolower($sub);
+						if ($this->getOne("select id from $tableName where id = ?", array($this->$idName))) {
+							$this->$varName = new $parent((int)$this->$idName);
+							break;
+						}
+					}
+				} else {
 					$this->$varName = new $parent((int)$this->$idName);
 				}
 			}
 		}
-		$this->_getChildren();
 	}
 	
 	function _getChildren() {
@@ -187,7 +202,7 @@ class PersistentObject extends TikiDB {
 			$this->$varName = array();
 			
 			$result = $this->query("select id from $childName where $idName = ?", array($this->id));
-			eval('$subclassesOfChild = ' . $child . '::subclasses();'); 
+			eval('$subclassesOfChild = ' . $child . '::subclasses();');
 			if ($subclassesOfChild) {
 				while ($row = $result->fetchRow()) {
 					foreach ($subclassesOfChild as $sub) {

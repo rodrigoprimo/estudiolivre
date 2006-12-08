@@ -16,6 +16,8 @@ class Vote extends PersistentObject {
 	var $rating;
 	var $publicationId;
 	
+	var $belongsTo = array("Publication");
+	
 }
 
 ?>

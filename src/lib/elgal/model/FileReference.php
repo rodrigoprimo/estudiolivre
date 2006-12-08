@@ -21,6 +21,15 @@ class FileReference extends PersistentObject {
 	var $streams;
 	var $baseDir = 'repo/';
 	
+	/************************************************************/
+	/* this is configuration for the relations with publication */
+	var $belongsTo = array("Publication");
+	
+	function subclasses() {
+		return array("AudioFile", "VideoFile", "ImageFile", "TextFile");
+	}
+	/************************************************************/
+	
 	function FileReference($fileRef, $referenced = false) {
 		
 		global $user;
