@@ -14,8 +14,6 @@ require_once "lib/persistentObj/PersistentObject.php";
 
 class Publication extends PersistentObject {
 	
-	var $licenseId;
-	var $collectionId;
 	var $user;
 	var $publishDate;
 	var $author;
@@ -31,7 +29,9 @@ class Publication extends PersistentObject {
 	/************************************************************/
 	/* this is configuration for the relations with publication */
 	var $belongsTo = array("License", "Collection");
-	var $hasMany = array("FileReference", "Vote");
+	var $licenseId;
+	var $collectionId;
+	var $hasMany = array("Publication" => "FileReference", "Publication" => "Vote", "Publication" => "Comment");
 	
 	function subclasses() {
 		return array("AudioPublication", "VideoPublication", "ImagePublication", "TextPublication");

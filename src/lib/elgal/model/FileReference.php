@@ -24,7 +24,7 @@ class FileReference extends PersistentObject {
 	/************************************************************/
 	/* this is configuration for the relations with publication */
 	var $belongsTo = array("Publication");
-	
+	var $hasMany = array("FileReference" => "Comment");
 	function subclasses() {
 		return array("AudioFile", "VideoFile", "ImageFile", "TextFile");
 	}

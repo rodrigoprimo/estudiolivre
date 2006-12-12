@@ -1,9 +1,9 @@
 --
--- Table structure for table `imagepublication`
+-- Table structure for table `textpublication`
 --
 
-DROP TABLE IF EXISTS `imagepublication`;
-CREATE TABLE `imagepublication` (
+DROP TABLE IF EXISTS `textpublication`;
+CREATE TABLE `textpublication` (
   `id` int(11) NOT NULL,
   `typeOfText` varchar(255),
   `language` varchar(255),

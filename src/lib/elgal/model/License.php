@@ -19,7 +19,7 @@ class License extends PersistentObject {
 	var $humanReadableLink;
 	var $answer;
 
-	var $hasMany = array("Publication");
+	var $hasMany = array("License" => "Publication");
 
 }
 

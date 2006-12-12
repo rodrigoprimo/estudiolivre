@@ -1,9 +1,9 @@
 --
--- Table structure for table `videofile`
+-- Table structure for table `imagefile`
 --
 
-DROP TABLE IF EXISTS `videofile`;
-CREATE TABLE `videofile` (
+DROP TABLE IF EXISTS `imagefile`;
+CREATE TABLE `imagefile` (
   `id` int(11) NOT NULL,
   `width` int(11) NOT NULL,
   `height` int(11) NOT NULL,
