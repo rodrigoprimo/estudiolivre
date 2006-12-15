@@ -19,6 +19,7 @@ class AudioPublication extends Publication {
 	var $genre;
 	var $lyrics;
 	var $details;
+	var $album;
 	
 }
 

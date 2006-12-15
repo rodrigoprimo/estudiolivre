@@ -9,5 +9,6 @@ CREATE TABLE `audiopublication` (
   `genre` varchar(255),
   `lyrics` text,
   `details` text,
+  `album` varchar(255),
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;

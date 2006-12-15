@@ -1,5 +1,11 @@
 insert into publication (id,licenseId,user,publishDate,author,title,description,thumbnail,copyrightOwner,producer,contact,site,rating) select arquivoId,licencaId,user,data_publicacao,autor,titulo,descricao,thumbnail,donoCopyright,produtora,contato,siteRelacionado,rating from el_arquivo;
-insert into filereference (publicationId,fileName,thumbnail,mimeType,size,downloads,streams) select arquivoId,arquivo,thumbnail,formato,tamanho,hits,streamHits from el_arquivo; 
-insert into audiopublication select arquivoId,tipoDoAudio,genero,letra,fichaTecnica from el_arquivo_audio; 
+insert into audiopublication select arquivoId,tipoDoAudio,genero,letra,fichaTecnica,album from el_arquivo_audio; 
 insert into videopublication select arquivoId,idioma,legendas,idiomaLegenda,fichaTecnica from el_arquivo_video; 
 insert into imagepublication (id) select arquivoId from el_arquivo_imagem; 
+insert into textpublication (id) select a.arquivoId from el_arquivo a left join el_arquivo_audio aa on a.arquivoId=aa.arquivoId left join el_arquivo_video av on a.arquivoId=av.arquivoId left join el_arquivo_imagem ai on a.arquivoId=ai.arquivoId where aa.arquivoId is null and av.arquivoId is null and ai.arquivoId is null;
+insert into filereference (publicationId,fileName,thumbnail,mimeType,size,downloads,streams) select arquivoId,arquivo,thumbnail,formato,tamanho,hits,streamHits from el_arquivo; 
+insert into audiofile select f.id,aa.duracao,aa.bpm,aa.sampleRate,aa.bitRate from filereference f, el_arquivo_audio aa where f.publicationId = aa.arquivoId;
+insert into videofile select f.id,av.duracao,av.tamanhoImagemX,av.tamanhoImagemY,av.temAudio,av.temCor from filereference f, el_arquivo_video av where f.publicationId = av.arquivoId;
+insert into imagefile select f.id,ai.tamanhoImagemX,ai.tamanhoImagemY,dpi from filereference f, el_arquivo_imagem ai where f.publicationId = ai.arquivoId;
+insert into textfile (id) select f.id from filereference f left join audiofile af on f.id=af.id left join videofile vf on f.id=vf.id left join imagefile iff on f.id=iff.id where af.id is null and vf.id is null and iff.id is null;
+insert into vote (publicationId,user,rating) select * from el_arquivo_rating;

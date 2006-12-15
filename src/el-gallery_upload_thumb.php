@@ -17,14 +17,7 @@ if ($arquivoId && isset($_FILES['thumb']) && !empty($_FILES['thumb']['name'])) {
     
     if ($arq_tipo[1] != "image") {
 	error("O arquivo fornecido não é uma imagem.");
-	
     }
-
-    /*    ob_start();
-    print_r($_FILES);
-    $saida = ob_get_contents();
-    ob_end_clean();
-    error($saida);*/
 
     // Were there any problems with the upload?  If so, report here.
     if (!is_uploaded_file($_FILES["thumb"]['tmp_name'])) {
@@ -43,13 +36,10 @@ if ($arquivoId && isset($_FILES['thumb']) && !empty($_FILES['thumb']['name'])) {
 	$ext = ".png";
     } 
 
-    $handle = fopen($_FILES['thumb']['tmp_name'], "r");
-    $thumbData = fread($handle, $_FILES['thumb']['size']);
-    fclose($handle);
-    
     global $userlib;
     $userId = $userlib->get_user_id($user);
-    
+
+    $thumbData = $elgallib->create_thumb_imagem($_FILES['thumb']['tmp_name']);
     $result = $elgallib->save_thumb($thumbData, $arquivoId, $userId, $ext);
     if (!$result) {
 	error(tra('Impossivel gravar miniatura'));
