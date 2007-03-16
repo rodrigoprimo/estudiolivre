@@ -945,6 +945,10 @@ class ELGalLib extends TikiLib {
   	return $this->getOne("select `rating` from `el_arquivo_rating` where `arquivoId`=? and `user`=?", array($arquivoId, $userName));
   }
   
+  function change_login_acervo($from,$to) {
+	return $this->query("update `el_arquivo` set `user`=? where `user`=?", array($to,$from));
+  }  
+  
 }
 
 global $elgallib, $dbTiki, $userHasPermOnFile, $arquivoId, $el_p_admin_gallery;
