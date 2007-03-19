@@ -38,7 +38,7 @@
 	    </div>
 	      <center>
 	  {/if}
-	  
-</body>
 
+<script type="text/javascript" src="http://cetrk.com/pages/scripts/0004/4301.js"> </script>  
+</body>
 <!-- body.tpl end -->
