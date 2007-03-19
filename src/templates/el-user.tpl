@@ -42,7 +42,7 @@
 		    {/tooltip}
         {else}
         	{*TODO mudar isso pra um mailto:*}
-	        {ajax_input permission=$permission id="email" class="uContactItem" value=$userinfo.email default="{tr}E-mail{/tr}" display="block" truncate='17'}
+	        {ajax_input permission=$permission id="email" class="uContactItem" value=$userinfo.email|replace:'@':' (em) ' default="{tr}E-mail{/tr}" display="block" truncate='17'}
 	    {/if}
 		<br />
         {if $permission}
