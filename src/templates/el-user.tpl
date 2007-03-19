@@ -38,19 +38,19 @@
         <br />
         {if $permission}
         	{tooltip text="Clique para modificar o seu <b>email</b>"}
-		        {ajax_input permission=$permission id="email" class="uContactItem" value=$userinfo.email default="{tr}E-mail{/tr}" display="block" truncate='17'}        
+		        {ajax_input permission=$permission id="email" class="uContactItem" value=$userinfo.email default="{tr}E-mail{/tr}" display="block" truncate='30'}        
 		    {/tooltip}
         {else}
         	{*TODO mudar isso pra um mailto:*}
-	        {ajax_input permission=$permission id="email" class="uContactItem" value=$userinfo.email|replace:'@':' (em) ' default="{tr}E-mail{/tr}" display="block" truncate='17'}
+	        {ajax_input permission=$permission id="email" class="uContactItem" value=$userinfo.email|replace:'@':' (em) ' default="{tr}E-mail{/tr}" display="block" truncate='30'}
 	    {/if}
 		<br />
         {if $permission}
         	{tooltip text="Clique para modificar o seu <b>site</b>"}
-		        {ajax_input permission=$permission id="site" class="uContactItem" value=$site default="{tr}Site{/tr}" display="block" truncate='17'}        
+		        {ajax_input permission=$permission id="site" class="uContactItem" value=$site default="{tr}Site{/tr}" display="block" truncate='30'}        
 		    {/tooltip}
         {else}
-	        <a class="uContactItem" href="{if preg_match('/https?:\/\//',$site)}{$site}{else}http://{$site}{/if}" display="block">{$site|replace:'http://':''|truncate:22:"(...)":true}</a>
+	        <a class="uContactItem" href="{if preg_match('/https?:\/\//',$site)}{$site}{else}http://{$site}{/if}" display="block">{$site|replace:'http://':''|truncate:30:"(...)":true}</a>
 	    {/if}
 		<br />
         {if $permission}
