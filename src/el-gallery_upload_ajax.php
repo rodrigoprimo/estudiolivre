@@ -124,7 +124,7 @@ $ajaxlib->setPermission('set_arquivo_licenca', $userHasPermOnFile && $arquivoId)
 $ajaxlib->registerFunction('set_arquivo_licenca');
 function set_arquivo_licenca ($resposta1, $resposta2, $resposta3, $padrao = false) {
 
-    global $userlib, $elgallib, $arquivoId;
+    global $userlib, $elgallib, $arquivoId, $style;
     
 	$objResponse = new xajaxResponse();
 	$licencaId = $elgallib->id_licenca($resposta1, $resposta2, $resposta3);
@@ -140,7 +140,7 @@ function set_arquivo_licenca ($resposta1, $resposta2, $resposta3, $padrao = fals
 		$objResponse->addAlert("Não foi possivel editar o campo licencaId");
 	} else {
 	  	$licenca = $elgallib->get_licenca($licencaId);
-	  	$objResponse->addAssign('ajax-uImagemLicenca', 'src', 'styles/estudiolivre/h_' . $licenca['linkImagem'] . '?rand='.rand());
+	  	$objResponse->addAssign('ajax-uImagemLicenca', 'src', 'styles/' . preg_replace('/\.css/', '', $style) . '/img/h_' . $licenca['linkImagem'] . '?rand='.rand());
 	}
 		
 	return $objResponse;
@@ -163,17 +163,21 @@ function _publish_arquivo() {
 $ajaxlib->setPermission('check_publish', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('check_publish');
 function check_publish($showDisclaimer = true, $dontShowAgain = false) {
-    global $user, $userlib, $elgallib, $arquivoId;
+    global $user, $userlib, $elgallib, $arquivoId, $isIE;
     $objResponse = new xajaxResponse();
 	
     if ($errorList = $elgallib->check_publish($arquivoId)) {
     	$errorMsgs = '';
     	foreach ($errorList as $field => $error) {
-    		$errorMsgs .= $error . "<br>\n";
+    		$errorMsgs .= $error . ($isIE ? "" : "<br/>") . "\n";
     		$objResponse->addScriptCall('exibeErro',$field, $error);
     	}
-    	$objResponse->addAssign("ajax-gUpErrorList", "innerHTML", $errorMsgs);
-    	$objResponse->addScript("showLightbox('ajax-gUpError')");
+    	if ($isIE) {
+    		$objResponse->addAlert($errorMsgs);
+    	} else {
+    		$objResponse->addAssign("ajax-gUpErrorList", "innerHTML", $errorMsgs);
+    		$objResponse->addScript("showLightbox('ajax-gUpError')");
+    	}
     } else {
 		if (!$showDisclaimer || $userlib->get_user_preference($user, 'el_disclaimer_seen', false)) {
 		    if ($dontShowAgain) {

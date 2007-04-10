@@ -41,7 +41,7 @@ class AudioFile extends FileReference {
 	
 	// class method
 	function validateExtension($filename) {
-		$extensions = array('mp3','ogg','wav','aiff','avi','flac','mp2','mid','mxf');
+		$extensions = array('mp3','ogg','wav','aiff','avi','flac','mp2','mid','mxf', 'mp4');
 		if (!preg_match('/\.([^.]{3,4}$)/', $filename, $m)) {
 	    	trigger_error(tra("Erro: extensão de arquivo inválida."), E_USER_ERROR);
 	  	}
@@ -51,7 +51,7 @@ class AudioFile extends FileReference {
 	}
 	
 	function checkField_duration($value) {
-		return $this->checkNumericField($value, tra('Duração deve ser um número'));
+		return $this->checkNumericField($value, tra('Duração deve ser um número em segundos'));
 	}
 	function checkField_bpm($value) {
 		return $this->checkNumericField($value, tra('BPM deve ser um número'));

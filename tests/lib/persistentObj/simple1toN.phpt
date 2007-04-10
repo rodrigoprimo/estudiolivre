@@ -22,7 +22,7 @@ class SuperC extends PersistentObject {
 
     var $aString;
     var $aInt;
-    var $hasMany = array('SuperC' => 'Child');
+    var $hasMany = array('Child' => 'SuperC');
 }
 
 class Child extends PersistentObject {

@@ -51,14 +51,15 @@ if (strpos($_SERVER["SCRIPT_NAME"],basename(__FILE__)) !== false) {
 	
 	$beginPosition = strpos($source, $beginTag);
 	$endPosition =  strpos($source, $endTag);
+	//return "beginPosition: $beginPosition<br/>endPosition: $endPosition<br/>" . ((!empty($beginPosition) && !empty($endPosition)) ? "ok" : "nao");
 	
 	if (!empty($beginPosition) && !empty($endPosition)) {
 		$begin = substr($source, 0, $beginPosition);
 		$mid = substr($source, $beginPosition + strlen($beginTag), $endPosition - $beginPosition - strlen($beginTag));
 		$end = substr($source, $endPosition + strlen($endTag));
 	} else {
-		$begin = $end = '';
-		$mid = $source;
+	    // highlight não funciona mais sem as tags $beginTag e $endTag, pra evitar q ele seja chamado em vários níveis.
+	    return $source;
 	}
 	
 	$source = ''; // save memory
@@ -66,12 +67,17 @@ if (strpos($_SERVER["SCRIPT_NAME"],basename(__FILE__)) !== false) {
 	global $enlightPattern;
 	$enlightPattern = _enlightColor($highlight); // set colors
 	
-	$mid = preg_replace_callback('/>([^<]+)</', '_findMatch', $mid);
+	$mid = preg_replace_callback('/>([^<>]+)</', '_findMatch', $mid);
 	
 	$mid = preg_replace_callback("/tooltip\('[^']+?'\)/",'_fixTooltip', $mid);
 	return $begin . $mid . $end;
 
  }
+
+function _fixTooltip($matches) {
+	$tooltip = $matches[0];
+	return $tooltip = preg_replace('~</?span[^>]*>~','',$tooltip);
+}
 
 function _findMatch($matches) {
 	$mid = $matches[1];
@@ -106,11 +112,6 @@ function _enlightColor($matches) {
             . $colword[strtolower($matches[1])] . ';">' . $matches[1] . '</span>';
     }
     return $matches[0];
-}
-
-function _fixTooltip($matches) {
-	$tooltip = $matches[0];
-	return $tooltip = preg_replace('~</?span[^>]*>~','',$tooltip);
 }
 
  // helper function

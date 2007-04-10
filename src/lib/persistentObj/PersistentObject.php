@@ -1,4 +1,4 @@
-<?php
+<?php 
 /*
  * Created on 28/11/2006
  *
@@ -7,27 +7,47 @@
  * this is an abstract class (shouldn't be instanciated)
  * for class->database persistence.
  * all the subclasses should have a table with the same name as the class,
- * and all the properties for the table rows
+ * and all the properties for the table rows, except id, wich belongs to 
+ * this class. errors are triggered as E_USER_ERROR and should be caught 
+ * by the implementing system
  * 
  */
 
 require_once ('lib/tikidblib.php');
+require_once ('PersistentObjectFactory.php');
 
-class PersistentObject extends TikiDB {
+/* this is an option to add extraStructure beyond your class hierarchy
+ * to ise this, you must create the file bellow in your application
+ * in this file you add methods to this class with the name pattern
+ * actionExtra, i.e. insertTag. action must be insert, update, delete or select 
+ */
+@include_once ('PersistentObjectExtra.php');
+
+class PersistentObject {
 	
 	var $table;
 	var $id;
 	var $hasMany = array();
 	var $belongsTo = array();
-	
+	var $hasManyAndBelongsTo = array();
+	var $extraStructure = array();
+	var $actualClass = false;
+	/* This is the base constructor for the framework. it relies on the 
+	 * basis that if you send an id, you want to retrieve, and if you send 
+	 * fields, you want to insert a new entry. modification is done by retrieving
+	 * and then modifying.
+	 * The second parameter serves the purpose of stopping infinite loops when selecting
+	 * objects with 1 <-> N or N <-> N (not yet implemented) relations
+	 */
 	function PersistentObject($fields, $referenced = false) {
-		global $dbTiki;
-	    $this->db = $dbTiki;
 	    $this->table = get_class($this);
 	    if (is_array($fields)) {
 	    	if (count($fields)) {
+	    		if ($this->actualClass)
+		    		$fields['actualClass'] = $this->table;
 		    	$this->_populateObject($fields);
 		    	$this->id = $this->insert($fields);
+		    	$this->_extraStructure('insert');
 	    	} else trigger_error("Incorrect parameters, need array with at least one field to create object", E_USER_ERROR);
 	    } elseif (is_int($fields)) {
 	    	$this->id = $fields;
@@ -44,9 +64,14 @@ class PersistentObject extends TikiDB {
 		return $this;
 	}
 	
+	function query($query, $bindvals = array()) {
+		global $dbConnection;
+	    return $dbConnection->query($query, $bindvals);
+	}
+	
 	// this does not check anything, an actual method 
 	// per field must be implemented in subclasses
-	// the check methods should trigger errors
+	// the check methods should trigger E_USER_ERROR
 	function _checkField($name, $value) {
 		$methodName = "checkField_" . $name;
 	  	if (method_exists($this, $methodName)) {
@@ -54,6 +79,7 @@ class PersistentObject extends TikiDB {
 	  	}
 	}
 	
+	// PHP4 hack
 	function __array_diff_key($a1, $a2) {
 		$diff = array();
 		foreach ($a1 as $key => $value) {
@@ -64,6 +90,7 @@ class PersistentObject extends TikiDB {
 		return $diff;
 	}
 
+	// PHP4 hack
 	function __array_intersect_key($a1, $a2) {
 		$diff = array();
 		foreach ($a1 as $key => $value) {
@@ -74,7 +101,7 @@ class PersistentObject extends TikiDB {
 		return $diff;
 	}
 
-	
+	// builds the insertion values and cuts out the last ","
 	function _prepInsertQuery($fields, $table) {
 		if (count($fields)) {
 			$query = "insert into $table (";
@@ -107,38 +134,45 @@ class PersistentObject extends TikiDB {
 	function insert($fields, $table = false) {
 		if (!$table) $table = $this->table;
 		$super = get_parent_class($table);
+
 		$parentProperties = get_class_vars($super);
 		$parentFields = $this->__array_intersect_key($fields, $parentProperties);
 		$localFields = $this->__array_diff_key($fields, $parentProperties);
+		$id = false;
 		if ($super != 'persistentobject') {
 			$id = $this->insert($parentFields, $super);
 			$localFields['id'] = $id;
-			$this->query($this->_prepInsertQuery($localFields, $table), $localFields);
-			return $id;  
+			$this->query($this->_prepInsertQuery($localFields, $table), $localFields);  
 		} else {
 			$this->query($this->_prepInsertQuery($localFields, $table), $localFields);
-			return (int)$this->getOne("select max(id) from $table " . $this->_prepQueryConditions($localFields), $localFields);
+			$id = (int)$this->getOne("select max(id) from $table " . $this->_prepQueryConditions($localFields), $localFields);
 		}
+		return $id;
 	}
 	
-	function update($fields, $table = false) {
+	function update($fields) {
+		$this->_doUpdate($fields); 
+		$this->_extraStructure('update');
+		return $this;
+	}
+	
+	function _doUpdate($fields, $table = false) {
 		if (!$table) $table = $this->table;
 		$super = get_parent_class($table);
 		$parentProperties = get_class_vars($super);
 		$parentFields = $this->__array_intersect_key($fields, $parentProperties);
 		$localFields = $this->__array_diff_key($fields, $parentProperties);
 		if (count($parentFields) && $super != 'persistentobject') {
-			$this->update($parentFields, $super);
+			$this->_doUpdate($parentFields, $super);
 		}
 		if (count($localFields)) {
 			$this->_updateObject($localFields, $table);
 		}
-		return $this;
 	}
 	
 	function _updateObject($fields, $table) {
-		$query = "update $table set "; 
 		$this->_populateObject($fields);
+		$query = "update $table set ";
 		foreach ($fields as $key => $value) {
 			$query .= "$key = ?,";
 		}
@@ -153,6 +187,7 @@ class PersistentObject extends TikiDB {
 		for ($table = get_parent_class($this->table); $table != 'persistentobject'; $table = get_parent_class($table)) {
 			$this->query("delete from $table where id = ?", array($this->id));
 		}
+		$this->_extraStructure('delete');
 	}
 	
 	function select($referenced = false) {
@@ -169,62 +204,72 @@ class PersistentObject extends TikiDB {
 		else trigger_error("Incorrect parameters, id doesn't exist", E_USER_ERROR);
 		if (!$referenced) {
 			$this->_getParent();
+			$this->_getPeers();
+			$this->_getChildren();
 		}
-		$this->_getChildren();
+		$this->_extraStructure('select');
 	}
 	
+	/* Populates the "1" side of a 1 to N relation
+	 * note that the superclass wich corresponds to the "1" side
+	 * will not be instanciated, only the subclasses will
+	 */
 	function _getParent() {
 		foreach ($this->belongsTo as $parent) {
 			$varName = strtolower($parent);
 			$idName = $varName . "Id";
 			if ($this->$idName) {
-				eval('$subclassesOfParent = ' . $parent . '::subclasses();');
-				if ($subclassesOfParent) {
-					foreach ($subclassesOfParent as $sub) {
-						$tableName = strtolower($sub);
-						if ($this->getOne("select id from $tableName where id = ?", array($this->$idName))) {
-							$this->$varName = new $parent((int)$this->$idName);
-							break;
-						}
-					}
-				} else {
-					$this->$varName = new $parent((int)$this->$idName);
-				}
+				$obj = PersistentObjectFactory::createObject($parent, (int)$this->$idName, true);
 			}
 		}
 	}
 	
+	/* Populates the "N" side of a 1 to N relation
+	 * note that the superclass wich corresponds to the "N" side
+	 * will not be instanciated, only the subclasses will
+	 */
 	function _getChildren() {
-		foreach ($this->hasMany as $parent => $child) {
+		foreach ($this->hasMany as $child => $parent) {
+			require_once($child . ".php");
 			$childName = strtolower($child);
-			$idName = strtolower($parent) . "Id";
 			$varName = $childName . "s";
 			$this->$varName = array();
+			$idName = strtolower($parent) . "Id";
 			
 			$result = $this->query("select id from $childName where $idName = ?", array($this->id));
-			eval('$subclassesOfChild = ' . $child . '::subclasses();');
-			if ($subclassesOfChild) {
-				while ($row = $result->fetchRow()) {
-					foreach ($subclassesOfChild as $sub) {
-						$tableName = strtolower($sub);
-						if ($this->getOne("select id from $tableName where id = ?", array($row['id']))) {
-							array_push($this->$varName, new $sub((int)$row['id'], true));
-							break;
-						}
-					}
-				}
-			} else {
-				while ($row = $result->fetchRow()) {
-					array_push($this->$varName, new $child((int)$row['id'], true));
-				}
+			while ($row = $result->fetchRow()) {
+				array_push($this->$varName, PersistentObjectFactory::createObject($child, (int)$row['id'], true));
 			}
 		}
 	}
 	
-	// this method must be implemented as false in this class so as not
-	// to raise errors when evaluating above, when subclass does not have subclasses
-	function subclasses() {
-		return false;
+	/* populates "N" to "N" relations
+	 */
+	function _getPeers() {
+		foreach ($this->hasManyAndBelongsTo as $peer => $me) {
+			require_once($peer . ".php");
+			$myName = strtolower($me);
+			$peerName = strtolower($peer);
+			$varName = $peerName . "s";
+			$this->$varName = array();
+			if ($peerName < $myName) $tableName = $peerName . "_" .  $myName;
+			else $tableName = $myName . "_" .  $peerName;
+			$result = $this->query("select ${peerName}Id as id from $tableName where ${myName}Id = ?", array($this->id));
+			while ($row = $result->fetchRow()) {
+				if ($row['actualClass']) $actualClass = $row['actualClass'];
+				else $actualClass = $peer;
+				array_push($this->$varName, new $actualClass((int)$row['id'], true));
+			}
+		}
+	}
+
+	function _extraStructure($action) {
+		foreach($this->extraStructure as $structure) {
+			$methodName = $action . $structure;
+			if (class_exists("PersistentObjectExtra")) {
+				PersistentObjectExtra::$methodName($this);
+			}
+		}
 	}
 	
 }

@@ -30,7 +30,8 @@ function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $fi
 		$_REQUEST['highlight'] = $find;
 	}
 
-	$objResponse->addAssign("ajax-listNav", "innerHTML", $smarty->fetch("el-gallery_pagination.tpl"));
+    $objResponse->addAssign("ajax-listNav", "innerHTML", $smarty->fetch("el-gallery_pagination.tpl"));
+    $objResponse->addAssign("ajax-navBottom", "innerHTML", $smarty->fetch("el-gallery_pagination.tpl"));
     $objResponse->addAssign("ajax-gListCont", "innerHTML", $smarty->fetch("el-gallery_section.tpl"));
     $objResponse->addScript("nd()");
     //$objResponse->addScript("acervoCache('$tiposHr', $offset, $maxRecords, '$sort_mode', '$find', '$filtersHr')");

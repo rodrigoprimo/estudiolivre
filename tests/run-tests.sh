@@ -1,9 +1,8 @@
 #!/bin/sh
 
 # This must be set manually for now */
-PHP_SRCDIR="/noe/php/source";
 
-export TEST_PHP_EXECUTABLE="$PHP_SRCDIR/sapi/cli/php"
+export TEST_PHP_EXECUTABLE="php"
 export -n NO_INTERACTION
 export TEST_PHP_DETAILED
 

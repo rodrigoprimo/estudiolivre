@@ -951,6 +951,7 @@ class ELGalLib extends TikiLib {
   
 }
 
+// migrado para el-setup
 global $elgallib, $dbTiki, $userHasPermOnFile, $arquivoId, $el_p_admin_gallery;
 $elgallib = new ELGalLib($dbTiki);
 
@@ -965,5 +966,6 @@ if (isset($_REQUEST['arquivoId'])) {
 } else {
 	$arquivoId = false;
 }
+//**/
 	
 ?>

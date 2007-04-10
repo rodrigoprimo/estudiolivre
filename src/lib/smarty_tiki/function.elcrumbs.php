@@ -25,7 +25,7 @@ function smarty_function_elcrumbs($params, &$smarty) {
 		$output .= ' <br> ';
 	}
 	
-	$output = preg_replace("/> $/", '', $output);
+	//$output = preg_replace("/> $/", '', $output);
 	
 	$output .= "</div>"; 
 	

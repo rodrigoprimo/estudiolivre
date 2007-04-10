@@ -5,6 +5,7 @@
 DROP TABLE IF EXISTS `filereference`;
 CREATE TABLE `filereference` (
   `id` int(11) NOT NULL auto_increment,
+  `actualClass` varchar(255) NOT NULL,
   `publicationId` int(11) NOT NULL,
   `fileName` varchar(255) NOT NULL,
   `thumbnail` varchar(255) NOT NULL,

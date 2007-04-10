@@ -26,17 +26,17 @@ class Publication extends PersistentObject {
 	var $site;
 	var $rating;
 
-	/************************************************************/
-	/* this is configuration for the relations with publication */
-	var $belongsTo = array("License", "Collection");
+	/*************************************************************/
+	/* this is configuration for the persistent object framework */
+	var $belongsTo = array("License");
 	var $licenseId;
 	var $collectionId;
-	var $hasMany = array("Publication" => "FileReference", "Publication" => "Vote", "Publication" => "Comment");
+	var $hasMany = array("FileReference" => "Publication", "Vote" => "Publication", "Comment" => "Publication");
 	
-	function subclasses() {
-		return array("AudioPublication", "VideoPublication", "ImagePublication", "TextPublication");
-	}
-	/************************************************************/
+	var $actualClass = true;
+	var $extraStructure = array("TikiTags");
+	var $tagType = "gallery";
+	/*************************************************************/
 
 	function checkRequiredField($value, $msg) {
 		if (preg_match('/^\s*$/',$value)) {
@@ -66,6 +66,13 @@ class Publication extends PersistentObject {
 	
 	function publish() {
 		return $this->update(array('publishDate' => time()));
+	}
+	
+	function getUserRating($user) {
+		foreach ($this->votes as $vote) {
+			if ($vote->user == $user)
+				return $vote;
+		}
 	}
 	
 }

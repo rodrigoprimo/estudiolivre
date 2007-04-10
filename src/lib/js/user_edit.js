@@ -24,3 +24,49 @@ function saveLicenca() {
     }
 }
 
+//TODO abstrair as funcoes de thumb pra outro js, ja que sao usadas no upload e no user...
+function changeThumbStatus() {
+    thumbUpId = document.thumbForm.UPLOAD_IDENTIFIER.value;
+    document.thumbForm.submit();
+    updateThumbUpInfo();
+}
+
+function updateThumbUpInfo() {
+	if (!upThumbStarted) {
+		upThumbStarted = true;
+		show('gUserThumbStatus');
+		// TODO: tosco
+		if (document.getElementById('gUserThumbFormContainer')) {
+		    hide('gUserThumbFormContainer');
+		}
+		if (document.getElementById('aThumbForm')) {
+		    hide('aThumbForm');
+		}
+		document.getElementById('gUserThumbStatus').innerHTML = '0%';
+	}
+	xajax_upload_info(thumbUpId, 'updateThumbProgressMeter');
+	thumbTimerId = setTimeout('updateThumbUpInfo()',1000);
+}
+
+function finishUpThumb() {
+	if (thumbTimerId) {
+		clearTimeout(thumbTimerId);
+		upThumbStarted = false;
+		// TODO: tosco
+		if (document.getElementById('gUserThumbFormContainer')) {
+		    show('gUserThumbFormContainer');
+		}
+		if (document.getElementById('aThumbForm')) {
+		    show('aThumbForm');
+		}
+		hide('gUserThumbStatus');	
+	}
+}
+
+function updateThumbProgressMeter(uploadInfo) {
+    var normalized = uploadInfo['bytes_uploaded'] / uploadInfo['bytes_total'];
+    var percent = Math.ceil(100 * normalized);
+    if (percent) {
+		document.getElementById('gUserThumbStatus').innerHTML = percent + '%';	
+    }	
+}

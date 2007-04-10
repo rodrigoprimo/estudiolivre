@@ -8,7 +8,7 @@
 
 require_once "lib/persistentObj/PersistentObject.php";
 
-class Comment extends PersistentObjetc {
+class Comment extends PersistentObject {
 	
 	var $user;
 	var $comment;

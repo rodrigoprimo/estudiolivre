@@ -4,8 +4,18 @@ insert into videopublication select arquivoId,idioma,legendas,idiomaLegenda,fich
 insert into imagepublication (id) select arquivoId from el_arquivo_imagem; 
 insert into textpublication (id) select a.arquivoId from el_arquivo a left join el_arquivo_audio aa on a.arquivoId=aa.arquivoId left join el_arquivo_video av on a.arquivoId=av.arquivoId left join el_arquivo_imagem ai on a.arquivoId=ai.arquivoId where aa.arquivoId is null and av.arquivoId is null and ai.arquivoId is null;
 insert into filereference (publicationId,fileName,thumbnail,mimeType,size,downloads,streams) select arquivoId,arquivo,thumbnail,formato,tamanho,hits,streamHits from el_arquivo; 
+insert into tiki_objects (type,itemId,href,created) select 'file',id,concat('el-view_file.php?id=',id),unix_timestamp(now()) from filereference;
 insert into audiofile select f.id,aa.duracao,aa.bpm,aa.sampleRate,aa.bitRate from filereference f, el_arquivo_audio aa where f.publicationId = aa.arquivoId;
 insert into videofile select f.id,av.duracao,av.tamanhoImagemX,av.tamanhoImagemY,av.temAudio,av.temCor from filereference f, el_arquivo_video av where f.publicationId = av.arquivoId;
 insert into imagefile select f.id,ai.tamanhoImagemX,ai.tamanhoImagemY,dpi from filereference f, el_arquivo_imagem ai where f.publicationId = ai.arquivoId;
 insert into textfile (id) select f.id from filereference f left join audiofile af on f.id=af.id left join videofile vf on f.id=vf.id left join imagefile iff on f.id=iff.id where af.id is null and vf.id is null and iff.id is null;
 insert into vote (publicationId,user,rating) select * from el_arquivo_rating;
+insert into comment (publicationId,user,comment,date) select object,userName,data,commentDate from tiki_comments;
+update publication set actualClass = "AudioPublication" where id in (select id from audiopublication);
+update publication set actualClass = "VideoPublication" where id in (select id from videopublication);
+update publication set actualClass = "ImagePublication" where id in (select id from imagepublication);
+update publication set actualClass = "TextPublication" where id in (select id from textpublication);
+update filereference set actualClass = "AudioFile" where id in (select id from audiofile);
+update filereference set actualClass = "VideoFile" where id in (select id from videofile);
+update filereference set actualClass = "ImageFile" where id in (select id from imagefile);
+update filereference set actualClass = "TextFile" where id in (select id from textfile);

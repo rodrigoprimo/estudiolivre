@@ -5,6 +5,9 @@ if (strpos($_SERVER["SCRIPT_NAME"],basename(__FILE__)) !== false) {
   exit;
 }
 
+global $dbConnection;
+$dbConnection =& $dbTiki;
+
 $feature_tooltip = $userlib->get_user_preference($user, 'feature_tooltip', 'y');
 $feature_tooltip_max_clicks = $userlib->get_user_preference($user,'feature_tooltip_max_clicks', 5);
 
@@ -36,7 +39,7 @@ $smarty->assign('showTeste', preg_match('/teste\.estudioli.re\.org/',$ownurl));
 
 //TODO descobrir pq precisa dessa bosta aqui pra traducao funcionar
 tra('');
-
+TikiSetup::prependIncludePath('lib/elgal/model');
 // TODO: Fazer ieGIF2PNG q substitui o {if $isIE}gif{else}png{/if}
 
 ?>

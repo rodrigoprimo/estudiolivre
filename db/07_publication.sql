@@ -5,6 +5,7 @@
 DROP TABLE IF EXISTS `publication`;
 CREATE TABLE `publication` (
   `id` int(11) NOT NULL auto_increment,
+  `actualClass` varchar(255) NOT NULL,
   `licenseId` int(11) NOT NULL,
   `collectionId` int(11) NOT NULL,
   `user` varchar(40) NOT NULL,

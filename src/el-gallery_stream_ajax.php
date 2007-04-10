@@ -68,4 +68,22 @@ function streamFile($arquivoId, $type, $screenSize) {
     
 }
 
+$ajaxlib->setPermission('streamStream', $el_p_view == 'y');
+$ajaxlib->registerFunction("streamStream");
+function streamStream($url, $size) {
+	
+	global $smarty;
+	$objResponse = new xajaxResponse();
+	
+	preg_match('/(\d+)\sx\s(\d+)/', $size, $matches);
+	$width = (int)$matches[1];
+	$height = (int)$matches[1];
+	
+	$objResponse->addRemove('ajax-gPlayer');
+   	$objResponse->addAppend('ajax-contentBubble', 'innerHTML', $smarty->fetch('el-player.tpl'));
+    $objResponse->addScript("loadFile('$url', $width, $height, 'true')");
+    
+    return $objResponse;  
+}
+
 ?>

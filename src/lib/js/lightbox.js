@@ -96,13 +96,17 @@ function showLightbox(divId) {
 	var overlay = document.getElementById("overlay");
 	var content = document.getElementById(divId);
 	var objLightbox = document.getElementById('lightbox');
-	
+
 	// set height of Overlay to take up whole page and show
 	document.getElementById("overlay").style.height = (arrayPageSize[1] + 'px');
 	document.getElementById('overlay').style.display = 'block';
 
-	content.style.display = 'table-cell';
-	
+	//if ((document.documentElement && document.documentElement.scrollTop) || document.body){	 // Explorers
+		content.className = 'tc';
+	//} else {// all other browsers
+	//	content.style.display = 'table-cell';
+	//}
+
 	// get width of the content to define the position of the lightbox
 	var width = (content.style.width).replace(new RegExp(/px/),"");
 	var lightboxTop = arrayPageScroll[1] + ((arrayPageSize[3] - content.clientHeight - 35) / 2);
@@ -152,7 +156,7 @@ function hideLightbox() {
 		// hide lightbox and overlay
 		var content = document.getElementById(currentLightBoxDiv);
 		//currentLightBoxDiv = null;
-		content.style.display = 'none';
+		content.className = 'none';
 		setTimeout("document.body.appendChild(document.getElementById(currentLightBoxDiv))", 1);
 	}
 }

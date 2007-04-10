@@ -28,9 +28,7 @@ class SuperC extends PersistentObject {
     var $aString;
     var $aInt;
     var $belongsTo = array("Owner");
-    function subclasses() {
-    	return array("Child", "Child2");
-    }
+    var $actualClass = true;
     
 }
 
@@ -49,7 +47,7 @@ class Child2 extends SuperC {
 class Owner extends PersistentObject {
 	
 	var $owner;
-	var $hasMany = array("Owner" => "SuperC");
+	var $hasMany = array("SuperC" => "Owner");
 	
 }
 

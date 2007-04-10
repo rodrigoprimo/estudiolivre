@@ -16,10 +16,7 @@ function get_more_tags($offset, $maxRecords) {
     $objResponse->addScript("document.getElementById('$last_tag-v').style.display='inline'");
     $objResponse->addAppend("ajax-gUpTagListItem", "innerHTML", $smarty->fetch("el-tag_suggest_list.tpl"));
     
-    if(($offset + $maxRecords) < $freetaglib->count_distinct_tags()) {
-    	$smarty->assign('moreTagsOffset', $offset + $maxRecords);
-    	$objResponse->addAssign("ajax-gUpTagSuggestMore", "innerHTML", $smarty->fetch("el-tag_suggest_more.tpl"));
-    } else {
+    if(($offset + $maxRecords) > $freetaglib->count_distinct_tags()) {
     	$objResponse->addAssign("ajax-gUpTagSuggestMore", "style.display", "none");
     }
     

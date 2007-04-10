@@ -24,10 +24,12 @@ class FileReference extends PersistentObject {
 	/************************************************************/
 	/* this is configuration for the relations with publication */
 	var $belongsTo = array("Publication");
-	var $hasMany = array("FileReference" => "Comment");
-	function subclasses() {
-		return array("AudioFile", "VideoFile", "ImageFile", "TextFile");
-	}
+	var $hasMany = array("Comment" => "FileReference");
+	var $hasManyAndBelongsTo = array("Tag" => "FileReference");
+	
+	var $actualClass = true;
+	var $extraStructure = array("TikiTags");
+	var $tagType = "file";
 	/************************************************************/
 	
 	function FileReference($fileRef, $referenced = false) {
