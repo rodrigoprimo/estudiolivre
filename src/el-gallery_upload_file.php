@@ -1,24 +1,28 @@
 <?php
 
-
 // esse arquivo salva o upload
 require_once ("tiki-setup.php");
-require_once ("lib/elgal/elgallib.php");
+require_once ("lib/filegals/filegallib.php");
+
+include_once("el-gallery_set_publication.php");
 
 if ($arquivoId && isset($_FILES['arquivo']) && !empty($_FILES['arquivo']['name'])) {
 
-	global $arquivoId;
 	$errorMsg = '';
 
 	if (!is_uploaded_file($_FILES["arquivo"]['tmp_name'])) {
-			$errorMsg = tra('Upload was not successful') . ': ' . ELGalLib :: convert_error_to_string($_FILES["arquivo"]['error']);
+			$errorMsg = tra('Upload was not successful') . ': ' . FileGalLib :: convert_error_to_string($_FILES["arquivo"]['error']);
 	} else {
-		$errorMsg = $elgallib->validate_file($_REQUEST['tipo'], $_FILES["arquivo"]["tmp_name"]);
-		global $userlib;
-		$userId = $userlib->get_user_id($user);
-		if($error = $elgallib->save_file($_FILES["arquivo"], $arquivoId, $userId)) {
-			$errorMsg = tra('Upload was not successful') . ': ' . $error;
-		}
+		
+		$class = $arquivo->type == "Imagem" ? "Image" : ($arquivo->type == "Texto" ? "Text" : $arquivo->type);
+		
+		$fileClass = $class . "File";
+		require_once($fileClass . ".php");
+		
+		$fields = $_FILES["arquivo"];
+		$fields["publicationId"] = $arquivoId;
+		
+		$file = new $fileClass($fields);
 	}
 
 	if ($errorMsg) {

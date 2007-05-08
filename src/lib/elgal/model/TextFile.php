@@ -19,13 +19,17 @@ class TextFile extends FileReference {
 		return;
 	}
 	
+	function autoInfos() {
+		return array();
+	}
+	
 	function generateThumb() {
 		return;
 	}
 	
 	// class method
 	function validateExtension($filename) {
-		return;
+		return false;
 	}
 	
 }

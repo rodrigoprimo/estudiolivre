@@ -21,8 +21,9 @@ function enableAttribution() {
 
 function testLicense() {
     if (resposta1 != null && resposta2 != null && (resposta2 == 1 || resposta3 != null)) {
-	xajax_get_license(resposta1, resposta2, resposta3);
+    	if (document.getElementById('resposta3-0').disabled) xajax_get_license(resposta1, resposta2, -1);
+		else xajax_get_license(resposta1, resposta2, resposta3);
     } else {
-	hide('ajax-licenseCont');
+		hide('ajax-licenseCont');
     }
 }

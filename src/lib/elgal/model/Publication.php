@@ -40,7 +40,7 @@ class Publication extends PersistentObject {
 
 	function checkRequiredField($value, $msg) {
 		if (preg_match('/^\s*$/',$value)) {
-			trigger_error($msg, E_USER_ERROR);
+			return $msg;
 		}
 	}
 
@@ -55,24 +55,146 @@ class Publication extends PersistentObject {
 	}
 	
 	function checkPublish() {
-		$this->checkField_author($this->author);
-		$this->checkField_title($this->author);
-		$this->checkField_description($this->author);
-		if (!is_array($this->filereferences)) {
-			trigger_error(tra('Você não terminou de enviar o arquivo'), E_USER_ERROR);
+		$error = array();
+		if ($msg = $this->checkField_author($this->author)) $error["author"] = $msg;
+		if ($msg = $this->checkField_title($this->author)) $error["title"] = $msg;
+		if ($msg = $this->checkField_description($this->author)) $error["description"] = $msg;
+		if (!$this->licenseId) {
+	  		$error['license'] = tra('Você deve escolher uma licença');
+	  	}
+		if (!count($this->filereferences)) {
+			$error['arquivo'] = tra('Você não terminou de enviar o arquivo');
 		}
-		return true;
+		return $error;
 	}
 	
 	function publish() {
 		return $this->update(array('publishDate' => time()));
 	}
 	
-	function getUserRating($user) {
+	function getUserVote($userR = false) {
+		global $user;
+		if (!$userR) $userR = $user;
+		if (!$userR) return 0; 
 		foreach ($this->votes as $vote) {
-			if ($vote->user == $user)
+			if ($vote->user == $userR)
 				return $vote;
 		}
+		return false;
+	}
+	
+	function getArraySize($var) {
+		return count($this->$var);
+	}
+	
+	function vote($userR, $rating) {
+		$num = 0; $total = 0;
+		$hasVote = false;
+		foreach ($this->votes as $vote) {
+			if ($vote->user == $userR) {
+				if ($vote->rating == $rating) {
+					return true;
+				} else {
+					$vote->update(array('rating' => $rating));
+				}
+				$hasVote = true;
+			}
+			$total += $vote->rating; $num++;
+		}
+		if (!$hasVote) {
+			$vote = new Vote(array('publicationId' => $this->id, 'rating' => $rating, 'user' => $userR));
+			array_push($this->votes, $vote);
+			$total += $vote->rating; $num++;
+		}
+		$this->update(array('rating' => $total/$num));
+	}
+	
+	function getFilledFields() {
+		$vars = get_class_vars($this);
+		$result = array();
+		foreach ($vars as $field) {
+			if ($his->$field) $result[$field] = $this->field;
+		}
+		return $result;
+	}
+	
+	function uploadThumb($fileName, $realName) {
+		
+		global $tikilib;
+		
+		if (!function_exists('imagepng')) {
+			return;
+		}
+		$fp = fopen($fileName, 'rb');
+		if (!$fp) return;
+		
+		$data = '';
+		while (!feof($fp)) {
+		  $data .= fread($fp, 8192 * 16);
+		}
+		fclose($fp);
+		
+		//bloco que acha a proporcao pro thumbnail		
+		$thumbSide = $tikilib->get_preference('el_thumb_side', 100);
+		list($width, $height) = getimagesize($this->baseDir . $this->fileName);
+		if ($width > $thumbSide || $height > $thumbSide) {
+			$sourceX = 0;
+			$sourceY = 0;
+			$destX = 0;
+			$destY = 0;
+			$sourceW = $width;
+			$sourceH = $height;
+			
+			// crop normal
+			if ($width > $height) {
+				$sourceX = ($width - $height) / 2;
+				$sourceW = $height;
+				
+			} elseif ($height > $width) {
+				$sourceY = ($height - $width) / 2;
+				$sourceH = $width;
+			
+			}
+			
+			$destW = $thumbSide;
+			$destH = $thumbSide;
+
+			// se o lado da imagem eh menor q o thumb
+			if ($height < $thumbSide) {
+				$destY = ($thumbSide - $height) / 2;
+				$destH = $height;
+			}
+			if ($width < $thumbSide) {
+				$destX = ($thumbSide - $width) / 2;
+				$destW = $width;
+			}
+			
+			$src = imagecreatefromstring($data);
+			$img = imagecreatetruecolor($thumbSide, $thumbSide);
+			imagecopyresized($img, $src, $destX, $destY, $sourceX, $sourceY, $destW, $destH, $sourceW, $sourceH);
+
+			ob_start();
+			imagepng($img);
+			$data = ob_get_contents();
+			ob_end_clean();
+		}
+		
+		$thumbName = 'thumb_' . $this->id . '-'. $realName;
+		$thumbName = preg_replace('/\.(.+?)$/', 'png', $thumbName);
+		
+		$fp = fopen('repo/' . $thumbName, "w");
+		if (!$fp) return;
+		fwrite($fp, $data);
+		fclose($fp);
+		
+		return $this->update(array('thumbnail' => $thumbName));
+		
+	}
+	
+	function delete() {
+		parent::delete();
+		if ($this->thumbnail)
+			unlink("repo/" . $this->thumbnail);
 	}
 	
 }

@@ -15,7 +15,7 @@ require_once "Publication.php";
 class AudioPublication extends Publication {
 	
 	// to be backward compatible with acervo1
-	var $type = "audio";
+	var $type = "Audio";
 	var $typeOfAudio;
 	var $genre;
 	var $lyrics;

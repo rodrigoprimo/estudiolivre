@@ -14,7 +14,7 @@ require_once "Publication.php";
 
 class TextPublication extends Publication {
 	
-	var $type = "text";
+	var $type = "Texto";
 	var $typeOfText;
 	var $language;
 	var $pages;

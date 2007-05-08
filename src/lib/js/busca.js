@@ -32,7 +32,7 @@ function marcaBusca(name) {
 
 function busca(category, value) {
 	if (/.*el-gallery_home.*/.test(document.location) && selectedBusca == 'gallery') {
-		xajax_get_files(tipos, 0, 5, sortMode+sortDirection, '', value); 
+		xajax_get_files(tipos, 0, 10, sortMode+sortDirection, '', value); 
 		findValue = value; 
 	} else {
 		document.searchForm.submit();

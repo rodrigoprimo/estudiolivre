@@ -1,18 +1,40 @@
 <?php
-
-require_once("el-gallery_stream_ajax.php");
+// migrado pra 2.0!
+require_once("lib/persistentObj/PersistentObjectController.php");
 
 global $el_p_view;
 
 $ajaxlib->setPermission('get_files', $el_p_view == 'y');
 $ajaxlib->registerFunction("get_files");
 function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $find = '', $filters = array()) {
-    global $elgallib, $smarty, $user;
+    global $smarty, $user, $tikilib;
 
     $objResponse = new xajaxResponse();
-	$total = $elgallib->count_all_uploads($tipos, $userName, $find);
+	
+	$actualClass = array("Video" => "VideoPublication",
+						 "Audio" => "AudioPublication",
+						 "Imagem" => "ImagePublication",
+						 "Texto" => "TextPublication");
+	$filters = array("actualClass" => array());
+	foreach ($tipos as $tipo) {
+		$filters["actualClass"][] = $actualClass[$tipo];
+	}
 
-    $files = $elgallib->list_all_uploads($tipos, $offset, $maxRecords, $sort_mode, $userName, $find, $filters);
+	if ($userName) {
+		$filters["user"] = $userName;
+	}
+	
+	if ($find) {
+		$smarty->load_filter('output','highlight');
+		$_REQUEST['highlight'] = $find;
+		$key = array("title", "description");
+		$filters[$key] = $find;
+	}
+	
+	$controller = new PersistentObjectController("Publication");
+    $files = $controller->findAll($filters, $offset, $maxRecords, $sort_mode);
+    $total = $controller->countAll($filters);
+    
     $smarty->assign_by_ref('arquivos',$files);
     $smarty->assign('maxRecords', $maxRecords);
     $smarty->assign('offset', $offset);
@@ -23,18 +45,14 @@ function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $fi
 	$smarty->assign('filters', $filters);
 	$smarty->assign('page', ($offset/$maxRecords)+1);
 	$smarty->assign('lastPage', ceil($total/$maxRecords));
-	$smarty->assign('dontAskDelete', $elgallib->get_user_preference($user, 'el_dont_check_delete', 0));
+	$smarty->assign('dontAskDelete', $tikilib->get_user_preference($user, 'el_dont_check_delete', 0));
 	
-    if ($find) {
-		$smarty->load_filter('output','highlight');
-		$_REQUEST['highlight'] = $find;
-	}
+    
 
     $objResponse->addAssign("ajax-listNav", "innerHTML", $smarty->fetch("el-gallery_pagination.tpl"));
     $objResponse->addAssign("ajax-navBottom", "innerHTML", $smarty->fetch("el-gallery_pagination.tpl"));
     $objResponse->addAssign("ajax-gListCont", "innerHTML", $smarty->fetch("el-gallery_section.tpl"));
     $objResponse->addScript("nd()");
-    //$objResponse->addScript("acervoCache('$tiposHr', $offset, $maxRecords, '$sort_mode', '$find', '$filtersHr')");
     
     return $objResponse;
 }

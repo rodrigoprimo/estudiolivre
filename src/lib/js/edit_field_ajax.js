@@ -20,7 +20,6 @@ function saveField(fieldObj){
     if (saveFieldCache[field] == null || saveFieldCache[field] != value) {
     	//precisa ser implementada em cada caso que for editar campos em ajax
 		call_save_function(field, value);
-		startEdit();
     } else {
 		exibeCampo(field, value);
     }
@@ -85,20 +84,11 @@ function restoreField(field, value) {
 	document.getElementById("input-" + field).value = value;
 	document.getElementById("input-" + field).onfocus = new Function();
 	showEdit(field);
-	startEdit();
 }
 
 function exibeErro(campo, msg) {
 	eval('errorMsg_' + campo + ' = msg;');
 	document.getElementById('error-' + campo).style.display = 'inline';
-}
-
-function finishEdit() {
-	hide('save-exit');
-}
-
-function startEdit() {
-	show('save-exit');
 }
 
 function cancelEdit() {

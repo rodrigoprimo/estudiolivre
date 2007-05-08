@@ -125,18 +125,24 @@ $ajaxlib->setPermission('set_licenca', $permission);
 $ajaxlib->registerFunction('set_licenca');
 function set_licenca($r1, $r2, $r3) {
 	
-	global $userlib, $elgallib;
+	require_once("lib/persistentObj/PersistentObjectController.php");
+    global $userlib, $tikilib;
     
+    $controller = new PersistentObjectController("License");
 	$objResponse = new xajaxResponse();
-	$licencaId = $elgallib->id_licenca($r1, $r2, $r3);
+	
+	$answer = $r1 . $r2;
+    if ($r3 != '-1') $answer .= $r3;
+
+    $licenca = $controller->noStructureFindAll(array("answer" => $answer));
+    $licenca =& $licenca[0];
 	    
-  	$result = $userlib->set_user_field('licencaPadrao', $licencaId);
+  	$result = $userlib->set_user_field('licencaPadrao', $licenca["id"]);
 	if (!$result) {
 		$objResponse->addAlert("nao foi possivel definir a licença padrao");
 	}
 	else {
-		$licenca = $elgallib->get_licenca($licencaId);
-		$objResponse->addAssign('ajax-uLicence', 'src', 'styles/estudiolivre/h_' . $licenca['linkImagem'] . '?rand='.rand());
+		$objResponse->addAssign('ajax-uLicence', 'src', 'styles/estudiolivre/h_' . $licenca['imageName'] . '?rand='.rand());
 	}
 
 	return $objResponse;

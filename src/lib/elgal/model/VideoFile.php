@@ -37,6 +37,15 @@ class VideoFile extends FileReference {
 		return $this->update($result);
 	}
 	
+	function autoInfos() {
+		$result = array();
+		$result['width'] = $this->width;
+		$result['height'] = $this->height;
+		$result['duration'] = $this->duration;
+		$result['hasAudio'] = $this->hasAudio;
+		return $result;
+	}
+	
 	function generateThumb() {
 		
 		global $tikilib;
@@ -79,10 +88,10 @@ class VideoFile extends FileReference {
 	function validateExtension($filename) {
 		$extensions = array('mpg','mpeg','avi','ogg','theora','mp4','yuv','mp2','mkv','mxf','mov','swf','flv','3gp','3gpp');
 		if (!preg_match('/\.([^.]{3,4}$)/', $filename, $m)) {
-	    	trigger_error(tra("Erro: extensão de arquivo inválida."), E_USER_ERROR);
+	    	return tra("Erro: extensão de arquivo inválida.");
 	  	}
 	  	if (!in_array(strtolower($m[1]), $extensions)) {
-	    	trigger_error(tra("Erro: extensão $m[1] não suportada para video."), E_USER_ERROR);
+	    	return tra("Erro: extensão $m[1] não suportada para video.");
 	    }
 	}
 	

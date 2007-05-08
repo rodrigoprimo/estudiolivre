@@ -1,19 +1,19 @@
 <?php
-
-global $userHasPermOnFile, $arquivoId, $el_p_upload_files;
+// migrado pra 2.0!
+global $userHasPermOnFile, $arquivoId;
 
 $ajaxlib->setPermission('save_field', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('save_field');
 function save_field($name, $value) {
-	global $el_p_admin_gallery, $arquivoId;
+	global $arquivo, $tikilib;
 	
 	$objResponse = new xajaxResponse();
-
-	global $elgallib;
 	
-	$error = $elgallib->edit_field($arquivoId, $name, $value);
+	$error = false;
+	$error = $arquivo->update(array($name => $value));
 	
-	if($error) {
+	if(is_string($error)) {
+		
 	    $objResponse->addScriptCall('exibeErro', $name, $error);
 	} else {
 	    $l = strlen($value);
@@ -23,7 +23,7 @@ function save_field($name, $value) {
 	    
 	    // TODO: generalizar isso, de acordo com wikiParsed do ajax_textarea
 	    if ($name == 'descricao' || $name == 'fichaTecnica' || $name == 'letra') {
-		$value = $elgallib->parse_data($value);
+			$value = $tikilib->parse_data($value);
 	    }
 	    $objResponse->addScriptCall('exibeCampo', $name, $value);
 	}
@@ -32,7 +32,7 @@ function save_field($name, $value) {
 	return $objResponse;
 
 }
-
+/*
 $ajaxlib->setPermission('commit_arquivo', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('commit_arquivo');
 function commit_arquivo() {
@@ -44,8 +44,8 @@ function commit_arquivo() {
 	}
 	return $objResponse;
 }
-
-$ajaxlib->setPermission('rollback_arquivo', $userHasPermOnFile && $arquivoId);
+*/
+/*$ajaxlib->setPermission('rollback_arquivo', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('rollback_arquivo');
 function rollback_arquivo() {
 	global $elgallib, $arquivoId;
@@ -64,21 +64,23 @@ function rollback_arquivo() {
 	}
 	return $objResponse;
 }
-
+*/
 $ajaxlib->setPermission('generate_thumb', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('generate_thumb');
 function generate_thumb() {
-	global $elgallib, $arquivoId;
+	
+	global $arquivo;
+	
 	$objResponse = new xajaxResponse();
-	$thumb = $elgallib->generate_thumb($arquivoId);
-
+	$file =& $arquivo->filereferences[0];
+	
 	$objResponse->addAssign("ajax-thumbnail", "className", 'gUpThumbImg');	
 
-	if ($thumb) {
-	    $objResponse->addAssign("ajax-thumbnail", "src", 'repo/' . urlencode($thumb));
+	if ($file->thumbnail) {
+	    $objResponse->addAssign("ajax-thumbnail", "src", $file->baseDir . urlencode($file->thumbnail));
 	} else {
-	    $arquivo = $elgallib->get_arquivo($arquivoId);
-	    $objResponse->addAssign("ajax-thumbnail", "src", 'styles/estudiolivre/iThumb' . $arquivo["tipo"] . '.png');
+	    $tipo = $arquivo->type == "Image" ? "Imagem" : ($arquivo->type == "Text" ? "Texto" : $arquivo->type);
+	    $objResponse->addAssign("ajax-thumbnail", "src", 'styles/estudiolivre/iThumb' . $tipo . '.png');
 	}
 
 	return $objResponse;
@@ -87,37 +89,29 @@ function generate_thumb() {
 $ajaxlib->setPermission('restore_edit', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('restore_edit');
 function restore_edit($arquivoId) {
-	global $elgallib, $user, $smarty, $freetaglib;
+	global $user, $smarty, $freetaglib;
 	
 	$objResponse = new xajaxResponse();
 	
-	$arquivo = $elgallib->get_arquivo($arquivoId);
+	require_once("lib/persistentObj/PersistentObjectFactory.php");
+	$arquivo = PersistentObjectFactory::createObject("Publication", (int)$arquivoId);
 	
 	// permissao tem q ser dentro da funcao, pois o arquivoId dessa chamada pode nao ser
 	// o mesmo do global.
-	if (!$user || $user != $arquivo['user']) {
+	if (!$user || $user != $arquivo->user) {
 		return $objResponse;
 	} 
 	
-	if($arquivo['publicado'] == '0' && $arquivo['tipo'] != "Texto") {
-		$templateName = 'el-gallery_metadata_' . $arquivo['tipo'] . '.tpl';
+	if($arquivo->publishDate && $arquivo->type != "Text") {
+		$tipo = $file->type == "Image" ? "Imagem" : $file->type;
+		$templateName = 'el-gallery_metadata_' . $tipo . '.tpl';
 		$smarty->assign('permission', true);
 		$content = $smarty->fetch($templateName);
 		$objResponse->addAppend('ajax-gUpMoreOptionsContent', 'innerHTML', $content);
 		$objResponse->addScript(_extractScripts($content));
 	}
 	
-	$tags = $freetaglib->get_tags_on_object($arquivoId, 'gallery');
-	$tagString = "";
-	foreach ($tags['data'] as $t) {
-	    if ($tagString) $tagString .= ', ';
-	    $tagString .= $t['tag'];
-	}
-
-	$cache = unserialize($arquivo['editCache']);
-	//	$cache['tags'] = $tagString;
-	
-	foreach ($cache as $field => $value) {
+	foreach ($arquivo->getFilledFields() as $field => $value) {
   		$objResponse->addScriptCall('restoreField', $field, $value);
   	}
 	

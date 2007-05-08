@@ -16,11 +16,12 @@ function sendMsg() {
 
 function saveLicenca() {
     if (resposta1 != null && resposta2 != null && (resposta2 == 1 || resposta3 != null)) {
-	xajax_set_licenca(resposta1, resposta2, resposta3);
-	hide('licencaErro');
-	hideLightbox();
+		if (document.getElementById('resposta3-0').disabled) xajax_set_licenca(resposta1, resposta2, -1);
+		else xajax_set_licenca(resposta1, resposta2, resposta3);
+		hide('licencaErro');
+		hideLightbox();
     } else {
-	show('licencaErro');
+		show('licencaErro');
     }
 }
 

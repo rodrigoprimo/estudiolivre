@@ -28,6 +28,13 @@ class ImageFile extends FileReference {
 		return $this->update($result);
 	}
 	
+	function autoInfos() {
+		$result = array();
+		$result['width'] = $this->width;
+		$result['height'] = $this->height;
+		return $result;
+	}
+	
 	function generateThumb() {
 		
 		global $tikilib;
@@ -92,7 +99,7 @@ class ImageFile extends FileReference {
 		$thumbName = 'thumb_' . $this->fileName;
 		$thumbName = preg_replace('/\.(.+?)$/', 'png', $thumbName);
 		
-		$fp = fopen($thumbName, "w");
+		$fp = fopen($this->baseDir . $thumbName, "w");
 		if (!$fp) return;
 		fwrite($fp, $data);
 		fclose($fp);
@@ -105,10 +112,10 @@ class ImageFile extends FileReference {
 	function validateExtension($filename) {
 		$extensions = array('png','jpg','jpeg','gif','tiff','svg','bmp','psd','xcf','eps','swf','xar');
 		if (!preg_match('/\.([^.]{3,4}$)/', $filename, $m)) {
-	    	trigger_error(tra("Atenção: extensão de arquivo desconhecida."), E_USER_ERROR);
+	    	return tra("Atenção: extensão de arquivo desconhecida.");
 	  	}
 	  	if (!in_array(strtolower($m[1]), $extensions)) {
-	    	trigger_error(tra("Atenção: extensão $m[1] não conhecida para imagem."), E_USER_ERROR);
+	    	return tra("Atenção: extensão $m[1] não conhecida para imagem.");
 	    }
 	}
 	

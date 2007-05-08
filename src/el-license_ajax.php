@@ -1,18 +1,24 @@
 <?php
-
+// migrado pra 2.0!
 global $user;
 
 $ajaxlib->setPermission('get_license', $user);
 $ajaxlib->registerFunction('get_license');
 function get_license($r1, $r2, $r3) {
-    global $elgallib;
     
+    require_once("lib/persistentObj/PersistentObjectController.php");
+    
+    $controller = new PersistentObjectController("License");
     $objResponse = new xajaxResponse();
-    $licencaId = $elgallib->id_licenca($r1, $r2, $r3);
+    
+    $answer = $r1 . $r2;
+    if ($r3 != '-1') $answer .= $r3;
+
+    $licenca = $controller->noStructureFindAll(array("answer" => $answer));
+    $licenca =& $licenca[0];
 	    
-    $licenca = $elgallib->get_licenca($licencaId);
-    $objResponse->addAssign('ajax-licenseImg', 'src', 'styles/estudiolivre/h_' . $licenca['linkImagem'] . '?rand='.rand());
-    $objResponse->addAssign('ajax-licenseDesc', 'innerHTML', $licenca['descricao']);
+    $objResponse->addAssign('ajax-licenseImg', 'src', 'styles/estudiolivre/h_' . $licenca['imageName'] . '?rand='.rand());
+    $objResponse->addAssign('ajax-licenseDesc', 'innerHTML', $licenca['description']);
     $objResponse->addScript("show('ajax-licenseCont');");
 
     return $objResponse;			

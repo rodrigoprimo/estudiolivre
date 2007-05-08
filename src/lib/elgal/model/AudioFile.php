@@ -35,6 +35,13 @@ class AudioFile extends FileReference {
 		return $this->update($result);
 	}
 	
+	function autoInfos() {
+		$result = array();
+		$result['duration'] = $this->duration;
+		$result['bitRate'] = $this->bitRate;
+		return $result;
+	}
+	
 	function generateThumb() {
 		return true;
 	}
@@ -43,10 +50,10 @@ class AudioFile extends FileReference {
 	function validateExtension($filename) {
 		$extensions = array('mp3','ogg','wav','aiff','avi','flac','mp2','mid','mxf', 'mp4');
 		if (!preg_match('/\.([^.]{3,4}$)/', $filename, $m)) {
-	    	trigger_error(tra("Erro: extensão de arquivo inválida."), E_USER_ERROR);
+	    	return tra("Erro: extensão de arquivo inválida.");
 	  	}
 	  	if (!in_array(strtolower($m[1]), $extensions)) {
-	    	trigger_error(tra("Erro: extensão $m[1] não suportada para audio."), E_USER_ERROR);
+	    	return tra("Erro: extensão $m[1] não suportada para audio.");
 	    }
 	}
 	

@@ -31,7 +31,7 @@ class PersistentObject {
 	var $belongsTo = array();
 	var $hasManyAndBelongsTo = array();
 	var $extraStructure = array();
-	var $actualClass = false;
+	
 	/* This is the base constructor for the framework. it relies on the 
 	 * basis that if you send an id, you want to retrieve, and if you send 
 	 * fields, you want to insert a new entry. modification is done by retrieving
@@ -44,7 +44,7 @@ class PersistentObject {
 	    if (is_array($fields)) {
 	    	if (count($fields)) {
 	    		if ($this->actualClass)
-		    		$fields['actualClass'] = $this->table;
+			    	$fields['actualClass'] = $this->table;
 		    	$this->_populateObject($fields);
 		    	$this->id = $this->insert($fields);
 		    	$this->_extraStructure('insert');
@@ -57,16 +57,22 @@ class PersistentObject {
 	}
 	
 	function _populateObject($fields) {
+		$errors = "";
 		foreach ($fields as $key => $value) {
-			$this->_checkField($key, $value);
+			$errors .= $this->_checkField($key, $value);
 			$this->$key = $value;
 		}
-		return $this;
+		return $errors;
 	}
 	
 	function query($query, $bindvals = array()) {
 		global $dbConnection;
 	    return $dbConnection->query($query, $bindvals);
+	}
+	
+	function getOne($query, $bindvals = array()) {
+		global $dbConnection;
+	    return $dbConnection->getOne($query, $bindvals);
 	}
 	
 	// this does not check anything, an actual method 
@@ -75,7 +81,7 @@ class PersistentObject {
 	function _checkField($name, $value) {
 		$methodName = "checkField_" . $name;
 	  	if (method_exists($this, $methodName)) {
-	  		$this->$methodName($value);
+	  		return $this->$methodName($value);
 	  	}
 	}
 	
@@ -151,9 +157,11 @@ class PersistentObject {
 	}
 	
 	function update($fields) {
+		$errors = $this->_populateObject($fields);
 		$this->_doUpdate($fields); 
-		$this->_extraStructure('update');
-		return $this;
+		$this->_extraStructure('update', $fields);
+		if ($errors) return $errors;
+		return $fields;
 	}
 	
 	function _doUpdate($fields, $table = false) {
@@ -171,7 +179,6 @@ class PersistentObject {
 	}
 	
 	function _updateObject($fields, $table) {
-		$this->_populateObject($fields);
 		$query = "update $table set ";
 		foreach ($fields as $key => $value) {
 			$query .= "$key = ?,";
@@ -187,7 +194,24 @@ class PersistentObject {
 		for ($table = get_parent_class($this->table); $table != 'persistentobject'; $table = get_parent_class($table)) {
 			$this->query("delete from $table where id = ?", array($this->id));
 		}
+		$this->_deleteRelations();
 		$this->_extraStructure('delete');
+	}
+	
+	// deletes 1 to N and N to N relations
+	function _deleteRelations() {
+		foreach ($this->hasMany as $child => $me) {
+			$myName = strtolower($me);
+			$childName = strtolower($child);
+			$this->query("delete from $childName where ${myName}Id = ?", array($this->id));
+		}
+		foreach ($this->hasManyAndBelongsTo as $peer => $me) {
+			$myName = strtolower($me);
+			$peerName = strtolower($peer);
+			if ($peerName < $myName) $tableName = $peerName . "_" .  $myName;
+			else $tableName = $myName . "_" .  $peerName;
+			$this->query("delete from $tableName where ${myName}Id = ?", array($this->id));
+		}
 	}
 	
 	function select($referenced = false) {
@@ -219,7 +243,7 @@ class PersistentObject {
 			$varName = strtolower($parent);
 			$idName = $varName . "Id";
 			if ($this->$idName) {
-				$obj = PersistentObjectFactory::createObject($parent, (int)$this->$idName, true);
+				$this->$varName = PersistentObjectFactory::createObject($parent, (int)$this->$idName, true);
 			}
 		}
 	}
@@ -263,11 +287,12 @@ class PersistentObject {
 		}
 	}
 
-	function _extraStructure($action) {
+	function _extraStructure($action, $fields = false) {
 		foreach($this->extraStructure as $structure) {
 			$methodName = $action . $structure;
 			if (class_exists("PersistentObjectExtra")) {
-				PersistentObjectExtra::$methodName($this);
+				if ($fields) PersistentObjectExtra::$methodName($this, $fields);
+				else PersistentObjectExtra::$methodName($this);
 			}
 		}
 	}

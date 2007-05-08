@@ -4,20 +4,17 @@
  *
  * by: nano (thenano@gmail.com)
  * 
- * This is an abstract class (shouldn't be instanciated)
- * to control persistentObjects.
- * The pattern is to create subclass called MyClassController,
- * to do operations in the persistentObject subclass MyClass.
  * 
  */
 
-require_once ('lib/tikidblib.php');
+require_once ('PersistentObjectFactory.php');
 
-class PersistentObjectController extends TikiDB {
+class PersistentObjectController {
 	
 	var $controlledClass;
 	
 	function PersistentObjectController($class) {
+		require_once($class . ".php");
 		if (!class_exists($class)) trigger_error("Incorrect parameter, must provide a valid subclass of PersistentObject.", E_USER_ERROR);
 		for ($super = get_parent_class($class); $super; $super = get_parent_class($super)) {
 			if ($super == 'persistentobject') {
@@ -25,42 +22,80 @@ class PersistentObjectController extends TikiDB {
 				break;
 			}	
 		}
-		if (!$pass) trigger_error("Incorrect parameter, must provide a valid subclass of PersistentObject.");
-		global $dbTiki;
-	    $this->db = $dbTiki;
+		if (!$pass) trigger_error("Incorrect parameter, must provide a valid subclass of PersistentObject.", E_USER_ERROR);
 		$this->controlledClass = strtolower($class);
+	}
+	
+	function query($query, $bindvals = array(), $offset = 0, $maxRecords = -1, $sortMode = false) {
+		global $dbConnection;
+		if ($sortMode) {
+			$query .= " order by " . preg_replace("/\_/", " ", $sortMode);
+		}
+		if ($maxRecords > 0) {
+			$query .= " limit $offset,$maxRecords";
+		}
+	    return $dbConnection->query($query, $bindvals);
+	}
+	
+	function getOne($query, $bindvals = array()) {
+		global $dbConnection;
+	    return $dbConnection->getOne($query, $bindvals);
 	}
 	
 	function _prepQueryConditions($fields) {
 		if (count($fields)) {
+			$bindvals = array();
 			$query = "where ";
 			foreach ($fields as $key => $value) {
-				$query .= "$key = ? and ";
-			}
-			$query = substr($query, 0, strlen($query)-5);
-			return $query;
-		}
-	}
-	
-	function findAll($filters = array()) {
-		$class = $this->controlledClass;
-		$result = $this->query("select id from $class " . $this->_prepQueryConditions($filters), $filters);
-		$objs = array();
-		eval('$subclasses = ' . $class . '::subclasses();');
-		if ($subclasses) {
-			while ($row = $result->fetchRow()) {
-				foreach ($subclasses as $sub) {
-					$tableName = strtolower($sub);
-					if ($this->getOne("select id from $tableName where id = ?", array($row['id']))) {
-						$objs[] = new $sub((int)$row['id']);
-						break;
+				if (is_array($key)) {
+					$query .= "(";
+					foreach ($key as $f) {
+						$query .= "$f like ? or ";
+						$bindvals[] = "%" . $value . "%";
+					}
+					$query = substr($query, 0, strlen($query)-4);
+					$query .= ") and ";
+				} else {
+					if (is_array($value)) {
+						$query .= "$key in (";
+						foreach ($value as $param) {
+							$query .= "?,";
+							$bindvals[] = $param;
+						}
+						$query = substr($query, 0, strlen($query)-1);
+						$query .= ") and ";
+					} else {
+						$query .= "$key = ? and ";
+						$bindvals[] = $value;
 					}
 				}
 			}
-		} else {
-			while ($row = $result->fetchRow()) {
-				$objs[] = new $class((int)$row['id']);
-			}
+			$query = substr($query, 0, strlen($query)-5);
+			return array($query, $bindvals);
+		}
+	}
+	
+	function findAll($filters = array(), $offset = 0, $maxRecords = -1, $sortMode = false) {
+		$queryParams = $this->_prepQueryConditions($filters);
+		$result = $this->query("select id from $this->controlledClass " . $queryParams[0], $queryParams[1], $offset, $maxRecords, $sortMode);
+		$objs = array();
+		while ($row = $result->fetchRow()) {
+			$objs[] = PersistentObjectFactory::createObject($this->controlledClass, (int)$row['id']);
+		}
+		return $objs;
+	}
+	
+	function countAll($filters = array()) {
+		$queryParams = $this->_prepQueryConditions($filters);
+		return $this->getOne("select count(id) from $this->controlledClass " . $queryParams[0], $queryParams[1]);
+	}
+	
+	function noStructureFindAll($filters = array(), $offset = 0, $maxRecords = -1, $sortMode = false) {
+		$queryParams = $this->_prepQueryConditions($filters);
+		$result = $this->query("select * from $this->controlledClass " . $queryParams[0], $queryParams[1], $offset, $maxRecords, $sortMode);
+		$objs = array();
+		while ($row = $result->fetchRow()) {
+			$objs[] = $row;
 		}
 		return $objs;
 	}

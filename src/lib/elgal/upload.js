@@ -23,13 +23,12 @@ function setRequestUri(id) {
 }
 
 function upload() {
-	uploadId = document.uploadForm.UPLOAD_IDENTIFIER.value;
 	var filename = document.uploadForm.arquivo.value;
 	if (!tipoSelecionado) alert('bug');
 	if (arquivoId) {
 	    xajax_clear_uploaded_file();
 	} else {
-		xajax_create_file(tipoSelecionado, filename, uploadId);		
+		xajax_create_file(tipoSelecionado, filename);		
 	}
 }
 
@@ -140,7 +139,7 @@ function selecionaTipo(tipo) {
 		show('js-browse');
 		hide('js-pending');
 	} else {
-		fixedTooltip('Você não pode mudar o tipo de arquivo depois de começar o upload');
+		fixedTooltip('Vocï¿½ nï¿½o pode mudar o tipo de arquivo depois de comeï¿½ar o upload');
 	}
 }
 
@@ -182,6 +181,8 @@ function updateThumbProgressMeter(uploadInfo) {
 }
 
 function restoreForm (id, tipo, arquivo, thumbnail) {
+	tipo = tipo == 'Image' ? 'Imagem' : tipo;
+	tipo = tipo == 'Text' ? 'Texto' : tipo;
 	selecionaTipo(tipo);
 	arquivoId = id;
 	setRequestUri(id);
@@ -212,7 +213,8 @@ function saveLicenca() {
 	var padrao = false;
 	if (resposta1 != null && resposta2 != null && (resposta2 == 1 || resposta3 != null)) {
 		padrao = (document.getElementById("uLicencaPadrao").checked ? 1 : 0);
-		xajax_set_arquivo_licenca(resposta1, resposta2, resposta3, padrao);
+		if (document.getElementById('resposta3-0').disabled) xajax_set_arquivo_licenca(resposta1, resposta2, -1, padrao);
+		else xajax_set_arquivo_licenca(resposta1, resposta2, resposta3, padrao);
 		hide('licencaErro');
 		hideLightbox();
 	} else {

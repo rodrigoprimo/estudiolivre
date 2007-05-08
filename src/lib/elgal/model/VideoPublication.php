@@ -14,7 +14,7 @@ require_once "Publication.php";
 
 class VideoPublication extends Publication {
 	
-	var $type = "video";
+	var $type = "Video";
 	var $language;
 	var $subtitled;
 	var $subtitleLanguage;

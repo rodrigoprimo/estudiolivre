@@ -1,5 +1,5 @@
 <?php
-
+// migrado 2.0!
 require_once("dumb_progress_meter.php");
 require_once("el-gallery_file_edit_ajax.php");
 
@@ -7,13 +7,18 @@ global $userHasPermOnFile, $arquivoId, $el_p_upload_files;
 
 $ajaxlib->setPermission('create_file', $el_p_upload_files == 'y');
 $ajaxlib->registerFunction('create_file');
-function create_file($tipo, $fileName, $uploadId) {
+function create_file($tipo, $fileName) {
 	$objResponse = new xajaxResponse();
-	global $elgallib, $user, $smarty, $tikilib;
+	global $user, $smarty, $tikilib;
 	
-	$arquivo = array();
+	$class = $tipo == "Imagem" ? "Image" : ($tipo == "Texto" ? "Text" : $tipo);
 	
-	$error = $elgallib->validate_filename($tipo, $fileName);
+	$fileClass = $class . "File";
+	$publicationClass = $class . "Publication";
+	require_once($fileClass . ".php");
+	require_once($publicationClass . ".php");
+	
+	eval('$error = ' . $fileClass . "::validateExtension('" . $fileName . "');");
 	if ($error) {
 	    // Estranho ficar aqui, mas onde colocar?
 	    $error .= ' Veja a <a href="tiki-index.php?page=Formatos+de+arquivos+do+Acervo+Livre">lista de formatos suportados</a>';
@@ -22,15 +27,14 @@ function create_file($tipo, $fileName, $uploadId) {
 		return $objResponse;
 	}
 	
-	$arquivo['tipo'] = $tipo;
-	$arquivo['titulo'] = $arquivo['autor'] = $arquivo['donoCopyright'] = $arquivo['descricao'] = '';
-	$arquivoId = $elgallib->create_arquivo($arquivo, $user);
-	
+	$fields = array("user" => $user);
 	if ($licencaId = $tikilib->get_user_preference($user, 'licencaPadrao')) {
-		$elgallib->set_licenca($arquivoId, $licencaId);
+		$fields["licenseId"] = $licencaId;
 	}
 	
-	$objResponse->addScriptCall('startUpload',$arquivoId);
+	$arquivo = new $publicationClass($fields);
+	
+	$objResponse->addScriptCall('startUpload',$arquivo->id);
 	
 	if (in_array($tipo, array('Audio','Video','Imagem'))) {
 		$templateName = 'el-gallery_metadata_' . $tipo . '.tpl';
@@ -46,12 +50,15 @@ function create_file($tipo, $fileName, $uploadId) {
 $ajaxlib->setPermission('clear_uploaded_file', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('clear_uploaded_file');
 function clear_uploaded_file() {
-    global $arquivoId, $elgallib;
-
-    $elgallib->clear_uploaded_file($arquivoId);
+    global $arquivo;
+    
+    foreach ($arquivo->filereferences as $file)
+    	$file->delete();
+    if ($arquivo->thumbnail)
+    	unlink("repo/" . $arquivo->thumbnail);
 
     $objResponse = new xajaxResponse();
-    $objResponse->addScriptCall('startUpload',$arquivoId);    
+    $objResponse->addScriptCall('startUpload',$arquivo->id);    
 
     return $objResponse;
 }
@@ -59,15 +66,16 @@ function clear_uploaded_file() {
 $ajaxlib->setPermission('delete_file', $el_p_upload_files == 'y');
 $ajaxlib->registerFunction('delete_file');
 function delete_file($arquivoId) {
-	global $elgallib, $user;
-	$arquivo = $elgallib->get_arquivo($arquivoId);
+	global $user;
+	require_once("lib/persistentObj/PersistentObjectFactory.php");
+	$arquivo = PersistentObjectFactory::createObject("Publication", (int)$arquivoId);
 	$objResponse = new xajaxResponse();
 	
-	if (!isset($arquivo['user']) || $arquivo['user'] != $user) {
+	if (!isset($arquivo->user) || $arquivo->user != $user) {
 		return $objResponse;
 	}
 	
-	$elgallib->delete_arquivo($arquivoId);
+	$arquivo->delete();
 	
 	$objResponse->addRemove("ajax-pendente-$arquivoId");
 	
@@ -87,30 +95,28 @@ function _extractScripts($content) {
 $ajaxlib->setPermission('get_file_info', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('get_file_info');
 function get_file_info() {
-	global $elgallib, $arquivoId, $user;
+	global $tikilib, $arquivo, $user;
 	
 	$objResponse = new xajaxResponse();
 
-	$cache = $elgallib->get_edit_cache($arquivoId);
-	$result = $elgallib->extract_file_info($arquivoId);
+	$file =& $arquivo->filereferences[0];
+	
+	$result = $file->autoInfos();
 	
 	// merge com as infos basicas
-	$basicInfos = array('titulo' => $elgallib->get_file_name($arquivoId));
-	if ($autor = $elgallib->get_user_preference($user, 'realName'))
-		 $basicInfos['autor'] = $autor;
-	$result = array_merge($result, $basicInfos);
+	$basicInfos = array();
+	if (!$arquivo->title)
+		$basicInfos['title'] = $file->parseFileName();
+	if (($autor = $tikilib->get_user_preference($user, 'realName')) && !$arquivo->author)
+		 $basicInfos['author'] = $autor;
+	$arquivo->update($basicInfos);
 
 	// deixa o foreach no php, q js eh uma bosta pra isso
+	$result = array_merge($result, $basicInfos);
 	$formattedResult = array();
 	foreach ($result as $key => $value) {
-		if (!isset($cache[$key])) {
-			array_push($formattedResult, $key, $value);
-		}
+		array_push($formattedResult, $key, $value);
 	}
-	
-	// merge
-	$cache = array_merge($result, $cache);
-	$elgallib->set_edit_cache($arquivoId, $cache);
 	
 	if (sizeOf($result) > 0) {
 		$objResponse->addScriptCall('setAutoFields', $formattedResult);
@@ -122,25 +128,29 @@ function get_file_info() {
 
 $ajaxlib->setPermission('set_arquivo_licenca', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('set_arquivo_licenca');
-function set_arquivo_licenca ($resposta1, $resposta2, $resposta3, $padrao = false) {
+function set_arquivo_licenca ($r1, $r2, $r3, $padrao = false) {
 
-    global $userlib, $elgallib, $arquivoId, $style;
+    global $userlib, $arquivo, $style;
+    require_once("lib/persistentObj/PersistentObjectController.php");
     
-	$objResponse = new xajaxResponse();
-	$licencaId = $elgallib->id_licenca($resposta1, $resposta2, $resposta3);
+    $controller = new PersistentObjectController("License");
+    $objResponse = new xajaxResponse();
+    
+    $answer = $r1 . $r2;
+    if ($r3 != '-1') $answer .= $r3;
+
+    $licenca = $controller->noStructureFindAll(array("answer" => $answer));
+    $licenca =& $licenca[0];
 	    
 	if ($padrao) {
-	  	$result = $userlib->set_user_field('licencaPadrao', $licencaId);
+	  	$result = $userlib->set_user_field('licencaPadrao', $licenca->id);
 	   	if(!$result) $objResponse->addAlert("Não foi possivel editar o campo licencaPadrao");
 	}
-	    
-	$result = $elgallib->set_licenca($arquivoId, $licencaId);
-		
-	if(!$result) {
+	
+	if (!$arquivo->update(array("licenseId" => $licenca->id))) {
 		$objResponse->addAlert("Não foi possivel editar o campo licencaId");
 	} else {
-	  	$licenca = $elgallib->get_licenca($licencaId);
-	  	$objResponse->addAssign('ajax-uImagemLicenca', 'src', 'styles/' . preg_replace('/\.css/', '', $style) . '/img/h_' . $licenca['linkImagem'] . '?rand='.rand());
+	  	$objResponse->addAssign('ajax-uImagemLicenca', 'src', 'styles/' . preg_replace('/\.css/', '', $style) . '/img/h_' . $licenca->imageName . '?rand='.rand());
 	}
 		
 	return $objResponse;
@@ -148,11 +158,11 @@ function set_arquivo_licenca ($resposta1, $resposta2, $resposta3, $padrao = fals
 }
 
 function _publish_arquivo() {
-    global $elgallib, $arquivoId;
+    global $arquivo;
     $objResponse = new xajaxResponse();
     
-    if ($elgallib->publish_arquivo($arquivoId)) {
-    	$objResponse->addRedirect("el-gallery_view.php?arquivoId=$arquivoId");
+    if ($arquivo->publish()) {
+    	$objResponse->addRedirect("el-gallery_view.php?arquivoId=$arquivo->id");
     } else {
     	$objResponse->addAlert("Não foi possível publicar o arquivo");
     }
@@ -163,10 +173,10 @@ function _publish_arquivo() {
 $ajaxlib->setPermission('check_publish', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('check_publish');
 function check_publish($showDisclaimer = true, $dontShowAgain = false) {
-    global $user, $userlib, $elgallib, $arquivoId, $isIE;
+    global $user, $userlib, $arquivo, $isIE;
     $objResponse = new xajaxResponse();
 	
-    if ($errorList = $elgallib->check_publish($arquivoId)) {
+    if ($errorList = $arquivo->checkPublish()) {
     	$errorMsgs = '';
     	foreach ($errorList as $field => $error) {
     		$errorMsgs .= $error . ($isIE ? "" : "<br/>") . "\n";

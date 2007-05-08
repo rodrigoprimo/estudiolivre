@@ -1,12 +1,12 @@
 <?php
-
+// migrado pra 2.0!
 global $el_p_view;
 
 $ajaxlib->setPermission('streamFile', $el_p_view == 'y');
 $ajaxlib->registerFunction("streamFile");
 function streamFile($arquivoId, $type, $screenSize) {
-	global $elgallib, $smarty;
-	require_once("lib/elgal/elgallib.php");
+	global $smarty;
+	require_once("lib/persistentObj/PersistentObjectFactory.php");
 
     $objResponse = new xajaxResponse();
     
@@ -14,15 +14,16 @@ function streamFile($arquivoId, $type, $screenSize) {
     	return $objResponse;
     }
     
-    $elgallib->add_stream_hit($arquivoId);
-    $arquivo = $elgallib->get_arquivo($arquivoId);
+    $arquivo = PersistentObjectFactory::createObject("Publication", (int)$arquivoId);
+    $file =& $arquivo->filereferences[0];
+    $file->hitStream();
     
     $screenSize-=250;
     if ($type == 'Imagem') {
-    	$smarty->assign('src', 'repo/' . $arquivo['arquivo']);
-    	if($arquivo['tamanhoImagemX'] > $screenSize){
-    		$arquivo['tamanhoImagemY'] = $screenSize*($arquivo['tamanhoImagemY']/$arquivo['tamanhoImagemX']);
-    		$arquivo['tamanhoImagemX'] = $screenSize;
+    	$smarty->assign('src', $file->baseDir . $file->fileName);
+    	if($file->width > $screenSize){
+    		$file->height = $screenSize*($file->height/$file->width);
+    		$file->width = $screenSize;
     		$smarty->assign('note', tra("Imagem redimensionada"));
     	} else {
     		$smarty->assign('note', '');
@@ -30,20 +31,20 @@ function streamFile($arquivoId, $type, $screenSize) {
     	$objResponse->addRemove('ajax-gPlayerImagem');
     	$objResponse->addAppend('ajax-contentBubble', 'innerHTML', $smarty->fetch('el-playerImage.tpl'));
     	$objResponse->addAssign('ajax-gImagem', 'style.maxWidth', $screenSize . "px");
-    	$objResponse->addAssign('ajax-gPlayerImagem', 'style.width', $arquivo['tamanhoImagemX'] . "px");
-    	$objResponse->addAssign('ajax-gPlayerImagem', 'style.height', $arquivo['tamanhoImagemY'] . "px");
+    	$objResponse->addAssign('ajax-gPlayerImagem', 'style.width', $file->width . "px");
+    	$objResponse->addAssign('ajax-gPlayerImagem', 'style.height', $file->height . "px");
     	$objResponse->addScript("showLightbox('ajax-gPlayerImagem')");
     	
     	return $objResponse;
     }
     
     $validUrl = 'http://' . $_SERVER['HTTP_HOST'] .  $_SERVER['REQUEST_URI'];
-    $validUrl = preg_replace('/\/el-.+\.php.*$/','',$validUrl);
-    $validUrl .= '/repo/' . $arquivo['arquivo'];
+    $validUrl = preg_replace('/el-.+\.php.*$/','',$validUrl);
+    $validUrl .= $file->baseDir . $file->fileName;
    	
     if ($type == 'Video') {
-    	$width = $arquivo['tamanhoImagemX'];
-    	$height = $arquivo['tamanhoImagemY'];
+    	$width = $file->width;
+    	$height = $file->height;
     	$video = "true";
     } else {
     	$width = 200;

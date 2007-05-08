@@ -1,7 +1,7 @@
 <?php
-
+// migrado pra 2.0!
 require_once("tiki-setup.php");
-require_once("lib/elgal/elgallib.php");
+require_once("lib/persistentObj/PersistentObjectController.php");
 require_once("lib/ajax/ajaxlib.php");
 require_once("el-gallery_ajax.php");
 
@@ -19,7 +19,7 @@ $smarty->assign_by_ref('destak', $pdata);
 if(isset($_COOKIE['sortMode'])) {
 	$sortField = $_COOKIE['sortMode'];
 } else {
-	$sortField = 'data_publicacao';
+	$sortField = 'publishDate';
 }
 if(isset($_COOKIE['sortDirection'])) {
 	if($_COOKIE['sortDirection'] == '_desc') {
@@ -51,25 +51,35 @@ if(!sizeof($tipos)) {
 	$tipos = $localTipos;
 }
 $smarty->assign('tipos', $tipos);
+$actualClass = array("Video" => "VideoPublication",
+					 "Audio" => "AudioPublication",
+					 "Imagem" => "ImagePublication",
+					 "Texto" => "TextPublication");
+$filters = array("actualClass" => array());
+foreach ($tipos as $tipo) {
+	$filters["actualClass"][] = $actualClass[$tipo];
+}
 
 if(isset($_REQUEST['highlight'])) {
 	$find = $_REQUEST['highlight'];
 } else {
 	$find = '';
 }
+if ($find) {
+	$key = array("title", "description");
+	$filters[$key] = $find;
+}
 
-$total = $elgallib->count_all_uploads($tipos, '', $find);
+$controller = new PersistentObjectController("Publication");
+$files = $controller->findAll($filters, 0, 10, $sort_mode);
+$total = $controller->countAll($filters);
 
 $smarty->assign('maxRecords', 10);
 $smarty->assign('offset', 0);
 $smarty->assign('total', $total);
-//$smarty->assign('userName', '');
 $smarty->assign('find', $find);
-//$smarty->assign('filters', $filters);
 $smarty->assign('page', 1);
 $smarty->assign('lastPage', ceil($total/10));
-
-$files = $elgallib->list_all_uploads($tipos, 0, 10, $sort_mode, '', $find);
 $smarty->assign_by_ref('arquivos',$files);
 
 $smarty->assign('dontAskDelete', $tikilib->get_user_preference($user, 'el_dont_check_delete', 0));

@@ -90,7 +90,8 @@ class ELGalLib extends TikiLib {
       return false;
     }
   }
-    
+  
+  // 2.0 migrado pra PersistentObjectController
   function list_all_uploads($tipos = array(), $offset = 0, $maxRecords = -1, $sort_mode = 'data_publicacao_desc', $userName = '', $find = '', $filters = array()) {
       
       if ($find) {
@@ -402,7 +403,7 @@ class ELGalLib extends TikiLib {
 	
 	return true;
   }
-  
+  // 2.0 re-implementado em el-gallery_view_ajax.php
   function tag_arquivo($arquivoId, $tag_string) {
       global $freetaglib, $user;
 

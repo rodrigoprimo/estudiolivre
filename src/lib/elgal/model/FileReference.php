@@ -67,6 +67,8 @@ class FileReference extends PersistentObject {
 	function delete() {
 		parent::delete();
 		unlink($this->baseDir . $this->fileName);
+		if ($this->thumbnail)
+			unlink($this->baseDir . $this->thumbnail);
 	}
 	
 	function parseFileName() {
@@ -79,7 +81,15 @@ class FileReference extends PersistentObject {
 		return $match[1];
 	}
 	
+	function fullPath() {
+		return $this->baseDir . $this->fileName;
+	}
+	
 	function extractFileInfo() {
+		trigger_error("Subclass should have implemented", E_USER_ERROR);
+	}
+	
+	function autoInfos() {
 		trigger_error("Subclass should have implemented", E_USER_ERROR);
 	}
 	

@@ -1,9 +1,9 @@
 <?php
-
+// migrado pra 2.0!
 // Initialization
 if (!isset($_POST['xajax']) || $_POST['xajax'] != 'upload_info') {
 	require_once("tiki-setup.php");
-	require_once("lib/elgal/elgallib.php");
+	require_once("lib/persistentObj/PersistentObjectController.php");
 
 	if (isset($_REQUEST['view_user'])) {
 		$view_user = $_REQUEST['view_user'];
@@ -81,12 +81,17 @@ if(is_array($info)) {
 }
 $smarty->assign_by_ref('userWiki', $pdata);
 
-$sort_mode = 'data_publicacao_desc';
-
-$uploads = $elgallib->list_all_uploads(array('Audio', 'Video', 'Imagem', 'Texto'), 0, 5, $sort_mode, $view_user);
+$sort_mode = 'publishDate_desc';
+$controller = new PersistentObjectController("Publication");
+$filters = array("actualClass" => array("AudioPublication",
+										"VideoPublication",
+										"ImagePublication",
+										"TextPublication"),
+				 "user" => $view_user);
+$uploads = $controller->findAll($filters, 0, 5, $sort_mode);
 $smarty->assign_by_ref('arquivos',$uploads);
 
-$total = $elgallib->count_all_uploads(array('Audio', 'Video', 'Imagem', 'Texto'), $view_user);
+$total = $controller->countAll($filters);
 
 $smarty->assign('dontAskDelete', $tikilib->get_user_preference($user, 'el_dont_check_delete', 0));
 
@@ -103,8 +108,9 @@ $smarty->assign('lastPage', ceil($total/5));
 
 // licenca padrao
 if ($licencaId = $tikilib->get_user_preference($view_user, 'licencaPadrao')) {
-	$licenca = $elgallib->get_licenca($licencaId);
-	$smarty->assign('licenca', $licenca);
+	$lController = new PersistentObjectController("License");
+	$licenca = $lController->noStructureFindAll(array("id" => $licencaId));
+	$smarty->assign('licenca', $licenca[0]);
 }
 
 $userPosts = $bloglib->list_user_posts($view_user, 0, 5);
@@ -114,7 +120,7 @@ for($i = 0; $i < sizeof($userPosts['data']); $i++) {
 $smarty->assign('userPosts', $userPosts);
 
 $liveChannels = array();
-$result = $elgallib->query('select * from el_ice where user = ?', array($view_user));
+$result = $tikilib->query('select * from el_ice where user = ?', array($view_user));
 while($row = $result->fetchRow()) {
 	$liveChannels[] = $row;
 }
@@ -157,7 +163,7 @@ $exist = $tikilib->page_exists($userPage);
 $smarty->assign("userPage_exists", $exist);
 ********************************/
 
-$user_style = $tikilib->get_user_preference($view_user, 'theme', 'estudiolivre.css');
+$user_style = $tikilib->get_user_preference($view_user, 'theme', 'bolha.css');
 $smarty->assign_by_ref('user_style',$user_style);
 
 $allowMsgs = $tikilib->get_user_preference($view_user,'allowMsgs',1);

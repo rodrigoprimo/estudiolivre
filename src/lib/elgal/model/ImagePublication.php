@@ -14,7 +14,7 @@ require_once "Publication.php";
 
 class ImagePublication extends Publication {
 	
-	var $type = "image";
+	var $type = "Imagem";
 	var $typeOfImage;
 	
 }
