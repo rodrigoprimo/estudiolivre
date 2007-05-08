@@ -1,5 +1,5 @@
 {css}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/tiki-show_page.tpl,v 1.1 2006-10-20 21:11:33 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/tiki-show_page.tpl,v 1.3 2007-05-10 21:24:05 nano Exp $ *}
 
 <div {if $user_dbl eq 'y' and $dblclickedit eq 'y' and $tiki_p_edit eq 'y'}ondblclick="location.href='tiki-editpage.php?page={$page|escape:"url"}';"{/if}>	
 	<div class="wikitopline"><!--do contextualMenu onclick="cancelBubble(event)"-->
@@ -52,9 +52,9 @@
 			{/if}
 		{/if}
 		
-		{if $feature_likePages eq 'y'}
+		{*if $feature_likePages eq 'y'}
 			{tooltip name="show-page-buscar-similares" text="Buscar páginas <b>similares</b>"}<span class="tabbut"><a href="tiki-likepages.php?page={$page|escape:"url"}" class="tablink"><img src="styles/{$style|replace:".css":""}/img/iWikiSimilar.png"></a></span>{/tooltip}
-		{/if}
+		{/if*}
 		
 		{if $feature_multilingual eq 'y' and $tiki_p_edit eq 'y' and !$lock}
 		     {tooltip name="show-page-traduzir-pagina" text="<b>Traduzir</b> página"}<span class="tabbut"><a href="tiki-edit_translation.php?page={$page|escape:'url'}" class="tablink"><img src="styles/{$style|replace:".css":""}/img/iWikiTranslate.png"></a></span>{/tooltip}

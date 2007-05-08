@@ -101,14 +101,14 @@
     	{if $user}
         	<li><a href="el-gallery_upload.php">{tr}compartilhe sua obra{/tr}</a></li>
         {else}
-      		<div id="precisaLogar" style="display:none;width:200px;padding:5px">
+      		<div id="precisaLogar" class="none" style="width:200px;padding:5px">
       			{tr}Para compartilhar a sua obra no <b>Acervo Livre</b> é necessário se <a href="tiki-register.php">cadastrar</a> no site.{/tr}<br><br>
       			{tr}Se for cadastrado, efetue o login{/tr}:<br>
 
 					    <form id="uLoginBox" action="tiki-login.php" method="post">
 					      <input type="hidden" name="redirect" value="el-gallery_upload.php">
 					      <input class="uText" type="text" name="user" id="login-user" size="12" value="{tr}user{/tr}" onFocus="this.value=''"/>
-					      <input class="uText" type="text" name="pass" id="login-pass" size="10" value="{tr}senha{/tr}" onFocus="this.value='';this.type='password'"/>
+					      senha:<input class="uText" type="{if $isIE}password{else}text{/if}" name="pass" id="login-pass" size="{if $isIE}8{else}10{/if}" {if !$isIE}value="{tr}senha{/tr}" onFocus="this.value='';this.type='password'"{/if}/>
 					      <input type="image" name="login" src="styles/{$style|replace:".css":""}/img/iLogin.png" />      
 					      <div id="uLoginOptions">
 					        <a href="tiki-remind_password.php">&raquo; {tr}recuperar{/tr} {tr}senha{/tr}</a><br>

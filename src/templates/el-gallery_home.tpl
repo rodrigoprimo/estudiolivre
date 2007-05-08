@@ -1,5 +1,5 @@
-{css extra=tiki-show_page}
 <!-- el-gallery_home.tpl begin -->
+{css extra=tiki-show_page}
 
 <script language="JavaScript" src="lib/js/el_array.js"></script>
 <script language="JavaScript" src="lib/elgal/el_home.js"></script>
@@ -48,8 +48,7 @@
 	{include file="el-gallery_section.tpl"}
 </div>
 
-{* isso não rola por causa do AJAX. mas o nano vai arrumar.*}
-{* include file="el-gallery_list_filters.tpl" *}
+<center><div id="ajax-navBottom" class="listNav">{include file="el-gallery_pagination.tpl"}</div></center>
 	
 {include file="el-gallery_confirm_delete.tpl"}
 

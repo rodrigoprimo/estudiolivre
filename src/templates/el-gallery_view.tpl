@@ -8,30 +8,25 @@
 <script language="JavaScript" src="lib/js/el-rating.js"></script>
 <script language="JavaScript" src="lib/js/delete_file.js"></script>
 
-<div id="save-exit" class="aSaveCancel" style="z-index: 10; display: none;">
-  {tooltip text="Salve as modificações que acaba de fazer"}<img src="styles/{$style|replace:".css":""}/img/bSave.png" onClick="checkWaiting('xajax_commit_arquivo()');hide('save-exit');nd();" style="cursor: pointer">{/tooltip}&nbsp;&nbsp;&nbsp;
-  {tooltip text="Cancele as modificações que acaba de fazer"}<img src="styles/{$style|replace:".css":""}/img/bCancelar.png" onClick="cancelEdit();hide('save-exit');nd();" style="cursor: pointer">{/tooltip}
-</div>
-
 <div id="arqCont">
 	<div id="aTopCont">
-		<div id="aThumbRatingLic">		
+		<div id="aThumbRatingLic">
 			<div id="aRating">
 				{tooltip name="view-avaliacao" text="Avaliação atual"}
-					<img id="ajax-aRatingImg" src="styles/{$style|replace:".css":""}/img/star{math equation="round(x)" x=$arquivo.rating|default:"blk"}.png">
+					<img id="ajax-aRatingImg" src="styles/{$style|replace:".css":""}/img/star{math equation="round(x)" x=$arquivo->rating|default:"blk"}.png">
 				{/tooltip}
 			</div>
 			<div id="aThumbLic">
 				<div id="aLic">
-					     {tooltip name="arq-descricao-licenca" text=$arquivo.licenca.descricao}
-					     <a href="{$arquivo.licenca.linkHumanReadable}"><img src="styles/{$style|replace:".css":""}/img/{$arquivo.licenca.linkImagem}"></a>
+					     {tooltip name="arq-descricao-licenca" text=$arquivo->license->description}
+					     <a href="{$license->humanReadableLink}"><img src="styles/{$style|replace:".css":""}/img/{$arquivo->license->imageName}"></a>
 					     {/tooltip}
 				</div>
 
-				{if $arquivo.thumbnail}
-					<img id="ajax-thumbnail" src="repo/{$arquivo.thumbnail|escape:'url'}" height="100" width="100">
+				{if $arquivo->thumbnail}
+					<img id="ajax-thumbnail" src="repo/{$arquivo->thumbnail|escape:'url'}" height="100" width="100">
 				{else}
-					<img id="ajax-thumbnail" src="styles/{$style|replace:".css":""}/img/iThumb{$arquivo.tipo}.png" height="100" width="100">
+					<img id="ajax-thumbnail" src="styles/{$style|replace:".css":""}/img/iThumb{$arquivo->type}.png" height="100" width="100">
 				{/if}
 				<div id="gUserThumbStatus"></div>
 				{if $permission}
@@ -39,7 +34,7 @@
 				        {tooltip text="Clique para selecionar outra <b>miniatura</b> para o arquivo"}
 				        <form action="el-gallery_upload_thumb.php?UPLOAD_IDENTIFIER=thumb.{$uploadId}" method="post" enctype="multipart/form-data" name="thumbForm" target="thumbUpTarget">
 						  	<input type="hidden" name="UPLOAD_IDENTIFIER" value="thumb.{$uploadId}">
-						  	<input type="hidden" name="arquivoId" value="{$arquivo.arquivoId}">
+						  	<input type="hidden" name="arquivoId" value="{$arquivo->id}">
 						  	<input type="file" name="thumb" onChange="changeThumbStatus()" id="aThumbFormButton">
 				        </form>
 				        {/tooltip}
@@ -49,12 +44,13 @@
 			</div>
 		</div>
 		
+		{assign var=file value=$arquivo->filereferences[0]}
 		<div id="aMainInfo">
 			<div id="aNameAuthorDown">
 				<div id="aDown">
 					<div id="gDownload">
 						<span class="gDownloadCount">
-							{$arquivo.hits}
+							{$file->downloads}
 						</span>
 						{tooltip name="view-baixe-arquivo" text="Copie o arquivo (para o seu computador)"}
 						<a href="el-download.php?arquivo={$arquivoId}&action=download">
@@ -63,47 +59,47 @@
 						{/tooltip}
 					</div>
 					<div id="gPlay">
-						{if $arquivo.tipo eq "Video"}
-							{if preg_match("/.*\.ogg$/i", $arquivo.arquivo)}
+						{if $arquivo->type eq "Video"}
+							{if preg_match("/.*\.ogg$/i", $file->fileName)}
 			    				{assign var='tooltipText' value="Assista a esse vídeo"}
 						    {/if}
 						    {*PRA QUANDO ROLAR COLOCAR TUTORIAIS em SWF
-						    if preg_match("/.*\.swf$/i", $arquivo.arquivo)}
+						    if preg_match("/.*\.swf$/i", $file->fileName)}
 						    	{assign var='tooltipText' value="Veja esse swf"}
 						    {/if
 						    *}
-						{elseif $arquivo.tipo eq "Audio"}
-							{if preg_match("/.*\.ogg$/i", $arquivo.arquivo)}
+						{elseif $arquivo->type eq "Audio"}
+							{if preg_match("/.*\.ogg$/i", $file->fileName)}
 						    	{assign var='tooltipText' value="Ouça essa música"}
 						    {/if}
-						{elseif $arquivo.tipo eq "Imagem"}
-							{if !preg_match("/.*\.svg$/i", $arquivo.arquivo)}
+						{elseif $arquivo->type eq "Imagem"}
+							{if !preg_match("/.*\.svg$/i", $file->fileName)}
 						    	{assign var=tooltipText value="{tr}Veja essa imagem{/tr}"}
 						    {/if}
 						{/if}
 						{if $tooltipText}
 							<span class="gStreamCount">
-								{$arquivo.streamHits}
+								{$file->streams}
 							</span>
 							{tooltip name="view-iplay-" text=$tooltipText}
-								<img class="pointer" alt="" src="styles/{$style|replace:".css":""}/img/iPlay.png" onClick="xajax_streamFile({$arquivo.arquivoId}, '{$arquivo.tipo}', getPageSize()[0])">
+								<img class="pointer" alt="" src="styles/{$style|replace:".css":""}/img/iPlay.png" onClick="xajax_streamFile({$arquivo->id}, '{$arquivo->type}', getPageSize()[0])">
 							{/tooltip}
 						{/if}
 					</div>
 				</div>
 				<div id="aNameAuthor">
 					{if $permission}
-						{tooltip name="apagar-arquivo-acervo" text="Apagar esse arquivo"}<img id="aDelete" class="pointer" onClick="deleteFile({$arquivo.arquivoId}, {$dontAskDelete}, 0);" src="styles/{$style|replace:".css":""}/img/iDelete.png"/>{/tooltip}
+						{tooltip name="apagar-arquivo-acervo" text="Apagar esse arquivo"}<img id="aDelete" class="pointer" onClick="deleteFile({$arquivo->id}, {$dontAskDelete}, 0);" src="styles/{$style|replace:".css":""}/img/iDelete.png"/>{/tooltip}
 					{/if}
 					<div id="aName">
 						{if $permission}
-							{tooltip text="Clique para modificar o nome desse arquivo"}{ajax_input permission=$permission id="titulo" value=$arquivo.titulo default="Titulo" display="inline"}{/tooltip}
+							{tooltip text="Clique para modificar o nome desse arquivo"}{ajax_input permission=$permission id="title" value=$arquivo->title default="Titulo" display="inline"}{/tooltip}
 						{else}
-							{ajax_input permission=$permission id="titulo" value=$arquivo.titulo default="Titulo" display="inline"}
+							{ajax_input permission=$permission id="title" value=$arquivo->title default="Titulo" display="inline"}
 						{/if}
 					</div>
 					<div id="aAuthorDate">
-						<b>{tr}autor{/tr}:</b> {ajax_input permission=$permission id="autor" value=$arquivo.autor default="Autor da Obra" display="inline"} <b>{tr}enviado por{/tr}:</b> <a href="el-user.php?view_user={$arquivo.user}">{$arquivo.user}</a><br><b>{tr}em{/tr}:</b> <i>{$arquivo.data_publicacao|date_format:"%d/%m/%Y"}</i>
+						<b>{tr}autor{/tr}:</b> {ajax_input permission=$permission id="author" value=$arquivo->author default="Autor da Obra" display="inline"} <b>{tr}enviado por{/tr}:</b> <a href="el-user.php?view_user={$arquivo->user}">{$arquivo->user}</a><br><b>{tr}em{/tr}:</b> <i>{$arquivo->publishDate|date_format:"%d/%m/%Y"}</i>
 					</div>
 				</div>
 			</div>
@@ -111,10 +107,11 @@
 			<div id="aActions">
 				{if $user}
 					<div>
+					{assign var=userVote value=$arquivo->getUserVote()}
 					{section name=rating start=1 loop=6 step=1}
 						{if not $smarty.section.rating.first}{assign var=plural value="s"}{/if}
 						{tooltip name="arquivo_vote" text="Clique para mudar o seu voto para <b>"|cat:$smarty.section.rating.index|cat:" estrela"|cat:$plural|cat:"</b>"}
-					    	{if $arquivo.userRating && $arquivo.userRating >= $smarty.section.rating.index}
+					    	{if $userVote->rating && $userVote->rating >= $smarty.section.rating.index}
 				  		    	<img class="pointer" id="aRatingVote-{$smarty.section.rating.index}" src="styles/{$style|replace:".css":""}/img/iStarOn.png" onClick="acervoVota({$smarty.section.rating.index})"/>
 					    	{else}
 					        	<img class="pointer" id="aRatingVote-{$smarty.section.rating.index}" src="styles/{$style|replace:".css":""}/img/iStarOff.png" onClick="acervoVota({$smarty.section.rating.index})"/>
@@ -124,12 +121,12 @@
 				    </div>
 			    {/if}
 			    <center>
-	  				{tr}Total de votos desse arquivo{/tr}: {$arquivo.ratings}
+	  				{tr}Total de votos desse arquivo{/tr}: <span id="ajax-aVoteTotal">{$arquivo->getArraySize('votes')}</span>
   				</center>
 			</div>
 		</div>
 	</div>
-	{assign var=fileTags value=$arquivo.tags}
+	{assign var=fileTags value=$arquivo->tags}
 	{if $permission}
 		{tooltip text="Clique para editar as <b>tags</b> desse arquivo"}<img class="aTagsEdit pointer" src="styles/{$style|replace:".css":""}/img/iTagEdit.png" onClick="editaCampo('tags')">{/tooltip}
 	{/if}
@@ -138,7 +135,7 @@
 	</div>
 	
 	{if $permission}
-		<input class="aTagsInput" id="input-tags" value="{$arquivo.tagString}" onBlur="xajax_editTags(this.value)" style="display:none;">
+		<input class="aTagsInput" id="input-tags" value="{$arquivo->tagString}" onBlur="xajax_editTags(this.value)" style="display:none;">
 		<img id="error-tags" class="gUpErrorImg" style="display: none" src="styles/{$style|replace:".css":""}/img/errorImg.png" onMouseover="tooltip(errorMsg_tags);" onMouseout="nd();"> 
 		<script language="JavaScript">  display["tags"] = "block";errorMsg_tags = "";</script>
 	{/if}
@@ -148,34 +145,35 @@
 		<!-- comentarios -->
 
 		{if $tiki_p_read_comments eq 'y'}
+		{assign var=comments value=$arquivo->getArraySize('comments')}
 		<div id="aComments">
 			<div id="aCommentsTitle" class="sectionTitle">
 				<div class="aTitleCont">
 					<span class="hiddenPointer" onclick="flip('aCommentsItemsCont'); flip('aCommentSend');toggleImage(document.getElementById('comTArrow'),'iArrowGreyRight.png')">
 						<img id="comTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png">
-						<h1>{tr}Comentários{/tr} ({$comments_cant})</h1>
+						<h1>{tr}Comentários{/tr} ({$comments})</h1>
 					</span>
 					<!--img id="aCommentsRss" src="styles/{$style|replace:".css":""}/img/iRss.png"/-->
 				</div>
 			</div>
 			<div id="aCommentsItemsCont" class="aItemsCont" style="display:block">
-				{if $comments_cant > 0}
-				{foreach from=$comments_coms item='comment'}
+				{if $comments > 0}
+				{foreach from=$arquivo->comments item='comment'}
 					<div class="uMsgItem">
 						<div class="uMsgAvatar">
-							<img src="tiki-show_user_avatar.php?user={$comment.userName}">
+							<img src="tiki-show_user_avatar.php?user={$comment->user}">
 						</div>
 						<div class="uMsgTxt">
-							{if ($tiki_p_remove_comments eq 'y' && $forum_mode ne 'y') || ($tiki_p_admin_forum eq 'y' and $forum_mode eq 'y') || ($user eq $comment.userName)}
+							{if ($tiki_p_remove_comments eq 'y' && $forum_mode ne 'y') || ($tiki_p_admin_forum eq 'y' and $forum_mode eq 'y') || ($user eq $comment->user)}
 							<div class="uMsgDel">
 								<a href="{$comments_complete_father}comments_threshold={$comments_threshold}&amp;comments_threadId={$comment.threadId}&amp;comments_remove=1&amp;comments_offset={$comments_offset}&amp;comments_sort_mode={$comments_sort_mode}&amp;comments_maxComments={$comments_maxComments}&amp;comments_parentId={$comments_parentId}&amp;comments_style={$comments_style}"><img alt="" title="Deletar Mensagem" src="styles/{$style|replace:".css":""}/img/iDelete.png"></a>
 							</div>
 							{/if}
 							<div class="uMsgDate">
-								{$comment.commentDate|date_format:"%H:%M"}<br />
-								{$comment.commentDate|date_format:"%d/%m/%y"}
+								{$comment->date|date_format:"%H:%M"}<br />
+								{$comment->date|date_format:"%d/%m/%y"}
 							</div>
-							<a href="el-user.php?view_user={$comment.userName}">{$comment.userName}</a>: {$comment.parsed}
+							<a href="el-user.php?view_user={$comment->user}">{$comment->user}</a>: {$comment->comment}
 						</div>
 					</div>
 				{/foreach}
@@ -231,9 +229,9 @@
 				</div>
 				<div id="aDescCont" class="aItemsCont" style="display:block">
 					{if $permission}
-						{tooltip text="Clique aqui para modificar a descri&ccedil;&atilde;o do arquivo"}{ajax_textarea permission=$permission style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" id="descricao" value=$arquivo.descricao display="block" wikiParsed=1}{/tooltip}
+						{tooltip text="Clique aqui para modificar a descri&ccedil;&atilde;o do arquivo"}{ajax_textarea permission=$permission style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" id="description" value=$arquivo->description display="block" wikiParsed=1}{/tooltip}
 					{else}
-						{ajax_textarea permission=$permission style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" id="descricao" value=$arquivo.descricao display="block" wikiParsed=1}
+						{ajax_textarea permission=$permission style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" id="description" value=$arquivo->description display="block" wikiParsed=1}
 					{/if}
 				</div>
 			</div>
@@ -248,11 +246,11 @@
 				</div>
 				<div id="aInfoCont" class="aItemsCont" style="display:block">
 					<div id="gUpMoreOptions">
-						<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">{tr}Formato{/tr}:</div> {$arquivo.tipo} - {$arquivo.formato|show_extension}</div>
-						<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">{tr}Tamanho{/tr}:</div> {$arquivo.tamanho|show_filesize}</div>
+						<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">{tr}Formato{/tr}:</div> {$arquivo->type} - {$file->mimeType|show_extension}</div>
+						<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">{tr}Tamanho{/tr}:</div> {$file->size|show_filesize}</div>
 						{include file="el-gallery_metadata.tpl"}
-						{if $arquivo.tipo neq "Texto"}
-							{include file="el-gallery_metadata_"|cat:$arquivo.tipo|cat:".tpl"}
+						{if $arquivo->type neq "Texto"}
+							{include file="el-gallery_metadata_"|cat:$arquivo->type|cat:".tpl"}
 						{/if}
 					</div>
 				</div>
@@ -261,7 +259,7 @@
 	</div>
 </div>
 
-{if $arquivo.editCache && $permission && $arquivo.user eq $user}
+{*if $permission && $arquivo.user eq $user}
 <div id="lightFileAltered" style="display:none; width: 400px;">
 	{tr}Atenção: este arquivo foi modificado e as alterações não foram salvas!{/tr}<br/>
 	<span onClick="cancelEdit(); hideLightbox();" style="cursor: pointer">{tr}Cancelar{/tr}</span>&nbsp;&nbsp;&nbsp;
@@ -270,7 +268,7 @@
 <script language="Javascript">
 	showLightbox('lightFileAltered');
 </script>
-{/if}
+{/if*}
 
 {include file="el-gallery_confirm_delete.tpl"}
 

@@ -1,167 +1,174 @@
-{css}
+<!-- el-gallery_upload.tpl begin -->
+{css extra=ajax_inputs}
 <script language="JavaScript" src="lib/js/el_array.js"></script>
 <script language="JavaScript" src="lib/js/license.js"></script>
 <script language="JavaScript" src="lib/elgal/upload.js"></script>
 <script language="JavaScript" src="lib/js/edit_field_ajax.js"></script>
 <script language="JavaScript" src="lib/js/freetags.js"></script>
 
-<div id="gUpload">
-  <div id="gUpLeft">
-    <div id="gUpIcons">
-      <div class="gUpIcon pointer">
-        {*tooltiX text="Clique aqui para enviar um arquivo de <b>áudio</b>"*}<img id="iconeAudio" onMouseOver="acendeTipo('Audio');" onMouseOut="apagaTipo('Audio'); return nd();" onClick="selecionaTipo('Audio')" alt="" src="styles/{$style|replace:".css":""}/img/iUpAudioOff.png"><br />
-        {tr}Áudio{/tr}{*/tooltip*}
-      </div>
-    
-      <div class="gUpIcon pointer">
-        {*tooltiX text="Clique aqui para enviar uma <b>imagem</b>"*}<img id="iconeImagem" onMouseOver="acendeTipo('Imagem');" onMouseOut="apagaTipo('Imagem'); return nd();" onClick="selecionaTipo('Imagem')" alt="" src="styles/{$style|replace:".css":""}/img/iUpImagemOff.png"><br />
-        {tr}Imagem{/tr}{*/tooltip*}
-      </div>
-    
-      <div class="gUpIcon pointer">
-        {*tooltiX text="Clique aqui para enviar um arquivo de <b>texto</b>"*}<img id="iconeTexto" onMouseOver="acendeTipo('Texto');" onMouseOut="apagaTipo('Texto'); return nd();" onClick="selecionaTipo('Texto')" alt="" src="styles/{$style|replace:".css":""}/img/iUpTextoOff.png"><br />
-        {tr}Texto{/tr}{*/tooltip*}
-      </div>
-    
-      <div class="gUpIcon pointer">
-		{*tooltiX text="Clique aqui para enviar um arquivo de <b>vídeo</b>."*}<img id="iconeVideo" onMouseOver="acendeTipo('Video');" onMouseOut="apagaTipo('Video'); return nd();" onClick="selecionaTipo('Video')" alt="" src="styles/{$style|replace:".css":""}/img/iUpVideoOff.png"><br />
-        {tr}Vídeo{/tr}{*/tooltip*}
-      </div>
-    
-    </div>
-    
-    <img class="separator" src="styles/{$style|replace:".css":""}/img/separator.png">
-    
-    <div id="gUpList" style="display:none">
-  	<iframe name="uploadTarget" style="display:none" onLoad="finishUpload();"></iframe>
+<h4>{tr}Selecione o tipo de arquivo que deseja enviar{/tr}:</h4>
+{if $isIE}
+	<center>
+	<table id="tipos">
+		<tr>
+			<td>
+				<img id="js-iconeAudio" onMouseOver="acendeTipo('Audio');" onMouseOut="apagaTipo('Audio'); return nd();" onClick="selecionaTipo('Audio')" alt="{tr}Áudio{/tr}" src="styles/{$style|replace:".css":""}/img/iUpAudioOff.png">
+				<br/>
+				{tr}Áudio{/tr}
+			</td>
+			
+			<td>
+				<img id="js-iconeImagem" onMouseOver="acendeTipo('Imagem');" onMouseOut="apagaTipo('Imagem'); return nd();" onClick="selecionaTipo('Imagem')" alt="{tr}Imagem{/tr}" src="styles/{$style|replace:".css":""}/img/iUpImagemOff.png">
+				<br/>
+				{tr}Imagem{/tr}
+			</td>
+			
+			<td>
+				<img id="js-iconeTexto" onMouseOver="acendeTipo('Texto');" onMouseOut="apagaTipo('Texto'); return nd();" onClick="selecionaTipo('Texto')" alt="{tr}Texto{/tr}" src="styles/{$style|replace:".css":""}/img/iUpTextoOff.png">
+				<br/>
+				{tr}Texto{/tr}
+			</td>
+			
+			<td>
+				<img id="js-iconeVideo" onMouseOver="acendeTipo('Video');" onMouseOut="apagaTipo('Video'); return nd();" onClick="selecionaTipo('Video')" alt="{tr}Vídeo{/tr}" src="styles/{$style|replace:".css":""}/img/iUpVideoOff.png">
+				<br/>
+				{tr}Vídeo{/tr}
+			</td>
+		</tr>
+	</table>
+	{*o center só fecha láááá em baixo*}
+{else}
+	<div id="tipos">
+		<ul>
+			<li>
+				<img id="js-iconeAudio" onMouseOver="acendeTipo('Audio');" onMouseOut="apagaTipo('Audio'); return nd();" onClick="selecionaTipo('Audio')" alt="{tr}Áudio{/tr}" src="styles/{$style|replace:".css":""}/img/iUpAudioOff.png">
+				<br/>
+				{tr}Áudio{/tr}
+			</li>
+			
+			<li>
+				<img id="js-iconeImagem" onMouseOver="acendeTipo('Imagem');" onMouseOut="apagaTipo('Imagem'); return nd();" onClick="selecionaTipo('Imagem')" alt="{tr}Imagem{/tr}" src="styles/{$style|replace:".css":""}/img/iUpImagemOff.png">
+				<br/>
+				{tr}Imagem{/tr}
+			</li>
+			
+			<li>
+				<img id="js-iconeTexto" onMouseOver="acendeTipo('Texto');" onMouseOut="apagaTipo('Texto'); return nd();" onClick="selecionaTipo('Texto')" alt="{tr}Texto{/tr}" src="styles/{$style|replace:".css":""}/img/iUpTextoOff.png">
+				<br/>
+				{tr}Texto{/tr}
+			</li>
+			
+			<li>
+				<img id="js-iconeVideo" onMouseOver="acendeTipo('Video');" onMouseOut="apagaTipo('Video'); return nd();" onClick="selecionaTipo('Video')" alt="{tr}Vídeo{/tr}" src="styles/{$style|replace:".css":""}/img/iUpVideoOff.png">
+				<br/>
+				{tr}Vídeo{/tr}
+			</li>
+		</ul>
+	</div>
+{/if}
 
-      <div class="gUpListItem gUpSelected">
-        
-        <img class="gUpListEdit" src="styles/{$style|replace:".css":""}/img/iSelect.png">
-    	<div id="gUpBackground" class="gUpListItemField">
-    	  <div id="gUpFileName"></div>
-    	  <div id="gUpPercentContainer" class="gUpPercent"><span id="gUpPercent"></span></div>
-    	  <div class="gUpStatus" id="gUpStatusBar"></div>
-    	</div>
-    	<a href="#" class="gUpButton" id="gUpButton">{tr}procurar{/tr}</a>
-    	<div class="gUpForm">
-	      <form name="uploadForm" target="uploadTarget" action="el-gallery_upload_file.php?UPLOAD_IDENTIFIER={$uploadId}" method="post" enctype="multipart/form-data">
-  		    <input type="hidden" name="UPLOAD_IDENTIFIER" value="{$uploadId}">  		    <input type="hidden" name="arquivoId" value="">
-  		    <input type="hidden" name="tipo" value="">
-   	   	    <input type="file" name="arquivo" onMouseOver="document.getElementById('gUpButton').className='gUpButtonHover';" onMouseOut="document.getElementById('gUpButton').className='gUpButton';nd()" onChange="changeStatus(this.value);">
-   	      </form>
-         </div>
-     </div>
-    <center>
-	    <img class="separator" src="styles/{$style|replace:".css":""}/img/separator.png">
-    </center>
-    
-    </div>
+<div id="js-browse">
+	<iframe name="uploadTarget" style="display:none" onLoad="finishUpload();"></iframe>
+	
+	<form name="uploadForm" target="uploadTarget" action="el-gallery_upload_file.php?UPLOAD_IDENTIFIER={$uploadId}" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="UPLOAD_IDENTIFIER" value="{$uploadId}">
+		<input type="hidden" name="arquivoId" value="">
+		<input type="hidden" name="tipo" value="">
+		<input type="file" name="arquivo" onChange="changeStatus(this.value);">
+	</form>
+	
+	<div id="browseCont">
+		<div id="js-statusBar" class="statusBarGoing"></div>
+		<div id="js-percent"></div>
+	</div>
+	
+	<h4 id="js-cancel"></h4>
+</div>
+	
+<div id="js-desc">
 
-    {if $pending && $permission}
-	 	<div id="fileAltered" style="display:block;text-align:left">
-	 		{tr}Arquivos não publicados{/tr}:<br/>
-		 	<ul id="gUpPending">
-				{foreach from=$pending item=pendente}
-					<li id="ajax-pendente-{$pendente.arquivoId}">
-						<span class="pointer" onClick="xajax_delete_file({$pendente.arquivoId})"><img src="styles/{$style|replace:".css":""}/img/iDelete.png"></span>
-						{tooltip text="Clique para continuar o envio desse arquivo"}
-							<span class="pointer" onClick="restoreForm({$pendente.arquivoId}, '{$pendente.tipo}', '{$pendente.arquivo}', '{$pendente.thumbnail}');flip('fileAltered');nd();">
-								{$pendente.titulo|default:$pendente.arquivo|default:$pendente.arquivoId}
-							</span>
-						{/tooltip}
-					</li>
-				{/foreach}
-			 </ul>
-		 </div>
-	 {/if}
-    
-    
-    
-  </div>
+	<img id="ajax-thumbnail" />
 
-  <div id="gUpRight" style="display:none">
-  
-    <div id="gUpThumbImgForm">
-      <div id="gUpThumb">
-	    <div id="gUpThumbImg">
-	      <img id="ajax-thumbnail" alt="" class="gUpThumbImg">
-	      <div id="gUpThumbStatus"></div>
-	    </div>
-      </div>
-      <div id="gUpThumbForm">
-  	<iframe name="thumbUpTarget" style="display:none" onLoad="finishUpThumb();"></iframe>
-        {tooltip text="Clique para selecionar outra <b>miniatura</b> para o arquivo"}<form action="el-gallery_upload_thumb.php?UPLOAD_IDENTIFIER=thumb.{$uploadId}" method="post" enctype="multipart/form-data" name="thumbForm" target="thumbUpTarget">
-	  <input type="hidden" name="UPLOAD_IDENTIFIER" value="thumb.{$uploadId}">
-	  <input type="hidden" name="arquivoId" value="">
-	  <input type="file" name="thumb" onChange="changeThumbStatus()" class="gUpThumbFormButton">
-        </form>{/tooltip}
-      </div>
-    </div>
+	<div id="tituloAutor">
+		{ajax_input permission=$permission id="title" value=$arquivo->title default="{tr}Título{/tr}" display="inline" truncate=50}
+		<br/>
+		<span>
+			<em>{tr}Autor{/tr}:</em> {ajax_input permission=$permission id="author" value=$realName default="{tr}Autor da obra{/tr}" display="inline" mode="edit"}
+		</span>
+	</div>
 
-    <div id="gUpTitleAuthor">
-        {ajax_input permission=$permission class="gUpTitle" id="titulo" value=$arquivo.titulo default="{tr}Titulo{/tr}" display="inline" truncate=50}
-		<div id="gUpAuthorCont">
-		  	{tr}Por{/tr} {ajax_input permission=$permission class="gUpAuthor" id="autor" value=$realName default="{tr}Autor da obra{/tr}" display="inline" mode="edit"}
+	<div class="pointer flippers" onClick="flip('js-thumbForm')">{tr}outra miniatura...{/tr}</div>
+	<span id="js-thumbForm" style="display:none">
+		<iframe name="thumbUpTarget" style="display:none" onLoad="finishUpThumb();"></iframe>
+		<form name="thumbForm" target="thumbUpTarget" action="el-gallery_upload_thumb.php?UPLOAD_IDENTIFIER=thumb.{$uploadId}" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="UPLOAD_IDENTIFIER" value="thumb.{$uploadId}">
+			<input type="hidden" name="arquivoId" value="">
+			<input type="file" name="thumb" onChange="changeThumbStatus()" class="gUpThumbFormButton">
+			&nbsp;&nbsp;<span id="js-thumbStatus"></span>
+		</form>
+	</span>
+	<br/>
+	{ajax_textarea permission=$permission  display="block" style="width:370px;height:175px;border:1px inset rgb(233, 233, 174);padding:3px;font-size:11pt;font-family:Arial,Verdana,Helvetica,Lucida,Sans-Serif;background-color:#f1f1f1;margin-bottom:5px;" id="description" value=$arquivo->description default="{tr}Escreva aqui a descrição da sua obra{/tr}"}
+	
+	<div id="license">
+		<em>{tr}Licença{/tr}:</em>
+		<img class="pointer" id="ajax-uImagemLicenca" src="styles/{$style|replace:".css":""}/img/h_{$licenca.imageName}" alt="Escolha uma licença" onClick="showLightbox('el-license')"/>
+	</div>
+		
+	{include file="el-license.tpl" upload=1}
+		
+	{if $feature_freetags eq 'y' && $tiki_p_freetags_tag eq 'y'}
+		<em>{tr}Tags{/tr}:</em>
+		{tooltip text="Escreva aqui as tags desse arquivo (separadas por <b>vírgula</b>)"}
+			{ajax_input permission=$permission id="tags" value="$taglist" noclear=1 display="inline"}
+		{/tooltip}
+		
+		{tooltip text="Clique nas tags para adiocioná-las ao campo acima"}
+			<div id="ajax-gUpTagListItem">
+				{include file="el-tag_suggest_list.tpl"}
+			</div> 
+		{/tooltip}
+		
+		<div id="ajax-gUpTagSuggestMore" class="pointer flippers" onclick="getMoreTags();">
+			ver mais tags
 		</div>
-    </div>
-      
-    <br style="clear:both; line-height:30px;">
-    <div id="gUpDescription">
-    	<div>
-	    	{ajax_textarea permission=$permission  display="block" style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" class="gUpDescription" id="descricao" value=$arquivo.descricao default="{tr}Escreva aqui a descrição da sua obra{/tr}"}
-	    </div>
-    </div>
-    
-    <br style=" line-height:20px;">
-	{tr}Licença{/tr}: <span onClick="showLightbox('el-license')" style="cursor: pointer;text-decoration:underline"><img id="ajax-uImagemLicenca" src="styles/{$style|replace:".css":""}/img/h_{$licenca.linkImagem}" alt="Escolha uma licença"/></span>
-	{assign var="upload" value=1}
-	{include file="el-license.tpl"}
+	{/if freetags}
 	
-	<br />
-	<br />	
+	{tooltip text="Clique para definir outras propriedades do arquivo"}
+		<div class="pointer flippers" id="info" onclick="flip('ajax-gUpMoreOptionsContent');">
+			{tr}Outras informações deste arquivo...{/tr}
+		</div>
+	{/tooltip}
 	
-    <div id="gUpEditTags">
-      {if $feature_freetags eq 'y' && $tiki_p_freetags_tag eq 'y'}
-        <span>{tr}Tags{/tr}</span>
-	{* O ideal eh que tenha suggest aqui nesse campo *}
-	{tooltip text="Escreva aqui as tags desse arquivo (separadas por <b>vírgula</b>)"}{ajax_input permission=$permission class="freetags" id="tags" value="$taglist" noclear=1 display="inline"}{/tooltip}<br>
-	  <div id="gUpTagSugest">
-	    {* Aqui ficam listadas as tags do usuário.
-	    Primeiro as 10 mais usadas, com um botão "exibir +" e outro "exibir todas" *}
+	<div style="display:none" id="ajax-gUpMoreOptionsContent">
+		{include file="el-gallery_metadata.tpl"}
+	</div>
+	
+	<div id="save-exit">
+		<img src="styles/{$style|replace:".css":""}/img/bPublicar.png" class="pointer" onClick="checkWaiting('xajax_check_publish()')"/>
+	</div>
+</div>
 
-	    <div id="gUpTagSuggestUser" >
-	      <div id="ajax-gUpTagSuggestMore" style="display:block">
-	        {include file="el-tag_suggest_more.tpl"}
-	      </div>
-	   	  {tooltip text="Clique nas tags para adiocioná-las ao campo acima"}
-	      <div id="ajax-gUpTagListItem">
-	        {include file="el-tag_suggest_list.tpl"}
-	      </div> 
-    	  {/tooltip}
-	    </div>
-	  </div>
-      {/if freetags}
-    </div>
-    <br style="clear:both; line-height:20px;">
-    
-    <div id="gUpMoreOptions">
-      {tooltip text="Clique para definir outras propriedades do arquivo"}
-      	<a class="gUpmore pointer" id="gUpmoreoptionsLink" onclick="javascript:flip('ajax-gUpMoreOptionsContent'); toggleImage(document.getElementById('moreOptionArrow'),'iArrowGreyDown.png');return false;">{tr}mais opções{/tr} <img id="moreOptionArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyLeft.png"> </a>{/tooltip}<br/>
-      <div style="display:none" id="ajax-gUpMoreOptionsContent">
-      	{include file="el-gallery_metadata.tpl"}
-      </div>
-    </div>
-    
-     <br style="clear:both; line-height:20px;">
-    
-    <div id="save-exit">
-       <img src="styles/{$style|replace:".css":""}/img/bPublicar.png" class="pointer" onClick="checkWaiting('xajax_check_publish()')"/>
-    </div>
+{if $isIE}
+	</center>
+{/if}
 
-
-  </div>
-  
+<div id="js-pending">
+	{if $pending && $permission}
+		{tr}Arquivos não publicados{/tr}:<br/>
+		<ul>
+		{foreach from=$pending item=pendente}
+			<li id="ajax-pendente-{$pendente->id}">
+				<span class="pointer" onClick="xajax_delete_file({$pendente->id})"><img src="styles/{$style|replace:".css":""}/img/iDelete.png"></span>
+				{tooltip text="Clique para continuar o envio desse arquivo"}
+					<span class="pointer" onClick="restoreForm({$pendente->id}, '{$pendente->type}', '{$pendente->filereferences[0]->fileName}', '{$pendente->thumbnail}');nd();">
+						{$pendente->title|default:$pendente->filereferences[0]->fileName|default:$pendente->id}
+					</span>
+				{/tooltip}
+			</li>
+		{/foreach}
+		</ul>
+	{/if}
 </div>
 
 {include file="el-gallery_publish.tpl"}
@@ -169,6 +176,7 @@
 <div id="errorDiv" style="display:none; width:200px"></div>
 
 {if $restore > -1}
-	<script language="JavaScript">restoreForm({$pending.$restore.arquivoId}, '{$pending.$restore.tipo}', '{$pending.$restore.arquivo}', '{$pending.$restore.thumbnail}');flip('fileAltered');</script>
+	<script language="JavaScript">restoreForm({$pending.$restore->id}, '{$pending.$restore->type}', '{$pending.$restore->filereferences[0]->fileName}', '{$pending.$restore->thumbnail}');flip('fileAltered');</script>
 {/if}
-<!-- el-gallery_upload_general.tpl end -->
+
+<!-- el-gallery_upload.tpl end -->

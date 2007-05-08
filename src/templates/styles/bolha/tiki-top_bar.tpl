@@ -1,10 +1,6 @@
 {css}
 <!-- tiki-top_bar.tpl begin -->
 
-{if $isIE}
-{include file="ie_notsupported.tpl"}
-{/if}
-
 <div id="tiki-top">
   <div id="topContainer">
   	{* Logo TESTE *}
@@ -19,6 +15,13 @@
           <img src="styles/{$style|replace:".css":""}/img/logoTop.png" alt="estudiolivre.org">
         {/tooltip}
       </a>
+      {* idéia
+      <div>
+	    {tooltip name="saiba-estudiolivre" text="Saiba <b>o que é</b> o EstúdioLivre"}<a href="tiki-index.php?page=sobre&bl">{tr}sobre{/tr}</a>{/tooltip}
+	  	{tooltip name="perguntas-frequentes" text="<b>Perguntas</b> mais freqüêntes"}<a href="tiki-index.php?page=faq&bl">{tr}faq{/tr}</a>{/tooltip}
+	    {tooltip name="entre-contato" text="Entre em contato - descubra os <b>canais de comunicação</b> com a comunidade"}<a href="tiki-index.php?page=contato&bl">{tr}contato{/tr}</a>{/tooltip}
+	  </div>
+	  *}
     </div>
   
     <script language="JavaScript" src="lib/js/busca.js"></script>
@@ -41,20 +44,20 @@
 
 <div id="topMenu">
   <div id="topMenuGeneral">
+  &nbsp;&nbsp;
     {tooltip name="saiba-estudiolivre" text="Saiba <b>o que é</b> o EstúdioLivre"}<a href="tiki-index.php?page=sobre&bl">{tr}sobre{/tr}</a>{/tooltip}
-    | 
-  	{tooltip name="forum-discussoes" text="Fóruns de <b>discussões</b> - tire suas dúvidas aqui"}<a href="tiki-forums.php">{tr}forums{/tr}</a>{/tooltip}
-    | 
-    {tooltip name="lista-comunidade" text="Veja a lista de <b>pessoas</b> que fazem parte da comunidade"}<a href="tiki-list_users.php">{tr}users{/tr}</a>{/tooltip}
+	|
+	{tooltip name="perguntas-frequentes" text="<b>Perguntas</b> mais freqüêntes"}<a href="tiki-index.php?page=faq&bl">{tr}faq{/tr}</a>{/tooltip}
+	|
+	{tooltip name="entre-contato" text="Entre em contato - descubra os <b>canais de comunicação</b> com a comunidade"}<a href="tiki-index.php?page=contato&bl">{tr}contato{/tr}</a>{/tooltip}
+&nbsp;&nbsp;||&nbsp;&nbsp;
+	{tooltip name="wiki" text="Página principal do <b>wiki</b> do EstúdioLivre"}<a href="tiki-index.php">{tr}wiki{/tr}</a>{/tooltip}
+	|
+    {tooltip name="forum-discussoes" text="Fóruns de <b>discussões</b> - tire suas dúvidas aqui"}<a href="tiki-forums.php">{tr}forums{/tr}</a>{/tooltip}
     | 
     {tooltip text="Veja os <b>blogs</b> dos usuári@s do EstúdioLivre"}<a href="tiki-list_blogs.php">{tr}blogs{/tr}</a>{/tooltip}
     | 
     {tooltip text="Navegue pelas <b>tags</b> mais populares do EstúdioLivre"}<a href="el-tag_cloud.php">{tr}tags{/tr}</a>{/tooltip}
-    | 
-    {tooltip name="perguntas-frequentes" text="<b>Perguntas</b> mais freqüêntes"}<a href="tiki-index.php?page=faq&bl">{tr}faq{/tr}</a>{/tooltip}
-    | 
-    {tooltip name="entre-contato" text="Entre em contato - descubra os <b>canais de comunicação</b> com a comunidade"}<a href="tiki-index.php?page=contato&bl">{tr}contato{/tr}</a>{/tooltip}
-    
   </div>
     
 	<div id="topMenuCubesContainer">
@@ -91,6 +94,11 @@
         
 	</div>
 </div>
+
 </div>
+
+{if $isIE}
+{include file="ie_notsupported.tpl"}
+{/if}
 
 <!-- tiki-top_bar.tpl end -->

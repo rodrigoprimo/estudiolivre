@@ -98,7 +98,6 @@
       <div id="uAccountInfo" class="uContactInfoCont right">
         <!-- span class="uContactItem"><a href="#">(X) Amigos</a></span -->
         <br />
-        {* TODO falar a descricao da licenca no tooltip *}
         <span class="uContactItem">
         	<span class="uContactItem">
         	{if $permission}
@@ -106,7 +105,7 @@
         			<span class="pointer" onClick="showLightbox('el-license')">
         			{if $licenca}
 			    	   	{tooltip text="Clique para modificar a sua licença padrão"}
-			    	   		<img id="ajax-uLicence" src="styles/{$style|replace:".css":""}/img/h_{$licenca.linkImagem}"/>
+			    	   		<img id="ajax-uLicence" src="styles/{$style|replace:".css":""}/img/h_{$licenca.imageName}"/>
 			    	   	{/tooltip}
 			    	{else}
 	    		    	<img id="ajax-uLicence" alt="({tr}Selecione sua licença Padrão{/tr})"/>
@@ -114,7 +113,7 @@
 	    		    </span>
 	        {else}
 		        {if $licenca}
-			    	   	{tooltip text="Licença padrão desse(a) usuári@: "|cat:$licenca.descricao}<img id="ajax-uLicence" src="styles/{$style|replace:".css":""}/img/h_{$licenca.linkImagem}"/>{/tooltip}
+			    	   	{tooltip text="Licença padrão desse(a) usuári@: "|cat:$licenca.description}<img id="ajax-uLicence" src="styles/{$style|replace:".css":""}/img/h_{$licenca.imageName}"/>{/tooltip}
 		    	{else}
 		        	({tr}Usuári@ sem Licença Padrão{/tr})
 		        {/if}

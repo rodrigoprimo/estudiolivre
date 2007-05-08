@@ -6,12 +6,12 @@
 <html>
 
   {include file="head.tpl"}
-
-  {if $showIeMsg}
-    {include file="ie_notsupported.tpl"}
-  {/if}
   
   {include file="body.tpl"}
 
-  
+  	{* --- CSS com fixes do IE --- *}
+	{if $isIE}
+		<link rel="StyleSheet"  href="styles/{$style|replace:".css":""}/css/ie.css" type="text/css" />
+	{/if}
+	{* ---- END ---- *}
 </html>

@@ -1,4 +1,4 @@
-<div id="gPlayerSwf" style="display:none">
+<div id="gPlayerSwf" class="none">
 	<script language="javascript">
 		{literal}
 			/* Jesse Ruderman

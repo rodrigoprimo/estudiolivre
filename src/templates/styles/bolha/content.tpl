@@ -16,9 +16,8 @@
 
 <!-- content.tpl begin -->
 <div id="ajax-contentBubble">
-	{if $section neq "wiki"}{include file="sideContent.tpl"}{/if}
+   	{include file="sideContent.tpl"}
 	<div id="{$midId}">
-		{if $section eq "wiki"}{include file="sideContent.tpl"}{/if}
 	    {$mid_data}
     </div>
 </div>

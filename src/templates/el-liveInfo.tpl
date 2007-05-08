@@ -20,19 +20,32 @@
 			  			{*tr}Canal de Vídeo{/tr*}
 			    		<img src="styles/{$style|replace:".css":""}/img/iThumbVideoPlay.png">
 			  		{/if}
-			  		<br/>
-				</a>
+			  		</a>
+				<br/>
 				{/tooltip}			
 		  	</div>
 		  	
-		  	<h2><a href="{$source->listenurl}">{$source->server_name}</a></h2>
+		  	<h2>
+		  		{if $video}
+		  			{tooltip text="Clique para ver o video"}
+			  			<a class="pointer" onClick="xajax_streamStream('{$source->listenurl}', '{$source->frame_size}');">
+			  				{$source->server_name}
+			  			</a>
+			  		{/tooltip}
+			  	{else}
+			  		<a href="{$source->listenurl}">
+			  			{$source->server_name}
+		  			</a>
+		  		{/if}
+		  	</h2>
 		  	<h5><a href="{$source->server_url}">{$source->server_url}</a></h5>
 		  	<div class="listInfo">
 		  		<h3>
 		  			{$source->server_description} <br/>
 		  		</h3>
 		  		<h4>
-				<div class="asRow">
+				<div class="a{$source->server_name}
+			  			</a>sRow">
 					<span class="lef">
 						{tr}Gênero{/tr}: <em>{$source->genre}</em>
 					</span>

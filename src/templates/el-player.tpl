@@ -1,4 +1,4 @@
-<div id="ajax-gPlayer" style="display:none">
+<div id="ajax-gPlayer" class="none">
 	<applet code="com.fluendo.player.Cortado.class" 
            archive="lib/elgal/player/cortado-ovt.jar" 
 		   width="" height="">

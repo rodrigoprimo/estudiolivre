@@ -1,4 +1,4 @@
-<div id="el-license" style="display: none; width: 500px;">
+<div id="el-license" class="none" style="width: 500px;">
 	<h2>{tr}Escolha uma licença{/tr}:</h2>
 	{tr}Agora você precisa escolher sob qual licença sua obra será publicada{/tr}.<br />
 	{tr}As questões abaixo te ajudam nessa tarefa, mas se você tiver alguma dúvida, visite o FAQ sobre{/tr} <a href="tiki-index.php?page=faq+Direitos+Autorais" target="_blank">{tr}Direitos autorais e generosidade intelectual{/tr}</a>

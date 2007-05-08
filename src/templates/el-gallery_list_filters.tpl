@@ -35,11 +35,11 @@
       	   src="styles/{$style|replace:".css":""}/img/sortArrow{$sortDirection}.png" />{/tooltip}
       {tooltip name="home-criterio-ordenacao" text="Modifica critério da ordenação"}
 	      <select style="decoration:none" onChange="setSortMode(this)">
-	        <option value="data_publicacao" {if $sortMode eq 'data_publicacao'}selected{/if}>{tr}Date{/tr}</option>
+	        <option value="publishDate" {if $sortMode eq 'publishDate'}selected{/if}>{tr}Date{/tr}</option>
 			<option value="rating" {if $sortMode eq 'rating'}selected{/if}>{tr}Estrelas{/tr}</option>
-			<option value="hits" {if $sortMode eq 'hits'}selected{/if}>{tr}Downloads{/tr}</option>
-			<option value="titulo" {if $sortMode eq 'titulo'}selected{/if}>{tr}Título{/tr}</option>
-			<option value="streamHits" {if $sortMode eq 'streamHits'}selected{/if}>{tr}Visualizações{/tr}</option>
+			<option value="downloads" {if $sortMode eq 'downloads'}selected{/if}>{tr}Downloads{/tr}</option>
+			<option value="title" {if $sortMode eq 'title'}selected{/if}>{tr}Título{/tr}</option>
+			<option value="streams" {if $sortMode eq 'streams'}selected{/if}>{tr}Visualizações{/tr}</option>
 	      </select>
       {/tooltip}
     </td>

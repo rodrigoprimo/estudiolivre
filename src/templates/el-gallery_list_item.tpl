@@ -1,14 +1,15 @@
 {* para os tooltips *}
-{if $arquivo.tipo eq "Video"}
-	{if preg_match("/.*\.ogg$/i", $arquivo.arquivo)}
+{assign var=file value=$arquivo->filereferences[0]}
+{if $arquivo->type eq "Video"}
+	{if preg_match("/.*\.ogg$/i", $file->fileName)}
 		{assign var=tooltipText value="{tr}Assista a esse vídeo{/tr}"}
 	{/if}
-{elseif $arquivo.tipo eq "Audio"}
-	{if preg_match("/.*\.ogg$/i", $arquivo.arquivo)}
+{elseif $arquivo->type eq "Audio"}
+	{if preg_match("/.*\.ogg$/i", $file->fileName)}
 		{assign var=tooltipText value="{tr}Ouça essa música{/tr}"}
 	{/if}
-{elseif $arquivo.tipo eq "Imagem"}
-	{if !preg_match("/.*\.svg$/i", $arquivo.arquivo)}
+{elseif $arquivo->type eq "Imagem"}
+	{if !preg_match("/.*\.svg$/i", $file->fileName)}
 		{assign var=tooltipText value="{tr}Veja essa imagem{/tr}"}
 	{/if}
 {else}
@@ -17,43 +18,44 @@
 
 <div class="listItem">
 	<div class="listLeft">
-		<a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}">
-			{if $arquivo.thumbnail}
-				<img src="repo/{$arquivo.thumbnail|escape:'url'}">
+		<a href="el-gallery_view.php?arquivoId={$arquivo->id}">
+			{if $arquivo->thumbnail}
+				<img src="repo/{$arquivo->thumbnail|escape:'url'}" {if $isIE}width=100 height=100{/if}>
 			{else}
-				<img src="styles/{$style|replace:".css":""}/img/iThumb{$arquivo.tipo}.png">
+				<img src="styles/{$style|replace:".css":""}/img/iThumb{$arquivo->type}.png">
 			{/if}
 		</a>
+		{assign var=ratings value=$arquivo->getArraySize('votes')}
 		<img onmouseout="nd();" 
-			 onmouseover="tooltip('{$arquivo.ratings} {tr}voto{/tr}{if ($arquivo.ratings>1 || $arquivo.ratings<1) }s{/if}<br>{tr}Avaliação - entre na página do arquivo para votar{/tr}')"
-			 alt="{$arquivo.rating} estrelas"
-			 src="styles/{$style|replace:".css":""}/img/star{math equation="round(x)" x=$arquivo.rating|default:"blk"}.png"
+			 onmouseover="tooltip('{$ratings} {tr}voto{/tr}{if ($ratings>1 || $ratings<1) }s{/if}<br>{tr}Avaliação - entre na página do arquivo para votar{/tr}')"
+			 alt="{$arquivo->rating} estrelas"
+			 src="styles/{$style|replace:".css":""}/img/star{math equation="round(x)" x=$arquivo->rating|default:"blk"}.png"
 			 class="listRating">
 		<br />
 		{tooltip name="list-baixe-arquivo" text="Copie o arquivo (para o seu computador)"}
-			<a href="el-download.php?arquivo={$arquivo.arquivoId}&action=download">
+			<a href="el-download.php?arquivo={$arquivo->id}&action=download">
 				{tr}baixar{/tr}
 			</a>
 		{/tooltip}	
 		{if $tooltipText}
 		<br />
 			{tooltip name="list-i-play" text=$tooltipText}
-				<span class="pointer" alt="" onClick="xajax_streamFile({$arquivo.arquivoId},'{$arquivo.tipo}', getPageSize()[0]);nd();">
+				<span class="pointer" alt="" onClick="xajax_streamFile({$arquivo->id},'{$arquivo->type}', getPageSize()[0]);nd();">
 					{tr}ver{/tr}
 				</span>
 			{/tooltip}
 		{/if}
-		{if $arquivo.user eq $user or $el_p_admin_gallery eq "y"}
+		{if $arquivo->user eq $user or $el_p_admin_gallery eq "y"}
 			<br />
 			{tooltip name="list-apagar-arquivo-acervo" text="Apagar esse arquivo do acervo"}
-				<span class="pointer" onClick="deleteFile({$arquivo.arquivoId},{$dontAskDelete},0);nd();">{tr}apagar{/tr}</span>
+				<span class="pointer" onClick="deleteFile({$arquivo->id},{$dontAskDelete},0);nd();">{tr}apagar{/tr}</span>
 			{/tooltip}
 		{/if}
 	</div>
 	
 	<h2>
-		<a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}">
-			{$arquivo.titulo}
+		<a href="el-gallery_view.php?arquivoId={$arquivo->id}">
+			{$arquivo->title}
 		</a>
 	</h2>
 	
@@ -63,27 +65,27 @@
 		<h4>
 			<div class="asRow">
 				<span class="lef">
-					{tr}autor{/tr}: <em>{$arquivo.autor}</em>
+					{tr}autor{/tr}: <em>{$arquivo->author}</em>
 				</span>
 				<span class="mid">
-					{tr}enviado por{/tr}: <em><a href="el-user.php?view_user={$arquivo.user}">{$arquivo.user}</a></em>
+					{tr}enviado por{/tr}: <em><a href="el-user.php?view_user={$arquivo->user}">{$arquivo->user}</a></em>
 					<br />
-					{tr}em{/tr}: <em>{$arquivo.data_publicacao|date_format:"%d/%m/%y"}</em>
+					{tr}em{/tr}: <em>{$arquivo->publishDate|date_format:"%d/%m/%y"}</em>
 				</span>
 				<span class="rig">
-					{tr}tipo{/tr}: <em>{tr}{$arquivo.tipo}{/tr}</em>
+					{tr}tipo{/tr}: <em>{tr}{$arquivo->type}{/tr}</em>
 				</span>
 			</div>
 		</h4>
 		
 		<h3>
-			{if strlen($arquivo.descricao) > 150}
-				{$arquivo.descricao|truncate:150:"":true}
-				<a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}">
+			{if strlen($arquivo->description) > 150}
+				{$arquivo->description|truncate:150:"":true}
+				<a href="el-gallery_view.php?arquivoId={$arquivo->id}">
 					({tr}ler mais{/tr}...)
 				</a>
-			{elseif $arquivo.descricao}
-				{$arquivo.descricao}
+			{elseif $arquivo->description}
+				{$arquivo->description}
 			{else}
 				{tr}Arquivo sem descrição{/tr}!
 			{/if}
@@ -92,25 +94,26 @@
 		<h4>
 			<div class="asRow">
 				<span class="lef">
-					{tr}baixado{/tr}: <em>{$arquivo.hits} {if $arquivo.hits == 1 }{tr}vez{/tr}{else}{tr}vezes{/tr}{/if}</em>
+					{tr}baixado{/tr}: <em>{$file->downloads} {if $file->downloads == 1 }{tr}vez{/tr}{else}{tr}vezes{/tr}{/if}</em>
 					{if $tooltipText}
 						<br />
-						{tr}visto{/tr}: <em>{$arquivo.streamHits} {if $arquivo.streamHits == 1 }{tr}vez{/tr}{else}{tr}vezes{/tr}{/if}</em>
+						{tr}visto{/tr}: <em>{$file->streams} {if $file->streams == 1 }{tr}vez{/tr}{else}{tr}vezes{/tr}{/if}</em>
 					{/if}
 				</span>
 				<span class="mid">
 					{tr}comentários{/tr}:
+					{assign var=commentsCount value=$arquivo->getArraySize('comments')}
 						<em>
-							{if $arquivo.commentsCount == 0}
+							{if $commentsCount == 0}
 								{tooltip name="list-primeiro-comentar" text="Seja o primeiro a comentar sobre esse arquivo"}
-								<a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}#comments">
+								<a href="el-gallery_view.php?arquivoId={$arquivo->id}#comments">
 								0
 								</a>
 								{/tooltip}
 							{else}
 								{tooltip name="list-ler-comentarios" text="Clique para ler os comentários"}
-									<a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}#comments">
-										{$arquivo.commentsCount}
+									<a href="el-gallery_view.php?arquivoId={$arquivo->id}#comments">
+										{$commentsCount}
 									</a>
 								{/tooltip}
 							{/if}
@@ -118,9 +121,9 @@
 				</span>		
 				<span class="rig">
 					{tr}licença{/tr}:
-						{tooltip name="list-descricao-licenca" text=$arquivo.descricaoLicenca}
-							<a href="{$arquivo.linkHumanReadable}">
-								<img src="styles/{$style|replace:".css":""}/img/h_{$arquivo.linkImagem}">
+						{tooltip name="list-descricao-licenca" text=$arquivo->license->description}
+							<a href="{$arquivo->license->humanReadableLink}">
+								<img src="styles/{$style|replace:".css":""}/img/h_{$arquivo->license->imageName}">
 							</a>
 						{/tooltip}
 				</span>
@@ -131,7 +134,7 @@
 			<span>
 				tags:
 				<em>
-					{foreach from=$arquivo.tags.data item=t name=tags}{tooltip text="Clique para ver outros arquivos com a tag <b>"|cat:$t.tag|cat:"</b>"}<a href="tiki-browse_freetags.php?tag={$t.tag}">{$t.tag}</a>{if not $smarty.foreach.tags.last}, {/if}{/tooltip}{foreachelse}
+					{foreach from=$arquivo->tags item=t name=tags}{tooltip text="Clique para ver outros arquivos com a tag <b>"|cat:$t.tag|cat:"</b>"}<a href="tiki-browse_freetags.php?tag={$t.tag}">{$t.tag}</a>{if not $smarty.foreach.tags.last}, {/if}{/tooltip}{foreachelse}
 						{tr}Esse arquivo não tem tags{/tr}.
 					{/foreach}
 				</em>

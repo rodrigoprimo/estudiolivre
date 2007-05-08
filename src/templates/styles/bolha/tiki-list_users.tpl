@@ -1,5 +1,5 @@
 {css only=list}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/tiki-list_users.tpl,v 1.3 2006-11-30 22:39:30 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/tiki-list_users.tpl,v 1.5 2007-05-10 21:24:11 nano Exp $ *}
 <div id="users">
 <h1>
 	{if !$find}
@@ -118,7 +118,7 @@ para a sua apreciação: esse eh o codigo que era usado pelo tiki-view_trackers 
 		<tr class="{$currentClass}">
 			<td class="foto">
 				<a href="el-user.php?view_user={$listusers[changes].login}">
-					{$listusers[changes].login|avatarize}
+					<img src="tiki-show_user_avatar.php?user={$listusers[changes].login}" width=50 height=50/>
 				</a>
 			</td>
 			<td>
