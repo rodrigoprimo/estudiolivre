@@ -1,19 +1,13 @@
-#tiki-mid, #tiki-midAudio, #tiki-midVideo, #tiki-midGraf {
-	width:747px;
-}
-
-#tiki-midAcervo, #tiki-midNaoWiki {
-	width:558px;
-}
-
 #tiki-midAudio, #tiki-midVideo, #tiki-midGraf, #tiki-midAcervo, #tiki-mid {
 	line-height:1.5em;
-	float:left;
 	margin-top:5px;
 	margin-left:5px;
 	background:white;
 	padding:0px 10px 10px 0px;
-	overflow:hidden;
+}
+
+#tiki-midNaoWiki,#tiki-midAcervo {
+	width:78.5%;
 }
 
 #tiki-midAudio h1, #tiki-midVideo h1, #tiki-midGraf h1, #tiki-midAcervo h1, #tiki-mid h1 {

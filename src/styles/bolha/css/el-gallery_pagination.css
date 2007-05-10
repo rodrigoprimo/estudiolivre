@@ -1,12 +1,13 @@
 .listNav {
-	font-size:12px;
+	font-size:12pt;
+	font-weight:bold;
 }
 
 .listNav .selected {
 	font-weight:bold;
 }
 
-/* para o pagination que aparece na página do usuário*/
+/* para o pagination que aparece na pï¿½gina do usuï¿½rio*/
 #userPage .listNav {
 	position:relative;
 	top:-23px;

@@ -1,5 +1,5 @@
 #sideContent {
-	width:190px;
+	width:20%;
 	padding-top:10px;
 	float:right;
 	text-align:center;
@@ -9,20 +9,13 @@
 }
 
 #localMenu {
-	position:relative;
-	padding-left:20px;
 	padding-right:20px;
 }
 
 #localMenu ul {
 	text-align:left;
 	list-style-type:none;
-	display:inline;
 	font-weight:bold;
-}
-
-#localMenu li {
-	padding-left:5px;
 }
 
 #localMenu li.selectedAcervo, li.selectedAudio, li.selectedGraf, li.selectedVideo {

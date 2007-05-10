@@ -151,7 +151,7 @@ function set_licenca($r1, $r2, $r3) {
 $ajaxlib->setPermission('set_mount_point', $permission);
 $ajaxlib->registerFunction('set_mount_point');
 function set_mount_point($mountPoint, $pass) {
-	global $elgallib, $user, $smarty;
+	global $tikilib, $user, $smarty;
 	$objResponse = new xajaxResponse();
 
 	if (!preg_match('/^[a-zA-Z0-9]+$/', $pass) || !preg_match('/^[a-zA-Z0-9]+$/', $mountPoint)) {
@@ -159,25 +159,29 @@ function set_mount_point($mountPoint, $pass) {
 		return $objResponse;
 	}
 	
-	if ($elgallib->getOne('select mountPoint from el_ice where user != ? and mountPoint = ?', array($user, $mountPoint))) {
+	if ($tikilib->getOne('select mountPoint from el_ice where user != ? and mountPoint = ?', array($user, $mountPoint))) {
 		$objResponse->addAssign('ajax-liveError', 'innerHTML', tra('Esse ponto de montagem já existe, por favor escolha outro.'));
 		return $objResponse;
 	}
 	
-	if ($elgallib->getOne('select mountPoint from el_ice where user = ? and mountPoint = ?', array($user, $mountPoint))) {
-		system("./iceWrapper update $mountPoint $pass", $out);
+	if ($tikilib->getOne('select mountPoint from el_ice where user = ? and mountPoint = ?', array($user, $mountPoint))) {
+		system("./lib/elgal/elIce/iceWriter.pl update $mountPoint $pass", $out);
 		$action = 'modificado';
 	} else {
-		system("./iceWrapper add $mountPoint $pass", $out);
+		system("./lib/elgal/elIce/iceWriter.pl add $mountPoint $pass", $out);
 		$action = 'criado';
 	}
 	// se tiver saida = 0, nao deu erro (herdado de shell, porque die no perl retorna 255)
 	if (!$out) {
-		$elgallib->query("replace into el_ice values(?, ?, ?)", array($user, $mountPoint, $pass));
-		//$objResponse->addAlert();
-		//tra("Seu ponto de transmissão no EstúdioLivre foi $action com sucesso!")
+		require_once('lib/elgal/elIce/IceStats.php');
+		if (IceStats::reloadIcecast()) {
+			$objResponse->addAssign('ajax-liveError', 'innerHTML', tra('Não foi possível reiniciar o icecast. Seu ponto de montagem estará disponível em breve.'));
+		} else {
+			$objResponse->addAssign('ajax-liveError', 'innerHTML', '');
+		}
+		$tikilib->query("replace into el_ice values(?, ?, ?)", array($user, $mountPoint, $pass));
 		$objResponse->addScript("flip('ajax-elIce');document.getElementById('ajax-livePoint').value='';document.getElementById('ajax-livePass').value='';");
-		$objResponse->addAssign('ajax-liveError', 'innerHTML', '');
+		
 		if($action == 'criado') {
 			$smarty->assign('channel', array('mountPoint' => $mountPoint, 'password' => $pass));
 			$smarty->assign('permission', true);
@@ -193,16 +197,18 @@ function set_mount_point($mountPoint, $pass) {
 $ajaxlib->setPermission('delete_mount_point', $permission);
 $ajaxlib->registerFunction('delete_mount_point');
 function delete_mount_point($mountPoint) {
-	global $elgallib, $user;
+	global $tikilib, $user;
 	$objResponse = new xajaxResponse();
 	
-	if (!$elgallib->getOne('select mountPoint from el_ice where user = ? and mountPoint = ?', array($user, $mountPoint))) {
+	if (!$tikilib->getOne('select mountPoint from el_ice where user = ? and mountPoint = ?', array($user, $mountPoint))) {
 		return $objResponse;
 	}
 	
-	system("./iceWrapper delete $mountPoint", $out);
+	system("./lib/elgal/elIce/iceWriter.pl delete $mountPoint", $out);
 	if (!$out) {
-		$elgallib->query("delete from el_ice where mountPoint = ?", array($mountPoint));
+		require_once('lib/elgal/elIce/IceStats.php');
+		IceStats::reloadIcecast();
+		$tikilib->query("delete from el_ice where mountPoint = ?", array($mountPoint));
 		$objResponse->addScript('fixedTooltip("Seu ponto de transmissão no EstúdioLivre foi removido com sucesso!")');
 		$objResponse->addRemove("ajax-live$mountPoint");
 	}

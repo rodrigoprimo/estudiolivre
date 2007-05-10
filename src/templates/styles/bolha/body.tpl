@@ -24,7 +24,7 @@
 	{* Tiki main contains all page *}
 	  {if $isIE}
 	    <center>
-	  	  <div style="text-align:left; width:760px; border-right:2px solid gray; border-left:2px solid gray">
+	  	  <div style="text-align:left; width:954px">
 	  {/if}
 	
 		<div id="tiki-main">
@@ -39,6 +39,6 @@
 	      <center>
 	  {/if}
 
-<script type="text/javascript" src="http://cetrk.com/pages/scripts/0004/4301.js"> </script>  
 </body>
+
 <!-- body.tpl end -->

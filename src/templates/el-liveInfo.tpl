@@ -51,7 +51,7 @@
 					</span>
 					<span class="mid">
 						{tr}Visitantes{/tr}: <em>{$source->listeners}</em>
-						{tr}Máximo de Visitantes{/tr}: <em>{$source->listener_peak}</em><br>
+						{tr}Recorde de Visitantes{/tr}: <em>{$source->listener_peak}</em><br>
 					</span>	
 					<span class="rig">
 						{tr}BitRate{/tr}: <em>{$source->bitrate|default:$source->ice-bitrate}</em>

@@ -16,7 +16,7 @@
 		{/if}
 		<br/>		
 		{if $tiki_p_create_tracker_items eq 'y'}
-			<a href="javascript:flip('JsInsert')">Inserir novo</a>
+			<a href="javascript:flip('JsInsert')"><h2>Reportar bug</h2></a>
 
 		{else}
 			Efetue login para reportar

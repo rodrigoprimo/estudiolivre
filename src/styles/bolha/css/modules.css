@@ -64,7 +64,7 @@
 }
 
 /*tiki-poll.tpl e mod-login_box.tpl*/
-#userNameStatsKarma {
+/*#userNameStatsKarma {
 	height:50px;
 	text-align:center;
 }
@@ -79,7 +79,9 @@
 	font-size:10px;
 	color:gray;
 }
+*/
 
+/*quando NAO está logado:*/
 #uLoginBox input.uText {
 	border:2px solid #e8e8e8;
 	height:16px;
@@ -102,4 +104,24 @@
 #login-pass {
 	width:85%;
 	margin-right:3px;
+}
+/*quando está logado:*/
+
+#userMod {
+	margin-top:5px;
+	text-align:center;
+}
+
+#userMod img{
+	max-width:100px;
+	max-height:100px;
+}
+
+#userMod a{
+	display:block;
+}
+
+#userMod #nome{
+	font-size:20px;
+	font-weight:bold;
 }

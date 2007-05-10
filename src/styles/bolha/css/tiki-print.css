@@ -1,4 +1,4 @@
-#tiki-midAudio, #tiki-midVideo, #tiki-midGraf, #tiki-midAcervo, #tiki-mid {
+#tiki-midAudio, #tiki-midVideo, #tiki-midGraf, #tiki-midAcervo, #tiki-mid, #tiki-midNaoWiki {
 	line-height:1.5em;
 	float:left;
 	width:550px;
@@ -10,6 +10,10 @@
 	border-right:2px solid #dadad9;
 	padding:0px 10px 10px 0px;
 	overflow:hidden;
+}
+
+#tiki-midNaoWiki,#tiki-midAcervo {
+overflow:show;
 }
 
 #tiki-midAudio h1, #tiki-midVideo h1, #tiki-midGraf h1, #tiki-midAcervo h1, #tiki-mid h1 {

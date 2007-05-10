@@ -1,44 +1,52 @@
-html {
-	background-image:url(estudiolivre/bgGradientBlue.png);
-	background-repeat:repeat-x;
+#topContainer {
+	height:30px;	
 }
 
-body {
-	background-image:url(estudiolivre/bgShadowIE.png);
-	background-repeat:repeat-y;
-	background-position:center;
+#tiki-midNaoWiki,#tiki-midAcervo {
+	width:100%;
 }
 
-DIV#topContainer {
-	height:35px;
-	padding:10px;
+#overlay{
+	background-image:none;
 }
 
-UL.searchOptions {
-	position:relative;
-	left:0px;
-	margin:0px;
-	padding:0px;
-	list-style-type:none;
+/* tabela que segura os tipos de arquivos no upload */
+#tipos,#js-browse {
+	text-align:center;
+}
+#js-desc {
+	text-align:left;
 }
 
-DIV#topMenuGeneral {
-	margin-top:0px;
-	float:left;
+.tooltipTop {
+	background-image:url(../img/tooltipTop.gif);	
 }
 
-DIV#topMenuCubes {
-
+.tooltipMid {
+	background-image:url(../img/tooltipMid.gif);	
 }
 
-DIV#uLoginBox input.uText {
-	border:2px solid #e8e8e8;
-	height:22px;
-	margin-bottom:2px;
-	display:block
+.tooltipBottom {
+	background-image:url(../img/tooltipBottom.gif);	
 }
 
-#listFilters LI {
-	position:relative;
-	left:-5px;
+#elNotSupported {
+width:78%;
+text-align:center;
+float:left;
+}
+
+#elNotSupported h5{
+margin:5px 0;
+border:0;
+padding:0;
+}
+
+#uLoginBox {
+	margin:0;
+	padding:0;
+}
+
+#uLoginBox input.uText {
+height:20px;
 }

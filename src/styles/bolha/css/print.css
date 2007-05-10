@@ -21,10 +21,14 @@ body {
 }
 
 #tiki-main {
-	width:100%;
+        max-width:100%;
 }
 
-#tiki-midAudio,#tiki-midVideo, #tiki-midGraf, #tiki-midAcervo, #tiki-mid {
+#ajax-contentBubble {
+	overflow:visible;
+}
+
+#tiki-midAudio,#tiki-midVideo, #tiki-midGraf, #tiki-midAcervo, #tiki-mid, #tiki-midNaoWiki {
 	overflow:visible;
 	width:100%;
 	border:0;

@@ -10,6 +10,7 @@
 	left:10px;
 	float:left;
 	z-index:3;
+height:39px;
 }
 
 /*os links do menu do site geral*/
@@ -35,15 +36,6 @@
 }
 
 /*a parte dos labs*/
-#topMenuCubesContainer {
-	position:relative;
-	margin-top:1px;
-	float:right;
-}
-
-#topMenuCubesContainer A {
-	margin-left:8px;
-}
 
 #grafilab, #videolab, #audiolab, #acervolivre {
 	position:relative;

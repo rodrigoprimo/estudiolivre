@@ -33,8 +33,6 @@ our $fh = \*ARQ;
 my $xml = $xs->XMLout($ref, NoAttr => 1, RootName => 'icecast', OutputFile => $fh);
 close ARQ;
 
-`/usr/bin/killall -HUP icecast`;
-
 exit 0;
 
 sub add {

@@ -75,7 +75,7 @@ p.editdate {
 .titlebar:first-letter {
     text-transform: uppercase;
    	font-size:28px;
-   	text-weight:bold;
+   	font-weight:bold;
 }
 
 #wikitext A.wikinew {

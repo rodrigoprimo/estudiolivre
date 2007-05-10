@@ -4,38 +4,35 @@ HTML {
 	background-repeat:repeat-x;
 	/*height:99.3%;*/
 	height:100%;
+	padding:0;
 }
 
 BODY {
 	min-height:100%;
 	margin: 0;
-	
-	padding: 0px 10px 5px 10px;
+	padding: 0;
 	font-family: arial,verdana,helvetica,lucida,sans-serif; /*BitStream Vera Sans, Verdana;*/
 	font-size:12px;
-	
 	background-image:url(./bolha/img/bgShadow.png);
 	background-repeat:repeat-y;
 	background-position: center;
 }
 
-A {
-	text-decoration:none;
-	color:grey;
-}
-
-A:hover {
-	color: black;
-}
+a{color:#808080;}
+a:link {text-decoration:none;color:#808080;}
+a:visited {text-decoration:none;color:#808080;}
+a:hover {text-decoration:none;color: #000000}
+a:active {text-decoration:none;color: #555555}
 
 IMG {
 	border:0px;
 }
 
 #tiki-main {
-	width:760px;
+	max-width:954px;
 	margin:0px auto;
 	background-color:#FFF;
+	padding:0;
 	padding-top:21px;
 }
 
@@ -55,4 +52,12 @@ span.pointer:hover {
 span.hiddenPointer {
 	cursor:pointer;
 	color:black;
+}
+
+.none {
+display:none;
+}
+
+.tc {
+display:table-cell;
 }
