@@ -96,12 +96,12 @@ function cancelEdit() {
 	xajax_rollback_arquivo();
 	return true;
 }
-
+/* deprecated
 function restoreEdit(id) {
 	arquivoId = id;
 	xajax_restore_edit(arquivoId);
 }
-
+*/
 function checkWaiting(cmd) {
 	if(!waitingQueue.length) {
 		eval(cmd);

@@ -1,5 +1,5 @@
 <?php
-
+// migrado pro 2.0!
 require_once("dumb_progress_meter.php");
 
 $ajaxlib->registerFunction('upload_info');
@@ -165,10 +165,10 @@ function set_mount_point($mountPoint, $pass) {
 	}
 	
 	if ($tikilib->getOne('select mountPoint from el_ice where user = ? and mountPoint = ?', array($user, $mountPoint))) {
-		system("./lib/elgal/elIce/iceWriter.pl update $mountPoint $pass", $out);
+		exec(escapeshellcmd("iceWriter.pl update $mountPoint $pass"), $a, $out);
 		$action = 'modificado';
 	} else {
-		system("./lib/elgal/elIce/iceWriter.pl add $mountPoint $pass", $out);
+		exec(escapeshellcmd("iceWriter.pl add $mountPoint $pass"), $a, $out);
 		$action = 'criado';
 	}
 	// se tiver saida = 0, nao deu erro (herdado de shell, porque die no perl retorna 255)
@@ -204,7 +204,7 @@ function delete_mount_point($mountPoint) {
 		return $objResponse;
 	}
 	
-	system("./lib/elgal/elIce/iceWriter.pl delete $mountPoint", $out);
+	exec(escapeshellcmd("iceWriter.pl delete $mountPoint"), $a, $out);
 	if (!$out) {
 		require_once('lib/elgal/elIce/IceStats.php');
 		IceStats::reloadIcecast();

@@ -23,6 +23,7 @@ function setRequestUri(id) {
 }
 
 function upload() {
+	uploadId = document.uploadForm.UPLOAD_IDENTIFIER.value;
 	var filename = document.uploadForm.arquivo.value;
 	if (!tipoSelecionado) alert('bug');
 	if (arquivoId) {
@@ -139,7 +140,7 @@ function selecionaTipo(tipo) {
 		show('js-browse');
 		hide('js-pending');
 	} else {
-		fixedTooltip('Voc� n�o pode mudar o tipo de arquivo depois de come�ar o upload');
+		fixedTooltip('Voc&ecirc; n&atilde;o pode mudar o tipo de arquivo depois de come&ccedil;ar o upload');
 	}
 }
 
@@ -181,8 +182,6 @@ function updateThumbProgressMeter(uploadInfo) {
 }
 
 function restoreForm (id, tipo, arquivo, thumbnail) {
-	tipo = tipo == 'Image' ? 'Imagem' : tipo;
-	tipo = tipo == 'Text' ? 'Texto' : tipo;
 	selecionaTipo(tipo);
 	arquivoId = id;
 	setRequestUri(id);
@@ -198,7 +197,7 @@ function restoreForm (id, tipo, arquivo, thumbnail) {
 		document.getElementById('ajax-thumbnail').src = 'styles/bolha/img/iThumb' + tipo + '.png';
 	}
 	document.thumbForm.arquivoId.value = arquivoId;
-	restoreEdit(id);
+	//restoreEdit(id);
 }
 
 function setUploadErrorMsg(msg) {

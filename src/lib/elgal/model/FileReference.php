@@ -25,7 +25,7 @@ class FileReference extends PersistentObject {
 	/* this is configuration for the relations with publication */
 	var $belongsTo = array("Publication");
 	var $hasMany = array("Comment" => "FileReference");
-	var $hasManyAndBelongsTo = array("Tag" => "FileReference");
+	var $comments = array();
 	
 	var $actualClass = true;
 	var $extraStructure = array("TikiTags");

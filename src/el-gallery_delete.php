@@ -3,8 +3,6 @@
 require_once("tiki-setup.php");
 require_once("lib/persistentObj/PersistentObjectFactory.php");
 
-global $userHasPermOnFile, $el_p_admin_gallery;
-
 include_once("el-gallery_set_publication.php");
 
 if ($arquivoId && $userHasPermOnFile){

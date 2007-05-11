@@ -43,7 +43,7 @@ class PersistentObject {
 	    $this->table = get_class($this);
 	    if (is_array($fields)) {
 	    	if (count($fields)) {
-	    		if ($this->actualClass)
+	    		if (isset($this->actualClass))
 			    	$fields['actualClass'] = $this->table;
 		    	$this->_populateObject($fields);
 		    	$this->id = $this->insert($fields);
@@ -201,9 +201,9 @@ class PersistentObject {
 	// deletes 1 to N and N to N relations
 	function _deleteRelations() {
 		foreach ($this->hasMany as $child => $me) {
-			$myName = strtolower($me);
-			$childName = strtolower($child);
-			$this->query("delete from $childName where ${myName}Id = ?", array($this->id));
+			$varName = strtolower($child) . "s";
+			foreach ($this->$varName as $child)
+				$child->delete();
 		}
 		foreach ($this->hasManyAndBelongsTo as $peer => $me) {
 			$myName = strtolower($me);
@@ -257,7 +257,6 @@ class PersistentObject {
 			require_once($child . ".php");
 			$childName = strtolower($child);
 			$varName = $childName . "s";
-			$this->$varName = array();
 			$idName = strtolower($parent) . "Id";
 			
 			$result = $this->query("select id from $childName where $idName = ?", array($this->id));
@@ -275,7 +274,6 @@ class PersistentObject {
 			$myName = strtolower($me);
 			$peerName = strtolower($peer);
 			$varName = $peerName . "s";
-			$this->$varName = array();
 			if ($peerName < $myName) $tableName = $peerName . "_" .  $myName;
 			else $tableName = $myName . "_" .  $peerName;
 			$result = $this->query("select ${peerName}Id as id from $tableName where ${myName}Id = ?", array($this->id));

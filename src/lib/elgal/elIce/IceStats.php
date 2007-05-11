@@ -62,10 +62,10 @@ class IceStats{
 		else $this->objcomp=null;
 	}
 
-	
 	function reloadIcecast() {
-		$pid = exec("ps -o \"%p\" --noheaders -C icecast");
-		return exec("kill -SIGHUP $pid");
+		$pid = exec(escapeshellcmd("ps -o \"%p\" --noheaders -C icecast"));
+		$b = exec(escapeshellcmd("kill -SIGHUP $pid"), $a, $out);
+		return $out;
 	}
 
 }

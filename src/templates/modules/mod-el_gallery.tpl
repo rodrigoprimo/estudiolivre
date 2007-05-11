@@ -7,11 +7,11 @@
   	    <hr>
 	 		<span style="text-align:left">{tr}Arquivos não publicados{/tr}:</span><br/>
 			{foreach from=$pendingUploadFiles item=pendente}
-				<span id="ajax-pendente-{$pendente.arquivoId}">
-					{tooltip text="<b>Apaque</b> esse arquivo da lista (e do sevidor)"}<a href="el-gallery_delete.php?arquivoId={$pendente.arquivoId}"><img src="styles/estudiolivre/iDelete.png"></a>{/tooltip}
+				<span id="ajax-pendente-{$pendente->id}">
+					{tooltip text="<b>Apaque</b> esse arquivo da lista (e do sevidor)"}<a href="el-gallery_delete.php?arquivoId={$pendente->id}"><img src="styles/estudiolivre/iDelete.png"></a>{/tooltip}
 					{tooltip text="Clique para continuar o envio desse arquivo"}
-						<a href="el-gallery_upload.php?arquivoId={$pendente.arquivoId}">
-							{$pendente.titulo|default:$pendente.arquivo|default:$pendente.arquivoId|truncate:20:"(...)"}
+						<a href="el-gallery_upload.php?arquivoId={$pendente->id}">
+							{$pendente->title|default:$pendente->filereferences[0]->fileName|default:$pendente->id|truncate:20:"(...)"}
 						</a>
 					{/tooltip}
 				</span>

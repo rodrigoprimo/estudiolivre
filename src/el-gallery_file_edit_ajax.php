@@ -13,7 +13,6 @@ function save_field($name, $value) {
 	$error = $arquivo->update(array($name => $value));
 	
 	if(is_string($error)) {
-		
 	    $objResponse->addScriptCall('exibeErro', $name, $error);
 	} else {
 	    $l = strlen($value);
@@ -85,7 +84,7 @@ function generate_thumb() {
 
 	return $objResponse;
 }
-
+/* deprecated
 $ajaxlib->setPermission('restore_edit', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('restore_edit');
 function restore_edit($arquivoId) {
@@ -102,9 +101,8 @@ function restore_edit($arquivoId) {
 		return $objResponse;
 	} 
 	
-	if($arquivo->publishDate && $arquivo->type != "Text") {
-		$tipo = $file->type == "Image" ? "Imagem" : $file->type;
-		$templateName = 'el-gallery_metadata_' . $tipo . '.tpl';
+	if($arquivo->publishDate && $arquivo->type != "Texto") {
+		$templateName = 'el-gallery_metadata_' . $arquivo->type . '.tpl';
 		$smarty->assign('permission', true);
 		$content = $smarty->fetch($templateName);
 		$objResponse->addAppend('ajax-gUpMoreOptionsContent', 'innerHTML', $content);
@@ -117,7 +115,7 @@ function restore_edit($arquivoId) {
 	
 	return $objResponse;
 }
-
+*/
 
 $ajaxlib->registerFunction('upload_info');
 function upload_info($uploadId, $callback = 'updateProgressMeter') {

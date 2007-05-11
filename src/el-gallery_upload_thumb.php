@@ -3,7 +3,7 @@
 // esse arquivo salva o upload
 require_once("tiki-setup.php");
 require_once("lib/filegals/filegallib.php");
-include "el-gallery_set_publication.php";
+include_once("el-gallery_set_publication.php");
 
 function error($errorMsg) {
 	echo "<script language=\"javaScript\">alert('".$errorMsg."');</script>";

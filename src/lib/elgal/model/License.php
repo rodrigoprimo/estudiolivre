@@ -20,7 +20,7 @@ class License extends PersistentObject {
 	var $answer;
 
 	var $hasMany = array("Publication" => "License");
-
+	var $publications = array();
 }
 
 ?>

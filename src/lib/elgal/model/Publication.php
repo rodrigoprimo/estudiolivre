@@ -31,7 +31,11 @@ class Publication extends PersistentObject {
 	var $belongsTo = array("License");
 	var $licenseId;
 	var $collectionId;
+	
 	var $hasMany = array("FileReference" => "Publication", "Vote" => "Publication", "Comment" => "Publication");
+	var $filereferences = array();
+	var $votes = array();
+	var $comments = array();
 	
 	var $actualClass = true;
 	var $extraStructure = array("TikiTags");
@@ -57,8 +61,8 @@ class Publication extends PersistentObject {
 	function checkPublish() {
 		$error = array();
 		if ($msg = $this->checkField_author($this->author)) $error["author"] = $msg;
-		if ($msg = $this->checkField_title($this->author)) $error["title"] = $msg;
-		if ($msg = $this->checkField_description($this->author)) $error["description"] = $msg;
+		if ($msg = $this->checkField_title($this->title)) $error["title"] = $msg;
+		if ($msg = $this->checkField_description($this->description)) $error["description"] = $msg;
 		if (!$this->licenseId) {
 	  		$error['license'] = tra('Você deve escolher uma licença');
 	  	}
@@ -107,15 +111,6 @@ class Publication extends PersistentObject {
 			$total += $vote->rating; $num++;
 		}
 		$this->update(array('rating' => $total/$num));
-	}
-	
-	function getFilledFields() {
-		$vars = get_class_vars($this);
-		$result = array();
-		foreach ($vars as $field) {
-			if ($his->$field) $result[$field] = $this->field;
-		}
-		return $result;
 	}
 	
 	function uploadThumb($fileName, $realName) {

@@ -93,7 +93,7 @@
 		{ajax_input permission=$permission id="title" value=$arquivo->title default="{tr}Título{/tr}" display="inline" truncate=50}
 		<br/>
 		<span>
-			<em>{tr}Autor{/tr}:</em> {ajax_input permission=$permission id="author" value=$realName default="{tr}Autor da obra{/tr}" display="inline" mode="edit"}
+			<em>{tr}Autor{/tr}:</em> {ajax_input permission=$permission id="author" value=$arquivo->author default="{tr}Autor da obra{/tr}" display="inline" mode="edit"}
 		</span>
 	</div>
 
@@ -120,7 +120,7 @@
 	{if $feature_freetags eq 'y' && $tiki_p_freetags_tag eq 'y'}
 		<em>{tr}Tags{/tr}:</em>
 		{tooltip text="Escreva aqui as tags desse arquivo (separadas por <b>vírgula</b>)"}
-			{ajax_input permission=$permission id="tags" value="$taglist" noclear=1 display="inline"}
+			{ajax_input permission=$permission id="tags" value=$arquivo->tagString noclear=1 display="inline"}
 		{/tooltip}
 		
 		{tooltip text="Clique nas tags para adiocioná-las ao campo acima"}
@@ -142,6 +142,9 @@
 	
 	<div style="display:none" id="ajax-gUpMoreOptionsContent">
 		{include file="el-gallery_metadata.tpl"}
+		{if $arquivo->type neq "Texto"}
+			{include file="el-gallery_metadata_"|cat:$arquivo->type|cat:".tpl"}
+		{/if}
 	</div>
 	
 	<div id="save-exit">
@@ -161,9 +164,9 @@
 			<li id="ajax-pendente-{$pendente->id}">
 				<span class="pointer" onClick="xajax_delete_file({$pendente->id})"><img src="styles/{$style|replace:".css":""}/img/iDelete.png"></span>
 				{tooltip text="Clique para continuar o envio desse arquivo"}
-					<span class="pointer" onClick="restoreForm({$pendente->id}, '{$pendente->type}', '{$pendente->filereferences[0]->fileName}', '{$pendente->thumbnail}');nd();">
+					<a href="el-gallery_upload.php?arquivoId={$pendente->id}">
 						{$pendente->title|default:$pendente->filereferences[0]->fileName|default:$pendente->id}
-					</span>
+					</a>
 				{/tooltip}
 			</li>
 		{/foreach}
@@ -173,10 +176,10 @@
 
 {include file="el-gallery_publish.tpl"}
 {include file="el-gallery_error.tpl"}
-<div id="errorDiv" style="display:none; width:200px"></div>
+<div id="errorDiv" class="none" style="width:200px"></div>
 
-{if $restore > -1}
-	<script language="JavaScript">restoreForm({$pending.$restore->id}, '{$pending.$restore->type}', '{$pending.$restore->filereferences[0]->fileName}', '{$pending.$restore->thumbnail}');flip('fileAltered');</script>
+{if $arquivo}
+	<script language="JavaScript">restoreForm({$arquivo->id}, '{$arquivo->type}', '{$arquivo->filereferences[0]->fileName}', '{$arquivo->thumbnail}');flip('fileAltered');</script>
 {/if}
 
 <!-- el-gallery_upload.tpl end -->
