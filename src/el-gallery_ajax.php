@@ -27,8 +27,9 @@ function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $fi
 	if ($find) {
 		$smarty->load_filter('output','highlight');
 		$_REQUEST['highlight'] = $find;
-		$key = array("title", "description");
-		$filters[$key] = $find;
+		require_once("lib/elgal/model/Find.php");
+		$key = new Find(array("title", "description"));
+		$filters[$find] = $key;
 	}
 	
 	$controller = new PersistentObjectController("Publication");

@@ -47,27 +47,25 @@ class PersistentObjectController {
 			$bindvals = array();
 			$query = "where ";
 			foreach ($fields as $key => $value) {
-				if (is_array($key)) {
+				if (is_array($value)) {
+					$query .= "$key in (";
+					foreach ($value as $param) {
+						$query .= "?,";
+						$bindvals[] = $param;
+					}
+					$query = substr($query, 0, strlen($query)-1);
+					$query .= ") and ";
+				} else if (is_object($value)) {
 					$query .= "(";
-					foreach ($key as $f) {
+					foreach ($value->keys as $f) {
 						$query .= "$f like ? or ";
-						$bindvals[] = "%" . $value . "%";
+						$bindvals[] = "%" . $key . "%";
 					}
 					$query = substr($query, 0, strlen($query)-4);
 					$query .= ") and ";
 				} else {
-					if (is_array($value)) {
-						$query .= "$key in (";
-						foreach ($value as $param) {
-							$query .= "?,";
-							$bindvals[] = $param;
-						}
-						$query = substr($query, 0, strlen($query)-1);
-						$query .= ") and ";
-					} else {
-						$query .= "$key = ? and ";
-						$bindvals[] = $value;
-					}
+					$query .= "$key = ? and ";
+					$bindvals[] = $value;
 				}
 			}
 			$query = substr($query, 0, strlen($query)-5);

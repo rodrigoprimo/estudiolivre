@@ -66,8 +66,9 @@ if(isset($_REQUEST['highlight'])) {
 	$find = '';
 }
 if ($find) {
-	$key = array("title", "description");
-	$filters[$key] = $find;
+	require_once("lib/elgal/model/Find.php");
+	$key = new Find(array("title", "description"));
+	$filters[$find] = $key;
 }
 
 $controller = new PersistentObjectController("Publication");
