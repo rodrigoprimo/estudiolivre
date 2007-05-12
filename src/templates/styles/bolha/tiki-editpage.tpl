@@ -1,5 +1,5 @@
 {css}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/tiki-editpage.tpl,v 1.1 2006-10-20 21:11:33 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/tiki-editpage.tpl,v 1.2 2007-05-12 01:13:17 nano Exp $ *}
 
 {*popup_init src="lib/overlib.js"*}
 
@@ -367,7 +367,7 @@
 	</div>
 </form>
 
-<div id="precisaComentar" style="display:none;width:200px;padding:5px">
+<div id="precisaComentar" class="none" style="width:200px;padding:5px">
   		{tr}É <b>recomendável</b> comentar as modificações realizadas. Assim todos podem saber qual modificação foi feita na página.{/tr}
   		<br/>
   		<br>
