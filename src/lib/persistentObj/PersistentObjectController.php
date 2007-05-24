@@ -12,18 +12,20 @@ require_once ('PersistentObjectFactory.php');
 class PersistentObjectController {
 	
 	var $controlledClass;
+	var $controlledClassTable;
 	
 	function PersistentObjectController($class) {
 		require_once($class . ".php");
-		if (!class_exists($class)) trigger_error("Incorrect parameter, must provide a valid subclass of PersistentObject.", E_USER_ERROR);
-		for ($super = get_parent_class($class); $super; $super = get_parent_class($super)) {
+		if (!class_exists($class)) trigger_error("Incorrect parameter, must provide a valid class.", E_USER_ERROR);
+		for ($super = strtolower(get_parent_class($class)); $super; $super = strtolower(get_parent_class($super))) {
 			if ($super == 'persistentobject') {
 				$pass = true;
 				break;
 			}	
 		}
 		if (!$pass) trigger_error("Incorrect parameter, must provide a valid subclass of PersistentObject.", E_USER_ERROR);
-		$this->controlledClass = strtolower($class);
+		$this->controlledClass = $class;
+		$this->controlledClassTable = strtolower($class);
 	}
 	
 	function query($query, $bindvals = array(), $offset = 0, $maxRecords = -1, $sortMode = false) {
@@ -41,7 +43,7 @@ class PersistentObjectController {
 		global $dbConnection;
 	    return $dbConnection->getOne($query, $bindvals);
 	}
-	
+
 	function _prepQueryConditions($fields) {
 		if (count($fields)) {
 			$bindvals = array();
@@ -75,7 +77,7 @@ class PersistentObjectController {
 	
 	function findAll($filters = array(), $offset = 0, $maxRecords = -1, $sortMode = false) {
 		$queryParams = $this->_prepQueryConditions($filters);
-		$result = $this->query("select id from $this->controlledClass " . $queryParams[0], $queryParams[1], $offset, $maxRecords, $sortMode);
+		$result = $this->query("select id from $this->controlledClassTable " . $queryParams[0], $queryParams[1], $offset, $maxRecords, $sortMode);
 		$objs = array();
 		while ($row = $result->fetchRow()) {
 			$objs[] = PersistentObjectFactory::createObject($this->controlledClass, (int)$row['id']);
@@ -85,12 +87,12 @@ class PersistentObjectController {
 	
 	function countAll($filters = array()) {
 		$queryParams = $this->_prepQueryConditions($filters);
-		return $this->getOne("select count(id) from $this->controlledClass " . $queryParams[0], $queryParams[1]);
+		return $this->getOne("select count(id) from $this->controlledClassTable " . $queryParams[0], $queryParams[1]);
 	}
 	
 	function noStructureFindAll($filters = array(), $offset = 0, $maxRecords = -1, $sortMode = false) {
 		$queryParams = $this->_prepQueryConditions($filters);
-		$result = $this->query("select * from $this->controlledClass " . $queryParams[0], $queryParams[1], $offset, $maxRecords, $sortMode);
+		$result = $this->query("select * from $this->controlledClassTable " . $queryParams[0], $queryParams[1], $offset, $maxRecords, $sortMode);
 		$objs = array();
 		while ($row = $result->fetchRow()) {
 			$objs[] = $row;

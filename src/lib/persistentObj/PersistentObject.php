@@ -13,7 +13,6 @@
  * 
  */
 
-require_once ('lib/tikidblib.php');
 require_once ('PersistentObjectFactory.php');
 
 /* this is an option to add extraStructure beyond your class hierarchy
@@ -31,7 +30,7 @@ class PersistentObject {
 	var $belongsTo = array();
 	var $hasManyAndBelongsTo = array();
 	var $extraStructure = array();
-	
+	var $actualClass = false;
 	/* This is the base constructor for the framework. it relies on the 
 	 * basis that if you send an id, you want to retrieve, and if you send 
 	 * fields, you want to insert a new entry. modification is done by retrieving
@@ -40,11 +39,11 @@ class PersistentObject {
 	 * objects with 1 <-> N or N <-> N (not yet implemented) relations
 	 */
 	function PersistentObject($fields, $referenced = false) {
-	    $this->table = get_class($this);
+	    $this->table = strtolower(get_class($this));
 	    if (is_array($fields)) {
 	    	if (count($fields)) {
-	    		if (isset($this->actualClass))
-			    	$fields['actualClass'] = $this->table;
+	    		if ($this->actualClass)
+		    		$fields['actualClass'] = $this->table;
 		    	$this->_populateObject($fields);
 		    	$this->id = $this->insert($fields);
 		    	$this->_extraStructure('insert');
@@ -57,22 +56,16 @@ class PersistentObject {
 	}
 	
 	function _populateObject($fields) {
-		$errors = "";
 		foreach ($fields as $key => $value) {
-			$errors .= $this->_checkField($key, $value);
+			$this->_checkField($key, $value);
 			$this->$key = $value;
 		}
-		return $errors;
+		return $this;
 	}
 	
 	function query($query, $bindvals = array()) {
 		global $dbConnection;
 	    return $dbConnection->query($query, $bindvals);
-	}
-	
-	function getOne($query, $bindvals = array()) {
-		global $dbConnection;
-	    return $dbConnection->getOne($query, $bindvals);
 	}
 	
 	// this does not check anything, an actual method 
@@ -81,7 +74,7 @@ class PersistentObject {
 	function _checkField($name, $value) {
 		$methodName = "checkField_" . $name;
 	  	if (method_exists($this, $methodName)) {
-	  		return $this->$methodName($value);
+	  		$this->$methodName($value);
 	  	}
 	}
 	
@@ -139,7 +132,7 @@ class PersistentObject {
 	
 	function insert($fields, $table = false) {
 		if (!$table) $table = $this->table;
-		$super = get_parent_class($table);
+		$super = strtolower(get_parent_class($table));
 
 		$parentProperties = get_class_vars($super);
 		$parentFields = $this->__array_intersect_key($fields, $parentProperties);
@@ -157,16 +150,14 @@ class PersistentObject {
 	}
 	
 	function update($fields) {
-		$errors = $this->_populateObject($fields);
 		$this->_doUpdate($fields); 
-		$this->_extraStructure('update', $fields);
-		if ($errors) return $errors;
-		return $fields;
+		$this->_extraStructure('update');
+		return $this;
 	}
 	
 	function _doUpdate($fields, $table = false) {
 		if (!$table) $table = $this->table;
-		$super = get_parent_class($table);
+		$super = strtolower(get_parent_class($table));
 		$parentProperties = get_class_vars($super);
 		$parentFields = $this->__array_intersect_key($fields, $parentProperties);
 		$localFields = $this->__array_diff_key($fields, $parentProperties);
@@ -179,6 +170,7 @@ class PersistentObject {
 	}
 	
 	function _updateObject($fields, $table) {
+		$this->_populateObject($fields);
 		$query = "update $table set ";
 		foreach ($fields as $key => $value) {
 			$query .= "$key = ?,";
@@ -191,38 +183,21 @@ class PersistentObject {
 		
 	function delete() {
 		$this->query("delete from $this->table where id = ?", array($this->id));
-		for ($table = get_parent_class($this->table); $table != 'persistentobject'; $table = get_parent_class($table)) {
+		for ($table = strtolower(get_parent_class($this->table)); $table != 'persistentobject'; $table = strtolower(get_parent_class($table))) {
 			$this->query("delete from $table where id = ?", array($this->id));
 		}
-		$this->_deleteRelations();
 		$this->_extraStructure('delete');
 	}
 	
-	// deletes 1 to N and N to N relations
-	function _deleteRelations() {
-		foreach ($this->hasMany as $child => $me) {
-			$varName = strtolower($child) . "s";
-			foreach ($this->$varName as $child)
-				$child->delete();
-		}
-		foreach ($this->hasManyAndBelongsTo as $peer => $me) {
-			$myName = strtolower($me);
-			$peerName = strtolower($peer);
-			if ($peerName < $myName) $tableName = $peerName . "_" .  $myName;
-			else $tableName = $myName . "_" .  $peerName;
-			$this->query("delete from $tableName where ${myName}Id = ?", array($this->id));
-		}
-	}
-	
 	function select($referenced = false) {
-		$tables = "$this->table";
-		$super = get_parent_class($this);
+		$tables = strtolower("$this->table");
+		$super = strtolower(get_parent_class($this)); // strtolower necessario pro PHP5 que preserva o case
 		$conditions = "where "; 
-		for ($table = $super; $table != 'persistentobject'; $table = get_parent_class($table)) {
-			$tables .= ",$table";
-			$conditions .= "$this->table.id = $table.id and ";
+		for ($table = $super; substr($table, -16, 16) != 'persistentobject'; $table = strtolower(get_parent_class($table))) {
+			$tables .= strtolower(",$table");
+			$conditions .= strtolower("$this->table.id = $table.id and ");
 		}
-		$conditions .= "$this->table.id = ?";
+		$conditions .= strtolower("$this->table.id = ?");
 		$result = $this->query("select * from $tables $conditions", array($this->id));
 		if ($row = $result->fetchRow()) $this->_populateObject($row);
 		else trigger_error("Incorrect parameters, id doesn't exist", E_USER_ERROR);
@@ -243,7 +218,7 @@ class PersistentObject {
 			$varName = strtolower($parent);
 			$idName = $varName . "Id";
 			if ($this->$idName) {
-				$this->$varName = PersistentObjectFactory::createObject($parent, (int)$this->$idName, true);
+				$obj = PersistentObjectFactory::createObject($parent, (int)$this->$idName, true);
 			}
 		}
 	}
@@ -257,6 +232,7 @@ class PersistentObject {
 			require_once($child . ".php");
 			$childName = strtolower($child);
 			$varName = $childName . "s";
+			$this->$varName = array();
 			$idName = strtolower($parent) . "Id";
 			
 			$result = $this->query("select id from $childName where $idName = ?", array($this->id));
@@ -274,23 +250,26 @@ class PersistentObject {
 			$myName = strtolower($me);
 			$peerName = strtolower($peer);
 			$varName = $peerName . "s";
+			$this->$varName = array();
 			if ($peerName < $myName) $tableName = $peerName . "_" .  $myName;
 			else $tableName = $myName . "_" .  $peerName;
 			$result = $this->query("select ${peerName}Id as id from $tableName where ${myName}Id = ?", array($this->id));
 			while ($row = $result->fetchRow()) {
-				if ($row['actualClass']) $actualClass = $row['actualClass'];
-				else $actualClass = $peer;
-				array_push($this->$varName, new $actualClass((int)$row['id'], true));
+			    if (isset($row['actualClass'])) {
+				$actualClass = $row['actualClass'];
+			    } else {
+				$actualClass = $peer;
+			    }
+			    array_push($this->$varName, PersistentObjectFactory::createObject($actualClass, (int)$row['id'], true));
 			}
 		}
 	}
 
-	function _extraStructure($action, $fields = false) {
+	function _extraStructure($action) {
 		foreach($this->extraStructure as $structure) {
 			$methodName = $action . $structure;
 			if (class_exists("PersistentObjectExtra")) {
-				if ($fields) PersistentObjectExtra::$methodName($this, $fields);
-				else PersistentObjectExtra::$methodName($this);
+				PersistentObjectExtra::$methodName($this);
 			}
 		}
 	}
