@@ -174,11 +174,7 @@ function set_mount_point($mountPoint, $pass) {
 	// se tiver saida = 0, nao deu erro (herdado de shell, porque die no perl retorna 255)
 	if (!$out) {
 		require_once('lib/elgal/elIce/IceStats.php');
-		if (IceStats::reloadIcecast()) {
-			$objResponse->addAssign('ajax-liveError', 'innerHTML', tra('Não foi possível reiniciar o icecast. Seu ponto de montagem estará disponível em breve.'));
-		} else {
-			$objResponse->addAssign('ajax-liveError', 'innerHTML', '');
-		}
+		$objResponse->addAssign('ajax-liveError', 'innerHTML', '');
 		$tikilib->query("replace into el_ice values(?, ?, ?)", array($user, $mountPoint, $pass));
 		$objResponse->addScript("flip('ajax-elIce');document.getElementById('ajax-livePoint').value='';document.getElementById('ajax-livePass').value='';");
 		
@@ -207,7 +203,6 @@ function delete_mount_point($mountPoint) {
 	exec(escapeshellcmd("iceWriter.pl delete $mountPoint"), $a, $out);
 	if (!$out) {
 		require_once('lib/elgal/elIce/IceStats.php');
-		IceStats::reloadIcecast();
 		$tikilib->query("delete from el_ice where mountPoint = ?", array($mountPoint));
 		$objResponse->addScript('fixedTooltip("Seu ponto de transmissão no EstúdioLivre foi removido com sucesso!")');
 		$objResponse->addRemove("ajax-live$mountPoint");
