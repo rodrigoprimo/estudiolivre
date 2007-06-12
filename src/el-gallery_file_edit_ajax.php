@@ -5,6 +5,9 @@ global $userHasPermOnFile, $arquivoId;
 $ajaxlib->setPermission('save_field', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('save_field');
 function save_field($name, $value) {
+	
+	if ($name == "tags") return editTags($value);
+	
 	global $arquivo, $tikilib;
 	
 	$objResponse = new xajaxResponse();
@@ -31,7 +34,38 @@ function save_field($name, $value) {
 	return $objResponse;
 
 }
-/*
+
+$ajaxlib->setPermission('editTags', $userHasPermOnFile && $arquivoId);
+$ajaxlib->registerFunction("editTags");
+function editTags($tag_string) {
+	
+	global $smarty, $arquivoId, $freetaglib, $user, $arquivo;
+
+	if (!is_object($freetaglib)) {
+		include_once('lib/freetag/freetaglib.php');
+    }
+
+	$freetaglib->update_tags($user, $arquivoId, $arquivo->tagType, $tag_string);
+	
+	$objResponse = new xajaxResponse();
+	
+	$tags = $freetaglib->get_tags_on_object($arquivoId, $arquivo->tagType);
+	$tagString = '';
+	foreach ($tags['data'] as $t) {
+	    if ($tagString) $tagString .= ', ';
+	    $tagString .= $t['tag'];
+	}	
+	$smarty->assign("fileTags", $tags['data']);
+	
+	$objResponse->addAssign("show-tags", "innerHTML", $smarty->fetch("el-gallery_tags.tpl"));
+    $objResponse->addAssign("input-tags", "value", $tagString);
+    $objResponse->addScript("document.getElementById('input-tags').style.display = 'none'; document.getElementById('show-tags').style.display = 'block'");
+    
+    return $objResponse;
+    
+}
+
+/* deprecated
 $ajaxlib->setPermission('commit_arquivo', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('commit_arquivo');
 function commit_arquivo() {
@@ -118,10 +152,10 @@ function restore_edit($arquivoId) {
 */
 
 $ajaxlib->registerFunction('upload_info');
-function upload_info($uploadId, $callback = 'updateProgressMeter') {
+function upload_info($uploadId, $i, $callback = 'updateProgressMeter') {
 	$objResponse = new xajaxResponse();
 	$uploadInfo = upload_progress_meter_get_info($uploadId);
-	$objResponse->addScriptCall($callback,$uploadInfo);
+	$objResponse->addScriptCall($callback, $uploadInfo, $i);
 	return $objResponse;
 }
 

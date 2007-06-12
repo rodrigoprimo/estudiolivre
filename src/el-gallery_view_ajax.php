@@ -25,37 +25,49 @@ function vota($nota) {
     return $objResponse;
 } 
 
-$ajaxlib->setPermission('editTags', $userHasPermOnFile && $arquivoId);
-$ajaxlib->registerFunction("editTags");
-function editTags($tag_string) {
+$ajaxlib->setPermission('comment', $user && $arquivoId);
+$ajaxlib->registerFunction("comment");
+function comment($comment) {
+	global $arquivoId, $arquivo, $user, $smarty;
 	
-	global $smarty, $arquivoId, $freetaglib, $user, $arquivo;
-
-	if (!is_object($freetaglib)) {
-		include_once('lib/freetag/freetaglib.php');
-    }
-
-	$href = "el-gallery_view.php?arquivoId=$arquivoId";
-
-	$freetaglib->add_object('gallery', $arquivoId, $arquivo->description, $arquivo->title, $href);
-	$freetaglib->update_tags($user, $arquivoId, $arquivo->tagType, $tag_string);
+	require_once("Comment.php");
+	$c = new Comment(array('publicationId' => $arquivoId, 'user' => $user, 'date' => time(), 'comment' => $comment));
+	
+	$smarty->assign('user', $user);
+	$smarty->assign('comment', $c);
 	
 	$objResponse = new xajaxResponse();
+	$objResponse->addAppend("ajax-aCommentsItemsCont", "innerHTML", $smarty->fetch("el-publication_comment.tpl"));
+	$objResponse->addAssign("ajax-commentCount", "innerHTML", count($arquivo->comments) + 1);
 	
-	$tags = $freetaglib->get_tags_on_object($arquivoId, $arquivo->tagType);
-	$tagString = '';
-	foreach ($tags['data'] as $t) {
-	    if ($tagString) $tagString .= ', ';
-	    $tagString .= $t['tag'];
-	}	
-	$smarty->assign("fileTags", $tags['data']);
+	return $objResponse;
 	
-	$objResponse->addAssign("show-tags", "innerHTML", $smarty->fetch("el-gallery_tags.tpl"));
-    $objResponse->addAssign("input-tags", "value", $tagString);
-    $objResponse->addScript("document.getElementById('input-tags').style.display = 'none'; document.getElementById('show-tags').style.display = 'block'");
-    
-    return $objResponse;
-    
+}
+
+$ajaxlib->setPermission('deleteComment', $user && $arquivoId);
+$ajaxlib->registerFunction("deleteComment");
+function deleteComment($commentId) {
+	global $arquivo, $user, $smarty;
+	
+	foreach ($arquivo->comments as $comment) {
+		if ($comment->id == $commentId) {
+			$c =& $comment;
+			break;
+		}
+	}
+	
+	$objResponse = new xajaxResponse();
+	if (!$c || ($c->user != $user)) {
+		return $objResponse;
+	}
+
+	$objResponse->addRemove("ajax-commentCont-$c->id");
+	$c->delete();
+	
+	$objResponse->addAssign("ajax-commentCount", "innerHTML", count($arquivo->comments) - 1);
+	
+	return $objResponse;
+	
 }
 
 ?>

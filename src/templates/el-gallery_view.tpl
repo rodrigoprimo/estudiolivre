@@ -4,7 +4,7 @@
 <script language="JavaScript" src="lib/js/freetags.js"></script>
 <script language="JavaScript" src="lib/js/el_array.js"></script>
 <script language="JavaScript" src="lib/js/edit_field_ajax.js"></script>
-<script language="JavaScript" src="lib/js/file_edit.js"></script>
+<script language="JavaScript" src="lib/js/uploadThumb.js"></script>
 <script language="JavaScript" src="lib/js/el-rating.js"></script>
 <script language="JavaScript" src="lib/js/delete_file.js"></script>
 
@@ -32,10 +32,10 @@
 				{if $permission}
 					<div id="aThumbForm">
 				        {tooltip text="Clique para selecionar outra <b>miniatura</b> para o arquivo"}
-				        <form action="el-gallery_upload_thumb.php?UPLOAD_IDENTIFIER=thumb.{$uploadId}" method="post" enctype="multipart/form-data" name="thumbForm" target="thumbUpTarget">
+				        <form action="el-gallery_upload_thumb.php" method="post" enctype="multipart/form-data" name="thumbForm" target="thumbUpTarget">
 						  	<input type="hidden" name="UPLOAD_IDENTIFIER" value="thumb.{$uploadId}">
 						  	<input type="hidden" name="arquivoId" value="{$arquivo->id}">
-						  	<input type="file" name="thumb" onChange="changeThumbStatus()" id="aThumbFormButton">
+						  	<input type="file" name="thumb" onChange="thumbSelected()" id="aThumbFormButton">
 				        </form>
 				        {/tooltip}
 				    </div>
@@ -135,7 +135,7 @@
 	</div>
 	
 	{if $permission}
-		<input class="aTagsInput" id="input-tags" value="{$arquivo->tagString}" onBlur="xajax_editTags(this.value)" style="display:none;">
+		<input class="aTagsInput" id="input-tags" value="{$arquivo->tagString}" onBlur="xajax_save_field('tags', this.value)" style="display:none;">
 		<img id="error-tags" class="gUpErrorImg" style="display: none" src="styles/{$style|replace:".css":""}/img/errorImg.png" onMouseover="tooltip(errorMsg_tags);" onMouseout="nd();"> 
 		<script language="JavaScript">  display["tags"] = "block";errorMsg_tags = "";</script>
 	{/if}
@@ -149,63 +149,33 @@
 		<div id="aComments">
 			<div id="aCommentsTitle" class="sectionTitle">
 				<div class="aTitleCont">
-					<span class="hiddenPointer" onclick="flip('aCommentsItemsCont'); flip('aCommentSend');toggleImage(document.getElementById('comTArrow'),'iArrowGreyRight.png')">
+					<span class="hiddenPointer" onclick="flip('ajax-aCommentsItemsCont'); flip('aCommentSend');toggleImage(document.getElementById('comTArrow'),'iArrowGreyRight.png')">
 						<img id="comTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png">
-						<h1>{tr}Comentários{/tr} ({$comments})</h1>
+						<h1>{tr}Comentários{/tr} (<span id="ajax-commentCount">{$comments}</span>)</h1>
 					</span>
 					<!--img id="aCommentsRss" src="styles/{$style|replace:".css":""}/img/iRss.png"/-->
 				</div>
 			</div>
-			<div id="aCommentsItemsCont" class="aItemsCont" style="display:block">
+			<div id="ajax-aCommentsItemsCont" class="aItemsCont" style="display:block">
 				{if $comments > 0}
 				{foreach from=$arquivo->comments item='comment'}
-					<div class="uMsgItem">
-						<div class="uMsgAvatar">
-							<img src="tiki-show_user_avatar.php?user={$comment->user}">
-						</div>
-						<div class="uMsgTxt">
-							{if ($tiki_p_remove_comments eq 'y' && $forum_mode ne 'y') || ($tiki_p_admin_forum eq 'y' and $forum_mode eq 'y') || ($user eq $comment->user)}
-							<div class="uMsgDel">
-								<a href="{$comments_complete_father}comments_threshold={$comments_threshold}&amp;comments_threadId={$comment.threadId}&amp;comments_remove=1&amp;comments_offset={$comments_offset}&amp;comments_sort_mode={$comments_sort_mode}&amp;comments_maxComments={$comments_maxComments}&amp;comments_parentId={$comments_parentId}&amp;comments_style={$comments_style}"><img alt="" title="Deletar Mensagem" src="styles/{$style|replace:".css":""}/img/iDelete.png"></a>
-							</div>
-							{/if}
-							<div class="uMsgDate">
-								{$comment->date|date_format:"%H:%M"}<br />
-								{$comment->date|date_format:"%d/%m/%y"}
-							</div>
-							<a href="el-user.php?view_user={$comment->user}">{$comment->user}</a>: {$comment->comment}
-						</div>
-					</div>
+					{include file="el-publication_comment.tpl"}
 				{/foreach}
 				{/if}
 			</div>
 			<div id="aCommentSend" style="display:block">
 				{if $user and (($tiki_p_forum_post eq 'y' and $forum_mode eq 'y') or ($tiki_p_post_comments eq 'y' and $forum_mode ne 'y'))}
 				<div id="uMsgSend">
-					<form method="post" action="{$comments_father}" id='editpostform'>
-		    			<input type="hidden" name="comments_reply_threadId" value="{$comments_reply_threadId|escape}" />    
-					    <input type="hidden" name="comments_grandParentId" value="{$comments_grandParentId|escape}" />    
-					    <input type="hidden" name="comments_parentId" value="{$comments_parentId|escape}" />
-					    <input type="hidden" name="comments_offset" value="{$comments_offset|escape}" />
-					    <input type="hidden" name="comments_threadId" value="{$comments_threadId|escape}" />
-					    <input type="hidden" name="comments_threshold" value="{$comments_threshold|escape}" />
-					    <input type="hidden" name="comments_sort_mode" value="{$comments_sort_mode|escape}" />
-					    {* Traverse request variables that were set to this page adding them as hidden data *}
-					    {section name=i loop=$comments_request_data}
-						    <input type="hidden" name="{$comments_request_data[i].name|escape}" value="{$comments_request_data[i].value|escape}" />
-					    {/section}
-						<input type="hidden" name="comments_title" value="foobar" />
-						<input type="submit" name="comments_postComment" value="{tr}enviar{/tr}" label="enviar" id="uMsgSendSubmit" />
-						{if !$comments_cant}
-							{tooltip text="Seja @ primeir@ a comentar! Digite aqui o seu comentário e clique em <b>enviar</b>"}
-								<input type="text" id="uMsgSendInput" name="comments_data" value="{$comment_data|escape}"/>
-							{/tooltip}
-						{else}
-							{tooltip text="Digite o seu comentário e clique em <b>enviar</b>"}
-								<input type="text" id="uMsgSendInput" name="comments_data" value="{$comment_data|escape}"/>
-							{/tooltip}
-						{/if}
-					</form>
+					<input type="submit" value="{tr}enviar{/tr}" label="enviar" id="uMsgSendSubmit" onClick="xajax_comment(document.getElementById('uMsgSendInput').value);" />
+					{if !$comments}
+						{tooltip text="Seja @ primeir@ a comentar! Digite aqui o seu comentário e clique em <b>enviar</b>"}
+							<input type="text" id="uMsgSendInput" name="comment" />
+						{/tooltip}
+					{else}
+						{tooltip text="Digite o seu comentário e clique em <b>enviar</b>"}
+							<input type="text" id="uMsgSendInput" name="comment" />
+						{/tooltip}
+					{/if}
 					<br /><br /><br />
 				</div>
 				{/if}

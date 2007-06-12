@@ -87,7 +87,8 @@ $filters = array("actualClass" => array("AudioPublication",
 										"VideoPublication",
 										"ImagePublication",
 										"TextPublication"),
-				 "user" => $view_user);
+				 "user" => $view_user,
+				 "publishDate" => true);
 $uploads = $controller->findAll($filters, 0, 5, $sort_mode);
 $smarty->assign_by_ref('arquivos',$uploads);
 

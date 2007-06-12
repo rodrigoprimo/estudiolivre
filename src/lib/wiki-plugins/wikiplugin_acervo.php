@@ -1,5 +1,5 @@
 <?php
-
+// migrado pra 2.0!
 function wikiplugin_acervo_help() {
     $help = tra("Mostra lista de arquivos do acervo com determinada tag ou por id") . "<br/>";
     $help.= "~np~{ACERVO(tag=>MinhaTag)}{ACERVO}~/np~" . "<br/>";
@@ -8,19 +8,8 @@ function wikiplugin_acervo_help() {
 }
 
 function retrieveFileInfo($id) {
-	
-	global $freetaglib, $elgallib, $commentslib;
-	
-	require_once("lib/elgal/elgallib.php");
-		
-	$arquivo = $elgallib->get_arquivo($id);
-	$arquivo['commentsCount'] = $commentslib->count_comments('arquivo:' . $id);
-	$arquivo['tags'] = $freetaglib->get_tags_on_object($id, 'gallery');
-	$arquivo['descricaoLicenca'] = $arquivo['licenca']['descricao'];
-	$arquivo['linkImagem'] = $arquivo['licenca']['linkImagem'];
-	$arquivo['linkHumanReadable'] = $arquivo['licenca']['linkHumanReadable'];
-	
-	return $arquivo;
+	require_once("lib/persistentObj/PersistentObjectFactory.php");
+	return PersistentObjectFactory::createObject("Publication", (int)$id);
 }
 
 function wikiplugin_acervo($data, $params) {
@@ -54,4 +43,3 @@ function wikiplugin_acervo($data, $params) {
 }
 
 ?>
-

@@ -70,7 +70,7 @@ if ($find) {
 	$key = new Find(array("title", "description"));
 	$filters[$find] = $key;
 }
-
+$filters["publishDate"] = true;
 $controller = new PersistentObjectController("Publication");
 $files = $controller->findAll($filters, 0, 10, $sort_mode);
 $total = $controller->countAll($filters);

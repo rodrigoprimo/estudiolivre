@@ -5,7 +5,7 @@
     <a href="tiki-index.php?page=Áudio&bl"><img src="styles/{$style|replace:".css":""}/img/logoAudio.png"></a>
 	<div id="localMenu">
 	<ul>
-    {if $page eq "Softwares de Edição de Áudio"}
+    {if $page eq "Softwares de Áudio"}
        <li class="selectedAudio">{tr}softwares{/tr}</li>
     {else}
        <li><a href="tiki-index.php?page=Softwares de Áudio">softwares</li>

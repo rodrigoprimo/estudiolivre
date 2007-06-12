@@ -131,7 +131,7 @@ class Publication extends PersistentObject {
 		
 		//bloco que acha a proporcao pro thumbnail		
 		$thumbSide = $tikilib->get_preference('el_thumb_side', 100);
-		list($width, $height) = getimagesize($this->baseDir . $this->fileName);
+		list($width, $height) = getimagesize($fileName);
 		if ($width > $thumbSide || $height > $thumbSide) {
 			$sourceX = 0;
 			$sourceY = 0;
@@ -181,6 +181,8 @@ class Publication extends PersistentObject {
 		if (!$fp) return;
 		fwrite($fp, $data);
 		fclose($fp);
+		
+		unlink($fileName);
 		
 		return $this->update(array('thumbnail' => $thumbName));
 		

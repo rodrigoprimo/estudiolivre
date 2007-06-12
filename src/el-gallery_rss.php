@@ -56,6 +56,7 @@ $filters = array("actualClass" => array());
 foreach ($type as $tipo) {
 	$filters["actualClass"][] = $actualClass[$tipo];
 }
+$filters["publishDate"] = true;
 
 if(!isset($_REQUEST['tag']) && isset($_REQUEST['tags'])) { $_REQUEST['tag'] = $_REQUEST['tags']; }
 

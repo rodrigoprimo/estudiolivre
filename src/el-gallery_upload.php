@@ -49,7 +49,7 @@ if ($licencaId = $tikilib->get_user_preference($user, 'licencaPadrao')) {
 }
 
 $controller = new PersistentObjectController("Publication");
-$pending = $controller->findAll(array('user' => $user, 'publishDate' => ''));
+$pending = $controller->findAll(array('user' => $user, 'publishDate' => false));
 $smarty->assign('pending', $pending);
 
 if(isset($arquivo) && $arquivo->user == $user) {
@@ -60,6 +60,13 @@ if(isset($arquivo) && $arquivo->user == $user) {
 	$tagString = substr($tagString, 0, strlen($tagString)-2);
 	$arquivo->tagString = $tagString;
 	$smarty->assign("arquivo", $arquivo);
+	if (isset($arquivo->license)) {
+		$license = array();
+		$license["imageName"] = $arquivo->license->imageName;
+		$smarty->assign("licenca", $license);
+	} else {
+		$smarty->assign("licenca", '');
+	}
 }
 
 $smarty->assign('uploadId',rand() . '.' . time());

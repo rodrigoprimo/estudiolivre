@@ -9,7 +9,7 @@ if (strpos($_SERVER["SCRIPT_NAME"],basename(__FILE__)) !== false) {
 require_once("lib/persistentObj/PersistentObjectController.php");
 
 $controller = new PersistentObjectController("Publication");
-$pending = $controller->findAll(array('user' => $user, 'publishDate' => ''));
+$pending = $controller->findAll(array('user' => $user, 'publishDate' => false));
 $smarty->assign('pendingUploadFiles', $pending);
 
 ?>

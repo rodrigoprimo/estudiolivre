@@ -23,7 +23,6 @@ function create_file($tipo, $fileName) {
 	    // Estranho ficar aqui, mas onde colocar?
 	    $error .= ' Veja a <a href="tiki-index.php?page=Formatos+de+arquivos+do+Acervo+Livre">lista de formatos suportados</a>';
 		$objResponse->addScript("setUploadErrorMsg('$error')");
-		$objResponse->addScript("uploadError = true;");
 		return $objResponse;
 	}
 	
@@ -34,7 +33,8 @@ function create_file($tipo, $fileName) {
 	
 	$arquivo = new $publicationClass($fields);
 	
-	$objResponse->addScriptCall('startUpload',$arquivo->id);
+	$objResponse->addScriptCall("setPublication", $arquivo->id);
+	$objResponse->addScript("newUpload();");
 	
 	if (in_array($tipo, array('Audio','Video','Imagem'))) {
 		$templateName = 'el-gallery_metadata_' . $tipo . '.tpl';
@@ -58,7 +58,7 @@ function clear_uploaded_file() {
     	unlink("repo/" . $arquivo->thumbnail);
 
     $objResponse = new xajaxResponse();
-    $objResponse->addScriptCall('startUpload',$arquivo->id);    
+    $objResponse->addScriptCall("newUpload();");    
 
     return $objResponse;
 }
@@ -141,16 +141,16 @@ function set_arquivo_licenca ($r1, $r2, $r3, $padrao = false) {
 
     $licenca = $controller->noStructureFindAll(array("answer" => $answer));
     $licenca =& $licenca[0];
-	    
+	
 	if ($padrao) {
-	  	$result = $userlib->set_user_field('licencaPadrao', $licenca->id);
+	  	$result = $userlib->set_user_field('licencaPadrao', $licenca["id"]);
 	   	if(!$result) $objResponse->addAlert("Não foi possivel editar o campo licencaPadrao");
 	}
 	
-	if (!$arquivo->update(array("licenseId" => $licenca->id))) {
+	if (!$arquivo->update(array("licenseId" => $licenca["id"]))) {
 		$objResponse->addAlert("Não foi possivel editar o campo licencaId");
 	} else {
-	  	$objResponse->addAssign('ajax-uImagemLicenca', 'src', 'styles/' . preg_replace('/\.css/', '', $style) . '/img/h_' . $licenca->imageName . '?rand='.rand());
+	  	$objResponse->addAssign('ajax-uImagemLicenca', 'src', 'styles/' . preg_replace('/\.css/', '', $style) . '/img/h_' . $licenca["imageName"] . '?rand='.rand());
 	}
 		
 	return $objResponse;

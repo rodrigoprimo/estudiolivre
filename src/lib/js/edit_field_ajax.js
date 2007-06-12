@@ -3,9 +3,6 @@ var display = new Array();
 var truncations = new Array();
 var mudado = new Array();
 var editing = new Array();
-var thumbTimerId = null;
-var thumbUpId;
-var upThumbStarted = false;
 var waitingQueue = new Array();
 
 function saveField(fieldObj){
@@ -18,8 +15,8 @@ function saveField(fieldObj){
     }
     
     if (saveFieldCache[field] == null || saveFieldCache[field] != value) {
-    	//precisa ser implementada em cada caso que for editar campos em ajax
-		call_save_function(field, value);
+    	setWaiting(field, true);
+		xajax_save_field(field, value);
     } else {
 		exibeCampo(field, value);
     }

@@ -2,7 +2,8 @@
 {css extra=ajax_inputs}
 <script language="JavaScript" src="lib/js/el_array.js"></script>
 <script language="JavaScript" src="lib/js/license.js"></script>
-<script language="JavaScript" src="lib/elgal/upload.js"></script>
+<script language="JavaScript" src="lib/js/upload.js"></script>
+<script language="JavaScript" src="lib/js/uploadThumb.js"></script>
 <script language="JavaScript" src="lib/js/edit_field_ajax.js"></script>
 <script language="JavaScript" src="lib/js/freetags.js"></script>
 
@@ -12,25 +13,25 @@
 	<table id="tipos">
 		<tr>
 			<td>
-				<img id="js-iconeAudio" onMouseOver="acendeTipo('Audio');" onMouseOut="apagaTipo('Audio'); return nd();" onClick="selecionaTipo('Audio')" alt="{tr}Áudio{/tr}" src="styles/{$style|replace:".css":""}/img/iUpAudioOff.png">
+				<img id="js-iconeAudio" class="pointer" onMouseOver="acendeTipo('Audio');" onMouseOut="apagaTipo('Audio'); return nd();" onClick="selecionaTipo('Audio')" alt="{tr}Áudio{/tr}" src="styles/{$style|replace:".css":""}/img/iUpAudioOff.png">
 				<br/>
 				{tr}Áudio{/tr}
 			</td>
 			
 			<td>
-				<img id="js-iconeImagem" onMouseOver="acendeTipo('Imagem');" onMouseOut="apagaTipo('Imagem'); return nd();" onClick="selecionaTipo('Imagem')" alt="{tr}Imagem{/tr}" src="styles/{$style|replace:".css":""}/img/iUpImagemOff.png">
+				<img id="js-iconeImagem" class="pointer" onMouseOver="acendeTipo('Imagem');" onMouseOut="apagaTipo('Imagem'); return nd();" onClick="selecionaTipo('Imagem')" alt="{tr}Imagem{/tr}" src="styles/{$style|replace:".css":""}/img/iUpImagemOff.png">
 				<br/>
 				{tr}Imagem{/tr}
 			</td>
 			
 			<td>
-				<img id="js-iconeTexto" onMouseOver="acendeTipo('Texto');" onMouseOut="apagaTipo('Texto'); return nd();" onClick="selecionaTipo('Texto')" alt="{tr}Texto{/tr}" src="styles/{$style|replace:".css":""}/img/iUpTextoOff.png">
+				<img id="js-iconeTexto" class="pointer" onMouseOver="acendeTipo('Texto');" onMouseOut="apagaTipo('Texto'); return nd();" onClick="selecionaTipo('Texto')" alt="{tr}Texto{/tr}" src="styles/{$style|replace:".css":""}/img/iUpTextoOff.png">
 				<br/>
 				{tr}Texto{/tr}
 			</td>
 			
 			<td>
-				<img id="js-iconeVideo" onMouseOver="acendeTipo('Video');" onMouseOut="apagaTipo('Video'); return nd();" onClick="selecionaTipo('Video')" alt="{tr}Vídeo{/tr}" src="styles/{$style|replace:".css":""}/img/iUpVideoOff.png">
+				<img id="js-iconeVideo" class="pointer" onMouseOver="acendeTipo('Video');" onMouseOut="apagaTipo('Video'); return nd();" onClick="selecionaTipo('Video')" alt="{tr}Vídeo{/tr}" src="styles/{$style|replace:".css":""}/img/iUpVideoOff.png">
 				<br/>
 				{tr}Vídeo{/tr}
 			</td>
@@ -41,25 +42,25 @@
 	<div id="tipos">
 		<ul>
 			<li>
-				<img id="js-iconeAudio" onMouseOver="acendeTipo('Audio');" onMouseOut="apagaTipo('Audio'); return nd();" onClick="selecionaTipo('Audio')" alt="{tr}Áudio{/tr}" src="styles/{$style|replace:".css":""}/img/iUpAudioOff.png">
+				<img id="js-iconeAudio" class="pointer" onMouseOver="acendeTipo('Audio');" onMouseOut="apagaTipo('Audio'); return nd();" onClick="selecionaTipo('Audio')" alt="{tr}Áudio{/tr}" src="styles/{$style|replace:".css":""}/img/iUpAudioOff.png">
 				<br/>
 				{tr}Áudio{/tr}
 			</li>
 			
 			<li>
-				<img id="js-iconeImagem" onMouseOver="acendeTipo('Imagem');" onMouseOut="apagaTipo('Imagem'); return nd();" onClick="selecionaTipo('Imagem')" alt="{tr}Imagem{/tr}" src="styles/{$style|replace:".css":""}/img/iUpImagemOff.png">
+				<img id="js-iconeImagem" class="pointer" onMouseOver="acendeTipo('Imagem');" onMouseOut="apagaTipo('Imagem'); return nd();" onClick="selecionaTipo('Imagem')" alt="{tr}Imagem{/tr}" src="styles/{$style|replace:".css":""}/img/iUpImagemOff.png">
 				<br/>
 				{tr}Imagem{/tr}
 			</li>
 			
 			<li>
-				<img id="js-iconeTexto" onMouseOver="acendeTipo('Texto');" onMouseOut="apagaTipo('Texto'); return nd();" onClick="selecionaTipo('Texto')" alt="{tr}Texto{/tr}" src="styles/{$style|replace:".css":""}/img/iUpTextoOff.png">
+				<img id="js-iconeTexto" class="pointer" onMouseOver="acendeTipo('Texto');" onMouseOut="apagaTipo('Texto'); return nd();" onClick="selecionaTipo('Texto')" alt="{tr}Texto{/tr}" src="styles/{$style|replace:".css":""}/img/iUpTextoOff.png">
 				<br/>
 				{tr}Texto{/tr}
 			</li>
 			
 			<li>
-				<img id="js-iconeVideo" onMouseOver="acendeTipo('Video');" onMouseOut="apagaTipo('Video'); return nd();" onClick="selecionaTipo('Video')" alt="{tr}Vídeo{/tr}" src="styles/{$style|replace:".css":""}/img/iUpVideoOff.png">
+				<img id="js-iconeVideo" class="pointer" onMouseOver="acendeTipo('Video');" onMouseOut="apagaTipo('Video'); return nd();" onClick="selecionaTipo('Video')" alt="{tr}Vídeo{/tr}" src="styles/{$style|replace:".css":""}/img/iUpVideoOff.png">
 				<br/>
 				{tr}Vídeo{/tr}
 			</li>
@@ -68,21 +69,11 @@
 {/if}
 
 <div id="js-browse">
-	<iframe name="uploadTarget" style="display:none" onLoad="finishUpload();"></iframe>
-	
-	<form name="uploadForm" target="uploadTarget" action="el-gallery_upload_file.php?UPLOAD_IDENTIFIER={$uploadId}" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="UPLOAD_IDENTIFIER" value="{$uploadId}">
-		<input type="hidden" name="arquivoId" value="">
-		<input type="hidden" name="tipo" value="">
-		<input type="file" name="arquivo" onChange="changeStatus(this.value);">
-	</form>
-	
-	<div id="browseCont">
-		<div id="js-statusBar" class="statusBarGoing"></div>
-		<div id="js-percent"></div>
-	</div>
-	
-	<h4 id="js-cancel"></h4>
+	{foreach from=$arquivo->filereferences item=file key=i}
+		{include file="el-gallery_upload_form.tpl" i=$i}
+	{foreachelse}
+		{include file="el-gallery_upload_form.tpl" i=0}
+	{/foreach}
 </div>
 	
 <div id="js-desc">
@@ -100,10 +91,10 @@
 	<div class="pointer flippers" onClick="flip('js-thumbForm')">{tr}outra miniatura...{/tr}</div>
 	<span id="js-thumbForm" style="display:none">
 		<iframe name="thumbUpTarget" style="display:none" onLoad="finishUpThumb();"></iframe>
-		<form name="thumbForm" target="thumbUpTarget" action="el-gallery_upload_thumb.php?UPLOAD_IDENTIFIER=thumb.{$uploadId}" method="post" enctype="multipart/form-data">
+		<form name="thumbForm" target="thumbUpTarget" action="el-gallery_upload_thumb.php" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="UPLOAD_IDENTIFIER" value="thumb.{$uploadId}">
 			<input type="hidden" name="arquivoId" value="">
-			<input type="file" name="thumb" onChange="changeThumbStatus()" class="gUpThumbFormButton">
+			<input type="file" name="thumb" onChange="thumbSelected()" class="gUpThumbFormButton">
 			&nbsp;&nbsp;<span id="js-thumbStatus"></span>
 		</form>
 	</span>
@@ -176,10 +167,17 @@
 
 {include file="el-gallery_publish.tpl"}
 {include file="el-gallery_error.tpl"}
-<div id="errorDiv" class="none" style="width:200px"></div>
+<div id="js-errorDiv" class="none" style="width:200px"></div>
 
 {if $arquivo}
-	<script language="JavaScript">restoreForm({$arquivo->id}, '{$arquivo->type}', '{$arquivo->filereferences[0]->fileName}', '{$arquivo->thumbnail}');flip('fileAltered');</script>
+	<script language="JavaScript">
+		files = Array();
+		{foreach from=$arquivo->filereferences item=upFile}
+			files[files.length] = '{$upFile->fileName}';
+		{/foreach}
+		restoreForm({$arquivo->id}, '{$arquivo->type}', files, '{$arquivo->thumbnail}');
+		flip('fileAltered');
+	</script>
 {/if}
 
 <!-- el-gallery_upload.tpl end -->

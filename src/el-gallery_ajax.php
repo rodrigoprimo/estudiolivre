@@ -31,7 +31,7 @@ function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $fi
 		$key = new Find(array("title", "description"));
 		$filters[$find] = $key;
 	}
-	
+	$filters["publishDate"] = true;
 	$controller = new PersistentObjectController("Publication");
     $files = $controller->findAll($filters, $offset, $maxRecords, $sort_mode);
     $total = $controller->countAll($filters);

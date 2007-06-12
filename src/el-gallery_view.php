@@ -1,7 +1,6 @@
 <?php
 // migrado pra 2.0!
 require_once("tiki-setup.php");
-require_once("lib/persistentObj/PersistentObjectFactory.php");
 include_once("el-gallery_set_publication.php");
 require_once("lib/ajax/ajaxlib.php");
 require_once("el-gallery_file_edit_ajax.php");
