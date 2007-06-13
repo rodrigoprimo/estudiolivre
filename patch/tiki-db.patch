@@ -1,0 +1,22 @@
+--- db/tiki-db.php	2007-06-06 16:54:16.000000000 -0300
++++ db/tiki-db.php	2007-06-06 16:24:38.000000000 -0300
+@@ -122,13 +122,18 @@
+ if (!@$dbTiki->Connect($host_tiki, $user_tiki, $pass_tiki, $dbs_tiki)) {
+ 	print "
+ <html><body>
++<center><img src=\"styles/bolha/img/logoTop.png\">
++<h2>Estamos em manuten&ccedil;&atilde;o</h2>
++<h3>Volte mais tarde</h3></center>
++<!-- 
+ <h2><font color='red'>TikiWiki is not properly set up:</font></h1>
+ <div>Unable to connect to the database !</div>
+ <a href='tiki-install.php'>Go here to begin the installation process</a>, if you haven't done so already.</p>
++-->
+ </body></html>
+ ";
+ 
+-	print $dbTiki->ErrorMsg();
++	print "<!--" . $dbTiki->ErrorMsg() . "-->";
+ 	exit;
+ }
+ 
