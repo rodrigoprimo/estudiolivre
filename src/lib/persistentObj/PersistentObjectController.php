@@ -15,6 +15,7 @@ class PersistentObjectController {
 	var $controlledClassTable;
 	
 	function PersistentObjectController($class) {
+		@include_once($class . ".php");
 		if (!class_exists($class)) trigger_error("Incorrect parameter, must provide a valid class.", E_USER_ERROR);
 		for ($super = strtolower(get_parent_class($class)); $super; $super = strtolower(get_parent_class($super))) {
 			if ($super == 'persistentobject') {
@@ -23,7 +24,6 @@ class PersistentObjectController {
 			}	
 		}
 		if (!$pass) trigger_error("Incorrect parameter, must provide a valid subclass of PersistentObject.", E_USER_ERROR);
-		require_once($class . ".php");
 		$this->controlledClass = $class;
 		$this->controlledClassTable = strtolower($class);
 	}
