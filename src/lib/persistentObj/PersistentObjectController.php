@@ -15,7 +15,6 @@ class PersistentObjectController {
 	var $controlledClassTable;
 	
 	function PersistentObjectController($class) {
-		require_once($class . ".php");
 		if (!class_exists($class)) trigger_error("Incorrect parameter, must provide a valid class.", E_USER_ERROR);
 		for ($super = strtolower(get_parent_class($class)); $super; $super = strtolower(get_parent_class($super))) {
 			if ($super == 'persistentobject') {
@@ -24,6 +23,7 @@ class PersistentObjectController {
 			}	
 		}
 		if (!$pass) trigger_error("Incorrect parameter, must provide a valid subclass of PersistentObject.", E_USER_ERROR);
+		require_once($class . ".php");
 		$this->controlledClass = $class;
 		$this->controlledClassTable = strtolower($class);
 	}
@@ -51,9 +51,13 @@ class PersistentObjectController {
 			foreach ($fields as $key => $value) {
 				if (is_array($value)) {
 					$query .= "$key in (";
-					foreach ($value as $param) {
-						$query .= "?,";
-						$bindvals[] = $param;
+					if (count($value)) {
+						foreach ($value as $param) {
+							$query .= "?,";
+							$bindvals[] = $param;
+						}
+					} else {
+						$query .= "'',";
 					}
 					$query = substr($query, 0, strlen($query)-1);
 					$query .= ") and ";
@@ -65,6 +69,11 @@ class PersistentObjectController {
 					}
 					$query = substr($query, 0, strlen($query)-4);
 					$query .= ") and ";
+				} else if (is_bool($value)) {
+					if ($value)
+						$query .= "$key and ";
+					else
+						$query .= "!$key and ";
 				} else {
 					$query .= "$key = ? and ";
 					$bindvals[] = $value;
