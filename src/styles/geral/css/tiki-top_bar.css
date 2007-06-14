@@ -1,0 +1,62 @@
+#topContainer {
+}
+
+#logo {
+}
+
+/*os links do menu do site geral*/
+#topMenuGeneral {
+	
+}
+
+#topMenu {
+}
+
+#topMenu A {
+}
+
+/*a parte dos labs*/
+
+#grafilab, #videolab, #audiolab, #acervolivre {
+}
+#audiolab {
+}
+#videolab {
+}
+#grafilab {
+
+}
+#acervolivre {
+	
+}
+
+/*a busca*/
+#search {
+	}
+
+.searchForm {
+}
+
+.searchOptions {
+}
+
+.searchOptions li {
+}
+
+.searchOptions li a {
+}
+
+.searchOptions li.selected a {
+}
+
+#search .searchForm:hover .searchOptions {
+}
+
+#search .searchForm:hover .searchMore {
+}
+
+.searchMore span {
+}
+
+#searchField, #searchFieldResults {
+}

@@ -1,0 +1,54 @@
+#lightbox {
+}
+
+#lightboxCont {
+}
+.lightBoxTop,.lightBoxBottom {
+}
+
+/*cells e tamanhos*/
+.lightBoxLeft,.lightBoxRight,.lightBoxTopMid,.lightBoxTopLeft,.lightBoxTopRight,.lightBoxBottomLeft,.lightBoxBottomRight,.lightBoxBottomMid {
+}
+
+/**********************/
+/*        TOP         */
+/**********************/
+.lightBoxTopLeft,.lightBoxTopRight {
+}
+	
+.lightBoxTopLeft {
+}
+.lightBoxTopMid {
+}
+.lightBoxTopRight {
+
+}
+
+/**********************/
+/*        MID         */
+/**********************/
+.lightBoxLeft {
+}	
+.lightBoxRight {
+}
+
+/**********************/
+/*        Bottom      */
+/**********************/
+.lightBoxBottomLeft,.lightBoxBottomRight{
+}
+.lightBoxBottomLeft {
+
+}
+.lightBoxBottomMid {
+}
+.lightBoxBottomRight {
+}
+
+/* o resto... */
+
+#closeButton{
+}
+
+#overlay{
+}

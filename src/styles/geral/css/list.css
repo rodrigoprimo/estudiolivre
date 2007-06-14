@@ -1,0 +1,47 @@
+/* estilos para as páginas que listam:
+	- usuários (tiki-list_users.tpl)
+ 	- forums (tiki-list_forums.tpl)
+ 	- blogs (tiki-list_blogs.tpl)
+  	- modulos (tiki-user_assigned_modules.tpl)  */    
+
+/*tabela*/
+
+#tracker table, #users table, #forum table, #blogs table, #listLastChanges table, #editMods table, #viewForum table {
+}
+
+#tracker table, #users td, #forum td, #blogs td, #listLastChanges td, #editMods td, #viewForum td {
+}
+
+#tracker table a, #users table a, #forum table a, #blogs table a, #listLastChanges a, #editMods a, #viewForum table a {
+}
+ 	
+#tracker td.heading, #users td.heading, #forum td.heading, #blogs td.heading, #listLastChanges td.heading, #editMods td.heading, #viewForum td.heading {
+}
+
+#tracker td.heading a, #users td.heading a {
+}
+
+#viewForum td.heading {
+}
+
+#tracker .odd, #users .odd, #forum .odd, #blogs .odd, #listLastChanges .odd, #editMods .odd, #viewForum .odd {
+}
+
+#users .foto {
+}
+
+/*headers*/
+
+#tracker h1, #users h1, #forum h1, #blogs h1, #listLastChanges h1, #blogHead h1, #viewForum h1, #live h1 {
+}
+
+#tracker h5, #users h5, #blogs h5, #listLastChanges h5, #viewForum h5 {
+}
+
+/*paginacao*/
+
+.paginacao {
+}
+
+.paginacao img {
+}

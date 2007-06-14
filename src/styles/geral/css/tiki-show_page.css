@@ -1,0 +1,76 @@
+p.editdate {
+}
+
+#tiki-mid .wikitext {
+}
+
+#wikitopline {
+	position:relative;
+	top:-20px;
+	left:0px;
+	width:3000px;
+	text-align:left;
+}
+.wikitopline {
+
+	width:300px;
+	text-align:left;
+	
+}
+
+.wikitopline IMG {
+}
+
+#wikitext {
+	
+	
+}
+
+#wikitext H1 {
+}
+
+#wikitext H2 {
+}
+
+#wikitext H3 {
+}
+
+#wikitext P {
+}
+
+#wikitext A:link {
+}
+
+#wikitext A:hover {
+}
+
+#wikitext A:visited {
+}
+
+#wikitext A.wikinew {
+}
+
+/* classe usada para o que estiver entre '-=' e '=-', tipo '-=titulo=-'*/
+.titlebar {
+}
+
+.titlebar:first-letter {
+}
+
+#wikitext A.wikinew {
+}
+
+A.external{
+}
+
+/* classe das coisas dentro de '^' do wiki (fica uma caixa em volta)*/
+.simplebox {
+}
+
+/* classe das linhas que comecam com espaco no wiki, sao as linhas de 'codigo'*/
+tt {
+}
+
+/*classe dos [+] e [-] que aparecem ao lado das tags wiki '!+' ou '!-' ou '!!+' e assim por diante */
+.flipper{
+}

@@ -1,0 +1,39 @@
+#sideContent {
+	position:absolute;
+	top:150px;
+	left:50px;
+	width:160px;
+	overflow:hidden;
+	text-align:left;
+	background-color:transparent;
+	
+}
+
+.localMenu {
+	font-size:24px;
+	
+	
+}
+#localMenu {
+
+}
+
+#localMenu ul {
+
+}
+
+#localMenu li.selectedAcervo, li.selectedAudio, li.selectedGraf, li.selectedVideo {
+
+}
+
+#localMenu li.selectedVideo {
+
+}
+
+#localMenu li.selectedGraf {
+
+}
+
+#localMenu li.selectedAudio {
+
+}

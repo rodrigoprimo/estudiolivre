@@ -1,0 +1,88 @@
+.modCenterContent {
+
+}
+.modViewAll {
+
+}
+
+.modViewAll A {
+
+}
+
+/*module.tpl*/
+.userMenu .closeButton {
+}
+
+.userMenuContent {
+	width:150px;
+	display:list-item
+}
+
+.userMenuContent img.uThumb {
+}
+
+.userMenuContent hr {
+}
+
+.userMenu {
+}
+
+.userMenu H1 {
+}
+
+/*mod-el_msgs.tpl*/
+.mod-el_msg-msg {
+}
+
+/*mod-who_is_there.tpl*/
+#moduleWhoIsThereMore {
+
+}
+
+/*tiki-poll.tpl e mod-login_box.tpl*/
+/*#userNameStatsKarma {
+	height:50px;
+	text-align:center;
+}
+
+#uMenuName {
+	width:100%;
+	font-size:18px;
+	font-weight:bold;
+}
+
+#uStats {
+	font-size:10px;
+	color:gray;
+}
+*/
+
+/*quando NAO está logado:*/
+#uLoginBox input.uText {
+}
+
+#uLoginBox {
+
+}
+
+#login-user {
+}
+
+#uLoginOptions {
+}
+
+#login-pass {
+}
+/*quando está logado:*/
+
+#userMod {
+}
+
+#userMod img{
+}
+
+#userMod a{
+}
+
+#userMod #nome{
+}
