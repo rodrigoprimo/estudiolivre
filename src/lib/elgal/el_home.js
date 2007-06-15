@@ -1,7 +1,7 @@
 var butStatus = new Array('Inac','Inac','Inac','Inac');
 var tipos = new Array();
 var acervo_cache = new Array();
-var sortMode = 'data_publicacao';
+var sortMode = 'publishDate';
 var sortDirection = '_desc';
 var findValue = '';
 var maxRecords = 10;
