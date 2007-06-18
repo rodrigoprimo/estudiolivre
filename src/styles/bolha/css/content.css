@@ -27,3 +27,20 @@
 	background-color:white;
 }
 
+.diffdeleted{
+	background-color:#ff8866;
+		
+}
+.diffadded {
+	background-color:#88ff66;
+}
+.diffchar {
+	color:#ff0000;
+	font-weight:bold;
+}
+
+.diffheader {
+	font-weight:bold;
+	border-bottom: 1px solid #bebebe;
+	margin-bottom:2px;
+}
