@@ -1,5 +1,9 @@
 .listItem {
 	
+	width:240px;
+	border-top:10px solid #transparent;
+	border-bottom:2px solid #000000;
+	
 }
 
 .listLeft {
@@ -26,10 +30,10 @@
 	
 }
 
-.listItem .listInfo {
-	
-}
+.info {
+	border-top:10px solid #transparent;
 
+}
 
 .listItem .listInfo h3{
 	
