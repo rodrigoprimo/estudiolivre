@@ -3,7 +3,7 @@
 	width:240px;
 	border-top:10px solid #transparent;
 	border-bottom:2px solid #000000;
-	
+	float:bottom-left;
 }
 
 .listLeft {
@@ -26,9 +26,7 @@
 	
 }
 
-.listItem h2 a {
-	
-}
+
 
 .info {
 	border-top:10px solid #transparent;
