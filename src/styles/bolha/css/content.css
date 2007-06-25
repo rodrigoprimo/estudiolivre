@@ -28,11 +28,11 @@
 }
 
 .diffdeleted{
-	background-color:#ff8866;
+	background-color:#ffcccc;
 		
 }
 .diffadded {
-	background-color:#88ff66;
+	background-color:#ccffcc;
 }
 .diffchar {
 	color:#ff0000;
