@@ -1,8 +1,8 @@
 #sideContent {
 	position:absolute;
-	top:150px;
-	left:50px;
-	width:160px;
+	top:12em;
+	left:2em;
+	width:15em;
 	overflow:hidden;
 	text-align:left;
 	background-color:transparent;

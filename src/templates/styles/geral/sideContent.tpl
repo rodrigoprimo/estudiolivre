@@ -4,7 +4,7 @@
   {********AUDIO*********}
     <a href="tiki-index.php?page=Áudio&bl">
     <h1 class="localMenu">AudioLab</h1>
-    <!--<img src="styles/{$style|replace:".css":""}/img/logoAudio.png">--></a>
+    </a>
 	<div id="localMenu">
 	<ul>
     {if $page eq "Softwares de Edição de Áudio"}

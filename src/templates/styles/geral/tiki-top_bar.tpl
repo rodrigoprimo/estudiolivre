@@ -44,21 +44,23 @@
 
 <div id="topMenu">
   <div id="topMenuGeneral">
-  &nbsp;&nbsp;
-    {tooltip name="saiba-estudiolivre" text="Saiba <b>o que é</b> o EstúdioLivre"}<a href="tiki-index.php?page=sobre&bl">{tr}sobre{/tr}</a>{/tooltip}
-	|
-	{tooltip name="perguntas-frequentes" text="<b>Perguntas</b> mais freqüêntes"}<a href="tiki-index.php?page=faq&bl">{tr}faq{/tr}</a>{/tooltip}
-	|
-	{tooltip name="entre-contato" text="Entre em contato - descubra os <b>canais de comunicação</b> com a comunidade"}<a href="tiki-index.php?page=contato&bl">{tr}contato{/tr}</a>{/tooltip}
-&nbsp;&nbsp;||&nbsp;&nbsp;
 	{tooltip name="wiki" text="Página principal do <b>wiki</b> do EstúdioLivre"}<a href="tiki-index.php">{tr}wiki{/tr}</a>{/tooltip}
-	|
+<br/>
     {tooltip name="forum-discussoes" text="Fóruns de <b>discussões</b> - tire suas dúvidas aqui"}<a href="tiki-forums.php">{tr}forums{/tr}</a>{/tooltip}
-    | 
+<br/>
     {tooltip text="Veja os <b>blogs</b> dos usuári@s do EstúdioLivre"}<a href="tiki-list_blogs.php">{tr}blogs{/tr}</a>{/tooltip}
-    | 
+<br/>
     {tooltip text="Navegue pelas <b>tags</b> mais populares do EstúdioLivre"}<a href="el-tag_cloud.php">{tr}tags{/tr}</a>{/tooltip}
-  </div>
+</div>
+  
+  <div id="topSubMenu">
+  {tooltip name="saiba-estudiolivre" text="Saiba <b>o que é</b> o EstúdioLivre"}<a href="tiki-index.php?page=sobre&bl">{tr}sobre{/tr}</a>{/tooltip}
+<br/>
+	{tooltip name="perguntas-frequentes" text="<b>Perguntas</b> mais freqüêntes"}<a href="tiki-index.php?page=faq&bl">{tr}faq{/tr}</a>{/tooltip}
+<br/>
+	{tooltip name="entre-contato" text="Entre em contato - descubra os <b>canais de comunicação</b> com a comunidade"}<a href="tiki-index.php?page=contato&bl">{tr}contato{/tr}</a>{/tooltip}
+<br/>
+</div>
     
 	<div id="topMenuCubesContainer" class="topmenu">
 	
@@ -70,24 +72,23 @@
 		
 		{if $category eq "Áudio"}{assign var='audioStyle' value="opacity:0.3"}{/if}
         <a style="{$galleryStyle}" href="el-gallery_home.php" {if $isIE}title="ACERVO.LIVRE"{/if}>
-	        <img src="styles/{$style|replace:".css":""}/img/logo{$gallery}.png">
+	        
 	        <span id="acervolivre" >{tr}acervo{/tr}</span>      
         </a><br /> 
 	
 	<a style="{$audioStyle}" href="tiki-index.php?page=Áudio&bl" {if $isIE}title="AUDIO||LAB"{/if}>
-          <img src="styles/{$style|replace:".css":""}/img/logo{$audio}.png">
+        
 	      <span id="audiolab">{tr}áudio{/tr}</span>
         </a><br />
 	        
 	    {if $category eq "Gráfico"}{assign var='graficoStyle' value="opacity:0.3"}{/if}
         <a style="{$graficoStyle}"  href="tiki-index.php?page=Gráfico&bl" {if $isIE}title="GRAFI||LAB"{/if}>
-          <img src="styles/{$style|replace:".css":""}/img/logo{$grafico}.png">
 		  <span id="grafilab">{tr}gráfico{/tr}</span>
         </a><br />
 
 	    {if $category eq "Vídeo"}{assign var='videoStyle' value="opacity:0.3"}{/if}
         <a style="{$videoStyle}"  href="tiki-index.php?page=Vídeo&bl" {if $isIE}title="VIDEO||LAB"{/if}>
-          <img src="styles/{$style|replace:".css":""}/img/logo{$video}.png">
+        
 	      <span id="videolab">{tr}vídeo{/tr}</span>
         </a><br />
 	    
