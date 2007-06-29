@@ -40,22 +40,33 @@
  	$smarty->assign('individual', 'n');
  
  	if ($userlib->object_has_one_permission($_REQUEST["blogId"], 'blog')) {
-@@ -237,6 +247,13 @@
+@@ -237,14 +247,25 @@
  
  	$edit_data = $imagegallib->capture_images($edit_data);
  	$title = isset($_REQUEST['title']) ? $_REQUEST['title'] : '';
 +	
+ 	if ($_REQUEST["postId"] > 0) {
+ 		$bloglib->update_post($_REQUEST["postId"], $_REQUEST["blogId"], $edit_data, $user, $title, $_REQUEST['trackback']);
++		$postid = $_REQUEST["postId"];
+ 	} else {
+ 		$postid = $bloglib->blog_post($_REQUEST["blogId"], $edit_data, $user, $title, $_REQUEST['trackback']);
+ 
+ 		$smarty->assign('postId', $postid);
+ 	}
+ 
 +	// freetags
 +	$cat_type='blog';
 +	$cat_objid = $title;
-+	include_once ("freetag_list.php");
++	$cat_desc = $_REQUEST["data"];
++	$cat_name = $_REQUEST["title"];
++	$cat_href = "tiki-view_blog_post.php?blogId=". $_REQUEST["blogId"] . "&postId=" . $postid;
++	include_once("freetag_list.php");
 +	include_once("freetag_apply.php");
 +
- 	if ($_REQUEST["postId"] > 0) {
- 		$bloglib->update_post($_REQUEST["postId"], $_REQUEST["blogId"], $edit_data, $user, $title, $_REQUEST['trackback']);
- 	} else {
-@@ -308,6 +325,14 @@
+ 	if (isset($_REQUEST['save_exit'])) {
+ 		header ("location: tiki-view_blog.php?blogId=$blogId");
  
+@@ -308,6 +329,14 @@ 
  ask_ticket('blog');
  
 +require_once("el-tags_ajax.php");

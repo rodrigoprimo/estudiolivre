@@ -41,6 +41,9 @@
 
     {if $objects[ix].type eq 'gallery'}
 		{el_gallery_item id=$objects[ix].itemId}
+    {elseif $objects[ix].type eq 'blog'}
+		{$objects[ix].itemId}<br/>
+			<a href="{$objects[ix].href}" class="catname">{$objects[ix].description|truncate:250}</a>
     {else}
     	{el_wiki_item id=$objects[ix].itemId}
     	{*    	
