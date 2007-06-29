@@ -87,6 +87,12 @@
 			<script defer='defer'>(new HTMLArea(document.forms['blogpost']['data'])).generate();</script>
 		{/if}
 		<br />
+		{if $feature_freetags eq 'y' and $tiki_p_freetags_tag eq 'y'}
+				<br/>
+				{include file=freetag.tpl}
+		{/if}
+
+
 		<div class="blogPostHelp">
 			{tr}Use ...page... to separate pages in a multi-page post{/tr}
 			<br/>

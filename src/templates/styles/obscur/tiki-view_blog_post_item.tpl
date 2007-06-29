@@ -57,6 +57,19 @@
 			</div>
 		{/if}
 	</div>
+		<h4>
+			<span>
+				tags:
+				<em>
+					{foreach from=$post.tags item=tag name=tags}
+					{tooltip text="Clique para ver outros arquivos com a tag <b>"|cat:$tag|cat:"</b>"}<a href="tiki-browse_freetags.php?tag={$tag}">{$tag}</a>{if not $smarty.foreach.tags.last}, {/if}
+					{/tooltip}
+					{foreachelse}
+						{tr}Esse arquivo não tem tags{/tr}.
+					{/foreach}
+				</em>
+			</span>
+		</h4>
 	<div class="postbottom">
 		{tr}posted by{/tr}:<i> <a href="el-user.php?view_user={$post.user}">{$post.user}</a></i>
 		{*if $show_avatar eq 'y'}
