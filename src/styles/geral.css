@@ -10,6 +10,7 @@
 BODY {
 	font-family: arial,verdana,helvetica,lucida,sans-serif; /*BitStream Vera Sans, Verdana;*/
 	font-size:10pt;
+
 }
 
 a{color:#808080;}
@@ -131,7 +132,7 @@ td {
 
 .uText{
 		text-align:left;
-		border-bottom:10px solid #FFFFFF;
+		border-bottom:10px solid transparent;
 }
 
 #topMenuGeneral {
@@ -140,6 +141,7 @@ td {
 	left:350px;
 	width:300px;
 	text-align:left;
+	font-size:12px;
 	
 }
 
@@ -172,7 +174,6 @@ td {
 
 .submenu {
 		font-size:12pt;
-		
 	{
 
 .menu {
