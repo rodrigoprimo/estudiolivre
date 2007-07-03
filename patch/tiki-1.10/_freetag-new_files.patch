@@ -3,7 +3,7 @@ diff -Naur ../void/freetag_apply.php ./freetag_apply.php
 +++ ./freetag_apply.php	2006-04-26 12:33:35.000000000 -0300
 @@ -0,0 +1,39 @@
 +<?php 
-+// $Header: /home/rodrigo/devel/arca/estudiolivre/patch/tiki-1.10/_freetag-new_files.patch,v 1.2 2006-10-02 22:40:21 nano Exp $
++// $Header: /home/rodrigo/devel/arca/estudiolivre/patch/tiki-1.10/_freetag-new_files.patch,v 1.3 2007-07-03 16:20:27 sampaioprimo Exp $
 +
 +// Copyright (c) 2002-2005, Luis Argerich, Garland Foster, Eduardo Polidor, et. al.
 +// All Rights Reserved. See copyright.txt for details and a complete list of authors.
@@ -47,7 +47,7 @@ diff -Naur ../void/freetag_list.php ./freetag_list.php
 @@ -0,0 +1,43 @@
 +<?php
 +
-+// $Header: /home/rodrigo/devel/arca/estudiolivre/patch/tiki-1.10/_freetag-new_files.patch,v 1.2 2006-10-02 22:40:21 nano Exp $
++// $Header: /home/rodrigo/devel/arca/estudiolivre/patch/tiki-1.10/_freetag-new_files.patch,v 1.3 2007-07-03 16:20:27 sampaioprimo Exp $
 +
 +// Copyright (c) 2002-2005, Luis Argerich, Garland Foster, Eduardo Polidor, et. al.
 +// All Rights Reserved. See copyright.txt for details and a complete list of authors.
@@ -93,7 +93,7 @@ diff -Naur ../void/freetag.php ./freetag.php
 +++ ./freetag.php	2006-04-26 12:33:35.000000000 -0300
 @@ -0,0 +1,37 @@
 +<?php 
-+// $Header: /home/rodrigo/devel/arca/estudiolivre/patch/tiki-1.10/_freetag-new_files.patch,v 1.2 2006-10-02 22:40:21 nano Exp $
++// $Header: /home/rodrigo/devel/arca/estudiolivre/patch/tiki-1.10/_freetag-new_files.patch,v 1.3 2007-07-03 16:20:27 sampaioprimo Exp $
 +
 +// Copyright (c) 2002-2005, Luis Argerich, Garland Foster, Eduardo Polidor, et. al.
 +// All Rights Reserved. See copyright.txt for details and a complete list of authors.
@@ -210,7 +210,7 @@ diff -Naur ../void/lib/freetag/freetag_ajax.js ./lib/freetag/freetag_ajax.js
 diff -Naur ../void/lib/freetag/freetaglib.php ./lib/freetag/freetaglib.php
 --- ../void/lib/freetag/freetaglib.php	1969-12-31 21:00:00.000000000 -0300
 +++ ./lib/freetag/freetaglib.php	2006-04-26 12:33:35.000000000 -0300
-@@ -0,0 +1,920 @@
+@@ -0,0 +1,924 @@
 +<?php
 +
 +/**
@@ -383,7 +383,7 @@ diff -Naur ../void/lib/freetag/freetaglib.php ./lib/freetag/freetaglib.php
 +     * @return An array of Object ID numbers that reference your original objects.
 +     */
 +    
-+    function get_objects_with_tag_combo($tagArray, $type = '', $user = '', $offset = 0, $maxRecords = -1) {
++    function get_objects_with_tag_combo($tagArray, $type = '', $user = '', $offset = 0, $maxRecords = -1, $sort_mode = false) {
 +	if (!isset($tagArray) || !is_array($tagArray)) {
 +	    return false;
 +	}
@@ -426,7 +426,11 @@ diff -Naur ../void/lib/freetag/freetaglib.php ./lib/freetag/freetaglib.php
 +                        $mid
 +			GROUP BY o.`objectId`
 +			HAVING uniques = ?";
-+	
++
++     	if ($sort_mode) {
++           $query .= " order by ".$this->convert_sortmode($sort_mode);
++     	}	
++
 +	$result = $this->query($query, $bindvals, $maxRecords, $offset);
 +	
 +	$ret = array();
@@ -1136,7 +1140,7 @@ diff -Naur ../void/lib/objectlib.php ./lib/objectlib.php
 +++ ./lib/objectlib.php	2006-04-26 12:33:35.000000000 -0300
 @@ -0,0 +1,124 @@
 +<?php
-+// CVS: $Id: _freetag-new_files.patch,v 1.2 2006-10-02 22:40:21 nano Exp $
++// CVS: $Id: _freetag-new_files.patch,v 1.3 2007-07-03 16:20:27 sampaioprimo Exp $
 +//this script may only be included - so its better to die if called directly.
 +if (strpos($_SERVER["SCRIPT_NAME"],basename(__FILE__)) !== false) {
 +  header("location: index.php");
@@ -1356,7 +1360,7 @@ diff -Naur ../void/templates/tiki-browse_freetags.tpl ./templates/tiki-browse_fr
 --- ../void/templates/tiki-browse_freetags.tpl	1969-12-31 21:00:00.000000000 -0300
 +++ ./templates/tiki-browse_freetags.tpl	2006-04-26 12:33:35.000000000 -0300
 @@ -0,0 +1,175 @@
-+{* $Header: /home/rodrigo/devel/arca/estudiolivre/patch/tiki-1.10/_freetag-new_files.patch,v 1.2 2006-10-02 22:40:21 nano Exp $ *}
++{* $Header: /home/rodrigo/devel/arca/estudiolivre/patch/tiki-1.10/_freetag-new_files.patch,v 1.3 2007-07-03 16:20:27 sampaioprimo Exp $ *}
 +
 +{if $feature_ajax eq 'y'}
 +<script src="lib/cpaint/cpaint2.inc.compressed.js" type="text/javascript"></script>
@@ -1538,14 +1542,14 @@ diff -Naur ../void/tiki-browse_freetags.php ./tiki-browse_freetags.php
 @@ -0,0 +1,110 @@
 +<?php
 +
-+// $Header: /home/rodrigo/devel/arca/estudiolivre/patch/tiki-1.10/_freetag-new_files.patch,v 1.2 2006-10-02 22:40:21 nano Exp $
++// $Header: /home/rodrigo/devel/arca/estudiolivre/patch/tiki-1.10/_freetag-new_files.patch,v 1.3 2007-07-03 16:20:27 sampaioprimo Exp $
 +
 +// Copyright (c) 2002-2005, Luis Argerich, Garland Foster, Eduardo Polidor, et. al.
 +// All Rights Reserved. See copyright.txt for details and a complete list of authors.
 +// Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
 +
 +//
-+// $Header: /home/rodrigo/devel/arca/estudiolivre/patch/tiki-1.10/_freetag-new_files.patch,v 1.2 2006-10-02 22:40:21 nano Exp $
++// $Header: /home/rodrigo/devel/arca/estudiolivre/patch/tiki-1.10/_freetag-new_files.patch,v 1.3 2007-07-03 16:20:27 sampaioprimo Exp $
 +//
 +
 +// Initialization

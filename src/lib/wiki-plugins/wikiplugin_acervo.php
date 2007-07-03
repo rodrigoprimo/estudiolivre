@@ -3,7 +3,9 @@
 function wikiplugin_acervo_help() {
     $help = tra("Mostra lista de arquivos do acervo com determinada tag ou por id") . "<br/>";
     $help.= "~np~{ACERVO(tag=>MinhaTag)}{ACERVO}~/np~" . "<br/>";
-    $help.= "~np~{ACERVO(id=>idDoArquivo)}{ACERVO}~/np~";
+    $help.= "~np~{ACERVO(tag=>MinhaTag, sort_mode=>created_desc)}{ACERVO}~/np~" . "<br/>";
+    $help.= "~np~{ACERVO(id=>idDoArquivo)}{ACERVO}~/np~" . "<br/>";
+    $help.= "~np~O parâmetro sort_mode recebe o nome do campo no banco seguido de asc para ascendente ou desc para descendente.~/np~";
     return $help;
 }
 
@@ -31,7 +33,12 @@ function wikiplugin_acervo($data, $params) {
 	    return "~np~$result~/np~";
     }
     if(!isset($params['tag']) && isset($params['tags'])) { $params['tag'] = $params['tags']; }
-    $objects = $freetaglib->get_objects_with_tag_combo(split(",",$params['tag']), 'gallery');
+
+    if(!isset($params['sort_mode'])) {  
+    	$objects = $freetaglib->get_objects_with_tag_combo(split(",",$params['tag']), 'gallery');
+    } else {
+    	$objects = $freetaglib->get_objects_with_tag_combo(split(",",$params['tag']), 'gallery', '', 0, -1, $params['sort_mode']);
+    }
     
     foreach ($objects['data'] as $object) {
 		$smarty->assign_by_ref("arquivo", retrieveFileInfo($object['itemId']));
