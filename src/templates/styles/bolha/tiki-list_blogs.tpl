@@ -167,9 +167,11 @@
 				{/if*}
 					{if ($user and $listpages[changes].user eq $user) or ($tiki_p_blog_admin eq 'y')}
 						{if ($tiki_p_admin eq 'y') or ($listpages[changes].individual eq 'n') or ($listpages[changes].individual_tiki_p_blog_create_blog eq 'y' ) }
-							<a class="bloglink" href="tiki-edit_blog.php?blogId={$listpages[changes].blogId}">
-								<img title='{tr}edit{/tr}' alt='{tr}edit{/tr}' src='img/icons/config.gif' />
-							</a>
+							<td>
+								<a class="bloglink" href="tiki-edit_blog.php?blogId={$listpages[changes].blogId}">
+									<img title='{tr}edit{/tr}' alt='{tr}edit{/tr}' src='img/icons/config.gif' />
+								</a>
+							</td>
 						{/if}
 					{/if}
 					
