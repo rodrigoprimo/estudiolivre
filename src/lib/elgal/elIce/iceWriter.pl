@@ -43,7 +43,10 @@ sub add {
     }
 
     my $new_point = {'mount-name' => "/$mountPoint",
-		     'password' => $pass};
+		     'password' => $pass,
+	      	     'burst-size' => 65536,
+	     	     'hidden' => 0,
+	     	     'no-yp' => 1};
 
     my $mounts = $ref->{mount};
     
