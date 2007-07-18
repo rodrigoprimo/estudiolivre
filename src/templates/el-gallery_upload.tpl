@@ -69,11 +69,21 @@
 {/if}
 
 <div id="js-browse">
-	{foreach from=$arquivo->filereferences item=file key=i}
-		{include file="el-gallery_upload_form.tpl" i=$i}
-	{foreachelse}
-		{include file="el-gallery_upload_form.tpl" i=0}
-	{/foreach}
+	<span id="ajax-uploadForms">
+		{foreach from=$arquivo->filereferences item=file key=i}
+			{include file="el-gallery_upload_form.tpl" i=$i}
+			<script>uploadI++;</script>
+		{foreachelse}
+			{include file="el-gallery_upload_form.tpl" i=0}
+			<script>uploadI++;</script>
+		{/foreach}
+	</span>
+	
+	<div class="pointer flippers" onClick="xajax_newUploadForm(uploadI)">
+		{tooltip text="Clique para adiocionar mais um arquivo nesta publicação"}
+			{tr}mais um arquivo...{/tr}
+		{/tooltip}	
+	</div>
 </div>
 	
 <div id="js-desc">

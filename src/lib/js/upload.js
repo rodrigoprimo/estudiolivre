@@ -2,6 +2,7 @@ var arquivoId = false;
 var uploadIds = Array();
 var uploadTimeouts = Array();
 var originalWidth = 245;
+var uploadI = 0;
 
 // coloca o id do arquivo no request pra inicializar o arquivo nas chamadas ajax
 function setRequestUri(id) {
@@ -48,20 +49,19 @@ function selecionaTipo(tipo) {
 // fim do tipo
 
 // chamada no onChange dos formularios de arquivo
-function fileSelected(fileName) {
+function fileSelected(fileName, i) {
 	if (!arquivoId) {
 		show('js-desc');
     	document.getElementById('ajax-thumbnail').src = 'styles/bolha/img/iThumb'+tipoSelecionado+'.png';
     	xajax_create_file(tipoSelecionado, fileName);
 	} else {
-		newUpload();
+		newUpload(i);
 	}
 }
 
 // inicializa um novo upload
 // seta o uploadId usado no progress meter e da um submit no formulario
-function newUpload() {
-	var i = uploadIds.length;
+function newUpload(i) {
 	var uploadId = Math.random().toString().replace(new RegExp(/0\./), '') + '.' + Date.now();
 	uploadIds[i] = uploadId;
 	setTimeout("startUploadProgress(" + i + ")", 500);
@@ -93,7 +93,7 @@ function finishUpload(i) {
 		document.getElementById('js-statusBar' + i).className = "statusBar statusBarGo";
 		document.getElementById('js-statusBar' + i).style.width = originalWidth + 'px';
 		document.getElementById('js-percent' + i).innerHTML = '100%';
-		if (thumbUpId == null && (tipoSelecionado == 'Imagem' || tipoSelecionado == 'Video')) {
+		if (thumbId == null && (tipoSelecionado == 'Imagem' || tipoSelecionado == 'Video')) {
 			setTimeout('document.getElementById("ajax-thumbnail").src = "styles/bolha/img/iProgress.gif"',100);
 			xajax_generate_thumb();
 		}

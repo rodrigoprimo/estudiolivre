@@ -1,4 +1,4 @@
-var thumbId;
+var thumbId = null;
 var thumbTimeout = false;
 
 function thumbSelected() {

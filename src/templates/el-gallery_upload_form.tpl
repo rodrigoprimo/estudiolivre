@@ -3,10 +3,10 @@
 <form name="uploadForm{$i}" target="uploadTarget{$i}" action="el-gallery_upload_file.php" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="UPLOAD_IDENTIFIER" value="">
 	<input type="hidden" name="arquivoId" value="{$arquivoId}">
-	<input type="file" name="arquivo" onChange="fileSelected(this.value);">
+	<input type="file" name="arquivo" onChange="fileSelected(this.value, {$i});">
 </form>
 
-<div id="browseCont">
+<div class="browseCont">
 	<div id="js-statusBar{$i}" class="statusBar statusBarGoing"></div>
 	<div id="js-percent{$i}" class="percent"></div>
 </div>

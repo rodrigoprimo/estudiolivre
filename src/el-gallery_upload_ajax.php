@@ -5,6 +5,20 @@ require_once("el-gallery_file_edit_ajax.php");
 
 global $userHasPermOnFile, $arquivoId, $el_p_upload_files;
 
+$ajaxlib->setPermission('newUploadForm', $el_p_upload_files == 'y');
+$ajaxlib->registerFunction('newUploadForm');
+function newUploadForm($i) {
+	global $smarty, $arquivo;
+	$objResponse = new xajaxResponse();
+	
+	$smarty->assign('i', $i);
+	$smarty->assign('arquivoId', $arquivo->id);
+	
+	$objResponse->addScript("uploadI++");
+	$objResponse->addAppend('ajax-uploadForms', 'innerHTML', $smarty->fetch("el-gallery_upload_form.tpl"));
+	return $objResponse;
+}
+
 $ajaxlib->setPermission('create_file', $el_p_upload_files == 'y');
 $ajaxlib->registerFunction('create_file');
 function create_file($tipo, $fileName) {
@@ -34,7 +48,7 @@ function create_file($tipo, $fileName) {
 	$arquivo = new $publicationClass($fields);
 	
 	$objResponse->addScriptCall("setPublication", $arquivo->id);
-	$objResponse->addScript("newUpload();");
+	$objResponse->addScript("newUpload(0);");
 	
 	if (in_array($tipo, array('Audio','Video','Imagem'))) {
 		$templateName = 'el-gallery_metadata_' . $tipo . '.tpl';
