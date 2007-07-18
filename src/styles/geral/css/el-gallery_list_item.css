@@ -1,23 +1,29 @@
 #corpo{
-	width:100em;
+	width:82em;
 }
 
 .listItem {
 	
-	width:20em;
+	width:21em;
 	border-top:10px solid #transparent;
 	border-bottom:2px solid #000000;
 	float:left;
+	height:20em;
+	overflow:hidden;
+	border: 1px solid #aaaaaa;
+	margin:2px;
 }
 
 .listLeft {
 	width:9em;
+	text-align:right;
 	float:left;
-	
+	margin:0.3em;
 }
 
 .listRight {
 
 	width:10em;
 	float:left;
+	margin:0.3em;
 }
