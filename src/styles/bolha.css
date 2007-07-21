@@ -54,10 +54,10 @@ span.hiddenPointer {
 	color:black;
 }
 
-.none {
-display:none;
-}
+.none {display:none;}
 
-.tc {
-display:table-cell;
-}
+.tc {display:table-cell;}
+
+.fl {float:left;}
+
+.c {clear:both;}

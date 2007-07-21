@@ -24,16 +24,16 @@ function smarty_modifier_show_filesize($size)
     $size /= 1024;
 
     if ($size < 1024)
-	return sprintf("%.2f","$size") . " kb";
+	return sprintf("%.2f","$size") . " Kb";
 
     $size /= 1024;
 
     if ($size < 1024)
-	return sprintf("%.2f","$size") . " mb";
+	return sprintf("%.2f","$size") . " Mb";
 
     $size /= 1024;
 
-    return sprintf("%.2f","$size") . " gb";
+    return sprintf("%.2f","$size") . " Gb";
 
 }
 

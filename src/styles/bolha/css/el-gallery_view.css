@@ -1,255 +1,63 @@
-.gDownloadCount, .gStreamCount {
-	position:absolute;
-	top:0px;
-	width:19px;
-	text-align:center;
-	font-size:10px;
-	font-weight:bold;
-	padding:0px;
-}
-
-.gUpMoreOptionsItem {
-	height:3em;
-}
-
-.gUpMoreOptionsName {
-	text-align:right;
-	padding-right:5px;
-	float:left;
-	width:94px;
-	text-decoration:underline;
-}
-
-#gUpMoreOptions INPUT {
-	border:1px inset rgb(233, 233, 174);
-	padding:3px 0px 3px 3px;
-	font-size:12px;
-	font-family:Arial, Verdana, Helvetica, Lucida, Sans-Serif;
-	background-color:#f1f1f1;
-	margin-right:4px;
-	max-width:100px;
-}
-
-#gUserThumbStatus {
-	position:relative;
-	top:-55px;
-	left:55px;
-	font-size:14px;
-	display:none;
-	z-index:5;
-}
-
-.aTitleContRight {
-	left:-10px;
-}
-
-.aTitleCont {
-	position:relative;
-	top:-12px;
-	background-color:#fff;
-	display:inline;
-	padding-right:5px;
-	padding-left:5px;
-}
-
-.aTags {
-	background:#eff8e9;
-	width:98%;
-	padding:2px 20px 2px 10px;
-	margin-top:5px;
-}
-
-.aTagsInput {
-	background:#eff8e9;
-	width:98%;
-	padding:2px 20px 2px 10px;
-	margin-top:5px;
-}
-
-.aTagsEdit {
-	float:right;
-	margin-top:7px;
-}
-
-.aItemsCont {
-	position:relative;
-	top:-5px;
-	display:block;
-	padding-right:10px;
-	padding-left:10px;
-	text-align:justify;
-}
-
-#aDescriptionInfo .sectionTitle {
-	padding-left:20px;
-	padding-right:10px;
-}
-
-.aSaveCancel {
-	margin:10px;
-	margin-top:20px;
-	border:1px solid #c2c2be;
-	text-align:center;
-	padding:5px 0 3px 0;
-}
-
-#ajax-aCommentsItemsCont .uMsgItem {
-	text-align:left;
-	margin-bottom:10px;
-	padding-bottom:3px;
-}
-
-#aCommentSend #uMsgSend {
-	margin-right:8px;
-}
-
-#aDelete {
-	height:15px;
-	float:right;
-	opacity:.40;
-}
-
-#aDelete:hover {
-	opacity:1;
-}
-
-#aThumbFormButton {
-	height:100px;
-	cursor:pointer;
-}
-
-#aAuthorDate {
-	font-size:14px;
-	text-align:right;
-}
-
-#aAuthorDate A {
-	font-style:italic;
-}
-
-#aThumbForm {
-	position:absolute;
-	left:-155px;
-	top:0px;
-	clip:rect(0px, 255px, 100px, 165px);
-	z-index:25;
-	filter:alpha(opacity=0);
-	-moz-opacity:0.0;
-	opacity:0.0;
-}
-
-#aActions {
-	min-height:40px;
-	margin-bottom:20px;
-	vertical-align:middle;
-}
-
-#aActions DIV {
-	margin-top:10px;
-	display:block;
-	text-align:center;
-}
-
-#gPlay, #gDownload {
-	float:left;
-	margin-right:1px;
-	text-align:center;
-	overflow:hidden;
-}
-
-#arqCont {
-	padding:5px;
-}
-
-#aCommentSend #uMsgSendInput {
-	width:75%;
-	background-color:white;
-}
-
-#aDescCont {
-	margin-bottom:15px;
-}
-
-#aTopCont {
-	position:relative;
-	height:117px;
-}
-
-#aDescriptionInfo {
-	margin-left:270px;
-	border-left:2px solid #c2c2be;
-}
-
-#aDown {
-	position:relative;
-	float:right;
-	border-left:1px solid green;
-	padding:0 5px 0 5px;
-}
-
-#aThumbRatingLic {
-	position:relative;
-	width:100px;
-	float:left;
-	margin:0 10px 0 0;
-	text-align:center;
-}
-
-#aLic {
-	position:absolute;
-	bottom:0;
-	left:0px;
-	z-index:20;
-}
-
-#aNameAuthor {
-	width:85%;
-}
-
-#aComments {
-	width:270px;
-	border-right:2px solid #c2c2be;
-	float:left;
-}
-
-#aThumbLic {
-	position:absolute;
-	bottom:opx;
-	margin-bottom:5px;
-	z-index:20;
-}
-
-#aMainInfo {
-	margin-left:110px;
-}
-
-#aMiddle {
-	position:relative;
-}
-
-#aName {
+#pubNome {
 	font-size:18px;
 	font-weight:bold;
 }
 
-#editpostform h3 {
-	margin:0;
+#pubTitulo img {
+	margin:0 10px 10px 0;
 }
 
-.sectionTitle {
-	padding-top: 3px;
-	margin:0 0 5px 0;
-	border-top: 2px solid #c2c2be;
+.info {
+	line-height:1em;
 }
 
-.sectionTitle h1 {
+#pubInfo {
+	float:left;
+	width:15em;
+}
+
+.pubT tr {
+	vertical-align:top;
+}
+
+.pubT .td1 {
+	width:25em;
+}
+
+#pubDesc {
+	padding-top:10px;
+}
+
+#pubTags {
+	margin-top:10px;
+}
+
+.hiddenPointer h1 {
 	display:inline;
 	font-size:13px;
 	font-weight:bold;
 }
 
-.sectionTitle h2 {
+.aItemsCont {
+	margin-top:10px;
+	padding-right:10px;
+	padding-left:10px;
+	text-align:justify;
+}
+
+.aTags {
 	display:inline;
-	font-size:12px;
-	color: grey;
+}
+
+.file img {
+	margin-right:10px;
+}
+
+#js-thumbStatus {
+	position:relative;
+	top:-55px;
+	left:55px;
+	font-size:14px;
+	display:block;
+	z-index:5;
 }
