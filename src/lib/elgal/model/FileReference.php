@@ -19,7 +19,7 @@ class FileReference extends PersistentObject {
 	var $size;
 	var $downloads;
 	var $streams;
-	var $baseDir = 'repo/';
+	var $baseDir = "repo/";
 	
 	/************************************************************/
 	/* this is configuration for the relations with publication */
@@ -36,6 +36,9 @@ class FileReference extends PersistentObject {
 		
 		global $user;
 		
+		$this->baseDir .= "$publicationId/";
+		if (!file_exists($this->baseDir)) mkdir($this->baseDir, 02755);
+		
 		if (is_int($fileRef)) {
 			return parent::PersistentObject($fileRef, $referenced);
 		}
@@ -43,7 +46,7 @@ class FileReference extends PersistentObject {
 						'size' => $fileRef['size'],
 						'publicationId' => $fileRef['publicationId']);
 		parent::PersistentObject($fields, $referenced);
-		$fileName = $this->id . '-' . $fileRef['name'];
+		$fileName = $fileRef['name'];
 		$this->update(array('fileName' => $fileName));
 		$path = $this->baseDir . $fileName;
 		if (!move_uploaded_file($fileRef['tmp_name'], $path)) {
@@ -72,13 +75,8 @@ class FileReference extends PersistentObject {
 	}
 	
 	function parseFileName() {
-		preg_match("/\d+-(.+)\..+$/", $this->fileName, $match);
+		preg_match("/(.+)\..+$/", $this->fileName, $match);
   		return $match[1];
-	}
-	
-	function parseDownloadName() {
-		preg_match("/\d+-(.+)$/", $this->fileName, $match);
-		return $match[1];
 	}
 	
 	function fullPath() {
