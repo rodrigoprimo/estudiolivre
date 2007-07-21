@@ -1,21 +1,9 @@
 <!-- body.tpl begin -->
 
 
-<body 
-	onload="preloadImgsNow('{$style|replace:".css":""}');
-	{if $show_comzone eq 'y'}
-		flip('comzone');
-	{/if}
-	"
-	{if $section}
-		class="tiki_{$section}"
-	{/if}>
-
+<body>
+	
   {include file="el-lightbox.tpl"}
-
-  {if $minical_reminders>100}
-    <iframe width='0' height='0' frameborder="0" src="tiki-minical_reminders.php"></iframe>
-  {/if}
 
   {if $feature_community_mouseover}
     {popup_init src="lib/js/overlib_mini.js"}
