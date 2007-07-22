@@ -17,15 +17,26 @@ if ($arquivoId && isset($_FILES['arquivo']) && !empty($_FILES['arquivo']['name']
 			}
 	} else {
 		
-		$class = $arquivo->type == "Imagem" ? "Image" : ($arquivo->type == "Texto" ? "Text" : $arquivo->type);
-		
-		$fileClass = $class . "File";
-		require_once($fileClass . ".php");
+		require_once("AudioFile.php");
+		require_once("ImageFile.php");
+		require_once("VideoFile.php");
+		require_once("TextFile.php");
+		if (!AudioFile::validateExtension($_FILES["arquivo"]['name']))
+			$fileClass = "AudioFile";
+		elseif (!ImageFile::validateExtension($_FILES["arquivo"]['name']))
+			$fileClass = "ImageFile";
+		elseif (!VideoFile::validateExtension($_FILES["arquivo"]['name']))
+			$fileClass = "VideoFile";
+		else
+			$fileClass = "TextFile";
 		
 		$fields = $_FILES["arquivo"];
 		$fields["publicationId"] = $arquivoId;
 		
 		$file = new $fileClass($fields);
+		
+		if ($arquivo->allFile)
+			unlink($arquivo->allFile);
 	}
 
 }

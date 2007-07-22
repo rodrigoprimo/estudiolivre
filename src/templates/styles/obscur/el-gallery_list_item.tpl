@@ -29,9 +29,9 @@
 	    	{tooltip name="list-ler-comentarios" text="Clique para ler os comentários"}<a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}#comments">{$arquivo.commentsCount} {tr}comentário{/tr}{if $arquivo.commentsCount != 1}s{/if}</a>{/tooltip}
 	    {/if}
 	    <br/>
-	    {tooltip name="list-baixe-arquivo" text="Copie o arquivo (para o seu computador)"}
+	    {tooltip name="list-baixe-arquivo" text="Copie todos os arquivos (para o seu computador)"}
 		  {$arquivo.hits}
-	      <a href="el-download.php?arquivo={$arquivo.arquivoId}&action=download">
+	      <a href="el-download.php?pub={$arquivo.arquivoId}&action=downloadAll">
 	        {tr}downloads{/tr}
 	      </a>
 	    {/tooltip}

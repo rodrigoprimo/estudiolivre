@@ -33,7 +33,7 @@
 		{/tooltip}
 		{tooltip text="Copie todos os arquivos (para o seu computador)"}
 		<div>
-			<a href="el-download.php?arquivo={$arquivoId}&action=downloadAll">
+			<a href="el-download.php?pub={$arquivoId}&action=downloadAll">
 				<img class="fl" alt="download all" src="styles/{$style|replace:".css":""}/img/iDownload.png">
 				<span class="info">
 					{tr}baixe tudo{/tr}<br/>
@@ -134,14 +134,15 @@ incluir template especifico do arquivo
 						<img class="fl" id="ajax-thumbnail" src="styles/{$style|replace:".css":""}/img/iThumb{$arquivo->type}.png" height="100" width="100">
 					{/if}
 					<div class="info">
-						<b>{$file->parseDownloadName()}<br/>
+						<b>{$file->fileName}<br/>
 						{$file->size|show_filesize}</b><br/>
 						<br/>
-						<a href="el-gallery_view.php?arquivoId={$arquivoId}&file={$key}">{tr}ver{/tr}</a> ({$file->downloads} {tr}visualizações{/tr})<br/>
-						<a href="el-download.php?arquivo={$arquivoId}&file={$key}">{tr}baixar{/tr}</a> ({$file->streams} {tr}downloads{/tr})<br/>
-						<a href="repo/{$file->fileName}">{tr}link pro arquivo{/tr}</a><br/>
+						<a href="el-gallery_view.php?arquivoId={$arquivoId}&file={$key}">{tr}ver{/tr}</a> ({$file->streams} {tr}visualizações{/tr})<br/>
+						<a href="el-download.php?pub={$arquivoId}&file={$key}">{tr}baixar{/tr}</a> ({$file->downloads} {tr}downloads{/tr})<br/>
+						<a href="{$file->fullPath}">{tr}link pro arquivo{/tr}</a><br/>
 					</div>
 				</div>
+				<br class="c"/>
 			{/foreach}
 		</div>
 	</td>
@@ -155,7 +156,7 @@ incluir template especifico do arquivo
 			<div id="aInfoCont" class="aItemsCont" style="display:block">
 				{if $permission}
 					{if $arquivo->thumbnail}
-						<img id="ajax-thumbnail" src="repo/{$arquivo->thumbnail|escape:'url'}" height="100" width="100">
+						<img id="ajax-thumbnail" src="{$arquivo->fileDir()}{$arquivo->thumbnail|escape:'url'}" height="100" width="100">
 					{else}
 						<img id="ajax-thumbnail" src="styles/{$style|replace:".css":""}/img/iThumb{$arquivo->type}.png" height="100" width="100">
 					{/if}

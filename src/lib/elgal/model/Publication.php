@@ -25,6 +25,7 @@ class Publication extends PersistentObject {
 	var $contact;
 	var $site;
 	var $rating;
+	var $allFile;
 
 	/*************************************************************/
 	/* this is configuration for the persistent object framework */
@@ -174,10 +175,8 @@ class Publication extends PersistentObject {
 			ob_end_clean();
 		}
 		
-		$thumbName = 'thumb_' . $this->id . '-'. $realName;
-		$thumbName = preg_replace('/\.(.+?)$/', 'png', $thumbName);
-		
-		$fp = fopen('repo/' . $thumbName, "w");
+		$thumbName = "thumb_$this->id.png";
+		$fp = fopen($this->fileDir() . $thumbName, "w");
 		if (!$fp) return;
 		fwrite($fp, $data);
 		fclose($fp);
@@ -191,8 +190,13 @@ class Publication extends PersistentObject {
 	function delete() {
 		parent::delete();
 		if ($this->thumbnail)
-			unlink("repo/" . $this->thumbnail);
+			unlink($this->fileDir() . $this->thumbnail);
+		rmdir($this->fileDir())
 	}
+	
+	function fileDir() {
+		return "repo/$this->id/";
+	} 
 	
 }
 

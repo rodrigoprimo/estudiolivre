@@ -32,8 +32,8 @@
 			 src="styles/{$style|replace:".css":""}/img/star{math equation="round(x)" x=$arquivo->rating|default:"blk"}.png"
 			 class="listRating">
 		<br />
-		{tooltip name="list-baixe-arquivo" text="Copie o arquivo (para o seu computador)"}
-			<a href="el-download.php?arquivo={$arquivo->id}&action=download">
+		{tooltip name="list-baixe-arquivo" text="Copie todos os arquivos (para o seu computador)"}
+			<a href="el-download.php?pub={$arquivo->id}&action=downloadAll">
 				{tr}baixar{/tr}
 			</a>
 		{/tooltip}	

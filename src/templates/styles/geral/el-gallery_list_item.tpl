@@ -33,7 +33,7 @@
 			 class="listRating">
 		<br />
 		{tooltip name="list-baixe-arquivo" text="Copie o arquivo (para o seu computador)"}
-			<a href="el-download.php?arquivo={$arquivo->id}&action=download">
+			<a href="el-download.php?pub={$arquivo->id}&action=downloadAll">
 				{tr}baixar{/tr}
 			</a>
 		{/tooltip}	

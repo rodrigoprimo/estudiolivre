@@ -19,6 +19,7 @@ CREATE TABLE `publication` (
   `contact` varchar(255) NOT NULL,
   `site` varchar(255) NOT NULL,
   `rating` tinyint(4) NOT NULL,
+  `allFile` varchar(255) default NULL,
   PRIMARY KEY  (`id`),
   KEY `user` (`user`),
   KEY `publishDate` (`publishDate`),
@@ -27,3 +28,5 @@ CREATE TABLE `publication` (
   FULLTEXT KEY `description` (`description`),
   KEY `rating` (`rating`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+alter table publication add column `allFile` varchar(255) default NULL after rating;

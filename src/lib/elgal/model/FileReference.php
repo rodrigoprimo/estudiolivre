@@ -36,11 +36,10 @@ class FileReference extends PersistentObject {
 		
 		global $user;
 		
-		$this->baseDir .= "$publicationId/";
-		if (!file_exists($this->baseDir)) mkdir($this->baseDir, 02755);
-		
 		if (is_int($fileRef)) {
-			return parent::PersistentObject($fileRef, $referenced);
+			parent::PersistentObject($fileRef, $referenced);
+			$this->baseDir .= "$this->publicationId/";
+			return $this;
 		}
 		$fields = array('mimeType' => $fileRef['type'],
 						'size' => $fileRef['size'],
@@ -48,6 +47,10 @@ class FileReference extends PersistentObject {
 		parent::PersistentObject($fields, $referenced);
 		$fileName = $fileRef['name'];
 		$this->update(array('fileName' => $fileName));
+		
+		$this->baseDir .= "$this->publicationId/";
+		if (!file_exists($this->baseDir)) mkdir($this->baseDir, 0755);
+		
 		$path = $this->baseDir . $fileName;
 		if (!move_uploaded_file($fileRef['tmp_name'], $path)) {
 			// should never happen, unless the file directory (baseDir) doesn't exist
@@ -69,7 +72,7 @@ class FileReference extends PersistentObject {
 	
 	function delete() {
 		parent::delete();
-		unlink($this->baseDir . $this->fileName);
+		unlink($this->fullPath());
 		if ($this->thumbnail)
 			unlink($this->baseDir . $this->thumbnail);
 	}
