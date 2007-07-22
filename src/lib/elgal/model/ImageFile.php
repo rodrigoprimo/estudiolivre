@@ -16,6 +16,7 @@ class ImageFile extends FileReference {
 	var $width;
 	var $height;
 	var $dpi;
+	var $type = "Imagem";
 
 	function extractFileInfo() {
 		if (!function_exists('getimagesize')) {

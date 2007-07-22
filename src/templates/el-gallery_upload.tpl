@@ -143,7 +143,7 @@
 	
 	<div style="display:none" id="ajax-gUpMoreOptionsContent">
 		{include file="el-gallery_metadata.tpl"}
-		{if $arquivo->type neq "Texto"}
+		{if $arquivo && $arquivo->type neq "Texto"}
 			{include file="el-gallery_metadata_"|cat:$arquivo->type|cat:".tpl"}
 		{/if}
 	</div>

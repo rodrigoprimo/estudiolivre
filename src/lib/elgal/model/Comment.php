@@ -14,9 +14,8 @@ class Comment extends PersistentObject {
 	var $comment;
 	var $date;
 	
-	var $belongsTo = array("Publication", "FileReference");
+	var $belongsTo = array("Publication");
 	var $publicationId;
-	var $filereferenceId;
 	
 	function Comment($fields, $referenced = false) {
 		parent::PersistentObject($fields, $referenced);

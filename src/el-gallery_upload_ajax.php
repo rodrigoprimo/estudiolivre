@@ -27,12 +27,11 @@ function create_file($tipo, $fileName) {
 	
 	$class = $tipo == "Imagem" ? "Image" : ($tipo == "Texto" ? "Text" : $tipo);
 	
-	$fileClass = $class . "File";
 	$publicationClass = $class . "Publication";
-	require_once($fileClass . ".php");
+	require_once("FileReference.php");
 	require_once($publicationClass . ".php");
 	
-	eval('$error = ' . $fileClass . "::validateExtension('" . $fileName . "');");
+	$error = FileReference::validateExtension($fileName);
 	if ($error) {
 	    // Estranho ficar aqui, mas onde colocar?
 	    $error .= ' Veja a <a href="tiki-index.php?page=Formatos+de+arquivos+do+Acervo+Livre">lista de formatos suportados</a>';
@@ -59,6 +58,25 @@ function create_file($tipo, $fileName) {
 	}
 			
 	return $objResponse;
+}
+
+$ajaxlib->setPermission('validateUpload', $userHasPermOnFile && $arquivoId);
+$ajaxlib->registerFunction('validateUpload');
+function validateUpload($fileName, $i) {
+	
+	$objResponse = new xajaxResponse();
+	
+	$error = FileReference::validateExtension($fileName);
+	if ($error) {
+	    // Estranho ficar aqui, mas onde colocar?
+	    $error .= ' Veja a <a href="tiki-index.php?page=Formatos+de+arquivos+do+Acervo+Livre">lista de formatos suportados</a>';
+		$objResponse->addScript("setUploadErrorMsg('$error')");
+		return $objResponse;
+	}
+
+	$objResponse->addScript("newUpload($i);");
+	return $objResponse;
+
 }
 
 $ajaxlib->setPermission('clear_uploaded_file', $userHasPermOnFile && $arquivoId);

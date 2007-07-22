@@ -17,7 +17,8 @@ class AudioFile extends FileReference {
 	var $bpm;
 	var $sampleRate;
 	var $bitRate;
-
+	var $type = "Audio";
+	
 	function extractFileInfo() {
 		if (!class_exists('ffmpeg_movie')) {
 			return;

@@ -14,6 +14,7 @@ require_once "FileReference.php";
 class TextFile extends FileReference {
 	
 	var $encoding;
+	var $type = "Texto";
 
 	function extractFileInfo() {
 		return;

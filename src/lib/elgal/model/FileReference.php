@@ -24,12 +24,7 @@ class FileReference extends PersistentObject {
 	/************************************************************/
 	/* this is configuration for the relations with publication */
 	var $belongsTo = array("Publication");
-	var $hasMany = array("Comment" => "FileReference");
-	var $comments = array();
-	
 	var $actualClass = true;
-	var $extraStructure = array("TikiTags");
-	var $tagType = "file";
 	/************************************************************/
 	
 	function FileReference($fileRef, $referenced = false) {
@@ -99,8 +94,17 @@ class FileReference extends PersistentObject {
 	}
 	
 	// this is a static method that must be implemented by subclasses
+	// use this one only to check for forbidden extensions
 	function validateExtension($filename) {
-		trigger_error("Subclass should have implemented", E_USER_ERROR);
+		$extensions = array('php','htm', 'wmv','wma','doc','xls','ppt');
+		if (!preg_match('/\.([^.]{3,4}$)/', $filename, $m)) {
+	    	return tra("Erro: extensão de arquivo não suportada pelo acervo.");
+	  	}
+		foreach ($extensions as $ext) {
+		  	if(preg_match('/' . $ext . '/', strtolower($m[1]))) {
+		    	return tra("Erro: extensão $m[1] não suportada pelo acervo.");
+		    }
+		}
 	}
 	
 	function checkNumericField($value, $msg) {

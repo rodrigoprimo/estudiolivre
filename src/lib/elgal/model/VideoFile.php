@@ -18,6 +18,7 @@ class VideoFile extends FileReference {
 	var $height;
 	var $hasAudio;
 	var $hasColor;
+	var $type = "Video";
 
 	function extractFileInfo() {
 		if (!class_exists('ffmpeg_movie')) {

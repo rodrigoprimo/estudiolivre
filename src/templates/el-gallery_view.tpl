@@ -134,7 +134,7 @@ incluir template especifico do arquivo
 					{if $file->thumbnail}
 						<img class="fl" id="ajax-thumbnail" src="repo/{$file->thumbnail|escape:'url'}" height="100" width="100">
 					{else}
-						<img class="fl" id="ajax-thumbnail" src="styles/{$style|replace:".css":""}/img/iThumb{$arquivo->type}.png" height="100" width="100">
+						<img class="fl" id="ajax-thumbnail" src="styles/{$style|replace:".css":""}/img/iThumb{$file->type}.png" height="100" width="100">
 					{/if}
 					<div class="info">
 						<b>{$file->fileName}<br/>

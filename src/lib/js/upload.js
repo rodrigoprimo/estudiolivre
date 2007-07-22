@@ -55,12 +55,13 @@ function fileSelected(fileName, i) {
     	document.getElementById('ajax-thumbnail').src = 'styles/bolha/img/iThumb'+tipoSelecionado+'.png';
     	xajax_create_file(tipoSelecionado, fileName);
 	} else {
-		newUpload(i);
+		xajax_validateUpload(fileName, i);
 	}
 }
 
 // inicializa um novo upload
 // seta o uploadId usado no progress meter e da um submit no formulario
+// é sempre chamado pelo ajax
 function newUpload(i) {
 	var uploadId = Math.random().toString().replace(new RegExp(/0\./), '') + '.' + Date.now();
 	uploadIds[i] = uploadId;
