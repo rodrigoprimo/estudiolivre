@@ -3,7 +3,7 @@
 <form name="uploadForm{$i}" target="uploadTarget{$i}" action="el-gallery_upload_file.php" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="UPLOAD_IDENTIFIER" value="">
 	<input type="hidden" name="arquivoId" value="{$arquivoId}">
-	<input type="file" name="arquivo" onChange="fileSelected(this.value, {$i});">
+	<span id="js-file{$i}"><input type="file" name="arquivo" onChange="fileSelected(this.value, {$i});"></span>
 </form>
 
 <div class="browseCont">

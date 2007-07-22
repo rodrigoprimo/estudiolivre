@@ -52,12 +52,3 @@
 .file img {
 	margin-right:10px;
 }
-
-#js-thumbStatus {
-	position:relative;
-	top:-55px;
-	left:55px;
-	font-size:14px;
-	display:block;
-	z-index:5;
-}

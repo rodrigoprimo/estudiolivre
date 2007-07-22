@@ -112,8 +112,7 @@ function generate_thumb() {
 	if ($file->thumbnail) {
 	    $objResponse->addAssign("ajax-thumbnail", "src", $file->baseDir . urlencode($file->thumbnail));
 	} else {
-	    $tipo = $arquivo->type == "Image" ? "Imagem" : ($arquivo->type == "Text" ? "Texto" : $arquivo->type);
-	    $objResponse->addAssign("ajax-thumbnail", "src", 'styles/estudiolivre/iThumb' . $tipo . '.png');
+	    $objResponse->addAssign("ajax-thumbnail", "src", 'styles/estudiolivre/iThumb' . $arquivo->type . '.png');
 	}
 
 	return $objResponse;

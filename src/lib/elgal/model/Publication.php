@@ -191,12 +191,20 @@ class Publication extends PersistentObject {
 		parent::delete();
 		if ($this->thumbnail)
 			unlink($this->fileDir() . $this->thumbnail);
-		rmdir($this->fileDir())
+		if ($this->allFile)
+			unlink($this->allFile);
+		rmdir($this->fileDir());
 	}
 	
 	function fileDir() {
 		return "repo/$this->id/";
 	} 
+	
+	function allFileSize() {
+		if ($this->allFile)
+			return filesize($this->allFile);
+		else return 0;
+	}
 	
 }
 

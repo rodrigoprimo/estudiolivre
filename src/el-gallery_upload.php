@@ -5,6 +5,8 @@ if (!isset($_POST['xajax']) || $_POST['xajax'] != 'upload_info') {
 	require_once("lib/persistentObj/PersistentObjectController.php");
 	require_once("lib/freetag/freetaglib.php");
 	include_once("el-gallery_set_publication.php");
+	require_once("el-license_ajax.php");
+	require_once("el-tags_ajax.php");
 }  else {
         session_start();
         $feature_ajax = "y";
@@ -12,8 +14,6 @@ if (!isset($_POST['xajax']) || $_POST['xajax'] != 'upload_info') {
 
 require_once("lib/ajax/ajaxlib.php");
 require_once("el-gallery_upload_ajax.php");
-require_once("el-license_ajax.php");
-require_once("el-tags_ajax.php");
 
 $ajaxlib->processRequests();
 
@@ -59,7 +59,7 @@ if(isset($arquivo) && $arquivo->user == $user) {
 	}
 	$tagString = substr($tagString, 0, strlen($tagString)-2);
 	$arquivo->tagString = $tagString;
-	$smarty->assign("arquivo", $arquivo);
+	$smarty->assign_by_ref("arquivo", $arquivo);
 	if (isset($arquivo->license)) {
 		$license = array();
 		$license["imageName"] = $arquivo->license->imageName;
