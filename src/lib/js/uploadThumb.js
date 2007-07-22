@@ -30,5 +30,6 @@ function finishUpThumb() {
 	if (thumbTimeout) {
 		clearTimeout(thumbTimeout);
 		hide('js-thumbForm');
+		document.getElementById('js-thumbStatus').innerHTML = '';
 	}
 }

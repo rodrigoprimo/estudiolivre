@@ -6,7 +6,9 @@ require_once("lib/filegals/filegallib.php");
 include_once("el-gallery_set_publication.php");
 
 function error($errorMsg) {
+	global $style, $arquivo;
 	echo "<script language=\"javaScript\">alert('".$errorMsg."');</script>";
+	echo "<script>parent.document.getElementById('ajax-thumbnail').src = 'styles/" . preg_replace('/\.css/', '', $style) . "/img/iThumb$arquivo->type?rand=".rand()."';</script>";
 	exit;
 }
 

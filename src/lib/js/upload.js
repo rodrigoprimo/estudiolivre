@@ -96,11 +96,12 @@ function finishUpload(i) {
 		document.getElementById('js-percent' + i).innerHTML = '100%';
 		eval("var fileName = document.uploadForm" + i + ".arquivo.value");
 		document.getElementById('js-file' + i).innerHTML = fileName;
-		if (thumbId == null && (tipoSelecionado == 'Imagem' || tipoSelecionado == 'Video')) {
+		if (i ==0 && thumbId == null && (tipoSelecionado == 'Imagem' || tipoSelecionado == 'Video')) {
 			setTimeout('document.getElementById("ajax-thumbnail").src = "styles/bolha/img/iProgress.gif"',100);
 			xajax_generate_thumb();
 		}
-		xajax_get_file_info();
+		if (i == 0)
+			xajax_get_file_info();
 	}
 }
 

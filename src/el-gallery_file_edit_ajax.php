@@ -102,7 +102,7 @@ $ajaxlib->setPermission('generate_thumb', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('generate_thumb');
 function generate_thumb() {
 	
-	global $arquivo;
+	global $arquivo, $style;
 	
 	$objResponse = new xajaxResponse();
 	$file =& $arquivo->filereferences[0];
@@ -112,7 +112,8 @@ function generate_thumb() {
 	if ($file->thumbnail) {
 	    $objResponse->addAssign("ajax-thumbnail", "src", $file->baseDir . urlencode($file->thumbnail));
 	} else {
-	    $objResponse->addAssign("ajax-thumbnail", "src", 'styles/estudiolivre/iThumb' . $arquivo->type . '.png');
+	    $objResponse->addAssign("ajax-thumbnail", "src", 'styles/' . preg_replace('/\.css/', '', $style) . 
+														 '/img/iThumb' . $arquivo->type . '.png');
 	}
 
 	return $objResponse;
