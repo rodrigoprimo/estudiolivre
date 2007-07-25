@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/obscur/tiki-view_forum.tpl,v 1.1 2006-07-26 06:15:07 rhwinter Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/obscur/tiki-view_forum.tpl,v 1.2 2007-07-25 18:34:54 sampaioprimo Exp $ *}
 <div id="viewForum">
 <h1>
 	{tr}Forum{/tr}: 
@@ -154,6 +154,11 @@ a moderator approves it.{/tr}</small>
 	     
     
     {/if}
+        
+   	{if $feature_freetags eq 'y' and $tiki_p_freetags_tag eq 'y'}
+    	{include file=freetag.tpl}
+	{/if}
+    
       <br>
       <input type="submit" name="comments_previewComment" value="{tr}preview{/tr}"/>
       <input type="submit" name="comments_postComment" value="{tr}post{/tr}"/>

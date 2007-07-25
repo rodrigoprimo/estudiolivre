@@ -27,6 +27,10 @@
 			<a class="linkbut" title="{tr}Edit Forum{/tr}" href="tiki-admin_forums.php?forumId={$forumId}">{tr}Edit Forum{/tr}</a><br />
 		{/if}
 	</div>
+		
+	{if $feature_freetags eq 'y' and $tiki_p_view_freetags eq 'y' and isset($freetags.data[0])}
+		{include file="freetag_list.tpl"}
+	{/if}
 	
 	<div>
 		<div class="posthead">

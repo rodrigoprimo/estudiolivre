@@ -28,6 +28,10 @@
 		{/if}
 	</div>
 	
+	{if $feature_freetags eq 'y' and $tiki_p_view_freetags eq 'y' and isset($freetags.data[0])}
+		{include file="freetag_list.tpl"}
+	{/if}
+
 	<div>
 		<div class="posthead">
 			<div class="icons">
