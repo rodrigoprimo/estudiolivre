@@ -16,6 +16,14 @@
 	width:15em;
 }
 
+#lic {
+	margin:10px 0 5px 0;
+}
+
+#pubInfo div a img {
+	margin-right:5px;
+}
+
 .pubT tr {
 	vertical-align:top;
 }
@@ -45,10 +53,14 @@
 	text-align:justify;
 }
 
-.aTags {
+#show-tags {
+	display:inline;
+}
+
+.inline {
 	display:inline;
 }
 
 .file img {
-	margin-right:10px;
+	margin:0 10px 10px 0;
 }

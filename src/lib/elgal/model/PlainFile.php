@@ -11,9 +11,9 @@
 
 require_once "FileReference.php";
 
-class TextFile extends FileReference {
+class PlainFile extends FileReference {
 	
-	var $encoding;
+	var $typeOfFile;
 	var $type = "Texto";
 
 	function extractFileInfo() {
@@ -30,13 +30,7 @@ class TextFile extends FileReference {
 	
 	// class method
 	function validateExtension($filename) {
-		$extensions = array('pdf','txt','tex','rtf','dvi','odt','ps','kwd','abi','sxw');
-		if (!preg_match('/\.([^.]{3,4}$)/', $filename, $m)) {
-	    	return tra("Erro: extensão de arquivo inválida.");
-	  	}
-	  	if (!in_array(strtolower($m[1]), $extensions)) {
-	    	return tra("Erro: extensão $m[1] não suportada para video.");
-	    }
+		return false;
 	}
 	
 }

@@ -38,19 +38,19 @@ class FileReference extends PersistentObject {
 		}
 		$fields = array('mimeType' => $fileRef['type'],
 						'size' => $fileRef['size'],
-						'publicationId' => $fileRef['publicationId']);
+						'publicationId' => $fileRef['publicationId'],
+						'fileName' => $fileRef['name']);
 		parent::PersistentObject($fields, $referenced);
-		$fileName = $fileRef['name'];
-		$this->update(array('fileName' => $fileName));
 		
 		$this->baseDir .= "$this->publicationId/";
 		if (!file_exists($this->baseDir)) mkdir($this->baseDir, 0755);
 		
-		$path = $this->baseDir . $fileName;
-		if (!move_uploaded_file($fileRef['tmp_name'], $path)) {
-			// should never happen, unless the file directory (baseDir) doesn't exist
-			$this->delete();
-			trigger_error("Impossible to move file to $path.", E_USER_ERROR);
+		if ($fileRef['tmp_name'] != $fileRef['name']) {
+			if (!move_uploaded_file($fileRef['tmp_name'], $this->fullPath())) {
+				// should never happen, unless the file directory (baseDir) doesn't exist
+				$this->delete();
+				trigger_error("Impossible to move file to $path.", E_USER_ERROR);
+			}
 		}
 		$this->extractFileInfo();
 		$this->generateThumb();
@@ -65,11 +65,13 @@ class FileReference extends PersistentObject {
 		return $this->update(array('streams' => $this->streams+1));
 	}
 	
-	function delete() {
+	function delete($del = true) {
 		parent::delete();
-		unlink($this->fullPath());
-		if ($this->thumbnail)
-			unlink($this->baseDir . $this->thumbnail);
+		if ($del) {
+			unlink($this->fullPath());
+			if ($this->thumbnail)
+				unlink($this->baseDir . $this->thumbnail);
+		}
 	}
 	
 	function parseFileName() {
@@ -111,6 +113,26 @@ class FileReference extends PersistentObject {
 		if (!preg_match('/^\d*$/', $value)) {
   			return $msg;
 		}
+	}
+	
+	// static method
+	function getSubClass($fileName) {
+		//php4 cant list subclasses of class, so we need to add each one here
+		require_once("AudioFile.php");
+		require_once("ImageFile.php");
+		require_once("VideoFile.php");
+		require_once("ZipFile.php");
+		if (!AudioFile::validateExtension($fileName))
+			return "AudioFile";
+		elseif (!ImageFile::validateExtension($fileName))
+			return "ImageFile";
+		elseif (!VideoFile::validateExtension($fileName))
+			return "VideoFile";
+		elseif (!ZipFile::validateExtension($fileName))
+			return "ZipFile";
+		else
+			return "TextFile";
+		
 	}
 	
 }

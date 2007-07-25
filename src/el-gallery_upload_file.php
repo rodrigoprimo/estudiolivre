@@ -17,22 +17,13 @@ if ($arquivoId && isset($_FILES['arquivo']) && !empty($_FILES['arquivo']['name']
 	}
 	else {
 		
-		require_once("AudioFile.php");
-		require_once("ImageFile.php");
-		require_once("VideoFile.php");
-		require_once("TextFile.php");
-		if (!AudioFile::validateExtension($_FILES["arquivo"]['name']))
-			$fileClass = "AudioFile";
-		elseif (!ImageFile::validateExtension($_FILES["arquivo"]['name']))
-			$fileClass = "ImageFile";
-		elseif (!VideoFile::validateExtension($_FILES["arquivo"]['name']))
-			$fileClass = "VideoFile";
-		else
-			$fileClass = "TextFile";
+		require_once("FileReference.php");
+		$fileClass = FileReference::getSubClass($_FILES["arquivo"]['name']);
 		
 		$fields = $_FILES["arquivo"];
 		$fields["publicationId"] = $arquivoId;
 		
+		require_once($fileClass . ".php");
 		$file = new $fileClass($fields);
 		
 		if ($arquivo->allFile)

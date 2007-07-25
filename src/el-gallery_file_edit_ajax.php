@@ -59,7 +59,7 @@ function editTags($tag_string) {
 	
 	$objResponse->addAssign("show-tags", "innerHTML", $smarty->fetch("el-gallery_tags.tpl"));
     $objResponse->addAssign("input-tags", "value", $tagString);
-    $objResponse->addScript("document.getElementById('input-tags').style.display = 'none'; document.getElementById('show-tags').style.display = 'block'");
+    $objResponse->addScript("document.getElementById('input-tags').style.display = 'none'; document.getElementById('show-tags').style.display = display['tags']");
     
     return $objResponse;
     
@@ -150,6 +150,22 @@ function restore_edit($arquivoId) {
 	return $objResponse;
 }
 */
+
+$ajaxlib->setPermission('expandFile', $userHasPermOnFile && $arquivoId);
+$ajaxlib->registerFunction('expandFile');
+function expandFile($fileId) {
+	require_once("lib/persistentObj/PersistentObjectFactory.php");
+	$file = PersistentObjectFactory::createObject("FileReference", (int)$fileId);
+	
+	$objResponse = new xajaxResponse();
+	if ($file->actualClass == "zipfile") {
+		$files = $file->expand();
+		print_r($files); exit;
+	    $objResponse->addAlert("lalala");    		
+	}
+
+    return $objResponse;
+}
 
 $ajaxlib->registerFunction('upload_info');
 function upload_info($uploadId, $i, $callback = 'updateProgressMeter') {

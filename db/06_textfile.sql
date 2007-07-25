@@ -1,11 +1,13 @@
 --
--- Table structure for table `textfile`
+-- Table structure for table `plainfile`
 --
 
-DROP TABLE IF EXISTS `textfile`;
-CREATE TABLE `textfile` (
+DROP TABLE IF EXISTS `plainfile`;
+CREATE TABLE `plainfile` (
   `id` int(11) NOT NULL,
-  `encoding` varchar(50) NOT NULL,
+  `typeOfFile` varchar(255) default NULL,
   PRIMARY KEY  (`id`),
-  KEY `encoding` (`encoding`)
+  KEY `typeOfFile` (`typeOfFile`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+alter table textfile rename to plainfile;

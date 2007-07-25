@@ -29,7 +29,7 @@
 			<b>{tr}em{/tr}:</b> <i>{$arquivo->publishDate|date_format:"%d/%m/%Y"}</i><br/>
 		</span>
 		{tooltip text=$arquivo->license->description}
-			<a href="{$license->humanReadableLink}"><img src="styles/{$style|replace:".css":""}/img/h_{$arquivo->license->imageName}"></a>
+			<a href="{$license->humanReadableLink}"><img id="lic" src="styles/{$style|replace:".css":""}/img/h_{$arquivo->license->imageName}"></a>
 		{/tooltip}
 		{tooltip text="Copie todos os arquivos (para o seu computador)"}
 		<div>
@@ -54,7 +54,8 @@
 		{tooltip name="view-avaliacao" text="Avaliação atual"}
 			<img id="ajax-aRatingImg" src="styles/{$style|replace:".css":""}/img/star{math equation="round(x)" x=$arquivo->rating|default:"blk"}.png"><br/>		
 		{/tooltip}
-		<b>{tr}votos{/tr}:</b> <span id="ajax-aVoteTotal">{$arquivo->getArraySize('votes')}</span>
+		{assign var=votes value=$arquivo->getArraySize('votes')}
+		<b><span id="ajax-aVoteTotal">{$votes}</span> {tr}voto{if $votes != 1}s{/if}{/tr}</b> 
 		{if $user}
 			<br/>
 			{assign var=userVote value=$arquivo->getUserVote()}
@@ -100,18 +101,17 @@
 </table>
 
 <div id="pubTags">
-	<b>{tr}tags{/tr}:</b>&nbsp;
+	<b>{tr}tags{/tr}:</b>
 	{assign var=fileTags value=$arquivo->tags}
-	
-	<div class="aTags" id="show-tags">
-		{include file="el-gallery_tags.tpl"}
+	<div id="show-tags">
+		&nbsp;{include file="el-gallery_tags.tpl"}
 	</div>
 	
 	{if $permission}
-		<input class="aTagsInput" id="input-tags" value="{$arquivo->tagString}" onBlur="xajax_save_field('tags', this.value)" style="display:none;">
-		<img id="error-tags" class="gUpErrorImg" style="display: none" src="styles/{$style|replace:".css":""}/img/errorImg.png" onMouseover="tooltip(errorMsg_tags);" onMouseout="nd();"> 
-		<script language="JavaScript">  display["tags"] = "block";errorMsg_tags = "";</script>
-		&nbsp;{tooltip text="Clique para editar as <b>tags</b> desse arquivo"}<img class="aTagsEdit pointer" src="styles/{$style|replace:".css":""}/img/iTagEdit.png" onClick="editaCampo('tags')">{/tooltip}
+		<input id="input-tags" value="{$arquivo->tagString}" onBlur="xajax_save_field('tags', this.value)" style="display:none;">
+		<img id="error-tags" class="gUpErrorImg" style="display:none" src="styles/{$style|replace:".css":""}/img/errorImg.png" onMouseover="tooltip(errorMsg_tags);" onMouseout="nd();"> 
+		<script language="JavaScript"> display["tags"] = "inline";errorMsg_tags = "";</script>
+		&nbsp;{tooltip text="Clique para editar as <b>tags</b> desse arquivo"}<img class="pointer" src="styles/{$style|replace:".css":""}/img/iTagEdit.png" onClick="editaCampo('tags')">{/tooltip}
 	{/if}
 </div>
 <br><br>
@@ -142,7 +142,7 @@ incluir template especifico do arquivo
 						<br/>
 						<a href="el-gallery_view.php?arquivoId={$arquivoId}&file={$key}">{tr}ver{/tr}</a> ({$file->streams} {tr}visualizações{/tr})<br/>
 						<a href="el-download.php?pub={$arquivoId}&file={$key}">{tr}baixar{/tr}</a> ({$file->downloads} {tr}downloads{/tr})<br/>
-						<a href="{$file->fullPath}">{tr}link pro arquivo{/tr}</a><br/>
+						<a href="{$file->fullPath()}">{tr}link pro arquivo{/tr}</a><br/>
 					</div>
 				</div>
 				<br class="c"/>
@@ -158,22 +158,21 @@ incluir template especifico do arquivo
 			<br/>
 			<div id="aInfoCont" class="aItemsCont" style="display:block">
 				{if $permission}
+					{tooltip text="Clique para selecionar outra <b>miniatura</b> para o arquivo"}
 					{if $arquivo->thumbnail}
-						<img id="ajax-thumbnail" src="{$arquivo->fileDir()}{$arquivo->thumbnail|escape:'url'}" height="100" width="100">
+						<img id="ajax-thumbnail" src="{$arquivo->fileDir()}{$arquivo->thumbnail|escape:'url'}">
 					{else}
-						<img id="ajax-thumbnail" src="styles/{$style|replace:".css":""}/img/iThumb{$arquivo->type}.png" height="100" width="100">
+						<img id="ajax-thumbnail" src="styles/{$style|replace:".css":""}/img/iThumb{$arquivo->type}.png">
 					{/if}
-					<div id="js-thumbStatus"></div>
-					<div id="aThumbForm">
+					{/tooltip}
+					<div class="none" id="aThumbForm">
 				        {tooltip text="Clique para selecionar outra <b>miniatura</b> para o arquivo"}
-				        <form action="el-gallery_upload_thumb.php" method="post" enctype="multipart/form-data" name="thumbForm" target="thumbUpTarget">
-						  	<input type="hidden" name="UPLOAD_IDENTIFIER" value="thumb.{$uploadId}">
+				        <form action="el-gallery_upload_thumb.php" method="post" enctype="multipart/form-data" name="thumbForm">
 						  	<input type="hidden" name="arquivoId" value="{$arquivo->id}">
 						  	<input type="file" name="thumb" onChange="thumbSelected()" id="aThumbFormButton">
 				        </form>
 				        {/tooltip}
 				    </div>
-					<iframe name="thumbUpTarget" style="display:none" onLoad="finishUpThumb();"></iframe>
 				{/if}
 				<div id="gUpMoreOptions">
 					{include file="el-gallery_metadata.tpl"}
@@ -229,3 +228,5 @@ incluir template especifico do arquivo
 	</td>
 	</tr>
 </table>
+
+{include file="el-gallery_confirm_delete.tpl"}

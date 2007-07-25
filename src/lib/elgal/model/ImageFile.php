@@ -113,10 +113,10 @@ class ImageFile extends FileReference {
 	function validateExtension($filename) {
 		$extensions = array('png','jpg','jpeg','gif','tiff','svg','bmp','psd','xcf','eps','swf','xar');
 		if (!preg_match('/\.([^.]{3,4}$)/', $filename, $m)) {
-	    	return tra("Atenção: extensão de arquivo desconhecida.");
+	    	return 1;
 	  	}
 	  	if (!in_array(strtolower($m[1]), $extensions)) {
-	    	return tra("Atenção: extensão $m[1] não conhecida para imagem.");
+	    	return 1;
 	    }
 	}
 	

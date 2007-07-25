@@ -89,10 +89,10 @@ class VideoFile extends FileReference {
 	function validateExtension($filename) {
 		$extensions = array('mpg','mpeg','avi','ogg','theora','mp4','yuv','mp2','mkv','mxf','mov','swf','flv','3gp','3gpp');
 		if (!preg_match('/\.([^.]{3,4}$)/', $filename, $m)) {
-	    	return tra("Erro: extensão de arquivo inválida.");
+	    	return 1;
 	  	}
 	  	if (!in_array(strtolower($m[1]), $extensions)) {
-	    	return tra("Erro: extensão $m[1] não suportada para video.");
+	    	return 1;
 	    }
 	}
 	
