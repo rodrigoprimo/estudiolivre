@@ -7,8 +7,8 @@
 -
 +	
 +	// freetags
-+	$cat_type='blog';
-+	$cat_objid = $data["title"];
++	$cat_type='blog post';
++	$cat_objid = $_REQUEST["postId"];
 +	include_once ("freetag_list.php");
 +	
  	// If the user owns the weblog then he can edit
@@ -55,8 +55,8 @@
  	}
  
 +	// freetags
-+	$cat_type='blog';
-+	$cat_objid = $title;
++	$cat_type='blog post';
++	$cat_objid = $postid;
 +	$cat_desc = $_REQUEST["data"];
 +	$cat_name = $_REQUEST["title"];
 +	$cat_href = "tiki-view_blog_post.php?blogId=". $_REQUEST["blogId"] . "&postId=" . $postid;

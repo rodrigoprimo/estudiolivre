@@ -29,8 +29,8 @@
  }
  
 +			// freetags
-+			$cat_type='blog';
-+			$cat_objid = $post_info['title'];
++			$cat_type='blog post';
++			$cat_objid = $post_info['postId'];
 +			$tags = $freetaglib->get_tags_on_object($cat_objid, $cat_type);
 +			$taglist = array();
 +			for ($j=0; $j<sizeof($tags['data']); $j++) {

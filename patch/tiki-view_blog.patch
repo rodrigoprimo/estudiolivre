@@ -31,8 +31,8 @@
  	$listpages["data"][$i]["parsed_data"] =preg_replace("/&#([0-9]+);/me", "chr('\\1')", strtr($tikilib->parse_data($bloglib->get_page($listpages["data"][$i]["data"], 1)), array_flip(get_html_translation_table(HTML_ENTITIES)))) ;
  
 +	// freetags
-+	$cat_type='blog';
-+	$cat_objid = $listpages["data"][$i]["title"];
++	$cat_type='blog post';
++	$cat_objid = $listpages["data"][$i]["postId"];
 +
 +	$tags = $freetaglib->get_tags_on_object($cat_objid, $cat_type);
 +	$taglist = array();
