@@ -8,6 +8,7 @@ CREATE TABLE `filereference` (
   `actualClass` varchar(255) NOT NULL,
   `publicationId` int(11) NOT NULL,
   `fileName` varchar(255) NOT NULL,
+  `credits` varchar(255) default NULL,
   `thumbnail` varchar(255) NOT NULL,
   `mimeType` varchar(50) NOT NULL,
   `size` int(40) NOT NULL,
@@ -18,3 +19,5 @@ CREATE TABLE `filereference` (
   KEY `mimeType` (`mimeType`),
   KEY `size` (`size`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+alter table filereference add column `credits` varchar(255) default NULL after fileName;

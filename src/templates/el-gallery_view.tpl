@@ -38,7 +38,7 @@
 				<span class="info">
 					{tr}baixe tudo{/tr}<br/>
 					{assign var=numArquivos value=$arquivo->getArraySize('filereferences')}
-					{$numArquivos} {tr}arquivo{/tr}{if $numArquivos > 1}s{/if}<br/>
+					{$numArquivos} {tr}arquivo{/tr}{if $numArquivos != 1}s{/if}<br/>
 	 				{assign var=allFileSize value=$arquivo->allFileSize()}
 	 				{if $allFileSize}
 	 					<b>{$allFileSize|show_filesize}</b>

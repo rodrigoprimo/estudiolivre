@@ -20,6 +20,7 @@ class Publication extends PersistentObject {
 	var $title;
 	var $description;
 	var $thumbnail;
+	var $mainFile;
 	var $copyrightOwner;
 	var $producer;
 	var $contact;

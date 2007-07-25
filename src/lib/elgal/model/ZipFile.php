@@ -28,8 +28,6 @@ class ZipFile extends FileReference {
 		$ext = strtolower($m[1]);
 		if ($ext == "zip")
 			$commandLine = "unzip ";
-		elseif ($ext == "rar")
-			$commandLine = "unrar-free ";
 		elseif ($ext == "tar")
 			$commandLine = "tar vxf ";
 		elseif ($ext == "tgz")
@@ -39,47 +37,59 @@ class ZipFile extends FileReference {
 		elseif ($ext == "gz") {
 			if (preg_match('\.tar\.gz$', $fileRef['name']))
 				$commandLine = "tar vxzf ";
-			else
-				$commandLine = "gunzip ";
 		}
 		elseif ($ext == "bz2") {
 			if (preg_match('\.tar\.bz2$', $fileRef['name']))
 				$commandLine = "tar vxjf ";
-			else
-				$commandLine = "bunzip2 ";
 		}
 		$this->update(array("commandLine" => $commandLine));
 		return $this;
 		
 	}
-
-	function expand() {
-		$pwd = getcwd();
-		chdir($this->baseDir);
-		exec(escapeshellcmd($this->commandLine . $this->fileName), $out, $ret_error);
-		//print_r($out); exit;
-		chdir($pwd);
-		if (!$ret_error) {
-			foreach ($out as $key => $fileName) {
-				if (is_file($this->baseDir . $fileName)) {
-					if (function_exists('mime_content_type')) $type = mime_content_type($fileName);
-					else $type = '';
-					$fields = array('type' => $type,
-									'size' => filesize($this->fullPath()),
-									'publicationId' => $this->publicationId,
-									'name' => $fileName,
-									'tmp_name' => $fileName);
-					$fileClass = FileReference::getSubClass($fileName);
-					require_once($fileClass . ".php");
-					$file = new $fileClass($fields);
-				} else {
-					unset($out[$key]);
-				}
+	
+	function parseUnzipOutput($out) {
+		$ret = array();
+		foreach ($out as $key => $fileName) {
+			if (preg_match('/Archive\:.*$/', $fileName) || preg_match('/\s*creating\:.*$/', $fileName)) {
+				unset($out[$key]);
+			} else {
+				$fileName = preg_replace('/\s*inflating\:\s/', "", $fileName);
+				$fileName = preg_replace('/\s*extracting\:\s/', "", $fileName);
+				$ret[] = $fileName;
 			}
 		}
-		$this->publication->update(array('allFile' => $this->fullPath()));
-		$this->delete(false);
-		return $out;
+		return $ret;
+	}
+
+	function expand() {
+		if ($this->commandLine) {
+			$pwd = getcwd();
+			chdir($this->baseDir);
+			exec(escapeshellcmd($this->commandLine . $this->fileName), $out, $ret_error);
+			chdir($pwd);
+			if (!$ret_error) {
+				if ($this->commandLine == "unzip ") $out = $this->parseUnzipOutput($out);
+				foreach ($out as $key => $fileName) {
+					if (is_file($this->baseDir . $fileName)) {
+						if (function_exists('mime_content_type')) $type = mime_content_type($fileName);
+						else $type = '';
+						$fields = array('type' => $type,
+										'size' => filesize($this->fullPath()),
+										'publicationId' => $this->publicationId,
+										'name' => $fileName,
+										'tmp_name' => $fileName);
+						$fileClass = FileReference::getSubClass($fileName);
+						require_once($fileClass . ".php");
+						$file = new $fileClass($fields);
+					} else {
+						unset($out[$key]);
+					}
+				}
+			}
+			$this->publication->update(array('allFile' => $this->fullPath()));
+			$this->delete(false);
+			return $out;
+		}
 	}
 
 	function extractFileInfo() {
@@ -96,7 +106,7 @@ class ZipFile extends FileReference {
 	
 	// class method
 	function validateExtension($filename) {
-		$extensions = array('zip','gz','bz2','tgz','tar','tbz2','rar');
+		$extensions = array('zip','gz','bz2','tgz','tar','tbz2');
 		if (!preg_match('/\.([^.]{2,4}$)/', $filename, $m)) {
 	    	return 1;
 	  	}

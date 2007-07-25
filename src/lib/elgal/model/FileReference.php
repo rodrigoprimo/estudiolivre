@@ -14,6 +14,7 @@ class FileReference extends PersistentObject {
 	
 	var $publicationId;
 	var $fileName;
+	var $credits;
 	var $thumbnail;
 	var $mimeType;
 	var $size;
