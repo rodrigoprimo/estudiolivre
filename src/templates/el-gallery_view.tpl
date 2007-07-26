@@ -115,7 +115,10 @@
 	{/if}
 </div>
 <br><br>
-incluir template especifico do arquivo
+{if isset($viewFile)}
+	{assign var=file value=$arquivo->filereferences[$viewFile]}
+	{include file="meta-file.tpl"}
+{/if}
 <br><br>
 <div>
 </div>

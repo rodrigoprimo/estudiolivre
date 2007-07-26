@@ -167,6 +167,20 @@ function expandFile($fileId) {
     return $objResponse;
 }
 
+$ajaxlib->setPermission('setMainFile', $userHasPermOnFile && $arquivoId);
+$ajaxlib->registerFunction('setMainFile');
+function setMainFile($value, $filePos) {
+	
+	global $arquivo;
+	
+	if ($value == "1") {
+		$arquivo->update(array('mainFile' => (int)$filePos));
+	} else {
+		$arquivo->update(array('mainFile' => NULL));
+	}
+	
+}
+
 $ajaxlib->registerFunction('upload_info');
 function upload_info($uploadId, $i, $callback = 'updateProgressMeter') {
 	$objResponse = new xajaxResponse();

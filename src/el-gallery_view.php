@@ -19,7 +19,7 @@ if (!$arquivo || !$arquivo->publishDate) {
 	$smarty->assign('msg',tra('Arquivo inexistente!'));
 	$smarty->display('error.tpl');
 	exit;
-}   
+}  
 
 $tagString = '';
 foreach ($arquivo->tags as $t) {
@@ -33,6 +33,12 @@ elAddCrumb($arquivo->title);
 
 $smarty->assign('category', 'gallery');
 
+if (isset($_REQUEST['file'])) $key = (int)$_REQUEST['file'];
+elseif (isset($arquivo->mainFile)) $key = $arquivo->mainFile;
+if (isset($key)) {
+	$smarty->assign('viewFile', $key);
+	$arquivo->filereferences[$key]->hitStream();
+}
 $smarty->assign('arquivoId',$arquivoId);
 $smarty->assign('arquivo',$arquivo);
 
