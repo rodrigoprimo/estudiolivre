@@ -4,7 +4,7 @@ global $userHasPermOnFile, $arquivoId;
 
 $ajaxlib->setPermission('save_field', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('save_field');
-function save_field($name, $value) {
+function save_field($name, $value, $file = -1) {
 	
 	if ($name == "tags") return editTags($value);
 	
@@ -13,7 +13,10 @@ function save_field($name, $value) {
 	$objResponse = new xajaxResponse();
 	
 	$error = false;
-	$error = $arquivo->update(array($name => $value));
+	if ($file < 0) 
+		$error = $arquivo->update(array($name => $value));
+	else
+		$error = $arquivo->filereferences[(int)$file]->update(array($name => $value));
 	
 	if(is_string($error)) {
 	    $objResponse->addScriptCall('exibeErro', $name, $error);
@@ -178,7 +181,7 @@ function setMainFile($value, $filePos) {
 	} else {
 		$arquivo->update(array('mainFile' => NULL));
 	}
-	
+	return new xajaxResponse();
 }
 
 $ajaxlib->registerFunction('upload_info');

@@ -5,7 +5,7 @@ var mudado = new Array();
 var editing = new Array();
 var waitingQueue = new Array();
 
-function saveField(fieldObj){
+function saveField(fieldObj, file){
     var field = fieldObj.id.replace(/^input-/,'');
     var value;
     if(fieldObj.type == "checkbox") {
@@ -16,7 +16,10 @@ function saveField(fieldObj){
     
     if (saveFieldCache[field] == null || saveFieldCache[field] != value) {
     	setWaiting(field, true);
-		xajax_save_field(field, value);
+    	if (typeof(file) != "undefined")
+			xajax_save_field(field, value, file);
+		else
+			xajax_save_field(field, value);
     } else {
 		exibeCampo(field, value);
     }

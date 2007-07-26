@@ -39,7 +39,7 @@ if ($arquivoId && isset($_FILES['thumb']) && !empty($_FILES['thumb']['name'])) {
 
     $result = $arquivo->uploadThumb($_FILES["thumb"]['tmp_name'], $_FILES["thumb"]["name"]);
     if (!$result) {
-		error(tra('Impossivel gravar miniatura'));
+		error(tra('Impossível gravar miniatura'));
     }
     
     echo "<script>parent.document.getElementById('ajax-thumbnail').src = 'repo/".$arquivo->thumbnail."?rand=".rand()."';</script>";

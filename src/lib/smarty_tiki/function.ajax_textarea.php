@@ -26,6 +26,8 @@ function smarty_function_ajax_textarea($params, &$smarty) {
 	$permission = $params['permission'];
 	$wikiParsed = $params['wikiParsed'];
 
+	$callSave = $params['file'] ? "saveField(this, " . $params['file'] . ")" : "saveField(this)";
+	
 	global $tikilib;
 
 	$show_value = $wikiParsed ? $tikilib->parse_data($value) : $value;
@@ -57,7 +59,7 @@ function smarty_function_ajax_textarea($params, &$smarty) {
 	
 	$output .= "<img id=\"error-$id\" class=\"gUpErrorImg\" style=\"display: none\" src=\"styles/estudiolivre/errorImg.png\" onMouseover=\"tooltip(errorMsg_$id);\" onMouseout=\"nd();\"> ";
 	
-	$output .= '<textarea id="input-'.$id. '"  onBlur="saveField(this)" style="display:' . ($edit ? $display : "none") . '; ' . $style . '" '; 
+	$output .= '<textarea id="input-'.$id. '"  onBlur="' . $callSave . '" style="display:' . ($edit ? $display : "none") . '; ' . $style . '" '; 
 	if (!$value && !$noclear) { 
 	    $output .= " onFocus=\"limpaCampo('$id');\"";
 	}
