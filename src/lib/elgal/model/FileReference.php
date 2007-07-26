@@ -100,7 +100,7 @@ class FileReference extends PersistentObject {
 	// use this one only to check for forbidden extensions
 	function validateExtension($filename) {
 		$extensions = array('php','htm', 'wmv','wma','doc','xls','ppt');
-		if (!preg_match('/\.([^.]{3,4}$)/', $filename, $m)) {
+		if (!preg_match('/\.([^.]{2,4}$)/', $filename, $m)) {
 	    	return tra("Erro: extensão de arquivo não suportada pelo acervo.");
 	  	}
 		foreach ($extensions as $ext) {
@@ -132,7 +132,7 @@ class FileReference extends PersistentObject {
 		elseif (!ZipFile::validateExtension($fileName))
 			return "ZipFile";
 		else
-			return "TextFile";
+			return "PlainFile";
 		
 	}
 	

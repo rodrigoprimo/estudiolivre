@@ -35,11 +35,11 @@ class ZipFile extends FileReference {
 		elseif ($ext == "tbz2")
 			$commandLine = "tar vxjf ";
 		elseif ($ext == "gz") {
-			if (preg_match('\.tar\.gz$', $fileRef['name']))
+			if (preg_match('/\.tar\.gz$/', $fileRef['name']))
 				$commandLine = "tar vxzf ";
 		}
 		elseif ($ext == "bz2") {
-			if (preg_match('\.tar\.bz2$', $fileRef['name']))
+			if (preg_match('/\.tar\.bz2$/', $fileRef['name']))
 				$commandLine = "tar vxjf ";
 		}
 		$this->update(array("commandLine" => $commandLine));
