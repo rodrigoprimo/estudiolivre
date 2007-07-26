@@ -38,9 +38,7 @@ td {
 	text-align:left;
 	vertical-align:top;
 	border: 0;
-	border-top:10px solid transparent;
-	border-bottom: 10px solid transparent;
-	border-right:5px solid transparent;;
+
 	
 }
 
@@ -67,13 +65,9 @@ td {
 }
 
 #tiki-mid li{
-		list-style-type: none;
+	list-style-type: none;
 }
-#tiki-main{
-	background-color:#;
-	padding:0;
-	text-align:left;
-}
+
 
 #logo {
 	position:absolute;

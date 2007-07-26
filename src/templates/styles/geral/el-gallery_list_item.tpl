@@ -22,7 +22,7 @@
 			{if $arquivo->thumbnail}
 				<img src="repo/{$arquivo->thumbnail|escape:'url'}" {if $isIE}width=100 height=100{/if}>
 			{else}
-				<img src="styles/{$style|replace:".css":""}/img/iThumb{$arquivo->type}.png">
+				<img src="styles/{$style|replace:".css":""}/img/iThumb{$arquivo->type}.gif">
 			{/if}
 		</a>
 		{assign var=ratings value=$arquivo->getArraySize('votes')}

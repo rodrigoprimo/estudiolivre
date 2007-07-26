@@ -1,11 +1,11 @@
 #corpo{
-	width:82em;
+	width:80%;
 }
 
 .listItem {
 	
 	width:21em;
-	border-top:10px solid #transparent;
+	border-top:10px solid transparent;
 	border-bottom:2px solid #000000;
 	float:left;
 	height:20em;
