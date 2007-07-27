@@ -110,14 +110,12 @@ class ImageFile extends FileReference {
 	}
 	
 	// class method
-	function validateExtension($filename) {
+	function validateExtension($ext) {
 		$extensions = array('png','jpg','jpeg','gif','tiff','svg','bmp','psd','xcf','eps','swf','xar');
-		if (!preg_match('/\.([^.]{3,4}$)/', $filename, $m)) {
-	    	return 1;
-	  	}
-	  	if (!in_array(strtolower($m[1]), $extensions)) {
-	    	return 1;
+		if (in_array($ext, $extensions)) {
+	    	return true;
 	    }
+	    return false;
 	}
 	
 	function checkField_width($value) {

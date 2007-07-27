@@ -105,14 +105,12 @@ class ZipFile extends FileReference {
 	}
 	
 	// class method
-	function validateExtension($filename) {
+	function validateExtension($ext) {
 		$extensions = array('zip','gz','bz2','tgz','tar','tbz2');
-		if (!preg_match('/\.([^.]{2,4}$)/', $filename, $m)) {
-	    	return 1;
-	  	}
-	  	if (!in_array(strtolower($m[1]), $extensions)) {
-	    	return 1;
+		if (in_array($ext, $extensions)) {
+	    	return true;
 	    }
+	    return false;
 	}
 	
 }

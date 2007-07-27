@@ -96,9 +96,8 @@ class FileReference extends PersistentObject {
 		trigger_error("Subclass should have implemented", E_USER_ERROR);
 	}
 	
-	// this is a static method that must be implemented by subclasses
 	// use this one only to check for forbidden extensions
-	function validateExtension($filename) {
+	function isForbiddenExtension($filename) {
 		$extensions = array('php','htm', 'wmv','wma','doc','xls','ppt');
 		if (!preg_match('/\.([^.]{2,4}$)/', $filename, $m)) {
 	    	return tra("Erro: extensão de arquivo não suportada pelo acervo.");
@@ -117,22 +116,34 @@ class FileReference extends PersistentObject {
 	}
 	
 	// static method
-	function getSubClass($fileName) {
-		//php4 cant list subclasses of class, so we need to add each one here
-		require_once("AudioFile.php");
-		require_once("ImageFile.php");
-		require_once("VideoFile.php");
-		require_once("ZipFile.php");
-		if (!AudioFile::validateExtension($fileName))
-			return "AudioFile";
-		elseif (!ImageFile::validateExtension($fileName))
+	function getSubClass($fileName, $diskFile) {
+		//php4 can't list subclasses of class, so we need to add each one here
+		require_once("AudioFile.php");require_once("ImageFile.php");require_once("VideoFile.php");require_once("ZipFile.php");
+		
+		preg_match('/\.([^.]{2,4}$)/', $fileName, $m);
+		$ext = strtolower($m[1]);
+		
+		if (ImageFile::validateExtension($ext))
 			return "ImageFile";
-		elseif (!VideoFile::validateExtension($fileName))
-			return "VideoFile";
-		elseif (!ZipFile::validateExtension($fileName))
-			return "ZipFile";
-		else
-			return "PlainFile";
+		if (ZipFile::validateExtension($ext))
+			return "ZipFile";	
+		
+		$audioValid = AudioFile::validateExtension($ext);
+		$videoValid = VideoFile::validateExtension($ext);
+		
+		if ($audioValid && $videoValid) {
+			exec(escapeshellcmd("file " . $diskFile), $out, $ret_error);
+			if (preg_match("/video/", $out[0]) || preg_match("/movie/", $out[0])) {
+				return "VideoFile";
+			} else {
+				return "AudioFile";
+			}
+		}
+		
+		if ($audioValid) return "AudioFile";
+		if ($videoValid) return "VideoFile";
+
+		return "PlainFile";
 		
 	}
 	

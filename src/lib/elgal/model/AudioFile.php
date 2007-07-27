@@ -48,14 +48,12 @@ class AudioFile extends FileReference {
 	}
 	
 	// class method
-	function validateExtension($filename) {
+	function validateExtension($ext) {
 		$extensions = array('mp3','ogg','wav','aiff','avi','flac','mp2','mid','mxf', 'mp4');
-		if (!preg_match('/\.([^.]{3,4}$)/', $filename, $m)) {
-	    	return 1;
-	  	}
-	  	if (!in_array(strtolower($m[1]), $extensions)) {
-	    	return 1;
+		if (in_array($ext, $extensions)) {
+	    	return true;
 	    }
+	    return false;
 	}
 	
 	function checkField_duration($value) {

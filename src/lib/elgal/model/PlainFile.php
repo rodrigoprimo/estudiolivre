@@ -29,8 +29,8 @@ class PlainFile extends FileReference {
 	}
 	
 	// class method
-	function validateExtension($filename) {
-		return false;
+	function validateExtension($ext) {
+		return true;
 	}
 	
 }

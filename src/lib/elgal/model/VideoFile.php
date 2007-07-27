@@ -86,14 +86,12 @@ class VideoFile extends FileReference {
 	}
 	
 	// class method
-	function validateExtension($filename) {
+	function validateExtension($ext) {
 		$extensions = array('mpg','mpeg','avi','ogg','theora','mp4','yuv','mp2','mkv','mxf','mov','swf','flv','3gp','3gpp');
-		if (!preg_match('/\.([^.]{3,4}$)/', $filename, $m)) {
-	    	return 1;
-	  	}
-	  	if (!in_array(strtolower($m[1]), $extensions)) {
-	    	return 1;
+	  	if (in_array($ext, $extensions)) {
+	    	return true;
 	    }
+	    return false;
 	}
 	
 	function checkField_duration($value) {

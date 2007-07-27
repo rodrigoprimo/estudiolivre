@@ -12,13 +12,13 @@ if ($arquivoId && isset($_FILES['arquivo']) && !empty($_FILES['arquivo']['name']
 	if (!is_uploaded_file($_FILES["arquivo"]['tmp_name'])) {
 		require_once ("lib/filegals/filegallib.php");
 		$errorMsg = tra('Upload was not successful') . ': ' . FileGalLib :: convert_error_to_string($_FILES["arquivo"]['error']);
-	} elseif ($error = FileReference::validateExtension($_FILES["arquivo"]['name'])) {
+	} elseif ($error = FileReference::isForbiddenExtension($_FILES["arquivo"]['name'])) {
 		$errorMsg = $error . ' Veja a <a href="tiki-index.php?page=Formatos+de+arquivos+do+Acervo+Livre">lista de formatos suportados</a>';
 	}
 	else {
 		
 		require_once("FileReference.php");
-		$fileClass = FileReference::getSubClass($_FILES["arquivo"]['name']);
+		$fileClass = FileReference::getSubClass($_FILES["arquivo"]['name'], $_FILES["arquivo"]['tmp_name']);
 		
 		$fields = $_FILES["arquivo"];
 		$fields["publicationId"] = $arquivoId;

@@ -31,8 +31,7 @@ function create_file($tipo, $fileName) {
 	require_once("FileReference.php");
 	require_once($publicationClass . ".php");
 	
-	$error = FileReference::validateExtension($fileName);
-	if ($error) {
+	if ($error = FileReference::isForbiddenExtension($fileName)) {
 	    // Estranho ficar aqui, mas onde colocar?
 	    $error .= ' Veja a <a href="tiki-index.php?page=Formatos+de+arquivos+do+Acervo+Livre">lista de formatos suportados</a>';
 		$objResponse->addScript("setUploadErrorMsg('$error')");
@@ -66,8 +65,7 @@ function validateUpload($fileName, $i) {
 	
 	$objResponse = new xajaxResponse();
 	
-	$error = FileReference::validateExtension($fileName);
-	if ($error) {
+	if ($error = FileReference::isForbiddenExtension($fileName)) {
 	    // Estranho ficar aqui, mas onde colocar?
 	    $error .= ' Veja a <a href="tiki-index.php?page=Formatos+de+arquivos+do+Acervo+Livre">lista de formatos suportados</a>';
 		$objResponse->addScript("setUploadErrorMsg('$error')");

@@ -7,7 +7,7 @@
 <script language="JavaScript" src="lib/js/edit_field_ajax.js"></script>
 <script language="JavaScript" src="lib/js/freetags.js"></script>
 
-<h4>{tr}Selecione o tipo de arquivo que deseja enviar{/tr}:</h4>
+<h4>{tr}Selecione o tipo de publicação que deseja criar{/tr}:</h4>
 {if $isIE}
 	<center>
 	<table id="tipos">
