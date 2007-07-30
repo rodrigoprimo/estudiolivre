@@ -94,7 +94,7 @@
 		{ajax_input permission=$permission id="title" value=$arquivo->title default="{tr}Título{/tr}" display="inline" truncate=50}
 		<br/>
 		<span>
-			<em>{tr}Autor{/tr}:</em> {ajax_input permission=$permission id="author" value=$arquivo->author default="{tr}Autor da obra{/tr}" display="inline" mode="edit"}
+			<em>{tr}Autor{/tr}:</em> {ajax_input permission=$permission id="author" value=$arquivo->author default="{tr}Autor da obra{/tr}" display="inline"}
 		</span>
 	</div>
 

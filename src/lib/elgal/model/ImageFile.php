@@ -29,13 +29,6 @@ class ImageFile extends FileReference {
 		return $this->update($result);
 	}
 	
-	function autoInfos() {
-		$result = array();
-		$result['width'] = $this->width;
-		$result['height'] = $this->height;
-		return $result;
-	}
-	
 	function generateThumb() {
 		
 		global $tikilib;

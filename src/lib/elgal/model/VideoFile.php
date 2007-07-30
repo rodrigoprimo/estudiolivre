@@ -37,16 +37,7 @@ class VideoFile extends FileReference {
 		
 		return $this->update($result);
 	}
-	
-	function autoInfos() {
-		$result = array();
-		$result['width'] = $this->width;
-		$result['height'] = $this->height;
-		$result['duration'] = $this->duration;
-		$result['hasAudio'] = $this->hasAudio;
-		return $result;
-	}
-	
+		
 	function generateThumb() {
 		
 		global $tikilib;

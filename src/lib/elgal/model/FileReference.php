@@ -87,11 +87,7 @@ class FileReference extends PersistentObject {
 	function extractFileInfo() {
 		trigger_error("Subclass should have implemented", E_USER_ERROR);
 	}
-	
-	function autoInfos() {
-		trigger_error("Subclass should have implemented", E_USER_ERROR);
-	}
-	
+		
 	function generateThumb() {
 		trigger_error("Subclass should have implemented", E_USER_ERROR);
 	}

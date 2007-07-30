@@ -20,10 +20,6 @@ class PlainFile extends FileReference {
 		return;
 	}
 	
-	function autoInfos() {
-		return array();
-	}
-	
 	function generateThumb() {
 		return;
 	}

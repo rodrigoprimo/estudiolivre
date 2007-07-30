@@ -49,73 +49,73 @@ function selecionaTipo(tipo) {
 // fim do tipo
 
 // chamada no onChange dos formularios de arquivo
-function fileSelected(fileName, i) {
+function fileSelected(fileName, formNum) {
 	if (!arquivoId) {
 		show('js-desc');
     	document.getElementById('ajax-thumbnail').src = 'styles/bolha/img/iThumb'+tipoSelecionado+'.png';
-    	xajax_create_file(tipoSelecionado, fileName);
+    	xajax_create_file(tipoSelecionado, fileName, formNum);
 	} else {
-		xajax_validateUpload(fileName, i);
+		xajax_validateUpload(fileName, formNum);
 	}
 }
 
 // inicializa um novo upload
 // seta o uploadId usado no progress meter e da um submit no formulario
 // é sempre chamado pelo ajax
-function newUpload(i) {
+function newUpload(formNum) {
 	var uploadId = Math.random().toString().replace(new RegExp(/0\./), '') + '.' + Date.now();
-	uploadIds[i] = uploadId;
-	setTimeout("startUploadProgress(" + i + ")", 500);
-	eval("document.uploadForm" + i + ".UPLOAD_IDENTIFIER.setAttribute('value','" + uploadId + "')");
-	eval("document.uploadForm" + i + ".submit()");
+	uploadIds[formNum] = uploadId;
+	setTimeout("startUploadProgress(" + formNum + ")", 0);
+	eval("document.uploadForm" + formNum + ".UPLOAD_IDENTIFIER.setAttribute('value','" + uploadId + "')");
+	eval("document.uploadForm" + formNum + ".submit()");
 }
 
 // inicializa os htmls de progress meter
-function startUploadProgress(i) {
-	document.getElementById('js-cancel' + i).innerHTML = '<span onClick="cancelUpload(' + i + ');">interromper</span>';
-	document.getElementById('js-percent' + i).innerHTML = '0%';
-	document.getElementById('js-statusBar' + i).style.width = '0px';
-	updateUploadInfo(i);
+function startUploadProgress(formNum) {
+	document.getElementById('js-cancel' + formNum).innerHTML = '<span onClick="cancelUpload(' + formNum + ');">interromper</span>';
+	document.getElementById('js-percent' + formNum).innerHTML = '0%';
+	document.getElementById('js-statusBar' + formNum).style.width = '0px';
+	updateUploadInfo(formNum);
 }
 
 // loop pra ficar atualizando o progress meter
-function updateUploadInfo(i) {
-	xajax_upload_info(uploadIds[i], i);
-	uploadTimeouts[i] = setTimeout('updateUploadInfo(' + i + ')',1000);
+function updateUploadInfo(formNum) {
+	xajax_upload_info(uploadIds[formNum], formNum);
+	uploadTimeouts[formNum] = setTimeout('updateUploadInfo(' + formNum + ')',1000);
 }
 
 // chamada no final do upload do arquivo
 // para o loop de progrees meter e puxa infos automaticas
-function finishUpload(i) {
-	if (uploadTimeouts[i]) {
-		clearTimeout(uploadTimeouts[i]);
-		uploadTimeouts[i] = 0;
-		document.getElementById('js-cancel' + i).innerHTML = '';
-		document.getElementById('js-statusBar' + i).className = "statusBar statusBarGo";
-		document.getElementById('js-statusBar' + i).style.width = originalWidth + 'px';
-		document.getElementById('js-percent' + i).innerHTML = '100%';
-		eval("var fileName = document.uploadForm" + i + ".arquivo.value");
-		document.getElementById('js-file' + i).innerHTML = fileName;
-		if (i ==0 && thumbId == null && (tipoSelecionado == 'Imagem' || tipoSelecionado == 'Video')) {
+function finishUpload(formNum) {
+	if (uploadTimeouts[formNum]) {
+		clearTimeout(uploadTimeouts[formNum]);
+		uploadTimeouts[formNum] = 0;
+		document.getElementById('js-cancel' + formNum).innerHTML = '';
+		document.getElementById('js-statusBar' + formNum).className = "statusBar statusBarGo";
+		document.getElementById('js-statusBar' + formNum).style.width = originalWidth + 'px';
+		document.getElementById('js-percent' + formNum).innerHTML = '100%';
+		eval("var fileName = document.uploadForm" + formNum + ".arquivo.value");
+		document.getElementById('js-file' + formNum).innerHTML = fileName;
+		if (formNum == "0" && thumbId == null && (tipoSelecionado == 'Imagem' || tipoSelecionado == 'Video')) {
 			setTimeout('document.getElementById("ajax-thumbnail").src = "styles/bolha/img/iProgress.gif"',100);
 			xajax_generate_thumb();
 		}
-		if (i == 0)
+		if (formNum == "0")
 			xajax_get_file_info();
 	}
 }
 
 // cancela um upload em progresso
-function cancelUpload(i) {
-	if (uploadTimeouts[i]) {
+function cancelUpload(formNum) {
+	if (uploadTimeouts[formNum]) {
 		window.stop();
-		clearTimeout(uploadTimeouts[i]);
-		uploadTimeouts[i] = 0;
-		document.getElementById('js-cancel' + i).innerHTML = '';
-		document.getElementById('js-percent' + i).innerHTML = '';
-		document.getElementById('js-statusBar' + i).style.width = '0px';
-	    document.getElementById('js-statusBar' + i).className = "statusBar statusBarGoing";
-	    eval("document.uploadForm" + i + ".reset()");
+		clearTimeout(uploadTimeouts[formNum]);
+		uploadTimeouts[formNum] = 0;
+		document.getElementById('js-cancel' + formNum).innerHTML = '';
+		document.getElementById('js-percent' + formNum).innerHTML = '';
+		document.getElementById('js-statusBar' + formNum).style.width = '0px';
+	    document.getElementById('js-statusBar' + formNum).className = "statusBar statusBarGoing";
+	    eval("document.uploadForm" + formNum + ".reset()");
 	}
 }
 
@@ -158,12 +158,12 @@ function setAutoFields(result) {
 		}
 	}
 }
-function updateProgressMeter(uploadInfo, i) {
+function updateProgressMeter(uploadInfo, formNum) {
 	var normalized = uploadInfo['bytes_uploaded'] / uploadInfo['bytes_total'];
 	var percent = Math.ceil(100 * normalized);
 	if (percent) {
-		document.getElementById('js-percent' + i).innerHTML = percent + '%';
-		document.getElementById('js-statusBar' + i).style.width = originalWidth*normalized + 'px';
+		document.getElementById('js-percent' + formNum).innerHTML = percent + '%';
+		document.getElementById('js-statusBar' + formNum).style.width = originalWidth*normalized + 'px';
 	}	
 }
 // fim do ajax

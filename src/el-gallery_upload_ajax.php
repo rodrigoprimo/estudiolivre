@@ -21,7 +21,7 @@ function newUploadForm($i) {
 
 $ajaxlib->setPermission('create_file', $el_p_upload_files == 'y');
 $ajaxlib->registerFunction('create_file');
-function create_file($tipo, $fileName) {
+function create_file($tipo, $fileName, $formNum) {
 	$objResponse = new xajaxResponse();
 	global $user, $smarty, $tikilib;
 	
@@ -46,7 +46,7 @@ function create_file($tipo, $fileName) {
 	$arquivo = new $publicationClass($fields);
 	
 	$objResponse->addScriptCall("setPublication", $arquivo->id);
-	$objResponse->addScript("newUpload(0);");
+	$objResponse->addScript("newUpload($formNum);");
 	
 	if (in_array($tipo, array('Audio','Video','Imagem'))) {
 		$templateName = 'el-gallery_metadata_' . $tipo . '.tpl';
@@ -147,26 +147,21 @@ function get_file_info() {
 	
 	$objResponse = new xajaxResponse();
 
-	$file =& $arquivo->filereferences[0];
-	
-	$result = $file->autoInfos();
-	
-	// merge com as infos basicas
-	$basicInfos = array();
-	if (!$arquivo->title)
-		$basicInfos['title'] = $file->parseFileName();
-	if (($autor = $tikilib->get_user_preference($user, 'realName')) && !$arquivo->author)
-		 $basicInfos['author'] = $autor;
-	$arquivo->update($basicInfos);
+	$file = &$arquivo->filereferences[0];
 
-	// deixa o foreach no php, q js eh uma bosta pra isso
-	$result = array_merge($result, $basicInfos);
+	$result = array();
+	if (!$arquivo->title)
+		$result['title'] = $file->parseFileName();
+	if (($autor = $tikilib->get_user_preference($user, 'realName')) && !$arquivo->author)
+		 $result['author'] = $autor;
+	$arquivo->update($result);
+
 	$formattedResult = array();
 	foreach ($result as $key => $value) {
 		array_push($formattedResult, $key, $value);
 	}
 	
-	if (sizeOf($result) > 0) {
+	if (count($result) > 0) {
 		$objResponse->addScriptCall('setAutoFields', $formattedResult);
 	}
 		

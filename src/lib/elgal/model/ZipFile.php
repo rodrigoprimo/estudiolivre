@@ -95,11 +95,7 @@ class ZipFile extends FileReference {
 	function extractFileInfo() {
 		return;
 	}
-	
-	function autoInfos() {
-		return array();
-	}
-	
+		
 	function generateThumb() {
 		return;
 	}

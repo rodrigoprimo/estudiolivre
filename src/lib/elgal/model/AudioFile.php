@@ -35,14 +35,7 @@ class AudioFile extends FileReference {
 		
 		return $this->update($result);
 	}
-	
-	function autoInfos() {
-		$result = array();
-		$result['duration'] = $this->duration;
-		$result['bitRate'] = $this->bitRate;
-		return $result;
-	}
-	
+		
 	function generateThumb() {
 		return true;
 	}
