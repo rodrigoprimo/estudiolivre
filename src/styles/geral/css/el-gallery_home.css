@@ -7,18 +7,11 @@ width:80%;
 	
 }
 
-#gHomeWikiTitle {
-background-colr:#ff0000;
-	}
-
-#gHomeWikiBottom {
+h2 .listRight {
+	font-size:8px;
 	
 }
 
-#gHomeWiki {
-	
-}
-
-#ajax-navBottom {
-	
+#modulegHomeWikiToggle{
+	width:42em;
 }

@@ -11,6 +11,7 @@ BODY {
 	font-family: arial,verdana,helvetica,lucida,sans-serif; /*BitStream Vera Sans, Verdana;*/
 	font-size:10pt;
 
+
 }
 
 a{color:#808080;}
@@ -164,11 +165,11 @@ td {
 .topmenu {
 		font-size:12pt;
 		
-	{
+	}
 
 .submenu {
 		font-size:12pt;
-	{
+	}
 
 .menu {
 	text-align:right;
@@ -183,3 +184,4 @@ td {
 .none {
 	display:none;
 }
+

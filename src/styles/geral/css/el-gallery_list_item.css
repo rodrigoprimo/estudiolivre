@@ -21,9 +21,31 @@
 	margin:0.3em;
 }
 
+.listLeft span {
+	font-size:8pt;
+	line-height:8pt
+}
+
 .listRight {
 
 	width:10em;
 	float:left;
 	margin:0.3em;
+}
+
+.listRight span{
+
+	font-size:10pt;
+	line-height:10pt;;
+}
+
+.listRight h2 {
+	font-size:12pt;
+	line-height:12pt;
+}
+
+
+.listInfo {
+	font-size:8pt;
+	line-height:8pt;
 }

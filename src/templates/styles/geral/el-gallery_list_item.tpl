@@ -46,43 +46,21 @@
 			{/tooltip}
 		{/if}
 		{if $arquivo->user eq $user or $el_p_admin_gallery eq "y"}
-			<br />
+<br />
 			{tooltip name="list-apagar-arquivo-acervo" text="Apagar esse arquivo do acervo"}
-				<span class="pointer" onClick="deleteFile({$arquivo->id},{$dontAskDelete},0);nd();">{tr}apagar{/tr}</span>
+				<span class="pointer" onClick="deleteFile({$arquivo->id},{$dontAskDelete},0);nd();">{tr}apagar{/tr}</span><br />
 			{/tooltip}
 		{/if}
 		
-		<span class="lef">
+				<span class="lef">
 					{tr}baixado{/tr}: <em>{$file->downloads} {if $file->downloads == 1 }{tr}vez{/tr}{else}{tr}vezes{/tr}{/if}</em>
 					{if $tooltipText}
-						<br />
+<br />
 						{tr}visto{/tr}: <em>{$file->streams} {if $file->streams == 1 }{tr}vez{/tr}{else}{tr}vezes{/tr}{/if}</em>
 					{/if}
 				</span>
-	</div>
-	<div class="listRight">
-	<h2>
-		<a href="el-gallery_view.php?arquivoId={$arquivo->id}">
-			{$arquivo->title}
-		</a>
-	</h2>
-	
-	<span>
-			{if strlen($arquivo->description) > 100}
-				{$arquivo->description|truncate:100:"":true}
-				<a href="el-gallery_view.php?arquivoId={$arquivo->id}">
-					({tr}ler mais{/tr}...)
-				</a>
-			{elseif $arquivo->description}
-				{$arquivo->description}
-			{else}
-				{tr}Arquivo sem descrição{/tr}!
-			{/if}
-		</span>
-	<div class="listInfo">
-	
-		<h4>
-			<div class="asRow">
+<br />
+				
 				<span class="lef">
 					{tr}autor{/tr}: <em>{$arquivo->author}</em>
 				</span>
@@ -97,7 +75,31 @@
 				<span class="rig">
 					{tr}tipo{/tr}: <em>{tr}{$arquivo->type}{/tr}</em>
 				</span>
-			</div>
+		
+	</div>
+	<div class="listRight">
+	<h2 class="title">
+		<a href="el-gallery_view.php?arquivoId={$arquivo->id}">
+			{$arquivo->title}
+		</a>
+	</h2>
+	
+	<span>
+			{if strlen($arquivo->description) > 80}
+				{$arquivo->description|truncate:80:"":true}
+				<a href="el-gallery_view.php?arquivoId={$arquivo->id}">
+					(...)
+				</a>
+			{elseif $arquivo->description}
+				{$arquivo->description}
+			{else}
+				{tr}Arquivo sem descrição{/tr}!
+			{/if}
+		</span>
+	<div class="listInfo">
+	
+		<h4>
+			
 		</h4>
 		
 		
