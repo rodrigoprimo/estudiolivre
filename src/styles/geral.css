@@ -2,16 +2,11 @@
 * {
 	padding:0;
 	margin:0;
-
 }
-
-
 
 BODY {
 	font-family: arial,verdana,helvetica,lucida,sans-serif; /*BitStream Vera Sans, Verdana;*/
 	font-size:10pt;
-
-
 }
 
 a{color:#808080;}
@@ -39,8 +34,6 @@ td {
 	text-align:left;
 	vertical-align:top;
 	border: 0;
-
-	
 }
 
 
@@ -57,12 +50,10 @@ td {
 	top:150px;
 	width:40%;
 	margin:0px;
-	
 }
 
 .wikiedit {
 	width:50%;
-	
 }
 
 #tiki-mid li{
@@ -74,7 +65,7 @@ td {
 	position:absolute;
 	top:10px;
 	left:50px;
-	}
+}
 
 #search {
 	position:absolute;
@@ -92,12 +83,9 @@ td {
 	left:0px;
 }
 
-
-
 #sideContent h1{
 	font-size:10pt;
 	font-weight:bold;
-	
 }
 
 #sideContent a{color:#808080;}
@@ -126,8 +114,8 @@ td {
 
 
 .uText{
-		text-align:left;
-		border-bottom:10px solid transparent;
+	text-align:left;
+	margin-bottom:10px;
 }
 
 #topMenuGeneral {
@@ -137,7 +125,6 @@ td {
 	width:300px;
 	text-align:left;
 	font-size:12px;
-	
 }
 
 #topSubMenu {
@@ -146,11 +133,10 @@ td {
 	left:450px;
 	width:300px;
 	text-align:left;
-	
 }
+
 .userMenuContent {
-	
-		border-bottom:10px solid transparent;
+	margin-bottom:10px;
 }
 
 /* ultimas alteraçoes */
@@ -160,28 +146,20 @@ td {
 	left:350px;
 	width:150px;
 	text-align:left;
-	
 }
+
 .topmenu {
-		font-size:12pt;
-		
-	}
+	font-size:12pt;
+}
 
 .submenu {
-		font-size:12pt;
-	}
+	font-size:12pt;
+}
 
 .menu {
 	text-align:right;
 }
 
-
-
-#wikiedit {
-	
-}
-
 .none {
 	display:none;
 }
-
