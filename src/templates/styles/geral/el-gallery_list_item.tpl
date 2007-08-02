@@ -18,6 +18,7 @@
 
 <div class="listItem">
 	<div class="listLeft">
+
 		<a href="el-gallery_view.php?arquivoId={$arquivo->id}">
 			{if $arquivo->thumbnail}
 				<img src="repo/{$arquivo->thumbnail|escape:'url'}" {if $isIE}width=100 height=100{/if}>
@@ -25,24 +26,26 @@
 				<img src="styles/{$style|replace:".css":""}/img/iThumb{$arquivo->type}.gif">
 			{/if}
 		</a>
+		<div class="listRB">
 		{assign var=ratings value=$arquivo->getArraySize('votes')}
 		<img onmouseout="nd();" 
 			 onmouseover="tooltip('{$ratings} {tr}voto{/tr}{if ($ratings>1 || $ratings<1) }s{/if}<br>{tr}Avaliação - entre na página do arquivo para votar{/tr}')"
 			 alt="{$arquivo->rating} estrelas"
 			 src="styles/{$style|replace:".css":""}/img/star{math equation="round(x)" x=$arquivo->rating|default:"blk"}.png"
 			 class="listRating">
-		<br />
+	
 		{tooltip name="list-baixe-arquivo" text="Copie o arquivo (para o seu computador)"}
 			<a href="el-download.php?pub={$arquivo->id}&action=downloadAll">
 				{tr}baixar{/tr}
 			</a>
 		{/tooltip}	
+<br />
 		{if $tooltipText}
-		<br />
 			{tooltip name="list-i-play" text=$tooltipText}
-				<span class="pointer" alt="" onClick="xajax_streamFile({$arquivo->id},'{$arquivo->type}', getPageSize()[0]);nd();">
-					{tr}ver{/tr}
+				<span class="pointer" alt="" onClick="xajax_streamFile({$arquivo->id},'{$arquivo->type}', getPageSize()[0]);nd();"><b>
+					{tr}ver{/tr}</b>
 				</span>
+				<br />
 			{/tooltip}
 		{/if}
 		{if $arquivo->user eq $user or $el_p_admin_gallery eq "y"}
@@ -66,7 +69,8 @@
 				</span>
 <br/>
 				<span class="mid">
-					{tr}enviado por{/tr}: <em><a href="el-user.php?view_user={$arquivo->user}">{$arquivo->user}</a></em>
+					{tr}enviado por{/tr}: <br />
+					<em><a href="el-user.php?view_user={$arquivo->user}">{$arquivo->user}</a></em>
 <br />
 					{tr}em{/tr}: <em>{$arquivo->publishDate|date_format:"%d/%m/%y"}</em>
 				</span>
@@ -75,7 +79,7 @@
 				<span class="rig">
 					{tr}tipo{/tr}: <em>{tr}{$arquivo->type}{/tr}</em>
 				</span>
-		
+		</div>
 	</div>
 	<div class="listRight">
 	<h2 class="title">
