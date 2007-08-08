@@ -1,5 +1,5 @@
 {css}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/geral/tiki-show_page.tpl,v 1.1 2007-06-14 21:52:16 garotasimpatica Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/geral/tiki-show_page.tpl,v 1.2 2007-08-08 21:57:25 garotasimpatica Exp $ *}
 
 <div {if $user_dbl eq 'y' and $dblclickedit eq 'y' and $tiki_p_edit eq 'y'}ondblclick="location.href='tiki-editpage.php?page={$page|escape:"url"}';"{/if}>	
 	<div class="wikitopline" id="wikitopline"><!--do contextualMenu onclick="cancelBubble(event)"-->
@@ -72,8 +72,9 @@
 		{/if}
 		
 		{if $feature_freetags eq 'y'}
-				{tooltip text="<b>Tags</b> dessa página"}<img src="styles/{$style|replace:".css":""}/img/iWikiTags.png" onclick="flip('tagsHide')" style="cursor:pointer">{/tooltip}
-				<span id="tagsHide" style="display:none">
+<br/>
+				<img src="styles/{$style|replace:".css":""}/img/iWikiTags.png"  style="cursor:pointer">
+				<span id="tagsHide">
 					<b>{tr}Tags{/tr}:</b>
 					{foreach from=$freetags.data item='tag'}
 						<a href="tiki-browse_freetags.php?tag={$tag.tag}">{$tag.tag}</a>&nbsp;

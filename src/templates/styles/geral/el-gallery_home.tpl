@@ -22,12 +22,12 @@
 
 <!-- Feature Wiki Begin -->
 <div id="gHomeWiki" {if $tiki_p_edit eq 'y'} ondblclick="location.href='tiki-editpage.php?page=destak'"{/if}>
-	<span id="gHomeWikiTitle">
+	<span id="gHomeWikiTitle" class="destak">
 		{tooltip name="home-flip-destaques" text="Alternar a visualização dos destaques"}
 			<img class="pointer" onclick="flip('modulegHomeWikiToggle');toggleImage(this,'{$imgChange}.png');storeState('gHomeWikiToggle')" src="styles/{$style|replace:".css":""}/img/{$imgCurrent}.png">
 		{/tooltip}
 	</span>
-	<div id="modulegHomeWikiToggle" style="display:{$display};">
+	<div id="modulegHomeWikiToggle" style="display:{$display};" class="destak">
 		{$destak}
 	</div>
 	
@@ -41,9 +41,9 @@
 </div>
 
 <!-- Feature Wiki End -->
-	
+<div style="width:80%">	
 {include file="el-gallery_list_filters.tpl"}
-
+</div>
 <div id="ajax-gListCont">
 	{include file="el-gallery_section.tpl"}
 </div>

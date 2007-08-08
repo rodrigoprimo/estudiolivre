@@ -14,11 +14,11 @@
 	</h2>
 	{if $preview eq 'y'}
 	<div id="blogPostPrev">
-		<h3>
+		
 			<span class="pointer" onclick="javascript:flip('postPrevCont');toggleImage(document.getElementById('TArrowBlogPr'),'iArrowGreyRight.png');">
 				<img id="TArrowBlogPr" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png" />{tr}Preview{/tr}
 			</span>
-		</h3>
+		
 		<div id="postPrevCont" style="display:block">
 			{assign var=coco value="teste"}
 			{php}
@@ -91,6 +91,8 @@
 				<br/>
 				{include file=freetag.tpl}
 		{/if}
+
+
 		<div class="blogPostHelp">
 			{tr}Use ...page... to separate pages in a multi-page post{/tr}
 			<br/>

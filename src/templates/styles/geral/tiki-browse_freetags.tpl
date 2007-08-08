@@ -26,7 +26,7 @@
     	{/tooltip}
     {/if}
 
-    {tooltip name="browse-freetags-all" text="Ver <strong>apenas</strong> <b>arquivos</b> com a tag"}     
+	{tooltip name="browse-freetags-all" text="Ver <strong>apenas</strong> <b>arquivos</b> com a tag"}     
 		<li class="button{if $type eq 'gallery'}Active{else}Inactive{/if} buttonInactiveRight"><a class="linkbut" href="tiki-browse_freetags.php?tag={$tag}&amp;type=gallery">{if $type eq 'gallery'}<span class="highlight">{/if}{tr}Acervo{/tr}{if $type eq 'gallery'}</span>{/if}</a></li>
 	{/tooltip}
 	<img id="listFilterImg4" alt="" src="styles/{$style|replace:".css":""}/img/bRight{if $type eq 'gallery'}Act{else}Inac{/if}.png" />
