@@ -65,7 +65,7 @@ function fileSelected(fileName, formNum) {
 function newUpload(formNum) {
 	var uploadId = Math.random().toString().replace(new RegExp(/0\./), '') + '.' + Date.now();
 	uploadIds[formNum] = uploadId;
-	setTimeout("startUploadProgress(" + formNum + ")", 0);
+	setTimeout("startUploadProgress(" + formNum + ")", 250);
 	eval("document.uploadForm" + formNum + ".UPLOAD_IDENTIFIER.setAttribute('value','" + uploadId + "')");
 	eval("document.uploadForm" + formNum + ".submit()");
 }
