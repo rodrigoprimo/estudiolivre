@@ -25,18 +25,6 @@ function smarty_block_tooltip($params, $text) {
 	    $tipName = md5($tip);
 	}
 
-	// TODO: refatorar essa __*MERDA*__ HORRIVEL!!!
-	// foi feito para que os módulos (mod-*.tpl) funcionem. mas é feio de doer.
-	if(!$tooltiplib){
-		if(!$userlib){
-			$dbTiki = &ADONewConnection($db_tiki);
-			$userlib = new UsersLib($dbTiki);
-		}
-		$feature_tooltip = $userlib->get_user_preference($user, 'feature_tooltip', 'y');
-		$feature_tooltip_max_clicks = $userlib->get_user_preference($user,'feature_tooltip_max_clicks', 5);
-		require_once("lib/tooltip/tooltiplib.php");
-		require_once("el-tooltip_ajax.php");	
-	}
  	$clicks = $tooltiplib->get_user_clicks($tipName);
  	
  	if ($feature_tooltip == 'y' && ($clicks <= $feature_tooltip_max_clicks || !$feature_tooltip_max_clicks)) {

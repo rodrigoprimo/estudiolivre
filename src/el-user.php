@@ -24,6 +24,7 @@ if (!isset($_POST['xajax']) || $_POST['xajax'] != 'upload_info') {
 	include_once ('lib/userprefs/scrambleEmail.php');
 	require_once('lib/messu/messulib.php');
 	require_once("el-gallery_ajax.php");
+	require_once("el-license_ajax.php");
 
 } else {
 	$feature_ajax = "y";
@@ -31,11 +32,7 @@ if (!isset($_POST['xajax']) || $_POST['xajax'] != 'upload_info') {
 	$permission = false;
 }
 
-require_once('lib/ajax/ajaxlib.php');
-
 require_once("el-user_ajax.php");
-require_once("el-license_ajax.php");
-
 $ajaxlib->processRequests();
 
 require_once('lib/blogs/bloglib.php');

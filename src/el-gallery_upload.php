@@ -10,11 +10,10 @@ if (!isset($_POST['xajax']) || $_POST['xajax'] != 'upload_info') {
 }  else {
         session_start();
         $feature_ajax = "y";
+        require_once("lib/ajax/ajaxlib.php");
 }
 
-require_once("lib/ajax/ajaxlib.php");
 require_once("el-gallery_upload_ajax.php");
-
 $ajaxlib->processRequests();
 
 // Now check permissions to access this page

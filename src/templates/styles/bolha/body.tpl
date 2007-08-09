@@ -1,7 +1,9 @@
 <!-- body.tpl begin -->
 
 
-<body>
+<body{* load tooltip images first *}
+		onLoad="preloadImgsNow('{$style|replace:".css":""}')"
+	 {* --- *}>
 	
   {include file="el-lightbox.tpl"}
 
