@@ -1,5 +1,5 @@
 {css extra=list,tiki-view_forum_thread}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/geral/tiki-view_forum.tpl,v 1.3 2007-08-08 21:57:25 garotasimpatica Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/geral/tiki-view_forum.tpl,v 1.4 2007-08-13 04:06:37 garotasimpatica Exp $ *}
 <div id="viewForum">
 <h1>
 	{tr}Forum{/tr}: 
@@ -222,18 +222,18 @@ a moderator approves it.{/tr}</small>
   </td>
   {/if*}  
   
-  <td class="{cycle advance=false}">
-  <table width="100%"><tr><td>
+  <td class="tableTitle">
+  <div width="100%">
   <a {if $comments_coms[ix].is_marked}class="forumnameread"{else}class="forumname"{/if}  href="tiki-view_forum_thread.php?comments_parentId={$comments_coms[ix].threadId}&amp;topics_threshold={$comments_threshold}&amp;topics_offset={math equation="x + y" x=$comments_offset y=$smarty.section.ix.index}&amp;topics_sort_mode={$comments_sort_mode}&amp;topics_find={$comments_find}&amp;forumId={$forum_info.forumId}">{$comments_coms[ix].title}</a>
   {if $forum_info.topic_summary eq 'y'}
   <br /><small>{$comments_coms[ix].summary|truncate:240:"...":true}</small>     
   {/if}
-  </td>
   
-  <td style="text-align:right;" nowrap="nowrap">
+  
+  <div nowrap="nowrap">
   {if count($comments_coms[ix].attachments) or $tiki_p_admin_forum eq 'y'}
   {if count($comments_coms[ix].attachments)}
-  	<img src='img/icons/attachment.gif' alt='attachments' />
+  	<br/><img src='img/icons/attachment.gif' alt='attachments' />
   {/if}
   {else}
   	&nbsp;
@@ -248,49 +248,48 @@ a moderator approves it.{/tr}</small>
      class="admlink"><img src="img/icons2/delete.gif" border="0" width="16" height="16"  alt='{tr}remove{/tr}' title='{tr}remove{/tr}' /></a>
   {/if}
 
-  </td>   
-  
-  </tr></table>
+</div>
   </td>
   {if $forum_info.topics_list_replies eq 'y'}
-  	<td style="text-align:right;" class="{cycle advance=false}">{$comments_coms[ix].replies}</td>
+  	<td>{$comments_coms[ix].replies}</td>
   {/if}
   {if $forum_info.topics_list_reads eq 'y'}
-  	<td style="text-align:right;" class="{cycle advance=false}">{$comments_coms[ix].hits}</td>
+  	<td>{$comments_coms[ix].hits}</td>
   {/if}
   {if $forum_info.topics_list_lastpost eq 'y'}
-  	  <td class="{cycle advance=false}">{$comments_coms[ix].lastPost|tiki_short_datetime} {*date_format:"%b %d [%H:%M]" *}
+	<td>{$comments_coms[ix].lastPost|tiki_short_datetime} {*date_format:"%b %d [%H:%M]" *}
 	  {if $comments_coms[ix].replies}
 	  <br />
-	  <small><i>{$comments_coms[ix].lastPostData.title}</i> {tr}by{/tr} {$comments_coms[ix].lastPostData.userName}</small>     
+	<small>{$comments_coms[ix].lastPostData.title} {tr}by{/tr} {$comments_coms[ix].lastPostData.userName}</small>     
 	  {/if}
-	  </td>
+	</td>
   {/if}
   {if $forum_info.topics_list_author eq 'y'}
-  	<td class="{cycle}">{$comments_coms[ix].userName|userlink}</td>
+  	<td>{$comments_coms[ix].userName|userlink}</td>
   {/if}
 </tr>
 {sectionelse}
-<tr>
-	<td class="odd" colspan="8">{tr}No topics yet{/tr}</td>
-</tr>
+<tr><td colspan="8">{tr}No topics yet{/tr}</td></tr>
 {/section}
 {if $tiki_p_admin_forum eq 'y'}
 	<tr>
 		<td colspan='18'>&nbsp;</td>
 	</tr>
 	<tr>
-		<td class="heading" colspan='18'>{tr}moderator actions{/tr}</td>
-	</tr>
-	<tr>	
-		<td class="odd" colspan="3">
-		<input type="image" name="movesel" src="img/icons/topic_move.gif" border='0' alt='{tr}move{/tr}' title='{tr}move selected topics{/tr}' />
-		<input type="image" name="unlocksel" src="img/icons/topic_unlock.gif" border='0' alt='{tr}unlock{/tr}' title='{tr}unlock selected topics{/tr}' />
-		<input type="image" name="locksel" src="img/icons/topic_lock.gif" border='0' alt='{tr}lock{/tr}' title='{tr}lock selected topics{/tr}' />
-		<input type="image" name="delsel" src="img/icons/topic_delete.gif" border='0' alt='{tr}delete{/tr}' title='{tr}delete selected topics{/tr}' />
-		<input type="image" name="splitsel" src="img/icons/topic_split.gif" border='0' alt='{tr}merge{/tr}' title='{tr}merge selected topics{/tr}' />
+		<td class="heading" colspan='5'>
+		
+		
+		
+		{tr}moderator actions{/tr}:
+		<br/>
+		
+		<input type="image" name="movesel" src="styles/{$style|replace:".css":""}/img/iWikiMove.png"  alt='{tr}move{/tr}' title='{tr}move selected topics{/tr}' />
+		<input type="image" name="unlocksel" src="styles/{$style|replace:".css":""}/img/iWikiUnLock.png" alt='{tr}unlock{/tr}' title='{tr}unlock selected topics{/tr}' />
+		<input type="image" name="locksel" src="styles/{$style|replace:".css":""}/img/iWikiLock.png" alt='{tr}lock{/tr}' title='{tr}lock selected topics{/tr}' />
+		<input type="image" name="delsel" src="styles/{$style|replace:".css":""}/img/iWikiRemove.png" alt='{tr}delete{/tr}' title='{tr}delete selected topics{/tr}' />
+		<input type="image" name="splitsel" src="styles/{$style|replace:".css":""}/img/iWikiMerge.png" alt='{tr}merge{/tr}' title='{tr}merge selected topics{/tr}' />
 		</td>
-		<td style="text-align:right;" class="odd" colspan="10">
+		<td class="heading" colspan="10">
 		{if $reported > 0}
 		<small><a class="link" href="tiki-forums_reported.php?forumId={$forumId}">{tr}reported messages:{/tr}{$reported}</a></small><br />
 		{/if}
@@ -315,7 +314,7 @@ a moderator approves it.{/tr}</small>
 	{/if}
 	{if $smarty.request.splitsel_x} 
 	<tr>
-		<td class="odd" colspan="18">
+		<td colspan="18">
 		{tr}Merge into topic{/tr}:
 		<select name="mergetopic">
 			{section name=ix loop=$comments_coms}
@@ -363,11 +362,12 @@ a moderator approves it.{/tr}</small>
 		</div>
 		
 {if $forum_info.forum_last_n > 0}
-	{* Last n titles *}
-	{cycle values="odd,even" print=false}
+
 	<table class="normal">
 	<tr>
-	 	<td class="heading">{tr}Last{/tr} {$forum_info.forum_last_n} {tr}topics in this forum{/tr}</td>
+	 	<td class="heading">
+		<br />
+		{$forum_info.forum_last_n} {tr}last topics in this forum{/tr}</td>
 	 	{section name=ix loop=$last_comments}
 	 	<tr>
 	 		<td class="{cycle}">
@@ -395,7 +395,8 @@ a moderator approves it.{/tr}</small>
     <input type="hidden" name="comments_threshold" value="{$comments_threshold|escape}" />
     <input type="hidden" name="comments_sort_mode" value="{$comments_sort_mode|escape}" />
     <input type="hidden" name="forumId" value="{$forumId|escape}" />
-    <small>{tr}Show posts{/tr}:</small>
+    {tr}Show posts{/tr}:
+    <br />
     <select name="time_control" onchange="javascript:document.getElementById('time_control').submit();">
     	<option value="" {if $smarty.request.time_control eq ''}selected="selected"{/if}>{tr}All posts{/tr}</option>
     	<option value="3600" {if $smarty.request.time_control eq 3600}selected="selected"{/if}>{tr}Last hour{/tr}</option>

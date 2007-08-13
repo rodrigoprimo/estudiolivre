@@ -1,6 +1,6 @@
 {css extra=el-gallery_pagination}
 <!-- List Options Begin -->
-<table id="listOptions">
+<table style="width:100%" id="listOptions">
 <tr>
 <!-- Filters Begin -->
 	<td class="left">
@@ -26,8 +26,7 @@
 		{/tooltip}
 	
 	</td>
-	</tr>
-	<tr>
+	
 
 
 	<td><div id="ajax-listNav" class="listNav">{include file="el-gallery_pagination.tpl"}</div></td>

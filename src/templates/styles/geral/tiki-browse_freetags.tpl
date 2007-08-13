@@ -15,7 +15,7 @@
 <h2>{tr}Ítens com a tag{/tr}: <span id="currentTag2">{$tag}</span></h2>
 
 <ul class="listFiltersButtons">
-	<img id="listFilterImg0" alt="" src="styles/{$style|replace:".css":""}/img/bLeft{if !$type}Act{else}Inac{/if}.png" />	
+		
 	{tooltip name="browse-freetags-all" text="Ver todos os Itens com a tag"}
 		<li class="button{if !$type}Active{else}Inactive{/if}"><a class="linkbut {if $type eq ''} highlight{/if}"  href="tiki-browse_freetags.php?tag={$tag}" id="typeAll">{tr}All{/tr}</a></li>
 	{/tooltip}
@@ -29,7 +29,7 @@
 	{tooltip name="browse-freetags-all" text="Ver <strong>apenas</strong> <b>arquivos</b> com a tag"}     
 		<li class="button{if $type eq 'gallery'}Active{else}Inactive{/if} buttonInactiveRight"><a class="linkbut" href="tiki-browse_freetags.php?tag={$tag}&amp;type=gallery">{if $type eq 'gallery'}<span class="highlight">{/if}{tr}Acervo{/tr}{if $type eq 'gallery'}</span>{/if}</a></li>
 	{/tooltip}
-	<img id="listFilterImg4" alt="" src="styles/{$style|replace:".css":""}/img/bRight{if $type eq 'gallery'}Act{else}Inac{/if}.png" />
+	
 </ul>
      
 {if $cantobjects eq 0}

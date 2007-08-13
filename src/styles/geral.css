@@ -48,7 +48,7 @@ td {
 	position:absolute;
 	left:250px;
 	top:150px;
-	width:40%;
+	width:80%;
 	margin:0px;
 }
 
@@ -142,7 +142,7 @@ td {
 /* ultimas alteraçoes */
 .editdate{
 	position:absolute;
-	top:-30px;
+	top:-70px;
 	left:350px;
 	width:150px;
 	text-align:left;
@@ -161,5 +161,28 @@ td {
 }
 
 .none {
+	display:none;
+}
+
+.ar {
+	position:absolute;
+	top:0;
+	right:0;
+	
+}
+
+.mini {
+	font-size:8pt;
+	line-height:8pt
+}
+
+#tiki-midNaoWiki{
+	width:400px;
+	overflow:visible;
+	
+	
+}
+
+#overlay {
 	display:none;
 }

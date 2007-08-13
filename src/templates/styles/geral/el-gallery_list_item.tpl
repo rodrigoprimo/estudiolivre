@@ -19,7 +19,7 @@
 <div class="listItem">
 	<div class="listLeft">
 
-		<a href="el-gallery_view.php?arquivoId={$arquivo->id}">
+		<a class="listThumb" href="el-gallery_view.php?arquivoId={$arquivo->id}">
 			{if $arquivo->thumbnail}
 				<img src="repo/{$arquivo->thumbnail|escape:'url'}" {if $isIE}width=100 height=100{/if}>
 			{else}
@@ -35,50 +35,30 @@
 			 class="listRating">
 	
 		{tooltip name="list-baixe-arquivo" text="Copie o arquivo (para o seu computador)"}
-			<a href="el-download.php?pub={$arquivo->id}&action=downloadAll">
-				{tr}baixar{/tr}
-			</a>
-		{/tooltip}	
-<br />
-		{if $tooltipText}
-			{tooltip name="list-i-play" text=$tooltipText}
+				<a href="el-download.php?pub={$arquivo->id}&action=downloadAll">
+					{tr}baixar{/tr}
+				</a>{/tooltip}<br />
+				{if $tooltipText}
+				{tooltip name="list-i-play" text=$tooltipText}
 				<span class="pointer" alt="" onClick="xajax_streamFile({$arquivo->id},'{$arquivo->type}', getPageSize()[0]);nd();"><b>
 					{tr}ver{/tr}</b>
 				</span>
-				<br />
-			{/tooltip}
-		{/if}
-		{if $arquivo->user eq $user or $el_p_admin_gallery eq "y"}
-<br />
-			{tooltip name="list-apagar-arquivo-acervo" text="Apagar esse arquivo do acervo"}
-				<span class="pointer" onClick="deleteFile({$arquivo->id},{$dontAskDelete},0);nd();">{tr}apagar{/tr}</span><br />
-			{/tooltip}
-		{/if}
+				<br /><br />
+				{/tooltip}{/if}
+				{if $arquivo->user eq $user or $el_p_admin_gallery eq "y"}{tooltip name="list-apagar-arquivo-acervo" text="Apagar esse arquivo do acervo"}
+				<span class="pointer" onClick="deleteFile({$arquivo->id},{$dontAskDelete},0);nd();">
+					{tr}apagar{/tr}
+				</span><br />{/tooltip}{/if}
 		
-				<span class="lef">
-					{tr}baixado{/tr}: <em>{$file->downloads} {if $file->downloads == 1 }{tr}vez{/tr}{else}{tr}vezes{/tr}{/if}</em>
+				<p class="mini">
+					{tr}baixado{/tr}: {$file->downloads} {if $file->downloads == 1 }{tr}vez{/tr}{else}{tr}vezes{/tr}{/if}<br />
 					{if $tooltipText}
-<br />
-						{tr}visto{/tr}: <em>{$file->streams} {if $file->streams == 1 }{tr}vez{/tr}{else}{tr}vezes{/tr}{/if}</em>
-					{/if}
-				</span>
-<br />
-				
-				<span class="lef">
-					{tr}autor{/tr}: <em>{$arquivo->author}</em>
-				</span>
-<br/>
-				<span class="mid">
-					{tr}enviado por{/tr}: <br />
-					<em><a href="el-user.php?view_user={$arquivo->user}">{$arquivo->user}</a></em>
-<br />
-					{tr}em{/tr}: <em>{$arquivo->publishDate|date_format:"%d/%m/%y"}</em>
-				</span>
-				
-<br/>
-				<span class="rig">
-					{tr}tipo{/tr}: <em>{tr}{$arquivo->type}{/tr}</em>
-				</span>
+					{tr}visto{/tr}: {$file->streams} {if $file->streams == 1 }{tr}vez{/tr}{else}{tr}vezes{/tr}{/if}{/if}<br />
+					{tr}autor{/tr}: {$arquivo->author}<br/>
+					{tr}enviado por{/tr} <a href="el-user.php?view_user={$arquivo->user}">{$arquivo->user}</a><br />					
+					{$arquivo->publishDate|date_format:"%d/%m/%y"}<br/>
+					{tr}tipo{/tr}: {tr}{$arquivo->type}{/tr}
+				</p>
 		</div>
 	</div>
 	<div class="listRight">

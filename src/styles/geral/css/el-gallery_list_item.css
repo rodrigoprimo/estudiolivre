@@ -16,7 +16,7 @@
 
 .listRB {
 	position:relative;
-	top:10px;
+	top:-15px;
 }
 
 .listThumb {
@@ -30,16 +30,17 @@
 	margin:0.3em;
 }
 
-.listLeft span {
-	font-size:8pt;
-	line-height:8pt
-}
+
 
 .listRight {
 
 	width:10em;
 	float:left;
 	margin:0.3em;
+}
+
+h2 .listRight {
+	font-size:8px;
 }
 
 .listRight span{
