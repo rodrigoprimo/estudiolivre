@@ -91,7 +91,7 @@ class ImageFile extends FileReference {
 		}
 		
 		$thumbName = 'thumb_' . $this->fileName;
-		$thumbName = preg_replace('/\.(.+?)$/', 'png', $thumbName);
+		$thumbName = preg_replace('/\.(.+?)$/', '.png', $thumbName);
 		
 		$fp = fopen($this->baseDir . $thumbName, "w");
 		if (!$fp) return;

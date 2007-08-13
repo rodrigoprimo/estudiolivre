@@ -1,6 +1,6 @@
 <div class="file">
 	{if $file->thumbnail}
-		<img class="fl" id="ajax-thumbnail" src="repo/{$file->thumbnail|escape:'url'}" height="100" width="100">
+		<img class="fl" id="ajax-thumbnail" src="{$file->baseDir}{$file->thumbnail|escape:'url'}" height="100" width="100">
 	{else}
 		<img class="fl" id="ajax-thumbnail" src="styles/{$style|replace:".css":""}/img/iThumb{$file->type}.png" height="100" width="100">
 	{/if}
