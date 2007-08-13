@@ -94,7 +94,7 @@ function finishUpload(formNum) {
 		document.getElementById('js-statusBar' + formNum).className = "statusBar statusBarGo";
 		document.getElementById('js-statusBar' + formNum).style.width = originalWidth + 'px';
 		document.getElementById('js-percent' + formNum).innerHTML = '100%';
-		eval("var fileName = document.uploadForm" + formNum + ".arquivo.value");
+		eval("var fileName = document.uploadForm" + formNum + ".arquivo" + formNum+ ".value");
 		document.getElementById('js-file' + formNum).innerHTML = fileName;
 		if (formNum == "0" && thumbId == null && (tipoSelecionado == 'Imagem' || tipoSelecionado == 'Video')) {
 			setTimeout('document.getElementById("ajax-thumbnail").src = "styles/bolha/img/iProgress.gif"',100);
