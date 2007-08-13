@@ -1,9 +1,8 @@
-﻿/* tags gerais */
+/* tags gerais */
 * {
-	padding:0;
 	margin:0;
+	padding:0;
 }
-
 BODY {
 	font-family: arial,verdana,helvetica,lucida,sans-serif; /*BitStream Vera Sans, Verdana;*/
 	font-size:10pt;
