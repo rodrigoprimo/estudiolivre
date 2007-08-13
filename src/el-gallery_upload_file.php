@@ -28,10 +28,12 @@ if ($arquivoId && isset($_FILES['arquivo']) && !empty($_FILES['arquivo']['name']
 		
 		if ($arquivo->allFile)
 			unlink($arquivo->allFile);
+		
+		$formNum = $_REQUEST['formNum'];
+		echo "<script language=\"javaScript\">parent.finishUpload($formNum);</script>";
 	}
 
 	if ($errorMsg) {
-		echo $errorMsg;exit;
 		echo "<script language=\"javaScript\">parent.setUploadErrorMsg('$errorMsg');</script>";
 	}
 

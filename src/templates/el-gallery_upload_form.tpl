@@ -1,6 +1,6 @@
-<iframe name="uploadTarget{$i}" style="display:none" onLoad="finishUpload({$i});"></iframe>
+<iframe id="idUploadTarget{$i}" name="uploadTarget{$i}" style="display:none"></iframe>
 	
-<form name="uploadForm{$i}" target="uploadTarget{$i}" action="el-gallery_upload_file.php" method="post" enctype="multipart/form-data">
+<form name="uploadForm{$i}" target="uploadTarget{$i}" action="el-gallery_upload_file.php?formNum={$i}" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="UPLOAD_IDENTIFIER" value="">
 	<input type="hidden" name="arquivoId" value="{$arquivoId}">
 	<span id="js-file{$i}"><input type="file" name="arquivo" onChange="fileSelected(this.value, {$i});"></span>
