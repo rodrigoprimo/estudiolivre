@@ -87,7 +87,7 @@ function updateUploadInfo(formNum) {
 // chamada no final do upload do arquivo
 // para o loop de progrees meter e puxa infos automaticas
 function finishUpload(formNum) {
-	alert(formNum);if (uploadTimeouts[formNum]) {
+	if (uploadTimeouts[formNum]) {
 		clearTimeout(uploadTimeouts[formNum]);
 		uploadTimeouts[formNum] = 0;
 		document.getElementById('js-cancel' + formNum).innerHTML = '';
