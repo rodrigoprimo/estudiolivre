@@ -71,10 +71,14 @@
 <div id="js-browse">
 	<span id="ajax-uploadForms">
 		{foreach from=$arquivo->filereferences item=file key=i}
-			{include file="el-gallery_upload_form.tpl" i=$i}
+			<span id="uploadFormCont{$i}">
+				{include file="el-gallery_upload_form.tpl" i=$i}
+			</span>
 			<script>uploadI++;</script>
 		{foreachelse}
-			{include file="el-gallery_upload_form.tpl" i=0}
+			<span id="uploadFormCont0">
+				{include file="el-gallery_upload_form.tpl" i=0}
+			</span>
 			<script>uploadI++;</script>
 		{/foreach}
 	</span>

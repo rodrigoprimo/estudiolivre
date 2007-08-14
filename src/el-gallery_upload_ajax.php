@@ -15,7 +15,8 @@ function newUploadForm($i) {
 	$smarty->assign('arquivoId', $arquivo->id);
 	
 	$objResponse->addScript("uploadI++");
-	$objResponse->addAppend('ajax-uploadForms', 'innerHTML', $smarty->fetch("el-gallery_upload_form.tpl"));
+	$objResponse->addInsertAfter("uploadFormCont" . ($i-1), "span", "uploadFormCont" . $i);
+	$objResponse->addAssign("uploadFormCont" . $i, 'innerHTML', $smarty->fetch("el-gallery_upload_form.tpl"));
 	return $objResponse;
 }
 
