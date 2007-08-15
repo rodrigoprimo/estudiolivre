@@ -1,62 +1,61 @@
-#topContainer {
+#topMenuCubesContainer {
+	position:absolute;
+	top:20px;
+	left:250px;
+	text-align:left;
 }
+
 
 #logo {
+	position:absolute;
+	top:10px;
+	left:50px;
 }
 
-/*os links do menu do site geral*/
 #topMenuGeneral {
-	
+	position:absolute;
+	top:20px;
+	left:350px;
+	width:300px;
+	text-align:left;
 }
 
-#topMenu {
+#topSubMenu {
+	position:absolute;
+	top:20px;
+	left:450px;
+	width:300px;
+	text-align:left;
 }
 
-#topMenu A {
+/* ultimas alteraçoes */
+.editdate{
+	position:absolute;
+	top:-50px;
+	left:350px;
+	width:150px;
+	text-align:left;
+	color:#666666;
+	font-size:10px;
+	line-height:10px;
 }
 
-/*a parte dos labs*/
-
-#grafilab, #videolab, #audiolab, #acervolivre {
-}
-#audiolab {
-}
-#videolab {
-}
-#grafilab {
+#audiolab:hover {
 
 }
-#acervolivre {
-	
+#videolab:hover {
+}
+#grafilab:hover {
+
+}
+#acervolivre:hover {
+	background-color:#aaaaaa;
 }
 
 /*a busca*/
+
 #search {
-	}
-
-.searchForm {
-}
-
-.searchOptions {
-}
-
-.searchOptions li {
-}
-
-.searchOptions li a {
-}
-
-.searchOptions li.selected a {
-}
-
-#search .searchForm:hover .searchOptions {
-}
-
-#search .searchForm:hover .searchMore {
-}
-
-.searchMore span {
-}
-
-#searchField, #searchFieldResults {
+	position:absolute;
+	top:25px;
+	left:600px;
 }
