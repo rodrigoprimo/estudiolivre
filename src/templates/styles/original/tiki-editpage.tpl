@@ -188,6 +188,8 @@
 <tr><td class="formcolor">{tr}Upload picture{/tr}</td><td class="formcolor">
 <input type="hidden" name="MAX_FILE_SIZE" value="1000000000">
 <input name="picfile1" type="file">
+<div id="new_img_form"></div>
+<a href="javascript:addImgForm()" onclick="needToConfirm = false;">{tr}Add another image{/tr}</a>
 </td></tr>
 {/if}
 {if $feature_wiki_icache eq 'y'}

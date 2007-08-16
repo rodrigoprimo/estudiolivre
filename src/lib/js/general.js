@@ -1,4 +1,4 @@
-// $Header: /home/rodrigo/devel/arca/estudiolivre/src/lib/js/general.js,v 1.3 2007-08-08 20:21:00 nano Exp $
+// $Header: /home/rodrigo/devel/arca/estudiolivre/src/lib/js/general.js,v 1.4 2007-08-16 21:27:25 sampaioprimo Exp $
 var feature_no_cookie = 'n';
 
 function browser() {
@@ -735,8 +735,26 @@ function insertImg(elementId, fileId, oldfileId) {
     }
     // @todo - here's a hack: we know its ending up in img/wiki_up. 
     //      replace with dyn. variable once in a while to respect the tikidomain 
-    str = "{img src=\"img/wiki_up/" + filename + "\" }";
+    str = "{img src=\"img/wiki_up/" + filename + "\" }\n";
     insertAt(elementId, str);
+}
+
+/* add new upload image form in page edition */
+var img_form_count = 2;
+function addImgForm() {
+       var new_text = document.createElement('span');
+       new_text.setAttribute('id','picfile' + img_form_count);
+       new_text.innerHTML = '<input name=\'picfile' + img_form_count + '\' type=\'file\' onchange=\'javascript:insertImg("editwiki","picfile' + img_form_count + '","hasAlreadyInserted")\'/><br />';
+       document.getElementById('new_img_form').appendChild(new_text);
+
+       var new_input = document.createElement('input');
+       new_input.setAttribute('type', 'hidden');
+       new_input.setAttribute('name', 'img_form_count');
+       new_input.setAttribute('value', img_form_count);
+       document.getElementById('new_img_form').appendChild(new_input);
+
+       needToConfirm = true;
+       img_form_count ++;
 }
 
 /* opens wiki 3d browser */
