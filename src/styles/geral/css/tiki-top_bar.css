@@ -1,10 +1,16 @@
-#topMenuCubesContainer {
+ï»¿#topMenuCubesContainer {
 	position:absolute;
 	top:20px;
 	left:250px;
 	text-align:left;
+	background-color:#008800;
+	color:#ffffff;
+	outline: 1px dotted #aaaaaa;
 }
 
+#topMenuCubesContainer a {
+	color:#ffffff;
+}
 
 #logo {
 	position:absolute;
@@ -28,7 +34,7 @@
 	text-align:left;
 }
 
-/* ultimas alteraçoes */
+/* ultimas alteracoes */
 .editdate{
 	position:absolute;
 	top:-50px;
@@ -40,16 +46,20 @@
 	line-height:10px;
 }
 
-#audiolab:hover {
 
+
+#audiolab:hover {
+background-color:#00ff00;color: #ffffff
 }
 #videolab:hover {
-}
+	background-color:#00ff00;
+	color: #ffffff
+	}
 #grafilab:hover {
-
+background-color:#00ff00;color: #ffffff
 }
 #acervolivre:hover {
-	background-color:#aaaaaa;
+	background-color:#00ff00;color: #ffffff
 }
 
 /*a busca*/

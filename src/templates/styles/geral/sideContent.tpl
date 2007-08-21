@@ -1,4 +1,4 @@
-{css extra='modules'}
+﻿{css extra='modules'}
 <div id="sideContent" class="menu"> <!--sideContent..css-->
   {if $category eq "Áudio"}
   {********AUDIO*********}
@@ -67,7 +67,7 @@
   {elseif $category eq "Vídeo"}
   {*********VIDEO********}
     <a href="tiki-index.php?page=Vídeo&bl">
-    <h1 class="localMenu">V�deoLab</h1>
+    <h1 class="localMenu">VídeoLab</h1>
     <!--<img src="styles/{$style|replace:".css":""}/img/logoVideo.png">--></a>
 <div id="localMenu">
 <ul>

@@ -1,4 +1,4 @@
-{* para os tooltips *}
+﻿{* para os tooltips *}
 {assign var=file value=$arquivo->filereferences[0]}
 {if $arquivo->type eq "Video"}
 	{if preg_match("/.*\.ogg$/i", $file->fileName)}
@@ -18,14 +18,14 @@
 
 <div class="listItem">
 	<div class="listLeft">
-
+		<div class="thumb">
 		<a class="listThumb" href="el-gallery_view.php?arquivoId={$arquivo->id}">
 			{if $arquivo->thumbnail}
 				<img src="repo/{$arquivo->thumbnail|escape:'url'}" {if $isIE}width=100 height=100{/if}>
 			{else}
 				<img src="styles/{$style|replace:".css":""}/img/iThumb{$arquivo->type}.gif">
 			{/if}
-		</a>
+		</a></div>
 		<div class="listRB">
 		{assign var=ratings value=$arquivo->getArraySize('votes')}
 		<img onmouseout="nd();" 
