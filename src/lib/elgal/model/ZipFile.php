@@ -67,6 +67,7 @@ class ZipFile extends FileReference {
 			chdir($this->baseDir);
 			exec(escapeshellcmd($this->commandLine . $this->fileName), $out, $ret_error);
 			chdir($pwd);
+			$files = array();
 			if (!$ret_error) {
 				if ($this->commandLine == "unzip ") $out = $this->parseUnzipOutput($out);
 				foreach ($out as $key => $fileName) {
@@ -74,13 +75,13 @@ class ZipFile extends FileReference {
 						if (function_exists('mime_content_type')) $type = mime_content_type($fileName);
 						else $type = '';
 						$fields = array('type' => $type,
-										'size' => filesize($this->fullPath()),
+										'size' => filesize($this->baseDir . $fileName),
 										'publicationId' => $this->publicationId,
 										'name' => $fileName,
 										'tmp_name' => $fileName);
-						$fileClass = FileReference::getSubClass($fileName);
+						$fileClass = FileReference::getSubClass($fileName, $this->baseDir . $fileName);
 						require_once($fileClass . ".php");
-						$file = new $fileClass($fields);
+						$files[] =& new $fileClass($fields);
 					} else {
 						unset($out[$key]);
 					}
@@ -88,7 +89,7 @@ class ZipFile extends FileReference {
 			}
 			$this->publication->update(array('allFile' => $this->fullPath()));
 			$this->delete(false);
-			return $out;
+			return $files;
 		}
 	}
 

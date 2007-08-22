@@ -18,28 +18,28 @@ function setPublication(id) {
 	arquivoId = id;
 	setRequestUri(id);
 	document.uploadForm0.arquivoId.value = arquivoId;
-	document.thumbForm.arquivoId.value = arquivoId;
+	document.thumbFormM.arquivoId.value = arquivoId;
 }
 
 // funcoes de lidar com o tipo
 var tipoSelecionado = false;
 function acendeTipo(tipo) {
 	if (!tipoSelecionado) {
-		document.getElementById("js-icone" + tipo).src = "styles/bolha/img/iUp" + tipo + ".png";
+		document.getElementById("js-icone" + tipo).src = "styles/"+style+"/img/iUp" + tipo + ".png";
 	}
 }
 function apagaTipo(tipo) {
 	if (!tipoSelecionado) {
-		document.getElementById("js-icone" + tipo).src = "styles/bolha/img/iUp" + tipo + "Off.png";
+		document.getElementById("js-icone" + tipo).src = "styles/"+style+"/img/iUp" + tipo + "Off.png";
 	}
 }
 function selecionaTipo(tipo) {
 	if (tipoSelecionado && !arquivoId) {
-		document.getElementById("js-icone" + tipoSelecionado).src = "styles/bolha/img/iUp" + tipoSelecionado + "Off.png";
+		document.getElementById("js-icone" + tipoSelecionado).src = "styles/"+style+"/img/iUp" + tipoSelecionado + "Off.png";
 	}
 	if (!arquivoId) {
 		tipoSelecionado = tipo;
-		document.getElementById("js-icone" + tipo).src = "styles/bolha/img/iUp" + tipo + ".png";
+		document.getElementById("js-icone" + tipo).src = "styles/"+style+"/img/iUp" + tipo + ".png";
 		show('js-browse');
 		hide('js-pending');
 	} else {
@@ -52,7 +52,7 @@ function selecionaTipo(tipo) {
 function fileSelected(fileName, formNum) {
 	if (!arquivoId) {
 		show('js-desc');
-    	document.getElementById('ajax-thumbnail').src = 'styles/bolha/img/iThumb'+tipoSelecionado+'.png';
+    	document.getElementById('js-thumbnailM').src = 'styles/"+style+"/img/iThumb'+tipoSelecionado+'.png';
     	xajax_create_file(tipoSelecionado, fileName, formNum);
 	} else {
 		xajax_validateUpload(fileName, formNum);
@@ -86,23 +86,21 @@ function updateUploadInfo(formNum) {
 
 // chamada no final do upload do arquivo
 // para o loop de progrees meter e puxa infos automaticas
-function finishUpload(formNum) {
-	if (uploadTimeouts[formNum]) {
-		clearTimeout(uploadTimeouts[formNum]);
-		uploadTimeouts[formNum] = 0;
-		document.getElementById('js-cancel' + formNum).innerHTML = '';
-		document.getElementById('js-statusBar' + formNum).className = "statusBar statusBarGo";
-		document.getElementById('js-statusBar' + formNum).style.width = originalWidth + 'px';
-		document.getElementById('js-percent' + formNum).innerHTML = '100%';
-		eval("var fileName = document.uploadForm" + formNum + ".arquivo" + formNum+ ".value");
-		document.getElementById('js-file' + formNum).innerHTML = fileName;
-		if (formNum == "0" && thumbId == null && (tipoSelecionado == 'Imagem' || tipoSelecionado == 'Video')) {
-			setTimeout('document.getElementById("ajax-thumbnail").src = "styles/bolha/img/iProgress.gif"',100);
-			xajax_generate_thumb();
-		}
-		if (formNum == "0")
-			xajax_get_file_info();
+function finishedUpload(formNum) {
+	clearTimeout(uploadTimeouts[formNum]);
+	uploadTimeouts[formNum] = 0;
+	document.getElementById('js-cancel' + formNum).innerHTML = '';
+	document.getElementById('js-statusBar' + formNum).className = "statusBar statusBarGo";
+	document.getElementById('js-statusBar' + formNum).style.width = originalWidth + 'px';
+	document.getElementById('js-percent' + formNum).innerHTML = '100%';
+	eval("var fileName = document.uploadForm" + formNum + ".arquivo" + formNum+ ".value");
+	document.getElementById('js-file' + formNum).innerHTML = fileName;
+	if (formNum == "0" && thumbId == null && (tipoSelecionado == 'Imagem' || tipoSelecionado == 'Video')) {
+		setTimeout('document.getElementById("js-thumbnailM").src = "styles/"+style+"/img/iProgress.gif"',100);
+		xajax_generate_thumb();
 	}
+	if (formNum == "0")
+		xajax_get_file_info();
 }
 
 // cancela um upload em progresso
@@ -169,7 +167,7 @@ function updateProgressMeter(uploadInfo, formNum) {
 // fim do ajax
 
 // restauracao de arquivos pendentes
-function restoreForm (id, tipo, arquivos, thumbnail) {
+function restoreForm (id, tipo, arquivos, thumbnail, path) {
 	selecionaTipo(tipo);
 	arquivoId = id;
 	setRequestUri(id);
@@ -181,10 +179,8 @@ function restoreForm (id, tipo, arquivos, thumbnail) {
 		document.getElementById('js-file' + i).innerHTML = arquivos[i];
 	}
 	if (thumbnail) {
-		document.getElementById('ajax-thumbnail').src = 'repo/' + thumbnail;
+		document.getElementById('js-thumbnailM').src = path +thumbnail;
 	} else {
-		document.getElementById('ajax-thumbnail').src = 'styles/bolha/img/iThumb' + tipo + '.png';
+		document.getElementById('js-thumbnailM').src = 'styles/'+style+'/img/iThumb' + tipo + '.png';
 	}
-	document.thumbForm.arquivoId.value = arquivoId;
-	//xajax_restoreEdit();
 }

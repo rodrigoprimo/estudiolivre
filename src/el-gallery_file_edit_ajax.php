@@ -68,39 +68,6 @@ function editTags($tag_string) {
     
 }
 
-/* deprecated
-$ajaxlib->setPermission('commit_arquivo', $userHasPermOnFile && $arquivoId);
-$ajaxlib->registerFunction('commit_arquivo');
-function commit_arquivo() {
-	global $elgallib, $arquivoId;
-	$objResponse = new xajaxResponse();
-	
-	if ($elgallib->commit($arquivoId)) {
-		$objResponse->addScript('finishEdit()');
-	}
-	return $objResponse;
-}
-*/
-/*$ajaxlib->setPermission('rollback_arquivo', $userHasPermOnFile && $arquivoId);
-$ajaxlib->registerFunction('rollback_arquivo');
-function rollback_arquivo() {
-	global $elgallib, $arquivoId;
-	
-	$objResponse = new xajaxResponse();
-	
-	if ($elgallib->rollback($arquivoId)) {
-		$arquivo = $elgallib->get_arquivo($arquivoId);
-		$fields = array_merge($elgallib->basic_fields, $elgallib->extension_fields);
-		foreach ($fields as $field) {
-			if (isset($arquivo[$field])) {
-				$objResponse->addScriptCall('exibeCampo',$field, $arquivo[$field]);
-			}
-		}
-		$objResponse->addScript('finishEdit()');
-	}
-	return $objResponse;
-}
-*/
 $ajaxlib->setPermission('generate_thumb', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('generate_thumb');
 function generate_thumb() {
@@ -121,50 +88,24 @@ function generate_thumb() {
 
 	return $objResponse;
 }
-/* deprecated
-$ajaxlib->setPermission('restore_edit', $userHasPermOnFile && $arquivoId);
-$ajaxlib->registerFunction('restore_edit');
-function restore_edit($arquivoId) {
-	global $user, $smarty, $freetaglib;
-	
-	$objResponse = new xajaxResponse();
-	
-	require_once("lib/persistentObj/PersistentObjectFactory.php");
-	$arquivo = PersistentObjectFactory::createObject("Publication", (int)$arquivoId);
-	
-	// permissao tem q ser dentro da funcao, pois o arquivoId dessa chamada pode nao ser
-	// o mesmo do global.
-	if (!$user || $user != $arquivo->user) {
-		return $objResponse;
-	} 
-	
-	if($arquivo->publishDate && $arquivo->type != "Texto") {
-		$templateName = 'el-gallery_metadata_' . $arquivo->type . '.tpl';
-		$smarty->assign('permission', true);
-		$content = $smarty->fetch($templateName);
-		$objResponse->addAppend('ajax-gUpMoreOptionsContent', 'innerHTML', $content);
-		$objResponse->addScript(_extractScripts($content));
-	}
-	
-	foreach ($arquivo->getFilledFields() as $field => $value) {
-  		$objResponse->addScriptCall('restoreField', $field, $value);
-  	}
-	
-	return $objResponse;
-}
-*/
 
 $ajaxlib->setPermission('expandFile', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('expandFile');
 function expandFile($fileId) {
+	
+	global $smarty;
+	
 	require_once("lib/persistentObj/PersistentObjectFactory.php");
 	$file = PersistentObjectFactory::createObject("FileReference", (int)$fileId);
 	
 	$objResponse = new xajaxResponse();
-	if ($file->actualClass == "zipfile") {
+	if ($file->actualClass == "ZipFile") {
 		$files = $file->expand();
-		print_r($files); exit;
-	    $objResponse->addAlert("lalala");    		
+		foreach ($files as $newFile) {
+			$smarty->assign('file', $newFile);
+			$objResponse->addAppend('ajax-pubFilesCont', 'innerHTML', $smarty->fetch("fileBox.tpl"));
+		}
+		$objResponse->addRemove("ajax-file$fileId");		
 	}
 
     return $objResponse;

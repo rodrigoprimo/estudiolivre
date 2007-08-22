@@ -116,8 +116,8 @@ class FileReference extends PersistentObject {
 		//php4 can't list subclasses of class, so we need to add each one here
 		require_once("AudioFile.php");require_once("ImageFile.php");require_once("VideoFile.php");require_once("ZipFile.php");
 		
-		preg_match('/\.([^.]{2,4}$)/', $fileName, $m);
-		$ext = strtolower($m[1]);
+		if (preg_match('/\.([^.]{2,4}$)/', $fileName, $m)) $ext = strtolower($m[1]);
+		else return "PlainFile";
 		
 		if (ImageFile::validateExtension($ext))
 			return "ImageFile";
@@ -141,6 +141,10 @@ class FileReference extends PersistentObject {
 
 		return "PlainFile";
 		
+	}
+	
+	function isViewable() {
+		return in_array($this->type, array("Audio", "Video", "Imagem"));
 	}
 	
 }

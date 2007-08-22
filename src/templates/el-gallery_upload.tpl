@@ -92,7 +92,7 @@
 	
 <div id="js-desc">
 
-	<img id="ajax-thumbnail" />
+	<img id="js-thumbnailM" />
 
 	<div id="tituloAutor">
 		{ajax_input permission=$permission id="title" value=$arquivo->title default="{tr}Título{/tr}" display="inline" truncate=50}
@@ -102,14 +102,14 @@
 		</span>
 	</div>
 
-	<div class="pointer flippers" onClick="flip('js-thumbForm')">{tr}outra miniatura...{/tr}</div>
-	<span id="js-thumbForm" style="display:none">
-		<iframe name="thumbUpTarget" style="display:none" onLoad="finishUpThumb();"></iframe>
-		<form name="thumbForm" target="thumbUpTarget" action="el-gallery_upload_thumb.php" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="UPLOAD_IDENTIFIER" value="thumb.{$uploadId}">
-			<input type="hidden" name="arquivoId" value="">
-			<input type="file" name="thumb" onChange="thumbSelected()" class="gUpThumbFormButton">
-			&nbsp;&nbsp;<span id="js-thumbStatus"></span>
+	<div class="pointer flippers" onClick="flip('js-thumbFormM')">{tr}outra miniatura...{/tr}</div>
+	<span id="js-thumbFormM" style="display:none">
+		<iframe name="thumbUpTargetM" style="display:none"></iframe>
+		<form name="thumbFormM" target="thumbUpTargetM" action="el-gallery_upload_thumb.php?thumbNum=M" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="UPLOAD_IDENTIFIER" value="">
+			<input type="hidden" name="arquivoId" value="{$arquivo->id}">
+			<input type="file" name="thumbM" onChange="thumbSelected('M')" class="gUpThumbFormButton">
+			&nbsp;&nbsp;<span id="js-thumbStatusM"></span>
 		</form>
 	</span>
 	<br/>
@@ -189,8 +189,7 @@
 		{foreach from=$arquivo->filereferences item=upFile}
 			files[files.length] = '{$upFile->fileName}';
 		{/foreach}
-		restoreForm({$arquivo->id}, '{$arquivo->type}', files, '{$arquivo->thumbnail}');
-		flip('fileAltered');
+		restoreForm({$arquivo->id}, '{$arquivo->type}', files, '{$arquivo->thumbnail}', '{$arquivo->fileDir()}');
 	</script>
 {/if}
 

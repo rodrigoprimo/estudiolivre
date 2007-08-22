@@ -115,7 +115,7 @@ class Publication extends PersistentObject {
 		$this->update(array('rating' => $total/$num));
 	}
 	
-	function uploadThumb($fileName, $realName) {
+	function uploadThumb($fileName, $forFile = -1) {
 		
 		global $tikilib;
 		
@@ -176,7 +176,10 @@ class Publication extends PersistentObject {
 			ob_end_clean();
 		}
 		
-		$thumbName = "thumb_$this->id.png";
+		if ($forFile < 0)
+			$thumbName = "thumb_$this->id.png";
+		else
+			$thumbName = "thumb_$forFile.png";
 		$fp = fopen($this->fileDir() . $thumbName, "w");
 		if (!$fp) return;
 		fwrite($fp, $data);
@@ -184,8 +187,10 @@ class Publication extends PersistentObject {
 		
 		unlink($fileName);
 		
-		return $this->update(array('thumbnail' => $thumbName));
-		
+		if ($forFile < 0)
+			$this->filereferences[$forFile]->update(array('thumbnail' => $thumbName));
+		$this->update(array('thumbnail' => $thumbName));
+		return $this->fileDir() . $thumbName;
 	}
 	
 	function delete() {
@@ -206,7 +211,7 @@ class Publication extends PersistentObject {
 			return filesize($this->allFile);
 		else return 0;
 	}
-	
+		
 }
 
 ?>

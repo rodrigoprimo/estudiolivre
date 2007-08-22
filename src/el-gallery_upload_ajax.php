@@ -78,40 +78,6 @@ function validateUpload($fileName, $i) {
 
 }
 
-$ajaxlib->setPermission('expandFilea', $userHasPermOnFile && $arquivoId);
-$ajaxlib->registerFunction('expandFilea');
-function expandFilea($fileId) {
-	require_once("lib/persistentObj/PersistentObjectFactory.php");
-	$file = PersistentObjectFactory::createObject("FileReference", (int)$fileId);
-	
-	$objResponse = new xajaxResponse();
-	
-	if ($file->actualClass == "ZipFile") {
-		$files = $file->expand();
-	    $objResponse->addAlert("lalala");    		
-	}
-
-    return $objResponse;
-}
-
-/* deprecated
-$ajaxlib->setPermission('clear_uploaded_file', $userHasPermOnFile && $arquivoId);
-$ajaxlib->registerFunction('clear_uploaded_file');
-function clear_uploaded_file() {
-    global $arquivo;
-    
-    foreach ($arquivo->filereferences as $file)
-    	$file->delete();
-    if ($arquivo->thumbnail)
-    	unlink("repo/" . $arquivo->thumbnail);
-
-    $objResponse = new xajaxResponse();
-    $objResponse->addScriptCall("newUpload();");    
-
-    return $objResponse;
-}
-*/
-
 $ajaxlib->setPermission('delete_file', $el_p_upload_files == 'y');
 $ajaxlib->registerFunction('delete_file');
 function delete_file($arquivoId) {

@@ -126,12 +126,12 @@
 <table class="pubT">
 	<tr>
 	<td class="td1">
-		<span class="hiddenPointer" onclick="flip('pubFilesCont');toggleImage(document.getElementById('filesTArrow'),'iArrowGreyRight.png')" >
+		<span class="hiddenPointer" onclick="flip('ajax-pubFilesCont');toggleImage(document.getElementById('filesTArrow'),'iArrowGreyRight.png')" >
 			<img id="filesTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png">
 			<h1>{tr}Arquivos da Publicação{/tr}</h1>
 		</span>
 		<br/>
-		<div id="pubFilesCont" class="aItemsCont" style="display:block">
+		<div id="ajax-pubFilesCont" class="aItemsCont" style="display:block">
 			{foreach from=$arquivo->filereferences item=file key=key}
 				{include file="fileBox.tpl"}
 			{/foreach}
@@ -157,7 +157,7 @@
 				        {tooltip text="Clique para selecionar outra <b>miniatura</b> para o arquivo"}
 				        <form action="el-gallery_upload_thumb.php" method="post" enctype="multipart/form-data" name="thumbForm">
 						  	<input type="hidden" name="arquivoId" value="{$arquivo->id}">
-						  	<input type="file" name="thumb" onChange="thumbSelected()" id="aThumbFormButton">
+						  	<input type="file" name="thumb" onChange="thumbSelected('')" id="aThumbFormButton">
 				        </form>
 				        {/tooltip}
 				    </div>

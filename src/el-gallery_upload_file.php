@@ -20,6 +20,8 @@ if ($arquivoId && isset($_FILES[$fileName]) && !empty($_FILES[$fileName]['name']
 	}
 	else {
 		
+		echo "<script language=\"javaScript\">parent.finishedUpload($formNum);</script>";
+		
 		require_once("FileReference.php");
 		$fileClass = FileReference::getSubClass($_FILES[$fileName]['name'], $_FILES[$fileName]['tmp_name']);
 		
@@ -32,7 +34,6 @@ if ($arquivoId && isset($_FILES[$fileName]) && !empty($_FILES[$fileName]['name']
 		if ($arquivo->allFile)
 			unlink($arquivo->allFile);
 		
-		echo "<script language=\"javaScript\">parent.finishUpload($formNum);</script>";
 	}
 
 	if ($errorMsg) {

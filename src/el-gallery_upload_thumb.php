@@ -5,44 +5,45 @@ require_once("tiki-setup.php");
 require_once("lib/filegals/filegallib.php");
 include_once("el-gallery_set_publication.php");
 
-function error($errorMsg) {
-	global $style, $arquivo;
-	echo "<script language=\"javaScript\">alert('".$errorMsg."');</script>";
-	echo "<script>parent.document.getElementById('ajax-thumbnail').src = 'styles/" . preg_replace('/\.css/', '', $style) . "/img/iThumb$arquivo->type?rand=".rand()."';</script>";
+function error($errorMsg, $num) {
+	global $arquivo;
+	
+	if ($num != "M") $type = $arquivo->filereferences[(int)$num]->type;
+	else $type = $arquivo->type;
+	echo "<script language=\"javaScript\">parent.thumbError('$errorMsg', '$num', '$type');</script>";
 	exit;
 }
 
-if ($arquivoId && isset($_FILES['thumb']) && !empty($_FILES['thumb']['name'])) {
+$thumbNum = isset($_REQUEST['thumbNum']) ? $_REQUEST['thumbNum'] : '';
+$fileName = "thumb" . $thumbNum;
 
-    preg_match("/(.+)\/.+/", $_FILES["thumb"]["type"], $arq_tipo);
+if ($arquivoId && isset($_FILES[$fileName]) && !empty($_FILES[$fileName]['name'])) {
+
+    preg_match("/(.+)\/.+/", $_FILES[$fileName]["type"], $arq_tipo);
     
     if ($arq_tipo[1] != "image") {
-		error("O arquivo fornecido não é uma imagem.");
+		error(tra("O arquivo fornecido não é uma imagem."), $thumbNum);
     }
 
     // Were there any problems with the upload?  If so, report here.
-    if (!is_uploaded_file($_FILES["thumb"]['tmp_name'])) {
-		error(tra('Upload was not successful').': '.FileGalLib::convert_error_to_string($_FILES["thumb"]['error']));
+    if (!is_uploaded_file($_FILES[$fileName]['tmp_name'])) {
+		error(tra('Upload was not successful').': '.FileGalLib::convert_error_to_string($_FILES[$fileName]['error']), $thumbNum);
     } 
     
     $maxSize = $tikilib->get_preference('el_max_thumb_size', 200);
 
     if ($_FILES['thumb']["size"] > $maxSize * 1024) {
-		error("O tamanho máximo da miniatura é de $maxSize kBytes.");
+		error(tra("O tamanho máximo da miniatura é de $maxSize kBytes."), $thumbNum);
     }
     
-    if (preg_match('/(\..+?)$/', $_FILES["thumb"]["name"], $m)) {
-		$ext = $m[1];
-    } else {
-		$ext = ".png";
-    } 
-
-    $result = $arquivo->uploadThumb($_FILES["thumb"]['tmp_name'], $_FILES["thumb"]["name"]);
+	if (isset($_REQUEST['forFile'])) $forFile = $_REQUEST['forFile'];
+	else $forFile = -1;
+    $result = $arquivo->uploadThumb($_FILES[$fileName]['tmp_name'], $forFile);
     if (!$result) {
-		error(tra('Impossível gravar miniatura'));
+		error(tra('Impossível gravar miniatura'), $thumbNum);
     }
     
-    echo "<script>parent.document.getElementById('ajax-thumbnail').src = 'repo/".$arquivo->thumbnail."?rand=".rand()."';</script>";
+    echo "<script>parent.finishedUpThumb($thumbNum, '$result');</script>";
     
 }
 

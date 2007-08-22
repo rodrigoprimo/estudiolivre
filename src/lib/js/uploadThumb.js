@@ -1,35 +1,41 @@
 var thumbId = null;
-var thumbTimeout = false;
+var thumbTimeouts = Array();
+var uploadThumbIds = Array();
 
-function thumbSelected() {
-    thumbId = document.thumbForm.UPLOAD_IDENTIFIER.value;
-    document.thumbForm.submit();
-    startThumbProgress();
+function thumbSelected(num) {
+    uploadThumbIds[num] = Math.random().toString().replace(new RegExp(/0\./), '') + '.' + Date.now();
+    eval("document.thumbForm" + num + ".UPLOAD_IDENTIFIER.setAttribute('value','" +  uploadThumbIds[num] + "')");
+	eval("document.thumbForm" + num + ".submit()");
+	startThumbProgress(num);
 }
 
-function startThumbProgress() {
-	document.getElementById("ajax-thumbnail").src = "styles/bolha/img/iProgress.gif";
-	document.getElementById('js-thumbStatus').innerHTML = '0%';
-	updateThumbInfo();
+function startThumbProgress(num) {
+	document.getElementById("js-thumbnail" + num).src = "styles/"+style+"/img/iProgress.gif";
+	document.getElementById('js-thumbStatus' + num).innerHTML = '0%';
+	updateThumbInfo(num);
 }
 
-function updateThumbInfo() {
-	xajax_upload_info(thumbId, 0, 'updateThumbProgressMeter');
+function updateThumbInfo(num) {
+	xajax_upload_info(uploadThumbIds[num], num, 'updateThumbProgressMeter');
 	thumbTimeout = setTimeout('updateThumbInfo()',1000);
 }
 
-function updateThumbProgressMeter(uploadInfo, i) {
+function updateThumbProgressMeter(uploadInfo, num) {
     var normalized = uploadInfo['bytes_uploaded'] / uploadInfo['bytes_total'];
     var percent = Math.ceil(100 * normalized);
     if (percent) {
-		document.getElementById('js-thumbStatus').innerHTML = percent + '%';	
+		document.getElementById('js-thumbStatus' + num).innerHTML = percent + '%';	
     }
 }
 
-function finishUpThumb() {
-	if (thumbTimeout) {
-		clearTimeout(thumbTimeout);
-		hide('js-thumbForm');
-		document.getElementById('js-thumbStatus').innerHTML = '';
-	}
+function finishedUpThumb(num, src) {
+	clearTimeout(thumbTimeout);
+	hide('js-thumbForm' + num);
+	document.getElementById('js-thumbStatus' + num).innerHTML = '';
+	document.getElementById("js-thumbnail" + num).src = src + "?rand=" + Math.random();
+}
+
+function thumbError(errorMsg, num, type) {
+	alert(errorMsg);
+	finishedUpThumb(num, "styles/" + style + "/img/iThumb" + type + ".png");
 }

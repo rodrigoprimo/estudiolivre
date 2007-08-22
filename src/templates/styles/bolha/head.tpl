@@ -59,6 +59,7 @@ You are most likely wanting to modify the top of your Tiki site. Please consider
 		<script type="text/javascript" src="lib/js/toggleImage.js"></script>
 		<script language="JavaScript" type="text/javascript" src="lib/js/tooltip.js"></script>
 		<script language="JavaScript" src="lib/elgal/player/cortado.js"></script>
+		<script language="JavaScript">var style = '{$style|replace:".css":""}'</script>
 	{* ---- END ---- *}
 	
 	{if $favicon}
