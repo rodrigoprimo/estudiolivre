@@ -16,7 +16,7 @@
 	{assign var=tooltipText value=0}
 {/if}
 
-<div class="listItem">
+<div class="listItem pb">
 	<div class="listLeft">
 		<div class="thumb">
 		<a class="listThumb" href="el-gallery_view.php?arquivoId={$arquivo->id}">

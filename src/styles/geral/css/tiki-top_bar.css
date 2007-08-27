@@ -1,15 +1,19 @@
-﻿#topMenuCubesContainer {
+﻿
+/*futuras tags especiais*/
+
+#topMenuCubesContainer {
 	position:absolute;
 	top:20px;
 	left:250px;
 	text-align:left;
-	background-color:#008800;
-	color:#ffffff;
-	outline: 1px dotted #aaaaaa;
 }
 
 #topMenuCubesContainer a {
 	color:#ffffff;
+}
+
+#topMenuCubesContainer a:hover {
+	color:#00ff00;
 }
 
 #logo {
@@ -22,8 +26,14 @@
 	position:absolute;
 	top:20px;
 	left:350px;
-	width:300px;
 	text-align:left;
+}
+
+#topMenuGeneral a{
+	color:#ffffff;
+}
+#topMenuGeneral a:hover {
+	color:#0000ff;
 }
 
 #topSubMenu {
@@ -46,20 +56,8 @@
 	line-height:10px;
 }
 
-
-
-#audiolab:hover {
-background-color:#00ff00;color: #ffffff
-}
-#videolab:hover {
-	background-color:#00ff00;
-	color: #ffffff
-	}
-#grafilab:hover {
-background-color:#00ff00;color: #ffffff
-}
 #acervolivre:hover {
-	background-color:#00ff00;color: #ffffff
+	color:#00ff00;
 }
 
 /*a busca*/

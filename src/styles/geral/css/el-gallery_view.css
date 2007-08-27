@@ -1,167 +1,30 @@
-.gDownloadCount, .gStreamCount {
-
+﻿#typeIcon{
+margin-right:10px;
+position:relative;
+top:-4px;
 }
 
-.gUpMoreOptionsItem {
-
+#pubDesc {
+width:60%;
 }
 
-.gUpMoreOptionsName {
-	
-}
-
-#gUpMoreOptions INPUT {
-
-}
-
-#gUserThumbStatus {
-
-}
-
-.aTitleContRight {
-
-}
-
-.aTitleCont {
-	
-}
-
-.aTags {
-	
-}
-
-.aTagsInput {
-
-}
-
-.aTagsEdit {
+#pubTags {
+	margin-top:10px;
 
 }
 
 .aItemsCont {
-	
+	margin-top:10px;
 }
 
-#aDescriptionInfo .sectionTitle {
-
+#show-tags {
+	display:inline;
 }
 
-.aSaveCancel {
-	
+.inline {
+	display:inline;
 }
 
-#aCommentsItemsCont .uMsgItem {
-	
-}
-
-#aCommentSend #uMsgSend {
-
-}
-
-#aDelete {
-
-}
-
-#aDelete:hover {
-	
-}
-
-#aThumbFormButton {
-
-}
-
-#aAuthorDate {
-
-}
-
-#aAuthorDate A {
-
-}
-
-#aThumbForm {
-
-}
-
-#aActions {
-
-}
-
-#aActions DIV {
-	
-}
-
-#gPlay, #gDownload {
-
-}
-
-#arqCont {
-
-}
-
-#aCommentSend #uMsgSendInput {
-
-}
-
-#aDescCont {
-	margin-bottom:15px;
-}
-
-#aTopCont {
-
-}
-
-#aDescriptionInfo {
-
-}
-
-#aDown {
-	
-}
-
-#aThumbRatingLic {
-
-}
-
-#aLic {
-
-}
-
-#aNameAuthor {
-
-}
-
-#aComments {
-
-}
-
-#aThumbLic {
-
-}
-
-#aMainInfo {
-
-}
-
-#aMiddle {
-
-}
-
-#aName {
-
-}
-
-#editpostform h3 {
-
-}
-
-.sectionTitle {
-
-}
-
-.sectionTitle h1 {
-
-}
-
-.sectionTitle h2 {
-
+.file img {
+	margin:0 10px 10px 0;
 }

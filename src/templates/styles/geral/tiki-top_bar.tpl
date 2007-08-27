@@ -32,12 +32,12 @@
 
 <script language="JavaScript">marcaBusca(selectedBusca);</script>
 
-	<div id="topMenu">
-		<div id="topMenuGeneral" class="topmenu">
-		<a href="tiki-index.php">{tr}wiki{/tr}</a><br/>
-		<a href="tiki-forums.php">{tr}forums{/tr}</a><br/>
-		<a href="tiki-list_blogs.php">{tr}blogs{/tr}</a><br/>
-		<a href="el-tag_cloud.php">{tr}tags{/tr}</a>
+	<div id="topMenu" >
+		<div id="topMenuGeneral" class="topmenu az">
+		<a href="tiki-index.php">{tr}wiki{/tr}&nbsp;</a><br/>
+		<a href="tiki-forums.php">{tr}forums{/tr}&nbsp;</a><br/>
+		<a href="tiki-list_blogs.php">{tr}blogs{/tr}&nbsp;</a><br/>
+		<a href="el-tag_cloud.php">{tr}tags{/tr}&nbsp;</a>
 		</div>
   
 		<div id="topSubMenu">
@@ -46,13 +46,15 @@
 		<a href="tiki-index.php?page=contato&bl">{tr}contato{/tr}</a><br/>
 		</div>
     
-		<div id="topMenuCubesContainer" class="topmenu">
-		<a href="el-gallery_home.php" {if $isIE}title="ACERVO.LIVRE"{/if}><span id="acervolivre" >{tr}acervo{/tr}</span></a><br /> 
-		<a href="tiki-index.php?page=Áudio&bl" {if $isIE}title="AUDIO||LAB"{/if}><span id="audiolab">{tr}áudio{/tr}</span></a><br />
-		<a href="tiki-index.php?page=Gráfico&bl" {if $isIE}title="GRAFI||LAB"{/if}><span id="grafilab">{tr}gráfico{/tr}</span></a><br />
-		<a href="tiki-index.php?page=Vídeo&bl" {if $isIE}title="VIDEO||LAB"{/if}><span id="videolab">{tr}vídeo{/tr}</span></a><br />
+		<div id="topMenuCubesContainer" class="topmenu vr">
+		<a href="el-gallery_home.php" {if $isIE}title="ACERVO.LIVRE"{/if}><span id="acervolivre" >{tr}acervo{/tr}&nbsp;</span></a><br /> 
+		<a href="tiki-index.php?page=Áudio&bl" {if $isIE}title="AUDIO||LAB"{/if}><span id="audiolab">{tr}áudio{/tr}&nbsp;</span></a><br />
+		<a href="tiki-index.php?page=Gráfico&bl" {if $isIE}title="GRAFI||LAB"{/if}><span id="grafilab">{tr}gráfico{/tr}&nbsp;</span></a><br />
+		<a href="tiki-index.php?page=Vídeo&bl" {if $isIE}title="VIDEO||LAB"{/if}><span id="videolab">{tr}vídeo{/tr}&nbsp;</span></a><br />
 		</div>
 	</div>
+	
+
 
 </div>
 

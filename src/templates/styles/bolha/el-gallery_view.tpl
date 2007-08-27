@@ -1,4 +1,4 @@
-﻿<!-- el-gallery_view.tpl begin -->
+<!-- el-gallery_view.tpl begin -->
 {css extra=el-gallery_metadata,el-user_msg,ajax_inputs}
 
 <script language="JavaScript" src="lib/js/freetags.js"></script>
@@ -8,28 +8,21 @@
 <script language="JavaScript" src="lib/js/el-rating.js"></script>
 <script language="JavaScript" src="lib/js/delete_file.js"></script>
 
-
-<h1>
-<img id="typeIcon" class="fl" src="styles/{$style|replace:".css":""}/img/iUp{$arquivo->type}.png">
-{ajax_input permission=$permission id="title" value=$arquivo->title default="Titulo" display="inline"}
-</h1>
-
 <table class="pubT">
 	<tr>
 	<td class="td1">
-	<a href="el-download.php?pub={$arquivoId}&action=downloadAll"><img class="fl" alt="download all" src="styles/{$style|replace:".css":""}/img/iDownload.png">
-	<span class="info">
-	{tr}baixe tudo{/tr}<br/>
-	{assign var=numArquivos value=$arquivo->getArraySize('filereferences')}
-	{$numArquivos} {tr}arquivo{/tr}{if $numArquivos != 1}s{/if}<br/>
-	{assign var=allFileSize value=$arquivo->allFileSize()}
-	{if $allFileSize}
-	<b>{$allFileSize|show_filesize}</b>
-	{/if}
-	</span></a>
-	</td>
-	
-	<td>
+	<div id="pubTitulo">
+		<img class="fl" src="styles/{$style|replace:".css":""}/img/iUp{$arquivo->type}.png">
+		<div id="pubNome">
+			{if $permission}
+				{tooltip text="Clique para modificar o nome desse arquivo"}{ajax_input permission=$permission id="title" value=$arquivo->title default="Titulo" display="inline"}{/tooltip}
+			{else}
+				<h2>{ajax_input permission=$permission id="title" value=$arquivo->title default="Titulo" display="inline"}</h2>
+			{/if}
+		</div>
+	</div>
+	<br class="c"/>
+	<div id="pubInfo">
 		<span class="info">
 			<b>{tr}autor{/tr}:</b> {ajax_input permission=$permission id="author" value=$arquivo->author default="Autor da Obra" display="inline"}<br/>
 			<b>{tr}por{/tr}:</b> <a href="el-user.php?view_user={$arquivo->user}">{$arquivo->user}</a><br/>
@@ -40,21 +33,29 @@
 		{/tooltip}
 		{tooltip text="Copie todos os arquivos (para o seu computador)"}
 		<div>
+			<a href="el-download.php?pub={$arquivoId}&action=downloadAll">
+				<img class="fl" alt="download all" src="styles/{$style|replace:".css":""}/img/iDownload.png">
+				<span class="info">
+					{tr}baixe tudo{/tr}<br/>
+					{assign var=numArquivos value=$arquivo->getArraySize('filereferences')}
+					{$numArquivos} {tr}arquivo{/tr}{if $numArquivos != 1}s{/if}<br/>
+	 				{assign var=allFileSize value=$arquivo->allFileSize()}
+	 				{if $allFileSize}
+	 					<b>{$allFileSize|show_filesize}</b>
+	 				{/if}
+				</span>
+			</a>
+		
 		</div>
 		{/tooltip}
-	</td>
-	</tr>
+	</div>
 	
-	<tr>
-	
-	<td>
 	<div id="pubRating">
 		{tooltip name="view-avaliacao" text="Avaliação atual"}
-		<img id="ajax-aRatingImg" src="styles/{$style|replace:".css":""}/img/star{math equation="round(x)" x=$arquivo->rating|default:"blk"}.png"><br/>		
+			<img id="ajax-aRatingImg" src="styles/{$style|replace:".css":""}/img/star{math equation="round(x)" x=$arquivo->rating|default:"blk"}.png"><br/>		
 		{/tooltip}
 		{assign var=votes value=$arquivo->getArraySize('votes')}
-		
-		<span id="ajax-aVoteTotal"><b>{$votes}</b></span> {tr}voto{if $votes != 1}s{/if}{/tr}
+		<b><span id="ajax-aVoteTotal">{$votes}</span> {tr}voto{if $votes != 1}s{/if}{/tr}</b> 
 		{if $user}
 			<br/>
 			{assign var=userVote value=$arquivo->getUserVote()}
@@ -79,10 +80,15 @@
 		{/if}
 	</div>
 	</td>
-	<td id="pubDesc"><div >
-	<h4>{tr}Descrição{/tr}</h4>
-	<div id="aDescCont" class="aItemsCont" style="display:block">
-		jfgadjhf sdnvbadjfbgsd fhvbasfd ghzsxd fhse fhajsdgkc ajwdhgkjhsd  ehfgakjhsdbfka ehdghsdfbas dfhadsghjfs w jksdvfhdf  edhfbzsmd f hsdfbs,d fas hfadsvfgat ehfsjhdcvbd fgzhd vbz xcvgggzs dhfvzgxc dhhnzdvhgx dgfv
+	<td>
+
+	<div id="pubDesc">
+		<span class="hiddenPointer" onclick="flip('aDescCont');toggleImage(document.getElementById('desTArrow'),'iArrowGreyRight.png')" >
+			<img id="desTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png">
+			<h5>{tr}Descrição{/tr}</h5>
+		</span>
+	
+		<div id="aDescCont" class="aItemsCont" style="display:block">
 			{if $permission}
 				{tooltip text="Clique aqui para modificar a descri&ccedil;&atilde;o do arquivo"}{ajax_textarea permission=$permission style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" id="description" value=$arquivo->description display="block" wikiParsed=1}{/tooltip}
 			{else}
@@ -91,9 +97,7 @@
 		</div>
 	</div>
 	</td>
-	
 	</tr>
-
 </table>
 
 <div id="pubTags">
@@ -122,12 +126,12 @@
 <table class="pubT">
 	<tr>
 	<td class="td1">
-		<span class="hiddenPointer" onclick="flip('ajax-pubFilesCont');toggleImage(document.getElementById('filesTArrow'),'iArrowGreyRight.png')" >
+		<span class="hiddenPointer" onclick="flip('pubFilesCont');toggleImage(document.getElementById('filesTArrow'),'iArrowGreyRight.png')" >
 			<img id="filesTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png">
 			<h5>{tr}Arquivos da Publicação{/tr}</h5>
 		</span>
 		<br/>
-		<div id="ajax-pubFilesCont" class="aItemsCont" style="display:block">
+		<div id="pubFilesCont" class="aItemsCont" style="display:block">
 			{foreach from=$arquivo->filereferences item=file key=key}
 				{include file="fileBox.tpl"}
 			{/foreach}
@@ -153,7 +157,7 @@
 				        {tooltip text="Clique para selecionar outra <b>miniatura</b> para o arquivo"}
 				        <form action="el-gallery_upload_thumb.php" method="post" enctype="multipart/form-data" name="thumbForm">
 						  	<input type="hidden" name="arquivoId" value="{$arquivo->id}">
-						  	<input type="file" name="thumb" onChange="thumbSelected('')" id="aThumbFormButton">
+						  	<input type="file" name="thumb" onChange="thumbSelected()" id="aThumbFormButton">
 				        </form>
 				        {/tooltip}
 				    </div>

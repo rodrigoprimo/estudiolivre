@@ -1,5 +1,5 @@
 #corpo{
-	width:80%;
+	width:90%;
 }
 
 .thumb {
@@ -8,13 +8,10 @@
 
 .listItem {
 	
-	width:21em;
-	border-top:10px solid transparent;
-	border-bottom:2px solid #000000;
+	width:21.5em;
 	float:left;
-	height:20em;
-	overflow:hidden;
-	border: 1px solid #aaaaaa;
+	height:22em;
+	overflow:auto;
 	margin:2px;
 }
 

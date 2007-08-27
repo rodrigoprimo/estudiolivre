@@ -11,7 +11,7 @@ BODY {
 a{color:#808080;}
 a:link {text-decoration:none;color:#000000; font-weight:bold}
 a:visited {text-decoration:none;color:#666666;}
-a:hover {text-decoration:none;color: #ff0000}
+a:hover {text-decoration:none;color: #00aa00}
 a:active {text-decoration:none;color: #666666}
 
 IMG {
@@ -93,6 +93,49 @@ td {
 	top:0;
 	right:0;
 	
+}
+
+.pb {
+	padding-bottom:3px; 
+	padding-left:5px;
+	margin-bottom:5pt;
+	border:1px dotted #aaaaaa;
+	border-top: 2px solid #000000;
+	border-left: 0;
+}
+
+
+.am {
+	background-color:#dddd00;
+	border-top: 2px solid #aaaa00;
+	border-bottom: 1px dotted #aaaaaa;
+	border-right: 1px dotted #aaaaaa;
+}
+
+.vr {
+	padding-bottom:3px; 
+	padding-left:5px;
+	margin-bottom:5pt;
+	background-color:#008800;
+	border-top: 2px solid #00aa00;
+	border-bottom: 1px dotted #aaaaaa;
+	border-right: 1px dotted #aaaaaa;	
+	}
+
+.az {
+	padding-bottom:3px; 
+	padding-left:5px;
+	margin-bottom:5pt;
+	background-color:#000088;
+	border-top: 2px solid #0000aa;
+	border-bottom: 1px dotted #aaaaaa;
+	border-right: 1px dotted #aaaaaa;		
+}
+
+
+
+.fl {
+	float:left;
 }
 
 .mini {

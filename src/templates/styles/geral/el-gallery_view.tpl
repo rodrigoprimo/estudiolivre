@@ -79,10 +79,9 @@
 		{/if}
 	</div>
 	</td>
-	<td id="pubDesc"><div >
+	<td id="pubDesc" class="pb"><div >
 	<h4>{tr}Descrição{/tr}</h4>
 	<div id="aDescCont" class="aItemsCont" style="display:block">
-		jfgadjhf sdnvbadjfbgsd fhvbasfd ghzsxd fhse fhajsdgkc ajwdhgkjhsd  ehfgakjhsdbfka ehdghsdfbas dfhadsghjfs w jksdvfhdf  edhfbzsmd f hsdfbs,d fas hfadsvfgat ehfsjhdcvbd fgzhd vbz xcvgggzs dhfvzgxc dhhnzdvhgx dgfv
 			{if $permission}
 				{tooltip text="Clique aqui para modificar a descri&ccedil;&atilde;o do arquivo"}{ajax_textarea permission=$permission style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" id="description" value=$arquivo->description display="block" wikiParsed=1}{/tooltip}
 			{else}
@@ -94,50 +93,34 @@
 	
 	</tr>
 
-</table>
-
-<div id="pubTags">
-	<b>{tr}tags{/tr}:</b>
-	{assign var=fileTags value=$arquivo->tags}
-	<div id="show-tags">
-		&nbsp;{include file="el-gallery_tags.tpl"}
-	</div>
-	
+<tr>
+<td></td>
+<td>
+<div id="pubTags" class="vr">
+	<br /><b>{tr}tags{/tr}:</b>{assign var=fileTags value=$arquivo->tags}
+	<div id="show-tags">&nbsp;{include file="el-gallery_tags.tpl"}	</div>
 	{if $permission}
-		<input id="input-tags" value="{$arquivo->tagString}" onBlur="xajax_save_field('tags', this.value)" style="display:none;">
-		<img id="error-tags" class="gUpErrorImg" style="display:none" src="styles/{$style|replace:".css":""}/img/errorImg.png" onMouseover="tooltip(errorMsg_tags);" onMouseout="nd();"> 
-		<script language="JavaScript"> display["tags"] = "inline";errorMsg_tags = "";</script>
+	<input id="input-tags" value="{$arquivo->tagString}" onBlur="xajax_save_field('tags', this.value)" style="display:none;">
+	<img id="error-tags" class="gUpErrorImg" style="display:none" src="styles/{$style|replace:".css":""}/img/errorImg.png" onMouseover="tooltip(errorMsg_tags);" onMouseout="nd();"> 
+	<script language="JavaScript"> display["tags"] = "inline";errorMsg_tags = "";</script>
 		&nbsp;{tooltip text="Clique para editar as <b>tags</b> desse arquivo"}<img class="pointer" src="styles/{$style|replace:".css":""}/img/iTagEdit.png" onClick="editaCampo('tags')">{/tooltip}
 	{/if}
 </div>
-<br><br>
+
 {if isset($viewFile)}
 	{assign var=file value=$arquivo->filereferences[$viewFile]}
 	{include file="meta-file.tpl"}
 {/if}
-<br><br>
-<div>
-</div>
 
-<table class="pubT">
+
+</td></tr>
+
 	<tr>
-	<td class="td1">
-		<span class="hiddenPointer" onclick="flip('ajax-pubFilesCont');toggleImage(document.getElementById('filesTArrow'),'iArrowGreyRight.png')" >
-			<img id="filesTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png">
-			<h5>{tr}Arquivos da Publicação{/tr}</h5>
-		</span>
-		<br/>
-		<div id="ajax-pubFilesCont" class="aItemsCont" style="display:block">
-			{foreach from=$arquivo->filereferences item=file key=key}
-				{include file="fileBox.tpl"}
-			{/foreach}
-		</div>
-	</td>
 	<td>
-		<div>
+		<div class="pb">
 			<span class="hiddenPointer" onclick="flip('aInfoCont');toggleImage(document.getElementById('detTArrow'),'iArrowGreyRight.png')" >
-				<img id="detTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png">
-				<h5>{tr}Detalhes da Publicação{/tr}</h5>
+			<h4><img id="detTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png">
+			{tr}Detalhes da Publicação{/tr}</h4>
 			</span>
 			<br/>
 			<div id="aInfoCont" class="aItemsCont" style="display:block">
@@ -153,7 +136,7 @@
 				        {tooltip text="Clique para selecionar outra <b>miniatura</b> para o arquivo"}
 				        <form action="el-gallery_upload_thumb.php" method="post" enctype="multipart/form-data" name="thumbForm">
 						  	<input type="hidden" name="arquivoId" value="{$arquivo->id}">
-						  	<input type="file" name="thumb" onChange="thumbSelected('')" id="aThumbFormButton">
+						  	<input type="file" name="thumb" onChange="thumbSelected()" id="aThumbFormButton">
 				        </form>
 				        {/tooltip}
 				    </div>
@@ -165,16 +148,29 @@
 					{/if}
 				</div>
 			</div>
+	
+	
+	<td >
+		<div class="pb">
+		<span class="hiddenPointer" onclick="flip('pubFilesCont');toggleImage(document.getElementById('filesTArrow'),'iArrowGreyRight.png')" >
+		<h4><img id="filesTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png">{tr}Arquivos da Publicação{/tr}</h4>
+		</span>
+		<br/>
+		<div id="pubFilesCont" class="aItemsCont" style="display:block">
+		{foreach from=$arquivo->filereferences item=file key=key}
+			{include file="fileBox.tpl"}
+		{/foreach}
+		</div>
+		</div>
 			
 			<!-- comentarios -->
 			{if $tiki_p_read_comments eq 'y'}
 			{assign var=comments value=$arquivo->getArraySize('comments')}
-			<div id="aComments">
+			<div id="aComments" class="pb">
 				<div id="aCommentsTitle" class="sectionTitle">
 					<div class="aTitleCont">
 						<span class="hiddenPointer" onclick="flip('ajax-aCommentsItemsCont'); flip('aCommentSend');toggleImage(document.getElementById('comTArrow'),'iArrowGreyRight.png')">
-							<img id="comTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png">
-							<h5>{tr}Comentários{/tr} (<span id="ajax-commentCount">{$comments}</span>)</h5>
+						<h4><img id="comTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png">{tr}Comentários{/tr} (<span id="ajax-commentCount">{$comments}</span>)</h4>
 						</span>
 					</div>
 				</div>
