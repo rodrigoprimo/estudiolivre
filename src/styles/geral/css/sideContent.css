@@ -23,7 +23,7 @@
 #sideContent a{color:#808080;}
 #sideContent a:link {text-decoration:none;color:#000000; font-weight:normal}
 #sideContent a:visited {text-decoration:none;color:#808080;}
-#sideContent a:hover {text-decoration:none;color: #ff0000}
+#sideContent a:hover {text-decoration:none;color: #ff0000;font-weight:bold}
 #sideContent a:active {text-decoration:none;color: #808080}
 
 .userMenu {
