@@ -144,7 +144,7 @@ class FileReference extends PersistentObject {
 	}
 	
 	function isViewable() {
-		return in_array($this->type, array("Audio", "Video", "Imagem"));
+		return ($this->type == "Imagem" && !preg_match('/.*\.svg$/i', $this->fileName));
 	}
 	
 }

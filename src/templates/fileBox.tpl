@@ -1,4 +1,4 @@
-<div id="ajax-file{$file->id}" class="file">
+<div id="ajax-file{$file->id}" class="file{if isset($viewFile) && ($key == $viewFile)} viewing{/if}">
 	{if $file->thumbnail}
 		<img class="fl" id="ajax-thumbnail" src="{$file->baseDir}{$file->thumbnail|escape:'url'}" height="100" width="100">
 	{else}

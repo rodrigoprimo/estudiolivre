@@ -95,6 +95,10 @@ class VideoFile extends FileReference {
 		return $this->checkNumericField($value, tra('Altura deve ser um número'));
 	}
 	
+	function isViewable() {
+		return preg_match("/.*\.ogg$/i", $this->fileName);
+	}
+	
 }
 
 ?>

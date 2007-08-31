@@ -1,21 +1,3 @@
-{* para os tooltips *}
-{assign var=file value=$arquivo->filereferences[0]}
-{if $arquivo->type eq "Video"}
-	{if preg_match("/.*\.ogg$/i", $file->fileName)}
-		{assign var=tooltipText value="{tr}Assista a esse vídeo{/tr}"}
-	{/if}
-{elseif $arquivo->type eq "Audio"}
-	{if preg_match("/.*\.ogg$/i", $file->fileName)}
-		{assign var=tooltipText value="{tr}Ouça essa música{/tr}"}
-	{/if}
-{elseif $arquivo->type eq "Imagem"}
-	{if !preg_match("/.*\.svg$/i", $file->fileName)}
-		{assign var=tooltipText value="{tr}Veja essa imagem{/tr}"}
-	{/if}
-{else}
-	{assign var=tooltipText value=0}
-{/if}
-
 <div class="listItem">
 	<div class="listLeft">
 		<a href="el-gallery_view.php?arquivoId={$arquivo->id}">
@@ -39,11 +21,9 @@
 		{/tooltip}	
 		{if $tooltipText}
 		<br />
-			{tooltip name="list-i-play" text=$tooltipText}
-				<span class="pointer" alt="" onClick="xajax_streamFile({$arquivo->id},'{$arquivo->type}', getPageSize()[0]);nd();">
-					{tr}ver{/tr}
-				</span>
-			{/tooltip}
+			<a href="el-gallery_view.php?arquivoId={$arquivo->id}">
+				{tr}ver{/tr}
+			</a>
 		{/if}
 		{if $arquivo->user eq $user or $el_p_admin_gallery eq "y"}
 			<br />

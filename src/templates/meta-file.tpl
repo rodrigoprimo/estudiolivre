@@ -1,12 +1,13 @@
-{if $file->mimeType}
-<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">{tr}Formato{/tr}:</div> {$file->mimeType}</div>
-{/if}
-
-<div class="gUpMoreOptionsItem"><div class="gUpMoreOptionsName">{tr}Tamanho{/tr}:</div> {$file->size|show_filesize}</div>
-
-<input type="checkbox"{if $arquivo->mainFile === $viewFile} checked{/if} onClick="xajax_setMainFile(this.checked ? 1 : 0, {$viewFile})"/>
-arquivo de capa<br/>
-
 {if $file->type neq "Zip"}
 	{include file="meta-"|cat:$file->actualClass|lower|cat:".tpl"}
+{/if}
+<br/>
+{if $file->mimeType}
+	<span class="fInfo">{tr}Formato{/tr}:</span> {$file->mimeType}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{/if}
+{if $permission}
+	{tooltip text="O <b>arquivo de capa</b> será visualizado sempre que alguém entrar na página desta publicação"}
+		<label class="pointer"><input type="checkbox"{if $arquivo->mainFile === $viewFile} checked{/if} onClick="xajax_setMainFile(this.checked ? 1 : 0, {$viewFile})"/>
+		<span class="fInfo">arquivo de capa</span></label>
+	{/tooltip}
 {/if}

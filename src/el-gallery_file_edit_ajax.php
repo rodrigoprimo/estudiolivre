@@ -77,12 +77,10 @@ function generate_thumb() {
 	$objResponse = new xajaxResponse();
 	$file =& $arquivo->filereferences[0];
 	
-	$objResponse->addAssign("ajax-thumbnail", "className", 'gUpThumbImg');	
-
 	if ($file->thumbnail) {
-	    $objResponse->addAssign("ajax-thumbnail", "src", $file->baseDir . urlencode($file->thumbnail));
+	    $objResponse->addAssign("js-thumbnailM", "src", $file->baseDir . urlencode($file->thumbnail));
 	} else {
-	    $objResponse->addAssign("ajax-thumbnail", "src", 'styles/' . preg_replace('/\.css/', '', $style) . 
+	    $objResponse->addAssign("js-thumbnailM", "src", 'styles/' . preg_replace('/\.css/', '', $style) . 
 														 '/img/iThumb' . $arquivo->type . '.png');
 	}
 

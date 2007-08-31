@@ -52,7 +52,7 @@ function selecionaTipo(tipo) {
 function fileSelected(fileName, formNum) {
 	if (!arquivoId) {
 		show('js-desc');
-    	document.getElementById('js-thumbnailM').src = 'styles/"+style+"/img/iThumb'+tipoSelecionado+'.png';
+    	document.getElementById('js-thumbnailM').src = 'styles/'+style+'/img/iThumb'+tipoSelecionado+'.png';
     	xajax_create_file(tipoSelecionado, fileName, formNum);
 	} else {
 		xajax_validateUpload(fileName, formNum);

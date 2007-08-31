@@ -35,6 +35,32 @@
 	float:left;
 }
 
+#viewFile {
+	margin-top:20px;
+	text-align:center
+}
+
+#viewFile img {
+	max-width:95%;
+}
+
+#viewFile .fInfo {
+	padding-right:5px;
+	text-decoration:underline;
+}
+
+#viewFile INPUT {
+	border:1px inset rgb(233, 233, 174);
+	background-color:#f1f1f1;
+	max-width:100px;
+}
+
+#viewFile label {
+	font-weight:bolder;
+/*	background:#ffffd3;
+	padding:3px;*/
+}
+
 #show-tags {
 	background:#eff8e9;
 	width:98%;
@@ -58,7 +84,7 @@
 	position:relative;
 }
 
-#filesComments {
+#files {
 	width:270px;
 	border-right:2px solid #c2c2be;
 	float:left;
@@ -114,6 +140,10 @@
 
 .file img {
 	margin:0 10px 10px 0;
+}
+
+.viewing {
+	background-color:#f1f1f1;
 }
 
 .gUpMoreOptionsItem {

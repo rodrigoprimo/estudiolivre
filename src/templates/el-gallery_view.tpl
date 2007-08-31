@@ -74,8 +74,10 @@
 
 <br/>
 {if isset($viewFile)}
+<div id="viewFile">
 	{assign var=file value=$arquivo->filereferences[$viewFile]}
 	{include file="meta-file.tpl"}
+</div>
 {/if}
 <br/>
 
@@ -98,7 +100,7 @@
 <br/>
 
 <span id="more">
-	<div id="filesComments">
+	<div id="files">
 		<div class="sectionTitle">
 			<span class="titleCont" onclick="flip('filesCont');toggleImage(document.getElementById('fileTArrow'),'iArrowGreyRight.png')">
 				<img id="fileTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png">
@@ -112,12 +114,60 @@
 				{/foreach}
 			</div>
 		</div>
-	
+	</div>
+		
+	<div id="descriptionInfo">
+		<div class="sectionTitle">
+			<span class="titleCont titleContRight" onclick="flip('descCont');toggleImage(document.getElementById('desTArrow'),'iArrowGreyRight.png')" >
+				<img id="desTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png">
+				<h1>{tr}Descrição{/tr}</h1>
+			</span>
+		</div>
+		<div id="descCont" class="itemCont" style="display:block">
+			{if $permission}
+				{tooltip text="Clique aqui para modificar a descri&ccedil;&atilde;o do arquivo"}{ajax_textarea permission=$permission style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" id="description" value=$arquivo->description display="block" wikiParsed=1}{/tooltip}
+			{else}
+				{ajax_textarea permission=$permission style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" id="description" value=$arquivo->description display="block" wikiParsed=1}
+			{/if}
+		</div>
+		<div class="sectionTitle">
+			<span class="titleCont titleContRight" onclick="flip('infoCont');toggleImage(document.getElementById('detTArrow'),'iArrowGreyRight.png')" >
+				<img id="detTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png">
+				<h1>{tr}Detalhes da Publicação{/tr}</h1>
+			</span>
+		</div>
+		<div id="infoCont" class="itemCont" style="display:block">
+			{if $permission}
+				{tooltip text="Clique para selecionar outra <b>miniatura</b> para o arquivo"}
+					{if $arquivo->thumbnail}
+						<img id="ajax-thumbnail" src="{$arquivo->fileDir()}{$arquivo->thumbnail|escape:'url'}">
+					{else}
+						<img id="ajax-thumbnail" src="styles/{$style|replace:".css":""}/img/iThumb{$arquivo->type}.png">
+					{/if}
+				{/tooltip}
+				<div class="none" id="aThumbForm">
+			        {tooltip text="Clique para selecionar outra <b>miniatura</b> para o arquivo"}
+			        <form action="el-gallery_upload_thumb.php" method="post" enctype="multipart/form-data" name="thumbForm">
+					  	<input type="hidden" name="arquivoId" value="{$arquivo->id}">
+					  	<input type="file" name="thumb" onChange="thumbSelected('')" id="aThumbFormButton">
+			        </form>
+			        {/tooltip}
+			    </div>
+			{/if}
+			<br/><br/>
+			<div id="gUpMoreOptions">
+				{include file="el-gallery_metadata.tpl"}
+				{if $arquivo->type neq "Texto"}
+					{include file="el-gallery_metadata_"|cat:$arquivo->type|cat:".tpl"}
+				{/if}
+			</div>
+		</div>
+		
 		{if $tiki_p_read_comments eq 'y'}
 			{assign var=comments value=$arquivo->getArraySize('comments')}
 			
 			<div class="sectionTitle">
-				<span class="titleCont" onclick="flip('ajax-aCommentsItemsCont');flip('aCommentSend');toggleImage(document.getElementById('comTArrow'),'iArrowGreyRight.png')">
+				<span class="titleCont titleContRight" onclick="flip('ajax-aCommentsItemsCont');flip('aCommentSend');toggleImage(document.getElementById('comTArrow'),'iArrowGreyRight.png')">
 					<img id="comTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png">
 					<h1>{tr}Comentários{/tr} (<span id="ajax-commentCount">{$comments}</span>)</h1>
 				</span>
@@ -150,54 +200,7 @@
 				{/if}
 			</div>
 		{/if}
-
-	</div>
 		
-	<div id="descriptionInfo">
-		<div class="sectionTitle">
-			<span class="titleCont titleContRight" onclick="flip('descCont');toggleImage(document.getElementById('desTArrow'),'iArrowGreyRight.png')" >
-				<img id="desTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png">
-				<h1>{tr}Descrição{/tr}</h1>
-			</span>
-		</div>
-		<div id="descCont" class="itemCont" style="display:block">
-			{if $permission}
-				{tooltip text="Clique aqui para modificar a descri&ccedil;&atilde;o do arquivo"}{ajax_textarea permission=$permission style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" id="description" value=$arquivo->description display="block" wikiParsed=1}{/tooltip}
-			{else}
-				{ajax_textarea permission=$permission style="width: 250px; height:125px; border: 1px inset rgb(233, 233, 174);padding: 3px;font-size: 12px; font-family: Arial, Verdana, Helvetica, Lucida, Sans-Serif;background-color: #f1f1f1;margin-bottom: 5px;" id="description" value=$arquivo->description display="block" wikiParsed=1}
-			{/if}
-		</div>
-		<div class="sectionTitle">
-			<span class="titleCont titleContRight" onclick="flip('infoCont');toggleImage(document.getElementById('detTArrow'),'iArrowGreyRight.png')" >
-				<img id="detTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png">
-				<h1>{tr}Detalhes da Publicação{/tr}</h1>
-			</span>
-		</div>
-		<div id="infoCont" class="itemCont" style="display:block">
-			{if $permission}
-				{tooltip text="Clique para selecionar outra <b>miniatura</b> para o arquivo"}
-				{if $arquivo->thumbnail}
-					<img id="ajax-thumbnail" src="{$arquivo->fileDir()}{$arquivo->thumbnail|escape:'url'}">
-				{else}
-					<img id="ajax-thumbnail" src="styles/{$style|replace:".css":""}/img/iThumb{$arquivo->type}.png">
-				{/if}
-				{/tooltip}
-				<div class="none" id="aThumbForm">
-			        {tooltip text="Clique para selecionar outra <b>miniatura</b> para o arquivo"}
-			        <form action="el-gallery_upload_thumb.php" method="post" enctype="multipart/form-data" name="thumbForm">
-					  	<input type="hidden" name="arquivoId" value="{$arquivo->id}">
-					  	<input type="file" name="thumb" onChange="thumbSelected('')" id="aThumbFormButton">
-			        </form>
-			        {/tooltip}
-			    </div>
-			{/if}
-			<div id="gUpMoreOptions">
-				{include file="el-gallery_metadata.tpl"}
-				{if $arquivo->type neq "Texto"}
-					{include file="el-gallery_metadata_"|cat:$arquivo->type|cat:".tpl"}
-				{/if}
-			</div>
-		</div>
 	</div>
 </span>
 
