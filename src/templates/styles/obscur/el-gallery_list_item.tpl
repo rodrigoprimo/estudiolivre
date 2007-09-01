@@ -16,7 +16,7 @@
 			{/tooltip}
 		    <a href="el-gallery_view.php?arquivoId={$arquivo.arquivoId}">
 				{if $arquivo.thumbnail}
-					<img height="51" src="repo/{$arquivo.thumbnail}">
+					<img height="51" src="{$arquivo->fileDir()}{$arquivo.thumbnail}">
 				{else}
 					<img height="51" src="styles/obscur/iThumb{$arquivo.tipo}.png">
 				{/if}

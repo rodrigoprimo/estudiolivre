@@ -10,7 +10,7 @@ function thumbSelected(num) {
 }
 
 function startThumbProgress(num) {
-	document.getElementById("js-thumbnail" + num).src = "styles/"+style+"/img/iProgress.gif";
+	document.getElementById("js-thumbnail" + num).src = "styles/"+style+"/img/iProgress.gif" + "?rand=" + Math.random();
 	document.getElementById('js-thumbStatus' + num).innerHTML = '0%';
 	updateThumbInfo(num);
 }

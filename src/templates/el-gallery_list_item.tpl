@@ -2,7 +2,7 @@
 	<div class="listLeft">
 		<a href="el-gallery_view.php?arquivoId={$arquivo->id}">
 			{if $arquivo->thumbnail}
-				<img src="repo/{$arquivo->thumbnail|escape:'url'}" {if $isIE}width=100 height=100{/if}>
+				<img src="{arquivo->fileDir()}{$arquivo->thumbnail|escape:'url'}" {if $isIE}width=100 height=100{/if}>
 			{else}
 				<img src="styles/{$style|replace:".css":""}/img/iThumb{$arquivo->type}.png">
 			{/if}
