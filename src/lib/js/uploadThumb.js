@@ -31,6 +31,7 @@ function updateThumbProgressMeter(uploadInfo, num) {
 function finishedUpThumb(num, src) {
 	clearTimeout(thumbTimeouts[num]);
 	hide('js-thumbForm' + num);
+	thumbId = src;
 	document.getElementById('js-thumbStatus' + num).innerHTML = '';
 	document.getElementById("js-thumbnail" + num).src = src + "?rand=" + Math.random();
 }

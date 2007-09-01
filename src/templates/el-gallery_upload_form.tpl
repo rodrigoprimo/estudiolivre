@@ -1,4 +1,4 @@
-<iframe name="uploadTarget{$i}" style="display:none" onLoad="fileUploaded({$i});"></iframe>
+<iframe name="uploadTarget{$i}" style="display:none"></iframe>
 	
 <form name="uploadForm{$i}" target="uploadTarget{$i}" action="el-gallery_upload_file.php?formNum={$i}" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="UPLOAD_IDENTIFIER" value="">

@@ -32,7 +32,7 @@ if ($arquivoId && isset($_FILES[$fileName]) && !empty($_FILES[$fileName]['name']
     
     $maxSize = $tikilib->get_preference('el_max_thumb_size', 200);
 
-    if ($_FILES['thumb']["size"] > $maxSize * 1024) {
+    if ($_FILES[$fileName]["size"] > $maxSize * 1024) {
 		error(tra("O tamanho máximo da miniatura é de $maxSize kBytes."), $thumbNum);
     }
     
