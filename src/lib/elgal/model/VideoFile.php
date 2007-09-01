@@ -51,8 +51,11 @@ class VideoFile extends FileReference {
 		}
 		
 		$width = $movie->getFrameWidth();
+		if (!$width) $width = 100;
 		$height = $movie->getFrameHeight();
+		if (!$height) $height = 100;
 		$frameTotal = $movie->getFrameCount();
+		if (!$frameTotal) return;
 		
 		$thumbSide = $tikilib->get_preference('el_thumb_side', 100);
 		$thumbVideoSize = $tikilib->get_preference('el_thumb_video_size', 10);

@@ -23,7 +23,7 @@
 		<b>{tr}por{/tr}:</b> <a href="el-user.php?view_user={$arquivo->user}">{$arquivo->user}</a>
 		<b>{tr}em{/tr}:</b> <i>{$arquivo->publishDate|date_format:"%d/%m/%Y"}</i><br/>
 		{tooltip text=$arquivo->license->description}
-			<a href="{$license->humanReadableLink}"><img id="lic" src="styles/{$style|replace:".css":""}/img/h_{$arquivo->license->imageName}"></a>
+			<a href="{$arquivo->license->humanReadableLink}"><img id="lic" src="styles/{$style|replace:".css":""}/img/h_{$arquivo->license->imageName}"></a>
 		{/tooltip}
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		{if $permission}
@@ -149,8 +149,8 @@
 					</form>
 					{if count($fileThumbs)}
 						<br/>ou<br/>
-						<select onChange="if(this.value>=0)xajax_setPubThumbFromFile(this.value);">
-							<option value="-1"> - selecione a miniatura de um dos arquivos - </option>
+						<select onChange="changePubThumb(this)">
+							<option value="-1"> - use a de um dos arquivos - </option>
 							{foreach from=$fileThumbs key=fileNum item=fileName}
 								<option value="{$fileNum}">{$fileName}</option>
 							{/foreach}

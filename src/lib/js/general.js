@@ -1,4 +1,4 @@
-// $Header: /home/rodrigo/devel/arca/estudiolivre/src/lib/js/general.js,v 1.4 2007-08-16 21:27:25 sampaioprimo Exp $
+// $Header: /home/rodrigo/devel/arca/estudiolivre/src/lib/js/general.js,v 1.5 2007-09-01 03:01:37 nano Exp $
 var feature_no_cookie = 'n';
 
 function browser() {
@@ -771,7 +771,7 @@ function preloadImgs(fewImgs){
 function preloadImgsNow(tema){
 	for (x=0; x<allImgs.length; x++){
 		imgs[x] = new Image();
-		imgs[x].src = "/styles/"+tema+"/"+allImgs[x];
+		imgs[x].src = "/styles/"+tema+"/img/"+allImgs[x];
 		//alert(imgs[x].src);
 	}
 	//alert('cucucucuc');

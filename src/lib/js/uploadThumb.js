@@ -39,3 +39,11 @@ function thumbError(errorMsg, num, type) {
 	finishedUpThumb(num, "styles/" + style + "/img/iThumb" + type + ".png");
 	alert(errorMsg);
 }
+
+function changePubThumb(select) {
+	if (select.value >= 0){
+		document.getElementById("js-thumbnailM").src = "styles/"+style+"/img/iProgress.gif";
+		hide('pThumbForm');
+		xajax_setPubThumbFromFile(select.value);
+	}
+}
