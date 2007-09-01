@@ -138,22 +138,37 @@
 		</div>
 		<div id="infoCont" class="itemCont" style="display:block">
 			{if $permission}
-				{tooltip text="Clique para selecionar outra <b>miniatura</b> para a publicação"}
-					{if $arquivo->thumbnail}
-						<img id="js-thumbnailM" src="{$arquivo->fileDir()}{$arquivo->thumbnail|escape:'url'}">
-					{else}
-						<img id="js-thumbnailM" src="styles/{$style|replace:".css":""}/img/iThumb{$arquivo->type}.png">
-					{/if}
-				{/tooltip}
-				<div class="none" id="aThumbForm">
+				<div class="none" id="pThumbForm">
+					suba outra miniatura<br/>
 			        <iframe name="thumbUpTargetM" style="display:none"></iframe>
 					<form name="thumbFormM" target="thumbUpTargetM" action="el-gallery_upload_thumb.php?thumbNum=M" method="post" enctype="multipart/form-data">
 						<input type="hidden" name="UPLOAD_IDENTIFIER" value="">
 						<input type="hidden" name="arquivoId" value="{$arquivo->id}">
-						<input type="file" name="thumbM" onChange="thumbSelected('M')" class="gUpThumbFormButton">
+						<input type="file" name="thumbM" onChange="thumbSelected('M')">
 						&nbsp;&nbsp;<span id="js-thumbStatusM"></span>
 					</form>
+					{if count($fileThumbs)}
+						<br/>ou<br/>
+						<select onChange="if(this.value>=0)xajax_setPubThumbFromFile(this.value);">
+							<option value="-1"> - selecione a miniatura de um dos arquivos - </option>
+							{foreach from=$fileThumbs key=fileNum item=fileName}
+								<option value="{$fileNum}">{$fileName}</option>
+							{/foreach}
+						</select>
+					{/if}
 			    </div>
+			    
+				{tooltip text="Clique para selecionar outra <b>miniatura</b> para a publicação"}
+					<div class="pointer" onClick="flip('pThumbForm');">
+						{if $arquivo->thumbnail}
+							<img id="js-thumbnailM" src="{$arquivo->fileDir()}{$arquivo->thumbnail|escape:'url'}">
+						{else}
+							<img id="js-thumbnailM" src="styles/{$style|replace:".css":""}/img/iThumb{$arquivo->type}.png">
+						{/if}
+						<br/>
+						<span class="fInfo">trocar miniatura</span>
+					</div>
+				{/tooltip}
 			{/if}
 			<br/><br/>
 			<div id="gUpMoreOptions">

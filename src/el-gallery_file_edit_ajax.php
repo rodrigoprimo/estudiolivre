@@ -68,22 +68,24 @@ function editTags($tag_string) {
     
 }
 
-$ajaxlib->setPermission('generate_thumb', $userHasPermOnFile && $arquivoId);
-$ajaxlib->registerFunction('generate_thumb');
-function generate_thumb() {
+$ajaxlib->setPermission('setPubThumbFromFile', $userHasPermOnFile && $arquivoId);
+$ajaxlib->registerFunction('setPubThumbFromFile');
+function setPubThumbFromFile($i) {
 	
 	global $arquivo, $style;
 	
 	$objResponse = new xajaxResponse();
-	$file =& $arquivo->filereferences[0];
-	
-	if ($file->thumbnail) {
-	    $objResponse->addAssign("js-thumbnailM", "src", $file->baseDir . urlencode($file->thumbnail));
-	} else {
-	    $objResponse->addAssign("js-thumbnailM", "src", 'styles/' . preg_replace('/\.css/', '', $style) . 
-														 '/img/iThumb' . $arquivo->type . '.png');
+	if (isset($arquivo->filereferences[$i])) {
+		$file =& $arquivo->filereferences[$i];
+		
+		if ($file->thumbnail) {
+			$arquivo->update(array("thumbnail" => $file->thumbnail));
+		    $objResponse->addAssign("js-thumbnailM", "src", $file->baseDir . urlencode($file->thumbnail));
+		} else {
+		    $objResponse->addAssign("js-thumbnailM", "src", 'styles/' . preg_replace('/\.css/', '', $style) . 
+															 '/img/iThumb' . $arquivo->type . '.png');
+		}
 	}
-
 	return $objResponse;
 }
 
@@ -126,8 +128,10 @@ function setMainFile($value, $filePos) {
 $ajaxlib->registerFunction('upload_info');
 function upload_info($uploadId, $i, $callback = 'updateProgressMeter') {
 	$objResponse = new xajaxResponse();
-	$uploadInfo = upload_progress_meter_get_info($uploadId);
-	$objResponse->addScriptCall($callback, $uploadInfo, $i);
+	if (function_exists("upload_progress_meter_get_info")) {
+		$uploadInfo = upload_progress_meter_get_info($uploadId);
+		$objResponse->addScriptCall($callback, $uploadInfo, $i);
+	}
 	return $objResponse;
 }
 

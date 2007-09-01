@@ -39,14 +39,19 @@ if (isset($key)) {
 	$arquivo->filereferences[$key]->hitStream();
 }
 $smarty->assign('arquivoId',$arquivoId);
-$smarty->assign('arquivo',$arquivo);
+$smarty->assign_by_ref('arquivo',$arquivo);
+
+$fileThumbs = array();
+foreach ($arquivo->filereferences as $key => $file) {
+	if ($file->thumbnail) $fileThumbs[$key] = $file->fileName;
+}
+$smarty->assign('fileThumbs', $fileThumbs);
 
 if ($userHasPermOnFile) {
 	$smarty->assign('permission', true);
 }
 
 $smarty->assign('dontAskDelete', $tikilib->get_user_preference($user, 'el_dont_check_delete', 0));
-$smarty->assign('uploadId',rand() . '.' . time());
 
 
 $smarty->assign('mid','el-gallery_view.tpl');

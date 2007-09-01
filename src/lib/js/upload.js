@@ -103,7 +103,7 @@ function finishedUpload(formNum) {
 	document.getElementById('js-file' + formNum).innerHTML = fileName;
 	if (formNum == "0" && thumbId == null && (tipoSelecionado == 'Imagem' || tipoSelecionado == 'Video')) {
 		setTimeout('document.getElementById("js-thumbnailM").src = "styles/"+style+"/img/iProgress.gif"',100);
-		xajax_generate_thumb();
+		xajax_setPubThumbFromFile(0);
 	}
 	if (formNum == "0")
 		xajax_get_file_info();

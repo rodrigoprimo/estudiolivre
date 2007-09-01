@@ -44,7 +44,7 @@
 	max-width:95%;
 }
 
-#viewFile .fInfo {
+.fInfo {
 	padding-right:5px;
 	text-decoration:underline;
 }
@@ -57,8 +57,6 @@
 
 #viewFile label {
 	font-weight:bolder;
-/*	background:#ffffd3;
-	padding:3px;*/
 }
 
 #show-tags {
@@ -143,7 +141,12 @@
 }
 
 .viewing {
+	padding:5px;
 	background-color:#f1f1f1;
+}
+
+#pThumbForm {
+	float:right;
 }
 
 .gUpMoreOptionsItem {

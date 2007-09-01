@@ -43,7 +43,7 @@ if ($arquivoId && isset($_FILES[$fileName]) && !empty($_FILES[$fileName]['name']
 		error(tra('Impossível gravar miniatura'), $thumbNum);
     }
     
-    echo "<script>parent.finishedUpThumb($thumbNum, '$result');</script>";
+    echo "<script>parent.finishedUpThumb('$thumbNum', '$result');</script>";
     
 }
 
