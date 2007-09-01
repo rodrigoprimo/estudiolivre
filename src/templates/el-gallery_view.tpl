@@ -138,20 +138,21 @@
 		</div>
 		<div id="infoCont" class="itemCont" style="display:block">
 			{if $permission}
-				{tooltip text="Clique para selecionar outra <b>miniatura</b> para o arquivo"}
+				{tooltip text="Clique para selecionar outra <b>miniatura</b> para a publicação"}
 					{if $arquivo->thumbnail}
-						<img id="ajax-thumbnail" src="{$arquivo->fileDir()}{$arquivo->thumbnail|escape:'url'}">
+						<img id="js-thumbnailM" src="{$arquivo->fileDir()}{$arquivo->thumbnail|escape:'url'}">
 					{else}
-						<img id="ajax-thumbnail" src="styles/{$style|replace:".css":""}/img/iThumb{$arquivo->type}.png">
+						<img id="js-thumbnailM" src="styles/{$style|replace:".css":""}/img/iThumb{$arquivo->type}.png">
 					{/if}
 				{/tooltip}
 				<div class="none" id="aThumbForm">
-			        {tooltip text="Clique para selecionar outra <b>miniatura</b> para o arquivo"}
-			        <form action="el-gallery_upload_thumb.php" method="post" enctype="multipart/form-data" name="thumbForm">
-					  	<input type="hidden" name="arquivoId" value="{$arquivo->id}">
-					  	<input type="file" name="thumb" onChange="thumbSelected('')" id="aThumbFormButton">
-			        </form>
-			        {/tooltip}
+			        <iframe name="thumbUpTargetM" style="display:none"></iframe>
+					<form name="thumbFormM" target="thumbUpTargetM" action="el-gallery_upload_thumb.php?thumbNum=M" method="post" enctype="multipart/form-data">
+						<input type="hidden" name="UPLOAD_IDENTIFIER" value="">
+						<input type="hidden" name="arquivoId" value="{$arquivo->id}">
+						<input type="file" name="thumbM" onChange="thumbSelected('M')" class="gUpThumbFormButton">
+						&nbsp;&nbsp;<span id="js-thumbStatusM"></span>
+					</form>
 			    </div>
 			{/if}
 			<br/><br/>

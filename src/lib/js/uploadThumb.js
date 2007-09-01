@@ -17,7 +17,7 @@ function startThumbProgress(num) {
 
 function updateThumbInfo(num) {
 	xajax_upload_info(uploadThumbIds[num], num, 'updateThumbProgressMeter');
-	thumbTimeout = setTimeout('updateThumbInfo()',1000);
+	thumbTimeouts[num] = setTimeout('updateThumbInfo("'+num+ '")',1000);
 }
 
 function updateThumbProgressMeter(uploadInfo, num) {
@@ -29,13 +29,13 @@ function updateThumbProgressMeter(uploadInfo, num) {
 }
 
 function finishedUpThumb(num, src) {
-	clearTimeout(thumbTimeout);
+	clearTimeout(thumbTimeouts[num]);
 	hide('js-thumbForm' + num);
 	document.getElementById('js-thumbStatus' + num).innerHTML = '';
 	document.getElementById("js-thumbnail" + num).src = src + "?rand=" + Math.random();
 }
 
 function thumbError(errorMsg, num, type) {
-	alert(errorMsg);
 	finishedUpThumb(num, "styles/" + style + "/img/iThumb" + type + ".png");
+	alert(errorMsg);
 }

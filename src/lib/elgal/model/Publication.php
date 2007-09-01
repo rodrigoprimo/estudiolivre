@@ -188,8 +188,10 @@ class Publication extends PersistentObject {
 		unlink($fileName);
 		
 		if ($forFile < 0)
+			$this->update(array('thumbnail' => $thumbName));
+		else
 			$this->filereferences[$forFile]->update(array('thumbnail' => $thumbName));
-		$this->update(array('thumbnail' => $thumbName));
+		
 		return $this->fileDir() . $thumbName;
 	}
 	
