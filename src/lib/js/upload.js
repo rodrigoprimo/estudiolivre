@@ -84,12 +84,18 @@ function updateUploadInfo(formNum) {
 	uploadTimeouts[formNum] = setTimeout('updateUploadInfo(' + formNum + ')',1000);
 }
 
+// chamada assim que o arquivo sobe inteiro
+function fileUploaded(formNum) {
+	if (uploadTimeouts[formNum]) {
+		clearTimeout(uploadTimeouts[formNum]);
+		uploadTimeouts[formNum] = 0;
+		document.getElementById('js-cancel' + formNum).innerHTML = '';
+	}
+}
+
 // chamada no final do upload do arquivo
 // para o loop de progrees meter e puxa infos automaticas
 function finishedUpload(formNum) {
-	clearTimeout(uploadTimeouts[formNum]);
-	uploadTimeouts[formNum] = 0;
-	document.getElementById('js-cancel' + formNum).innerHTML = '';
 	document.getElementById('js-statusBar' + formNum).className = "statusBar statusBarGo";
 	document.getElementById('js-statusBar' + formNum).style.width = originalWidth + 'px';
 	document.getElementById('js-percent' + formNum).innerHTML = '100%';
