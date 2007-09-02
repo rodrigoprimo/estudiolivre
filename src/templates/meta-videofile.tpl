@@ -1,11 +1,11 @@
 <applet code="com.fluendo.player.Cortado.class" 
         archive="lib/elgal/player/cortado-ovt.jar" 
 		width="{if $file->width}{$file->width}{else}400{/if}" height="{if $file->height}{$file->height}{else}300{/if}">
-	<param name="url" value="http://macfly.local/~nano/estudiolivre/{$file->fullPath()}"/>
+	<param name="url" value="http://estudiolivre.org/{$file->fullPath()}"/>
 	<param name="video" value="true"/>
 	<param name="local" value="false"/>
 	<param name="keepAspect" value="true"/>
-	<param name="audio" value="true"/>
+	<param name="audio" value="{if $file->hasAudio}true{else}false{/if}"/>
 	{if $file->duration}
 		<param name="duration" value="{$file->duration}"/>
 	{/if}

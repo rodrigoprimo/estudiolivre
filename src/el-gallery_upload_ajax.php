@@ -26,7 +26,7 @@ function create_file($tipo, $fileName, $formNum) {
 	$objResponse = new xajaxResponse();
 	global $user, $smarty, $tikilib;
 	
-	$class = $tipo == "Imagem" ? "Image" : ($tipo == "Texto" ? "Text" : $tipo);
+	$class = $tipo == "Imagem" ? "Image" : ($tipo == "Texto" ? "Text" : ($tipo == "Outro" ? "Other" : $tipo));
 	
 	$publicationClass = $class . "Publication";
 	require_once("FileReference.php");

@@ -35,6 +35,12 @@
 				<br/>
 				{tr}Vídeo{/tr}
 			</td>
+			
+			<td>
+				<img id="js-iconeOutro" class="pointer" onMouseOver="acendeTipo('Outro');" onMouseOut="apagaTipo('Outro'); return nd();" onClick="selecionaTipo('Outro')" alt="{tr}Outro{/tr}" src="styles/{$style|replace:".css":""}/img/iUpOutroOff.png">
+				<br/>
+				{tr}Outro{/tr}
+			</td>
 		</tr>
 	</table>
 	{*o center só fecha láááá em baixo*}
@@ -63,6 +69,12 @@
 				<img id="js-iconeVideo" class="pointer" onMouseOver="acendeTipo('Video');" onMouseOut="apagaTipo('Video'); return nd();" onClick="selecionaTipo('Video')" alt="{tr}Vídeo{/tr}" src="styles/{$style|replace:".css":""}/img/iUpVideoOff.png">
 				<br/>
 				{tr}Vídeo{/tr}
+			</li>
+			
+			<li>
+				<img id="js-iconeOutro" class="pointer" onMouseOver="acendeTipo('Outro');" onMouseOut="apagaTipo('Outro'); return nd();" onClick="selecionaTipo('Outro')" alt="{tr}Outro{/tr}" src="styles/{$style|replace:".css":""}/img/iUpOutroOff.png">
+				<br/>
+				{tr}Outro{/tr}
 			</li>
 		</ul>
 	</div>
