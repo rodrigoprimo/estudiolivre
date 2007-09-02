@@ -45,7 +45,7 @@ class VideoFile extends FileReference {
 		if (!class_exists('ffmpeg_movie')) {
 			return;
 		}
-		$movie = new ffmpeg_movie($this->baseDir . $this->fileName, 0);
+		$movie = new ffmpeg_movie($this->fullPath(), 0);
 		if (!is_object($movie)) {
 			return;
 		}
