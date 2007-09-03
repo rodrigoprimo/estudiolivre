@@ -62,10 +62,10 @@
 				tags:
 				<em>
 					{foreach from=$post.tags item=tag name=tags}
-					{tooltip text="Clique para ver outros arquivos com a tag <b>"|cat:$tag|cat:"</b>"}<a href="tiki-browse_freetags.php?tag={$tag}">{$tag}</a>{if not $smarty.foreach.tags.last}, {/if}
+					{tooltip text="Clique para ver outros posts com a tag <b>"|cat:$tag|cat:"</b>"}<a href="tiki-browse_freetags.php?tag={$tag}&type=blog post">{$tag}</a>{if not $smarty.foreach.tags.last}, {/if}
 					{/tooltip}
 					{foreachelse}
-						{tr}Esse arquivo não tem tags{/tr}.
+						{tr}Este post não tem tags{/tr}.
 					{/foreach}
 				</em>
 			</span>

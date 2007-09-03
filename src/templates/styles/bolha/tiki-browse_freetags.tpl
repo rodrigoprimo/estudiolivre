@@ -25,9 +25,16 @@
     		<li class="button{if $type eq 'wiki page'}Active{else}Inactive{/if}"><a class="linkbut {if $type eq "wiki page"} highlight{/if}"  href="tiki-browse_freetags.php?tag={$tag}&amp;type=wiki%20page" id="typeWikiPage">{tr}Wiki pages{/tr}</a></li>
     	{/tooltip}
     {/if}
+    
+    {if $feature_blogs eq 'y'}
+    	{tooltip name="browse-freetags-all" text="Ver <strong>apenas</strong> <b>posts em blogs</b> com a tag"} 
+    		<li class="button{if $type eq 'blog post'}Active{else}Inactive{/if}"><a class="linkbut {if $type eq "blog post"} highlight{/if}"  href="tiki-browse_freetags.php?tag={$tag}&amp;type=blog post" id="typeBlogPost">{tr}Posts em blog{/tr}</a></li>
+    	{/tooltip}
+    {/if}
 
-    {tooltip name="browse-freetags-all" text="Ver <strong>apenas</strong> <b>arquivos</b> com a tag"}     
+    {tooltip name="browse-freetags-all" text="Ver <strong>apenas</strong> <b>publicações</b> com a tag"}     
 		<li class="button{if $type eq 'gallery'}Active{else}Inactive{/if} buttonInactiveRight"><a class="linkbut" href="tiki-browse_freetags.php?tag={$tag}&amp;type=gallery">{if $type eq 'gallery'}<span class="highlight">{/if}{tr}Acervo{/tr}{if $type eq 'gallery'}</span>{/if}</a></li>
+		
 	{/tooltip}
 	<img id="listFilterImg4" alt="" src="styles/{$style|replace:".css":""}/img/bRight{if $type eq 'gallery'}Act{else}Inac{/if}.png" />
 </ul>
@@ -42,17 +49,11 @@
 
     {if $objects[ix].type eq 'gallery'}
 		{el_gallery_item id=$objects[ix].itemId}
-    {elseif $objects[ix].type eq 'blog'}
-		{$objects[ix].itemId}<br/>
-			<a href="{$objects[ix].href}" class="catname">{$objects[ix].description|truncate:250}</a>
+    {elseif $objects[ix].type eq 'blog post'}
+		<a href="{$objects[ix].href}" class="catname">{$objects[ix].name}</a><br/>
+		{$objects[ix].description|truncate:250}
     {else}
     	{el_wiki_item id=$objects[ix].itemId}
-    	{*    	
-			{$objects[ix].itemId}<br/>
-			{tr}{$objects[ix].type|replace:"wiki page":"Wiki"|replace:"article":"Article"|replace:"gallery":"Acervo"|regex_replace:"/tracker [0-9]*/":"tracker item"}{/tr}
-			<a href="{$objects[ix].href}" class="catname">{$objects[ix].name}</a>
-			{$objects[ix].description}&nbsp; 
-		*}
     {/if}
  
   {/section}
