@@ -37,7 +37,7 @@ $smarty->assign('sortMode', $sortField);
 $sort_mode =  $sortField .  $sortDirection;
 $smarty->assign('sort_mode', $sort_mode);
 
-$localTipos = array('Audio', 'Imagem', 'Video', 'Texto');
+$localTipos = array('Audio', 'Imagem', 'Video', 'Texto', 'Outro');
 $tipos = array();
 for($i = 0; $i < sizeof($localTipos); $i++) {
 	if(isset($_COOKIE[$localTipos[$i]])) {
@@ -53,7 +53,8 @@ $smarty->assign('tipos', $tipos);
 $actualClass = array("Video" => "VideoPublication",
 					 "Audio" => "AudioPublication",
 					 "Imagem" => "ImagePublication",
-					 "Texto" => "TextPublication");
+					 "Texto" => "TextPublication",
+					 "Outro" => "OtherPublication");
 $filters = array("actualClass" => array());
 foreach ($tipos as $tipo) {
 	$filters["actualClass"][] = $actualClass[$tipo];

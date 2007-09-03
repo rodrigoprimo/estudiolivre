@@ -21,6 +21,10 @@
 			<img id="Texto" name="filterButton" class="pointer" alt="texto" src="styles/{$style|replace:".css":""}/img/iTextoFilter{if !in_array('Texto', $tipos)}Off{/if}.png" onClick="toggleFilter(this)"/>
 		{/tooltip}
 		
+		{tooltip  text="Alternar visualização de outros"}
+			<img id="Outro" name="filterButton" class="pointer" alt="outro" src="styles/{$style|replace:".css":""}/img/iOutroFilter{if !in_array('Outro', $tipos)}Off{/if}.png" onClick="toggleFilter(this)"/>
+		{/tooltip}
+		
 		{tooltip  text="Alternar visualização entre todos/nenhum item"}
 			<img id="Tudo" class="pointer" alt="tudo" src="styles/{$style|replace:".css":""}/img/iTudoFilter{if count($tipos) < 4}Off{/if}.png" onClick="toggleAll()"/>
 		{/tooltip}

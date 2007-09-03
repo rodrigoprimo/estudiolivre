@@ -120,6 +120,7 @@
 	padding-right:10px;
 	padding-left:10px;
 	text-align:justify;
+	margin-bottom:15px;
 }
 
 #descriptionInfo {
@@ -130,10 +131,6 @@
 #descriptionInfo .sectionTitle {
 	padding-left:20px;
 	padding-right:10px;
-}
-
-#descCont {
-	margin-bottom:15px;
 }
 
 .file img {

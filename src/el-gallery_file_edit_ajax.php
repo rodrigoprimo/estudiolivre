@@ -93,14 +93,14 @@ $ajaxlib->setPermission('expandFile', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('expandFile');
 function expandFile($fileId) {
 	
-	global $smarty;
+	global $smarty, $arquivo;
 	
 	require_once("lib/persistentObj/PersistentObjectFactory.php");
 	$file = PersistentObjectFactory::createObject("FileReference", (int)$fileId);
 	
 	$objResponse = new xajaxResponse();
 	if ($file->actualClass == "ZipFile") {
-		$files = $file->expand();
+		$files = $file->expand(count($arquivo->filereferences) > 1);
 		foreach ($files as $newFile) {
 			$smarty->assign('file', $newFile);
 			$objResponse->addAppend('ajax-pubFilesCont', 'innerHTML', $smarty->fetch("fileBox.tpl"));

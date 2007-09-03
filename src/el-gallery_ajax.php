@@ -14,7 +14,8 @@ function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $fi
 	$actualClass = array("Video" => "VideoPublication",
 						 "Audio" => "AudioPublication",
 						 "Imagem" => "ImagePublication",
-						 "Texto" => "TextPublication");
+						 "Texto" => "TextPublication",
+					 	 "Outro" => "OtherPublication");
 	$filters = array("actualClass" => array());
 	foreach ($tipos as $tipo) {
 		$filters["actualClass"][] = $actualClass[$tipo];
