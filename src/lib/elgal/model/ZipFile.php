@@ -65,7 +65,7 @@ class ZipFile extends FileReference {
 		if ($this->commandLine) {
 			$pwd = getcwd();
 			chdir($this->baseDir);
-			exec(escapeshellcmd($this->commandLine . $this->fileName), $out, $ret_error);
+			exec(escapeshellcmd($this->commandLine . " " . $this->fileName), $out, $ret_error);
 			chdir($pwd);
 			$files = array();
 			if (!$ret_error) {

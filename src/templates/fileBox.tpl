@@ -5,7 +5,7 @@
 		<img class="fl" id="ajax-thumbnail" src="styles/{$style|replace:".css":""}/img/iThumb{$file->type}.png" height="100" width="100">
 	{/if}
 	<div class="info">
-		<b>{$file->fileName|truncate:25:"(...)"}<br/>
+		<b>{$file->fileName|truncate:20:"(...)"}<br/>
 		{$file->size|show_filesize}</b><br/>
 		<br/>
 		{if $file->isViewable()}

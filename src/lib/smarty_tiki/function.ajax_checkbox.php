@@ -20,7 +20,8 @@ function smarty_function_ajax_checkbox($params, &$smarty) {
 	$class = $params['class'];
 	$value = $params['value'] ? 1 : 0;
 	$permission = $params['permission'];
-	$callSave = $params['file'] ? "saveField(this, " . $params['file'] . ")" : "saveField(this)";
+	
+	$callSave = isset($params['file']) ? "saveField(this, " . $params['file'] . ")" : "saveField(this)";
 	
 	if (!$permission) {
 		$output .= $value;

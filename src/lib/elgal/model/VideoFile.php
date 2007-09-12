@@ -24,16 +24,16 @@ class VideoFile extends FileReference {
 		if (!class_exists('ffmpeg_movie')) {
 			return;
 		}
-		$movie = new ffmpeg_movie($this->baseDir . $this->fileName, 0);
+		$movie = new ffmpeg_movie($this->fullPath(), 0);
 		if (!is_object($movie)) {
 			return;
 		}
 		  
 		$result = array();
-		$result['width'] = (int)$movie->getFrameWidth();
-		$result['height'] = (int)$movie->getFrameHeight();
-		$result['duration'] = (int)$movie->getDuration();
-		$result['hasAudio'] = (int)$movie->hasAudio();
+		$result['width'] = $movie->getFrameWidth();
+		$result['height'] = $movie->getFrameHeight();
+		$result['duration'] = $movie->getDuration();
+		$result['hasAudio'] = $movie->hasAudio();
 		
 		return $this->update($result);
 	}

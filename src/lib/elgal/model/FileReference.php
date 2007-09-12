@@ -106,7 +106,7 @@ class FileReference extends PersistentObject {
 	}
 	
 	function checkNumericField($value, $msg) {
-		if (!preg_match('/^\d*$/', $value)) {
+		if (!preg_match('/^\d*(\.\d+)?$/', $value)) {
   			return $msg;
 		}
 	}
