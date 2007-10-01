@@ -27,20 +27,20 @@ class ZipFile extends FileReference {
 		preg_match('/\.([^.]{2,4}$)/', $fileRef['name'], $m);
 		$ext = strtolower($m[1]);
 		if ($ext == "zip")
-			$commandLine = "unzip ";
+			$commandLine = "unzip";
 		elseif ($ext == "tar")
-			$commandLine = "tar vxf ";
+			$commandLine = "tar vxf";
 		elseif ($ext == "tgz")
-			$commandLine = "tar vxzf ";
+			$commandLine = "tar vxzf";
 		elseif ($ext == "tbz2")
-			$commandLine = "tar vxjf ";
+			$commandLine = "tar vxjf";
 		elseif ($ext == "gz") {
 			if (preg_match('/\.tar\.gz$/', $fileRef['name']))
-				$commandLine = "tar vxzf ";
+				$commandLine = "tar vxzf";
 		}
 		elseif ($ext == "bz2") {
 			if (preg_match('/\.tar\.bz2$/', $fileRef['name']))
-				$commandLine = "tar vxjf ";
+				$commandLine = "tar vxjf";
 		}
 		$this->update(array("commandLine" => $commandLine));
 		return $this;
@@ -69,7 +69,7 @@ class ZipFile extends FileReference {
 			chdir($pwd);
 			$files = array();
 			if (!$ret_error) {
-				if ($this->commandLine == "unzip ") $out = $this->parseUnzipOutput($out);
+				if ($this->commandLine == "unzip") $out = $this->parseUnzipOutput($out);
 				foreach ($out as $key => $fileName) {
 					if (is_file($this->baseDir . $fileName)) {
 						if (function_exists('mime_content_type')) $type = mime_content_type($fileName);
