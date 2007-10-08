@@ -106,30 +106,30 @@ td {
 
 
 .am {
-	background-color:#dddd00;
+	background-color:#ffffff;
 	border-top: 2px solid #aaaa00;
-	border-bottom: 1px dotted #aaaaaa;
-	border-right: 1px dotted #aaaaaa;
+	border-bottom: 1px dotted #aaaa66;
+	border-right: 1px dotted #aaaa66;
 }
 
 .vr {
 	padding-bottom:3px; 
 	padding-left:5px;
 	margin-bottom:5pt;
-	background-color:#008800;
+	background-color:#ffffff;
 	border-top: 2px solid #00aa00;
-	border-bottom: 1px dotted #aaaaaa;
-	border-right: 1px dotted #aaaaaa;	
+	border-bottom: 1px dotted #66aa66;
+	border-right: 1px dotted #66aa66;	
 	}
 
 .az {
 	padding-bottom:3px; 
 	padding-left:5px;
 	margin-bottom:5pt;
-	background-color:#000088;
+	background-color:#ffffff;
 	border-top: 2px solid #0000aa;
-	border-bottom: 1px dotted #aaaaaa;
-	border-right: 1px dotted #aaaaaa;		
+	border-bottom: 1px dotted #6666aa;
+	border-right: 1px dotted #6666aa;		
 }
 
 

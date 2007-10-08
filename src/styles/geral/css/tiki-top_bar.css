@@ -3,8 +3,10 @@
 
 #topMenuCubesContainer {
 	position:absolute;
-	top:20px;
+	top:23px;
+	height:90px;
 	left:250px;
+	width:85px;
 	text-align:left;
 }
 
@@ -18,19 +20,21 @@
 
 #logo {
 	position:absolute;
-	top:10px;
-	left:50px;
+	top:14px;
+	left:65px;
 }
 
 #topMenuGeneral {
 	position:absolute;
-	top:20px;
+	top:23px;
+	height:90px;
+	width:70px;
 	left:350px;
 	text-align:left;
 }
 
 #topMenuGeneral a{
-	color:#ffffff;
+	color:#333333;
 }
 #topMenuGeneral a:hover {
 	color:#0000ff;
@@ -63,6 +67,7 @@
 /*a busca*/
 
 #search {
+	background-color:#ff3333;
 	position:absolute;
 	top:25px;
 	left:600px;
