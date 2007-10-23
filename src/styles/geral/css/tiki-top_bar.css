@@ -2,19 +2,23 @@
 
 #topMenuCubesContainer {
 	position:absolute;
-	top:23px;
-	height:90px;
+	top:35px;
+	height:75px;
 	left:250px;
 	width:85px;
 	text-align:left;
 }
 
 #topMenuCubesContainer a {
-	color:#ffffff;
+	color:#000000;
+	font-weight:bold;
+	text-decoration:none;
 }
 
 #topMenuCubesContainer a:hover {
-	color:#00ff00;
+	color:#00aa00;
+	font-weight:bold;
+	text-decoration:none;
 }
 
 #logo {
@@ -25,32 +29,48 @@
 
 #topMenuGeneral {
 	position:absolute;
-	top:23px;
-	height:90px;
+	top:35px;
+	height:75px;
 	width:70px;
 	left:350px;
 	text-align:left;
 }
 
 #topMenuGeneral a{
-	color:#333333;
+	color:#000000;
+	font-weight:bold;
+	text-decoration:none;
 }
 #topMenuGeneral a:hover {
-	color:#0000ff;
+	color:#0000aa;
+	font-weight:bold;
+	text-decoration:none;
 }
 
 #topSubMenu {
 	position:absolute;
-	top:20px;
-	left:450px;
-	width:300px;
+	top:35px;
+	left:435px;
+	width:60px;
 	text-align:left;
 }
 
+#topSubMenu a {
+	color:#000000;
+	font-weight:bold;
+	text-decoration:none;
+}	
+	
+#topSubMenu a:hover {
+	color:#ff0000;
+	font-weight:bold;
+	text-decoration:none;
+}
+	
 /* ultimas alteracoes */
 .editdate{
 	position:absolute;
-	top:-50px;
+	top:-35px;
 	left:350px;
 	width:150px;
 	text-align:left;
@@ -66,8 +86,8 @@
 /*a busca*/
 
 #search {
-	background-color:#ff3333;
+	background-color:#ffffff;
 	position:absolute;
-	top:25px;
+	top:35px;
 	left:600px;
 }

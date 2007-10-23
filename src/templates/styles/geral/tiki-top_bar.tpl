@@ -40,7 +40,7 @@
 		<a href="el-tag_cloud.php">{tr}tags{/tr}&nbsp;</a>
 		</div>
   
-		<div id="topSubMenu">
+		<div id="topSubMenu" class="vm">
 		<a href="tiki-index.php?page=sobre&bl">{tr}sobre{/tr}</a><br/>
 		<a href="tiki-index.php?page=faq&bl">{tr}faq{/tr}</a><br/>
 		<a href="tiki-index.php?page=contato&bl">{tr}contato{/tr}</a><br/>

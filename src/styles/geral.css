@@ -8,11 +8,10 @@ BODY {
 	font-size:10pt;
 }
 
-a{color:#808080;}
-a:link {text-decoration:none;color:#000000; font-weight:bold}
-a:visited {text-decoration:none;color:#666666;}
-a:hover {text-decoration:none;color: #00aa00}
-a:active {text-decoration:none;color: #666666}
+a:link {color:#000000;}
+a:visited {color:#666666;}
+a:hover {text-decoration:none;font-weight:bold;letter-spacing:-0.6pt;}
+a:active {color: #666666}
 
 IMG {
 	border:0px;
@@ -132,7 +131,15 @@ td {
 	border-right: 1px dotted #6666aa;		
 }
 
-
+.vm{
+	padding-bottom:3px; 
+	padding-left:5px;
+	margin-bottom:5pt;
+	background-color:#ffffff;
+	border-top: 2px solid #ff0000;
+	border-bottom: 1px dotted #aa0000;
+	border-right: 1px dotted #aa0000;		
+}
 
 .fl {
 	float:left;
