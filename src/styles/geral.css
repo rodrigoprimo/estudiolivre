@@ -1,4 +1,4 @@
-﻿/* tags gerais */
+/* tags gerais */
 * {
 	margin:0;
 	padding:0;
@@ -10,7 +10,7 @@ BODY {
 
 a:link {color:#000000;}
 a:visited {color:#666666;}
-a:hover {text-decoration:none;font-weight:bold;letter-spacing:-0.6pt;}
+a:hover {text-decoration:none;}
 a:active {color: #666666}
 
 IMG {
@@ -19,7 +19,6 @@ IMG {
 
 li {
 	list-style-type: none;	
-	
 }
 
 h1,h2,h3,h4,h5,h6 {

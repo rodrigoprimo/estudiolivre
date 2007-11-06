@@ -26,7 +26,7 @@
 			<span id="busca-tags" class="">{tooltip text="Buscar conteúdos com uma <b>tag</b>"}<a onclick="marcaBusca('tags')">{tr}tag{/tr}</a>{/tooltip}</span> | 
 			<span id="busca-blogs" class="">{tooltip text="Buscar <b>blogs</b> do EstúdioLivre"}<a onclick="marcaBusca('blogs')">{tr}blog{/tr}</a>{/tooltip}</span> 
 			</div>
-			<input id="searchField" name="highlight" size="18" type="text" accesskey="s" value="{tr}Buscar{/tr}" onFocus="if(this.value=='{tr}Buscar{/tr}')this.value=''"/><input class="submit" type="image" name="search" src="styles/{$style|replace:".css":""}/img/bSearch.png"/>
+			<input id="searchField" name="highlight" size="25" type="text" accesskey="s" value="{tr}Buscar{/tr}" onFocus="if(this.value=='{tr}Buscar{/tr}')this.value=''"/><input class="submit" type="image" name="search" src="styles/{$style|replace:".css":""}/img/bSearch.png"/>
 		</form>
 	</div>
 

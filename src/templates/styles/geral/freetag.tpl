@@ -16,16 +16,14 @@
 		{/literal}
 	</script>
 	<div id="freetager">
-	{tr}Tags{/tr}: 
-		{if $feature_help eq 'y'}
-			{*
-			<div class="simplebox">{tr}Put tags separated by spaces. For tags with more than one word, use no spaces and put words together.{/tr}</div>
-			*}
-		{/if}
-	    {tooltip text="Escreva aqui as tags dessa página (separadas por <b>vírgula</b>)"}<input type="text" id="tagBox" name="freetag_string" value="{$taglist|escape}" size="60" />{/tooltip}<br />
-		{foreach from=$tag_suggestion item=t name=tag_suggest}
-			<h4 onclick="addTag(this)" class="pointer">{$t}</h4><span id="{$t}-v"{if $smarty.foreach.tag_suggest.last} style="display:none"{/if}>,</span>
+	{tr}Tags{/tr}:
+	<br> 
+	    {tooltip text="Escreva aqui as tags dessa página (separadas por <b>vírgula</b>)"}
+		<input type="text" id="tagBox" name="freetag_string" value="{$taglist|escape}" size="60" />{/tooltip}<br />
+		<div style="width:500px">{foreach from=$tag_suggestion item=t name=tag_suggest}
+		<b><span onclick="addTag(this)" class="pointer">{$t}</span></b><span id="{$t}-v"{if $smarty.foreach.tag_suggest.last} style="display:none"{/if}>,</span>
 		{/foreach}
+		</div>
 	</div>
 {/if}
 <!--end freetag.tpl-->

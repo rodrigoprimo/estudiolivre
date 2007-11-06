@@ -15,46 +15,46 @@
 			<!--div class="simplebox">{tr}Tip: hold down CTRL to select multiple categories{/tr}</div-->
 		{/if}
 		{if count($categories) gt 0}
-	   		<div style="display:none">
-		   		<select name="cat_categories[]" multiple="multiple" size="5" id="categorySelect">
-		   			{section name=ix loop=$categories}
-				    	{if $categories[ix].incat eq 'y'}
-				    		<option value="{$categories[ix].categId|escape}" selected="selected">
-					    		{$categories[ix].categpath}
-					    	</option>
-				   		{/if}
-				   	{/section}
-		   		</select>
-				<input type="checkbox" name="cat_categorize" id="cat-check" {if $cat_categorize eq 'y' or $categ_checked eq 'y'}checked="checked"{/if}/>
-	   	    </div>
-	   		<div id="selected" style="float:right">
-	   			{tr}Remover{/tr} {tr}categorias{/tr}:<BR/>
-	   			{section name=ix loop=$categories}
-			    	{if $categories[ix].incat eq 'y'}
-				    	<span class="pointer" id="linkToRemove{$categories[ix].categId|escape}" onclick="removeCategory({$categories[ix].categId|escape})" style="display:block">
-				    		{$categories[ix].categpath}
-				    	</span>
-			    	{else}
-				    	<span class="pointer" id="linkToRemove{$categories[ix].categId|escape}" onclick="removeCategory({$categories[ix].categId|escape})" style="display:none">
-				    		{$categories[ix].categpath}
-				    	</span>
-			    	{/if}
-			   	{/section}
-	   		</div>
-	   		<div id="notSelected" style="float:left">
-	   			{tr}Adicionar{/tr} {tr}categorias{/tr}:<BR/>
-	   			{section name=ix loop=$categories}
-			    	{if $categories[ix].incat eq 'n'}
-				    	<span class="pointer" id="linkToAdd{$categories[ix].categId|escape}" onclick="addCategory('{$categories[ix].categpath}',{$categories[ix].categId|escape})" style="display:block">
-				    		{$categories[ix].categpath}
-				    	</span>
-			    	{else}
-				    	<span class="pointer" id="linkToAdd{$categories[ix].categId|escape}" onclick="addCategory('{$categories[ix].categpath}',{$categories[ix].categId|escape})" style="display:none">
-				    		{$categories[ix].categpath}
-				    	</span>
-			    	{/if}
-			   	{/section}
-	   		</div>
+  		<div style="display:none">
+		<select name="cat_categories[]" multiple="multiple" size="5" id="categorySelect">
+		{section name=ix loop=$categories}
+		    	{if $categories[ix].incat eq 'y'}
+	    		<option value="{$categories[ix].categId|escape}" selected="selected">
+	    		{$categories[ix].categpath}
+		    	</option>
+	   		{/if}
+	   	{/section}
+		</select>
+		<input type="checkbox" name="cat_categorize" id="cat-check" {if $cat_categorize eq 'y' or $categ_checked eq 'y'}checked="checked"{/if}/>
+	       </div>
+	   	<div id="selected" style="">
+	   		{tr}Remover{/tr} {tr}categorias{/tr}:<BR/>
+	   		{section name=ix loop=$categories}
+		    	{if $categories[ix].incat eq 'y'}
+		    	<span class="pointer" id="linkToRemove{$categories[ix].categId|escape}" onclick="removeCategory({$categories[ix].categId|escape})" style="display:block">
+	    		{$categories[ix].categpath}
+		    	</span>
+		    	{else}
+		    	<span class="pointer" id="linkToRemove{$categories[ix].categId|escape}" onclick="removeCategory({$categories[ix].categId|escape})" style="display:none">
+	    		{$categories[ix].categpath}
+		    	</span>
+		    	{/if}
+		   	{/section}
+   		</div>
+	   	<div id="notSelected" style="width:30%;float:left">
+	   		{tr}Adicionar{/tr} {tr}categorias{/tr}:<BR/>
+	   		{section name=ix loop=$categories}
+		    	{if $categories[ix].incat eq 'n'}
+		    	<span class="pointer" id="linkToAdd{$categories[ix].categId|escape}" onclick="addCategory('{$categories[ix].categpath}',{$categories[ix].categId|escape})" style="display:block">
+	    		{$categories[ix].categpath}
+		    	</span>
+		    	{else}
+		    	<span class="pointer" id="linkToAdd{$categories[ix].categId|escape}" onclick="addCategory('{$categories[ix].categpath}',{$categories[ix].categId|escape})" style="display:none">
+	    		{$categories[ix].categpath}
+		    	</span>
+		    	{/if}
+		   	{/section}
+	   	</div>
 	   				
 			{if $feature_help eq 'y'}
 			    <!--div class="simplebox">{tr}Tip: uncheck the above checkbox to uncategorize this page/object{/tr}</div-->
@@ -65,7 +65,8 @@
 		
 	</div>
 	{if $tiki_p_admin_categories eq 'y'}
-			&nbsp;&nbsp;&nbsp;<a href="tiki-admin_categories.php" class="link">{tr}Admin categories{/tr}</a>
+	<br clear="both">
+			<a href="tiki-admin_categories.php" class="link">{tr}Admin categories{/tr}</a>
 	{/if}
 	{literal}
 		<script language="javascript" type="text/javascript">
@@ -96,4 +97,5 @@
 		</script>
 	{/literal}
 {/if}
+<br>
 {* $feature_categories eq 'y' *}

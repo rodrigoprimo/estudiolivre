@@ -1,5 +1,5 @@
 {css}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/geral/tiki-editpage.tpl,v 1.2 2007-08-16 21:27:24 sampaioprimo Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/geral/tiki-editpage.tpl,v 1.3 2007-11-06 20:56:27 garotasimpatica Exp $ *}
 
 {*popup_init src="lib/overlib.js"*}
 
@@ -19,76 +19,73 @@
 	{/if}
 
 	<div id="wikiEditCont">	
-		
-		<span id="labelRight" class="pointer" name="preview" onclick="setPreview();">
-			{tr}gerar{/tr} {if $preview}{tr}nova{/tr} {/if}{tr}preview{/tr}
-		</span>
-		<span id="label" class="wikiEdit hiddenPointer" onclick="javascript:flip('editCont');javascript:flip('editLabelLine');toggleImage(document.getElementById('edTArrow'),'iArrowGreyRight.png');">
-			<img id="edTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png">
+	<span id="labelRight" class="pointer" name="preview" onclick="setPreview();">
+	{tr}gerar{/tr} {if $preview}{tr}nova{/tr} {/if}{tr}preview{/tr}
+	</span><br>
+	<span id="label" class="wikiEdit hiddenPointer" onclick="javascript:flip('editCont');javascript:flip('editLabelLine');toggleImage(document.getElementById('edTArrow'),'iArrowGreyRight.png');">
+		<img id="edTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png">
 			{tr}Edição da página{/tr} <b>{$page|escape|truncate:20:"(...)":true}{if $pageAlias ne ''}&nbsp;({$pageAlias|escape}){/if}</b>
-		</span>
-		<div class="wikiEdit" id="editCont" style="display:block">
-			<!--input type="submit" class="wikiaction" name="preview" value="{tr}preview{/tr}" style="float:right"/-->
-			{literal}
-				<script language="javascript" type="text/javascript">
-					function setPreview(){
-						var inputPreview = document.createElement('input');
-						inputPreview.type = "hidden";
-						inputPreview.name = "preview";
-						inputPreview.value = "1";
-						document.getElementById('editpageform').appendChild(inputPreview);
-						document.getElementById('editpageform').submit();
-					}
-				</script>
-			{/literal}
+	</span>
+	<div class="wikiEdit" id="editCont" style="display:block">
+	<!--input type="submit" class="wikiaction" name="preview" value="{tr}preview{/tr}" style="float:right"/-->
+		{literal}
+	<script language="javascript" type="text/javascript">
+	function setPreview(){
+		var inputPreview = document.createElement('input');
+		inputPreview.type = "hidden";
+		inputPreview.name = "preview";
+		inputPreview.value = "1";
+		document.getElementById('editpageform').appendChild(inputPreview);
+		document.getElementById('editpageform').submit();
+		}
+	</script>
+		{/literal}
 			
-			{if $page|lower eq 'sandbox'}
-				<div class="wikitext">
-				{tr}The SandBox is a page where you can practice your editing skills, use the preview feature to preview the appearance of the page, no versions are stored for this page.{/tr}
-				</div>
-			{/if}
+		{if $page|lower eq 'sandbox'}
+		<div class="wikitext">
+		{tr}The SandBox is a page where you can practice your editing skills, use the preview feature to preview the appearance of the page, no versions are stored for this page.{/tr}
+		</div>
+		{/if}
 			
-			{*
-			<br/>
-			{tr}Edit{/tr}:
-			<br />
-			*}
+		{*
+		<br/>
+		{tr}Edit{/tr}:
+		<br />
+		*}
 			
-			{include file="textareasize.tpl" area_name='editwiki' formId='editpageform'}
+		{include file="textareasize.tpl" area_name='editwiki' formId='editpageform'}
 			
-			{if !$wysiwyg}
-				{include file=tiki-edit_help.tpl}
-				{include file=tiki-edit_help_tool.tpl area_name='editwiki'}
-			{/if}
+		{if !$wysiwyg}
+			{include file=tiki-edit_help.tpl}
+			{include file=tiki-edit_help_tool.tpl area_name='editwiki'}
+		{/if}
 			
 			{assign var='rows' value=$smarty.cookies.editwikiRows} {if !$rows}{assign var='rows' value=40}{/if}
 			
-			<textarea id='editwiki' class="wikiedit" name="edit" rows="{$rows}">{$pagedata|escape}</textarea>
+		<textarea id='editwiki' class="wikiedit" name="edit" rows="{$rows}">{$pagedata|escape}</textarea>
 			
-			{if $feature_freetags eq 'y' and $tiki_p_freetags_tag eq 'y'}
-				<br/>
-				{include file=freetag.tpl}
+		{if $feature_freetags eq 'y' and $tiki_p_freetags_tag eq 'y'}
+		<br/>
+		{include file=freetag.tpl}
+		{/if}
+			{if $categIds}
+			{section name=o loop=$categIds}
+			<input type="hidden" name="cat_categories[]" value="{$categIds[o]}" />
+			{/section}
+			<input type="hidden" name="categId" value="{$categIdstr}" />
+			<input type="hidden" name="cat_categorize" value="on" />
+			{else}
+			<br/>
+			{if $tiki_p_view_categories eq 'y'}
+			{include file=categorize.tpl}
 			{/if}
-			
-			<div id="wikiEditExtra">
-				{if $categIds}
-					{section name=o loop=$categIds}
-						<input type="hidden" name="cat_categories[]" value="{$categIds[o]}" />
-					{/section}
-					<input type="hidden" name="categId" value="{$categIdstr}" />
-					<input type="hidden" name="cat_categorize" value="on" />
-				{else}
-				<br/>
-					{if $tiki_p_view_categories eq 'y'}
-						{include file=categorize.tpl}
-					{/if}
-				{/if}
+		{/if}
 				
-				<br/>
+			<br/>
 				
 				<span class="hiddenPointer" onclick="javascript:flip('maisOpcoes');toggleImage(document.getElementById('edtOptTArrow'),'iArrowGreyDown.png');" >
-					<img class="pointer" id="edtOptTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyRight.png">
-					<b>{tr}Mais opções{/tr}</b>
+				<img class="pointer" id="edtOptTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyRight.png">
+				<b>{tr}Mais opções{/tr}</b>
 				</span>
 				<div id="maisOpcoes" style="display:none">
 					{if $page_ref_id}
@@ -118,7 +115,7 @@
 						<select name="templateId" onchange="javascript:document.getElementById('editpageform').submit();">
 						<option value="0">{tr}none{/tr}</option>
 						{section name=ix loop=$templates}
-							<option value="{$templates[ix].templateId|escape}" {if $templateId eq $templates[ix].templateId}selected="selected"{/if}>{tr}{$templates[ix].name}{/tr}</option>
+						<option value="{$templates[ix].templateId|escape}" {if $templateId eq $templates[ix].templateId}selected="selected"{/if}>{tr}{$templates[ix].name}{/tr}</option>
 						{/section}
 						</select>
 					{/if}
@@ -139,7 +136,7 @@
 								<select name="poll_template">
 								<option value="0">{tr}none{/tr}</option>
 								{section name=ix loop=$polls_templates}
-									<option value="{$polls_templates[ix].pollId|escape}"{if $polls_templates[ix].pollId eq $poll_template} selected="selected"{/if}>{tr}{$polls_templates[ix].title}{/tr}</option>
+								<option value="{$polls_templates[ix].pollId|escape}"{if $polls_templates[ix].pollId eq $poll_template} selected="selected"{/if}>{tr}{$polls_templates[ix].title}{/tr}</option>
 								{/section}
 								</select>
 								{tr}title{/tr}
@@ -167,7 +164,7 @@
 						<select name="lang">
 							<option value="">{tr}Escolha o idioma dessa página...{/tr}</option>
 							{section name=ix loop=$languages}
-								<option value="{$languages[ix].value|escape}"{if $lang eq $languages[ix].value} selected="selected"{/if}>{$languages[ix].name}</option>
+							<option value="{$languages[ix].value|escape}"{if $lang eq $languages[ix].value} selected="selected"{/if}>{$languages[ix].name}</option>
 							{/section}
 						</select>
 						<br/>
@@ -309,7 +306,7 @@
 					{if $feature_wiki_allowhtml eq 'y' and $tiki_p_use_HTML eq 'y'}
 						<br/>
 						{tooltip text="Permite a colocação de <b>tags HTML</b> no texto wiki. Só modifique essa opção se souber <b>muito</b> bem o que isso significa."}
-							<input type="checkbox" name="allowhtml" {if $allowhtml eq 'y'}checked="checked"{/if}/>{tr}Allow HTML{/tr}
+						<input type="checkbox" name="allowhtml" {if $allowhtml eq 'y'}checked="checked"{/if}/>{tr}Allow HTML{/tr}
 						{/tooltip}
 					{/if}
 				</div>	
@@ -317,16 +314,16 @@
 		</div>			
 		<div id="editLabelLine" style="border-bottom: 2px solid grey; display:none;width: 100%; height: 2px;"></div>
 		
-			<div id="attention">
-			    <span class="pointer" name="preview" onclick="setPreview();">
-					<div id="edtPreviewAtt">{tr}Gerar{/tr} {if $preview}{tr}nova{/tr} {/if}{tr}preview{/tr}</div>
-				</span>
+		<div id="attention">
+			<span class="pointer" name="preview" onclick="setPreview();">
+				<div id="edtPreviewAtt">{tr}Gerar{/tr} {if $preview}{tr}nova{/tr} {/if}{tr}preview{/tr}</div>
+			</span><br>
 				{if $page|lower neq 'sandbox'}
-					<div id="edtComentario">
-					{tooltip text="<b>Comente</b> suscintamente as modificações feitas na edição"}
-						<div>{tr}Comentário{/tr}:</div>
-						<input class="wikitext" id="iCom" type="text" name="comment" value="{$commentdata|escape}" onChange="if(self.preview)document.getElementById('iComP').value=this.value"/>
-					{/tooltip}
+				<div id="edtComentario">
+				{tooltip text="<b>Comente</b> suscintamente as modificações feitas na edição"}
+					<b>{tr}Comentário{/tr}:</b><br>
+					<input class="wikitext" id="iCom" type="text" name="comment" value="{$commentdata|escape}" onChange="if(self.preview)document.getElementById('iComP').value=this.value"/>
+				{/tooltip}
 					</div>
 					{if $wiki_feature_copyrights  eq 'y'}
 						{tr}Copyright{/tr}:
@@ -344,22 +341,15 @@
 					{if $tiki_p_minor eq 'y' and $page|lower ne 'sandbox'}
 						<div id="edtIsMinor">
 							<div>{tr}A modificação foi{/tr}:</div>					
-							{tooltip text="Selecione se essa modificação foi <b>pequena</b> (ela não vai aparecer na página das ultimas alterações do site)"}<input type="radio" name="isminor" value="on" onChange="if(self.preview)document.editPage.isminorPreview[0].checked=document.editPage.isminor[0].checked"/>{tr}Pequena{/tr}<br>{/tooltip}
-							{tooltip text="Selecione se essa modificação foi <b>grande</b> e você quer que tod@s a vejam"}<input type="radio" name="isminor" value="" checked="checked" onChange="if(self.preview)document.editPage.isminorPreview[1].checked=document.editPage.isminor[1].checked"/>{tr}Grande{/tr}<br>{/tooltip}
-
+						<input type="radio" name="isminor" value="on" onChange="if(self.preview)document.editPage.isminorPreview[0].checked=document.editPage.isminor[0].checked"/>{tr}Pequena{/tr}<br>
+					<input type="radio" name="isminor" value="" checked="checked" onChange="if(self.preview)document.editPage.isminorPreview[1].checked=document.editPage.isminor[1].checked"/>{tr}Grande{/tr}<br>
 						</div>
 					{/if}
 
-					{*ISSO NAO FUNCIONA!...
-					<div id="save-exit" class="aSaveCancel" style="z-index: 10;">
-					  {tooltip text="Salve as modificações que acaba de fazer"}<img name="save" src="styles/{$style|replace:".css":""}/img/bSave.png" onClick="document.forms.namedItem('form-edit-wiki').submit()" style="cursor: pointer">{/tooltip}&nbsp;&nbsp;&nbsp;
-					  {tooltip text="Cancele as modificações que acaba de fazer"}<img name="cancel_edit" src="styles/{$style|replace:".css":""}/img/bCancelar.png" onClick="document.forms.namedItem('form-edit-wiki').submit()" style="cursor: pointer">{/tooltip}
-					</div>
-					*}
 					<div id="edtSaveCancel">
 					<input class="image" name="save" src="styles/{$style|replace:".css":""}/img/bSave.png" type="image" value="{tr}save{/tr}" /> &nbsp;&nbsp;
 					{if $page|lower ne 'sandbox'}
-						<input class="image" name="cancel_edit" src="styles/{$style|replace:".css":""}/img/bCancelar.png" type="image" value="{tr}cancel edit{/tr}"  onclick="cancelar=1"/>
+					<input class="image" name="cancel_edit" src="styles/{$style|replace:".css":""}/img/bCancelar.png" type="image" value="{tr}cancel edit{/tr}"  onclick="cancelar=1"/>
 					{/if}
 					</div>
 				{/if}
