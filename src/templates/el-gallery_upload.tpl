@@ -80,6 +80,8 @@
 	</div>
 {/if}
 
+<br clear="both"/>
+<br />
 <div id="js-browse">
 	<span id="ajax-uploadForms">
 		{foreach from=$arquivo->filereferences item=file key=i}
