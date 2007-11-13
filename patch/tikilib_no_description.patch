@@ -9,11 +9,11 @@
  
  	return $res["description"];
      }
-@@ -4801,7 +4801,7 @@
+@@ -5094,7 +5094,7 @@
  				$linktext = $pages[1][$i];
  			}
  
--		    $repl = '<a title="'.$desc.'" href="'.$uri_ref.'" class="wiki">' . $linktext . '</a>';
+-		    $repl = '<a title="'.$desc1.'" href="'.$uri_ref.'" class="wiki">' . $linktext . '</a>';
 +		    $repl = '<a href="'.$uri_ref.'" class="wiki">' . $linktext . '</a>';
  
  		    // Check is timeout expired?

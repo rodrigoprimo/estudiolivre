@@ -1,5 +1,5 @@
---- lib/categories/categlib.php	2006-10-18 18:28:36.000000000 -0200
-+++ lib/categories/categlib.php	2006-10-18 18:29:52.000000000 -0200
+--- lib/categories/categlib.php	2007-11-12 17:30:51.000000000 -0200
++++ lib/categories/categlib.php	2007-11-12 17:41:42.000000000 -0200
 @@ -12,7 +12,9 @@
    exit;
  }
@@ -11,7 +11,7 @@
  
  	function CategLib($db) {
  		# this is probably unneeded now
-@@ -185,30 +187,27 @@
+@@ -200,30 +202,27 @@
  		return $id;
  	}
  
@@ -52,7 +52,7 @@
  		$cachelib->invalidate('allcategs');
  		return $id;
  	}
-@@ -365,7 +364,7 @@
+@@ -384,7 +383,7 @@
  			}
  		}
  
@@ -61,25 +61,27 @@
  		$query = $query_cant . $orderBy;
  		$result = $this->query($query,$bindVars,$maxRecords,$offset);
  		$resultCant = $this->query($query_cant,$bindVars);
-@@ -393,12 +392,12 @@
+@@ -412,13 +411,13 @@
  	}
  
  	// get the parent categories of an object
 -	function get_object_categories($type, $objId) {
+-		if (!$objId)
 +	function get_object_categories($type, $itemId) {
- 
++		if (!$itemId)
+ 			return null;
 -		$query = "select `categId` from `tiki_category_objects` tco, `tiki_categorized_objects` tto
 -    where tco.`catObjectId`=tto.`catObjectId` and `type`=? and `objId`=?";
 -		//settype($objId,"string"); //objId is defined as varchar
 -		$bindvars=array($type,$objId);
-+		$query = "select `categId` from `tiki_category_objects` tco, `tiki_categorized_objects` tto, `tiki_objects` o
++                $query = "select `categId` from `tiki_category_objects` tco, `tiki_categorized_objects` tto, `tiki_objects` o
 +    where tco.`catObjectId`=tto.`catObjectId` and o.`objectId`=tto.`catObjectId` and `type`=? and `itemId`=?";
-+		//settype($itemId,"string"); //itemId is defined as varchar
-+		$bindvars=array($type,$itemId);
++                //settype($itemId,"string"); //itemId is defined as varchar
++                $bindvars=array($type,$itemId);
  		settype($bindvars["1"],"string");
  		$result = $this->query($query,$bindvars);
  		$ret = array();
-@@ -411,14 +410,14 @@
+@@ -431,14 +430,14 @@
  	}
  	
  	// get the permissions assigned to the parent categories of an object
@@ -97,7 +99,7 @@
  			$return_perms = array(); // initialize array for storing perms to be returned
  
  			if (!$cachelib->isCached("categories_permission_names")) {
-@@ -478,7 +477,7 @@
+@@ -498,7 +497,7 @@
  
  	function get_category_objects($categId) {
  		// Get all the objects in a category
@@ -106,7 +108,7 @@
  
  		$result = $this->query($query,array((int) $categId));
  		$ret = array();
-@@ -822,7 +821,7 @@
+@@ -866,7 +865,7 @@
  			$params[htmlspecialchars(urldecode($b[0]))]=htmlspecialchars(urldecode($b[1]));
  		}
  		*/
@@ -115,7 +117,7 @@
  		$result=$this->query($query,array($parsed["path"]."?".$parsed["query"]));
  		while ($res = $result->fetchRow()) {
  		  $ret[]=$res["categId"];
-@@ -835,12 +834,12 @@
+@@ -879,12 +878,12 @@
  	function get_related($categories,$maxRows=10) {
  		if(count($categories)==0) return (array());
  		$quarr=implode(",",array_fill(0,count($categories),'?'));
@@ -130,7 +132,7 @@
  			} else {
  				$ret[$res["href"]]=$res["type"].": ".$res["description"];
  			}
-@@ -864,7 +863,7 @@
+@@ -908,7 +907,7 @@
  	// Moved from tikilib.php
  	function uncategorize_object($type, $id) {
  		// Fixed query. -rlpowell
@@ -139,7 +141,7 @@
  		$catObjectId = $this->getOne($query, array((string) $type,(string) $id));
  
  		if ($catObjectId) {
-@@ -1023,8 +1022,7 @@
+@@ -1066,8 +1065,7 @@
  		    $bindvars[] = $type;
  		}
  		$sort_mode = "created_desc";

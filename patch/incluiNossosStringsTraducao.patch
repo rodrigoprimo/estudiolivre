@@ -1,21 +1,15 @@
---- tiki-setup_base.php	2006-05-12 16:52:58.000000000 -0300
-+++ tiki-setup_base.php	2006-07-11 18:34:14.000000000 -0300
-@@ -285,9 +285,14 @@
-         if ($lg == "" || $lg == $language) {
-            global $lang;
- 	      include_once("lang/$language/language.php");
-+	      if (file_exists("lang/$language/el-additional_strings.php"))
-+		  include_once("lang/$language/el-additional_strings.php");
-         }
--        else
-+        else {
-            include ("lang/$lg/language.php");
-+	   if (file_exists("lang/$lg/el-additional_strings.php"))
-+	       include_once("lang/$lg/el-additional_strings.php");
-+	}
-         if ($content) {
-             if (isset($lang[$content])) {
-                 return $lang[$content];
+--- lib/init/tra.php	2007-11-13 00:00:48.000000000 -0200
++++ lib/init/tra.php	2007-11-12 23:58:22.000000000 -0200
+@@ -26,6 +26,9 @@
+ 					if (is_file("lang/$l/custom.php")) {
+ 						include_once("lang/$l/custom.php");
+ 					}
++					if (file_exists("lang/$lg/el-additional_strings.php")) {
++					    include_once("lang/$lg/el-additional_strings.php");
++					}
+ 				}
+ 			if (isset($lang[$content])) {
+ 				return $lang[$content];
 --- setup_smarty.php	2006-05-12 16:52:56.000000000 -0300
 +++ setup_smarty.php	2006-07-11 18:36:07.000000000 -0300
 @@ -95,6 +103,8 @@
