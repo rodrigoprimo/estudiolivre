@@ -22,21 +22,21 @@
 
 <!-- Feature Wiki Begin -->
 <div id="gHomeWiki" {if $tiki_p_edit eq 'y'} ondblclick="location.href='tiki-editpage.php?page=destak'"{/if}>
-	<span id="gHomeWikiTitle" class="destak">
-		{tooltip name="home-flip-destaques" text="Alternar a visualização dos destaques"}
-			<img class="pointer" onclick="flip('modulegHomeWikiToggle');toggleImage(this,'{$imgChange}.png');storeState('gHomeWikiToggle')" src="styles/{$style|replace:".css":""}/img/{$imgCurrent}.png">
-		{/tooltip}
+	<span id="gHomeWikiTitle" >
+	{tooltip name="home-flip-destaques" text="Alternar a visualização dos destaques"}
+	<img class="pointer" onclick="flip('modulegHomeWikiToggle');toggleImage(this,'{$imgChange}.png');storeState('gHomeWikiToggle')" src="styles/{$style|replace:".css":""}/img/{$imgCurrent}.png">
+	{/tooltip}
 	</span>
 	<div id="modulegHomeWikiToggle" style="display:{$display};" class="destak">
-		{$destak}
+	{$destak}
 	</div>
-	
+<br />	
 	<div id="gHomeWikiBottom">
-		{tooltip text="<i>Feed</i> &nbsp;<b>RSS</b> do acervo.livre"}
-			<a href="tiki-index.php?page=RSS+do+Acervo+Livre">
-				<up style="position:relative; top:-4px;">{tr}Assinar RSS do acervo{/tr}</up> <img src="styles/{$style|replace:".css":""}/img/iRss.png">
-			</a>
-		{/tooltip}
+	{tooltip text="<i>Feed</i> &nbsp;<b>RSS</b> do acervo.livre"}
+		<a href="tiki-index.php?page=RSS+do+Acervo+Livre">
+			<up style="position:relative; top:-4px;">{tr}Assinar RSS do acervo{/tr}</up> <img src="styles/{$style|replace:".css":""}/img/iRss.png">
+		</a>
+	{/tooltip}
 	</div>
 </div>
 
@@ -45,11 +45,12 @@
 {include file="el-gallery_list_filters.tpl"}
 </div>
 <div id="ajax-gListCont">
-	{include file="el-gallery_section.tpl"}
+{include file="el-gallery_section.tpl"}
 </div>
 
 <center><div id="ajax-navBottom" class="listNav">{include file="el-gallery_pagination.tpl"}</div></center>
 	
 {include file="el-gallery_confirm_delete.tpl"}
+
 
 <!-- el-gallery_home.tpl end -->

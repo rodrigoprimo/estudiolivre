@@ -61,3 +61,24 @@ span.hiddenPointer {
 .fl {float:left;}
 
 .c {clear:both;}
+/*antigo estilo wiki */
+
+#gHomeWiki p {
+text-indent:0em;
+line-height:1.5em;
+}
+
+#gHomeWiki p:first-letter {
+font-size:1.2em; 
+font-family:Georgia;
+}
+
+.titlebar {
+border-top:0;
+color:green;
+background:#eff9ea;
+}
+
+#gHomeWiki #gListItem {
+margin:-1em;
+}

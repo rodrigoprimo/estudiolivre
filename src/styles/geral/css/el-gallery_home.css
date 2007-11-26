@@ -2,12 +2,17 @@
 width:80%;
 }
 
-
 .destak {
-	height:38em;
 }
 
+#modulegHomeWikiToggle {
+clear:both;
+}
 #modulegHomeWikiToggle{
-	width:42em;
+width:50%;
+clear:both;
 }
-
+#gHomeWikiBottom {
+clear:both;
+padding-top:50px;
+}
