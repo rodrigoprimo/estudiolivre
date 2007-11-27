@@ -4,7 +4,7 @@
 	position:absolute;
 	top:35px;
 	height:77px;
-	left:250px;
+	left:230px;
 	width:85px;
 	text-align:left;
 }
@@ -24,7 +24,7 @@
 #logo {
 	position:absolute;
 	top:14px;
-	left:65px;
+	left:35px;
 }
 
 #topMenuGeneral {
@@ -32,7 +32,7 @@
 	top:35px;
 	height:77px;
 	width:70px;
-	left:350px;
+	left:330px;
 	text-align:left;
 }
 
@@ -50,7 +50,7 @@
 #topSubMenu {
 	position:absolute;
 	top:35px;
-	left:435px;
+	left:415px;
 	width:60px;
 	text-align:left;
 }
@@ -79,10 +79,6 @@
 	line-height:10px;
 }
 
-#acervolivre:hover {
-	color:#00ff00;
-}
-
 /*a busca*/
 
 #search {
@@ -91,3 +87,8 @@
 	top:35px;
 	left:600px;
 }
+.submit {
+border:0px solid #000000;
+}
+
+
