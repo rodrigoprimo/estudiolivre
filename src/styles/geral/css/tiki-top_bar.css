@@ -3,7 +3,7 @@
 #topMenuCubesContainer {
 	position:absolute;
 	top:35px;
-	height:77px;
+	height:5em;
 	left:230px;
 	width:85px;
 	text-align:left;
@@ -30,7 +30,7 @@
 #topMenuGeneral {
 	position:absolute;
 	top:35px;
-	height:77px;
+	height:5em;
 	width:70px;
 	left:330px;
 	text-align:left;
@@ -91,4 +91,6 @@
 border:0px solid #000000;
 }
 
-
+.selected {
+border:1px dotted #aaaaaa;
+}
