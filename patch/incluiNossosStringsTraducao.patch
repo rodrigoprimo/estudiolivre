@@ -4,8 +4,8 @@
  					if (is_file("lang/$l/custom.php")) {
  						include_once("lang/$l/custom.php");
  					}
-+					if (file_exists("lang/$lg/el-additional_strings.php")) {
-+					    include_once("lang/$lg/el-additional_strings.php");
++					if (file_exists("lang/$l/el-additional_strings.php")) {
++					    include_once("lang/$l/el-additional_strings.php");
 +					}
  				}
  			if (isset($lang[$content])) {
