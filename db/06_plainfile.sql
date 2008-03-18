@@ -9,5 +9,3 @@ CREATE TABLE `plainfile` (
   PRIMARY KEY  (`id`),
   KEY `typeOfFile` (`typeOfFile`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
-alter table textfile rename to plainfile;

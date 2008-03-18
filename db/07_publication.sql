@@ -29,6 +29,3 @@ CREATE TABLE `publication` (
   FULLTEXT KEY `description` (`description`),
   KEY `rating` (`rating`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
-alter table publication add column `allFile` varchar(255) default NULL after rating;
-alter table publication add column `mainFile` int(11) default NULL after thumbnail;

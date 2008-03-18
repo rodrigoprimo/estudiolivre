@@ -19,5 +19,3 @@ CREATE TABLE `filereference` (
   KEY `mimeType` (`mimeType`),
   KEY `size` (`size`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
-alter table filereference add column `credits` varchar(255) default NULL after fileName;
