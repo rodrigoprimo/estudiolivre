@@ -80,7 +80,7 @@
 	</div>
 {/if}
 
-<br clear="both"/>
+<br />
 <br />
 <div id="js-browse">
 	<span id="ajax-uploadForms">
