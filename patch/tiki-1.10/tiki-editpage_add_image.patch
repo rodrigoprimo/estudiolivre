@@ -1,5 +1,5 @@
 --- tiki-editpage.php	2007-12-05 05:51:00.000000000 -0200
-+++ tiki-editpage.php.mod	2008-03-18 12:46:37.000000000 -0300
++++ tiki-editpage.php	2008-03-18 12:46:37.000000000 -0300
 @@ -156,17 +156,21 @@
  if ($tikidomain) { $wiki_up.= "/$tikidomain"; }
  // Upload pictures here
