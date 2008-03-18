@@ -68,10 +68,8 @@ p.editdate {
 	font-size:24px;
 	font-variant: small-caps;
 	text-align:center;
-	border-top:0;
-	color:green;
-	background:#eff9ea;
-
+	border-top: 1px solid #aaaaaa;
+	background-color:#eeeeee;
 }
 
 .titlebar:first-letter {
@@ -84,18 +82,6 @@ p.editdate {
 	color: red;
 	font-size:14px;
 }
-
-#gHomeWiki p {
-text-indent:0em;
-line-height:1.5em;
-}
-
-#gHomeWiki p:first-letter {
-font-size:1.2em; 
-font-family:Georgia;
-}
-
-#gHomeWiki #gListItem {margin:-1em;}
 
 A.external{
 	background:url(../img/externalLink.png) center right no-repeat;

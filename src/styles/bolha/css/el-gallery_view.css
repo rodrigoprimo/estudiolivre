@@ -8,10 +8,6 @@
 	font-size:20pt;
 }
 
-#pubRating {
-padding-left:25px;
-}
-
 #input-title {
 	width:80%;
 }
@@ -36,6 +32,7 @@ padding-left:25px;
 }
 
 #info #down {
+	float:left;
 }
 
 #viewFile {
@@ -97,7 +94,7 @@ padding-left:25px;
 	border-top: 2px solid #c2c2be;
 }
 
-.sectionTitle h3 {
+.sectionTitle h1 {
 	display:inline;
 	font-size:13px;
 	font-weight:bold;
@@ -170,18 +167,3 @@ padding-left:25px;
 	margin-right:4px;
 	max-width:100px;
 }
-#pubDetails {
-	float:left;
-	width:40%;
-}
-
-#pubComments {
-	position:relative;
-	float:left;
-}       
-#files {
-	position:relative;
-	float:left;
-	width:60%;
-}
-
