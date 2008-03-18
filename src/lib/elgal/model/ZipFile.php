@@ -30,11 +30,12 @@ class ZipFile extends FileReference {
 			$commandLine = "unzip";
 		elseif ($ext == "tar")
 			$commandLine = "tar vxf";
+		/* nao funcionou :(
 		elseif ($ext == "gz" || $ext == "tgz")
 			$commandLine = "gunzip";
 		elseif ($ext == "bz2" || $ext == "tbz2")
 			$commandLine = "bunzip2";
-		/* TODO quebrar tgz e tbz2 em dois comandos pra contornar o safe_mode
+		 TODO quebrar tgz e tbz2 em dois comandos pra contornar o safe_mode
 		elseif ($ext == "tgz")
 			$commandLine = "tar vxzf";
 		elseif ($ext == "tbz2")
