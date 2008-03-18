@@ -10,13 +10,15 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    sodipodi:docname="pUpload.svg"
-   sodipodi:docbase="/home/nano/devel/eclipse_workspace/estudiolivre/desenhos/temas/bubble"
+   sodipodi:docbase="/Users/nano/Documents/workspace/estudiolivre_head/desenhos/temas/bubble"
    height="660.00000px"
    width="840.00000px"
-   inkscape:version="0.44"
+   inkscape:version="0.45"
    sodipodi:version="0.32"
    id="svg1393"
-   version="1.0">
+   version="1.0"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   sodipodi:modified="true">
   <defs
      id="defs1396">
     <linearGradient
@@ -5818,7 +5820,7 @@
      inkscape:export-filename="telaUpload_versao00.png"
      inkscape:export-xdpi="150"
      inkscape:export-ydpi="150"><tspan
-       x="769.7652"
+       x="769.76519"
        sodipodi:role="line"
        y="418.53601"
        id="tspan19701">Uirá Jesus </tspan></text>
@@ -7523,7 +7525,7 @@
      id="g8180"
      transform="matrix(1.000000,0.000000,0.000000,0.962610,2454.727,143.9870)">
     <rect
-       style="opacity:1.0000000;fill:none;fill-opacity:1.0000000;stroke:#373737;stroke-width:2.3236670;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000"
+       style="opacity:1.0000000;fill:#ffffff;fill-opacity:1;stroke:#373737;stroke-width:2.3236670;stroke-miterlimit:4.0000000;stroke-dasharray:none;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000"
        id="rect7945"
        width="738.99493"
        height="1197.7996"
@@ -9298,4 +9300,81 @@
        y="1617.2849"
        x="888.83673"
        sodipodi:role="line">tipo em pt!!!!</tspan></text>
+  <g
+     id="g9174"
+     inkscape:export-filename="/Users/nano/Documents/workspace/estudiolivre_head/src/styles/bolha/img/iUpOutroOff.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <g
+       style="fill:#b0b0b0;fill-opacity:1;fill-rule:evenodd"
+       id="g9116"
+       transform="matrix(3.410103,0,0,3.410102,893.33972,420.75448)"
+       inkscape:export-filename="/home/uira/culturadigital/estudiolivre/src/styles/estudiolivre/iUpTextOff.png"
+       inkscape:export-xdpi="90.000000"
+       inkscape:export-ydpi="90.000000">
+      <path
+         id="path9118"
+         d="M 45.507335,97.666827 C 44.134336,97.666827 43.020253,98.780907 43.020253,100.15391 L 43.020253,106.9096 C 43.020251,108.2826 44.134336,109.39668 45.507335,109.39668 L 52.263024,109.39668 C 53.636025,109.39669 54.750104,108.2826 54.750104,106.9096 L 54.750104,100.15391 C 54.750104,98.780907 53.636023,97.666827 52.263024,97.666827 L 45.507335,97.666827 z M 45.877751,98.319467 L 51.892607,98.319467 C 53.11449,98.319467 54.106286,99.311267 54.106286,100.53315 L 54.106286,106.53919 C 54.106286,107.76107 53.114493,108.75287 51.892607,108.75287 L 45.877751,108.75287 C 44.655868,108.75287 43.664072,107.76106 43.664072,106.53919 L 43.664072,100.53315 C 43.664072,99.311267 44.655865,98.319467 45.877751,98.319467 z "
+         style="fill:#d3d3d3;fill-opacity:1" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-weight:normal;fill:#b0b0b0;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Hiragino Kaku Gothic Pro W6"
+       x="1050.1779"
+       y="786.0022"
+       id="text9156"><tspan
+         sodipodi:role="line"
+         id="tspan9158"
+         x="1050.1779"
+         y="786.0022">?</tspan></text>
+  </g>
+  <g
+     id="g5376">
+    <path
+       id="path9138"
+       d="M 1048.5244,802.58332 C 1043.8423,802.58332 1040.0432,806.38245 1040.0432,811.06453 L 1040.0432,834.10212 C 1040.0431,838.78419 1043.8423,842.58332 1048.5244,842.58332 L 1071.562,842.58332 C 1076.244,842.58335 1080.0432,838.78419 1080.0432,834.10212 L 1080.0432,811.06453 C 1080.0432,806.38245 1076.244,802.58332 1071.562,802.58332 L 1048.5244,802.58332 z M 1049.7875,804.80889 L 1070.2988,804.80889 C 1074.4655,804.80889 1077.8477,808.19103 1077.8477,812.35778 L 1077.8477,832.83898 C 1077.8477,837.00572 1074.4656,840.38786 1070.2988,840.38786 L 1049.7875,840.38786 C 1045.6208,840.38786 1042.2386,837.00569 1042.2386,832.83898 L 1042.2386,812.35778 C 1042.2386,808.19103 1045.6208,804.80889 1049.7875,804.80889 z "
+       style="fill:#64cbed;fill-opacity:1;fill-rule:evenodd" />
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-weight:normal;fill:#6c8eaf;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Hiragino Kaku Gothic Pro W6"
+       x="1049.8036"
+       y="834.43634"
+       id="text9160"><tspan
+         sodipodi:role="line"
+         id="tspan9162"
+         x="1049.8036"
+         y="834.43634">?</tspan></text>
+  </g>
+  <g
+     id="g20963"
+     inkscape:export-filename="/Users/nano/Documents/workspace/estudiolivre_head/src/styles/bolha/img/iThumbOutro.png"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <g
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="/home/nano/devel/eclipse_workspace/estudiolivre/src/styles/estudiolivre/iThumbTexto.png"
+       transform="matrix(1.962039,0,0,1.961007,-1015.9274,-351.44749)"
+       id="g20934">
+      <rect
+         ry="9.7671375"
+         rx="0"
+         y="803.76062"
+         x="1042.1993"
+         height="49.993946"
+         width="49.967293"
+         id="rect20936"
+         style="fill:#f8fcf6;fill-opacity:1;stroke:#91cd6d;stroke-linejoin:round;stroke-opacity:1" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:72px;font-style:normal;font-weight:normal;fill:#6c8eaf;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Hiragino Kaku Gothic Pro W6"
+       x="1054.2423"
+       y="1300.9857"
+       id="text20954"><tspan
+         sodipodi:role="line"
+         id="tspan20956"
+         x="1054.2423"
+         y="1300.9857">?</tspan></text>
+  </g>
 </svg>
