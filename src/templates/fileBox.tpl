@@ -1,4 +1,4 @@
-<div id="ajax-file{$file->id}" class="file{if isset($viewFile) && ($key == $viewFile)} viewing{/if}">
+<div id="ajax-file{$key}" class="file{if isset($viewFile) && ($key == $viewFile)} viewing{/if}">
 	{if $file->thumbnail}
 		<img class="fl" id="ajax-thumbnail" src="{$file->baseDir}{$file->thumbnail|escape:'url'}" height="100" width="100">
 	{else}
@@ -6,7 +6,7 @@
 	{/if}
 	<div class="info">
 		<b>{$file->fileName|truncate:20:"(...)"}<br/>
-		{$file->size|show_filesize}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		{$file->size|show_filesize}</b>
 		{if $permission}
 			{tooltip text="Apagar este arquivo!"}
 				<img class="pointer" onClick="xajax_deleteFileReference({$key});" src="styles/{$style|replace:".css":""}/img/iDelete.png"/>

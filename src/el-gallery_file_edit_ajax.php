@@ -91,12 +91,11 @@ function setPubThumbFromFile($i) {
 
 $ajaxlib->setPermission('expandFile', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('expandFile');
-function expandFile($fileId) {
+function expandFile($i) {
 	
 	global $smarty, $arquivo;
 	
-	require_once("lib/persistentObj/PersistentObjectFactory.php");
-	$file = PersistentObjectFactory::createObject("FileReference", (int)$fileId);
+	$file = &$arquivo->filereferences[$i];
 	
 	$objResponse = new xajaxResponse();
 	if ($file->actualClass == "ZipFile") {
@@ -105,14 +104,14 @@ function expandFile($fileId) {
 			$smarty->assign('file', $newFile);
 			$objResponse->addAppend('ajax-pubFilesCont', 'innerHTML', $smarty->fetch("fileBox.tpl"));
 		}
-		$objResponse->addRemove("ajax-file$fileId");		
+		$objResponse->addRemove("ajax-file$i");		
 	}
 
     return $objResponse;
 }
 
 $ajaxlib->setPermission('deleteFileReference', $userHasPermOnFile && $arquivoId);
-$ajaxlib->registerFunction('expdeleteFileReferenceandFile');
+$ajaxlib->registerFunction('deleteFileReference');
 function deleteFileReference($i) {
 	global $arquivo;
 	$arquivo->filereferences[(int)$i]->delete();
