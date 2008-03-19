@@ -121,22 +121,6 @@ function deleteFileReference($i) {
 	return $objResponse;
 }
 
-$ajaxlib->setPermission('generateFileThumb', $userHasPermOnFile && $arquivoId);
-$ajaxlib->registerFunction('generateFileThumb');
-function generateFileThumb($i) {
-	
-	global $arquivo;
-	$objResponse = new xajaxResponse();
-	
-	$file =& $arquivo->filereferences[(int)$i];
-	if (!$file->thumbnail) {
-		$file->generateThumb();
-		$objResponse->addAssign("ajax-thumbnail$i", "src", $file->baseDir . urlencode($file->thumbnail));
-	}
-	
-	return $objResponse;
-}
-
 $ajaxlib->setPermission('setMainFile', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('setMainFile');
 function setMainFile($value, $filePos) {

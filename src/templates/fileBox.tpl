@@ -1,11 +1,8 @@
 <div id="ajax-file{$key}" class="file{if isset($viewFile) && ($key == $viewFile)} viewing{/if}">
 	{if $file->thumbnail}
-		<img class="fl" id="ajax-thumbnail{$key}" src="{$file->baseDir}{$file->thumbnail|escape:'url'}" height="100" width="100">
+		<img id="ajax-thumbnail{$key}" class="fl" src="{$file->baseDir}{$file->thumbnail|escape:'url'}" height="100" width="100">
 	{else}
-		<img class="fl" id="ajax-thumbnail{$key}" src="styles/{$style|replace:".css":""}/img/iThumb{$file->type}.png" height="100" width="100">
-		{if $file->actualClass eq "ImageFile" or $file->actualClass eq "VideoFile"}
-			<span class="pointer fInfo" onclick="xajax_generateFileThumb({$key})">gerar thumbnail</span>
-		{/if}
+		<img id="ajax-thumbnail{$key}" class="fl" src="styles/{$style|replace:".css":""}/img/iThumb{$file->type}.png" height="100" width="100">
 	{/if}
 	<div class="info">
 		<b>{$file->fileName|truncate:20:"(...)"}<br/>

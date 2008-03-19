@@ -67,7 +67,7 @@ class VideoFile extends FileReference {
 		if($width%2 != 0) $width++;
 		if($height%2 != 0) $height++;
 		
-		$thumbName = 'thumb_' . $this->fileName;
+		$thumbName = 'thumb_' . preg_replace("/^.*\//", "", $this->fileName);
 		$thumbName = preg_replace('/\.(.+?)$/', '.gif', $thumbName);
 		$gif = new ffmpeg_animated_gif($this->baseDir . $thumbName, $width, $height, 1, 0);
 		
