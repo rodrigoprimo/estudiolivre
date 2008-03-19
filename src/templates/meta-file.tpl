@@ -7,7 +7,7 @@
 {/if}
 {if $permission}
 	{tooltip text="O <b>arquivo de capa</b> será visualizado sempre que alguém entrar na página desta publicação"}
-		<label class="pointer"><input type="checkbox"{if $arquivo->mainFile === $viewFile} checked{/if} onClick="xajax_setMainFile(this.checked ? 1 : 0, {$viewFile})"/>
+		<label class="pointer"><input type="checkbox"{if $arquivo->mainFile == $viewFile} checked{/if} onClick="xajax_setMainFile(this.checked ? 1 : 0, {$viewFile})"/>
 		<span class="fInfo">arquivo de capa</span></label>
 	{/tooltip}
 {/if}
