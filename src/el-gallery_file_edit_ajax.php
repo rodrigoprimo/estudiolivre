@@ -114,6 +114,7 @@ $ajaxlib->setPermission('deleteFileReference', $userHasPermOnFile && $arquivoId)
 $ajaxlib->registerFunction('deleteFileReference');
 function deleteFileReference($i) {
 	global $arquivo;
+	if ($arquivo->mainFile == (int)$i) $arquivo->update(array('mainFile' => NULL));
 	$arquivo->filereferences[(int)$i]->delete();
 	$objResponse = new xajaxResponse();
 	$objResponse->addRemove("ajax-file$i");
