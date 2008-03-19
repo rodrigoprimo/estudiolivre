@@ -99,11 +99,18 @@ function expandFile($i) {
 	
 	$objResponse = new xajaxResponse();
 	if ($file->actualClass == "ZipFile") {
-		$files = $file->expand(count($arquivo->filereferences) > 1);
+		$files = $file->expand();
 		foreach ($files as $newFile) {
 			$smarty->assign('file', $newFile);
 			$objResponse->addAppend('ajax-pubFilesCont', 'innerHTML', $smarty->fetch("fileBox.tpl"));
 		}
+		$delete = true;
+		$pubHasFiles = count($arquivo->filereferences) > 1;
+		if (!$arquivo->allFile && !$pubHasFiles) {
+			$arquivo->update(array('allFile' => $file->fullPath()));
+			$delete = false;
+		}
+		$file->delete($delete);
 		$objResponse->addRemove("ajax-file$i");		
 	}
 
@@ -112,10 +119,14 @@ function expandFile($i) {
 
 $ajaxlib->setPermission('deleteFileReference', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('deleteFileReference');
-function deleteFileReference($i) {
+function deleteFileReference($i, $fileId) {
 	global $arquivo;
 	if ($arquivo->mainFile == (int)$i) $arquivo->update(array('mainFile' => NULL));
-	$arquivo->filereferences[(int)$i]->delete();
+	if ($arquivo->mainFile > (int)$i) $arquivo->update(array('mainFile' => $arquivo->mainFile--));
+	
+	require_once("lib/persistentObj/PersistentObjectFactory.php");
+	$file = PersistentObjectFactory::createObject("FileReference", (int)$fileId);
+	$file->delete();
 	$objResponse = new xajaxResponse();
 	$objResponse->addRemove("ajax-file$i");
 	return $objResponse;

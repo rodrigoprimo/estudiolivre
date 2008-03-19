@@ -137,6 +137,11 @@
 	margin:0 10px 10px 0;
 }
 
+.delFile {
+        position:absolute;
+        right:20px; 
+}
+
 .viewing {
 	padding:5px;
 	background-color:#f1f1f1;

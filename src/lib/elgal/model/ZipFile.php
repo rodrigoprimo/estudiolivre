@@ -68,7 +68,7 @@ class ZipFile extends FileReference {
 		return $ret;
 	}
 
-	function expand($pubHasFiles) {
+	function expand() {
 		if ($this->commandLine) {
 			$pwd = getcwd();
 			chdir($this->baseDir);
@@ -94,12 +94,6 @@ class ZipFile extends FileReference {
 					}
 				}
 			}
-			$delete = true;
-			if (!$this->publication->allFile && !$pubHasFiles) {
-				$this->publication->update(array('allFile' => $this->fullPath()));
-				$delete = false;
-			}
-			$this->delete($delete);
 			return $files;
 		}
 	}
