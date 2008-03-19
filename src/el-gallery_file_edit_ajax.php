@@ -111,6 +111,16 @@ function expandFile($fileId) {
     return $objResponse;
 }
 
+$ajaxlib->setPermission('deleteFileReference', $userHasPermOnFile && $arquivoId);
+$ajaxlib->registerFunction('expdeleteFileReferenceandFile');
+function deleteFileReference($i) {
+	global $arquivo;
+	$file = &$arquivo->filereferences[(int)$i]->delete();
+	$objResponse = new xajaxResponse();
+	$objResponse->addRemove("ajax-file$i");
+	return $objResponse;
+}
+
 $ajaxlib->setPermission('setMainFile', $userHasPermOnFile && $arquivoId);
 $ajaxlib->registerFunction('setMainFile');
 function setMainFile($value, $filePos) {

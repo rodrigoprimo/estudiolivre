@@ -6,7 +6,13 @@
 	{/if}
 	<div class="info">
 		<b>{$file->fileName|truncate:20:"(...)"}<br/>
-		{$file->size|show_filesize}</b><br/>
+		{$file->size|show_filesize}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		{if $permission}
+			{tooltip text="Apagar este arquivo!"}
+				<img class="pointer" onClick="xajax_deleteFileReference({$key});" src="styles/{$style|replace:".css":""}/img/iDelete.png"/>
+			{/tooltip}
+		{/if}
+		<br/>
 		<br/>
 		{if $file->isViewable()}
 			<a href="el-gallery_view.php?arquivoId={$arquivoId}&file={$key}">{tr}ver{/tr}</a> ({$file->streams} {tr}visualizações{/tr})<br/>
