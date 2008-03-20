@@ -102,6 +102,7 @@ function expandFile($i) {
 		$files = $file->expand();
 		foreach ($files as $newFile) {
 			$smarty->assign('file', $newFile);
+			$smarty->assign('permission', true);
 			$objResponse->addAppend('ajax-pubFilesCont', 'innerHTML', $smarty->fetch("fileBox.tpl"));
 		}
 		$delete = true;
