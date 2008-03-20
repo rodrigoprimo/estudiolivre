@@ -52,7 +52,7 @@ $actualClass = array("Video" => "VideoPublication",
 					 "Audio" => "AudioPublication",
 					 "Imagem" => "ImagePublication",
 					 "Texto" => "TextPublication");
-$filters = array("actualClass" => array());
+$filters["actualClass"] = array();
 foreach ($type as $tipo) {
 	$filters["actualClass"][] = $actualClass[$tipo];
 }
