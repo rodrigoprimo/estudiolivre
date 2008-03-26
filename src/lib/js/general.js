@@ -1,4 +1,4 @@
-// $Header: /home/rodrigo/devel/arca/estudiolivre/src/lib/js/general.js,v 1.5 2007-09-01 03:01:37 nano Exp $
+// $Header: /home/rodrigo/devel/arca/estudiolivre/src/lib/js/general.js,v 1.6 2008-03-26 01:14:42 sampaioprimo Exp $
 var feature_no_cookie = 'n';
 
 function browser() {
@@ -747,14 +747,10 @@ function addImgForm() {
        new_text.innerHTML = '<input name=\'picfile' + img_form_count + '\' type=\'file\' onchange=\'javascript:insertImg("editwiki","picfile' + img_form_count + '","hasAlreadyInserted")\'/><br />';
        document.getElementById('new_img_form').appendChild(new_text);
 
-       var new_input = document.createElement('input');
-       new_input.setAttribute('type', 'hidden');
-       new_input.setAttribute('name', 'img_form_count');
-       new_input.setAttribute('value', img_form_count);
-       document.getElementById('new_img_form').appendChild(new_input);
+       document.getElementById('img_form_count').value = img_form_count;
+       img_form_count ++;
 
        needToConfirm = true;
-       img_form_count ++;
 }
 
 /* opens wiki 3d browser */

@@ -1,5 +1,5 @@
 {css}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/tiki-editpage.tpl,v 1.3 2007-08-16 21:27:26 sampaioprimo Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/tiki-editpage.tpl,v 1.4 2008-03-26 01:14:44 sampaioprimo Exp $ *}
 
 {*popup_init src="lib/overlib.js"*}
 
@@ -269,6 +269,7 @@
 						<input type="hidden" name="prefix" value="/img/wiki_up/{if $tikidomain}{$tikidomain}/{/if}" />
 						<input name="picfile1" type="file" onchange="javascript:insertImg('editwiki','picfile1','hasAlreadyInserted')"/>
 						<div id="new_img_form"></div>
+						<input type="hidden" id="img_form_count" name="img_form_count" value="1" />
 						<a href="javascript:addImgForm()" onclick="needToConfirm = false;">{tr}Add another image{/tr}</a>
 					{/if}
 					
