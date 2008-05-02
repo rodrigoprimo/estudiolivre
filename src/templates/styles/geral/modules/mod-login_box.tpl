@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/geral/modules/mod-login_box.tpl,v 1.2 2007-07-26 19:32:09 garotasimpatica Exp $  geral para defau*}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/geral/modules/mod-login_box.tpl,v 1.3 2008-05-02 15:01:31 uid10156 Exp $  geral para defau*}
 {if !$user}
 	{tikimodule title="{tr}Login{/tr}" name='login'}
 		<form id="uLoginBox" action="tiki-login.php" method="post">
@@ -24,7 +24,7 @@
 	{tikimodule title="{tr}User{/tr}</a>" name='user'}
 	<div id="userMod">		
 		{tooltip text="Navegue para a sua página pessoal para ver seus blogs, arquivos, mensagens e mudar as suas preferências."}
-			<a id="nome" href="el-user.php?view_user={$user}"><img src="tiki-show_user_avatar.php?user={$user}"/><br/>
+			<a id="nome" href="el-user.php?view_user={$user}"><img id="uOnlineThumb" src="tiki-show_user_avatar.php?user={$user}"/><br/>
 			{$user}
 			</a>{/tooltip}<br />
 		{tooltip name="lista-comunidade" text="Veja a lista de <b>pessoas</b> que fazem parte da comunidade"}

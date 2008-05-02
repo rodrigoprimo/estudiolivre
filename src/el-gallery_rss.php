@@ -77,8 +77,7 @@ if (isset($_REQUEST['tag']) && $_REQUEST['tag']) {
 }
 
 $base_url = 'http://' . $_SERVER['HTTP_HOST'] .  $_SERVER['REQUEST_URI'];
-$base_url = preg_replace('/\/el-gallery_rss.php.*$/','',$base_url);
-$base_url .= '/repo/';
+$base_url = preg_replace('/el-gallery_rss.php.*$/','',$base_url);
 
 $changes = array();
 $changes["data"] = array();
@@ -87,14 +86,14 @@ for ($i=0; $i < sizeof($files); $i++) {
 	$arquivo = array();
 	
 	$file =& $files[$i]->filereferences[0];
-	$arquivo["enclosure"] = array("url"=>$base_url . $file->fileName,
+	$arquivo["enclosure"] = array("url"=>$base_url . $file->fullPath(),
 			  	   							"lenght"=>$file->size,
 			       							"type"=>$file->mimeType);
 	
 	$arquivo[$descId] = $tikilib->parse_data($files[$i]->$descId);
 	
 	if($files[$i]->thumbnail){
-		$arquivo[$descId]='<img src="' . $base_url . $files[$i]->thumbnail.'" align="left">'.$arquivo[$descId];	
+		$arquivo[$descId]='<img src="' . $base_url . $files[$i]->fileDir() . $files[$i]->thumbnail.'" align="left">'.$arquivo[$descId];	
 	}
 	
 	$arquivo["id"] = $files[$i]->id;

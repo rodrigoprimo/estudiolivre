@@ -1,4 +1,6 @@
 tipos = new Array('Audio', 'Video', 'Imagem', 'Texto');
+var thumbTimerId = false;
+var upThumbStarted = false;
 
 function sendMsg() {
 	var body = document.getElementById('uMsgSendInput').value;

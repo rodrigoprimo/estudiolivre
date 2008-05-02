@@ -1,6 +1,8 @@
 {css extra=ajax_inputs,el-gallery_pagination}
 <!-- tiki-user_information.tpl begin -->
 
+<script language="JavaScript" src="lib/js/el_array.js"></script>
+<script language="JavaScript" src="lib/js/edit_field_ajax.js"></script>
 <script language="JavaScript" src="lib/js/license.js"></script>
 <script language="JavaScript" src="lib/js/user_edit.js"></script>
 <script language="JavaScript" src="lib/js/edit_field_ajax.js"></script>

@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/modules/mod-login_box.tpl,v 1.3 2007-05-10 21:24:40 nano Exp $ *}
+{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/modules/mod-login_box.tpl,v 1.4 2008-05-02 15:01:26 uid10156 Exp $ *}
 {if !$user}
 	{tikimodule title="{tr}Login{/tr}" name='login'}
 		<form id="uLoginBox" action="tiki-login.php" method="post">
@@ -19,7 +19,7 @@
 	<div id="userMod">		
 		{tooltip text="Navegue para a sua página pessoal para ver seus blogs, arquivos, mensagens e mudar as suas preferências."}
 			<a id="nome" href="el-user.php?view_user={$user}">
-				<img src="tiki-show_user_avatar.php?user={$user}"/>
+				<img id="uOnlineThumb" src="tiki-show_user_avatar.php?user={$user}"/>
 				<br/>
 				{$user}
 			</a>
