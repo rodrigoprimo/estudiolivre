@@ -1,5 +1,14 @@
 <?php
 
+function ieversion() {
+  ereg('MSIE ([0-9]\.[0-9])',$_SERVER['HTTP_USER_AGENT'],$reg);
+  if(!isset($reg[1])) {
+    return -1;
+  } else {
+    return floatval($reg[1]);
+  }
+}
+
 if (strpos($_SERVER["SCRIPT_NAME"],basename(__FILE__)) !== false) {
   header("location: index.php");
   exit;
@@ -22,7 +31,8 @@ $userbreadCrumb = $tikilib->get_user_preference($user,'userbreadCrumb',$userbrea
 $smarty->assign('userbreadCrumb',$userbreadCrumb);
 require_once("el-breadcrumbs.php");
 
-$isIE = preg_match('/MSIE/', $_SERVER['HTTP_USER_AGENT']) && !preg_match('/Opera/', $_SERVER['HTTP_USER_AGENT']);
+//$isIE = preg_match('/MSIE/', $_SERVER['HTTP_USER_AGENT']) && !preg_match('/Opera/', $_SERVER['HTTP_USER_AGENT']);
+$isIE = ieversion() ? ieversion() : false;
 $smarty->assign('isIE',$isIE);
 
 $showIeMsg = false;
