@@ -1,4 +1,4 @@
-{if $isIE > 6}
+{if $isIE && $isIE < 7}
 	<div id="elNotSupported">
 	<center>
 	  <h5>{tr}O seu navegador não suporta todos os recursos do Estúdio Livre{/tr}.
