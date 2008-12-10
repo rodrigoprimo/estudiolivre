@@ -1,0 +1,5 @@
+need to copy/link adodb to lib/
+
+To run the tests in this directory just execute:
+
+$ ./run-tests.sh
