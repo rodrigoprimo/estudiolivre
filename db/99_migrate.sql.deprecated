@@ -1,3 +1,5 @@
+/* arquivo utilizado para migrar os dados da base de dados antiga do EL para a nova base da versão 2.0 */
+
 insert into publication (id,licenseId,user,publishDate,author,title,description,thumbnail,copyrightOwner,producer,contact,site,rating) select arquivoId,licencaId,user,data_publicacao,autor,titulo,descricao,thumbnail,donoCopyright,produtora,contato,siteRelacionado,rating from el_arquivo;
 insert into audiopublication select arquivoId,tipoDoAudio,genero,letra,fichaTecnica,album from el_arquivo_audio; 
 insert into videopublication select arquivoId,idioma,legendas,idiomaLegenda,fichaTecnica from el_arquivo_video; 
