@@ -5,6 +5,7 @@ require_once ('lib/tikilib.php');
 require_once ('lib/persistentObj/PersistentObjectController.php');
 require_once ('lib/persistentObj/PersistentObjectFactory.php');
 require_once ('lib/rss/rsslib.php');
+require_once ('lib/freetag/freetaglib.php');
 
 $feed = "acervo";
 $id = "id";
