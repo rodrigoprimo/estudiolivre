@@ -68,7 +68,7 @@ if (isset($_REQUEST['tag']) && $_REQUEST['tag']) {
 	$objects = $freetaglib->get_objects_with_tag_combo($tagArray, 'gallery', $userName);
      
     foreach ($objects['data'] as $object) {
-		$arquivo = PersistentObjectFactory::createObject("Pubication", (int)$object['itemId']);
+		$arquivo = PersistentObjectFactory::createObject("Publication", (int)$object['itemId']);
 		if (in_array($arquivo->type, $type))
 			$files[] = $arquivo;
     }
