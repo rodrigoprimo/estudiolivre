@@ -65,8 +65,9 @@ $files = array();
 if (isset($_REQUEST['tag']) && $_REQUEST['tag']) {
 	$tagArray = split(",", $_REQUEST['tag']);
 	$title .= " - Tags: " . $_REQUEST['tag'];
+
 	$objects = $freetaglib->get_objects_with_tag_combo($tagArray, 'gallery', $userName);
-     
+
     foreach ($objects['data'] as $object) {
 		$arquivo = PersistentObjectFactory::createObject("Publication", (int)$object['itemId']);
 		if (in_array($arquivo->type, $type))
@@ -84,6 +85,7 @@ $changes = array();
 $changes["data"] = array();
 for ($i=0; $i < sizeof($files); $i++) {
 	
+    if (sizeof($files[$i]->filereferences)) {
 	$arquivo = array();
 	
 	$file =& $files[$i]->filereferences[0];
@@ -103,6 +105,7 @@ for ($i=0; $i < sizeof($files); $i++) {
 	$arquivo["publishDate"] = $files[$i]->publishDate;
 	
 	$changes["data"][] = $arquivo;
+    }
 	
 }
 

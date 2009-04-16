@@ -41,7 +41,7 @@
 		  	<h5><a href="{$source->server_url}">{$source->server_url}</a></h5>
 		  	<div class="listInfo">
 		  		<h3>
-		  			{$source->server_description} <br/>
+		  			{$source->server_description|escape:'htmlall'} <br/>
 		  		</h3>
 		  		<h4>
 				<div class="a{$source->server_name}

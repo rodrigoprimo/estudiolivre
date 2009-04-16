@@ -17,7 +17,8 @@ class IceStats{
 		curl_setopt($this->ch,CURLOPT_HEADER,false);
 		curl_setopt($this->ch,CURLOPT_HTTPAUTH,CURLAUTH_BASIC);
 		curl_setopt($this->ch,CURLOPT_USERPWD,$user.":".$pass);
-		curl_setopt($this->ch,CURLOPT_FOLLOWLOCATION,true);
+		//cannot set this in safe_mode
+		//curl_setopt($this->ch,CURLOPT_FOLLOWLOCATION,true);
 		curl_setopt($this->ch,CURLOPT_RETURNTRANSFER, true);
 		
 		$this->output=curl_exec($this->ch);
