@@ -1,5 +1,5 @@
 {css}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/textareasize.tpl,v 1.1 2006-10-20 21:11:33 rhwinter Exp $ *}
+{* $Header: /cvsroot/arca/estudiolivre/src/templates/styles/bolha/textareasize.tpl,v 1.1 2006-10-20 21:11:33 rhwinter Exp $ *}
 {* \brief: the 4 buttoms to change a textarea size (only one per form)
   * \param: $area_name = the textarea id
   * \param: $formId = the form id

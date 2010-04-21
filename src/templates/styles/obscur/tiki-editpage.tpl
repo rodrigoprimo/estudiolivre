@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/obscur/tiki-editpage.tpl,v 1.3 2007-08-16 21:27:23 sampaioprimo Exp $ *}
+{* $Header: /cvsroot/arca/estudiolivre/src/templates/styles/obscur/tiki-editpage.tpl,v 1.3 2007-08-16 21:27:23 sampaioprimo Exp $ *}
 
 {*popup_init src="lib/overlib.js"*}
 

@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/obscur/tiki-list_users.tpl,v 1.1 2006-07-26 06:15:08 rhwinter Exp $ *}
+{* $Header: /cvsroot/arca/estudiolivre/src/templates/styles/obscur/tiki-list_users.tpl,v 1.1 2006-07-26 06:15:08 rhwinter Exp $ *}
 <div id="users">
 <h1>
 	{if !$find}

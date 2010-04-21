@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/modules/mod-admin_menu.tpl,v 1.1 2006-10-20 21:11:31 rhwinter Exp $ *}
+{* $Header: /cvsroot/arca/estudiolivre/src/templates/styles/bolha/modules/mod-admin_menu.tpl,v 1.1 2006-10-20 21:11:31 rhwinter Exp $ *}
 {if $tiki_p_admin eq 'y'}
 {tikimodule title="{tr}Admin TikiWiki{/tr}" name="admin_menu" flip=$module_params.flip decorations=$module_params.decorations}
 {if $tiki_p_admin eq 'y' or 
@@ -15,11 +15,11 @@
  $tiki_p_admin_drawings eq 'y' or
  $tiki_p_admin_shoutbox eq 'y'
  }
-    {if $feature_live_support eq 'y' and ($tiki_p_live_support_admin eq 'y' or $user_is_operator eq 'y')}
+    {if $prefs.feature_live_support eq 'y' and ($tiki_p_live_support_admin eq 'y' or $user_is_operator eq 'y')}
   		&nbsp;<a href="tiki-live_support_admin.php" class="linkmenu">{tr}Live support{/tr}</a><br />
 	{/if}
 
-	{if $feature_banning eq 'y' and ($tiki_p_admin_banning eq 'y')}
+	{if $prefs.feature_banning eq 'y' and ($tiki_p_admin_banning eq 'y')}
   		&nbsp;<a href="tiki-admin_banning.php" class="linkmenu">{tr}Banning{/tr}</a><br />
 	{/if}
     {if $tiki_p_admin eq 'y'}

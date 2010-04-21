@@ -1,5 +1,5 @@
 {css extra=list,tiki-view_forum_thread}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/geral/tiki-view_forum.tpl,v 1.4 2007-08-13 04:06:37 garotasimpatica Exp $ *}
+{* $Header: /cvsroot/arca/estudiolivre/src/templates/styles/geral/tiki-view_forum.tpl,v 1.4 2007-08-13 04:06:37 garotasimpatica Exp $ *}
 <div id="viewForum">
 <h1>
 	{tr}Forum{/tr}: 

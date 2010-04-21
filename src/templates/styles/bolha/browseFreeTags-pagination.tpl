@@ -9,10 +9,10 @@
     	&nbsp;[<a class="prevnext" href="tiki-browse_freetags.php?find={$find}&amp;tag={$tag}&amp;type={$type}&amp;offset={$next_offset}">{tr}next{/tr}</a>]
     {/if}
     
-    {if $direct_pagination eq 'y'}
+    {if $prefs.direct_pagination eq 'y'}
     	<br />
     	{section loop=$cant_pages name=foo}
-    		{assign var=selector_offset value=$smarty.section.foo.index|times:$maxRecords}
+    		{assign var=selector_offset value=$smarty.section.foo.index|times:$prefs.maxRecords}
     		<a class="prevnext" href="tiki-browse_freetags.php?find={$find}&amp;tag={$tag}&amp;type={$type}&amp;offset={$selector_offset}">
 				{$smarty.section.foo.index_next}
 			</a>&nbsp;

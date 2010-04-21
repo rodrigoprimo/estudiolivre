@@ -2,12 +2,12 @@
 
 
 <body{* load tooltip images first *}
-		onLoad="preloadImgsNow('{$style|replace:".css":""}')"
+		onLoad="preloadImgsNow('{$prefs.style|replace:".css":""}')"
 	 {* --- *}>
 	
   {include file="el-lightbox.tpl"}
 
-  {if $feature_community_mouseover}
+  {if $prefs.feature_community_mouseover}
     {popup_init src="lib/js/overlib_mini.js"}
   {/if}
   
@@ -18,7 +18,7 @@
 	  {/if}
 	
 		<div id="tiki-main">
-	    	{if $feature_top_bar eq 'y'}
+	    	{if $prefs.feature_top_bar eq 'y'}
 		        {include file="tiki-top_bar.tpl"}
 		    {/if}
 		    {include file="content.tpl"}

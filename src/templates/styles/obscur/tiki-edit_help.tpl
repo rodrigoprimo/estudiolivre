@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/obscur/tiki-edit_help.tpl,v 1.1 2006-07-26 06:15:08 rhwinter Exp $ *}
+{* $Header: /cvsroot/arca/estudiolivre/src/templates/styles/obscur/tiki-edit_help.tpl,v 1.1 2006-07-26 06:15:08 rhwinter Exp $ *}
 {* Show wiki syntax and plugins help *}
 {* TODO: Add links to add samples to edit form *}
 

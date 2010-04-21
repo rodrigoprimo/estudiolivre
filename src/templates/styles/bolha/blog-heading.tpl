@@ -19,7 +19,7 @@
 				{assign var=bimgChange value="Down"}	
 			{/if}
 				<div class="pointer" id="descFlipper" onclick="javascript:flip('moduleblogDescCont');toggleImage(document.getElementById('TArrowBlogDesc'),'iArrowGrey{$bimgChange}.png');storeState('blogDescCont');">
-			        {tr}Description{/tr}<img id="TArrowBlogDesc"  src="styles/{$style|replace:".css":""}/img/iArrowGrey{$bimgCurrent}.png">
+			        {tr}Description{/tr}<img id="TArrowBlogDesc"  src="styles/{$prefs.style|replace:".css":""}/img/iArrowGrey{$bimgCurrent}.png">
 				</div>
 			<div id="moduleblogDescCont" style="display:{$bdisplay}">
 				{$description}
@@ -28,13 +28,13 @@
 		</div>
 		<h4>
 			{tr}Last modified{/tr}: {$lastModif|date_format:"%d/%m/%y - %H:%M"}
-			{if $rss_blog eq "y"}
+			{if $prefs.rss_blog eq "y"}
 				&nbsp;&nbsp;&nbsp;
 				<a class="bloglink" href="tiki-blog_rss.php?blogId={$blogId}">
 					<img src='styles/estudiolivre/iRss.png' alt='{tr}RSS feed{/tr}' title='{tr}RSS feed{/tr}' />
 				</a>
 			{/if}
-			{if $user and $feature_user_watches eq 'y'}
+			{if $user and $prefs.feature_user_watches eq 'y'}
 			<br />
 				{if $user_watching_blog eq 'n'}
 					<a href="tiki-view_blog.php?blogId={$blogId}&amp;watch_event=blog_post&amp;watch_object={$blogId}&amp;watch_action=add">

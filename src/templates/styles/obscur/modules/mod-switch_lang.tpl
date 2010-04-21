@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/obscur/modules/mod-switch_lang.tpl,v 1.1 2006-07-26 06:15:12 rhwinter Exp $ *}
+{* $Header: /cvsroot/arca/estudiolivre/src/templates/styles/obscur/modules/mod-switch_lang.tpl,v 1.1 2006-07-26 06:15:12 rhwinter Exp $ *}
 {*: {/tr}`$language`*}
 
 {tikimodule title="{tr}Language{/tr}" name="switch_lang" flip=$module_params.flip decorations=$module_params.decorations}

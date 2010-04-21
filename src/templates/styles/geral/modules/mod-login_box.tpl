@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/geral/modules/mod-login_box.tpl,v 1.3 2008-05-02 15:01:31 uid10156 Exp $  geral para defau*}
+{* $Header: /cvsroot/arca/estudiolivre/src/templates/styles/geral/modules/mod-login_box.tpl,v 1.3 2008-05-02 15:01:31 uid10156 Exp $  geral para defau*}
 {if !$user}
 	{tikimodule title="{tr}Login{/tr}" name='login'}
 		<form id="uLoginBox" action="tiki-login.php" method="post">

@@ -16,39 +16,39 @@
     <a class="linkbut{if $where eq 'pages'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=pages">{tr}All{/tr}</a>
 *}
 
-    {if $feature_wiki eq 'y'} 
+    {if $prefs.feature_wiki eq 'y'} 
      <a class="linkbut{if $where eq 'wikis'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=wikis">{tr}wiki{/tr}</a>
     {/if}
 {* isso não rola!!
      <a class="linkbut{if $where eq 'wikis'} selected{/if}" href="el-gallery_search.php?highlight={$words}">{tr}acervo{/tr}</a>
      *}
 {*    
-    {if $feature_galleries eq 'y'}
+    {if $prefs.feature_galleries eq 'y'}
      <a class="linkbut{if $where eq 'galleries'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=galleries">{tr}galleries{/tr}</a>
 
      <a class="linkbut{if $where eq 'images'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=images">{tr}images{/tr}</a>
     {/if}
     
-    {if $feature_file_galleries eq 'y'}
+    {if $prefs.feature_file_galleries eq 'y'}
      <a class="linkbut{if $where eq 'files'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=files">{tr}files{/tr}</a>
     {/if}
 *}
-    {if $feature_forums eq 'y'}
+    {if $prefs.feature_forums eq 'y'}
      <a class="linkbut{if $where eq 'forums'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=forums">{tr}forums{/tr}</a>
     {/if}
 {*
-    {if $feature_faqs eq 'y'}
+    {if $prefs.feature_faqs eq 'y'}
      <a class="linkbut{if $where eq 'faqs'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=faqs">{tr}faqs{/tr}</a>
     {/if}
-    {if $feature_blogs eq 'y'}
+    {if $prefs.feature_blogs eq 'y'}
      <a class="linkbut{if $where eq 'blogs'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=blogs">{tr}blogs{/tr}</a>
      <a class="linkbut{if $where eq 'posts'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=posts">{tr}blog posts{/tr}</a>
     {/if}
-    {if $feature_directory eq 'y'}
+    {if $prefs.feature_directory eq 'y'}
      <a class="linkbut{if $where eq 'directory'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=directory">{tr}directory{/tr}</a>
     {/if}
 
-    {if $feature_articles eq 'y'}
+    {if $prefs.feature_articles eq 'y'}
      <a class="linkbut{if $where eq 'articles'} selected{/if}" href="tiki-searchresults.php?highlight={$words}&amp;where=articles">{tr}articles{/tr}</a>
     {/if}
 *}
@@ -62,30 +62,30 @@
     {tr}in{/tr}
     <select name="where">
     <option value="pages">{tr}entire site{/tr}</option>
-    {if $feature_wiki eq 'y'}
+    {if $prefs.feature_wiki eq 'y'}
        <option value="wikis">{tr}wiki pages{/tr}</option>
     {/if}
-    {if $feature_galleries eq 'y'}
+    {if $prefs.feature_galleries eq 'y'}
        <option value="galleries">{tr}galleries{/tr}</option>
        <option value="images">{tr}images{/tr}</option>
     {/if}
-    {if $feature_file_galleries eq 'y'}
+    {if $prefs.feature_file_galleries eq 'y'}
        <option value="files">{tr}files{/tr}</option>
     {/if}
-    {if $feature_forums eq 'y'}
+    {if $prefs.feature_forums eq 'y'}
        <option value="forums">{tr}forums{/tr}</option>
     {/if}
-    {if $feature_faqs eq 'y'}
+    {if $prefs.feature_faqs eq 'y'}
        <option value="faqs">{tr}faqs{/tr}</option>
     {/if}
-    {if $feature_blogs eq 'y'}
+    {if $prefs.feature_blogs eq 'y'}
        <option value="blogs">{tr}blogs{/tr}</option>
        <option value="posts">{tr}blog posts{/tr}</option>
     {/if}
-    {if $feature_directory eq 'y'}
+    {if $prefs.feature_directory eq 'y'}
        <option value="directory">{tr}directory{/tr}</option>
     {/if}
-    {if $feature_articles eq 'y'}
+    {if $prefs.feature_articles eq 'y'}
        <option value="articles">{tr}articles{/tr}</option>
     {/if}
     </select>
@@ -94,7 +94,7 @@
 {/if*}
     {* input type="submit" class="wikiaction" name="search" value="{tr}go{/tr}"/> *}
 
-    <input id="searchFieldResults" name="highlight" size="15" type="text" accesskey="s" value="{$words}" /><input class="wikiaction" type="image" name="search" src="styles/{$style|replace:".css":""}/img/bSearch.png">
+    <input id="searchFieldResults" name="highlight" size="15" type="text" accesskey="s" value="{$words}" /><input class="wikiaction" type="image" name="search" src="styles/{$prefs.style|replace:".css":""}/img/bSearch.png">
 
 </form>
 

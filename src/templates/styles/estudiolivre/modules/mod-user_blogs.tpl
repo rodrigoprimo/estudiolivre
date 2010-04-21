@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/modules/mod-user_blogs.tpl,v 1.2 2006-07-21 11:14:42 rhwinter Exp $ *}
+{* $Header: /cvsroot/arca/estudiolivre/src/templates/styles/estudiolivre/modules/mod-user_blogs.tpl,v 1.2 2006-07-21 11:14:42 rhwinter Exp $ *}
 
 {if $user}
     {if $feature_blogs eq 'y'}

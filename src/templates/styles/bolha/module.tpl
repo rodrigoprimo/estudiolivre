@@ -17,7 +17,7 @@
 				{assign var=imgChange value="Down"}	
 			{/if}
 				<span class="pointer" onclick="javascript:flip('module{$module_name}');toggleImage(document.getElementById('TArrow{$module_name}'),'iArrowGrey{$imgChange}.{if $isIE}gif{else}png{/if}');storeState('{$module_name}');">
-			        {$module_title}<img id="TArrow{$module_name}"  src="styles/{$style|replace:".css":""}/img/iArrowGrey{$imgCurrent}.{if $isIE}gif{else}png{/if}">
+			        {$module_title}<img id="TArrow{$module_name}"  src="styles/{$prefs.style|replace:".css":""}/img/iArrowGrey{$imgCurrent}.{if $isIE}gif{else}png{/if}">
 				</span>
 		{else}
 			{$module_title}

@@ -11,12 +11,12 @@
 </h1>	
 
 <div class="hide">
-	{if $feature_help eq 'y'}
-		<a href="{$helpurl}User+Preferences" target="tikihelp" class="tikihelp" title="{tr}User Preferences{/tr}">
+	{if $prefs.feature_help eq 'y'}
+		<a href="{$prefs.helpurl}User+Preferences" target="tikihelp" class="tikihelp" title="{tr}User Preferences{/tr}">
 		<img src="img/icons/help.gif" border="0" height="16" width="16" alt='{tr}help{/tr}' /></a>
 	{/if}
 	
-	{if $feature_view_tpl eq 'y'}
+	{if $prefs.feature_view_tpl eq 'y'}
 		<a href="tiki-edit_templates.php?template=tiki-user_preferences.tpl" target="tikihelp" class="tikihelp" title="{tr}View tpl{/tr}: {tr}UserPreferences tpl{/tr}">
 		<img src="img/icons/info.gif" border="0" width="16" height="16" alt='{tr}edit template{/tr}' /></a>
 	{/if}
@@ -39,7 +39,7 @@
   <!--The line below was <td valign="top" > for no real reason-->
   <td valign="top">
 
-{if $feature_tabs eq 'y'}
+{if $prefs.feature_tabs eq 'y'}
 
 {*
 
@@ -59,7 +59,7 @@
 
 {*
 
-<div class="tabcontent" id="content{cycle name=content assign=focustab}{$focustab}" {if $feature_tabs eq 'y'} style="display:{if $focustab eq $cookietab}block{else}none{/if};"{/if}>
+<div class="tabcontent" id="content{cycle name=content assign=focustab}{$focustab}" {if $prefs.feature_tabs eq 'y'} style="display:{if $focustab eq $cookietab}block{else}none{/if};"{/if}>
 
   <div class="cbox">
   <div class="cbox-title">{tr}Personal Information{/tr}</div>
@@ -69,36 +69,36 @@
   <input type="hidden" name="user" value="{$userwatch|escape}" /> 
   <table class="admin">
   <tr><td class="form">{tr}Name{/tr}:</td><td class="form">{$userinfo.login}</td></tr>
-  <tr><td class="form">{tr}Real Name{/tr}:</td><td class="form"><input type="text" name="realName" value="{$realName|escape}" /></td></tr>
+  <tr><td class="form">{tr}Real Name{/tr}:</td><td class="form"><input type="text" name="realName" value="{$prefs.realName|escape}" /></td></tr>
   <tr><td class="form">{tr}Country{/tr}:</td><td class="form">
-  {if $country == "None"}
+  {if $prefs.country == "None"}
   <img src="img/flags/Other.gif" border="0" width="20" height="13" alt='{tr}flag{/tr}' title='{tr}flag{/tr}' />
   {else}
-  <img alt="{tr}flag{/tr}" title="{tr}flag{/tr}" src="img/flags/{$country}.gif" />
+  <img alt="{tr}flag{/tr}" title="{tr}flag{/tr}" src="img/flags/{$prefs.country}.gif" />
   {/if}
 <select name="country">
-  <option value="Other" {if $country eq "Other"}selected="selected"{/if}>{tr}Other{/tr}</option>
+  <option value="Other" {if $prefs.country eq "Other"}selected="selected"{/if}>{tr}Other{/tr}</option>
   {sortlinks}
   {section name=ix loop=$flags}
   {if $flags[ix] ne "Other"}
-  <option value="{$flags[ix]|escape}" {if $country eq $flags[ix]}selected="selected"{/if}>{tr}{$flags[ix]}{/tr}</option>
+  <option value="{$flags[ix]|escape}" {if $prefs.country eq $flags[ix]}selected="selected"{/if}>{tr}{$flags[ix]}{/tr}</option>
   {/if}
   {/section}
   {/sortlinks}
   </select>
   </td></tr>
   
-  <tr><td class="form">{tr}Longitude (WGS84/decimal degrees){/tr}:</td><td class="form"><input type="text" name="lon" value="{$lon|escape}" /></td></tr>
-  <tr><td class="form">{tr}Latitude (WGS84/decimal degrees){/tr}:</td><td class="form"><input type="text" name="lat" value="{$lat|escape}" /></td></tr>
+  <tr><td class="form">{tr}Longitude (WGS84/decimal degrees){/tr}:</td><td class="form"><input type="text" name="lon" value="{$prefs.lon|escape}" /></td></tr>
+  <tr><td class="form">{tr}Latitude (WGS84/decimal degrees){/tr}:</td><td class="form"><input type="text" name="lat" value="{$prefs.lat|escape}" /></td></tr>
   
   <tr><td class="form">{tr}Avatar{/tr}:</td><td class="form">{$avatar} <a href="tiki-pick_avatar.php" class="link">{tr}Pick user Avatar{/tr}</a></td></tr>
-  <tr><td class="form">{tr}HomePage{/tr}:</td><td class="form"><input type="text" size="40" name="homePage" value="{$homePage|escape}" /></td></tr>
-  {if $feature_wiki eq 'y' and $feature_wiki_userpage eq 'y'}
-  <tr><td class="form">{tr}Your personal Wiki Page{/tr}:</td><td class="form">{if $userPageExists eq 'y'}<a class="link" href="tiki-index.php?page={$feature_wiki_userpage_prefix}{$userinfo.login}" title="{tr}view{/tr}">{$feature_wiki_userpage_prefix}{$userinfo.login}</a> 
-	(<a class="link" href="tiki-editpage.php?page={$feature_wiki_userpage_prefix}{$userinfo.login}">{tr}edit{/tr}</a>)
-{else}{$feature_wiki_userpage_prefix}{$userinfo.login} (<a class="link" href="tiki-editpage.php?page={$feature_wiki_userpage_prefix}{$userinfo.login}">{tr}create{/tr}</a>){/if}</td></tr>
+  <tr><td class="form">{tr}HomePage{/tr}:</td><td class="form"><input type="text" size="40" name="homePage" value="{$prefs.homePage|escape}" /></td></tr>
+  {if $prefs.feature_wiki eq 'y' and $prefs.feature_wiki_userpage eq 'y'}
+  <tr><td class="form">{tr}Your personal Wiki Page{/tr}:</td><td class="form">{if $userPageExists eq 'y'}<a class="link" href="tiki-index.php?page={$prefs.feature_wiki_userpage_prefix}{$userinfo.login}" title="{tr}view{/tr}">{$prefs.feature_wiki_userpage_prefix}{$userinfo.login}</a> 
+	(<a class="link" href="tiki-editpage.php?page={$prefs.feature_wiki_userpage_prefix}{$userinfo.login}">{tr}edit{/tr}</a>)
+{else}{$prefs.feature_wiki_userpage_prefix}{$userinfo.login} (<a class="link" href="tiki-editpage.php?page={$prefs.feature_wiki_userpage_prefix}{$userinfo.login}">{tr}create{/tr}</a>){/if}</td></tr>
   {/if}
-	{if $userTracker eq 'y' && $usertrackerId}
+	{if $prefs.userTracker eq 'y' && $usertrackerId}
   <tr><td class="form">{tr}Your personal tracker information{/tr}:</td><td class="form">
 	{if $useritemId}
 	<a class="link" href="tiki-view_tracker_item.php?trackerId={$usertrackerId}&amp;itemId={$useritemId}&amp;show=mod">{tr}Edit information{/tr}</a>
@@ -124,7 +124,7 @@
 
 *}
 
-<div class="tabcontent" {*id="content{cycle name=content assign=focustab}{$focustab}" {if $feature_tabs eq 'y'} style="display:{if $focustab eq $cookietab}block{else}none{/if};"{/if}*}>
+<div class="tabcontent" {*id="content{cycle name=content assign=focustab}{$focustab}" {if $prefs.feature_tabs eq 'y'} style="display:{if $focustab eq $cookietab}block{else}none{/if};"{/if}*}>
 
   <div class="cbox">
   <div class="cbox-title">{tr}General Preferences{/tr}</div>
@@ -149,35 +149,35 @@
   <tr><td class="form">{tr}Does your mail reader need a special charset{/tr}</td>
   <td class="form">
   <select name="mailCharset">
-   {section name=ix loop=$mailCharsets}
-      <option value="{$mailCharsets[ix]|escape}" {if $mailCharset eq $mailCharsets[ix]}selected="selected"{/if}>{$mailCharsets[ix]}</option>
+   {section name=ix loop=$prefs.mailCharsets}
+      <option value="{$prefs.mailCharsets[ix]|escape}" {if $prefs.mailCharset eq $prefs.mailCharsets[ix]}selected="selected"{/if}>{$prefs.mailCharsets[ix]}</option>
    {/section}
   </select>
   </td></tr>
-  {if $change_theme eq 'y'}
+  {if $prefs.change_theme eq 'y'}
   <tr><td class="form">{tr}Theme{/tr}:</td><td class="form"><select name="mystyle">
-    {section name=ix loop=$styles}
-      {if count($available_styles) == 0 || in_array($styles[ix], $available_styles)}
-        <option value="{$styles[ix]|escape}" {if $style eq $styles[ix]}selected="selected"{/if}>{$styles[ix]|replace:".css":""}</option>
+    {section name=ix loop=$prefs.styles}
+      {if count($prefs.available_styles) == 0 || in_array($prefs.styles[ix], $prefs.available_styles)}
+        <option value="{$prefs.styles[ix]|escape}" {if $prefs.style eq $prefs.styles[ix]}selected="selected"{/if}>{$prefs.styles[ix]|replace:".css":""}</option>
       {/if}
     {/section}
         </select>
-		{if $feature_editcss eq 'y' and $tiki_p_create_css eq 'y'}
+		{if $prefs.feature_editcss eq 'y' and $tiki_p_create_css eq 'y'}
 			<br/><a href="tiki-edit_css.php" class="link" title="{tr}Edit CSS{/tr}">{tr}Edit CSS{/tr}</a>
 		{/if}
 				</td></tr>
   {/if}
-  {if $change_language eq 'y'}
+  {if $prefs.change_language eq 'y'}
   <tr><td  class="form">{tr}Language{/tr}:</td></tr>
   <tr>
   <td colspan=2 class="form">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <select name="language">
-    {section name=ix loop=$languages}
-      {if count($available_languages) == 0 || in_array($languages[ix].value, $available_languages)}
-        <option value="{$languages[ix].value|escape}"
-          {if $langUser eq $languages[ix].value}selected="selected"{/if}>
-          {$languages[ix].name}
+    {section name=ix loop=$prefs.languages}
+      {if count($prefs.available_languages) == 0 || in_array($prefs.languages[ix].value, $prefs.available_languages)}
+        <option value="{$prefs.languages[ix].value|escape}"
+          {if $langUser eq $prefs.languages[ix].value}selected="selected"{/if}>
+          {$prefs.languages[ix].name}
         </option>
       {/if}
     {/section}
@@ -185,33 +185,33 @@
   {/if}      
   <tr><td class="form">{tr}Number of visited pages to remember{/tr}:</td><td class="form">
   <select name="userbreadCrumb">
-  <option value="1" {if $userbreadCrumb eq 1}selected="selected"{/if}>1</option>
-  <option value="2" {if $userbreadCrumb eq 2}selected="selected"{/if}>2</option>
-  <option value="3" {if $userbreadCrumb eq 3}selected="selected"{/if}>3</option>
-  <option value="4" {if $userbreadCrumb eq 4}selected="selected"{/if}>4</option>
-  <option value="5" {if $userbreadCrumb eq 5}selected="selected"{/if}>5</option>
-  <option value="10" {if $userbreadCrumb eq 10}selected="selected"{/if}>10</option>
+  <option value="1" {if $prefs.userbreadCrumb eq 1}selected="selected"{/if}>1</option>
+  <option value="2" {if $prefs.userbreadCrumb eq 2}selected="selected"{/if}>2</option>
+  <option value="3" {if $prefs.userbreadCrumb eq 3}selected="selected"{/if}>3</option>
+  <option value="4" {if $prefs.userbreadCrumb eq 4}selected="selected"{/if}>4</option>
+  <option value="5" {if $prefs.userbreadCrumb eq 5}selected="selected"{/if}>5</option>
+  <option value="10" {if $prefs.userbreadCrumb eq 10}selected="selected"{/if}>10</option>
   </select>
   </td></tr>
   <tr><td class="form">{tr}Displayed time zone{/tr}:</td>
   <td class="form">
-  <input type="radio" name="display_timezone" value="UTC" {if $display_timezone eq 'UTC'}checked="checked"{/if}/> {tr}UTC{/tr}
-  <input type="radio" name="display_timezone" value="Local" {if $display_timezone ne 'UTC'}checked="checked"{/if}/> {tr}Local{/tr}
+  <input type="radio" name="display_timezone" value="UTC" {if $prefs.display_timezone eq 'UTC'}checked="checked"{/if}/> {tr}UTC{/tr}
+  <input type="radio" name="display_timezone" value="Local" {if $prefs.display_timezone ne 'UTC'}checked="checked"{/if}/> {tr}Local{/tr}
   </td>
   </tr>
   {* isso já está na página de usuário
   <tr><td class="form">{tr}User information{/tr}:</td><td class="form">
   <select name="user_information">
-    <option value='private' {if $user_information eq 'private'}selected="selected"{/if}>{tr}private{/tr}</option>
-    <option value='public' {if $user_information eq 'public'}selected="selected"{/if}>{tr}public{/tr}</option>
+    <option value='private' {if $prefs.user_information eq 'private'}selected="selected"{/if}>{tr}private{/tr}</option>
+    <option value='public' {if $prefs.user_information eq 'public'}selected="selected"{/if}>{tr}public{/tr}</option>
   </select>
   </td></tr>
   *}
   
-  {if $feature_wiki eq 'y'}
+  {if $prefs.feature_wiki eq 'y'}
   <tr><td class="form">{tr}Use double-click to edit pages{/tr}:</td>
   <td class="form">
-  <input type="checkbox" name="user_dbl" {if $user_dbl eq 'y'}checked="checked"{/if} />
+  <input type="checkbox" name="user_dbl" {if $prefs.user_dbl eq 'y'}checked="checked"{/if} />
   </td>
   </tr>
   <tr><td class="form">{tr}Usar 'ctrl-enter' para salvar a página sendo editada (pode tornar a edição mais lenta){/tr}:</td>
@@ -219,18 +219,18 @@
   <input type="checkbox" name="user_useEditJs" {if $user_useEditJs eq 'y'}checked="checked"{/if} />
   </td>
   </tr>
-  {* not used {if $feature_history eq 'y'}
+  {* not used {if $prefs.feature_history eq 'y'}
   <tr><td class="form">Use new diff any version interface:</td>
   <td class="form">
-  <input type="checkbox" name="diff_versions" {if $diff_versions eq 'y'}checked="checked"{/if} />
+  <input type="checkbox" name="diff_versions" {if $prefs.diff_versions eq 'y'}checked="checked"{/if} />
   </td>
   </tr>
   {/if} *}
   {/if}
-  {if $feature_community_mouseover eq 'y'}
+  {if $prefs.feature_community_mouseover eq 'y'}
   <tr><td class="form">{tr}Show user's info on mouseover{/tr}:</td>
   <td class="form">
-  <input type="checkbox" name="show_mouseover_user_info" {if $show_mouseover_user_info eq 'y'}checked="checked"{/if} />
+  <input type="checkbox" name="show_mouseover_user_info" {if $prefs.show_mouseover_user_info eq 'y'}checked="checked"{/if} />
   </td>
   </tr>
   {/if}
@@ -244,8 +244,8 @@
   <div class="cbox">
   <div class="cbox-title">{tr}Password{/tr}</div>
   <div class="cbox-data">
-  {if $auth_method neq 'cas' || ($cas_skip_admin eq 'y' && $user eq 'admin')}
-  {if $change_password neq 'n'}{tr}Leave "New password" and "Confirm new password" fields blank to keep current password{/tr}{/if}
+  {if $prefs.auth_method neq 'cas' || ($cas_skip_admin eq 'y' && $user eq 'admin')}
+  {if $prefs.change_password neq 'n'}{tr}Leave "New password" and "Confirm new password" fields blank to keep current password{/tr}{/if}
   {/if}
   <form action="tiki-user_preferences.php" method="post">
   <input type="hidden" name="view_user" value="{$userwatch|escape}"/>
@@ -253,8 +253,8 @@
   {* isso já está na página pessoal...
   <tr><td class="form">{tr}Email address{/tr}:</td><td class="form"><input type="text" name="email" value="{$userinfo.email|escape}" /></td></tr>
     *}
-{if $auth_method neq 'cas' || ($cas_skip_admin eq 'y' && $user eq 'admin')}
-  {if $change_password neq 'n'}
+{if $prefs.auth_method neq 'cas' || ($cas_skip_admin eq 'y' && $user eq 'admin')}
+  {if $prefs.change_password neq 'n'}
   <tr><td class="form">{tr}New password{/tr}:</td><td class="form"><input type="password" name="pass1" /></td></tr>
   <tr><td class="form">{tr}Confirm new password{/tr}:</td><td class="form"><input type="password" name="pass2" /></td></tr>
   {/if}
@@ -271,9 +271,9 @@
 </div>
 
 
-<div class="tabcontent" {*id="content{cycle name=content assign=focustab}{$focustab}" {if $feature_tabs eq 'y'} style="display:{if $focustab eq $cookietab}block{else}none{/if};"{/if}*}>
+<div class="tabcontent" {*id="content{cycle name=content assign=focustab}{$focustab}" {if $prefs.feature_tabs eq 'y'} style="display:{if $focustab eq $cookietab}block{else}none{/if};"{/if}*}>
 
-{if $feature_messages eq 'y' and $tiki_p_messages eq 'y'}
+{if $prefs.feature_messages eq 'y' and $tiki_p_messages eq 'y'}
   <div class="cbox">
   <div class="cbox-title">
 	  <a href="el-user.php?view_user={$user}#messages">
@@ -288,34 +288,34 @@
   <td class="form">{tr}Messages per page{/tr}</td>
   <td class="form">
     <select name="mess_maxRecords">
-      <option value="2" {if $mess_maxRecords eq 2}selected="selected"{/if}>2</option>
-      <option value="5" {if $mess_maxRecords eq 5}selected="selected"{/if}>5</option>
-      <option value="10" {if $mess_maxRecords eq 10}selected="selected"{/if}>10</option>
-      <option value="20" {if $mess_maxRecords eq 20}selected="selected"{/if}>20</option>
-      <option value="30" {if $mess_maxRecords eq 30}selected="selected"{/if}>30</option>
-      <option value="40" {if $mess_maxRecords eq 40}selected="selected"{/if}>40</option>
-      <option value="50" {if $mess_maxRecords eq 50}selected="selected"{/if}>50</option>
+      <option value="2" {if $prefs.mess_maxRecords eq 2}selected="selected"{/if}>2</option>
+      <option value="5" {if $prefs.mess_maxRecords eq 5}selected="selected"{/if}>5</option>
+      <option value="10" {if $prefs.mess_maxRecords eq 10}selected="selected"{/if}>10</option>
+      <option value="20" {if $prefs.mess_maxRecords eq 20}selected="selected"{/if}>20</option>
+      <option value="30" {if $prefs.mess_maxRecords eq 30}selected="selected"{/if}>30</option>
+      <option value="40" {if $prefs.mess_maxRecords eq 40}selected="selected"{/if}>40</option>
+      <option value="50" {if $prefs.mess_maxRecords eq 50}selected="selected"{/if}>50</option>
     </select>
   </td>
 </tr>
 <tr>
   <td class="form">{tr}Allow messages from other users{/tr}</td>
-  <td class="form"><input type="checkbox" name="allowMsgs" {if $allowMsgs eq 'y'}checked="checked"{/if}/></td>
+  <td class="form"><input type="checkbox" name="allowMsgs" {if $prefs.allowMsgs eq 'y'}checked="checked"{/if}/></td>
 </tr>
 <tr>
   <td class="form">{tr}Note author when reading his mail{/tr}</td>
-  <td class="form"><input type="checkbox" name="mess_sendReadStatus" {if $mess_sendReadStatus eq 'y'}checked="checked"{/if}/></td>
+  <td class="form"><input type="checkbox" name="mess_sendReadStatus" {if $prefs.mess_sendReadStatus eq 'y'}checked="checked"{/if}/></td>
 </tr>
 <tr>
   <td class="form">{tr}Send me an email for messages with priority equal or greater than{/tr}:</td>
   <td class="form">
     <select name="minPrio">
-      <option value="1" {if $minPrio eq 1}selected="selected"{/if}>1 -{tr}Lowest{/tr}-</option>
-      <option value="2" {if $minPrio eq 2}selected="selected"{/if}>2 -{tr}Low{/tr}-</option>
-      <option value="3" {if $minPrio eq 3}selected="selected"{/if}>3 -{tr}Normal{/tr}-</option>
-      <option value="4" {if $minPrio eq 4}selected="selected"{/if}>4 -{tr}High{/tr}-</option>
-      <option value="5" {if $minPrio eq 5}selected="selected"{/if}>5 -{tr}Very High{/tr}-</option>
-      <option value="6" {if $minPrio eq 6}selected="selected"{/if}>{tr}none{/tr}</option>
+      <option value="1" {if $prefs.minPrio eq 1}selected="selected"{/if}>1 -{tr}Lowest{/tr}-</option>
+      <option value="2" {if $prefs.minPrio eq 2}selected="selected"{/if}>2 -{tr}Low{/tr}-</option>
+      <option value="3" {if $prefs.minPrio eq 3}selected="selected"{/if}>3 -{tr}Normal{/tr}-</option>
+      <option value="4" {if $prefs.minPrio eq 4}selected="selected"{/if}>4 -{tr}High{/tr}-</option>
+      <option value="5" {if $prefs.minPrio eq 5}selected="selected"{/if}>5 -{tr}Very High{/tr}-</option>
+      <option value="6" {if $prefs.minPrio eq 6}selected="selected"{/if}>{tr}none{/tr}</option>
     </select>
   </td>
 </tr>
@@ -323,16 +323,16 @@
   <td class="form">{tr}Auto-archive read messages after x days{/tr}</td>
   <td class="form">
     <select name="mess_archiveAfter">
-      <option value="0" {if $mess_archiveAfter eq 0}selected="selected"{/if}>{tr}never{/tr}</option>
-      <option value="1" {if $mess_archiveAfter eq 1}selected="selected"{/if}>1</option>
-      <option value="2" {if $mess_archiveAfter eq 2}selected="selected"{/if}>2</option>
-      <option value="5" {if $mess_archiveAfter eq 5}selected="selected"{/if}>5</option>
-      <option value="10" {if $mess_archiveAfter eq 10}selected="selected"{/if}>10</option>
-      <option value="20" {if $mess_archiveAfter eq 20}selected="selected"{/if}>20</option>
-      <option value="30" {if $mess_archiveAfter eq 30}selected="selected"{/if}>30</option>
-      <option value="40" {if $mess_archiveAfter eq 40}selected="selected"{/if}>40</option>
-      <option value="50" {if $mess_archiveAfter eq 50}selected="selected"{/if}>50</option>
-      <option value="60" {if $mess_archiveAfter eq 60}selected="selected"{/if}>60</option>
+      <option value="0" {if $prefs.mess_archiveAfter eq 0}selected="selected"{/if}>{tr}never{/tr}</option>
+      <option value="1" {if $prefs.mess_archiveAfter eq 1}selected="selected"{/if}>1</option>
+      <option value="2" {if $prefs.mess_archiveAfter eq 2}selected="selected"{/if}>2</option>
+      <option value="5" {if $prefs.mess_archiveAfter eq 5}selected="selected"{/if}>5</option>
+      <option value="10" {if $prefs.mess_archiveAfter eq 10}selected="selected"{/if}>10</option>
+      <option value="20" {if $prefs.mess_archiveAfter eq 20}selected="selected"{/if}>20</option>
+      <option value="30" {if $prefs.mess_archiveAfter eq 30}selected="selected"{/if}>30</option>
+      <option value="40" {if $prefs.mess_archiveAfter eq 40}selected="selected"{/if}>40</option>
+      <option value="50" {if $prefs.mess_archiveAfter eq 50}selected="selected"{/if}>50</option>
+      <option value="60" {if $prefs.mess_archiveAfter eq 60}selected="selected"{/if}>60</option>
     </select>
   </td>
 </tr>
@@ -346,7 +346,7 @@
 
   {/if}
 
-{if $feature_tasks eq 'y' and $tiki_p_tasks eq 'y'}
+{if $prefs.feature_tasks eq 'y' and $tiki_p_tasks eq 'y'}
 
   <div class="cbox">
   <div class="cbox-title">{tr}User Tasks{/tr}</div>
@@ -358,13 +358,13 @@
   <td class="form">{tr}Tasks per page{/tr}</td>
   <td class="form">
     <select name="tasks_maxRecords">
-      <option value="2" {if $tasks_maxRecords eq 2}selected="selected"{/if}>2</option>
-      <option value="5" {if $tasks_maxRecords eq 5}selected="selected"{/if}>5</option>
-      <option value="10" {if $tasks_maxRecords eq 10}selected="selected"{/if}>10</option>
-      <option value="20" {if $tasks_maxRecords eq 20}selected="selected"{/if}>20</option>
-      <option value="30" {if $tasks_maxRecords eq 30}selected="selected"{/if}>30</option>
-      <option value="40" {if $tasks_maxRecords eq 40}selected="selected"{/if}>40</option>
-      <option value="50" {if $tasks_maxRecords eq 50}selected="selected"{/if}>50</option>
+      <option value="2" {if $prefs.tasks_maxRecords eq 2}selected="selected"{/if}>2</option>
+      <option value="5" {if $prefs.tasks_maxRecords eq 5}selected="selected"{/if}>5</option>
+      <option value="10" {if $prefs.tasks_maxRecords eq 10}selected="selected"{/if}>10</option>
+      <option value="20" {if $prefs.tasks_maxRecords eq 20}selected="selected"{/if}>20</option>
+      <option value="30" {if $prefs.tasks_maxRecords eq 30}selected="selected"{/if}>30</option>
+      <option value="40" {if $prefs.tasks_maxRecords eq 40}selected="selected"{/if}>40</option>
+      <option value="50" {if $prefs.tasks_maxRecords eq 50}selected="selected"{/if}>50</option>
     </select>
   </td>
 </tr>
@@ -390,35 +390,35 @@
         <input type="hidden" name="view_user" value="{$userwatch|escape}"/>
 <table class="admin">
 
-{if $feature_wiki eq 'y'}
-<tr><td class="form">{tr}My pages{/tr}</td><td class="form"><input type="checkbox" name="mytiki_pages" {if $mytiki_pages eq 'y'}checked="checked"{/if} /></td></tr>
+{if $prefs.feature_wiki eq 'y'}
+<tr><td class="form">{tr}My pages{/tr}</td><td class="form"><input type="checkbox" name="mytiki_pages" {if $prefs.mytiki_pages eq 'y'}checked="checked"{/if} /></td></tr>
 {/if}
 
-{if $feature_blogs eq 'y'}
-<tr><td class="form">{tr}My blogs{/tr}</td><td class="form"><input type="checkbox" name="mytiki_blogs" {if $mytiki_blogs eq 'y'}checked="checked"{/if} /></td></tr>
+{if $prefs.feature_blogs eq 'y'}
+<tr><td class="form">{tr}My blogs{/tr}</td><td class="form"><input type="checkbox" name="mytiki_blogs" {if $prefs.mytiki_blogs eq 'y'}checked="checked"{/if} /></td></tr>
 {/if}
 
 {*
-if $feature_galleries eq 'y'}
-<tr><td class="form">{tr}My galleries{/tr}</td><td class="form"><input type="checkbox" name="mytiki_gals" {if $mytiki_gals eq 'y'}checked="checked"{/if} /></td></tr>
+if $prefs.feature_galleries eq 'y'}
+<tr><td class="form">{tr}My galleries{/tr}</td><td class="form"><input type="checkbox" name="mytiki_gals" {if $prefs.mytiki_gals eq 'y'}checked="checked"{/if} /></td></tr>
 {/if
 *}
 
-{if $feature_messages eq 'y'and $tiki_p_messages eq 'y'}
-<tr><td class="form">{tr}My messages{/tr}</td><td class="form"><input type="checkbox" name="mytiki_msgs" {if $mytiki_msgs eq 'y'}checked="checked"{/if} /></td></tr>
+{if $prefs.feature_messages eq 'y'and $tiki_p_messages eq 'y'}
+<tr><td class="form">{tr}My messages{/tr}</td><td class="form"><input type="checkbox" name="mytiki_msgs" {if $prefs.mytiki_msgs eq 'y'}checked="checked"{/if} /></td></tr>
 {/if}
 
-{if $feature_tasks eq 'y' and $tiki_p_tasks eq 'y'}
-<tr><td class="form">{tr}My tasks{/tr}</td><td class="form"><input type="checkbox" name="mytiki_tasks" {if $mytiki_tasks eq 'y'}checked="checked"{/if} /></td></tr>
+{if $prefs.feature_tasks eq 'y' and $tiki_p_tasks eq 'y'}
+<tr><td class="form">{tr}My tasks{/tr}</td><td class="form"><input type="checkbox" name="mytiki_tasks" {if $prefs.mytiki_tasks eq 'y'}checked="checked"{/if} /></td></tr>
 {/if}
 
-{if $feature_trackers eq 'y'}
-<tr><td class="form">{tr}My items{/tr}</td><td class="form"><input type="checkbox" name="mytiki_items" {if $mytiki_items eq 'y'}checked="checked"{/if} /></td></tr>
+{if $prefs.feature_trackers eq 'y'}
+<tr><td class="form">{tr}My items{/tr}</td><td class="form"><input type="checkbox" name="mytiki_items" {if $prefs.mytiki_items eq 'y'}checked="checked"{/if} /></td></tr>
 {/if}
 
-{if $feature_workflow eq 'y'}
+{if $prefs.feature_workflow eq 'y'}
   {if $tiki_p_use_workflow eq 'y'}
-    <tr><td class="form">{tr}My workflow{/tr}</td><td class="form"><input type="checkbox" name="mytiki_workflow" {if $mytiki_workflow eq 'y'}checked="checked"{/if} /></td></tr>
+    <tr><td class="form">{tr}My workflow{/tr}</td><td class="form"><input type="checkbox" name="mytiki_workflow" {if $prefs.mytiki_workflow eq 'y'}checked="checked"{/if} /></td></tr>
   {/if}
 {/if}
 <tr>

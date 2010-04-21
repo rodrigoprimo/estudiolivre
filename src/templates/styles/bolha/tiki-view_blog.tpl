@@ -28,7 +28,7 @@
 	<div class="paginacao">
 		{if $prev_offset >= 0}
 			<a class="prevnext" href="tiki-view_blog.php?find={$find}&amp;blogId={$blogId}&amp;offset={$prev_offset}&amp;sort_mode={$sort_mode}">
-				<img src="styles/{$style|replace:".css":""}/img/iArrowGreyLeft.png">
+				<img src="styles/{$prefs.style|replace:".css":""}/img/iArrowGreyLeft.png">
 			</a>
 		{/if}
 		
@@ -36,13 +36,13 @@
 		
 		{if $next_offset >= 0}
 			<a class="prevnext" href="tiki-view_blog.php?find={$find}&amp;blogId={$blogId}&amp;offset={$next_offset}&amp;sort_mode={$sort_mode}">
-				<img src="styles/{$style|replace:".css":""}/img/iArrowGreyRight.png">
+				<img src="styles/{$prefs.style|replace:".css":""}/img/iArrowGreyRight.png">
 			</a>
 		{/if}
-		{if $direct_pagination eq 'y'}
+		{if $prefs.direct_pagination eq 'y'}
 			<br />
 			{section loop=$cant_pages name=foo}
-				{assign var=selector_offset value=$smarty.section.foo.index|times:$maxRecords}
+				{assign var=selector_offset value=$smarty.section.foo.index|times:$prefs.maxRecords}
 					<a class="prevnext" href="tiki-view_blog.php?find={$find}&amp;blogId={$blogId}&amp;offset={$selector_offset}&amp;sort_mode={$sort_mode}">
 				{$smarty.section.foo.index_next}</a>
 			{/section}
@@ -50,7 +50,7 @@
 	</div>
 	{* isso aqui só confunde tudo... (vou tirar e ver no que dá!)
 	<hr>
-	{if $feature_blog_comments == 'y'
+	{if $prefs.feature_blog_comments == 'y'
 	  && (($tiki_p_read_comments  == 'y'
 	  && $comments_cant != 0)
 	  ||  $tiki_p_post_comments  == 'y'

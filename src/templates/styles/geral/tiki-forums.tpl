@@ -1,5 +1,5 @@
 {css extra=list}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/geral/tiki-forums.tpl,v 1.1 2007-06-14 21:52:10 garotasimpatica Exp $ *}
+{* $Header: /cvsroot/arca/estudiolivre/src/templates/styles/geral/tiki-forums.tpl,v 1.1 2007-06-14 21:52:10 garotasimpatica Exp $ *}
 
 <div id="forum">
 	<h1>

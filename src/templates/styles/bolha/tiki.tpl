@@ -11,7 +11,7 @@
 
   	{* --- CSS com fixes do IE --- *}
 	{if $isIE}
-		<link rel="StyleSheet"  href="styles/{$style|replace:".css":""}/css/ie.css" type="text/css" />
+		<link rel="StyleSheet"  href="styles/{$prefs.style|replace:".css":""}/css/ie.css" type="text/css" />
 	{/if}
 	{* ---- END ---- *}
 </html>

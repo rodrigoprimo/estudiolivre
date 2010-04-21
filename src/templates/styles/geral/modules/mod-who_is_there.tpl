@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/geral/modules/mod-who_is_there.tpl,v 1.1 2007-07-21 14:28:58 garotasimpatica Exp $ *}
+{* $Header: /cvsroot/arca/estudiolivre/src/templates/styles/geral/modules/mod-who_is_there.tpl,v 1.1 2007-07-21 14:28:58 garotasimpatica Exp $ *}
 {math equation="count-1" count=$online_users|@count assign=numberOfUsers}
 {tikimodule title="{tr}Usuári@s Online{/tr} ($numberOfUsers)" name="who_is_there" flip=$module_params.flip}
 	{if $numberOfUsers >= 1}

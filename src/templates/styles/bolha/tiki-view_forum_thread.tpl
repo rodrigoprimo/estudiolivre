@@ -28,7 +28,7 @@
 		{/if}
 	</div>
 	
-	{if $feature_freetags eq 'y' and $tiki_p_view_freetags eq 'y' and isset($freetags.data[0])}
+	{if $prefs.feature_freetags eq 'y' and $tiki_p_view_freetags eq 'y' and isset($freetags.data[0])}
 		{include file="freetag_list.tpl"}
 	{/if}
 
@@ -38,18 +38,18 @@
 				{if $tiki_p_admin_forum eq 'y' or $thread_info.userName == $user}
 					<a href="tiki-view_forum.php?comments_offset={$smarty.request.topics_offset}{$comments_sort_mode_param}&amp;comments_threshold={$smarty.request.topics_threshold}{$comments_find_param}&amp;comments_threadId={$thread_info.threadId}&amp;openpost=1&amp;forumId={$forum_info.forumId}{$comments_maxComments_param}"
 					class="admlink">
-						<img src="styles/{$style|replace:".css":""}/img/iWikiEdit.png" alt="{tr}Edit{/tr}"/>
+						<img src="styles/{$prefs.style|replace:".css":""}/img/iWikiEdit.png" alt="{tr}Edit{/tr}"/>
 					</a>
 				{/if}
 				{if $tiki_p_admin_forum eq 'y'}
 					<a href="tiki-view_forum.php?comments_offset={$smarty.request.topics_offset}{$comments_sort_mode_param}&amp;comments_threshold={$smarty.request.topics_threshold}{$comments_find_param}&amp;comments_remove=1&amp;comments_threadId={$thread_info.threadId}&amp;forumId={$forum_info.forumId}{$comments_maxComments_param}"
 					class="admlink">
-						<img src="styles/{$style|replace:".css":""}/img/iWikiRemove.png" alt="{tr}Remove{/tr}"/>
+						<img src="styles/{$prefs.style|replace:".css":""}/img/iWikiRemove.png" alt="{tr}Remove{/tr}"/>
 					</a>
 				{/if}     
-				{if $user and $feature_notepad eq 'y' and $tiki_p_notepad eq 'y'}
+				{if $user and $prefs.feature_notepad eq 'y' and $tiki_p_notepad eq 'y'}
 					<a title="{tr}Save to notepad{/tr}" href="tiki-view_forum_thread.php?topics_offset={$smarty.request.topics_offset}{$topics_sort_mode_param}{$topics_threshold_param}{$topics_find_param}&amp;comments_parentId={$comments_parentId}&amp;forumId={$forumId}{$comments_threshold_param}&amp;comments_offset={$comments_offset}{$comments_sort_mode_param}{$comments_maxComments_param}&amp;savenotepad={$thread_info.threadId}">
-						<img src="styles/{$style|replace:".css":""}/img/iSave.png" alt="{tr}Save{/tr}"/>
+						<img src="styles/{$prefs.style|replace:".css":""}/img/iSave.png" alt="{tr}Save{/tr}"/>
 					</a>
 				{/if}
 			</div>

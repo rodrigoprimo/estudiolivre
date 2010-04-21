@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/geral/modules/mod-user_blogs.tpl,v 1.1 2007-07-21 14:28:54 garotasimpatica Exp $ *}
+{* $Header: /cvsroot/arca/estudiolivre/src/templates/styles/geral/modules/mod-user_blogs.tpl,v 1.1 2007-07-21 14:28:54 garotasimpatica Exp $ *}
 
 {if $user}
     {if $feature_blogs eq 'y'}

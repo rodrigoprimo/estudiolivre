@@ -1,5 +1,5 @@
 {css extra=list,tiki-view_forum_thread}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/tiki-view_forum.tpl,v 1.4 2007-07-25 18:34:51 sampaioprimo Exp $ *}
+{* $Header: /cvsroot/arca/estudiolivre/src/templates/styles/bolha/tiki-view_forum.tpl,v 1.4 2007-07-25 18:34:51 sampaioprimo Exp $ *}
 <div id="viewForum">
 <h1>
 	{tr}Forum{/tr}: 
@@ -23,12 +23,12 @@
     <a class="linkbut" href="tiki-admin_forums.php?forumId={$forum_info.forumId}">{tr}Edit Forum{/tr}</a>
     &nbsp;|&nbsp;
   {/if}
-  {if $rss_forum eq 'y'}
+  {if $prefs.rss_forum eq 'y'}
 	<a href="tiki-forum_rss.php?forumId={$forumId}">rss</a>
   {/if}
 </h5>
 
-{if $user and $feature_user_watches eq 'y'}
+{if $user and $prefs.feature_user_watches eq 'y'}
 	{if $user_watching_forum eq 'n'}
 		<a href="tiki-view_forum.php?forumId={$forumId}&amp;watch_event=forum_post_topic&amp;watch_object={$forumId}&amp;watch_action=add"><img border='0' alt='{tr}monitor this forum{/tr}' src='img/icons/icon_watch.png' /></a>
 	{else}
@@ -115,13 +115,13 @@ a moderator approves it.{/tr}</small>
     	<br/>
     
     {/if}
-    {if $feature_smileys eq 'y'}
+    {if $prefs.feature_smileys eq 'y'}
 		{tr}Smileys{/tr}
 		{include file="tiki-smileys.tpl" area_name='editpost'} 
     {/if}
     	<br />
 		{include file="textareasize.tpl" area_name='editpost' formId='editpageform'}
-	{if $feature_forum_parse eq 'y'}
+	{if $prefs.feature_forum_parse eq 'y'}
 		{include file=tiki-edit_help_tool.tpl area_name="editpost"}
 	{/if}		
       <textarea id='editpost' name="comments_data" rows="{$rows}" cols="{$cols}">{$comment_data|escape}</textarea>
@@ -137,7 +137,7 @@ a moderator approves it.{/tr}</small>
     
     {/if}
     
-   	{if $feature_freetags eq 'y' and $tiki_p_freetags_tag eq 'y'}
+   	{if $prefs.feature_freetags eq 'y' and $tiki_p_freetags_tag eq 'y'}
     	{include file=freetag.tpl}
 	{/if}
     
@@ -341,7 +341,7 @@ a moderator approves it.{/tr}</small>
   		<div class="paginacao">
 			{if $comments_prev_offset >= 0}
 				<a href="tiki-view_forum.php?forumId={$forum_info.forumId}&amp;comments_threshold={$comments_threshold}&amp;comments_offset={$comments_prev_offset}&amp;comments_sort_mode={$comments_sort_mode}&amp;comments_maxComments={$comments_maxComments}">
-					<img src="styles/{$style|replace:".css":""}/img/iArrowGreyLeft.png">
+					<img src="styles/{$prefs.style|replace:".css":""}/img/iArrowGreyLeft.png">
 				</a>
 			{/if}
 			
@@ -349,13 +349,13 @@ a moderator approves it.{/tr}</small>
 			
 			{if $comments_next_offset >= 0}
 				<a class="prevnext" href="tiki-view_forum.php?forumId={$forum_info.forumId}&amp;comments_threshold={$comments_threshold}&amp;comments_offset={$comments_next_offset}&amp;comments_sort_mode={$comments_sort_mode}&amp;comments_maxComments={$comments_maxComments}">
-					<img src="styles/{$style|replace:".css":""}/img/iArrowGreyRight.png">
+					<img src="styles/{$prefs.style|replace:".css":""}/img/iArrowGreyRight.png">
 				</a>
 			{/if}
 			{if $comments_pagination eq 'y'}
 				<br />
 				{section loop=$comments_cant_pages name=foo}
-					{assign var=selector_offset value=$smarty.section.foo.index|times:$maxRecords}
+					{assign var=selector_offset value=$smarty.section.foo.index|times:$prefs.maxRecords}
 						<a href="tiki-view_forum.php?forumId={$forum_info.forumId}&amp;comments_threshold={$comments_threshold}&amp;comments_offset={$selector_offset}&amp;comments_sort_mode={$comments_sort_mode}&amp;comments_maxComments={$comments_maxComments}">
 					{$smarty.section.foo.index_next}</a>
 				{/section}
@@ -405,7 +405,7 @@ a moderator approves it.{/tr}</small>
 </form>
 </td>
 <td style="text-align:right;">
-{if $feature_forum_quickjump eq 'y'}
+{if $prefs.feature_forum_quickjump eq 'y'}
 <form id='quick' method="post" action="tiki-view_forum.php">
 <small>{tr}Jump to forum{/tr}:</small>
 <select name="forumId" onchange="javascript:document.getElementById('quick').submit();">

@@ -1,5 +1,5 @@
 <!-- begin freetag.tpl -->
-{if $feature_freetags eq 'y'}
+{if $prefs.feature_freetags eq 'y'}
 	<script language="JavaScript">
 		{literal}
 		  function addTag(tag) {
@@ -17,7 +17,7 @@
 	</script>
 	<div id="freetager">
 	{tr}Tags{/tr}: 
-		{if $feature_help eq 'y'}
+		{if $prefs.feature_help eq 'y'}
 			{*
 			<div class="simplebox">{tr}Put tags separated by spaces. For tags with more than one word, use no spaces and put words together.{/tr}</div>
 			*}
@@ -29,4 +29,4 @@
 	</div>
 {/if}
 <!--end freetag.tpl-->
-{* $feature_freetags eq 'y' *}
+{* $prefs.feature_freetags eq 'y' *}

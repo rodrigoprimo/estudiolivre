@@ -16,7 +16,7 @@
 	<div id="blogPostPrev">
 		<h3>
 			<span class="pointer" onclick="javascript:flip('postPrevCont');toggleImage(document.getElementById('TArrowBlogPr'),'iArrowGreyRight.png');">
-				<img id="TArrowBlogPr" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png" />{tr}Preview{/tr}
+				<img id="TArrowBlogPr" src="styles/{$prefs.style|replace:".css":""}/img/iArrowGreyDown.png" />{tr}Preview{/tr}
 			</span>
 		</h3>
 		<div id="postPrevCont" style="display:block">
@@ -54,7 +54,7 @@
 		
 		{assign var=area_name value="blogedit"}
 		
-		{if $feature_smileys eq 'y'}
+		{if $prefs.feature_smileys eq 'y'}
 			{tr}Smileys{/tr}
 			{include file="tiki-smileys.tpl" area_name='blogedit'}
 		{/if}
@@ -87,7 +87,7 @@
 			<script defer='defer'>(new HTMLArea(document.forms['blogpost']['data'])).generate();</script>
 		{/if}
 		<br />
-		{if $feature_freetags eq 'y' and $tiki_p_freetags_tag eq 'y'}
+		{if $prefs.feature_freetags eq 'y' and $tiki_p_freetags_tag eq 'y'}
 				<br/>
 				{include file=freetag.tpl}
 		{/if}
@@ -131,7 +131,7 @@
 		*}
 		<input type="hidden" name="trackback" value="">
 		
-		{if $blog_spellcheck eq 'y'}
+		{if $prefs.blog_spellcheck eq 'y'}
 		<br/>
 			{tr}Spellcheck{/tr}:
 				<input type="checkbox" name="spellcheck" {if $spellcheck eq 'y'}checked="checked"{/if} />

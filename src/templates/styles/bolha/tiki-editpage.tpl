@@ -1,5 +1,5 @@
 {css}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/tiki-editpage.tpl,v 1.4 2008-03-26 01:14:44 sampaioprimo Exp $ *}
+{* $Header: /cvsroot/arca/estudiolivre/src/templates/styles/bolha/tiki-editpage.tpl,v 1.4 2008-03-26 01:14:44 sampaioprimo Exp $ *}
 
 {*popup_init src="lib/overlib.js"*}
 
@@ -24,7 +24,7 @@
 			{tr}gerar{/tr} {if $preview}{tr}nova{/tr} {/if}{tr}preview{/tr}
 		</span>
 		<span id="label" class="wikiEdit hiddenPointer" onclick="javascript:flip('editCont');javascript:flip('editLabelLine');toggleImage(document.getElementById('edTArrow'),'iArrowGreyRight.png');">
-			<img id="edTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyDown.png">
+			<img id="edTArrow" src="styles/{$prefs.style|replace:".css":""}/img/iArrowGreyDown.png">
 			{tr}Edição da página{/tr} <b>{$page|escape|truncate:20:"(...)":true}{if $pageAlias ne ''}&nbsp;({$pageAlias|escape}){/if}</b>
 		</span>
 		<div class="wikiEdit" id="editCont" style="display:block">
@@ -65,7 +65,7 @@
 			
 			<textarea id='editwiki' class="wikiedit" name="edit" rows="{$rows}">{$pagedata|escape}</textarea>
 			
-			{if $feature_freetags eq 'y' and $tiki_p_freetags_tag eq 'y'}
+			{if $prefs.feature_freetags eq 'y' and $tiki_p_freetags_tag eq 'y'}
 				<br/>
 				{include file=freetag.tpl}
 			{/if}
@@ -87,7 +87,7 @@
 				<br/>
 				
 				<span class="hiddenPointer" onclick="javascript:flip('maisOpcoes');toggleImage(document.getElementById('edtOptTArrow'),'iArrowGreyDown.png');" >
-					<img class="pointer" id="edtOptTArrow" src="styles/{$style|replace:".css":""}/img/iArrowGreyRight.png">
+					<img class="pointer" id="edtOptTArrow" src="styles/{$prefs.style|replace:".css":""}/img/iArrowGreyRight.png">
 					<b>{tr}Mais opções{/tr}</b>
 				</span>
 				<div id="maisOpcoes" style="display:none">
@@ -112,7 +112,7 @@
 					
 					{include file=structures.tpl}
 					
-					{if $feature_wiki_templates eq 'y' and $tiki_p_use_content_templates eq 'y' and !$templateId}
+					{if $prefs.feature_wiki_templates eq 'y' and $tiki_p_use_content_templates eq 'y' and !$templateId}
 						<br/>
 						{tr}Apply template{/tr}:
 						<select name="templateId" onchange="javascript:document.getElementById('editpageform').submit();">
@@ -123,7 +123,7 @@
 						</select>
 					{/if}
 					
-					{if $feature_wiki_ratings eq 'y' and $tiki_p_wiki_admin_ratings eq 'y'}
+					{if $prefs.feature_wiki_ratings eq 'y' and $tiki_p_wiki_admin_ratings eq 'y'}
 						{tr}Use rating{/tr}:
 						<br/>
 						{if $poll_rated.info}
@@ -162,12 +162,12 @@
 						{/if}
 					{/if}
 					
-					{if $feature_multilingual eq 'y'}
+					{if $prefs.feature_multilingual eq 'y'}
 						{tr}Language{/tr}:
 						<select name="lang">
 							<option value="">{tr}Escolha o idioma dessa página...{/tr}</option>
-							{section name=ix loop=$languages}
-								<option value="{$languages[ix].value|escape}"{if $lang eq $languages[ix].value} selected="selected"{/if}>{$languages[ix].name}</option>
+							{section name=ix loop=$prefs.languages}
+								<option value="{$prefs.languages[ix].value|escape}"{if $lang eq $prefs.languages[ix].value} selected="selected"{/if}>{$prefs.languages[ix].name}</option>
 							{/section}
 						</select>
 						<br/>
@@ -180,12 +180,12 @@
 					{/if}
 					
 					{*os smileys são un FEATURE!!!!!! era só desabilitar!....*}
-					{*if $feature_smileys eq 'y'&&!$wysiwyg}
+					{*if $prefs.feature_smileys eq 'y'&&!$wysiwyg}
 						{tr}Smileys{/tr}:
 						{include file="tiki-smileys.tpl" area_name='editwiki'}
 					{/if*}
 					
-					{if $feature_wiki_description eq 'y'}
+					{if $prefs.feature_wiki_description eq 'y'}
 						<br/>
 						{tr}Description{/tr}:<input class="wikitext" type="text" name="description" value="{$description|escape}" />
 					{/if}
@@ -203,7 +203,7 @@
 					<input type="hidden" name="rows" value="{$rows}"/>
 					<input type="hidden" name="cols" value="{$cols}"/>
 					
-					{if $feature_wiki_footnotes eq 'y'}
+					{if $prefs.feature_wiki_footnotes eq 'y'}
 						{if $user}
 							{*<tr class="formcolor"><td>*}
 							{tr}My Footnotes{/tr}:
@@ -211,7 +211,7 @@
 						{/if}
 					{/if}
 					
-					{if $feature_wiki_replace eq 'y'}
+					{if $prefs.feature_wiki_replace eq 'y'}
 						<script type="text/javascript">
 						{literal}
 						function searchrep() {
@@ -238,13 +238,13 @@
 						<input type="button" value="{tr}replace{/tr}" onclick="javascript:searchrep();">
 					{/if}
 					
-					{if $wiki_spellcheck eq 'y'}
+					{if $prefs.wiki_spellcheck eq 'y'}
 						<br/>
 						{tr}Spellcheck{/tr}:
 						<input type="checkbox" name="spellcheck" {if $spellcheck eq 'y'}checked="checked"{/if}/>
 					{/if}
 					
-					{if $feature_wiki_import_html eq 'y'}
+					{if $prefs.feature_wiki_import_html eq 'y'}
 						  <br/>
 						  {tr}Import HTML{/tr}:
 						    <input class="wikitext" type="text" name="suck_url" value="{$suck_url|escape}" />&nbsp;
@@ -261,7 +261,7 @@
 						<a href="tiki-export_wiki_pages.php?page={$page|escape:"url"}&amp;all=1" class="link">{tr}export all versions{/tr}</a>
 					{/if}
 					
-					{if $feature_wiki_pictures eq 'y' and $tiki_p_upload_picture eq 'y'}
+					{if $prefs.feature_wiki_pictures eq 'y' and $tiki_p_upload_picture eq 'y'}
 						<br/>
 						{tr}Upload picture{/tr}
 						<input type="hidden" name="MAX_FILE_SIZE" value="1000000000" />
@@ -273,23 +273,23 @@
 						<a href="javascript:addImgForm()" onclick="needToConfirm = false;">{tr}Add another image{/tr}</a>
 					{/if}
 					
-					{if $feature_wiki_icache eq 'y'}
+					{if $prefs.feature_wiki_icache eq 'y'}
 						{tr}Cache{/tr}
 						    <select name="wiki_cache">
-						    <option value="0" {if $wiki_cache eq 0}selected="selected"{/if}>0 ({tr}no cache{/tr})</option>
-						    <option value="60" {if $wiki_cache eq 60}selected="selected"{/if}>1 {tr}minute{/tr}</option>
-						    <option value="300" {if $wiki_cache eq 300}selected="selected"{/if}>5 {tr}minutes{/tr}</option>
-						    <option value="600" {if $wiki_cache eq 600}selected="selected"{/if}>10 {tr}minute{/tr}</option>
-						    <option value="900" {if $wiki_cache eq 900}selected="selected"{/if}>15 {tr}minutes{/tr}</option>
-						    <option value="1800" {if $wiki_cache eq 1800}selected="selected"{/if}>30 {tr}minute{/tr}</option>
-						    <option value="3600" {if $wiki_cache eq 3600}selected="selected"{/if}>1 {tr}hour{/tr}</option>
-						    <option value="7200" {if $wiki_cache eq 7200}selected="selected"{/if}>2 {tr}hours{/tr}</option>
+						    <option value="0" {if $prefs.wiki_cache eq 0}selected="selected"{/if}>0 ({tr}no cache{/tr})</option>
+						    <option value="60" {if $prefs.wiki_cache eq 60}selected="selected"{/if}>1 {tr}minute{/tr}</option>
+						    <option value="300" {if $prefs.wiki_cache eq 300}selected="selected"{/if}>5 {tr}minutes{/tr}</option>
+						    <option value="600" {if $prefs.wiki_cache eq 600}selected="selected"{/if}>10 {tr}minute{/tr}</option>
+						    <option value="900" {if $prefs.wiki_cache eq 900}selected="selected"{/if}>15 {tr}minutes{/tr}</option>
+						    <option value="1800" {if $prefs.wiki_cache eq 1800}selected="selected"{/if}>30 {tr}minute{/tr}</option>
+						    <option value="3600" {if $prefs.wiki_cache eq 3600}selected="selected"{/if}>1 {tr}hour{/tr}</option>
+						    <option value="7200" {if $prefs.wiki_cache eq 7200}selected="selected"{/if}>2 {tr}hours{/tr}</option>
 						    </select> 
 					{/if}
 					
 					<input type="hidden" name="page" value="{$page|escape}" />
 					
-					{if $feature_antibot eq 'y' && $anon_user eq 'y'}
+					{if $prefs.feature_antibot eq 'y' && $anon_user eq 'y'}
 						<br/>
 						{tr}Anti-Bot verification code{/tr}:
 						<img src="tiki-random_num_img.php" alt='{tr}Random Image{/tr}'/>
@@ -297,17 +297,17 @@
 						<input type="text" maxlength="8" size="8" name="antibotcode" />
 					{/if}
 					
-					{if $wiki_feature_copyrights  eq 'y'}
+					{if $prefs.wiki_feature_copyrights  eq 'y'}
 						<br/>
 						{tr}License{/tr}:
-						<a href="tiki-index.php?page={$wikiLicensePage}">{tr}{$wikiLicensePage}{/tr}</a>
-						{if $wikiSubmitNotice neq ""}
+						<a href="tiki-index.php?page={$prefs.wikiLicensePage}">{tr}{$prefs.wikiLicensePage}{/tr}</a>
+						{if $prefs.wikiSubmitNotice neq ""}
 							{tr}Important{/tr}:
-							<b>{tr}{$wikiSubmitNotice}{/tr}</b>
+							<b>{tr}{$prefs.wikiSubmitNotice}{/tr}</b>
 						{/if}
 					{/if}
 					
-					{if $feature_wiki_allowhtml eq 'y' and $tiki_p_use_HTML eq 'y'}
+					{if $prefs.feature_wiki_allowhtml eq 'y' and $tiki_p_use_HTML eq 'y'}
 						<br/>
 						{tooltip text="Permite a colocação de <b>tags HTML</b> no texto wiki. Só modifique essa opção se souber <b>muito</b> bem o que isso significa."}
 							<input type="checkbox" name="allowhtml" {if $allowhtml eq 'y'}checked="checked"{/if}/>{tr}Allow HTML{/tr}
@@ -329,7 +329,7 @@
 						<input class="wikitext" id="iCom" type="text" name="comment" value="{$commentdata|escape}" onChange="if(self.preview)document.getElementById('iComP').value=this.value"/>
 					{/tooltip}
 					</div>
-					{if $wiki_feature_copyrights  eq 'y'}
+					{if $prefs.wiki_feature_copyrights  eq 'y'}
 						{tr}Copyright{/tr}:
 						<tr class="formcolor"><td>
 						{tr}Title:{/tr}
@@ -353,14 +353,14 @@
 
 					{*ISSO NAO FUNCIONA!...
 					<div id="save-exit" class="aSaveCancel" style="z-index: 10;">
-					  {tooltip text="Salve as modificações que acaba de fazer"}<img name="save" src="styles/{$style|replace:".css":""}/img/bSave.png" onClick="document.forms.namedItem('form-edit-wiki').submit()" style="cursor: pointer">{/tooltip}&nbsp;&nbsp;&nbsp;
-					  {tooltip text="Cancele as modificações que acaba de fazer"}<img name="cancel_edit" src="styles/{$style|replace:".css":""}/img/bCancelar.png" onClick="document.forms.namedItem('form-edit-wiki').submit()" style="cursor: pointer">{/tooltip}
+					  {tooltip text="Salve as modificações que acaba de fazer"}<img name="save" src="styles/{$prefs.style|replace:".css":""}/img/bSave.png" onClick="document.forms.namedItem('form-edit-wiki').submit()" style="cursor: pointer">{/tooltip}&nbsp;&nbsp;&nbsp;
+					  {tooltip text="Cancele as modificações que acaba de fazer"}<img name="cancel_edit" src="styles/{$prefs.style|replace:".css":""}/img/bCancelar.png" onClick="document.forms.namedItem('form-edit-wiki').submit()" style="cursor: pointer">{/tooltip}
 					</div>
 					*}
 					<div id="edtSaveCancel">
-					<input class="image" name="save" src="styles/{$style|replace:".css":""}/img/bSave.png" type="image" value="{tr}save{/tr}" /> &nbsp;&nbsp;
+					<input class="image" name="save" src="styles/{$prefs.style|replace:".css":""}/img/bSave.png" type="image" value="{tr}save{/tr}" /> &nbsp;&nbsp;
 					{if $page|lower ne 'sandbox'}
-						<input class="image" name="cancel_edit" src="styles/{$style|replace:".css":""}/img/bCancelar.png" type="image" value="{tr}cancel edit{/tr}"  onclick="cancelar=1"/>
+						<input class="image" name="cancel_edit" src="styles/{$prefs.style|replace:".css":""}/img/bCancelar.png" type="image" value="{tr}cancel edit{/tr}"  onclick="cancelar=1"/>
 					{/if}
 					</div>
 				{/if}
@@ -378,7 +378,7 @@
   		<br/>
 		<input class="wikitext" id="lightComment" type="text" name="lightComment" value="" {if $useJavascript eq "y"}onkeydown="lightBoxKey(event){/if}"/>
 		<div id="edtSaveCancel">
-			<img src="styles/{$style|replace:".css":""}/img/bSave.png" value="{tr}save{/tr}" onclick="comment()"/>
+			<img src="styles/{$prefs.style|replace:".css":""}/img/bSave.png" value="{tr}save{/tr}" onclick="comment()"/>
 		</div>
 	</form>
 </div>

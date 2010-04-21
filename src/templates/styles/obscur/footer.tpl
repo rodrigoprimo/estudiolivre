@@ -1,7 +1,7 @@
 <!-- footer.tpl begin -->
 <div id="footer">
 {*<img src="styles/estudiolivre/mainBottom.png">*}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/obscur/footer.tpl,v 1.1 2006-07-26 06:15:08 rhwinter Exp $ *}
+{* $Header: /cvsroot/arca/estudiolivre/src/templates/styles/obscur/footer.tpl,v 1.1 2006-07-26 06:15:08 rhwinter Exp $ *}
 
 {*if $tiki_p_admin eq 'y' and $feature_debug_console eq 'y'*}
   {* Include debugging console. Note it shoudl be processed as near as possible to the end of file *}

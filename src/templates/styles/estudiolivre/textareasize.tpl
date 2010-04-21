@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/estudiolivre/textareasize.tpl,v 1.2 2006-08-14 23:17:15 nano Exp $ *}
+{* $Header: /cvsroot/arca/estudiolivre/src/templates/styles/estudiolivre/textareasize.tpl,v 1.2 2006-08-14 23:17:15 nano Exp $ *}
 {* \brief: the 4 buttoms to change a textarea size (only one per form)
   * \param: $area_name = the textarea id
   * \param: $formId = the form id

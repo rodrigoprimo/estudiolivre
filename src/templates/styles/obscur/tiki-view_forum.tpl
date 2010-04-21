@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/obscur/tiki-view_forum.tpl,v 1.2 2007-07-25 18:34:54 sampaioprimo Exp $ *}
+{* $Header: /cvsroot/arca/estudiolivre/src/templates/styles/obscur/tiki-view_forum.tpl,v 1.2 2007-07-25 18:34:54 sampaioprimo Exp $ *}
 <div id="viewForum">
 <h1>
 	{tr}Forum{/tr}: 

@@ -1,5 +1,5 @@
 {css only=list}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/geral/tiki-list_users.tpl,v 1.1 2007-06-14 21:52:12 garotasimpatica Exp $ *}
+{* $Header: /cvsroot/arca/estudiolivre/src/templates/styles/geral/tiki-list_users.tpl,v 1.1 2007-06-14 21:52:12 garotasimpatica Exp $ *}
 <div id="users">
 <h1>
 	{if !$find}

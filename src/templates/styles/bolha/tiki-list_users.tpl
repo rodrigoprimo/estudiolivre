@@ -1,5 +1,5 @@
 {css only=list}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/tiki-list_users.tpl,v 1.5 2007-05-10 21:24:11 nano Exp $ *}
+{* $Header: /cvsroot/arca/estudiolivre/src/templates/styles/bolha/tiki-list_users.tpl,v 1.5 2007-05-10 21:24:11 nano Exp $ *}
 <div id="users">
 <h1>
 	{if !$find}
@@ -9,8 +9,8 @@
 	{/if}
 </h1>
 {*================
-	{if $feature_help eq 'y'}
-		<a href="{$helpurl}UserList" target="tikihelp" class="tikihelp" title="{tr}User List{/tr}">
+	{if $prefs.feature_help eq 'y'}
+		<a href="{$prefs.helpurl}UserList" target="tikihelp" class="tikihelp" title="{tr}User List{/tr}">
 			<img src="img/icons/help.gif" border="0" height="16" width="16" alt='{tr}help{/tr}' />
 		</a>
 	{/if}
@@ -67,7 +67,7 @@ para a sua apreciação: esse eh o codigo que era usado pelo tiki-view_trackers 
 		<td class="heading">
 			{tooltip text="Clique para que a listagem seja por <b>ordem alfabética</b> de nome de usuári@"}
 			<a href="tiki-list_users.php?{if $find}find={$find}&amp;{/if}offset={$offset}&amp;sort_mode={if $sort_mode eq 'login_desc'}login_asc{else}login_desc{/if}" class="userlistheading">
-				<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'login_desc'}ArrowUp{elseif $sort_mode eq 'login_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+				<img src="styles/{$prefs.style|replace:".css":""}/img/sort{if $sort_mode eq 'login_desc'}ArrowUp{elseif $sort_mode eq 'login_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 				{tr}User{/tr}
 			</a>
 			{/tooltip}
@@ -75,7 +75,7 @@ para a sua apreciação: esse eh o codigo que era usado pelo tiki-view_trackers 
 		<td class="heading">
 			{tooltip text="Clique para que a listagem seja por <b>ordem alfabética</b> de nome completo"}
 			<a class="userlistheading" href="tiki-list_users.php?{if $find}find={$find}&amp;{/if}offset={$offset}&amp;sort_mode={if $sort_mode eq 'realName_desc'}realName_asc{else}realName_desc{/if}">
-				<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'realName_desc'}ArrowUp{elseif $sort_mode eq 'realName_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+				<img src="styles/{$prefs.style|replace:".css":""}/img/sort{if $sort_mode eq 'realName_desc'}ArrowUp{elseif $sort_mode eq 'realName_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 				{tr}Real Name{/tr}
 			</a>
 			{/tooltip}
@@ -91,7 +91,7 @@ para a sua apreciação: esse eh o codigo que era usado pelo tiki-view_trackers 
 		<td class="heading">
 			{tooltip text="Clique para que a listagem seja por <b>ordem alfabética</b> de localização"}
 			<a class="userlistheading" href="tiki-list_users.php?{if $find}find={$find}&amp;{/if}offset={$offset}&amp;sort_mode={if $sort_mode eq 'local_desc'}local_asc{else}local_desc{/if}">
-				<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'local_desc'}ArrowUp{elseif $sort_mode eq 'local_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+				<img src="styles/{$prefs.style|replace:".css":""}/img/sort{if $sort_mode eq 'local_desc'}ArrowUp{elseif $sort_mode eq 'local_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 				{tr}Localização{/tr}
 			</a>
 			{/tooltip}
@@ -99,12 +99,12 @@ para a sua apreciação: esse eh o codigo que era usado pelo tiki-view_trackers 
 		<td class="heading">
 			{tooltip text="Clique para que a listagem seja por <b>ordem cronológica</b> de filiação ao site"}
 				<a class="userlistheading" href="tiki-list_users.php?{if $find}find={$find}&amp;{/if}offset={$offset}&amp;sort_mode={if $sort_mode eq 'registrationDate_asc'}registrationDate_desc{else}registrationDate_asc{/if}">
-					<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'registrationDate_asc'}ArrowUp{elseif $sort_mode eq 'score_desc' || $sort_mode eq 'registrationDate_desc'}ArrowDown{else}GreyArrowDown{/if}.png">
+					<img src="styles/{$prefs.style|replace:".css":""}/img/sort{if $sort_mode eq 'registrationDate_asc'}ArrowUp{elseif $sort_mode eq 'score_desc' || $sort_mode eq 'registrationDate_desc'}ArrowDown{else}GreyArrowDown{/if}.png">
 					{tr}Membro desde{/tr}
 				</a>
 			{/tooltip}				
 		</td>		
-{*if $feature_score eq 'y'}
+{*if $prefs.feature_score eq 'y'}
   <td class="heading"><a class="userlistheading" href="tiki-list_users.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'score_desc'}score_asc{else}score_desc{/if}">{tr}Score{/tr}</a>&nbsp;</td>
 {/if*}
 
@@ -131,7 +131,7 @@ para a sua apreciação: esse eh o codigo que era usado pelo tiki-view_trackers 
 				{$listusers[changes].realName}
 			</td>
 			
-			{if $feature_score eq 'y'}
+			{if $prefs.feature_score eq 'y'}
 			   <td class="odd">&nbsp;{$listusers[changes].score}&nbsp;</td>
 			{/if}
 			
@@ -176,7 +176,7 @@ para a sua apreciação: esse eh o codigo que era usado pelo tiki-view_trackers 
 <div class="paginacao">
 	{if $prev_offset >= 0}
 		<a class="userprevnext" href="tiki-list_users.php?find={$find}&amp;offset={$prev_offset}&amp;sort_mode={$sort_mode}">
-			<img src="styles/{$style|replace:".css":""}/img/iArrowGreyLeft.png">
+			<img src="styles/{$prefs.style|replace:".css":""}/img/iArrowGreyLeft.png">
 		</a>
 	{/if}
 	
@@ -184,13 +184,13 @@ para a sua apreciação: esse eh o codigo que era usado pelo tiki-view_trackers 
 	
 	{if $next_offset >= 0}
 		<a class="userprevnext" href="tiki-list_users.php?find={$find}&amp;offset={$next_offset}&amp;sort_mode={$sort_mode}">
-			<img src="styles/{$style|replace:".css":""}/img/iArrowGreyRight.png">
+			<img src="styles/{$prefs.style|replace:".css":""}/img/iArrowGreyRight.png">
 		</a>
 	{/if}
-	{if $direct_pagination eq 'y'}
+	{if $prefs.direct_pagination eq 'y'}
 		<br />
 		{section loop=$cant_pages name=foo}
-			{assign var=selector_offset value=$smarty.section.foo.index|times:$maxRecords}
+			{assign var=selector_offset value=$smarty.section.foo.index|times:$prefs.maxRecords}
 				<a class="prevnext" href="tiki-list_users.php?find={$find}&amp;offset={$selector_offset}&amp;sort_mode={$sort_mode}">
 			{$smarty.section.foo.index_next}</a>
 		{/section}

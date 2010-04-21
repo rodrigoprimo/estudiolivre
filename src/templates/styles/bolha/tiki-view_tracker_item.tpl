@@ -233,7 +233,7 @@
 										inputField  : "ins_{$cur_field.id}",      // ID of the input field
 										ifFormat    : "%s",    // the date format
 										displayArea : "disp_{$cur_field.id}",       // ID of the span where the date is to be shown
-										daFormat    : "{$long_date_format}",  // format of the displayed date
+										daFormat    : "{$prefs.long_date_format}",  // format of the displayed date
 										showsTime   : true,
 										singleClick : true,
 										align       : "bR"
@@ -353,11 +353,11 @@
 					<div class="uMsgDel">
 						<a class="link" href="tiki-view_tracker_item.php?trackerId={$trackerId}&amp;itemId={$itemId}&amp;remove_comment={$comments[ix].commentId}"
 							title="{tr}delete{/tr}">
-				        	<img alt="" src="styles/{$style|replace:".css":""}/img/iWikiRemove.png">
+				        	<img alt="" src="styles/{$prefs.style|replace:".css":""}/img/iWikiRemove.png">
 			        	</a> 
 			        	<br>
 						<a class="link" href="tiki-view_tracker_item.php?trackerId={$trackerId}&amp;itemId={$itemId}&amp;commentId={$comments[ix].commentId}" title="{tr}edit{/tr}">
-							<img src="styles/{$style|replace:".css":""}/img/iWikiEdit.png">
+							<img src="styles/{$prefs.style|replace:".css":""}/img/iWikiEdit.png">
 						</a>				
 					</div>
 				    <div class="uMsgDate">
@@ -399,10 +399,10 @@
 			{section name=ix loop=$atts}
 				{if $tiki_p_wiki_admin_attachments eq 'y' or ($user and ($atts[ix].user eq $user))}
 					<a class="link" href="tiki-view_tracker_item.php?trackerId={$trackerId}&amp;itemId={$itemId}&amp;removeattach={$atts[ix].attId}&amp;offset={$offset}&amp;sort_mode={$sort_mode}" title="{tr}delete{/tr}">
-						<img alt="" src="styles/{$style|replace:".css":""}/img/iWikiRemove.png">
+						<img alt="" src="styles/{$prefs.style|replace:".css":""}/img/iWikiRemove.png">
 					</a>
 					{*<a class="link" href="tiki-view_tracker_item.php?trackerId={$trackerId}&amp;itemId={$itemId}&amp;editattach={$atts[ix].attId}&amp;offset={$offset}&amp;sort_mode={$sort_mode}" title="{tr}edit{/tr}">
-						<img alt="" src="styles/{$style|replace:".css":""}/img/iWikiEdit.png">
+						<img alt="" src="styles/{$prefs.style|replace:".css":""}/img/iWikiEdit.png">
 					</a>*}
 				{/if}
 				<a href="tiki-download_item_attachment.php?attId={$atts[ix].attId}" title="{tr}download{/tr}">

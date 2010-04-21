@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/geral/modules/mod-switch_lang.tpl,v 1.1 2007-07-21 14:28:55 garotasimpatica Exp $ *}
+{* $Header: /cvsroot/arca/estudiolivre/src/templates/styles/geral/modules/mod-switch_lang.tpl,v 1.1 2007-07-21 14:28:55 garotasimpatica Exp $ *}
 {*: {/tr}`$language`*}
 
 {tikimodule title="{tr}Language{/tr}" name="switch_lang" flip=$module_params.flip decorations=$module_params.decorations}

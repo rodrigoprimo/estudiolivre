@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/modules/mod-el_msgs.tpl,v 1.3 2006-11-08 05:37:55 nano Exp $ *}
+{* $Header: /cvsroot/arca/estudiolivre/src/templates/modules/mod-el_msgs.tpl,v 1.3 2006-11-08 05:37:55 nano Exp $ *}
 
 {if $mod_allowMsgs}
 <div id="ajax-mod-el_msgs">

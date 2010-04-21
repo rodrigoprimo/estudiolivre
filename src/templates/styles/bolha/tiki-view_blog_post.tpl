@@ -25,7 +25,7 @@
 	{/if}
 	*}
 	
-	{if $feature_blogposts_comments == 'y'
+	{if $prefs.feature_blogposts_comments == 'y'
 	  && $blog_data.allow_comments == 'y'
 	  && (($tiki_p_read_comments  == 'y'
 	  && $comments_cant != 0)

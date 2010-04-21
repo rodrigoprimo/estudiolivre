@@ -1,6 +1,6 @@
-{if $feature_categories eq 'y' and (count($categories) gt 0 or $tiki_p_admin_categories eq 'y')}
+{if $prefs.feature_categories eq 'y' and (count($categories) gt 0 or $tiki_p_admin_categories eq 'y')}
 	<span class="hiddenPointer"  onclick="javascript:flip('categorizator');toggleImage(document.getElementById('catTArrow'),'iArrowGreyDown.png');">
-		<img id="catTArrow" class="pointer" src="styles/{$style|replace:".css":""}/img/iArrowGreyRight.png">
+		<img id="catTArrow" class="pointer" src="styles/{$prefs.style|replace:".css":""}/img/iArrowGreyRight.png">
 		<b>{tr}Categorize{/tr}</b>
 	</span>
 	  {*
@@ -11,7 +11,7 @@
 	  {if $cat_categorize eq 'n' and $categ_checked ne 'y'}style="display:none;"{else}style="display:block;"{/if}
 	  *}
 	<div id="categorizator" style="display:none;">
-		{if $feature_help eq 'y'}
+		{if $prefs.feature_help eq 'y'}
 			<!--div class="simplebox">{tr}Tip: hold down CTRL to select multiple categories{/tr}</div-->
 		{/if}
 		{if count($categories) gt 0}
@@ -56,7 +56,7 @@
 			   	{/section}
 	   		</div>
 	   				
-			{if $feature_help eq 'y'}
+			{if $prefs.feature_help eq 'y'}
 			    <!--div class="simplebox">{tr}Tip: uncheck the above checkbox to uncategorize this page/object{/tr}</div-->
 			{/if}
 		{else}
@@ -96,4 +96,4 @@
 		</script>
 	{/literal}
 {/if}
-{* $feature_categories eq 'y' *}
+{* $prefs.feature_categories eq 'y' *}

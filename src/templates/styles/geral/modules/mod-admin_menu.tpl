@@ -1,4 +1,4 @@
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/geral/modules/mod-admin_menu.tpl,v 1.1 2007-07-21 14:28:58 garotasimpatica Exp $ *}
+{* $Header: /cvsroot/arca/estudiolivre/src/templates/styles/geral/modules/mod-admin_menu.tpl,v 1.1 2007-07-21 14:28:58 garotasimpatica Exp $ *}
 {if $tiki_p_admin eq 'y'}
 {tikimodule title="{tr}Admin TikiWiki{/tr}" name="admin_menu" flip=$module_params.flip decorations=$module_params.decorations}
 {if $tiki_p_admin eq 'y' or 

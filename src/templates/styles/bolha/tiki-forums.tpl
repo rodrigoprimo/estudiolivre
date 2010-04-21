@@ -1,5 +1,5 @@
 {css extra=list}
-{* $Header: /home/rodrigo/devel/arca/estudiolivre/src/templates/styles/bolha/tiki-forums.tpl,v 1.1 2006-10-20 21:11:33 rhwinter Exp $ *}
+{* $Header: /cvsroot/arca/estudiolivre/src/templates/styles/bolha/tiki-forums.tpl,v 1.1 2006-10-20 21:11:33 rhwinter Exp $ *}
 
 <div id="forum">
 	<h1>
@@ -20,40 +20,40 @@
 			<tr>
 				<td  class="heading">
 					<a class="tableheading" href="tiki-forums.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'name_desc'}name_asc{else}name_desc{/if}">
-						<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'name_desc'}ArrowUp{elseif $sort_mode eq 'name_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+						<img src="styles/{$prefs.style|replace:".css":""}/img/sort{if $sort_mode eq 'name_desc'}ArrowUp{elseif $sort_mode eq 'name_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 					</a>{tr}Name{/tr}
 				</td>
-				{if $forum_list_topics eq 'y'}
+				{if $prefs.forum_list_topics eq 'y'}
 					<td class="heading">
 						<a class="tableheading" href="tiki-forums.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'threads_desc'}threads_asc{else}threads_desc{/if}">
-							<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'threads_desc'}ArrowUp{elseif $sort_mode eq 'threads_asc'}ArrowDown{else}GreyArrowDown{/if}.png">	
+							<img src="styles/{$prefs.style|replace:".css":""}/img/sort{if $sort_mode eq 'threads_desc'}ArrowUp{elseif $sort_mode eq 'threads_asc'}ArrowDown{else}GreyArrowDown{/if}.png">	
 						</a>{tr}Topics{/tr}
 					</td>
 				{/if}	
-				{if $forum_list_posts eq 'y'}
+				{if $prefs.forum_list_posts eq 'y'}
 					<td class="heading">
 						<a class="tableheading" href="tiki-forums.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'comments_desc'}comments_asc{else}comments_desc{/if}">
-							<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'comments_desc'}ArrowUp{elseif $sort_mode eq 'comments_asc'}ArrowDown{else}GreyArrowDown{/if}.png">	
+							<img src="styles/{$prefs.style|replace:".css":""}/img/sort{if $sort_mode eq 'comments_desc'}ArrowUp{elseif $sort_mode eq 'comments_asc'}ArrowDown{else}GreyArrowDown{/if}.png">	
 						</a>{tr}Posts{/tr}
 					</td>
 				{/if}
 				{*o que é isso?!? ppd = posts per day!... ah vá!*}	
-				{*if $forum_list_ppd eq 'y'}
+				{*if $prefs.forum_list_ppd eq 'y'}
 					<td class="heading">
 						{tr}ppd{/tr}
 					</td>
 				{/if*}	
-				{if $forum_list_lastpost eq 'y'}	
+				{if $prefs.forum_list_lastpost eq 'y'}	
 					<td class="heading">
 						<a class="tableheading" href="tiki-forums.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'lastPost_desc'}lastPost_asc{else}lastPost_desc{/if}">
-							<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'lastPost_desc'}ArrowUp{elseif $sort_mode eq 'lastPost_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+							<img src="styles/{$prefs.style|replace:".css":""}/img/sort{if $sort_mode eq 'lastPost_desc'}ArrowUp{elseif $sort_mode eq 'lastPost_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 						</a>{tr}Last post{/tr}
 					</td>
 				{/if}
-				{if $forum_list_visits eq 'y'}
+				{if $prefs.forum_list_visits eq 'y'}
 					<td class="heading">
 						<a class="tableheading" href="tiki-forums.php?offset={$offset}&amp;sort_mode={if $sort_mode eq 'hits_desc'}hits_asc{else}hits_desc{/if}">
-							<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'hits_desc'}ArrowUp{elseif $sort_mode eq 'hits_asc'}ArrowDown{else}GreyArrowDown{/if}.png">	
+							<img src="styles/{$prefs.style|replace:".css":""}/img/sort{if $sort_mode eq 'hits_desc'}ArrowUp{elseif $sort_mode eq 'hits_asc'}ArrowDown{else}GreyArrowDown{/if}.png">	
 						</a>{tr}Visits{/tr}
 					</td>
 				{/if}	
@@ -75,7 +75,7 @@
 				
 				{if ($channels[user].individual eq 'n') or ($tiki_p_admin eq 'y') or ($channels[user].individual_tiki_p_forum_read eq 'y')}
 					<td class="forumTableCell">
-						{if $forum_list_desc eq 'y'}
+						{if $prefs.forum_list_desc eq 'y'}
 							{tooltip text="<b>Descrição: </b>"|cat:$channels[user].description|regex_replace:"/[\r\t\n]/":" "}
 								<a class="forumname" href="tiki-view_forum.php?forumId={$channels[user].forumId}">
 									{$channels[user].name}
@@ -101,25 +101,25 @@
 				
 					</td>
 		
-				{if $forum_list_topics eq 'y'}
+				{if $prefs.forum_list_topics eq 'y'}
 					<td class="forumTableCell">
 						{$channels[user].threads}
 					</td>
 				{/if}
 				
-				{if $forum_list_posts eq 'y'}
+				{if $prefs.forum_list_posts eq 'y'}
 					<td  class="forumTableCell">
 						{$channels[user].comments}
 					</td>
 				{/if}
 				
-				{*if $forum_list_ppd eq 'y'}
+				{*if $prefs.forum_list_ppd eq 'y'}
 					<td class="forumTableCell">
 						{$channels[user].posts_per_day|string_format:"%.2f"}
 					</td>
 				{/if*}
 				
-				{if $forum_list_lastpost eq 'y'}	
+				{if $prefs.forum_list_lastpost eq 'y'}	
 					<td class="forumTableCell">
 						{assign var=postName value=$channels[user].lastPostData.title}
 						{tooltip text="<b>Título:</b><i> "|cat:$postName|cat:"</i><br> <b>Por:</b> <i>"|cat:$channels[user].lastPostData.userName|cat:"</i>" }
@@ -128,7 +128,7 @@
 					</td>
 				{/if}
 				
-				{if $forum_list_visits eq 'y'}
+				{if $prefs.forum_list_visits eq 'y'}
 					<td class="forumTableCell">
 						{$channels[user].hits}
 					</td>
@@ -142,7 +142,7 @@
 		<div class="paginacao">
 			{if $prev_offset >= 0}
 				<a class="forumprevnext" href="tiki-forums.php?find={$find}&amp;offset={$prev_offset}&amp;sort_mode={$sort_mode}">
-					<img src="styles/{$style|replace:".css":""}/img/iArrowGreyLeft.png">
+					<img src="styles/{$prefs.style|replace:".css":""}/img/iArrowGreyLeft.png">
 				</a>
 			{/if}
 			
@@ -150,13 +150,13 @@
 			
 			{if $next_offset >= 0}
 				<a class="forumprevnext" href="tiki-forums.php?find={$find}&amp;offset={$next_offset}&amp;sort_mode={$sort_mode}">
-					<img src="styles/{$style|replace:".css":""}/img/iArrowGreyRight.png">
+					<img src="styles/{$prefs.style|replace:".css":""}/img/iArrowGreyRight.png">
 				</a>
 			{/if}
-			{if $direct_pagination eq 'y'}
+			{if $prefs.direct_pagination eq 'y'}
 				<br />
 				{section loop=$cant_pages name=foo}
-					{assign var=selector_offset value=$smarty.section.foo.index|times:$maxRecords}
+					{assign var=selector_offset value=$smarty.section.foo.index|times:$prefs.maxRecords}
 						<a class="prevnext" href="tiki-forums.php?find={$find}&amp;offset={$selector_offset}&amp;sort_mode={$sort_mode}">
 					{$smarty.section.foo.index_next}</a>
 				{/section}

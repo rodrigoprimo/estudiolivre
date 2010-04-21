@@ -35,7 +35,7 @@
 		<br/>
 	{/if}
 	
-	{if $rss_tracker eq "y"}
+	{if $prefs.rss_tracker eq "y"}
 		<a href="tiki-tracker_rss.php?trackerId={$trackerId}" class="linkbut">
 			<img src='img/rss.png' border='0' alt='{tr}RSS feed{/tr}' title='{tr}RSS feed{/tr}' />
 		</a>
@@ -92,11 +92,11 @@
 									&amp;sort_mode=f_{if $sort_mode eq 'f_'|cat:$fields[ix].fieldId|cat:'_asc'}{$fields[ix].fieldId|escape:"url"}_desc{else}{$fields[ix].fieldId|escape:"url"}_asc{/if}
 									">
 									{if $sort_mode eq 'f_'|cat:$fields[ix].fieldId|cat:'_asc'}
-										<img src="styles/{$style|replace:".css":""}/img/sortArrowDown.png">
+										<img src="styles/{$prefs.style|replace:".css":""}/img/sortArrowDown.png">
 									{elseif $sort_mode eq 'f_'|cat:$fields[ix].fieldId|cat:'_desc'}
-										<img src="styles/{$style|replace:".css":""}/img/sortArrowUp.png">
+										<img src="styles/{$prefs.style|replace:".css":""}/img/sortArrowUp.png">
 									{else}
-										<img src="styles/{$style|replace:".css":""}/img/sortGreyArrowDown.png">
+										<img src="styles/{$prefs.style|replace:".css":""}/img/sortGreyArrowDown.png">
 									{/if}
 									{$fields[ix].name|truncate:255:"..."|default:"&nbsp;"}
 								</a>
@@ -107,7 +107,7 @@
 						<td class="heading">
 							<a class="tableheading" href="tiki-view_tracker.php?{if $status}status={$status}&amp;{/if}{if $initial}initial={$initial}&amp;{/if}{if $find}find={$find}&amp;{/if}trackerId={$trackerId}&amp;offset={$offset}&amp;sort_mode={if 
 							$sort_mode eq 'created_desc'}created_asc{else}created_desc{/if}">
-								<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'created_desc'}ArrowUp{elseif $sort_mode eq 'created_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+								<img src="styles/{$prefs.style|replace:".css":""}/img/sort{if $sort_mode eq 'created_desc'}ArrowUp{elseif $sort_mode eq 'created_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 								{tr}Created{/tr}
 							</a>
 						</td>
@@ -115,7 +115,7 @@
 					{if $tracker_info.showLastModif eq 'y'}
 						<td class="heading">
 							<a class="tableheading" href="tiki-view_tracker.php?status={$status}&amp;{if $initial}initial={$initial}&amp;{/if}find={$find}&amp;trackerId={$trackerId}&amp;offset={$offset}&amp;sort_mode={if $sort_mode eq 'lastModif_desc'}lastModif_asc{else}lastModif_desc{/if}">
-								<img src="styles/{$style|replace:".css":""}/img/sort{if $sort_mode eq 'lastModif_desc'}ArrowUp{elseif $sort_mode eq 'lastModif_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
+								<img src="styles/{$prefs.style|replace:".css":""}/img/sort{if $sort_mode eq 'lastModif_desc'}ArrowUp{elseif $sort_mode eq 'lastModif_asc'}ArrowDown{else}GreyArrowDown{/if}.png">
 								{tr}Última modificação{/tr}
 							</a>
 						</td>
