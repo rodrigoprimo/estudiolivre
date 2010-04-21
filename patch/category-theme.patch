@@ -1,7 +1,7 @@
---- tiki-index.php	2006-04-24 08:26:50.000000000 -0300
-+++ tiki-index.php	2006-05-16 10:16:58.000000000 -0300
-@@ -533,6 +537,19 @@
-     include('tiki-tc.php');
+--- tiki-index.php	2010-03-18 11:48:32.000000000 -0300
++++ tiki-index.php	2010-04-10 20:33:36.000000000 -0300
+@@ -404,6 +404,19 @@
+ 		$pageRenderer->setShowAttachments( $_REQUEST['atts_show'] );
  }
  
 +// ESTUDIOLIVRE HACK BEGIN - associa categoria ao smarty, pra fazer theme control na mao
@@ -18,5 +18,5 @@
 +
 +
  // Watches
- if($feature_user_watches == 'y') {
-     if($user && isset($_REQUEST['watch_event'])) {
+ if ($prefs['feature_user_watches'] == 'y') {
+ 	if($user && isset($_REQUEST['watch_event']) && !isset($_REQUEST['watch_group'])) {
