@@ -1,10 +1,13 @@
---- tiki-setup.php	2008-02-22 17:14:43.000000000 -0200
-+++ tiki-setup.php	2008-03-18 12:36:35.000000000 -0300
-@@ -2065,4 +2065,6 @@
- $smarty->assign('tiki_star', $tiki_star);
- $smarty->assign('tiki_uses_cvs', $tiki_uses_cvs);
+--- tiki-setup.php	2010-04-10 18:51:23.000000000 -0300
++++ tiki-setup.php	2010-04-10 18:51:35.000000000 -0300
+@@ -122,6 +122,10 @@
+ $smarty->assign('tiki_star', $TWV->star);
+ $smarty->assign('tiki_uses_svn', $TWV->svn);
  
--
 +// ESTUDIOLIVRE HACK BEGIN 
 +require_once("el-setup.php");
 +// ESTUDIOLIVRE HACK END
++
+ $headerlib->add_jsfile( 'lib/tiki-js.js' );	// tiki-js.js gets included even if javascript_enabled==n for the js test
+ 
+ if ($prefs['javascript_enabled'] == 'y') {
