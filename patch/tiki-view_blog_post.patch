@@ -1,42 +1,12 @@
---- tiki-view_blog_post.php	2007-06-29 02:03:58.000000000 -0300
-+++ tiki-view_blog_post.php	2007-06-29 02:02:17.000000000 -0300
-@@ -11,6 +11,17 @@
- 
- include_once ('lib/blogs/bloglib.php');
- 
-+global $feature_freetags;
-+global $tiki_p_view_freetags;
-+
-+if ($feature_freetags == 'y' and $tiki_p_view_freetags == 'y') {
-+    global $freetaglib;
-+    if (!is_object($freetaglib)) {
-+	include_once('lib/freetag/freetaglib.php');
-+    }
-+    global $freetaglib;
-+}
-+
- // first of all , we just die if blogs feature is not set
- if ($feature_blogs != 'y') {
- 	$smarty->assign('msg', tra("This feature is disabled").": feature_blogs");
-@@ -146,11 +157,21 @@
- 			key_check($area);
- 			$bloglib->remove_trackback_from($postId, $_REQUEST["deltrack"]);
- 			$post_info = $bloglib->get_post($postId);
-+			
- 	} else {
- 		key_get($area);
-   	}
+--- tiki-view_blog_post.php.orig	2010-06-07 19:26:45.000000000 -0300
++++ tiki-view_blog_post.php	2010-06-07 19:28:32.000000000 -0300
+@@ -130,8 +130,7 @@
+ if ($prefs['feature_freetags'] == 'y') {
+ 	// Get Tags
+ 	include_once ('lib/freetag/freetaglib.php');
+-	$tags = $freetaglib->get_tags_on_object($postId, "blog post");
+-	$smarty->assign('tags', $tags);
++	$post_info['freetags'] = $freetaglib->get_tags_on_object($postId, "blog post");
  }
- 
-+			// freetags
-+			$cat_type='blog post';
-+			$cat_objid = $post_info['postId'];
-+			$tags = $freetaglib->get_tags_on_object($cat_objid, $cat_type);
-+			$taglist = array();
-+			for ($j=0; $j<sizeof($tags['data']); $j++) {
-+			    $taglist[] = $tags['data'][$j]['tag'];
-+				$post_info["tags"] = $taglist;
-+			}
- //var_dump($post_info["trackbacks_from"]);die;
- 
- 
+ ask_ticket('view-blog-post');
+ // Display the template
