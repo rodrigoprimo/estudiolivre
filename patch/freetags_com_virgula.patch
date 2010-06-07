@@ -1,4 +1,4 @@
---- lib/freetag/freetaglib.php.orig	2010-03-01 17:32:05.000000000 -0300
+--- lib/freetag/freetaglib.php	2010-03-01 17:32:05.000000000 -0300
 +++ lib/freetag/freetaglib.php	2010-06-07 14:43:19.000000000 -0300
 @@ -959,13 +959,14 @@
  	{

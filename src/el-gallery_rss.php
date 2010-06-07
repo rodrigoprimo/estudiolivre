@@ -89,9 +89,9 @@ for ($i=0; $i < sizeof($files); $i++) {
 	$arquivo = array();
 	
 	$file =& $files[$i]->filereferences[0];
-	$arquivo["enclosure"] = array("url"=>$base_url . $file->fullPath(),
-			  	   							"lenght"=>$file->size,
-			       							"type"=>$file->mimeType);
+	$arquivo["sefurl"] = $base_url . $file->fullPath();
+	$arquivo["filesize"] = $file->size;
+	$arquivo["filetype"] = $file->mimeType;
 	
 	$arquivo[$descId] = $tikilib->parse_data($files[$i]->$descId);
 	
