@@ -1,19 +1,15 @@
---- tiki-show_user_avatar.php	2006-07-25 14:52:28.000000000 -0300
-+++ tiki-show_user_avatar.php	2006-07-25 14:53:05.000000000 -0300
-@@ -22,7 +22,14 @@
+--- tiki-show_user_avatar.php.orig	2010-06-07 20:38:48.000000000 -0300
++++ tiki-show_user_avatar.php	2010-06-07 20:40:56.000000000 -0300
+@@ -20,8 +20,10 @@
+ $info = $userprefslib->get_user_avatar_img($_REQUEST["user"]);
  $type = $info["avatarFileType"];
  $content = $info["avatarData"];
- 
--header ("Content-type: $type");
--echo "$content";
-+if ($content) {
-+	header ("Content-type: $type");
-+	echo "$content";
-+} else{
-+	header ("Content-type: image/png");
-+	$user_style = $tikilib->get_user_preference($user, 'theme', $style);
-+	$curstyle=str_replace(".css", "", $user_style);
-+	readfile("styles/".$curstyle."/img/iThumbUser.png");
-+}
- 
- ?>
+-if (empty($content) && isset($_REQUEST['always'])) {
+-	$content = file_get_contents('pics/noavatar.png');
++if (empty($content)) {
++        $user_style = $tikilib->get_user_preference($user, 'theme', $style);
++        $curstyle=str_replace(".css", "", $user_style);
++	$content = file_get_contents("styles/".$curstyle."/img/iThumbUser.png");
+ }
+ header("Content-type: $type");
+ echo $content;
