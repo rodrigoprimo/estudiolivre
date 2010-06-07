@@ -1,24 +1,34 @@
---- lib/tikilib.php.orig	2010-06-07 14:51:12.000000000 -0300
-+++ lib/tikilib.php	2010-06-07 20:02:21.000000000 -0300
-@@ -6708,7 +6708,7 @@
+--- lib/tikilib.php.orig	2010-06-07 20:06:42.000000000 -0300
++++ lib/tikilib.php	2010-06-07 20:21:10.000000000 -0300
+@@ -6708,8 +6708,13 @@
  								$listate = substr($line, $listlevel, 1);
  								if (($listate == '+' || $listate == '-') && !($litype == '*' && !strstr(current($listbeg), '</ul>') || $litype == '#' && !strstr(current($listbeg), '</ol>'))) {
  									$thisid = 'id' . microtime() * 1000000;
 -									$data .= '<br /><a id="flipper' . $thisid . '" class="link" href="javascript:flipWithSign(\'' . $thisid . '\')">[' . ($listate == '-' ? '+' : '-') . ']</a>';
-+									$data .= '<br /><img class="flipper" id="flipper' . $thisid . '" class="pointer" onclick="flip(\'' . $thisid . '\');toggleImage(this,\'iArrowGrey' . ($listate == '-' ? 'Down' : 'Right') . '.png\')" src="styles/estudiolivre/iArrowGrey' . ($listate == '-' ? 'Right' : 'Down') . '.png">';
- 									$listyle = ' id="' . $thisid . '" style="display:' . ($listate == '+' ? 'block' : 'none') . ';"';
+-									$listyle = ' id="' . $thisid . '" style="display:' . ($listate == '+' ? 'block' : 'none') . ';"';
++									if (preg_match("|tiki-print.php|",$_SERVER['REQUEST_URI'])){
++									    // $data .= '<br /><img class="flipper" id="flipper' . $thisid . '" class="pointer" onclick="flip(\'' . $thisid . '\');toggleImage(this,\'iArrowGreyRight.png\')" src="styles/estudiolivre/iArrowGreyDown.png">';
++                                       					    $listyle = ' id="' . $thisid . '"';
++                                   					} else {
++									    $data .= '<br /><img class="flipper" id="flipper' . $thisid . '" class="pointer" onclick="flip(\'' . $thisid . '\');toggleImage(this,\'iArrowGrey' . ($listate == '-' ? 'Down' : 'Right') . '.png\')" src="styles/estudiolivre/iArrowGrey' . ($listate == '-' ? 'Right' : 'Down') . '.png">';
++									   $listyle = ' id="' . $thisid . '" style="display:' . ($listate == '+' ? 'block' : 'none') . ';"';
++								   	}
  									$addremove = 1;
  								}
-@@ -6723,7 +6723,7 @@
+ 							}
+@@ -6723,7 +6728,10 @@
  						$listate = substr($line, $listlevel, 1);
  						if (($listate == '+' || $listate == '-')) {
  							$thisid = 'id' . microtime() * 1000000;
 -							$data .= '<br /><a id="flipper' . $thisid . '" class="link" href="javascript:flipWithSign(\'' . $thisid . '\')">[' . ($listate == '-' ? '+' : '-') . ']</a>';
++							if (preg_match("|tiki-print.php|",$_SERVER['REQUEST_URI'])){
++                               				    $listate = '-';
++                           				}
 +							$data .= '<br /><img class="flipper" id="flipper' . $thisid . '" class="pointer" onclick="flip(\'' . $thisid . '\');toggleImage(this,\'iArrowGrey' . ($listate == '-' ? 'Down' : 'Right') . '.png\')" src="styles/estudiolivre/iArrowGrey' . ($listate == '-' ? 'Right' : 'Down') . '.png">';
  							$listyle = ' id="' . $thisid . '" style="display:' . ($listate == '+' ? 'block' : 'none') . ';"';
  							$addremove = 1;
  						}
-@@ -6838,6 +6838,7 @@
+@@ -6838,6 +6846,7 @@
  						$anchor = '';
  						$aclose = '';
  						$aclose2 = '';
@@ -26,16 +36,21 @@
  						$addremove = $show_title_level[$hdrlevel] ? 1 : 0; // If needed, also remove '#' sign from title beginning
  
  						// May be special signs present after '!'s?
-@@ -6845,7 +6846,7 @@
+@@ -6845,8 +6854,11 @@
  						if ($divstate == '+' || $divstate == '-') {
  							// OK. Must insert flipper after HEADER, and then open new div...
  							$thisid = 'id' . preg_replace('/[^a-zA-z0-9]/', '',urlencode($options['page'])) .$nb_hdrs;
 -							$aclose = '<a id="flipper' . $thisid . '" class="link" href="javascript:flipWithSign(\'' . $thisid . '\')">[' . ($divstate == '-' ? '+' : '-') . ']</a>';
-+							$aopen = '<img class="flipper" id="flipper' . $thisid . '" class="pointer" onclick="flip(\'' . $thisid . '\');toggleImage(this,\'iArrowGrey' . ($divstate == '-' ? 'Down' : 'Right') . '.png\')" src="styles/estudiolivre/iArrowGrey' . ($divstate == '-' ? 'Right' : 'Down') . '.png">';
- 							$aclose2 = '<div id="' . $thisid . '" class="showhide_heading" style="display:' . ($divstate == '+' ? 'block' : 'none') . ';">';
+-							$aclose2 = '<div id="' . $thisid . '" class="showhide_heading" style="display:' . ($divstate == '+' ? 'block' : 'none') . ';">';
++							if(preg_match("|tiki-print.php|",$_SERVER['REQUEST_URI'])){
++							    $divstate = '+';
++                           				}
++							$aopen = '<span class="hiddenPointer" onclick="flip(\'' . $thisid . '\');toggleImage(document.getElementById(\'flipper' . $thisid . '\'),\'iArrowGrey' . ($divstate == '-' ? 'Down' : 'Right') . '.png\')"> <img class="flipper pointer" id="flipper' . $thisid . '" src="styles/estudiolivre/iArrowGrey' . ($divstate == '-' ? 'Right' : 'Down') . '.png">';
++                           				$aclose2 = '<div id="' . $thisid . '" style="display:' . ($divstate == '+' ? 'block' : 'none') . ';"> </span>';
  							global $headerlib;
  							$headerlib->add_jq_onready( "setheadingstate('$thisid');" );
-@@ -6909,7 +6910,7 @@
+ 							array_unshift($divdepth, $hdrlevel);
+@@ -6909,7 +6921,7 @@
  							++$headerInc;
  
  						if ( $prefs['feature_wiki_show_hide_before'] == 'y' ) {
