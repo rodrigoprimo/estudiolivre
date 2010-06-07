@@ -126,11 +126,11 @@ class PersistentObject extends PersistentObjectStructure {
 	}
 	
 	function query($query, $bindvals = array()) {
-		global $dbConnection;
+		global $tikilib;
 		foreach ($bindvals as $key => $value) {
 		    $bindVals[$key] = $this->_getValue($value);
 		}
-		return $dbConnection->query($query, $bindvals);
+		return $tikilib->query($query, $bindvals);
 	}
 		
 	// this does not check anything, an actual method 

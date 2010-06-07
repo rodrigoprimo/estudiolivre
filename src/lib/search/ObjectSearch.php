@@ -17,7 +17,7 @@ class ObjectSearch {
     }
 
     function query($query, $bindvals = array(), $offset = 0, $maxRecords = -1, $sortMode = false) {
-        global $dbConnection;
+        global $tikilib;
 
         if ($sortMode) {
             $query .= " order by " . preg_replace("/\_/", " ", $sortMode);
@@ -28,7 +28,7 @@ class ObjectSearch {
             $query .= " limit $offset,$maxRecords";
         }
 
-        $result = $dbConnection->query($query, $bindvals);
+        $result = $tikilib->query($query, $bindvals);
         return $result;
     } 
 

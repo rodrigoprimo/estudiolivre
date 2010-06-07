@@ -17,11 +17,11 @@ $db_name = 'tests';
 
 $dsn = "$db_type://$db_user:$db_pass@$db_host/$db_name";
 
-$dbConnection = &ADONewConnection($db_type);
+$tikilib = &ADONewConnection($db_type);
 
-if (!@$dbConnection->Connect($db_host, $db_user, $db_pass, $db_name)) {
+if (!@$tikilib->Connect($db_host, $db_user, $db_pass, $db_name)) {
     print "Error connecting to database:\n";
-    print $dbConnection->ErrorMsg();
+    print $tikilib->ErrorMsg();
     exit;
 }
 

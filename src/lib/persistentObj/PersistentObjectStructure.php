@@ -66,8 +66,8 @@ class PersistentObjectStructure {
     }
 
 	function getOne($query, $bindvals = array()) {
-		global $dbConnection;
-	    return $dbConnection->getOne($query, $bindvals);
+		global $tikilib;
+	    return $tikilib->getOne($query, $bindvals);
 	}
 
 }

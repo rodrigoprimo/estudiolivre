@@ -15,26 +15,26 @@ require_once "lib/field/Field.php";
 require_once "lib/field/StringField.php";
 
 function prepareDatabase() {
-	global $dbConnection;
+	global $tikilib;
 
 	clearDatabase();
 
-	$dbConnection->query('create table _searchindex (id int(11) not null auto_increment, idObj int(11) not null, type varchar(255) not null, word varchar(255) not null, weight int(11) not null, primary key (id))');
-	$dbConnection->query('CREATE TABLE `_updatehistory` (`id` int(11) NOT NULL auto_increment, `objType` char(255) NOT NULL, `objId` varchar(100) NOT NULL, `tstamp` int(11) NOT NULL, `version` int(11) NOT NULL, `responsibleType` char(255) NOT NULL, `responsibleId` int(11) NOT NULL, `title` char(255) NOT NULL, `changes` longblob, PRIMARY KEY  (`id`), KEY `objType` (`objType`,`objId`), KEY `version` (`version`), KEY `responsibleType` (`responsibleType`,`responsibleId`))');
-	$dbConnection->query('create table superc (id int(11) not null auto_increment, aString text, bString varchar(255), aInt int(5), primary key (id))');
-	$dbConnection->query('create table child (id int(11) not null, someText text, primary key (id))');
-	$dbConnection->query('create table child2 (id int(11) not null, anotherInt int(5), someOtherInt int(5), primary key (id))');
-	$dbConnection->query('create table someobject (id int(11) primary key auto_increment, name char(255) not null)');
+	$tikilib->query('create table _searchindex (id int(11) not null auto_increment, idObj int(11) not null, type varchar(255) not null, word varchar(255) not null, weight int(11) not null, primary key (id))');
+	$tikilib->query('CREATE TABLE `_updatehistory` (`id` int(11) NOT NULL auto_increment, `objType` char(255) NOT NULL, `objId` varchar(100) NOT NULL, `tstamp` int(11) NOT NULL, `version` int(11) NOT NULL, `responsibleType` char(255) NOT NULL, `responsibleId` int(11) NOT NULL, `title` char(255) NOT NULL, `changes` longblob, PRIMARY KEY  (`id`), KEY `objType` (`objType`,`objId`), KEY `version` (`version`), KEY `responsibleType` (`responsibleType`,`responsibleId`))');
+	$tikilib->query('create table superc (id int(11) not null auto_increment, aString text, bString varchar(255), aInt int(5), primary key (id))');
+	$tikilib->query('create table child (id int(11) not null, someText text, primary key (id))');
+	$tikilib->query('create table child2 (id int(11) not null, anotherInt int(5), someOtherInt int(5), primary key (id))');
+	$tikilib->query('create table someobject (id int(11) primary key auto_increment, name char(255) not null)');
 }
 
 function clearDatabase() {
-	global $dbConnection;
-	$dbConnection->query('DROP TABLE IF EXISTS _searchindex');
-	$dbConnection->query('DROP TABLE IF EXISTS _updatehistory');
-	$dbConnection->query('DROP TABLE IF EXISTS superc');
-	$dbConnection->query('DROP TABLE IF EXISTS child');
-	$dbConnection->query('DROP TABLE IF EXISTS child2');
-	$dbConnection->query('DROP TABLE IF EXISTS someobject');
+	global $tikilib;
+	$tikilib->query('DROP TABLE IF EXISTS _searchindex');
+	$tikilib->query('DROP TABLE IF EXISTS _updatehistory');
+	$tikilib->query('DROP TABLE IF EXISTS superc');
+	$tikilib->query('DROP TABLE IF EXISTS child');
+	$tikilib->query('DROP TABLE IF EXISTS child2');
+	$tikilib->query('DROP TABLE IF EXISTS someobject');
 }
 
 class SuperC extends PersistentObject {
@@ -121,20 +121,20 @@ class PersistentObjectTest extends PHPUnit2_Framework_TestCase {
 	$child3 = new Child(array('aString' => 'lonely', 'aInt' => 0));
 	$child5 = new Child(array('someText' => 'ohmygod'));
 
-	global $dbConnection;
+	global $tikilib;
 
-	$result = $dbConnection->query('select * from superc'); 
+	$result = $tikilib->query('select * from superc'); 
 	$row = $result->fetchRow();
 	$this->assertEquals((float)1, (float)$row['id']);
 	$this->assertEquals("super string", $row['aString']);
 	$this->assertEquals((float)12, (float)$row['aInt']);
 	 
-	$result = $dbConnection->query('select * from child'); 
+	$result = $tikilib->query('select * from child'); 
 	$row = $result->fetchRow();
 	$this->assertEquals((float)1, (float)$row['id']);
 	$this->assertEquals("child string", $row['someText']);
 	
-	$result = $dbConnection->query('select * from child2'); 
+	$result = $tikilib->query('select * from child2'); 
 	$row = $result->fetchRow();
 	$this->assertEquals((float)2, (float)$row['id']);
 	$this->assertEquals((float)54, (float)$row['anotherInt']);
@@ -142,8 +142,8 @@ class PersistentObjectTest extends PHPUnit2_Framework_TestCase {
     }
 
     public function testInsert_ShouldIndexObject() {
-        global $dbConnection;
-	$result = $dbConnection->query("select * from _searchindex where idObj = '?' and word = 'super'", array($this->child->id));
+        global $tikilib;
+	$result = $tikilib->query("select * from _searchindex where idObj = '?' and word = 'super'", array($this->child->id));
 	$row = $result->fetchRow();
 	$this->assertEquals('Child', $row['type']);
 	$this->assertEquals((float)10, (float)$row['weight']);
@@ -158,9 +158,9 @@ class PersistentObjectTest extends PHPUnit2_Framework_TestCase {
     }
 
     public function testUpdate_ShouldUpdateDataBase() { 
-        global $dbConnection;
+        global $tikilib;
         $this->child->update(array('aString' => 'super updated', 'aInt' => 41));
-	$result = $dbConnection->query('select * from superc where id = 1');
+	$result = $tikilib->query('select * from superc where id = 1');
 	$row = $result->fetchRow();
 
 	$this->assertEquals((float)1, (float)$row['id']);
@@ -169,7 +169,7 @@ class PersistentObjectTest extends PHPUnit2_Framework_TestCase {
     }
 
     public function testUpdate_Rollback() {
-	global $dbConnection;
+	global $tikilib;
 
 	$firstVersion = $this->object->getVersion();
 	$firstName = $this->object->name->getValue();
@@ -187,9 +187,9 @@ class PersistentObjectTest extends PHPUnit2_Framework_TestCase {
     }
 
     public function testUpdate_ShouldUpdateIndex() {
-        global $dbConnection;
+        global $tikilib;
         $this->child->update(array('bString' => 'super updated', 'aInt' => 41));
-	$result = $dbConnection->query("select * from _searchindex where idObj = '?' and word = 'super'", array($this->child->id));
+	$result = $tikilib->query("select * from _searchindex where idObj = '?' and word = 'super'", array($this->child->id));
 	$row = $result->fetchRow();
 	$this->assertEquals('Child', $row['type']);
 	$this->assertEquals((float)5, (float)$row['weight']);
@@ -219,9 +219,9 @@ class PersistentObjectTest extends PHPUnit2_Framework_TestCase {
     }
 
     public function testDelete_ShouldDeleteIndex() {
-        global $dbConnection;
+        global $tikilib;
         $this->child->delete();
-	$result = $dbConnection->query("select * from _searchindex where idObj = '?'", array($this->child->id));
+	$result = $tikilib->query("select * from _searchindex where idObj = '?'", array($this->child->id));
 	if (($row = $result->fetchrow())) {
 		$this->assertFail("The index was not deleted");
 	}

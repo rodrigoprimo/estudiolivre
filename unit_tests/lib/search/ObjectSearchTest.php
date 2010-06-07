@@ -16,20 +16,20 @@ require_once "lib/field/Field.php";
 require_once "lib/field/StringField.php";
 
 function prepareDatabase() {
-	global $dbConnection;
-	$dbConnection->query('DROP TABLE IF EXISTS _searchindex');
-	$dbConnection->query('create table _searchindex (id int(11) not null auto_increment, idObj int(11) not null, type varchar(255) not null, word varchar(255) not null, weight int(11) not null, primary key (id))');
-	$dbConnection->query('DROP TABLE IF EXISTS superc');
-	$dbConnection->query('create table superc (id int(11) not null auto_increment, aString varchar(255), bString varchar(255), primary key (id))');
-	$dbConnection->query('DROP TABLE IF EXISTS child');
-	$dbConnection->query('create table child (id int(11) not null, someText varchar(255), primary key (id))');
+	global $tikilib;
+	$tikilib->query('DROP TABLE IF EXISTS _searchindex');
+	$tikilib->query('create table _searchindex (id int(11) not null auto_increment, idObj int(11) not null, type varchar(255) not null, word varchar(255) not null, weight int(11) not null, primary key (id))');
+	$tikilib->query('DROP TABLE IF EXISTS superc');
+	$tikilib->query('create table superc (id int(11) not null auto_increment, aString varchar(255), bString varchar(255), primary key (id))');
+	$tikilib->query('DROP TABLE IF EXISTS child');
+	$tikilib->query('create table child (id int(11) not null, someText varchar(255), primary key (id))');
 }
 
 function clearDatabase() {
-	global $dbConnection;
-	$dbConnection->query('DROP TABLE IF EXISTS _searchindex');
-	$dbConnection->query('DROP TABLE IF EXISTS superc');
-	$dbConnection->query('DROP TABLE IF EXISTS child');
+	global $tikilib;
+	$tikilib->query('DROP TABLE IF EXISTS _searchindex');
+	$tikilib->query('DROP TABLE IF EXISTS superc');
+	$tikilib->query('DROP TABLE IF EXISTS child');
 }
 
 class SuperC extends PersistentObject {

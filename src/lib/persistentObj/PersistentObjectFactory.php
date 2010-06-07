@@ -18,8 +18,8 @@ class PersistentObjectFactory {
 		require_once($class . ".php");
 		$tableName = strtolower($class);
 		if (is_int($fields)) {
-			global $dbConnection;
-		    $result = $dbConnection->query("select * from $tableName where id = ?", array($fields));
+			global $tikilib;
+		    $result = $tikilib->query("select * from $tableName where id = ?", array($fields));
 		    $row = $result->fetchRow();
 		    if (isset($row['actualClass'])) {
 		    	$class = $row['actualClass'];

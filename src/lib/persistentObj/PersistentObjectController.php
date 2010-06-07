@@ -31,14 +31,14 @@ class PersistentObjectController extends PersistentObjectStructure {
 	}
 	
 	function query($query, $bindvals = array(), $offset = 0, $maxRecords = -1, $sortMode = false) {
-		global $dbConnection;
+		global $tikilib;
 		if ($sortMode) {
 			$query .= " order by " . preg_replace("/\_/", " ", $sortMode);
 		}
 		if ($maxRecords > 0) {
 			$query .= " limit $offset,$maxRecords";
 		}
-	    return $dbConnection->query($query, $bindvals);
+	    return $tikilib->query($query, $bindvals);
 	}
 	
 	function _prepQueryConditions($fields) {
@@ -111,9 +111,11 @@ class PersistentObjectController extends PersistentObjectStructure {
 	}
 	
 	$objs = array();
-	while ($row = $result->fetchRow()) {
-	    $objs[] = PersistentObjectFactory::createObject($this->controlledClass, (int)$row['id']);
-	}
+    if ($result) {
+        while ($row = $result->fetchRow()) {
+	        $objs[] = PersistentObjectFactory::createObject($this->controlledClass, (int)$row['id']);
+    	}
+    }
 	return $objs;
     }
     
