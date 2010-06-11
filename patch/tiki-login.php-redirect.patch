@@ -1,23 +1,17 @@
---- ../estudiolivre_base/tiki-login.php	2006-05-12 16:52:57.000000000 -0300
-+++ tiki-login.php	2006-06-09 15:34:05.000000000 -0300
-@@ -207,7 +207,11 @@
- 		$_SESSION["$user_cookie_site"] = $user;
- 
+--- tiki-login.php.orig	2010-03-15 19:17:25.000000000 -0300
++++ tiki-login.php	2010-06-11 20:49:14.000000000 -0300
+@@ -226,8 +226,12 @@
+ 		$_SESSION[$user_cookie_site] = $user;
+ 		if (isset($_SESSION['openid_url'])) $userlib->assign_openid($user, $_SESSION['openid_url']);
  		$smarty->assign_by_ref('user', $user);
 -		$url = $_SESSION['loginfrom'];
+-		$logslib->add_log('login', 'logged from ' . $url);
 +		if ((isset($_REQUEST['redirect']))) {
-+			$url = $_REQUEST['redirect'];
-+		} else {		
-+			$url = $_SESSION['loginfrom'];
-+		}
- 		$logslib->add_log('login','logged from '.$url);
- //	this code doesn't work
- //                if (($url == $tikiIndex || substr($tikiIndex, strlen($tikiIndex)-strlen($url)-1) == '/'.$url)
-@@ -273,6 +277,7 @@
- } else {
-   header('location: ' . $url);
- }
-+
- exit;
- 
- ?>
++                        $url = $_REQUEST['redirect'];
++                } else {                
++                        $url = $_SESSION['loginfrom'];
++                }
++		$logslib->add_log('login', 'logged from ' . $_SESSION['loginfrom']);
+ 		// Special '?page=...' case. Accept only some values to avoid security problems
+ 		if ( isset($_REQUEST['page']) and $_REQUEST['page'] === 'tikiIndex') {
+ 				$url = ${$_REQUEST['page']};
