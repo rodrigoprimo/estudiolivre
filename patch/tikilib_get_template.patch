@@ -1,55 +1,52 @@
---- ../estudiolivre_base/lib/tikilib.php	2006-05-12 16:53:06.000000000 -0300
-+++ lib/tikilib.php	2006-07-14 14:02:32.000000000 -0300
-@@ -4480,6 +4481,9 @@
- 	    }
+--- lib/tikilib.php.orig	2010-06-07 20:06:42.000000000 -0300
++++ lib/tikilib.php	2010-06-11 16:29:08.000000000 -0300
+@@ -6060,6 +6060,9 @@
+ 			$this->parse_wiki_argvariable($data, $options);
+ 		}
+ 
++		// ESTUDIOLIVRE HACK - wiki template
++		$this->getWikiTemplate($data);
++
+ 		// Handle |# anchor links by turning them into ALINK module calls.
+ 		preg_match_all("/\(\(([^)]*\|#[^)]*)\)\)/", $data, $anchors);
+ 
+@@ -6435,6 +6438,39 @@
+ 		return $data;
  	}
  
-+	// ESTUDIOLIVRE HACK - wiki template
-+	$this->getWikiTemplate($data);
++	function getWikiTemplate(&$data) {
++        	global $templateStack;
++        	$template = array();
++		$matches = array();
 +
- 	$this->parse_first($data, $preparsed, $noparsed);
- 
- 	// Extract [link] sections (to be re-inserted later)
-@@ -5541,6 +5559,42 @@
- 	return $data;
-     }
- 
-+		    
-+    function getWikiTemplate(&$data) {
-+	global $templateStack;      
-+	$template = array();
-+	$matches = array();
-+	
-+	preg_match_all("/(?s)\{\{(.*?)(?:\|\|(.*?))?\}\}/", $data, $template);
-+	
-+	if($template) {      
-+	    
-+	    for($j=0; $j<sizeof($template[0]); $j++) {
-+		
-+		if(isset($templateStack[$template[1][$j]]) && $templateStack[$template[1][$j]]) {
-+		    global $smarty;
-+		    $smarty->assign('msg', tra("Você tentou inserir um template dentro dele mesmo, isso causaria um loop infinito. Por favor conserte isso na edição da página."));
-+		    $smarty->display("error.tpl");
-+		    die;
-+		}
-+		
-+		$templateStack[$template[1][$j]] = true;
-+		$info = $this->get_page_info($template[1][$j]);
-+		$pdata = $info["data"];
-+		$this->getWikiTemplate($pdata);
-+		$templateStack[$template[1][$j]] = false;
-+		if(isset($template[2][$j])){
-+		    preg_match_all("/(?s)(.+?)\=(.+?)(?:\|\||$)/", $template[2][$j], $matches);
-+		    
-+		    for($i=0; $i<sizeof($matches[0]); $i++){
-+			$pdata = preg_replace("/" . trim($matches[1][$i]) . "/", trim($matches[2][$i]), $pdata);
-+		    }
-+		}
-+		$data = preg_replace("/(?s)\{\{(.*?)\}\}/", trim($pdata), $data, 1);
-+	    }
++        	preg_match_all("/(?s)\{\{(.*?)(?:\|\|(.*?))?\}\}/", $data, $template);
++
++        	if($template) {
++			for($j=0; $j<sizeof($template[0]); $j++) {
++				  
++                		if(isset($templateStack[$template[1][$j]]) && $templateStack[$template[1][$j]]) {
++                    			global $smarty;
++                    			$smarty->assign('msg', tra("Você tentou inserir um template dentro dele mesmo, isso causaria um loop infinito. Por favor conserte isso na edição da página."));
++                    			$smarty->display("error.tpl");
++                    			die;
++                		}
++
++                		$templateStack[$template[1][$j]] = true;
++                		$info = $this->get_page_info($template[1][$j]);
++                		$pdata = $info["data"];
++                		$this->getWikiTemplate($pdata);
++                		$templateStack[$template[1][$j]] = false;
++                		if(isset($template[2][$j])){
++					for($i=0; $i<sizeof($matches[0]); $i++){
++                              			$pdata = preg_replace("/" . trim($matches[1][$i]) . "/", trim($matches[2][$i]), $pdata);
++                    			}
++                 		}
++		 		$data = preg_replace("/(?s)\{\{(.*?)\}\}/", trim($pdata), $data, 1);
++            		}
++            	}
 +	}
-+    }
-+    
-     function parse_smileys($data) {
- 	global $feature_smileys;
- 
++
++
+ 	function parse_wiki_argvariable(&$data, $options=null) {
+ 		global $prefs, $user;
+ 		if( $prefs['feature_wiki_argvariable'] == 'y' ) {
