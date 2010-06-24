@@ -39,6 +39,10 @@ if ($isIE) {
     }
 }
 
+global $style;
+$style = $prefs['style'];
+$smarty->assign('style',$style);
+
 $smarty->assign('showIeMsg',$showIeMsg);
 
 $smarty->assign('showTeste', preg_match('/teste\.estudioli.re\.org/',$ownurl));
