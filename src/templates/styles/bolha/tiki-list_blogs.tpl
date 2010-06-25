@@ -222,25 +222,30 @@
 	</table>
 	<br/>
 	<div class="paginacao">
+		{assign var=prev_offset value=$offset-$maxRecords}
+		{assign var=next_offset value=$offset+$maxRecords}
+		{assign var=actual_page value=$offset/$maxRecords+1}
+		{assign var=cant_pages value=$cant/$maxRecords+1}
 		{if $prev_offset >= 0}
 			<a class="userprevnext" href="tiki-list_blogs.php?find={$find}&amp;offset={$prev_offset}&amp;sort_mode={$sort_mode}">
 				<img src="styles/{$prefs.style|replace:".css":""}/img/iArrowGreyLeft.png">
 			</a>
 		{/if}
 		
-		{tr}Page{/tr} {$actual_page} {tr}de{/tr} {$cant_pages}
+		{tr}Page{/tr} {$actual_page} {tr}de{/tr} {math equation="x / y + 1" x=$cant y=$maxRecords format="%d"}
 		
-		{if $next_offset >= 0}
+		{if $next_offset < $cant}
 			<a class="userprevnext" href="tiki-list_blogs.php?find={$find}&amp;offset={$next_offset}&amp;sort_mode={$sort_mode}">
 				<img src="styles/{$prefs.style|replace:".css":""}/img/iArrowGreyRight.png">
 			</a>
 		{/if}
 		{if $prefs.direct_pagination eq 'y'}
 			<br />
-			{section loop=$cant_pages name=foo}
-				{assign var=selector_offset value=$smarty.section.foo.index|times:$prefs.maxRecords}
+
+			{section start=0 loop=$cant name=foo step=$maxRecords}
+				{assign var=selector_offset value=$smarty.section.foo.index}
 					<a class="prevnext" href="tiki-list_blogs.php?find={$find}&amp;offset={$selector_offset}&amp;sort_mode={$sort_mode}">
-				{$smarty.section.foo.index_next}</a>
+				{$smarty.section.foo.index_next/$maxRecords}</a>
 			{/section}
 		{/if}
 	</div>

@@ -140,26 +140,28 @@
 		<br />
 		
 		<div class="paginacao">
+			{assign var=prev_offset value=$offset-$maxRecords}
+			{assign var=next_offset value=$offset+$maxRecords}
 			{if $prev_offset >= 0}
 				<a class="forumprevnext" href="tiki-forums.php?find={$find}&amp;offset={$prev_offset}&amp;sort_mode={$sort_mode}">
 					<img src="styles/{$prefs.style|replace:".css":""}/img/iArrowGreyLeft.png">
 				</a>
 			{/if}
 			
-			{tr}Page{/tr} {$actual_page} de {$cant_pages}
+			{tr}Page{/tr} {math equation="x / y + 1" x=$offset y=$maxRecords format="%d"} {tr}de{/tr} {math equation="x / y + 1" x=$cant y=$maxRecords format="%d"}
 			
-			{if $next_offset >= 0}
+			{if $next_offset < $cant}
 				<a class="forumprevnext" href="tiki-forums.php?find={$find}&amp;offset={$next_offset}&amp;sort_mode={$sort_mode}">
 					<img src="styles/{$prefs.style|replace:".css":""}/img/iArrowGreyRight.png">
 				</a>
 			{/if}
 			{if $prefs.direct_pagination eq 'y'}
 				<br />
-				{section loop=$cant_pages name=foo}
-					{assign var=selector_offset value=$smarty.section.foo.index|times:$prefs.maxRecords}
-						<a class="prevnext" href="tiki-forums.php?find={$find}&amp;offset={$selector_offset}&amp;sort_mode={$sort_mode}">
-					{$smarty.section.foo.index_next}</a>
-				{/section}
+			{section start=0 loop=$cant name=foo step=$maxRecords}
+				{assign var=selector_offset value=$smarty.section.foo.index}
+					<a class="prevnext" href="tiki-list_blogs.php?find={$find}&amp;offset={$selector_offset}&amp;sort_mode={$sort_mode}">
+				{$smarty.section.foo.index_next/$maxRecords}</a>
+			{/section}
 			{/if}
 		</div>
 	

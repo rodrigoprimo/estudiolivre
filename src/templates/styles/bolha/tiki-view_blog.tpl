@@ -21,7 +21,7 @@
 	{/if *}
 	
 	{section name=ix loop=$listpages}
-		{include file="tiki-view_blog_post_item.tpl" post=$listpages[ix] text=$listpages[ix].parsed_data}
+		{include file="tiki-view_blog_post_item.tpl" post=$listpages[ix] text=$listpages[ix].parsed_data freetags=$listpages[ix].freetags}
 	{/section}
 	<br />
 

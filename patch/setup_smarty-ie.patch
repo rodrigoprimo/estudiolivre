@@ -1,6 +1,6 @@
---- setup_smarty.php.orig	2010-06-07 14:45:45.000000000 -0300
-+++ setup_smarty.php	2010-06-07 17:11:13.000000000 -0300
-@@ -54,15 +54,26 @@
+--- ../tiki-5.0.orig/setup_smarty.php	2010-06-12 00:07:25.000000000 -0300
++++ setup_smarty.php	2010-06-24 21:54:10.000000000 -0300
+@@ -54,20 +54,33 @@
  	function _smarty_include($params) {
  		global $style_base, $tikidomain;
  
@@ -27,4 +27,11 @@
 +                $currentTpl = $params['smarty_include_tpl_file'];
  		return parent::_smarty_include($params);
  	}
+ 
+ 	function fetch($_smarty_tpl_file, $_smarty_cache_id = null, $_smarty_compile_id = null, $_smarty_display = false) {
+ 		global $prefs, $style_base, $tikidomain, $zoom_templates;
++		global $currentTpl;
++                $currentTpl = $_smarty_tpl_file;
+ 
+ 		if ( ($tpl = $this->get_template_vars('mid')) && ( $_smarty_tpl_file == 'tiki.tpl' || $_smarty_tpl_file == 'tiki-print.tpl' || $_smarty_tpl_file == 'tiki_full.tpl' ) ) {
  

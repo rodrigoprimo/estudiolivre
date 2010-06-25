@@ -4,8 +4,8 @@
 	<h2>
 		{tr}Viewing blog post{/tr}
 	</h2>
-	
-	{include file="tiki-view_blog_post_item.tpl" text=$parsed_data post=$post_info use_title=$blog_data.use_title showPages=1}
+
+	{include file="tiki-view_blog_post_item.tpl" text=$parsed_data post=$post_info use_title=$blog_data.use_title showPages=1 freetags=$freetags}
 	
 	{*
 	{if $post_info.trackbacks_from_count > 0}

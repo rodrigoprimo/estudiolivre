@@ -32,7 +32,7 @@
  						$anchor = '';
  						$aclose = '';
  						$aclose2 = '';
-+						$aopen = ''
++						$aopen = '';
  						$addremove = $show_title_level[$hdrlevel] ? 1 : 0; // If needed, also remove '#' sign from title beginning
  
  						// May be special signs present after '!'s?

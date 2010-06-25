@@ -67,7 +67,7 @@ $page = "Usuário_" . $view_user;
 $info = $tikilib->get_page_info($page);
 $smarty->assign('pageName', $page);
 if(is_array($info)) {
-	$pdata = $tikilib->parse_data($info["data"],$info["is_html"]);
+	$pdata = $tikilib->parse_data($info["data"],array($info["is_html"]));
 	foreach($info as $infoName => $value) {
 		if($infoName != "user") {
 			$smarty->assign($infoName, $value);

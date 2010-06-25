@@ -61,8 +61,8 @@
 			<span>
 				tags:
 				<em>
-					{foreach from=$post.freetags item=tag name=tags}
-					{tooltip text="Clique para ver outros posts com a tag <b>"|cat:$tag|cat:"</b>"}<a href="tiki-browse_freetags.php?tag={$tag}&type=blog post">{$tag}</a>{if not $smarty.foreach.tags.last}, {/if}
+					{foreach from=$freetags.data item=tag name=tags}
+					{tooltip text="Clique para ver outros posts com a tag <b>"|cat:$tag.tag|cat:"</b>"}<a href="tiki-browse_freetags.php?tag={$tag.tag}&type=blog post">{$tag.tag}</a>{if not $smarty.foreach.tags.last}, {/if}
 					{/tooltip}
 					{foreachelse}
 						{tr}Este post não tem tags{/tr}.

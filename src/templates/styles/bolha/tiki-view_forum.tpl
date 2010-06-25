@@ -339,25 +339,27 @@ a moderator approves it.{/tr}</small>
 </form>
 
   		<div class="paginacao">
+			{assign var=comments_prev_offset value=$comments_offset-$comments_per_page}
+			{assign var=comments_next_offset value=$comments_offset+$comments_per_page}
 			{if $comments_prev_offset >= 0}
-				<a href="tiki-view_forum.php?forumId={$forum_info.forumId}&amp;comments_threshold={$comments_threshold}&amp;comments_offset={$comments_prev_offset}&amp;comments_sort_mode={$comments_sort_mode}&amp;comments_maxComments={$comments_maxComments}">
+				<a href="tiki-view_forum.php?forumId={$forum_info.forumId}&amp;comments_threshold={$comments_threshold}&amp;comments_offset={$comments_prev_offset}&amp;comments_sort_mode={$comments_sort_mode}&amp;maxRecords={$comments_per_page}">
 					<img src="styles/{$prefs.style|replace:".css":""}/img/iArrowGreyLeft.png">
 				</a>
 			{/if}
 			
-			{tr}Page{/tr} {$comments_actual_page} {tr}de{/tr} {$comments_cant_pages}
+			{tr}Page{/tr} {math equation="x / y + 1" x=$comments_offset y=$comments_per_page format="%d"} {tr}de{/tr} {math equation="x / y + 1" x=$comments_cant y=$comments_per_page format="%d"}
 			
-			{if $comments_next_offset >= 0}
-				<a class="prevnext" href="tiki-view_forum.php?forumId={$forum_info.forumId}&amp;comments_threshold={$comments_threshold}&amp;comments_offset={$comments_next_offset}&amp;comments_sort_mode={$comments_sort_mode}&amp;comments_maxComments={$comments_maxComments}">
+			{if $comments_next_offset < $comments_cant}
+				<a class="prevnext" href="tiki-view_forum.php?forumId={$forum_info.forumId}&amp;comments_threshold={$comments_threshold}&amp;comments_offset={$comments_next_offset}&amp;comments_sort_mode={$comments_sort_mode}&amp;maxRecords={$comments_per_page}">
 					<img src="styles/{$prefs.style|replace:".css":""}/img/iArrowGreyRight.png">
 				</a>
 			{/if}
 			{if $comments_pagination eq 'y'}
 				<br />
-				{section loop=$comments_cant_pages name=foo}
-					{assign var=selector_offset value=$smarty.section.foo.index|times:$prefs.maxRecords}
-						<a href="tiki-view_forum.php?forumId={$forum_info.forumId}&amp;comments_threshold={$comments_threshold}&amp;comments_offset={$selector_offset}&amp;comments_sort_mode={$comments_sort_mode}&amp;comments_maxComments={$comments_maxComments}">
-					{$smarty.section.foo.index_next}</a>
+				{section start=0 loop=$comments_cant step=$comments_per_page name=foo}
+					{assign var=selector_offset value=$smarty.section.foo.index}
+						<a href="tiki-view_forum.php?forumId={$forum_info.forumId}&amp;comments_threshold={$comments_threshold}&amp;comments_offset={$selector_offset}&amp;comments_sort_mode={$comments_sort_mode}&amp;maxRecords={$comments_per_page}">
+					{$smarty.section.foo.index_next/$comments_per_page}</a>
 				{/section}
 			{/if}
 		</div>

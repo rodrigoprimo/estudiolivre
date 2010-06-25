@@ -1,16 +1,16 @@
---- lib/tikilib.php.orig	2010-06-07 20:06:42.000000000 -0300
-+++ lib/tikilib.php	2010-06-11 16:29:08.000000000 -0300
-@@ -6060,6 +6060,9 @@
- 			$this->parse_wiki_argvariable($data, $options);
+--- lib/tikilib.php.orig	2010-06-24 21:59:32.000000000 -0300
++++ lib/tikilib.php	2010-06-24 22:05:58.000000000 -0300
+@@ -6055,6 +6055,9 @@
+ 			}
  		}
  
 +		// ESTUDIOLIVRE HACK - wiki template
 +		$this->getWikiTemplate($data);
 +
- 		// Handle |# anchor links by turning them into ALINK module calls.
- 		preg_match_all("/\(\(([^)]*\|#[^)]*)\)\)/", $data, $anchors);
- 
-@@ -6435,6 +6438,39 @@
+ 		// Handle pre- and no-parse sections and plugins
+ 		$preparsed = array('data'=>array(),'key'=>array());
+ 		$noparsed = array('data'=>array(),'key'=>array());
+@@ -6438,6 +6441,41 @@
  		return $data;
  	}
  
@@ -37,6 +37,8 @@
 +                		$this->getWikiTemplate($pdata);
 +                		$templateStack[$template[1][$j]] = false;
 +                		if(isset($template[2][$j])){
++					preg_match_all("/(?s)(.+?)\=(.+?)(?:\|\||$)/", $template[2][$j], $matches);
++
 +					for($i=0; $i<sizeof($matches[0]); $i++){
 +                              			$pdata = preg_replace("/" . trim($matches[1][$i]) . "/", trim($matches[2][$i]), $pdata);
 +                    			}
