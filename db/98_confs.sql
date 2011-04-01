@@ -7,5 +7,5 @@ INSERT INTO `users_grouppermissions` VALUES ('Anonymous', 'el_p_view', 'y');
 INSERT INTO `users_grouppermissions` VALUES ('Registered', 'el_p_upload_files', 'y');
 INSERT INTO `users_grouppermissions` VALUES ('Registered', 'el_p_vote', 'y');
 INSERT INTO `tiki_preferences` VALUES ('feature_ajax', 'y');
-UPDATE `tiki_preferences` SET value = 'y' WHERE name = 'feature_categories';
-UPDATE `tiki_preferences` SET value = 'bolha.css' WHERE name = 'style';
+INSERT INTO `tiki_preferences` VALUES ('feature_categories', 'y');
+INSERT INTO `tiki_preferences` VALUES ('style', 'bolha.css');
