@@ -14,7 +14,7 @@ if (isset($_REQUEST['tagsForUser']) && $_REQUEST['tagsForUser'] != '') {
 	$tagsForUser = '';
 }
 
-if ($feature_freetags == 'y') {     // And get the Tags for the posts
+if ($prefs['feature_freetags'] == 'y') {     // And get the Tags for the posts
     include_once("lib/freetag/freetaglib.php");
     $freetaglib->max_cloud_text_size = 25;
     $tags = $freetaglib->get_most_popular_tags($tagsForUser, 0, 100);
