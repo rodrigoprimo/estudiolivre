@@ -1,6 +1,6 @@
---- tiki-searchresults.php.orig	2010-03-16 23:23:40.000000000 -0300
+--- tiki-searchresults.php	2010-03-16 23:23:40.000000000 -0300
 +++ tiki-searchresults.php	2010-06-07 20:33:36.000000000 -0300
-@@ -203,6 +203,7 @@
+@@ -214,6 +214,7 @@
  // disallow robots to index page:
  $smarty->assign('metatag_robots', 'NOINDEX, NOFOLLOW');
  ask_ticket('searchresults');

@@ -1,6 +1,6 @@
---- comments.php	2010-03-18 11:48:32.000000000 -0300
-+++ comments.php	2010-04-10 20:44:05.000000000 -0300
-@@ -301,8 +301,11 @@
+--- comments.php	2011-04-04 11:39:57.288370998 -0300
++++ comments.php	2011-04-04 11:40:02.248370993 -0300
+@@ -294,8 +294,11 @@
  	}
  }
  
@@ -11,5 +11,5 @@
 -		|| (isset($forum_mode) && $forum_mode =='y' && $tiki_p_admin_forum == 'y' ) ) {
 +		|| (isset($forum_mode) && $forum_mode =='y' && $tiki_p_admin_forum == 'y' ) || (isset($comment_info) && $user == $comment_info["userName"])) {
  	if (isset($_REQUEST["comments_remove"]) && isset($_REQUEST["comments_threadId"])) {
- 		$area = 'delcomment';
- 		if ($prefs['feature_ticketlib2'] != 'y' or (isset($_POST['daconfirm']) and isset($_SESSION["ticket_$area"]))) {
+ 		$access->check_authenticity();
+ 		$comments_show = 'y';

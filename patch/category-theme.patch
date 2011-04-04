@@ -1,6 +1,6 @@
 --- tiki-index.php	2010-03-18 11:48:32.000000000 -0300
 +++ tiki-index.php	2010-04-10 20:33:36.000000000 -0300
-@@ -404,6 +404,19 @@
+@@ -456,6 +456,19 @@
  		$pageRenderer->setShowAttachments( $_REQUEST['atts_show'] );
  }
  

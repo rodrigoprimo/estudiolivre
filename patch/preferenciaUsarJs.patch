@@ -1,6 +1,6 @@
 --- tiki-user_preferences.php	2010-03-18 16:55:12.000000000 -0300
 +++ tiki-user_preferences.php	2010-06-07 15:17:19.000000000 -0300
-@@ -123,6 +123,13 @@
+@@ -125,6 +125,13 @@
  		$tikilib->set_user_preference($userwatch, 'user_dbl', 'n');
  		$smarty->assign('user_dbl', 'n');
  	}
@@ -14,7 +14,7 @@
  	if (isset($_REQUEST['diff_versions']) && $_REQUEST['diff_versions'] == 'on') {
  		$tikilib->set_user_preference($userwatch, 'diff_versions', 'y');
  		$smarty->assign('diff_versions', 'y');
-@@ -338,6 +345,8 @@
+@@ -356,6 +363,8 @@
  $tikilib->get_user_preference($userwatch, 'user_dbl', 'y');
  $userinfo = $userlib->get_user_info($userwatch);
  $smarty->assign_by_ref('userinfo', $userinfo);
