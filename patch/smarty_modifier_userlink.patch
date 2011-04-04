@@ -1,15 +1,15 @@
---- lib/smarty_tiki/modifier.userlink.php.orig	2010-02-24 15:31:27.000000000 -0300
-+++ lib/smarty_tiki/modifier.userlink.php	2010-06-07 17:56:45.000000000 -0300
+--- lib/smarty_tiki/modifier.userlink.php	2011-04-04 10:31:44.538370995 -0300
++++ lib/smarty_tiki/modifier.userlink.php	2011-04-04 10:33:02.898370996 -0300
 @@ -33,6 +33,12 @@
- function smarty_modifier_userlink($other_user,$class='link',$idletime='not_set', $fullname='', $max_length=0) {
- 	global $tikilib, $userlib, $cachelib, $user, $prefs, $userprefslib;
+ function smarty_modifier_userlink($other_user,$class='link',$idletime='not_set', $fullname='', $max_length=0, $popup='y') {
+ 	global $tikilib, $userlib, $cachelib, $user, $prefs, $userprefslib, $smarty;
  
 +	//MAJOR EL HACK
-+        if($other_user){
-+                $link_user=$other_user;
-+        }
-+        return "<a href=\"el-user.php?view_user=".$link_user."\">".$link_user."</a>";
++	if ($other_user) {
++		$link_user = $other_user;
++	}
++	return "<a href=\"el-user.php?view_user=".$link_user."\">".$link_user."</a>";
 +
- 	$show_mouseover = $prefs['feature_community_mouseover'] == 'y' && $userlib->get_user_preference($user, 'show_mouseover_user_info','y') == 'y';
+ 	$show_mouseover = $popup != 'n' && $prefs['feature_community_mouseover'] == 'y' && $userlib->get_user_preference($user, 'show_mouseover_user_info','y') == 'y';
  	$show_friends = $prefs['feature_friends'] == 'y' && $tikilib->verify_friendship($user, $other_user);
  
