@@ -11,17 +11,18 @@
  	} else {
  		$query = "select u.*, f.`user` as friend, p.`value` as realName from `users_users` as u left join `tiki_friends` as f on u.`login`=f.`friend` and f.`user`=? left join `tiki_user_preferences` p on u.`login`=p.`user` and p.`prefName`='realName' $mid order by $sort_mode";
  	}
---- tiki-list_users.php	2005-06-29 23:21:27.000000000 -0300
-+++ tiki-list_users.php	2006-09-19 18:30:59.000000000 -0300
-@@ -81,9 +81,9 @@
+--- tiki-list_users.php.old	2011-04-04 10:52:20.328370993 -0300
++++ tiki-list_users.php	2011-04-04 10:52:57.048370996 -0300
+@@ -54,10 +54,10 @@
  	}
- 
- 	$userprefs=$listusers["data"][$i]["preferences"];
--	$country="None";
-+	$country="";
- 	for ($j=0;$j<count($userprefs);$j++) {
--			if ($userprefs[$j]["prefName"]=="country") $country=$userprefs[$j]["value"];
-+			if ($userprefs[$j]["prefName"]=="local") $country=$userprefs[$j]["value"];
- 			if ($userprefs[$j]["prefName"]=="realName") $listusers["data"][$i]["realName"]=$userprefs[$j]["value"];
+ 	if ($prefs['feature_community_list_country'] == "y") {
+ 		$userprefs = $listusers["data"][$i]["preferences"];
+-		$country = "None";
++		$country = "";
+ 		
+ 		for ($j = 0, $count_userprefs = count($userprefs); $j < $count_userprefs; $j++) {
+-			if ($userprefs[$j]["prefName"] == "country") $country = $userprefs[$j]["value"];
++			if ($userprefs[$j]["prefName"] == "local") $country = $userprefs[$j]["value"];
+ 			if ($userprefs[$j]["prefName"] == "realName") $listusers["data"][$i]["realName"] = $userprefs[$j]["value"];
+ 		}
  	}
- 	$listuserscountry[]=$country;

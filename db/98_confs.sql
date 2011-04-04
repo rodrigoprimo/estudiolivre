@@ -9,3 +9,4 @@ INSERT INTO `users_grouppermissions` VALUES ('Registered', 'el_p_vote', 'y');
 INSERT INTO `tiki_preferences` VALUES ('feature_ajax', 'y');
 INSERT INTO `tiki_preferences` VALUES ('feature_categories', 'y');
 INSERT INTO `tiki_preferences` VALUES ('style', 'bolha.css');
+INSERT INTO `tiki_preferences` VALUES ('feature_community_list_country', 'y');
