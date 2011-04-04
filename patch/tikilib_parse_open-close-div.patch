@@ -1,11 +1,13 @@
 --- lib/tikilib.php.orig	2010-06-07 20:06:42.000000000 -0300
 +++ lib/tikilib.php	2010-06-07 20:21:10.000000000 -0300
-@@ -6708,8 +6708,13 @@
+@@ -6708,10 +6708,13 @@
  								$listate = substr($line, $listlevel, 1);
  								if (($listate == '+' || $listate == '-') && !($litype == '*' && !strstr(current($listbeg), '</ul>') || $litype == '#' && !strstr(current($listbeg), '</ol>'))) {
  									$thisid = 'id' . microtime() * 1000000;
--									$data .= '<br /><a id="flipper' . $thisid . '" class="link" href="javascript:flipWithSign(\'' . $thisid . '\')">[' . ($listate == '-' ? '+' : '-') . ']</a>';
--									$listyle = ' id="' . $thisid . '" style="display:' . ($listate == '+' ? 'block' : 'none') . ';"';
+-									if ( !$options['ck_editor'] ) {
+-										$data .= '<br /><a id="flipper' . $thisid . '" class="link" href="javascript:flipWithSign(\'' . $thisid . '\')">[' . ($listate == '-' ? '+' : '-') . ']</a>';
+-									}
+-									$listyle = ' id="' . $thisid . '" style="display:' . ($listate == '+' || $options['ck_editor'] ? 'block' : 'none') . ';"';
 +									if (preg_match("|tiki-print.php|",$_SERVER['REQUEST_URI'])) {
 +										// $data .= '<br /><img class="flipper" id="flipper' . $thisid . '" class="pointer" onclick="flip(\'' . $thisid . '\');toggleImage(this,\'iArrowGreyRight.png\')" src="styles/estudiolivre/iArrowGreyDown.png">';
 +										$listyle = ' id="' . $thisid . '"';
@@ -16,16 +18,18 @@
  									$addremove = 1;
  								}
  							}
-@@ -6723,7 +6728,10 @@
+@@ -6723,9 +6728,10 @@
  						$listate = substr($line, $listlevel, 1);
  						if (($listate == '+' || $listate == '-')) {
  							$thisid = 'id' . microtime() * 1000000;
--							$data .= '<br /><a id="flipper' . $thisid . '" class="link" href="javascript:flipWithSign(\'' . $thisid . '\')">[' . ($listate == '-' ? '+' : '-') . ']</a>';
+-							if ( !$options['ck_editor'] ) {
+-								$data .= '<br /><a id="flipper' . $thisid . '" class="link" href="javascript:flipWithSign(\'' . $thisid . '\')">[' . ($listate == '-' ? '+' : '-') . ']</a>';
+-							}
 +							if (preg_match("|tiki-print.php|",$_SERVER['REQUEST_URI'])) {
 +								$listate = '-';
 +							}
 +							$data .= '<br /><img class="flipper" id="flipper' . $thisid . '" class="pointer" onclick="flip(\'' . $thisid . '\');toggleImage(this,\'iArrowGrey' . ($listate == '-' ? 'Down' : 'Right') . '.png\')" src="styles/estudiolivre/iArrowGrey' . ($listate == '-' ? 'Right' : 'Down') . '.png">';
- 							$listyle = ' id="' . $thisid . '" style="display:' . ($listate == '+' ? 'block' : 'none') . ';"';
+							$listyle = ' id="' . $thisid . '" style="display:' . ($listate == '+' || $options['ck_editor'] ? 'block' : 'none') . ';"';
  							$addremove = 1;
  						}
 @@ -6838,6 +6846,7 @@
