@@ -1,16 +1,17 @@
---- lib/tikilib.php	2006-06-04 22:28:58.000000000 -0300
-+++ lib/tikilib.php	2006-09-19 18:37:07.000000000 -0300
-@@ -2115,8 +2115,8 @@
+--- lib/tikilib.php	2011-04-04 14:43:33.518370997 -0300
++++ lib/tikilib.php	2011-04-04 14:59:48.408370998 -0300
+@@ -2830,7 +2830,10 @@
+ 		if ( $sort_mode != '' ) $sort_mode = 'order by '.$sort_mode;
  
- 	// Fixed the not null. After some research i came to the conclusion that only these dbms that i use
- 	// lack a ansi outer join syntax. I guess using outer joins should be ok. redflo.
--	if (substr($sort_mode,1,7)=="country") {
--		$query = "select u.*, f.`user` as friend, p.`value` as country from `users_users` as u left join `tiki_friends` as f on u.`login`=f.`friend` and f.`user`=? left join `tiki_user_preferences` p on u.`login`=p.`user` and p.`prefName`='country' $mid order by $sort_mode";
-+	if (substr($sort_mode,1,5)=="local") {
-+		$query = "select u.*, f.`user` as friend, p.`value` as local from `users_users` as u left join `tiki_friends` as f on u.`login`=f.`friend` and f.`user`=? left join `tiki_user_preferences` p on u.`login`=p.`user` and p.`prefName`='local' $mid order by $sort_mode";
- 	} else {
- 		$query = "select u.*, f.`user` as friend, p.`value` as realName from `users_users` as u left join `tiki_friends` as f on u.`login`=f.`friend` and f.`user`=? left join `tiki_user_preferences` p on u.`login`=p.`user` and p.`prefName`='realName' $mid order by $sort_mode";
- 	}
+ 		// Need to use a subquery to avoid bad results when using a limit and an offset, with at least MySQL
+-		if ($prefs['feature_friends'] == 'y' && !$include_prefs) {
++		if (substr($sort_mode, 10, 5) == 'local') {
++			$query = "select * from (select u.* $pref_field, f.`friend`, p.`value` as local from `users_users` u $pref_join $find_join left join `tiki_friends` as f on (u.`login` = f.`friend` and f.`user`=?) left join `tiki_user_preferences` p on u.`login`=p.`user` and p.`prefName`='local' $pref_where $sort_mode) as tab";
++			$bindvars[] = $user;
++		} else if ($prefs['feature_friends'] == 'y' && !$include_prefs) {
+ 			$query = "select * from (select u.* $pref_field, f.`friend` from `users_users` u $pref_join $find_join left join `tiki_friends` as f on (u.`login` = f.`friend` and f.`user`=?) $pref_where $sort_mode) as tab";
+ 		} else {
+ 			$query = "select u.* $pref_field  from `users_users` u $pref_join $find_join $pref_where $sort_mode";
 --- tiki-list_users.php.old	2011-04-04 10:52:20.328370993 -0300
 +++ tiki-list_users.php	2011-04-04 10:52:57.048370996 -0300
 @@ -54,10 +54,10 @@
