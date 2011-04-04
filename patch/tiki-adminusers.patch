@@ -1,13 +1,13 @@
---- tiki-adminusers.php.orig	2010-03-07 23:54:41.000000000 -0300
-+++ tiki-adminusers.php	2010-06-07 18:35:06.000000000 -0300
-@@ -504,6 +504,10 @@
+--- tiki-adminusers.php	2011-04-04 10:27:04.318370997 -0300
++++ tiki-adminusers.php	2011-04-04 10:27:49.998370995 -0300
+@@ -500,6 +500,10 @@
  						'num' => 0,
- 						'mes' => sprintf(tra("%s changed from %s to %s") , tra("login") , $userinfo['login'], $_POST["name"])
+ 						'mes' => sprintf(tra("%s changed from %s to %s") , tra("login") , $userinfo['login'], $_POST['login'])
  					);
 +					if (!isset($elgallib)) {
 +						require_once("lib/elgal/elgallib.php");
 +					}
 +					$elgallib->change_login_acervo($userinfo['login'],$_POST['name']);
- 					$logslib->add_log('adminusers', 'changed login for ' . $_POST['name'] . ' from ' . $userinfo['login'] . ' to ' . $_POST["name"]);
- 					$userinfo['login'] = $_POST['name'];
+ 					$logslib->add_log('adminusers', 'changed login for ' . $_POST['login'] . ' from ' . $userinfo['login'] . ' to ' . $_POST['login']);
+ 					$userinfo['login'] = $_POST['login'];
  					if ($prefs['login_is_email'] == 'y') {
