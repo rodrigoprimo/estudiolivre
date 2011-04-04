@@ -1,0 +1,12 @@
+--- lib/categories/categlib.php	2011-02-15 20:07:46.000000000 -0200
++++ lib/categories/categlib.php	2011-04-04 17:47:43.078371002 -0300
+@@ -445,6 +445,9 @@
+ 			 // newsletters can't be categorized, although there's some code in tiki-admin_newsletters.php
+ 			 // 'newsletter' => ?,
+ 			 // 'events' => ?,
++			 
++	    	 // EL gallery files
++	    	 'gallery' => 'el_p_view',
+ 			 );
+ 	}
+ 
