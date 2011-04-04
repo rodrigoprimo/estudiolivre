@@ -1,37 +1,34 @@
---- ../tiki-5.0.orig/setup_smarty.php	2010-06-12 00:07:25.000000000 -0300
-+++ setup_smarty.php	2010-06-24 21:54:10.000000000 -0300
-@@ -54,20 +54,33 @@
+--- lib/init/smarty.php	2011-04-04 10:41:29.968371000 -0300
++++ lib/init/smarty.php	2011-04-04 10:45:26.598370997 -0300
+@@ -59,6 +59,9 @@
  	function _smarty_include($params) {
  		global $style_base, $tikidomain;
  
 +		$isIe = preg_match('/MSIE/', $_SERVER['HTTP_USER_AGENT']) && 
-+                   !preg_match('/Opera/', $_SERVER['HTTP_USER_AGENT']);
++			!preg_match('/Opera/', $_SERVER['HTTP_USER_AGENT']);
 +
  		if (isset($style_base)) {
  			if ($tikidomain and file_exists("templates/$tikidomain/styles/$style_base/".$params['smarty_include_tpl_file'])) {
  				$params['smarty_include_tpl_file'] = "$tikidomain/styles/$style_base/".$params['smarty_include_tpl_file'];
- 			} elseif ($tikidomain and file_exists("templates/$tikidomain/".$params['smarty_include_tpl_file'])) {
+@@ -66,14 +69,21 @@
  				$params['smarty_include_tpl_file'] = "$tikidomain/".$params['smarty_include_tpl_file'];
  			} elseif (file_exists("templates/styles/$style_base/".$params['smarty_include_tpl_file'])) {
--				$params['smarty_include_tpl_file'] = "styles/$style_base/".$params['smarty_include_tpl_file'];
-+				if ($isIe && file_exists("templates/styles/$style_base/ie-".$params['smarty_include_tpl_file'])) {
-+                                    $params['smarty_include_tpl_file'] = 'ie-' . $params['smarty_include_tpl_file'];
-+                           	}
-+                           	$params['smarty_include_tpl_file'] = "styles/$style_base/".$params['smarty_include_tpl_file'];
-+                        } elseif ($isIe && file_exists("templates/ie-" . $params['smarty_include_tpl_file'])) {
-+                           	$params['smarty_include_tpl_file'] = 'ie-' . $params['smarty_include_tpl_file'];
-+
+ 				$params['smarty_include_tpl_file'] = "styles/$style_base/".$params['smarty_include_tpl_file'];
++			} elseif ($isIe && file_exists("templates/ie-" . $params['smarty_include_tpl_file'])) {
++				$params['smarty_include_tpl_file'] = 'ie-' . $params['smarty_include_tpl_file'];
  			}
  		}
 +		global $currentTpl;
-+                $currentTpl = $params['smarty_include_tpl_file'];
++		$currentTpl = $params['smarty_include_tpl_file'];
  		return parent::_smarty_include($params);
  	}
  
  	function fetch($_smarty_tpl_file, $_smarty_cache_id = null, $_smarty_compile_id = null, $_smarty_display = false) {
  		global $prefs, $style_base, $tikidomain, $zoom_templates;
-+		global $currentTpl;
-+                $currentTpl = $_smarty_tpl_file;
  
++		global $currentTpl;
++		$currentTpl = $_smarty_tpl_file;
++
  		if ( ($tpl = $this->get_template_vars('mid')) && ( $_smarty_tpl_file == 'tiki.tpl' || $_smarty_tpl_file == 'tiki-print.tpl' || $_smarty_tpl_file == 'tiki_full.tpl' ) ) {
  
+ 			// Set the last mid template to be used by AJAX to simulate a 'BACK' action
