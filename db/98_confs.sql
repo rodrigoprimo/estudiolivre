@@ -1,12 +1,13 @@
 update tiki_preferences set value='a:4:{i:0;s:9:"bolha.css";i:1;s:9:"geral.css";i:2;s:10:"obscur.css";i:3;s:12:"original.css";}' where name='available_styles';
-INSERT INTO `users_permissions` VALUES ('el_p_admin_gallery', 'Administrar a galeria', 'admin', 'estudiolivre');
-INSERT INTO `users_permissions` VALUES ('el_p_upload_files', 'Subir arquivos na galeria', 'basic', 'estudiolivre');
-INSERT INTO `users_permissions` VALUES ('el_p_view', 'Ver arquivos da galeria', 'basic', 'estudiolivre');
-INSERT INTO `users_permissions` VALUES ('el_p_vote', 'Votar em arquivos na galeria', 'basic', 'estudiolivre');
+INSERT INTO `users_permissions` (permName, permDesc, level, type) VALUES ('el_p_admin_gallery', 'Administrar a galeria', 'admin', 'estudiolivre');
+INSERT INTO `users_permissions` (permName, permDesc, level, type) VALUES ('el_p_upload_files', 'Subir arquivos na galeria', 'basic', 'estudiolivre');
+INSERT INTO `users_permissions` (permName, permDesc, level, type) VALUES ('el_p_view', 'Ver arquivos da galeria', 'basic', 'estudiolivre');
+INSERT INTO `users_permissions` (permName, permDesc, level, type) VALUES ('el_p_vote', 'Votar em arquivos na galeria', 'basic', 'estudiolivre');
 INSERT INTO `users_grouppermissions` VALUES ('Anonymous', 'el_p_view', 'y');
 INSERT INTO `users_grouppermissions` VALUES ('Registered', 'el_p_upload_files', 'y');
 INSERT INTO `users_grouppermissions` VALUES ('Registered', 'el_p_vote', 'y');
 INSERT INTO `tiki_preferences` VALUES ('feature_ajax', 'y');
+INSERT INTO `tiki_preferences` VALUES ('ajax_xajax', 'y');
 INSERT INTO `tiki_preferences` VALUES ('feature_categories', 'y');
 INSERT INTO `tiki_preferences` VALUES ('style', 'bolha.css');
 INSERT INTO `tiki_preferences` VALUES ('feature_community_list_country', 'y');
