@@ -1,3 +1,8 @@
+/* Import foundation CSS files. */
+@import url("lite/lite.css");
+@import url("layout/layout.css");
+@import url("layout/design.css");
+
 /* tags gerais */
 HTML {
 	/*background-image:url(estudiolivre/bgGradientBlue.png);*/
