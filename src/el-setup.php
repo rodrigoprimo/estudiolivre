@@ -67,4 +67,9 @@ $headerlib->add_jsfile('lib/js/tooltip.js');
 $headerlib->add_jsfile('lib/elgal/player/cortado.js');
 $headerlib->add_jsfile('lib/js/lightbox.js');
 $headerlib->add_jsfile('lib/js/busca.js');
+
+if ($prefs['feature_community_mouseover']) {
+	$headerlib->add_jsfile('lib/js/overlib_mini.js');
+}
+
 $headerlib->add_jq_onready("var style = '$styleDir'");

@@ -10,10 +10,6 @@
 
 	{include file="el-lightbox.tpl"}
 
-	{if $prefs.feature_community_mouseover}
-		{popup_init src="lib/js/overlib_mini.js"}
-	{/if}
-	
 	<div id="fixedwidth">
 		<div id="main">
 			{* Tiki main contains all page *}
