@@ -1,5 +1,3 @@
-<script type="text/javascript" src="lib/js/lightbox.js"></script>
-<link rel="stylesheet" href="styles/{$style|replace:".css":""}/css/lightbox.css" type="text/css"/>
 <div id="overlay" {*onClick="hideLightbox()" onMouseover="tooltip('Clique para cancelar e fechar essa janela');" onMouseout="nd();"*}></div>
 <div id="lightbox">
 	<div class="lightBoxTop">

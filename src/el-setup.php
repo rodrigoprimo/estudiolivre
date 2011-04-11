@@ -52,4 +52,15 @@ tra('');
 TikiSetup::prependIncludePath('lib/elgal/model');
 // TODO: Fazer ieGIF2PNG q substitui o {if $isIE}gif{else}png{/if}
 
-?>
+$styleDir = str_replace('.css', '', $prefs['style']);
+$headerlib->add_cssfile("styles/$styleDir/css/tooltip.css");
+$headerlib->add_cssfile("styles/$styleDir/css/lightbox.css");
+
+$headerlib->add_jsfile('lib/ajax/tiki-ajax.js');
+$headerlib->add_jsfile('lib/js/general.js');
+$headerlib->add_jsfile('lib/js/toggleImage.js');
+$headerlib->add_jsfile('lib/js/tooltip.js');
+$headerlib->add_jsfile('lib/elgal/player/cortado.js');
+$headerlib->add_jsfile('lib/js/lightbox.js');
+$headerlib->add_jsfile('lib/js/busca.js');
+$headerlib->add_jq_onready("var style = '$styleDir'");

@@ -23,8 +23,6 @@
 	  </div>
 	  *}
     </div>
-  
-    <script language="JavaScript" src="lib/js/busca.js"></script>
 
   <div id="search" onLoad="marcaBusca(getCookie('busca'));">
     <form id='form-busca' name="searchForm" class="searchForm" method="get" action="tiki-searchresults.php" onSubmit="busca('{$category}', this.highlight.value); return false;">
@@ -40,7 +38,6 @@
     </form>
   </div>
 </div>
-<script language="JavaScript">marcaBusca(selectedBusca);</script>
 
 <div id="topMenu">
   <div id="topMenuGeneral">

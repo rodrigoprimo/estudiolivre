@@ -2,6 +2,10 @@
 
 <body{* load tooltip images first *}
 	onLoad="preloadImgsNow('{$prefs.style|replace:".css":""}')">
+	
+	{if $prefs.feature_ajax eq 'y'}
+		{include file='tiki-ajax_header.tpl'}
+	{/if}
 
 	{include file="el-lightbox.tpl"}
 
@@ -25,6 +29,13 @@
 	{if $isIE}
 		</div>
 			<center>
+	{/if}
+
+	<!-- Put JS at the end -->
+	{if $headerlib}
+		{$headerlib->output_js_config()}
+		{$headerlib->output_js_files()}
+		{$headerlib->output_js()}
 	{/if}
 
 </body>
