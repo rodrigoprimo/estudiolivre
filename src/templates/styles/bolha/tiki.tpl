@@ -8,13 +8,8 @@
 	lang="{if !empty($pageLang)}{$pageLang}{else}{$prefs.language}{/if}"
 	{if !empty($page_id)} id="page_{$page_id}"{/if}>
 
-  <head>{include file="header.tpl"}</head>
+	<head>{include file="header.tpl"}</head>
   
-  {include file="body.tpl"}
-
-  	{* --- CSS com fixes do IE --- *}
-	{if $isIE}
-		<link rel="StyleSheet"  href="styles/{$prefs.style|replace:".css":""}/css/ie.css" type="text/css" />
-	{/if}
+	{include file="body.tpl"}
 	{* ---- END ---- *}
 </html>

@@ -56,6 +56,10 @@ $styleDir = str_replace('.css', '', $prefs['style']);
 $headerlib->add_cssfile("styles/$styleDir/css/tooltip.css");
 $headerlib->add_cssfile("styles/$styleDir/css/lightbox.css");
 
+if ($isIE) {
+	$headerlib->add_cssfile("styles/$styleDir/css/ie.css");
+}
+
 $headerlib->add_jsfile('lib/ajax/tiki-ajax.js');
 $headerlib->add_jsfile('lib/js/general.js');
 $headerlib->add_jsfile('lib/js/toggleImage.js');
