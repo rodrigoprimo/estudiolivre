@@ -3,7 +3,7 @@
 global $user;
 
 $ajaxlib->setPermission('get_more_tags', $user);
-$ajaxlib->registerFunction('get_more_tags');
+$ajaxlib->register(XAJAX_FUNCTION, 'get_more_tags');
 function get_more_tags($offset, $maxRecords) {
 
     global $freetaglib, $smarty;
@@ -13,11 +13,11 @@ function get_more_tags($offset, $maxRecords) {
 	$last_tag = array_pop($freetaglib->get_distinct_tag_suggestion('', $offset-$maxRecords, $maxRecords));
 	
     $smarty->assign('tag_suggestion', $freetaglib->get_distinct_tag_suggestion('', $offset, $maxRecords));
-    $objResponse->addScript("document.getElementById('$last_tag-v').style.display='inline'");
-    $objResponse->addAppend("ajax-gUpTagListItem", "innerHTML", $smarty->fetch("el-tag_suggest_list.tpl"));
+    $objResponse->script("document.getElementById('$last_tag-v').style.display='inline'");
+    $objResponse->append("ajax-gUpTagListItem", "innerHTML", $smarty->fetch("el-tag_suggest_list.tpl"));
     
     if(($offset + $maxRecords) > $freetaglib->count_distinct_tags()) {
-    	$objResponse->addAssign("ajax-gUpTagSuggestMore", "style.display", "none");
+    	$objResponse->assign("ajax-gUpTagSuggestMore", "style.display", "none");
     }
     
     return $objResponse;			

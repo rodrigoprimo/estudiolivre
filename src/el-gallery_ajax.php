@@ -5,7 +5,7 @@ require_once("lib/persistentObj/PersistentObjectController.php");
 global $tiki_p_el_view;
 
 $ajaxlib->setPermission('get_files', $tiki_p_el_view == 'y');
-$ajaxlib->registerFunction("get_files");
+$ajaxlib->register(XAJAX_FUNCTION, "get_files");
 function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $find = '', $filters = array()) {
     global $smarty, $user, $tikilib;
 
@@ -51,10 +51,10 @@ function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $fi
 	
     
 
-    $objResponse->addAssign("ajax-listNav", "innerHTML", $smarty->fetch("el-gallery_pagination.tpl"));
-    $objResponse->addAssign("ajax-navBottom", "innerHTML", $smarty->fetch("el-gallery_pagination.tpl"));
-    $objResponse->addAssign("ajax-gListCont", "innerHTML", $smarty->fetch("el-gallery_section.tpl"));
-    $objResponse->addScript("nd()");
+    $objResponse->assign("ajax-listNav", "innerHTML", $smarty->fetch("el-gallery_pagination.tpl"));
+    $objResponse->assign("ajax-navBottom", "innerHTML", $smarty->fetch("el-gallery_pagination.tpl"));
+    $objResponse->assign("ajax-gListCont", "innerHTML", $smarty->fetch("el-gallery_section.tpl"));
+    $objResponse->script("nd()");
     
     return $objResponse;
 }

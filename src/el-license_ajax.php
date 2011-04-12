@@ -3,7 +3,7 @@
 global $user;
 
 $ajaxlib->setPermission('get_license', $user);
-$ajaxlib->registerFunction('get_license');
+$ajaxlib->register(XAJAX_FUNCTION, 'get_license');
 function get_license($r1, $r2, $r3) {
     
     require_once("lib/persistentObj/PersistentObjectController.php");
@@ -17,9 +17,9 @@ function get_license($r1, $r2, $r3) {
     $licenca = $controller->noStructureFindAll(array("answer" => $answer));
     $licenca =& $licenca[0];
 	    
-    $objResponse->addAssign('ajax-licenseImg', 'src', 'styles/estudiolivre/h_' . $licenca['imageName'] . '?rand='.rand());
-    $objResponse->addAssign('ajax-licenseDesc', 'innerHTML', $licenca['description']);
-    $objResponse->addScript("show('ajax-licenseCont');");
+    $objResponse->assign('ajax-licenseImg', 'src', 'styles/estudiolivre/h_' . $licenca['imageName'] . '?rand='.rand());
+    $objResponse->assign('ajax-licenseDesc', 'innerHTML', $licenca['description']);
+    $objResponse->script("show('ajax-licenseCont');");
 
     return $objResponse;			
 }

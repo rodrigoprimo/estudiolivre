@@ -2,16 +2,16 @@
 // migrado pro 2.0!
 require_once("dumb_progress_meter.php");
 
-$ajaxlib->registerFunction('upload_info');
+$ajaxlib->register(XAJAX_FUNCTION, 'upload_info');
 function upload_info($uploadId, $callback = 'updateProgressMeter') {
 	$objResponse = new xajaxResponse();
 	$uploadInfo = upload_progress_meter_get_info($uploadId);
-	$objResponse->addScriptCall($callback,$uploadInfo);
+	$objResponse->call($callback,$uploadInfo);
 	return $objResponse;
 }
 
 $ajaxlib->setPermission('save_field', $permission);
-$ajaxlib->registerFunction('save_field');
+$ajaxlib->register(XAJAX_FUNCTION, 'save_field');
 function save_field($name, $value) {
 
     global $user, $userlib;
@@ -25,9 +25,9 @@ function save_field($name, $value) {
     $result = $userlib->set_user_field($name, $value);
     
     if(!$result) {
-		$objResponse->addAlert("nao foi possivel editar o campo $name");
+		$objResponse->alert("nao foi possivel editar o campo $name");
     } else {
-		$objResponse->addScriptCall('exibeCampo', $name, $value);
+		$objResponse->call('exibeCampo', $name, $value);
     }
 	
 	return $objResponse;
@@ -35,7 +35,7 @@ function save_field($name, $value) {
 }
 
 $ajaxlib->setPermission('sendMsg', $user && $tikilib->get_user_preference($view_user,'allowMsgs',1));
-$ajaxlib->registerFunction('sendMsg');
+$ajaxlib->register(XAJAX_FUNCTION, 'sendMsg');
 function sendMsg($subject = '', $body = '', $priority = 3, $cc = '') {
 	
 	global $messulib, $user, $view_user, $smarty, $permission;
@@ -45,14 +45,14 @@ function sendMsg($subject = '', $body = '', $priority = 3, $cc = '') {
 	$smarty->assign('permission', $permission);
 	$smarty->assign('userMessages', $messulib->list_user_messages($view_user, 0, 5, 'date_desc', '', '', '', '', 'messages'));
 	
-	$objResponse->addAssign("ajax-userMsgs", "innerHTML", $smarty->fetch("el-user_msg.tpl"));
+	$objResponse->assign("ajax-userMsgs", "innerHTML", $smarty->fetch("el-user_msg.tpl"));
 	
 	return $objResponse;
 
 }
 
 $ajaxlib->setPermission('delMsg', $user);
-$ajaxlib->registerFunction('delMsg');
+$ajaxlib->register(XAJAX_FUNCTION, 'delMsg');
 function delMsg($userFrom, $msgId) {
 	
 	global $messulib, $user, $smarty, $permission, $view_user;
@@ -65,7 +65,7 @@ function delMsg($userFrom, $msgId) {
 		
 		$smarty->assign('permission', $permission);
 		$smarty->assign('userMessages', $messulib->list_user_messages($view_user, 0, 5, 'date_desc', '', '', '', '', 'messages'));
-		$objResponse->addAssign("ajax-userMsgs", "innerHTML", $smarty->fetch("el-user_msg.tpl"));
+		$objResponse->assign("ajax-userMsgs", "innerHTML", $smarty->fetch("el-user_msg.tpl"));
 	
 	}
 	
@@ -74,7 +74,7 @@ function delMsg($userFrom, $msgId) {
 }
 
 $ajaxlib->setPermission('markMsgRead', $user);
-$ajaxlib->registerFunction('markMsgRead');
+$ajaxlib->register(XAJAX_FUNCTION, 'markMsgRead');
 function markMsgRead($msgId) {
 	
 	global $messulib, $user, $smarty, $permission, $view_user;
@@ -87,16 +87,16 @@ function markMsgRead($msgId) {
 		
 		$smarty->assign('permission', $permission);
 		$smarty->assign('userMessages', $messulib->list_user_messages($view_user, 0, 5, 'date_desc', '', '', '', '', 'messages'));
-		$objResponse->addAssign("ajax-userMsgs", "innerHTML", $smarty->fetch("el-user_msg.tpl"));
+		$objResponse->assign("ajax-userMsgs", "innerHTML", $smarty->fetch("el-user_msg.tpl"));
 		include_once("modules/mod-el_msgs.php");
-		$objResponse->addAssign("ajax-mod-el_msgs", "innerHTML", $smarty->fetch("modules/mod-el_msgs.tpl"));
+		$objResponse->assign("ajax-mod-el_msgs", "innerHTML", $smarty->fetch("modules/mod-el_msgs.tpl"));
 	}
 	
 	return $objResponse;
 
 }
 
-$ajaxlib->registerFunction('pgMsg');
+$ajaxlib->register(XAJAX_FUNCTION, 'pgMsg');
 function pgMsg($offset = 0, $maxRecords = 5) {
 	
 	global $messulib, $view_user, $smarty, $permission;
@@ -114,15 +114,15 @@ function pgMsg($offset = 0, $maxRecords = 5) {
 	$smarty->assign('permission', $permission);
 	$smarty->assign('userMessages', $userMessages);
 	
-	$objResponse->addAssign("ajax-msgListNav", "innerHTML", $smarty->fetch("el-msg_pagination.tpl"));
-	$objResponse->addAssign("ajax-userMsgs", "innerHTML", $smarty->fetch("el-user_msg.tpl"));
+	$objResponse->assign("ajax-msgListNav", "innerHTML", $smarty->fetch("el-msg_pagination.tpl"));
+	$objResponse->assign("ajax-userMsgs", "innerHTML", $smarty->fetch("el-user_msg.tpl"));
 	
 	return $objResponse;
 
 }
 
 $ajaxlib->setPermission('set_licenca', $permission);
-$ajaxlib->registerFunction('set_licenca');
+$ajaxlib->register(XAJAX_FUNCTION, 'set_licenca');
 function set_licenca($r1, $r2, $r3) {
 	
 	require_once("lib/persistentObj/PersistentObjectController.php");
@@ -139,28 +139,28 @@ function set_licenca($r1, $r2, $r3) {
 	    
   	$result = $userlib->set_user_field('licencaPadrao', $licenca["id"]);
 	if (!$result) {
-		$objResponse->addAlert("nao foi possivel definir a licença padrao");
+		$objResponse->alert("nao foi possivel definir a licença padrao");
 	}
 	else {
-		$objResponse->addAssign('ajax-uLicence', 'src', 'styles/estudiolivre/h_' . $licenca['imageName'] . '?rand='.rand());
+		$objResponse->assign('ajax-uLicence', 'src', 'styles/estudiolivre/h_' . $licenca['imageName'] . '?rand='.rand());
 	}
 
 	return $objResponse;
 }
 
 $ajaxlib->setPermission('set_mount_point', $permission);
-$ajaxlib->registerFunction('set_mount_point');
+$ajaxlib->register(XAJAX_FUNCTION, 'set_mount_point');
 function set_mount_point($mountPoint, $pass) {
 	global $tikilib, $user, $smarty;
 	$objResponse = new xajaxResponse();
 
 	if (!preg_match('/^[a-zA-Z0-9]+$/', $pass) || !preg_match('/^[a-zA-Z0-9]+$/', $mountPoint)) {
-		$objResponse->addAssign('ajax-liveError', 'innerHTML', tra('O ponto de montagem e a senha devem ser compostos apenas por letras (sem acento) e números, sem espaços.'));
+		$objResponse->assign('ajax-liveError', 'innerHTML', tra('O ponto de montagem e a senha devem ser compostos apenas por letras (sem acento) e números, sem espaços.'));
 		return $objResponse;
 	}
 	
 	if ($tikilib->getOne('select mountPoint from el_ice where user != ? and mountPoint = ?', array($user, $mountPoint))) {
-		$objResponse->addAssign('ajax-liveError', 'innerHTML', tra('Esse ponto de montagem já existe, por favor escolha outro.'));
+		$objResponse->assign('ajax-liveError', 'innerHTML', tra('Esse ponto de montagem já existe, por favor escolha outro.'));
 		return $objResponse;
 	}
 	
@@ -174,24 +174,24 @@ function set_mount_point($mountPoint, $pass) {
 	// se tiver saida = 0, nao deu erro (herdado de shell, porque die no perl retorna 255)
 	if (!$out) {
 		require_once('lib/elgal/elIce/IceStats.php');
-		$objResponse->addAssign('ajax-liveError', 'innerHTML', '');
+		$objResponse->assign('ajax-liveError', 'innerHTML', '');
 		$tikilib->query("replace into el_ice values(?, ?, ?)", array($user, $mountPoint, $pass));
-		$objResponse->addScript("flip('ajax-elIce');document.getElementById('ajax-livePoint').value='';document.getElementById('ajax-livePass').value='';");
+		$objResponse->script("flip('ajax-elIce');document.getElementById('ajax-livePoint').value='';document.getElementById('ajax-livePass').value='';");
 		
 		if($action == 'criado') {
 			$smarty->assign('channel', array('mountPoint' => $mountPoint, 'password' => $pass));
 			$smarty->assign('permission', true);
-			$objResponse->addAppend('ajax-liveCont', 'innerHTML', $smarty->fetch('el-live_channels.tpl'));
+			$objResponse->append('ajax-liveCont', 'innerHTML', $smarty->fetch('el-live_channels.tpl'));
 		}
 	} else {
-		$objResponse->addAssign('ajax-liveError', 'innerHTML', tra('Esse ponto de montagem já existe, por favor escolha outro.'));
+		$objResponse->assign('ajax-liveError', 'innerHTML', tra('Esse ponto de montagem já existe, por favor escolha outro.'));
 	}
 
 	return $objResponse;
 }
 
 $ajaxlib->setPermission('delete_mount_point', $permission);
-$ajaxlib->registerFunction('delete_mount_point');
+$ajaxlib->register(XAJAX_FUNCTION, 'delete_mount_point');
 function delete_mount_point($mountPoint) {
 	global $tikilib, $user;
 	$objResponse = new xajaxResponse();
@@ -204,8 +204,8 @@ function delete_mount_point($mountPoint) {
 	if (!$out) {
 		require_once('lib/elgal/elIce/IceStats.php');
 		$tikilib->query("delete from el_ice where mountPoint = ?", array($mountPoint));
-		$objResponse->addScript('fixedTooltip("Seu ponto de transmissão no EstúdioLivre foi removido com sucesso!")');
-		$objResponse->addRemove("ajax-live$mountPoint");
+		$objResponse->script('fixedTooltip("Seu ponto de transmissão no EstúdioLivre foi removido com sucesso!")');
+		$objResponse->remove("ajax-live$mountPoint");
 	}
 	
 	return $objResponse;

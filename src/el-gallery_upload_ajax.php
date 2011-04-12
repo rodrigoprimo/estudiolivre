@@ -6,7 +6,7 @@ require_once("el-gallery_file_edit_ajax.php");
 global $userHasPermOnFile, $arquivoId, $tiki_p_el_upload_files;
 
 $ajaxlib->setPermission('newUploadForm', $tiki_p_el_upload_files == 'y');
-$ajaxlib->registerFunction('newUploadForm');
+$ajaxlib->register(XAJAX_FUNCTION, 'newUploadForm');
 function newUploadForm($i) {
 	global $smarty, $arquivo;
 	$objResponse = new xajaxResponse();
@@ -14,14 +14,14 @@ function newUploadForm($i) {
 	$smarty->assign('i', $i);
 	$smarty->assign('arquivoId', $arquivo->id);
 	
-	$objResponse->addScript("uploadI++");
-	$objResponse->addInsertAfter("uploadFormCont" . ($i-1), "span", "uploadFormCont" . $i);
-	$objResponse->addAssign("uploadFormCont" . $i, 'innerHTML', $smarty->fetch("el-gallery_upload_form.tpl"));
+	$objResponse->script("uploadI++");
+	$objResponse->insertAfter("uploadFormCont" . ($i-1), "span", "uploadFormCont" . $i);
+	$objResponse->assign("uploadFormCont" . $i, 'innerHTML', $smarty->fetch("el-gallery_upload_form.tpl"));
 	return $objResponse;
 }
 
 $ajaxlib->setPermission('create_file', $tiki_p_el_upload_files == 'y');
-$ajaxlib->registerFunction('create_file');
+$ajaxlib->register(XAJAX_FUNCTION, 'create_file');
 function create_file($tipo, $fileName, $formNum) {
 	$objResponse = new xajaxResponse();
 	global $user, $smarty, $tikilib;
@@ -35,7 +35,7 @@ function create_file($tipo, $fileName, $formNum) {
 	if ($error = FileReference::isForbiddenExtension($fileName)) {
 	    // Estranho ficar aqui, mas onde colocar?
 	    $error .= ' Veja a <a href="tiki-index.php?page=Formatos+de+arquivos+do+Acervo+Livre">lista de formatos suportados</a>';
-		$objResponse->addScript("setUploadErrorMsg('$error')");
+		$objResponse->script("setUploadErrorMsg('$error')");
 		return $objResponse;
 	}
 	
@@ -46,22 +46,22 @@ function create_file($tipo, $fileName, $formNum) {
 	
 	$arquivo = new $publicationClass($fields);
 	
-	$objResponse->addScriptCall("setPublication", $arquivo->id);
-	$objResponse->addScript("newUpload($formNum);");
+	$objResponse->call("setPublication", $arquivo->id);
+	$objResponse->script("newUpload($formNum);");
 	
 	if (in_array($tipo, array('Audio','Video','Imagem'))) {
 		$templateName = 'el-gallery_metadata_' . $tipo . '.tpl';
 		$smarty->assign('permission', true);
 		$content = $smarty->fetch($templateName);
-		$objResponse->addAppend('ajax-gUpMoreOptionsContent', 'innerHTML', $content);
-		$objResponse->addScript(_extractScripts($content));
+		$objResponse->append('ajax-gUpMoreOptionsContent', 'innerHTML', $content);
+		$objResponse->script(_extractScripts($content));
 	}
 			
 	return $objResponse;
 }
 
 $ajaxlib->setPermission('validateUpload', $userHasPermOnFile && $arquivoId);
-$ajaxlib->registerFunction('validateUpload');
+$ajaxlib->register(XAJAX_FUNCTION, 'validateUpload');
 function validateUpload($fileName, $i) {
 	
 	$objResponse = new xajaxResponse();
@@ -69,17 +69,17 @@ function validateUpload($fileName, $i) {
 	if ($error = FileReference::isForbiddenExtension($fileName)) {
 	    // Estranho ficar aqui, mas onde colocar?
 	    $error .= ' Veja a <a href="tiki-index.php?page=Formatos+de+arquivos+do+Acervo+Livre">lista de formatos suportados</a>';
-		$objResponse->addScript("setUploadErrorMsg('$error')");
+		$objResponse->script("setUploadErrorMsg('$error')");
 		return $objResponse;
 	}
 
-	$objResponse->addScript("newUpload($i);");
+	$objResponse->script("newUpload($i);");
 	return $objResponse;
 
 }
 
 $ajaxlib->setPermission('delete_file', $tiki_p_el_upload_files == 'y');
-$ajaxlib->registerFunction('delete_file');
+$ajaxlib->register(XAJAX_FUNCTION, 'delete_file');
 function delete_file($arquivoId) {
 	global $user;
 	require_once("lib/persistentObj/PersistentObjectFactory.php");
@@ -92,7 +92,7 @@ function delete_file($arquivoId) {
 	
 	$arquivo->delete();
 	
-	$objResponse->addRemove("ajax-pendente-$arquivoId");
+	$objResponse->remove("ajax-pendente-$arquivoId");
 	
 	return $objResponse;
 }
@@ -108,7 +108,7 @@ function _extractScripts($content) {
 }
 
 $ajaxlib->setPermission('get_file_info', $userHasPermOnFile && $arquivoId);
-$ajaxlib->registerFunction('get_file_info');
+$ajaxlib->register(XAJAX_FUNCTION, 'get_file_info');
 function get_file_info() {
 	global $tikilib, $arquivo, $user;
 	
@@ -129,7 +129,7 @@ function get_file_info() {
 	}
 	
 	if (count($result) > 0) {
-		$objResponse->addScriptCall('setAutoFields', $formattedResult);
+		$objResponse->call('setAutoFields', $formattedResult);
 	}
 		
 	return $objResponse;
@@ -137,7 +137,7 @@ function get_file_info() {
 
 
 $ajaxlib->setPermission('set_arquivo_licenca', $userHasPermOnFile && $arquivoId);
-$ajaxlib->registerFunction('set_arquivo_licenca');
+$ajaxlib->register(XAJAX_FUNCTION, 'set_arquivo_licenca');
 function set_arquivo_licenca ($r1, $r2, $r3, $padrao = false) {
 
     global $userlib, $arquivo, $style;
@@ -154,13 +154,13 @@ function set_arquivo_licenca ($r1, $r2, $r3, $padrao = false) {
 	
 	if ($padrao) {
 	  	$result = $userlib->set_user_field('licencaPadrao', $licenca["id"]);
-	   	if(!$result) $objResponse->addAlert("Não foi possivel editar o campo licencaPadrao");
+	   	if(!$result) $objResponse->alert("Não foi possivel editar o campo licencaPadrao");
 	}
 	
 	if (!$arquivo->update(array("licenseId" => $licenca["id"]))) {
-		$objResponse->addAlert("Não foi possivel editar o campo licencaId");
+		$objResponse->alert("Não foi possivel editar o campo licencaId");
 	} else {
-	  	$objResponse->addAssign('ajax-uImagemLicenca', 'src', 'styles/' . preg_replace('/\.css/', '', $style) . '/img/h_' . $licenca["imageName"] . '?rand='.rand());
+	  	$objResponse->assign('ajax-uImagemLicenca', 'src', 'styles/' . preg_replace('/\.css/', '', $style) . '/img/h_' . $licenca["imageName"] . '?rand='.rand());
 	}
 		
 	return $objResponse;
@@ -172,16 +172,16 @@ function _publish_arquivo() {
     $objResponse = new xajaxResponse();
     
     if ($arquivo->publish()) {
-    	$objResponse->addRedirect("el-gallery_view.php?arquivoId=$arquivo->id");
+    	$objResponse->redirect("el-gallery_view.php?arquivoId=$arquivo->id");
     } else {
-    	$objResponse->addAlert("Não foi possível publicar o arquivo");
+    	$objResponse->alert("Não foi possível publicar o arquivo");
     }
 
     return $objResponse;
 }
 
 $ajaxlib->setPermission('check_publish', $userHasPermOnFile && $arquivoId);
-$ajaxlib->registerFunction('check_publish');
+$ajaxlib->register(XAJAX_FUNCTION, 'check_publish');
 function check_publish($showDisclaimer = true, $dontShowAgain = false) {
     global $user, $userlib, $arquivo, $isIE;
     $objResponse = new xajaxResponse();
@@ -190,13 +190,13 @@ function check_publish($showDisclaimer = true, $dontShowAgain = false) {
     	$errorMsgs = '';
     	foreach ($errorList as $field => $error) {
     		$errorMsgs .= $error . ($isIE ? "" : "<br/>") . "\n";
-    		$objResponse->addScriptCall('exibeErro',$field, $error);
+    		$objResponse->call('exibeErro',$field, $error);
     	}
     	if ($isIE) {
-    		$objResponse->addAlert($errorMsgs);
+    		$objResponse->alert($errorMsgs);
     	} else {
-    		$objResponse->addAssign("ajax-gUpErrorList", "innerHTML", $errorMsgs);
-    		$objResponse->addScript("showLightbox('ajax-gUpError')");
+    		$objResponse->assign("ajax-gUpErrorList", "innerHTML", $errorMsgs);
+    		$objResponse->script("showLightbox('ajax-gUpError')");
     	}
     } else {
 		if (!$showDisclaimer || $userlib->get_user_preference($user, 'el_disclaimer_seen', false)) {
@@ -206,7 +206,7 @@ function check_publish($showDisclaimer = true, $dontShowAgain = false) {
 		    }
 		    return _publish_arquivo();
 		} else {
-		    $objResponse->addScript("showLightbox('ajax-el-publish')");
+		    $objResponse->script("showLightbox('ajax-el-publish')");
 		}
     }
     return $objResponse;    

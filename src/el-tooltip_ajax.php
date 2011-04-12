@@ -2,7 +2,7 @@
 
 require_once("lib/ajax/ajaxlib.php");
 
-$ajaxlib->registerFunction('register_tooltip_click');
+$ajaxlib->register(XAJAX_FUNCTION, 'register_tooltip_click');
 function register_tooltip_click($tipName) {
 	global $tooltiplib;
 	

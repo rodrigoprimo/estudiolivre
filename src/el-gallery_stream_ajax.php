@@ -3,7 +3,7 @@
 global $tiki_p_el_view;
 
 $ajaxlib->setPermission('streamFile', $tiki_p_el_view == 'y');
-$ajaxlib->registerFunction("streamFile");
+$ajaxlib->register(XAJAX_FUNCTION, "streamFile");
 function streamFile($arquivoId, $type, $screenSize) {
 	global $smarty;
 	require_once("lib/persistentObj/PersistentObjectFactory.php");
@@ -28,12 +28,12 @@ function streamFile($arquivoId, $type, $screenSize) {
     	} else {
     		$smarty->assign('note', '');
     	}
-    	$objResponse->addRemove('ajax-gPlayerImagem');
-    	$objResponse->addAppend('ajax-contentBubble', 'innerHTML', $smarty->fetch('el-playerImage.tpl'));
-    	$objResponse->addAssign('ajax-gImagem', 'style.maxWidth', $screenSize . "px");
-    	$objResponse->addAssign('ajax-gPlayerImagem', 'style.width', $file->width . "px");
-    	$objResponse->addAssign('ajax-gPlayerImagem', 'style.height', $file->height . "px");
-    	$objResponse->addScript("showLightbox('ajax-gPlayerImagem')");
+    	$objResponse->remove('ajax-gPlayerImagem');
+    	$objResponse->append('ajax-contentBubble', 'innerHTML', $smarty->fetch('el-playerImage.tpl'));
+    	$objResponse->assign('ajax-gImagem', 'style.maxWidth', $screenSize . "px");
+    	$objResponse->assign('ajax-gPlayerImagem', 'style.width', $file->width . "px");
+    	$objResponse->assign('ajax-gPlayerImagem', 'style.height', $file->height . "px");
+    	$objResponse->script("showLightbox('ajax-gPlayerImagem')");
     	
     	return $objResponse;
     }
@@ -55,14 +55,14 @@ function streamFile($arquivoId, $type, $screenSize) {
     /*pra quando rolar tutoriais em swf
      * if (preg_match('/.*\.swf$/i', $arquivo.arquivo)) {
     	$smarty->assign('src', 'repo/' . $arquivo['arquivo']);
-    	$objResponse->addRemove('gPlayerSwf');
-    	$objResponse->addAppend('ajax-contentBubble', 'innerHTML', $smarty->fetch('el-playerSwf.tpl'));
-    	$objResponse->addScript("showLightbox('gPlayerSwf')");	
+    	$objResponse->remove('gPlayerSwf');
+    	$objResponse->append('ajax-contentBubble', 'innerHTML', $smarty->fetch('el-playerSwf.tpl'));
+    	$objResponse->script("showLightbox('gPlayerSwf')");	
     } else {
     */
-    	$objResponse->addRemove('ajax-gPlayer');
-   		$objResponse->addAppend('ajax-contentBubble', 'innerHTML', $smarty->fetch('el-player.tpl'));
-    	$objResponse->addScript("loadFile('$validUrl', $width, $height, '$video')");
+    	$objResponse->remove('ajax-gPlayer');
+   		$objResponse->append('ajax-contentBubble', 'innerHTML', $smarty->fetch('el-player.tpl'));
+    	$objResponse->script("loadFile('$validUrl', $width, $height, '$video')");
     //}
     
     return $objResponse;
@@ -70,7 +70,7 @@ function streamFile($arquivoId, $type, $screenSize) {
 }
 
 $ajaxlib->setPermission('streamStream', $tiki_p_el_view == 'y');
-$ajaxlib->registerFunction("streamStream");
+$ajaxlib->register(XAJAX_FUNCTION, "streamStream");
 function streamStream($url, $size) {
 	
 	global $smarty;
@@ -80,9 +80,9 @@ function streamStream($url, $size) {
 	$width = (int)$matches[1];
 	$height = (int)$matches[1];
 	
-	$objResponse->addRemove('ajax-gPlayer');
-   	$objResponse->addAppend('ajax-contentBubble', 'innerHTML', $smarty->fetch('el-player.tpl'));
-    $objResponse->addScript("loadFile('$url', $width, $height, 'true')");
+	$objResponse->remove('ajax-gPlayer');
+   	$objResponse->append('ajax-contentBubble', 'innerHTML', $smarty->fetch('el-player.tpl'));
+    $objResponse->script("loadFile('$url', $width, $height, 'true')");
     
     return $objResponse;  
 }

@@ -9,7 +9,7 @@
 global $tiki_p_el_vote, $arquivoId;
  
 $ajaxlib->setPermission('vota', $tiki_p_el_vote && $arquivoId);
-$ajaxlib->registerFunction("vota");
+$ajaxlib->register(XAJAX_FUNCTION, "vota");
 function vota($nota) {
     global $user, $arquivo;
     
@@ -20,13 +20,13 @@ function vota($nota) {
     $arquivo->vote($user, $nota);
 
     $objResponse = new xajaxResponse();
-    $objResponse->addAssign('ajax-aRatingImg', 'src', 'styles/estudiolivre/star'.round($arquivo->rating).'.png');
-    $objResponse->addAssign('ajax-aVoteTotal', 'innerHTML', count($arquivo->votes));
+    $objResponse->assign('ajax-aRatingImg', 'src', 'styles/estudiolivre/star'.round($arquivo->rating).'.png');
+    $objResponse->assign('ajax-aVoteTotal', 'innerHTML', count($arquivo->votes));
     return $objResponse;
 } 
 
 $ajaxlib->setPermission('comment', $user && $arquivoId);
-$ajaxlib->registerFunction("comment");
+$ajaxlib->register(XAJAX_FUNCTION, "comment");
 function comment($comment) {
 	global $arquivoId, $arquivo, $user, $smarty;
 	
@@ -37,15 +37,15 @@ function comment($comment) {
 	$smarty->assign('comment', $c);
 	
 	$objResponse = new xajaxResponse();
-	$objResponse->addAppend("ajax-aCommentsItemsCont", "innerHTML", $smarty->fetch("el-publication_comment.tpl"));
-	$objResponse->addAssign("ajax-commentCount", "innerHTML", count($arquivo->comments) + 1);
+	$objResponse->append("ajax-aCommentsItemsCont", "innerHTML", $smarty->fetch("el-publication_comment.tpl"));
+	$objResponse->assign("ajax-commentCount", "innerHTML", count($arquivo->comments) + 1);
 	
 	return $objResponse;
 	
 }
 
 $ajaxlib->setPermission('deleteComment', $user && $arquivoId);
-$ajaxlib->registerFunction("deleteComment");
+$ajaxlib->register(XAJAX_FUNCTION, "deleteComment");
 function deleteComment($commentId) {
 	global $arquivo, $user, $smarty;
 	
@@ -61,10 +61,10 @@ function deleteComment($commentId) {
 		return $objResponse;
 	}
 
-	$objResponse->addRemove("ajax-commentCont-$c->id");
+	$objResponse->remove("ajax-commentCont-$c->id");
 	$c->delete();
 	
-	$objResponse->addAssign("ajax-commentCount", "innerHTML", count($arquivo->comments) - 1);
+	$objResponse->assign("ajax-commentCount", "innerHTML", count($arquivo->comments) - 1);
 	
 	return $objResponse;
 	
