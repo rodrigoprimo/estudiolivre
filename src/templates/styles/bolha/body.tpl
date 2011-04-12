@@ -56,13 +56,6 @@
 		{eval var=$prefs.feature_endbody_code}
 	{/if}
 	{interactivetranslation}
-	
-	<!-- Put JS at the end -->
-	{if $headerlib}
-		{$headerlib->output_js_config()}
-		{$headerlib->output_js_files()}
-		{$headerlib->output_js()}
-	{/if}
 </body>
 
 <!-- body.tpl end -->

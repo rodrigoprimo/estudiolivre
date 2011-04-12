@@ -8,7 +8,15 @@
 	lang="{if !empty($pageLang)}{$pageLang}{else}{$prefs.language}{/if}"
 	{if !empty($page_id)} id="page_{$page_id}"{/if}>
 
-	<head>{include file="header.tpl"}</head>
+	<head>
+		{include file="header.tpl"}
+		<script type="text/javascript">var style = '{$styleDir}';</script>
+		{if $headerlib}
+			{$headerlib->output_js_config()}
+			{$headerlib->output_js_files()}
+			{$headerlib->output_js()}
+		{/if}
+	</head>
   
 	{include file="body.tpl"}
 	{* ---- END ---- *}

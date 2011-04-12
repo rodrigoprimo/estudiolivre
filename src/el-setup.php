@@ -53,6 +53,7 @@ TikiSetup::prependIncludePath('lib/elgal/model');
 // TODO: Fazer ieGIF2PNG q substitui o {if $isIE}gif{else}png{/if}
 
 $styleDir = str_replace('.css', '', $prefs['style']);
+$smarty->assign('styleDir', $styleDir);
 $headerlib->add_cssfile("styles/$styleDir/css/tooltip.css");
 $headerlib->add_cssfile("styles/$styleDir/css/lightbox.css");
 
@@ -71,5 +72,3 @@ $headerlib->add_jsfile('lib/js/busca.js');
 if ($prefs['feature_community_mouseover']) {
 	$headerlib->add_jsfile('lib/js/overlib_mini.js');
 }
-
-$headerlib->add_jq_onready("var style = '$styleDir'");
