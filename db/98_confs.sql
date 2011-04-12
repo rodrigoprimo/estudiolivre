@@ -11,3 +11,4 @@ INSERT INTO `tiki_preferences` VALUES ('feature_categories', 'y');
 INSERT INTO `tiki_preferences` VALUES ('style', 'bolha.css');
 INSERT INTO `tiki_preferences` VALUES ('feature_community_list_country', 'y');
 INSERT INTO `tiki_preferences` VALUES ('wiki_edit_section', 'n');
+INSERT INTO `tiki_preferences` VALUES ('site_title_location', 'before');
