@@ -101,7 +101,7 @@ $smarty->assign('sort_mode', $sort_mode);
 $smarty->assign('total', $total);
 $smarty->assign('find', '');
 $smarty->assign('filters', array());
-$smarty->assign('page', 1);
+$smarty->assign('currentPage', 1);
 $smarty->assign('lastPage', ceil($total/5));
 
 // licenca padrao

@@ -79,7 +79,7 @@ $smarty->assign('maxRecords', 10);
 $smarty->assign('offset', 0);
 $smarty->assign('total', $total);
 $smarty->assign('find', $find);
-$smarty->assign('page', 1);
+$smarty->assign('currentPage', 1);
 $smarty->assign('lastPage', ceil($total/10));
 $smarty->assign_by_ref('arquivos',$files);
 

@@ -45,7 +45,7 @@ function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $fi
 	$smarty->assign('userName', $userName);
 	$smarty->assign('find', $find);
 	$smarty->assign('filters', $filters);
-	$smarty->assign('page', ($offset/$maxRecords)+1);
+	$smarty->assign('currentPage', ($offset/$maxRecords)+1);
 	$smarty->assign('lastPage', ceil($total/$maxRecords));
 	$smarty->assign('dontAskDelete', $tikilib->get_user_preference($user, 'el_dont_check_delete', 0));
 	
