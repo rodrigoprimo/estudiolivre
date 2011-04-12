@@ -5,6 +5,7 @@
 	{html_body_attributes}>
 	
 	{if $prefs.feature_ajax eq 'y'}
+		{$xajax_js}
 		{include file='tiki-ajax_header.tpl'}
 	{/if}
 
