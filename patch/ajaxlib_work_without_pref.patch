@@ -1,0 +1,35 @@
+--- lib/ajax/ajaxlib.php	2010-11-16 15:49:12.000000000 -0200
++++ lib/ajax/ajaxlib.php	2011-04-12 14:11:08.789248998 -0300
+@@ -11,10 +11,8 @@
+ 	die;
+ }
+ 
+-global $prefs;
+-if ($prefs['ajax_xajax'] === 'y') {
+-	require_once("lib/ajax/xajax/xajax_core/xajaxAIO.inc.php");
+-	if (!defined ('XAJAX_GET')) define ('XAJAX_GET', 0);
++require_once("lib/ajax/xajax/xajax_core/xajaxAIO.inc.php");
++if (!defined ('XAJAX_GET')) define ('XAJAX_GET', 0);
+ 
+ class TikiAjax extends xajax
+ {
+@@ -146,19 +144,6 @@
+ 		}
+ 
+ 	}
+-} else {
+-	// dumb TikiAjax class
+-	class TikiAjax
+-{
+-		function TikiAjax() {}
+-#		function __construct() {} // commented out because it causes PHP notice "constructor already defined for class TikiAjax" (no idea, where and why it even goes through this file when ajax feature is not enabled)
+-		function registerFunction() {}
+-		function registerTemplate() {}
+-		function templateIsRegistered() { return false; }
+-		function processRequests() {}
+-		function getJavascript() { return ''; }
+-	}
+-}
+ 
+ global $ajaxlib;
+ $ajaxlib = new TikiAjax();

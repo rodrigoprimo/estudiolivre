@@ -7,7 +7,6 @@ INSERT INTO `users_grouppermissions` VALUES ('Anonymous', 'tiki_p_el_view', 'y')
 INSERT INTO `users_grouppermissions` VALUES ('Registered', 'tiki_p_el_upload_files', 'y');
 INSERT INTO `users_grouppermissions` VALUES ('Registered', 'tiki_p_el_vote', 'y');
 INSERT INTO `tiki_preferences` VALUES ('feature_ajax', 'y');
-INSERT INTO `tiki_preferences` VALUES ('ajax_xajax', 'y');
 INSERT INTO `tiki_preferences` VALUES ('feature_categories', 'y');
 INSERT INTO `tiki_preferences` VALUES ('style', 'bolha.css');
 INSERT INTO `tiki_preferences` VALUES ('feature_community_list_country', 'y');
