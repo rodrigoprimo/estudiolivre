@@ -2,9 +2,9 @@
 // migrado pra 2.0!
 require_once("lib/persistentObj/PersistentObjectController.php");
 
-global $el_p_view;
+global $tiki_p_el_view;
 
-$ajaxlib->setPermission('get_files', $el_p_view == 'y');
+$ajaxlib->setPermission('get_files', $tiki_p_el_view == 'y');
 $ajaxlib->registerFunction("get_files");
 function get_files($tipos, $offset, $maxRecords, $sort_mode, $userName = '', $find = '', $filters = array()) {
     global $smarty, $user, $tikilib;

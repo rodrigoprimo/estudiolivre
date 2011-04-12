@@ -3,9 +3,9 @@
 require_once("dumb_progress_meter.php");
 require_once("el-gallery_file_edit_ajax.php");
 
-global $userHasPermOnFile, $arquivoId, $el_p_upload_files;
+global $userHasPermOnFile, $arquivoId, $tiki_p_el_upload_files;
 
-$ajaxlib->setPermission('newUploadForm', $el_p_upload_files == 'y');
+$ajaxlib->setPermission('newUploadForm', $tiki_p_el_upload_files == 'y');
 $ajaxlib->registerFunction('newUploadForm');
 function newUploadForm($i) {
 	global $smarty, $arquivo;
@@ -20,7 +20,7 @@ function newUploadForm($i) {
 	return $objResponse;
 }
 
-$ajaxlib->setPermission('create_file', $el_p_upload_files == 'y');
+$ajaxlib->setPermission('create_file', $tiki_p_el_upload_files == 'y');
 $ajaxlib->registerFunction('create_file');
 function create_file($tipo, $fileName, $formNum) {
 	$objResponse = new xajaxResponse();
@@ -78,7 +78,7 @@ function validateUpload($fileName, $i) {
 
 }
 
-$ajaxlib->setPermission('delete_file', $el_p_upload_files == 'y');
+$ajaxlib->setPermission('delete_file', $tiki_p_el_upload_files == 'y');
 $ajaxlib->registerFunction('delete_file');
 function delete_file($arquivoId) {
 	global $user;

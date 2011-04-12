@@ -1,8 +1,8 @@
 <?php
 // migrado pra 2.0!
-global $el_p_view;
+global $tiki_p_el_view;
 
-$ajaxlib->setPermission('streamFile', $el_p_view == 'y');
+$ajaxlib->setPermission('streamFile', $tiki_p_el_view == 'y');
 $ajaxlib->registerFunction("streamFile");
 function streamFile($arquivoId, $type, $screenSize) {
 	global $smarty;
@@ -69,7 +69,7 @@ function streamFile($arquivoId, $type, $screenSize) {
     
 }
 
-$ajaxlib->setPermission('streamStream', $el_p_view == 'y');
+$ajaxlib->setPermission('streamStream', $tiki_p_el_view == 'y');
 $ajaxlib->registerFunction("streamStream");
 function streamStream($url, $size) {
 	

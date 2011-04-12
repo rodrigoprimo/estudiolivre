@@ -45,7 +45,7 @@
 				</span>
 				<br /><br />
 				{/tooltip}{/if}
-				{if $arquivo->user eq $user or $el_p_admin_gallery eq "y"}{tooltip name="list-apagar-arquivo-acervo" text="Apagar esse arquivo do acervo"}
+				{if $arquivo->user eq $user or $tiki_p_el_admin_gallery eq "y"}{tooltip name="list-apagar-arquivo-acervo" text="Apagar esse arquivo do acervo"}
 				<span class="pointer" onClick="deleteFile({$arquivo->id},{$dontAskDelete},0);nd();">
 					{tr}apagar{/tr}
 				</span><br />{/tooltip}{/if}

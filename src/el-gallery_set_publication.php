@@ -7,7 +7,7 @@
 
 require_once("lib/persistentObj/PersistentObjectController.php");
 
-global $userHasPermOnFile, $arquivoId, $arquivo, $el_p_admin_gallery;
+global $userHasPermOnFile, $arquivoId, $arquivo, $tiki_p_el_admin_gallery;
 
 $arquivoId = false;
 if (isset($_REQUEST['arquivoId'])) {
@@ -15,7 +15,7 @@ if (isset($_REQUEST['arquivoId'])) {
 	$controller = new PersistentObjectController("Publication");
 	$arquivo = $controller->findOne(array("id" => $_REQUEST['arquivoId']));
 	if ($arquivo) {
-		if ($arquivo->user == $user || $el_p_admin_gallery == 'y') {
+		if ($arquivo->user == $user || $tiki_p_el_admin_gallery == 'y') {
 			$userHasPermOnFile = true;
 		} else {
 			$userHasPermOnFile = false;

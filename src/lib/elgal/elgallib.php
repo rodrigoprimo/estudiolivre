@@ -953,13 +953,13 @@ class ELGalLib extends TikiLib {
 }
 
 // migrado para el-setup
-global $elgallib, $dbTiki, $userHasPermOnFile, $arquivoId, $el_p_admin_gallery;
+global $elgallib, $dbTiki, $userHasPermOnFile, $arquivoId, $tiki_p_el_admin_gallery;
 $elgallib = new ELGalLib($dbTiki);
 
 if (isset($_REQUEST['arquivoId'])) {
 	$arquivoId = $_REQUEST['arquivoId'];
 	$arquivo = $elgallib->get_arquivo($_REQUEST['arquivoId']);
-	if ($arquivo['user'] == $user || $el_p_admin_gallery == 'y') {
+	if ($arquivo['user'] == $user || $tiki_p_el_admin_gallery == 'y') {
 		$userHasPermOnFile = true;
 	} else {
 		$userHasPermOnFile = false;

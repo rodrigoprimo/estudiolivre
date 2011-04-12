@@ -23,7 +23,7 @@ if (!$user) {
   die;
 }
 
-if ($el_p_upload_files != 'y') {
+if ($tiki_p_el_upload_files != 'y') {
     $smarty->assign('msg', tra("Permission denied you cannot upload files"));
     $smarty->display("error.tpl");
     die;
@@ -38,7 +38,7 @@ $smarty->assign('moreTagsOffset', 10);
 
 //isto eh uma conveniencia, so pra bloquear a mudanca de campo no cliente
 //nao garante seguranca
-$smarty->assign('permission', $el_p_upload_files == 'y');
+$smarty->assign('permission', $tiki_p_el_upload_files == 'y');
 
 // licenca padrao
 if ($licencaId = $tikilib->get_user_preference($user, 'licencaPadrao')) {
