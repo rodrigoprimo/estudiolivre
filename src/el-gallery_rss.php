@@ -17,8 +17,7 @@ $dateId = "publishDate";
 $authorId = "author";
 $titleId = "title";
 $urlparam = "id";
-$readrepl = "el-gallery_view.php?arquivoId=%s";
-$uniqueid = $feed;
+$itemurl = "el-gallery_view.php?arquivoId=%s";
 
 $filters = array();
 if (isset($_REQUEST['user']) && $_REQUEST['user']) {
@@ -78,8 +77,7 @@ if (isset($_REQUEST['tag']) && $_REQUEST['tag']) {
 	$files = $controller->findAll($filters, 0, $maxRecords, $dateId.'_desc');
 }
 
-$base_url = 'http://' . $_SERVER['HTTP_HOST'] .  $_SERVER['REQUEST_URI'];
-$base_url = preg_replace('/el-gallery_rss.php.*$/','',$base_url);
+$uniqueid = $feed . $userName . $maxRecords . implode('', $type);
 
 $changes = array();
 $changes["data"] = array();
@@ -89,7 +87,9 @@ for ($i=0; $i < sizeof($files); $i++) {
 	$arquivo = array();
 	
 	$file =& $files[$i]->filereferences[0];
-	$arquivo["sefurl"] = $base_url . $file->fullPath();
+	// TODO: devem haver outros casos de nome de arquivo invalido alem de
+	// 		 nomes de arquivo com espacos
+	$arquivo["sefurl"] = str_replace(' ', '+', $file->fullPath());
 	$arquivo["filesize"] = $file->size;
 	$arquivo["filetype"] = $file->mimeType;
 	
@@ -109,7 +109,7 @@ for ($i=0; $i < sizeof($files); $i++) {
 	
 }
 
-$output = $rsslib->generate_feed($feed, $uniqueid, '', $changes, $readrepl, $urlparam, $id, $title, $titleId, $desc, $descId, $dateId, $authorId);
+$output = $rsslib->generate_feed($feed, $uniqueid, '', $changes, $itemurl, $urlparam, $id, $title, $titleId, $desc, $descId, $dateId, $authorId);
 
 header("Content-type: ".$output["content-type"]);
 print $output["data"];
