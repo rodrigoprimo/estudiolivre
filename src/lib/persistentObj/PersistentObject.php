@@ -33,7 +33,7 @@ class PersistentObject extends PersistentObjectStructure {
 	var $peerFields = array();
 	var $extraStructure = array();
 	var $fields = array();
-    var $properties = array();
+	var $properties = array();
 
 	
 	/* This is the base constructor for the framework. it relies on the 
@@ -45,76 +45,82 @@ class PersistentObject extends PersistentObjectStructure {
 	 */
 	function PersistentObject($fields, $referenced = false) { 
 
-	    $this->setup();
-	    
-	    $this->table = strtolower(get_class($this));
-	    if (is_array($fields)) {
-	    	if (count($fields)) {
-	    		if (isset($this->actualClass))
-			    	$fields['actualClass'] = get_class($this);
-		    	$this->_populateObject($fields);
-		    	$this->id = $this->insert($fields);
-	    		$this->_insertIndex();
-			$this->_extraStructure('insert');
-	    	} else trigger_error("Incorrect parameters, need array with at least one field to create object", E_USER_ERROR);
-	    } elseif (is_int($fields)) {
-	    	$this->id = $fields;
-	    	$this->select($referenced);
-	    } elseif ((string)$fields == "control") {
-		    // do nothing, this is a control object just to access the field objects
-	    } else trigger_error("Incorrect parameters, need array or integer of 'id' to fetch", E_USER_ERROR); 
-	    return $this;
+		$this->setup();
+		
+		$this->table = strtolower(get_class($this));
+		if (is_array($fields)) {
+			if (count($fields)) {
+				if (isset($this->actualClass)) {
+					$fields['actualClass'] = get_class($this);
+				}
+				$this->_populateObject($fields);
+				$this->id = $this->insert($fields);
+				$this->_insertIndex();
+				$this->_extraStructure('insert');
+			} else {
+				trigger_error("Incorrect parameters, need array with at least one field to create object", E_USER_ERROR);
+			}
+		} elseif (is_int($fields)) {
+			$this->id = $fields;
+			$this->select($referenced);
+		} elseif ((string)$fields == "control") {
+			// do nothing, this is a control object just to access the field objects
+		} else {
+			trigger_error("Incorrect parameters, need array or integer of 'id' to fetch", E_USER_ERROR); 
+		}
+		
+		return $this;
 	}
 
-    /*
-     * hash getFields
-     */
-    function getFields() {
-	return $this->fields;
-    }
-
-    function setup() {
-	// Should be implemented by subclasses
-
-	$vars = get_class_vars(get_class($this));
-	foreach ($vars as $var => $value) {
-	    if (is_object($this->$var) && preg_match('/field/i', get_class($this->$var))) {
-		$this->fields[$var] = $this->$var;
-	    }
-	    $this->properties[$var] = 1;
-	}
-    }
-
-    // Checks if this class has a property
-    function has($property) {
-	return isset($this->properties[$property]);
-    }
-
-    function load($property) {
-	$methods = array('_getParent','_getChildren', '_getPeers');
-	for ($i=0; $i < sizeof($methods) && !isset($this->$property); $i++) {
-	    $method = $methods[$i];
-	    $this->$method($property);
+	/*
+	 * hash getFields
+	 */
+	function getFields() {
+		return $this->fields;
 	}
 
-	return $this->$property;
-    }
-
-    function _getValue($value) {
-	if (is_object($value)) {
-	    return $value->getValue();
-	} else {
-	    return $value;
+	function setup() {
+		// Should be implemented by subclasses
+	
+		$vars = get_class_vars(get_class($this));
+		foreach ($vars as $var => $value) {
+			if (is_object($this->$var) && preg_match('/field/i', get_class($this->$var))) {
+			$this->fields[$var] = $this->$var;
+			}
+			$this->properties[$var] = 1;
+		}
 	}
-    }
 
-    function _setValue($key, &$value) {
-	if (isset($this->$key) && is_object($this->$key)) {
-	    $this->$key->setValue($value);
-	} else {
-	    $this->$key = $value;
+	// Checks if this class has a property
+	function has($property) {
+		return isset($this->properties[$property]);
 	}
-    }
+
+	function load($property) {
+		$methods = array('_getParent','_getChildren', '_getPeers');
+		for ($i=0; $i < sizeof($methods) && !isset($this->$property); $i++) {
+			$method = $methods[$i];
+			$this->$method($property);
+		}
+
+		return $this->$property;
+	}
+
+	function _getValue($value) {
+		if (is_object($value)) {
+			return $value->getValue();
+		} else {
+			return $value;
+		}
+	}
+
+	function _setValue($key, &$value) {
+		if (isset($this->$key) && is_object($this->$key)) {
+			$this->$key->setValue($value);
+		} else {
+			$this->$key = $value;
+		}
+	}
 
 	function _populateObject($fields) {
 		$errors = "";
@@ -128,7 +134,7 @@ class PersistentObject extends PersistentObjectStructure {
 	function query($query, $bindvals = array()) {
 		global $tikilib;
 		foreach ($bindvals as $key => $value) {
-		    $bindVals[$key] = $this->_getValue($value);
+			$bindVals[$key] = $this->_getValue($value);
 		}
 		return $tikilib->query($query, $bindvals);
 	}
@@ -174,57 +180,60 @@ class PersistentObject extends PersistentObjectStructure {
 	}
 	
 	function insert($fields, $table = false) {
-	    $fieldStructure = $this->_splitFields($fields, $table);
+		$fieldStructure = $this->_splitFields($fields, $table);
 
-	    $id = 0;
+		$id = 0;
 
-	    foreach ($fieldStructure as $table => $fields) {
-		if ($id) {
-		    $fields['id'] = $id;
+		foreach ($fieldStructure as $table => $fields) {
+			if ($id) {
+				$fields['id'] = $id;
+			}
+			$this->query($this->_prepInsertQuery($fields, $table), $fields);
+			if (!$id) {
+				$id = (int)$this->getOne("select max(id) from $table " . $this->_prepQueryConditions($fields), $fields);
+			}
 		}
-		$this->query($this->_prepInsertQuery($fields, $table), $fields);
-		if (!$id) {
-		    $id = (int)$this->getOne("select max(id) from $table " . $this->_prepQueryConditions($fields), $fields);
-		}
-	    }
-	    
-	    
-	    return $id;
+		
+		return $id;
 	}
-    
+	
 	function update($fields, $user = false) {
 		$changes = $this->_getChanges($fields);
 		$errors = $this->_populateObject($fields);
-		if ($errors) return $errors;
+		if ($errors) {
+			return $errors;
+		}
 		$this->_doUpdate($fields);	
 		$this->_extraStructure('update', $fields);
 		$this->_updateIndex();
 		if ($user) {
-		    $this->_registerTransaction($changes, $user);
+			$this->_registerTransaction($changes, $user);
 		}
 		return $fields;
 	}
 	
 	function _doUpdate($fields, $table = false) {
-	    $fieldStructure = $this->_splitFields($fields, $table);
-	    foreach ($fieldStructure as $table => $fields) {
-		if (count($fields)) {
-		    $this->_updateLevel($fields, $table);
+		$fieldStructure = $this->_splitFields($fields, $table);
+		foreach ($fieldStructure as $table => $fields) {
+			if (count($fields)) {
+				$this->_updateLevel($fields, $table);
+			}
 		}
-	    }
 	}
 	
 	function _updateLevel($fields, $table) {
 		$query = "update $table set ";
 		foreach ($fields as $key => $value) {
-		    if (!isset($this->peerFields[$key])) {
-			$query .= "$key = ?,";
-		    } else {
-			unset($fields[$key]);
-			$this->_commitRelations($key);
-		    }
+			if (!isset($this->peerFields[$key])) {
+				$query .= "$key = ?,";
+			} else {
+				unset($fields[$key]);
+				$this->_commitRelations($key);
+			}
 		}
-		if (!sizeof($fields)) return;
+		if (!sizeof($fields)) {
+			return;
+		}
 		$query = substr($query, 0, strlen($query)-1);
 		$query .= " where id = ?";
 		$fields[] = $this->id;
@@ -251,134 +260,139 @@ class PersistentObject extends PersistentObjectStructure {
 		foreach ($this->hasManyAndBelongsTo as $peer => $me) {
 			$myName = strtolower($me);
 			$peerName = strtolower($peer);
-			if ($peerName < $myName) $tableName = $peerName . "_" .  $myName;
-			else $tableName = $myName . "_" .  $peerName;
+			if ($peerName < $myName) {
+				$tableName = $peerName . "_" .  $myName;
+			} else {
+				$tableName = $myName . "_" .  $peerName;
+			}
 			$this->query("delete from $tableName where ${myName}Id = ?", array($this->id));
 		}
 	}
 
 
-    /* Search related functions */
-    	
-    function _insertIndex() {
-        foreach($this->fields as $field) {
-            if (is_object($field)) {
-                if ($field->isIndexable()) {   
-                    $weight = $field->getWeight();
-		    $words = $field->getWords();
-		    foreach ($words as $word) {
-			// its as a word only if it's lenght > 2 :)
-			if (strlen($word) > 2){
-			    $this->_indexWord($word, $weight);
-                        }
-                    }
-                } 
-            }
-        }
-    }
-
-    function _updateIndex() {
-        $this->_deleteIndex();
-        $this->_insertIndex();
-    }
-
-    function _deleteIndex() {
-        $result = $this->query('delete from _searchindex where idObj = ?', array($this->id));
-    }
-
-    function _indexWord($word, $weight) {
-        $actualWeight = $this->_getWordWeight($word);
-	if ($actualWeight > 0) {
-	    $weight += $actualWeight;
-	    $this->query("update _searchindex set weight = ? where idObj = ? and word = ?", array($weight, $this->id, $word));
-	} else {   
-	    $values = array($this->id, get_class($this), $word, $weight);
-	    $this->query("insert into _searchindex (idObj, type, word, weight) values (?, ?, ?, ?)", $values);
-        }	
-    }
-
-    function _getWordWeight($word) {
-        $result = $this->query('select weight from _searchindex where idObj = ? and word = ?', array($this->id, $word));
-	if (preg_match('/error/i', get_class($result))) {
-		return 0;
-	}
-	$row = $result->fetchrow();
-	$weight = $row['weight'];
-        return $weight;
-    }
-
-    /* 
-     * Functions related to versioning 
-     * 
-     * If object contains versionable fields, (verified by Field::isVersionable()),
-     * then on every edition it will be checked for a change, and old and new values
-     * will be saved in table _updatehistory
-     *
-     */
-
-    function _getChanges($fields) {
-	$changes = array();
-        foreach($fields as $field => $newValue) {
-            if (is_object($this->$field) && $this->$field->isVersionable()) {
-		$oldValue = $this->$field->serialized();
-		if ($newValue != $oldValue) {
-		    $changes[$field] = array('old' => $oldValue,
-					     'new' => $newValue);
+	/* Search related functions */
+		
+	function _insertIndex() {
+		foreach($this->fields as $field) {
+			if (is_object($field)) {
+				if ($field->isIndexable()) {   
+					$weight = $field->getWeight();
+					$words = $field->getWords();
+					foreach ($words as $word) {
+						// its as a word only if it's lenght > 2 :)
+						if (strlen($word) > 2) {
+							$this->_indexWord($word, $weight);
+						}
+					}
+				} 
+			}
 		}
-            }
-        }
-	return $changes;
-    }
-
-    function _registerTransaction($changes, $responsibleObj) {
-	if (sizeof($changes) > 0) {
-	    $this->query("insert into _updatehistory (objType, objId, tstamp, version, responsibleType, responsibleId, title, changes) values (?,?,?,?,?,?,?,?)",
-			 array(get_class($this), 
-			       $this->id, 
-			       time(), 
-			       $this->getVersion(), 
-			       get_class($responsibleObj), 
-			       $responsibleObj->id,
-			       $this->_makeTransactionTitle($changes),
-			       serialize($changes)));
-
-	    $this->_version++;
 	}
+
+	function _updateIndex() {
+		$this->_deleteIndex();
+		$this->_insertIndex();
+	}
+
+	function _deleteIndex() {
+		$result = $this->query('delete from _searchindex where idObj = ?', array($this->id));
+	}
+
+	function _indexWord($word, $weight) {
+		$actualWeight = $this->_getWordWeight($word);
+		if ($actualWeight > 0) {
+			$weight += $actualWeight;
+			$this->query("update _searchindex set weight = ? where idObj = ? and word = ?", array($weight, $this->id, $word));
+		} else {   
+			$values = array($this->id, get_class($this), $word, $weight);
+			$this->query("insert into _searchindex (idObj, type, word, weight) values (?, ?, ?, ?)", $values);
+		}
+	}
+
+	function _getWordWeight($word) {
+		$result = $this->query('select weight from _searchindex where idObj = ? and word = ?', array($this->id, $word));
+		if (preg_match('/error/i', get_class($result))) {
+			return 0;
+		}
+		$row = $result->fetchrow();
+		$weight = $row['weight'];
+		return $weight;
+	}
+
+	/* 
+	 * Functions related to versioning 
+	 * 
+	 * If object contains versionable fields, (verified by Field::isVersionable()),
+	 * then on every edition it will be checked for a change, and old and new values
+	 * will be saved in table _updatehistory
+	 *
+	 */
+
+	function _getChanges($fields) {
+		$changes = array();
+		foreach($fields as $field => $newValue) {
+			if (is_object($this->$field) && $this->$field->isVersionable()) {
+				$oldValue = $this->$field->serialized();
+				if ($newValue != $oldValue) {
+					$changes[$field] = array('old' => $oldValue,
+								 'new' => $newValue);
+				}
+			}
+		}
+		return $changes;
+	}
+
+	function _registerTransaction($changes, $responsibleObj) {
+		if (sizeof($changes) > 0) {
+			$this->query("insert into _updatehistory (objType, objId, tstamp, version, responsibleType, responsibleId, title, changes) values (?,?,?,?,?,?,?,?)",
+				 array(get_class($this), 
+					   $this->id, 
+					   time(), 
+					   $this->getVersion(), 
+					   get_class($responsibleObj), 
+					   $responsibleObj->id,
+					   $this->_makeTransactionTitle($changes),
+					   serialize($changes)));
 	
-    }
-
-    function _makeTransactionTitle($changed) {
-	return implode(', ', array_keys($changed));
-    }
-
-    function getVersion() {
-
-	if (isset($this->_version)) return $this->_version;
-	    
-	$version = $this->getOne("select max(version) from _updatehistory where objType=? and objId=?",
-				 array(get_class($this), $this->id));
-	if (!$version) $version = 0;
-
-	return $this->_version = $version + 1;
-    }
-
-    function rollback($version, $user) {
-	$type = get_class($this);
-	$id = $this->id;
-	$result = $this->query("select * from _updatehistory where objType=? and objId=? and version=?",
-			       array($type, $id, $version));
-	if (!$row = $result->fetchRow())
-	    trigger_error("There's no version $version for $type $id");
-
-	$changes = unserialize($row['changes']);
-	$fields = array();
-	foreach ($changes as $field => $changed) {
-	    $fields[$field] = $changed['old'];
+			$this->_version++;
+		}	
 	}
 
-	$this->update($fields, $user);
-    }
+	function _makeTransactionTitle($changed) {
+		return implode(', ', array_keys($changed));
+	}
 
+	function getVersion() {
+		if (isset($this->_version)){
+			return $this->_version;
+		}
+			
+		$version = $this->getOne("select max(version) from _updatehistory where objType=? and objId=?",
+					 array(get_class($this), $this->id));
+		if (!$version) {
+			$version = 0;
+		}
+	
+		return $this->_version = $version + 1;
+	}
+
+	function rollback($version, $user) {
+		$type = get_class($this);
+		$id = $this->id;
+		$result = $this->query("select * from _updatehistory where objType=? and objId=? and version=?",
+					   array($type, $id, $version));
+		if (!$row = $result->fetchRow()) {
+			trigger_error("There's no version $version for $type $id");
+		}
+	
+		$changes = unserialize($row['changes']);
+		$fields = array();
+		foreach ($changes as $field => $changed) {
+			$fields[$field] = $changed['old'];
+		}
+	
+		$this->update($fields, $user);
+	}
 
 	function select($referenced = false) {
 		$tables = "$this->table";
@@ -389,13 +403,18 @@ class PersistentObject extends PersistentObjectStructure {
 		}
 		$conditions .= "$this->table.id = ?";
 		$result = $this->query("select * from $tables $conditions", array($this->id));
-		if ($row = $result->fetchRow()) $this->_populateObject($row);
-		else trigger_error("Incorrect parameters, id $this->id doesn't exist in $this->table", E_USER_ERROR);
+		if ($row = $result->fetchRow()) {
+			$this->_populateObject($row);
+		} else {
+			trigger_error("Incorrect parameters, id $this->id doesn't exist in $this->table", E_USER_ERROR);
+		}
+		
 		if (!$referenced) {
 			$this->_getParent();
 			$this->_getPeers();
 			$this->_getChildren();
 		}
+		
 		$this->_extraStructure('select');
 	}
 	
@@ -405,13 +424,13 @@ class PersistentObject extends PersistentObjectStructure {
 	 */
 	function _getParent($type = false) {
 		foreach ($this->belongsTo as $parent) {
-		    $varName = strtolower($parent);
-		    if (!$type || $varName == strtolower($type)) {
+			$varName = strtolower($parent);
+			if (!$type || $varName == strtolower($type)) {
 				$idName = $varName . "Id";
 				if (isset($this->$idName) && (int)$this->$idName) {
-				    $this->_setValue($varName, PersistentObjectFactory::createObject($parent, (int)$this->$idName, true));
+					$this->_setValue($varName, PersistentObjectFactory::createObject($parent, (int)$this->$idName, true));
 				}
-		    }
+			}
 		}
 	}
 	
@@ -421,8 +440,8 @@ class PersistentObject extends PersistentObjectStructure {
 	 */
 	function _getChildren($type = false) {
 		foreach ($this->hasMany as $child => $parent) {
-		    $childName = strtolower($child);
-		    if (!$type || $childName == strtolower($type)) {
+			$childName = strtolower($child);
+			if (!$type || $childName == strtolower($type)) {
 				require_once($child . ".php");
 				$idName = strtolower($parent) . "Id";
 				$result = $this->query("select id from $childName where $idName = ?", array($this->id));
@@ -431,7 +450,7 @@ class PersistentObject extends PersistentObjectStructure {
 					array_push($children, PersistentObjectFactory::createObject($child, (int)$row['id'], true));
 				}
 				$this->_setValue($childName . "s", $children);
-		    }
+			}
 		}
 	}
 	
@@ -439,8 +458,8 @@ class PersistentObject extends PersistentObjectStructure {
 	 */
 	function _getPeers($type = false) {
 		foreach ($this->hasManyAndBelongsTo as $peer => $me) {
-		    $peerName = strtolower($peer);
-		    if (!$type || $peerName == strtolower($type)) {
+			$peerName = strtolower($peer);
+			if (!$type || $peerName == strtolower($type)) {
 				require_once($peer . ".php");
 				$myName = strtolower($me);
 				$tableName = $this->_getRelationTable($peerName, $myName);
@@ -455,46 +474,48 @@ class PersistentObject extends PersistentObjectStructure {
 				$varName = $peerName . "s";
 				$this->_setValue($varName, $peers);
 				$this->peerFields[$varName] = $myName;
-		    }
+			}
 		}
 	}
 
-    
+	
 
 	/*
-         * Check a list of peers and update relations in database
+		 * Check a list of peers and update relations in database
 	 */
 	function _commitRelations($key) {
-	    $peers = $this->_getValue($this->$key);
-	    if (is_array($peers)) {
-		$peerName = preg_replace('/s$/','',$key);
-		$myName = $this->peerFields[$key];
-		$relTable = $this->_getRelationTable($peerName, $myName);
-		$this->query("delete from $relTable where ${myName}Id = ?", array($this->id));
-
-		foreach ($peers as $peerObj) {
-		    $this->query("INSERT INTO $relTable (${myName}Id, ${peerName}Id) VALUES (?,?)",
-				 array($this->id, $peerObj->id));
+		$peers = $this->_getValue($this->$key);
+		if (is_array($peers)) {
+			$peerName = preg_replace('/s$/','',$key);
+			$myName = $this->peerFields[$key];
+			$relTable = $this->_getRelationTable($peerName, $myName);
+			$this->query("delete from $relTable where ${myName}Id = ?", array($this->id));
+	
+			foreach ($peers as $peerObj) {
+				$this->query("INSERT INTO $relTable (${myName}Id, ${peerName}Id) VALUES (?,?)",
+					 array($this->id, $peerObj->id));
+			}
+	
+			/*
+					 * In case peer class has the "popularity" property, let's recalculate it.
+			 * This property is an index of relation count.
+			 * By now don't support many n-n relations
+					 *
+			 * TODO: diff old and new peer list and just update popularity as necessary,
+					 *	   to be more efficient and support many kinds of peers
+					 */
+			if ($this->has('popularity')) {
+				$this->query("update `${peerName}` p set `popularity`=(select count(*) from `$relTable` where `${peerName}Id`=p.`id`");
+			}
 		}
-
-		/*
-                 * In case peer class has the "popularity" property, let's recalculate it.
-		 * This property is an index of relation count.
-		 * By now don't support many n-n relations
-                 *
-		 * TODO: diff old and new peer list and just update popularity as necessary,
-                 *       to be more efficient and support many kinds of peers
-                 */
-		if ($this->has('popularity')) {
-		    $this->query("update `${peerName}` p set `popularity`=(select count(*) from `$relTable` where `${peerName}Id`=p.`id`");
-		}
-	    }
 	}
 
 	function _getRelationTable($peerName, $myName) {
-	    if ($peerName < $myName) 
-		return $peerName . "_" .  $myName;
-	    else return $myName . "_" .  $peerName;
+		if ($peerName < $myName) {
+			return $peerName . "_" .  $myName;
+		} else {
+			return $myName . "_" .  $peerName;
+		}
 	}
 
 	function _extraStructure($action, $fields = false) {

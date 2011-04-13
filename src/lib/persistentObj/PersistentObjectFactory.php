@@ -19,18 +19,16 @@ class PersistentObjectFactory {
 		$tableName = strtolower($class);
 		if (is_int($fields)) {
 			global $tikilib;
-		    $result = $tikilib->query("select * from $tableName where id = ?", array($fields));
-		    $row = $result->fetchRow();
-		    if (isset($row['actualClass'])) {
-		    	$class = $row['actualClass'];
-		    	require_once($class . ".php");
-		    }
-		    $obj = new $class($fields, $referenced);
+			$result = $tikilib->query("select * from $tableName where id = ?", array($fields));
+			$row = $result->fetchRow();
+			if (isset($row['actualClass'])) {
+				$class = $row['actualClass'];
+				require_once($class . ".php");
+			}
+			$obj = new $class($fields, $referenced);
 		}
 		return $obj;
-		
 	}
-	
 }
 
 ?>

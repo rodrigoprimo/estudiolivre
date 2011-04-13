@@ -12,7 +12,7 @@ class PersistentObjectExtra {
 	
 	function insertTikiTags(&$obj) {
 		$obj->query("insert into `tiki_objects` (`type`, `itemId`, `name`, `description`, `href`, `created`) values (?,?,?,?,?,?)",
-		             array($obj->tagType, $obj->id, '', '', 'el-gallery_view.php?id=' . $obj->id, time()));
+					 array($obj->tagType, $obj->id, '', '', 'el-gallery_view.php?id=' . $obj->id, time()));
 	}
 	
 	function deleteTikiTags(&$obj) {
@@ -35,16 +35,16 @@ class PersistentObjectExtra {
 		$query = "update `tiki_objects` set ";
 		$bindvals = array();
 		if (isset($fields['title'])) {
-	    	$query .= "`name`=? and ";
-	    	$bindvals[] = $fields['title'];
+			$query .= "`name`=? and ";
+			$bindvals[] = $fields['title'];
 		}
 		if (isset($fields['description'])) {
-		    $query .= "`description`=? and ";
-	    	$bindvals[] = $fields['description'];
+			$query .= "`description`=? and ";
+			$bindvals[] = $fields['description'];
 		}
 		if (count($bindvals)) {
 			$query = substr($query, 0, strlen($query)-4);
-	    	$query .= "where `itemId`=? and `type`=?";
+			$query .= "where `itemId`=? and `type`=?";
 			$bindvals[] = $obj->id;
 			$bindvals[] = $obj->tagType;
 			$obj->query($query, $bindvals);			
