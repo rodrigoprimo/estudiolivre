@@ -22,7 +22,7 @@
     <a class="linkbut" href="tiki-admin_forums.php?forumId={$forum_info.forumId}">{tr}Edit Forum{/tr}</a>
     &nbsp;|&nbsp;
   {/if}
-  {if $rss_forum eq 'y'}
+  {if $feed_forum eq 'y'}
 	<a href="tiki-forum_rss.php?forumId={$forumId}">rss</a>
   {/if}
 </h5>

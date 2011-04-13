@@ -28,7 +28,7 @@
 		</div>
 		<h4>
 			{tr}Last modified{/tr}: {$lastModif|date_format:"%d/%m/%y - %H:%M"}
-			{if $prefs.rss_blog eq "y"}
+			{if $prefs.feed_blog eq "y"}
 				&nbsp;&nbsp;&nbsp;
 				<a class="bloglink" href="tiki-blog_rss.php?blogId={$blogId}">
 					<img src='styles/estudiolivre/iRss.png' alt='{tr}RSS feed{/tr}' title='{tr}RSS feed{/tr}' />

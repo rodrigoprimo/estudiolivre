@@ -35,7 +35,7 @@
 		<br/>
 	{/if}
 	
-	{if $prefs.rss_tracker eq "y"}
+	{if $prefs.feed_tracker eq "y"}
 		<a href="tiki-tracker_rss.php?trackerId={$trackerId}" class="linkbut">
 			<img src='img/rss.png' border='0' alt='{tr}RSS feed{/tr}' title='{tr}RSS feed{/tr}' />
 		</a>

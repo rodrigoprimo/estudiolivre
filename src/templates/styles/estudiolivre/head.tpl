@@ -76,28 +76,28 @@ You are most likely wanting to modify the top of your Tiki site. Please consider
   
 	{* --- Firefox RSS icons --- *}
 	  <link rel="alternate" type="application/xml" title="{tr}RSS Acervo Livre{/tr}" href="el-gallery_rss.php?ver={$rssfeed_default_version}" />
-	  {if $feature_wiki eq 'y' and $rss_wiki eq 'y'}
+	  {if $feature_wiki eq 'y' and $feed_wiki eq 'y'}
 		  <link rel="alternate" type="application/xml" title="{tr}RSS Wiki{/tr}" href="tiki-wiki_rss.php?ver={$rssfeed_default_version}" />
 	  {/if}
-	  {if $feature_blogs eq 'y' and $rss_blogs eq 'y'}
+	  {if $feature_blogs eq 'y' and $feed_blogs eq 'y'}
 		  <link rel="alternate" type="application/xml" title="{tr}RSS Blogs{/tr}" href="tiki-blogs_rss.php?ver={$rssfeed_default_version}" />
 	  {/if}
-	  {if $feature_articles eq 'y' and $rss_articles eq 'y'}
+	  {if $feature_articles eq 'y' and $feed_articles eq 'y'}
 		  <link rel="alternate" type="application/xml" title="{tr}RSS Articles{/tr}" href="tiki-articles_rss.php?ver={$rssfeed_default_version}" />
 	  {/if}
-	  {if $feature_galleries eq 'y' and $rss_image_galleries eq 'y'}
+	  {if $feature_galleries eq 'y' and $feed_image_galleries eq 'y'}
 		  <link rel="alternate" type="application/xml" title="{tr}RSS Image Galleries{/tr}" href="tiki-image_galleries_rss.php?ver={$rssfeed_default_version}" />
 	  {/if}
-	  {if $feature_file_galleries eq 'y' and $rss_file_galleries eq 'y'}
+	  {if $feature_file_galleries eq 'y' and $feed_file_galleries eq 'y'}
 		  <link rel="alternate" type="application/xml" title="{tr}RSS File Galleries{/tr}" href="tiki-file_galleries_rss.php?{$rssfeed_default_version}" />
 	  {/if}
-	  {if $feature_forums eq 'y' and $rss_forums eq 'y'}
+	  {if $feature_forums eq 'y' and $feed_forums eq 'y'}
 		  <link rel="alternate" type="application/xml" title="{tr}RSS Forums{/tr}" href="tiki-forums_rss.php?ver={$rssfeed_default_version}" />
 	  {/if}
-	  {if $feature_maps eq 'y' and $rss_mapfiles eq 'y'}
+	  {if $feature_maps eq 'y' and $feed_mapfiles eq 'y'}
 		  <link rel="alternate" type="application/xml" title="{tr}RSS Maps{/tr}" href="tiki-map_rss.php?ver={$rssfeed_default_version}" />
 	  {/if}
-	  {if $feature_directory eq 'y' and $rss_directories eq 'y'}
+	  {if $feature_directory eq 'y' and $feed_directories eq 'y'}
 		  <link rel="alternate" type="application/xml" title="{tr}RSS Directories{/tr}" href="tiki-directories_rss.php?ver={$rssfeed_default_version}" />
 	  {/if}
 	{* ---- END ---- *}
