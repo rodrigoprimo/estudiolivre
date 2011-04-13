@@ -23,13 +23,11 @@
 				{if $prefs.feature_top_bar eq 'y'}
 					{include file="tiki-top_bar.tpl"}
 				{/if}
-				<div id="tiki-center">
-					{if $display_msg}
-						{remarksbox type="note" title="{tr}Notice{/tr}"}{$display_msg|escape}{/remarksbox}
-					{/if}
-					<div id="role_main">
-						{include file="content.tpl"}
-					</div>
+				{if $display_msg}
+					{remarksbox type="note" title="{tr}Notice{/tr}"}{$display_msg|escape}{/remarksbox}
+				{/if}
+				<div id="role_main">
+					{include file="content.tpl"}
 				</div>
 			</div>
 		

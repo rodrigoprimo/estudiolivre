@@ -18,7 +18,9 @@
 <div id="ajax-contentBubble">
    	{include file="sideContent.tpl"}
 	<div id="{$midId}">
-	    {$mid_data}
+		<div id="tiki-center">
+	    	{$mid_data}
+	    </div>
     </div>
 </div>
 <!-- content.tpl end -->
