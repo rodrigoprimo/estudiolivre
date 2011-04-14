@@ -23,7 +23,7 @@
 				</div>
 			<div id="moduleblogDescCont" style="display:{$bdisplay}">
 				{$description}
-				<h5>{tr}Stats:{/tr} {$posts} {tr}posts{/tr} | {$hits} {tr}visits{/tr} | {tr}Activity={/tr}{$activity|string_format:"%.2f"}</h5>
+				<h5>{tr}Stats:{/tr} {$posts} {tr}posts{/tr} | {$hits} {tr}visits{/tr}</h5>
 			</div>
 		</div>
 		<h4>
