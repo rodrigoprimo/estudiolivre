@@ -1,0 +1,20 @@
+--- templates/header.tpl	2011-02-15 19:05:39.000000000 -0200
++++ templates/header.tpl	2011-04-14 09:57:00.496716008 -0300
+@@ -51,6 +51,8 @@
+ 	{else}
+ 		{if !empty($tracker_item_main_value)}
+ 			{$tracker_item_main_value|escape}
++		{elseif !empty($title) and !is_array($title)}
++			{$title|escape}
+ 		{elseif !empty($page)}
+ 			{if $beingStaged eq 'y' and $prefs.wikiapproval_hideprefix == 'y'}
+ 				{$approvedPageName|escape}
+@@ -61,8 +63,6 @@
+ 		{* add $description|escape if you want to put the description + update breadcrumb_build replace return $crumbs->title; with return empty($crumbs->description)? $crumbs->title: $crumbs->description; *}
+ 		{elseif !empty($arttitle)}
+ 			{$arttitle|escape}
+-		{elseif !empty($title) and !is_array($title)}
+-			{$title|escape}
+ 		{elseif !empty($thread_info.title)}
+ 			{$thread_info.title|escape}
+ 		{elseif !empty($forum_info.name)}
