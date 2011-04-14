@@ -20,34 +20,14 @@
 		</div>
 	{/if *}
 	
-	{section name=ix loop=$listpages}
-		{include file="tiki-view_blog_post_item.tpl" post=$listpages[ix] text=$listpages[ix].parsed_data freetags=$listpages[ix].freetags}
-	{/section}
-	<br />
-
-	<div class="paginacao">
-		{if $prev_offset >= 0}
-			<a class="prevnext" href="tiki-view_blog.php?find={$find}&amp;blogId={$blogId}&amp;offset={$prev_offset}&amp;sort_mode={$sort_mode}">
-				<img src="styles/{$prefs.style|replace:".css":""}/img/iArrowGreyLeft.png">
-			</a>
-		{/if}
-		
-		{tr}Page{/tr} {$actual_page} {tr}de{/tr} {$cant_pages}
-		
-		{if $next_offset >= 0}
-			<a class="prevnext" href="tiki-view_blog.php?find={$find}&amp;blogId={$blogId}&amp;offset={$next_offset}&amp;sort_mode={$sort_mode}">
-				<img src="styles/{$prefs.style|replace:".css":""}/img/iArrowGreyRight.png">
-			</a>
-		{/if}
-		{if $prefs.direct_pagination eq 'y'}
-			<br />
-			{section loop=$cant_pages name=foo}
-				{assign var=selector_offset value=$smarty.section.foo.index|times:$prefs.maxRecords}
-					<a class="prevnext" href="tiki-view_blog.php?find={$find}&amp;blogId={$blogId}&amp;offset={$selector_offset}&amp;sort_mode={$sort_mode}">
-				{$smarty.section.foo.index_next}</a>
-			{/section}
-		{/if}
-	</div>
+	{foreach from=$listpages item=post_info}
+		<div class="blogpost post{if !empty($container_class)} {$container_class}{/if} inline-block">
+			{include file='blog_wrapper.tpl' blog_post_context='view_blog'}
+		</div>
+	{/foreach}
+	
+	{pagination_links cant=$cant step=$maxRecords offset=$offset class='paginacao'}{/pagination_links}
+	
 	{* isso aqui só confunde tudo... (vou tirar e ver no que dá!)
 	<hr>
 	{if $prefs.feature_blog_comments == 'y'

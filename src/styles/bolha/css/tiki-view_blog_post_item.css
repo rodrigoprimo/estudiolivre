@@ -8,22 +8,27 @@ tiki-blog_post.tpl:*/
 	margin:0 2% 0 2%;
 }
 
-.blogpost .posthead .icons {
+.blogpost .postbody-title .icons {
 	float:right;
 	margin-top:7px;
 }
 
-.blogpost .posthead img {
+.blogpost .postbody-title img {
 	opacity:0.5;
 }
 
-.blogpost .posthead h1 {
+.blogpost .postbody-title h2 {
 	font-weight:normal;
 	font-variant:small-caps;
 	border-bottom:1px solid grey;
+	color: black;
 }
 
-.blogpost .posthead h4 {
+.blogpost .postbody-title a {
+	color: black;
+}
+
+.blogpost .postbody-title h4 {
 	text-align:right;
 	font-weight:normal;
 	margin-bottom:0.5em;

@@ -67,3 +67,6 @@ span.hiddenPointer {
 
 .c {clear:both;}
 
+.inline-block {
+	display: inline-block;
+}
